@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+
+       
+        /* .preloader {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            z-index: 99999;
+            transition: 5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+
+        .preloader .double_bounce2 {
+            width: 140px;
+            height: 140px;
+            top: -29px;
+            left: -38px;
+            -webkit-animation: bounce 3.0s infinite ease-in-out;
+            animation: bounce 3.0s infinite ease-in-out;
+        }
+
+        .preloader .double_bounce2 {
+            -webkit-animation-delay: -0.5s;
+            animation-delay: -0.5s;
+        }
+
+       
+        
+
+        @-webkit-keyframes bounce {
+
+            0%,
+            100% {
+                -webkit-transform: scale(0.3)
+            }
+
+            50% {
+                -webkit-transform: scale(1.0)
+            }
+
+
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: scale(0.3);
+                -webkit-transform: scale(0.3);
+            }
+
+            50% {
+                transform: scale(1.0);
+                -webkit-transform: scale(1.0);
+            }
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="preloader">
+        <div>
+            <img class="double_bounce2" src="./assets/images/logo-s4ysm.png" alt="">
+        </div>
+    </div>
+
+</body>
+<script>
+    window.addEventListener('load', () => {
+        const contenedor = document.querySelector('.preloader')
+        contenedor.style.opacity = 0;
+        contenedor.style.visibility = 'hidden';
+
+    })
+
+</script>
+
+</html>
