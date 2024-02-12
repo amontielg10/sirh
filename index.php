@@ -105,7 +105,7 @@
 
                     <div class="col-lg-12 col-md-10 col-sm-12 text-center">
 
-                        <h2><?php echo $nombre ?> <?php echo $app ?> <?php echo $apm ?></h2>
+                        <h2><?php echo $nombre ?></h2>
 
                         
 
