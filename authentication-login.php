@@ -12,7 +12,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <title>Login: Servicios Aeroportuarios | Humanergy</title>
+    <title>@Titulo</title>
     <!-- Custom CSS -->
     <link href="./dist/css/style.min.css" rel="stylesheet">
     <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
@@ -51,7 +51,7 @@
                 <div id="loginform">
                     <div class="logo">
                         <span class="db"><img src="assets/logo.png" alt="logo" width="25%" /></span>
-                        <h3>Portal de servicios aeroportuarios</h3>
+                        <h3>@Titulo</h3>
                         <h5 class="font-medium m-b-20">Inciar sesi&oacute;n</h5>
                     </div>
                     <!-- Form -->
