@@ -5,7 +5,7 @@ include ("../../conexion.php");//Se incluye el metodo de conexion para las consu
 
 $nick = $_POST['nickA']; //Se obtiene el valor de nick
 $nombre = $_POST['nombreA']; //Se obtiene el valor de nombre
-$password = md5($_POST['pwA"']); //Se obtiene el valor de password
+$password = md5($_POST['pwA']); //Se obtiene el valor de password
 $rol = $_POST['rolA']; //Se obtiene el valor de rol
 $status = 't'; //Se inicializa el estatus en true
 $tbl_name = 'users'; //Nombre de la tabla a insertar
