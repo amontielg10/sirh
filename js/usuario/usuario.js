@@ -1,18 +1,19 @@
-    //Mensaje
 
-    function messajeInfo() {
-        let ma = document.getElementById("ma").value; //Variable de agregar
-        let me = document.getElementById("me").value; //Variable de eliminar
-        let ms = document.getElementById("ms").value; //Variable de modificar
-        console.log(ma);
-        if (ma) {
-            message("Usuario Agregado");
-        } else if (me) {
-            message("Usuario Eliminado");
-        } else if (ms) {
-            message("Usuario Modificado");
+//La funcion permite eli
+function eliminarUsuario(id_usuario) {
+    const data = {
+        idUsuario: id_usuario 
+    };
+    $.post('php/usuario/eliminarUsuario.php', data, function(response) {
+        if (response) {
+            console.log("exito");
+            location.reload();
+            //message("Eliminado");
+        } else {
+            console.log(response);
         }
-    }
+    });      
+}
 
     function message(text) {
         const Toast = Swal.mixin({
