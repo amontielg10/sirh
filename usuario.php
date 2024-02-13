@@ -5,6 +5,7 @@
 
 <head>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <script src="js/usuario/usuario.js"></script>
 </head>
 
 <body onload="messajeInfo()">
@@ -99,110 +100,67 @@
 </body>
 
 <script>
-
-    
-
-    //Mensaje
-
-    function messajeInfo() {
-        let ma = document.getElementById("ma").value; //Variable de agregar
-        let me = document.getElementById("me").value; //Variable de eliminar
-        let ms = document.getElementById("ms").value; //Variable de modificar
-        console.log(ma);
-        if (ma) {
-            message("Usuario Agregado");
-        } else if (me) {
-            message("Usuario Eliminado");
-        } else if (ms) {
-            message("Usuario Modificado");
-        }
-    }
-
-    function message(text) {
-        const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.onmouseenter = Swal.stopTimer;
-                toast.onmouseleave = Swal.resumeTimer;
-            }
-        });
-        Toast.fire({
-            icon: "success",
-            title: text
-        });
-    }
-
-
-</script>
-
-<script>
-
     $(document).ready(function () {
-        $('#t-usuarios').DataTable({
-            language: {
-                "decimal": "",
-                "emptyTable": "No hay información",
-                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-                "infoPostFix": "",
-                "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ Entradas",
-                "loadingRecords": "Cargando...",
-                "processing": "Procesando...",
-                "search": "Buscar:",
-                "zeroRecords": "Sin resultados encontrados",
-                "paginate": {
-                    "first": "Primero",
-                    "last": "Ultimo",
-                    "next": "Siguiente",
-                    "previous": "Anterior"
-                }
+    $('#t-usuarios').DataTable({
+        language: {
+            "decimal": "",
+            "emptyTable": "No hay información",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+            "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ Entradas",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscar:",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        },
+        responsive: "true",
+        dom: 'Bfrtilp',
+        buttons: [{
+            extend: 'excelHtml5',
+            text: '<i class="fas fa-file-excel"></i> ',
+            titleAttr: 'Exportar a Excel',
+            className: 'btn btn-success',
+            exportOptions: {
+                columns: ':not(.evita)',
             },
-            responsive: "true",
-            dom: 'Bfrtilp',
-            buttons: [{
-                extend: 'excelHtml5',
-                text: '<i class="fas fa-file-excel"></i> ',
-                titleAttr: 'Exportar a Excel',
-                className: 'btn btn-success',
-                exportOptions: {
-                    columns: ':not(.evita)',
-                },
-                filename: 'Usuarios'
+            filename: 'Usuarios'
+        },
+        {
+            extend: 'pdfHtml5',
+            text: '<i class="fas fa-file-pdf"></i> ',
+            titleAttr: 'Exportar a PDF',
+            className: 'btn btn-danger',
+            orientation: 'landscape',
+            exportOptions: {
+                columns: ':not(.evita)',
             },
-            {
-                extend: 'pdfHtml5',
-                text: '<i class="fas fa-file-pdf"></i> ',
-                titleAttr: 'Exportar a PDF',
-                className: 'btn btn-danger',
-                orientation: 'landscape',
-                exportOptions: {
-                    columns: ':not(.evita)',
-                },
-                filename: 'Requisiciones_ 2023:12:18:12:05'
+            filename: 'Requisiciones_ 2023:12:18:12:05'
+        },
+        {
+            extend: 'print',
+            text: '<i class="fa fa-print"></i> ',
+            titleAttr: 'Imprimir',
+            className: 'btn btn-info',
+            title: 'Control de Usuarios',
+            exportOptions: {
+                columns: [0,1,2, 3],
             },
-            {
-                extend: 'print',
-                text: '<i class="fa fa-print"></i> ',
-                titleAttr: 'Imprimir',
-                className: 'btn btn-info',
-                title: 'Control de Usuarios',
-                exportOptions: {
-                    columns: [0,1,2, 3],
-                },
-                filename: 'Requisiciones_ 2023:12:18:12:05'
-            },
-            ]
-        }
+            filename: 'Requisiciones_ 2023:12:18:12:05'
+        },
+        ]
+    }
 
-        );
-    });
+    );
+});
 </script>
-
 
 </html>
