@@ -219,12 +219,15 @@ include('conexion.php');
                         </a>
                     </li>
                     
+                    <?php if (false){?>
                     <li class="sidebar-item">
                         <a href="miPerfil.php" class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
                             <i class="far fa-user-circle" style="font-size: 1.5rem;"></i>
                             <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Mi Perfil</span>
                         </a>
                     </li>
+                    <?php } ?>
+
                     <?php if ($id_rol == 1){?>
                     <li class="sidebar-item">
                         <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
