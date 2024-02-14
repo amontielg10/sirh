@@ -75,8 +75,37 @@
                                         <td>
                                             <a class="btn" style="background-color: #5c5c5c; color: white;"
                                                 href="<?php echo "usuarioEditar.php?id_user=" . $obj->id_user ?>">Modificar</a>
-                                            <button class="btn btn-danger"
-                                                onclick="eliminarUsuario(<?php echo $obj->id_user ?>)">Eliminar</button>
+
+                                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                data-target="#exampleModal">
+                                                Eliminar
+                                            </button>
+
+                                            <!-- MODAL ELIMINAR -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea eliminar el usuario?</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Esta accion no se puede rehacer
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Cancelar</button>
+                                                            <button class="btn btn-danger"
+                                                                onclick="eliminarUsuario(<?php echo $obj->id_user ?>)">Eliminar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- MODAL ELIMINAR -->
                                         </td>
                                     </tr>
                                     <?php
@@ -85,6 +114,10 @@
                                 echo "<p>Sin Resultados</p>";
                         }
                         ?>
+
+
+
+
 
                         <?php include('ajuste-menu.php') ?>
                         <?php include('footer-librerias.php') ?>
