@@ -22,8 +22,7 @@ $res = pg_insert($connectionDBsPro, $tbl_name, array(
 ));
 
 if ($res) {
-    $ma = true;
-    header("Location: ../../usuario.php?ma=$ma"); //Regreso a la tabla
+    header("Location: ../../view/usuario/usuario.php"); //Regreso a la tabla
 } else {
     header("Location: error.php"); //Muestra error
 }

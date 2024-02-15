@@ -5,7 +5,7 @@
 
 <head>
     <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-    <script src="../js/usuario/usuario.js"></script>
+    <script src="../../js/usuario/usuario.js"></script>
 </head>
 
 <body>

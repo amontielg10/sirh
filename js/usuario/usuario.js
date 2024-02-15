@@ -4,7 +4,7 @@ function eliminarUsuario(id_usuario) {
     const data = {
         idUsuario: id_usuario 
     };
-    $.post('php/usuario/eliminarUsuario.php', data, function(response) {
+    $.post('../../php/usuario/eliminarUsuario.php', data, function(response) {
         if (response) {
             console.log("exito");
             location.reload();
