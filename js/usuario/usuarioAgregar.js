@@ -1,3 +1,35 @@
+ 
+    //Se obtienen los datos asi como los del mensaje
+    function validarCaracteresNick() {
+        let rnick = document.getElementById("rnickA"); //Se obtiene el valor de msj nick
+        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
+        nick.value = nick.value.toUpperCase(); //La funcion convierte a mayusculas el campo nick
+        if (mensajeDD(nick.value, 5, 10) === "") {
+            if (validateNick(nick.value)){
+                rnick.value = "*Nick iguales";
+            } else {
+                rnick.value = "";
+            }
+        } else {
+            rnick.value = mensajeDD(nick.value, 5, 10);
+        }
+    }
+
+    //rnick.value = mensajeDD(nick.value, 5, 10);
+    function validateNick(nick) {
+        let arrayJS = JSON.parse(document.getElementById('row').value);
+        console.log(arrayJS);
+        let bool = false;
+        for (let i = 0; i < arrayJS.length; i++) {
+            if (arrayJS[i] == nick) {
+                bool = true;
+                i++;
+            }
+        }
+        return bool;
+    }
+
+ 
  //La funcion retorna el msj con dos variables
  function mensajeDD(cadena, min, max) {
     if (cadena.length >= min && cadena.length <= max || cadena.length == 0) {
@@ -31,13 +63,6 @@ function validarCaracteresNombre() {
 /**
     * Se utiliza para hacer validaciones de datos
     */
-//Se obtienen los datos asi como los del mensaje
-function validarCaracteresNick() {
-    let rnick = document.getElementById("rnickA"); //Se obtiene el valor de msj nick
-    let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-    nick.value = nick.value.toUpperCase(); //La funcion convierte a mayusculas el campo nick
-    rnick.value = mensajeDD(nick.value, 5, 10);
-}
 
 //La funcion retorna verdadero o falso, dependiendo la cantidad de caracterestes donde ini: num caracter mini, fin: nume= caracteres maximo y var la cadena
 function tamano(valor, minimo, maximo) {
@@ -83,7 +108,13 @@ function validar() {
             text: "Verifique que las contrasenas seas iguales",
             icon: "error"
         });
-    } else {
+    } else if (validateNick(nick)){
+        Swal.fire({
+            title: "¡El campo Nick ya existe!",
+            text: "Verifique que las contrasenas seas iguales",
+            icon: "error"
+        });
+    }else {
         bool = true;
     }
     return bool;
