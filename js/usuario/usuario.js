@@ -13,19 +13,6 @@ function eliminarUsuario(id_usuario) {
     });      
 }
 
-function modificarUsuario(id_usuario){
-    const data = {
-        idUsuario: id_usuario 
-    };
-    $.post('../../view/usuario/usuarioEditar.php', data{
-        if (response) {
-            location.reload();
-        } else {
-            console.log(response);
-        }
-    }); 
-}
-
     function message(text) {
         const Toast = Swal.mixin({
             toast: true,
