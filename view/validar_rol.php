@@ -13,6 +13,6 @@
         unset($_SESSION['nombre']);
 
         session_destroy();
-        header(("location: authentication-login.php"));
+        header(("location: ../../authentication-login.php"));
     }
 ?>

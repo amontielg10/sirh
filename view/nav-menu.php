@@ -1,11 +1,11 @@
 <?php
 
-include('../validar_sesion.php');
+include ('../../validar_sesion.php');
+include ('../../conexion.php');
 
 $nombre = $_SESSION['nombre'];
 $id_rol = $_SESSION['id_rol'];
 
-include('../conexion.php');
 
 ?>
 <!DOCTYPE html>

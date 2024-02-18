@@ -1,4 +1,4 @@
-<?php include("../../validar_rol.php") ?>
+<?php include("../validar_rol.php") ?>
 <!DOCTYPE html>
 <html lang="es">
 

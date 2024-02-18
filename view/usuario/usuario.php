@@ -1,4 +1,4 @@
-<?php include("../../validar_rol.php") ?>
+<?php include("../validar_rol.php") ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -76,10 +76,8 @@
                                             <a class="btn" style="background-color: #5c5c5c; color: white;"
                                                 href="<?php echo "usuarioEditar.php?id_user=" . $obj->id_user ?>">Modificar</a>
 
-                                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                data-target="#exampleModal">
-                                                Eliminar
-                                            </button>
+                                                <button class="btn btn-danger"
+                                                                onclick="eliminarUsuario(<?php echo $obj->id_user ?>)">Eliminar</button>
 
                                             <!-- MODAL ELIMINAR -->
                                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
