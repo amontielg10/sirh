@@ -6,13 +6,24 @@ function eliminarUsuario(id_usuario) {
     };
     $.post('../../php/usuario/eliminarUsuario.php', data, function(response) {
         if (response) {
-            console.log("exito");
             location.reload();
-            //message("Eliminado");
         } else {
             console.log(response);
         }
     });      
+}
+
+function modificarUsuario(id_usuario){
+    const data = {
+        idUsuario: id_usuario 
+    };
+    $.post('../../view/usuario/usuarioEditar.php', data{
+        if (response) {
+            location.reload();
+        } else {
+            console.log(response);
+        }
+    }); 
 }
 
     function message(text) {

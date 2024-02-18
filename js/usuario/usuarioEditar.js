@@ -54,3 +54,4 @@ function validatePwN(pw1, pw2) {
         return true; //Pw diferentes
     }
 }
+

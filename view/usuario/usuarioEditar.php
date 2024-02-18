@@ -1,8 +1,10 @@
+<?php include("../validar_rol.php") ?>
 <?php
-include("conexion.php");
-include("php/usuario/listarUsuario.php");
 
-$id_user = $_GET['id_user'];
+include("../../conexion.php");
+include("../../php/usuario/listarUsuario.php");
+
+$id_user = base64_decode($_GET['id_user']);
 $listQuery = pg_query($connectionDBsPro, "SELECT * FROM users WHERE id_user='$id_user'");
 
 if ($listQuery) {
@@ -22,12 +24,12 @@ if ($listQuery) {
 
 <head>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <script src="js/usuario/usuarioEditar.js"></script>
+    <script src="../../js/usuario/usuarioEditar.js"></script>
 </head>
 
 <body>
-    <?php include("conexion.php") ?>
-    <?php include('nav-menu.php') ?>
+    <?php include("../../conexion.php") ?>
+    <?php include('../nav-menu.php') ?>
 
 
     <div id="main-wrapper">
@@ -62,7 +64,7 @@ if ($listQuery) {
                 <div class="card">
                     <h5 class="card-header">Modificar</h5>
                     <div class="card-body">
-                        <form method="POST" action="php/usuario/editarUsuario.php">
+                        <form method="POST" action="../../php/usuario/editarUsuario.php">
                             <div class="form-row">
                                 <!--- Se oculta el id de usuario-->
                                 <input type="hidden" id="id_user" name="id_user" value="<?php echo $id_userN ?>" />
@@ -125,9 +127,9 @@ if ($listQuery) {
 
             </div>
 
-            <?php include('ajuste-menu.php') ?>
-            <?php include('footer-librerias.php') ?>
+            <?php include('../../ajuste-menu.php') ?>
+            <?php include('../../footer-librerias.php') ?>
 
 </body>
 
-</html>
+</html>*/

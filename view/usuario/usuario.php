@@ -74,7 +74,7 @@
                                         </td>
                                         <td>
                                             <a class="btn" style="background-color: #5c5c5c; color: white;"
-                                                href="<?php echo "usuarioEditar.php?id_user=" . $obj->id_user ?>">Modificar</a>
+                                                href="<?php echo "usuarioEditar.php?id_user=" . base64_encode($obj->id_user) ?>">Modificar</a>
 
                                                 <button class="btn btn-danger"
                                                                 onclick="eliminarUsuario(<?php echo $obj->id_user ?>)">Eliminar</button>
@@ -121,6 +121,12 @@
                         <?php include('../../footer-librerias.php') ?>
 
 </body>
+
+<script>
+    //Funciones para modificar en js
+
+
+</script>
 
 <script>
     $(document).ready(function () {
