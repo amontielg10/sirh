@@ -22,7 +22,7 @@ if ($pw != "") { //Condicion, la pw trae informacion
     $arrayUpdate = array('nick' => $nick, 'nombre' => $nombre, 'id_rol' => $rol, 'password' => $pw);
     $res = pg_update($connectionDBsPro, $tbl_name, $arrayUpdate, $arrayCondition);
     if ($res) {
-        header("Location: ../../usuario.php?ms=$ms"); //Regreso a la tabla
+        header("Location: ../../view/usuario/usuario.php"); //Regreso a la tabla
     } else {
         header("Location: error.php"); //Muestra error
     }
@@ -30,7 +30,7 @@ if ($pw != "") { //Condicion, la pw trae informacion
 } else { // Condicion, la pw esta vacia
     $res = pg_update($connectionDBsPro, $tbl_name, $arrayUpdate, $arrayCondition);
     if ($res) {
-        header("Location: ../../usuario.php?ms=$ms"); //Regreso a la tabla
+        header("Location: ../../view/usuario/usuario.php"); //Regreso a la tabla
     } else {
         header("Location: error.php"); //Muestra error
     }

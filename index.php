@@ -99,13 +99,13 @@
 
                     <div class="col-lg-12 col-md-10 col-sm-12 text-center"><br><br><br>
 
-                        <h1>BIENVENIDO AL <span style="color: #2c94ea;">PORTAL AEROPORTUARIO</span></h1>
+                        <h1>BIENVENIDO A  <span style="color: #2c94ea;"> @Titulo</span></h1>
 
                     </div>
 
                     <div class="col-lg-12 col-md-10 col-sm-12 text-center">
 
-                        <h2><?php echo $nombre ?> <?php echo $app ?> <?php echo $apm ?></h2>
+                        <h2><?php echo $nombre ?></h2>
 
                         
 
@@ -113,7 +113,7 @@
 
                     <div class="col-lg-12 col-md-10 col-sm-12 text-center"><br><br>
 
-                        <img src="assets/images/gafsa.bmp" width="75%" alt="">
+                        <img src="assets/images/gafsa.bmp1" width="75%" alt="">
 
                     </div>
 

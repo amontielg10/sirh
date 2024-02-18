@@ -12,7 +12,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <title>Login: Servicios Aeroportuarios | Humanergy</title>
+    <title>@Titulo</title>
     <!-- Custom CSS -->
     <link href="./dist/css/style.min.css" rel="stylesheet">
     <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
@@ -21,12 +21,7 @@
     <!-- Custom CSS -->
     <link href="./dist/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/extra-libs/css/css.css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+
 </head>
 
 <body>
@@ -51,7 +46,7 @@
                 <div id="loginform">
                     <div class="logo">
                         <span class="db"><img src="assets/logo.png" alt="logo" width="25%" /></span>
-                        <h3>Portal de servicios aeroportuarios</h3>
+                        <h3>@Titulo</h3>
                         <h5 class="font-medium m-b-20">Inciar sesi&oacute;n</h5>
                     </div>
                     <!-- Form -->
@@ -81,21 +76,7 @@
                 </div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- Login box.scss -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper scss in scafholding.scss -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper scss in scafholding.scss -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right Sidebar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right Sidebar -->
-        <!-- ============================================================== -->
+
     </div>
     <!-- ============================================================== -->
     <!-- All Required js -->

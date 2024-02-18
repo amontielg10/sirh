@@ -5,9 +5,8 @@
     cerrando su sesion, si cuenta con el rol de admin, el usuario continua con
     con su navegacion normal.
     */
-    include("validar_sesion.php");
+    include("../../validar_sesion.php");
     if ($_SESSION['id_rol'] != 1){
-
         unset($_SESSION['id_rol']);
         unset($_SESSION['id_user']);
         unset($_SESSION['nick']);

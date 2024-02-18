@@ -1,11 +1,11 @@
 <?php
-
 include('validar_sesion.php');
+include('conexion.php');
 
 $nombre = $_SESSION['nombre'];
 $id_rol = $_SESSION['id_rol'];
 
-include('conexion.php');
+
 
 ?>
 <!DOCTYPE html>
@@ -99,7 +99,6 @@ include('conexion.php');
 <!-- ============================================================== -->
 <!-- Preloader - style you can find in spinners.css -->
 <!-- ============================================================== -->
-<?php include('loader.html') ?>
 <!-- ============================================================== -->
 <!-- Main wrapper - style you can find in pages.scss -->
 <!-- ============================================================== -->
@@ -215,16 +214,19 @@ include('conexion.php');
                     <li class="sidebar-item">
                         <a href="index.php" class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
                             <i class="fas fa-home fa-lg" style="font-size: 1.5rem;"></i>
-                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Inicio</span>
+                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Inicio </span>
                         </a>
                     </li>
                     
+                    <?php if (false){?>
                     <li class="sidebar-item">
                         <a href="miPerfil.php" class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
                             <i class="far fa-user-circle" style="font-size: 1.5rem;"></i>
                             <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Mi Perfil</span>
                         </a>
                     </li>
+                    <?php } ?>
+
                     <?php if ($id_rol == 1){?>
                     <li class="sidebar-item">
                         <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
@@ -234,13 +236,13 @@ include('conexion.php');
                         </a>
                         <ul aria-expanded="false" class="collapse  first-level">
                             <li class="sidebar-item">
-                                <a href="usuario.php" class="sidebar-link">
+                                <a href="view/usuario/usuario.php" class="sidebar-link">
                                 <i class="fas fa-users" style="font-size: 1.2rem;"></i>
                                     <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Control de Usuarios</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="rol.php" class="sidebar-link">
+                                <a href="view/rol/rol.php" class="sidebar-link">
                                 <i class="fas fa-network-wired" style="font-size: 1.2rem;"></i>
                                     <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Roles</span>
                                 </a>

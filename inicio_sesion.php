@@ -16,8 +16,8 @@ $pass = md5($_POST["password"]);
         $passDB = $row["password"];
         $status = $row["status"];
 
-        if (authLogin($nickDB, $passDB)){
-            if (strcmp($statusF, 'f') !== 0){
+        if (!authLogin($nick, $pass, $nickDB, $passDB)){
+            if (strcmp($status, 'f') !== 0){
                 session_start();
                 $_SESSION["id_user"] = $id_user;
                 $_SESSION["id_rol"] = $id_rol;
@@ -35,7 +35,7 @@ $pass = md5($_POST["password"]);
         echo "Error +";
       }
 
-      function authLogin($nickDB, $passDB){
+      function authLogin($nick, $pass, $nickDB, $passDB){
         $passport = false;
         if (strcmp($nick, $nickDB) !== 0 && strcmp($pass, $passDB) !== 0){
             $passport = true;
