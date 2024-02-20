@@ -20,7 +20,7 @@ $id_rol = $_SESSION['id_rol'];
     <meta name="author" content="">
     <!-- Favicon icon -->
     <!-- <link rel="icon" type="image/png" href=""> -->
-    <title>Inicio: Servicios Aeroportuarios | Humanergy</title>
+    <title>SIRH - Inicio</title>
     <link rel="shortcut icon" href="<?php echo $favicon ?>" type="image/x-icon" />
     <!-- Custom CSS -->
     <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
@@ -121,9 +121,11 @@ $id_rol = $_SESSION['id_rol'];
                     <b class="logo-icon">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon --><br>
-                        <img src="assets/icon.png" alt="homepage" class="dark-logo" style="width: 41%;" />
+                        
+                        <img src="assets/logo/Iimsslogo1.png" alt="homepage" class="dark-logo" style="width: 30%;" />
+                        
                         <!-- Light Logo icon -->
-                        <img src="assets/icon.png" alt="homepage" class="light-logo" style="width: 41%;" />
+                        <img src="assets/logo/imsslogo1.png" alt="homepage" class="light-logo" style="width: 41%;" />
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
@@ -190,11 +192,11 @@ $id_rol = $_SESSION['id_rol'];
     <!-- ============================================================== -->
     <!-- Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
-    <aside class="left-sidebar">
+    <aside class="left-sidebar" >
         <!-- Sidebar scroll-->
         <div class="scroll-sidebar">
             <!-- Sidebar navigation-->
-            <nav class="sidebar-nav">
+            <nav class="sidebar-nav" >
                 <ul id="sidebarnav">
                     <!-- User Profile-->
                     <li>
@@ -203,8 +205,8 @@ $id_rol = $_SESSION['id_rol'];
                             <div class="user-pic">
 
                             </div><br><br>
-                            <div class="user-content hide-menu m-t-10">
-                                <h5 class="m-b-10 user-name font-medium">
+                            <div class="user-content hide-menu m-t-10" >
+                                <h5 class="m-b-10 user-name font-medium" style="color: #cb9f52;">
                                     <?php echo $nombre?>
                                 </h5>
                             </div>

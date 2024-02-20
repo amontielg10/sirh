@@ -120,13 +120,11 @@
                         <?php include('../../ajuste-menu.php') ?>
                         <?php include('../../footer-librerias.php') ?>
 
+                    </div>
+                    </div>
+
+
 </body>
-
-<script>
-    //Funciones para modificar en js
-
-
-</script>
 
 <script>
     $(document).ready(function () {
@@ -191,5 +189,7 @@
         );
     });
 </script>
+
+
 
 </html>

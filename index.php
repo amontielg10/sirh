@@ -41,44 +41,13 @@
 
                 <div class="row">
 
-                    <div class="col-5 align-self-center">
+                    
 
-                        <h5 class="page-title"></h5>
-
-                        <div class="d-flex align-items-center">
-
-
-
-                        </div>
-
-                    </div>
-
-                    <!-- <div class="col-7 align-self-center">
-
-                        <div class="d-flex no-block justify-content-end align-items-center">
-
-                            <nav aria-label="breadcrumb">
-
-                                <ol class="breadcrumb">
-
-                                    <li class="breadcrumb-item">
-
-                                        <a href="index.php">Home</a>
-
-                                    </li>
-
-                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
-
-                                </ol>
-
-                            </nav>
-
-                        </div>
-
-                    </div> -->
+                   
 
                 </div>
-
+                
+                
             </div>
 
             <!-- ============================================================== -->
@@ -99,7 +68,7 @@
 
                     <div class="col-lg-12 col-md-10 col-sm-12 text-center"><br><br><br>
 
-                        <h1>BIENVENIDO A  <span style="color: #2c94ea;"> @Titulo</span></h1>
+                        <h1>Hola <?php echo $nombre ?> <span style="color: #2c94ea;"> @Titulo</span></h1>
 
                     </div>
 
@@ -113,7 +82,7 @@
 
                     <div class="col-lg-12 col-md-10 col-sm-12 text-center"><br><br>
 
-                        <img src="assets/images/gafsa.bmp1" width="75%" alt="">
+                        
 
                     </div>
 
@@ -140,9 +109,11 @@
             <!-- All Jquery -->
 
             <!-- ============================================================== -->
-
+            <!--
+<span class="db"><img src="assets/logo/footerimss.png" alt="logo" width="100%" /></span>
+-->
             <?php include('footer-librerias.php') ?>
-
+            <?php include('footer.php') ?>
 
 
 </body>
