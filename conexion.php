@@ -1,8 +1,8 @@
 <?php
 
-$password = "master2001";
+$password = "pgs2023";
 $username = "postgres";
-$dbname = "exe_db";
+$dbname = "DSINFOTEC";
 $host = "localhost";
 $port = "5432";
 
