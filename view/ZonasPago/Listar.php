@@ -1,24 +1,30 @@
-<?php include("../validar_rol.php") ?>
+<?php
+    include ("../../php/CentroTrabajoC/Listar.php");
+    $id_tbl_centro_trabajo = base64_decode($_GET['D-F']); //Se obtiene el id
+    $row = catcentroTrabajo($id_tbl_centro_trabajo);
+?>
+
 
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-    <script src="../../js/usuario/usuario.js"></script>
-
     <style>
-        a.dropdown-item:hover { background-color: #fbf4e8;;}
-        
+        a.dropdown-item:hover {
+            background-color: #fbf4e8;
+            ;
+        }
     </style>
-    <?php  include("libHeader.php"); ?>
+    <?php include("libHeader.php"); ?>
+
 </head>
 
 <body>
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
-    <?php include("../../php/usuario/listarUsuario.php") ?>
-
+    <?php include("../../php/ZonasPagoC/Listar.php") //Se incluye la libreria para generar su tabla  ?>
+    <?php include("../../php/CatUnidadResponsableC/listar.php")?>
 
     <div id="main-wrapper">
 
@@ -27,9 +33,8 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Control de Usuarios</h2>
+                        <h2 class="page-title">Zonas de Pago</h2>
                         <div class="d-flex align-items-center">
-
                         </div>
                     </div>
                     <div class="col-7 align-self-center">
@@ -37,9 +42,10 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="index.php" style="color:#cb9f52;">Home</a>
+                                        <a href="../CentroTrabajo/Listar.php" style="color:#cb9f52;">Centro de
+                                            Trabajo</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Control Usuarios</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Zonas de Pago</li>
                                 </ol>
                             </nav>
                         </div>
@@ -47,50 +53,67 @@
                 </div>
             </div>
 
+
             <div class="container-fluid">
-                <table class="table table-striped" id="t-usuarios">
+                <p>Informacion de Centro de Trabajo</p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Nombre:
+                    <?php echo $row['nombre'] ?>
+                </p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Clave de centro de trabajo:
+                    <?php echo $row['clave_centro_trabajo'] ?>
+                </p>
+                <p style="font-size:14px; ">Codigo Postal:
+                    <?php echo $row['codigo_postal_origen'] ?>
+                </p>
+
+                <div class=" btn-group">
+                    <button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"
+                        style="background-color: white; border:none; outline:none; color: white;">
+                        <i class="fa fa-cog" style="font-size: 1.4rem; color:#9f2241;"></i>
+                    </button>
+
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item"
+                            href="<?php echo "Agregar.php?D-F=" . base64_encode($id_tbl_centro_trabajo) ?>">Agregar</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item"
+                            href="../CentroTrabajo/Listar.php">Regresar</a>
+                    </div>
+                </div>
+
+                <table class="table table-striped" id="t-usuarios" style="width: 100%;">
                     <thead>
                         <tr style="background-color: #5c5c5c;">
-                            <th style="color: white;">Nick</th>
-                            <th style="color: white;">Nombre</th>
-                            <th style="color: white;">Status</th>
-                            <th style="color: white;">Rol</th>
                             <th style="color: white;">Acciones</th>
+                            <th style="color: white;">Codigo</th>
+                            <th style="color: white;">RFC</th>
+                            <th style="color: white;">Unidad Responsable</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <?php
-                        if ($usEx) {
-                            if (pg_num_rows($usEx) > 0) {
-                                while ($obj = pg_fetch_object($usEx)) { ?>
+                        $listado = listadoFk($id_tbl_centro_trabajo);
+                        if ($listado) {
+                            if ($listado > 0) {
+                                while ($obj = pg_fetch_object($listado)) { ?>
                                     <tr>
                                         <td>
-                                            <?php echo $obj->nick ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->nombre ?>
-                                        </td>
-                                        <td>
-                                            <?php echo statusFunction($obj->status) ?>
-                                        </td>
-                                        <td>
-                                            <?php echo rolFunction($obj->id_rol) ?>
-                                        </td>
-                                        <td>
 
-                                        <!-- Button more acctions -->
-                                            <div class="btn-group">
+                                            <!-- Button more acctions -->
+                                            <div class=" btn-group">
                                                 <button type="button" class="btn btn-light" data-toggle="dropdown"
-                                                    aria-haspopup="true" aria-expanded="false" style="background-color: #D4C15C; border:none; outline:none; color: white">
-                                                    Acciones
+                                                    aria-haspopup="true" aria-expanded="false"
+                                                    style="background-color: transparent; border:none; outline:none; color: white;">
+                                                    <i class="fa fa-cog" style="font-size: 1.4rem; color:#cb9f52;"></i>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="<?php echo "usuarioAgregar.php" ?>">Agregar</a>
-                                                    <a class="dropdown-item" href="<?php echo "usuarioEditar.php?id_user=" . base64_encode($obj->id_user) ?>">Modificar</a>
+                                                    <a class="dropdown-item"
+                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_centro_trabajo) . "&D-F2=" . base64_encode($obj->id_tbl_zonas_pago) ?>">Modificar</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item"
-                                                        href="<?php echo "e.php?id_user=" . base64_encode($obj->id_user) ?>">Eliminar</a>
+                                                        href="<?php echo "../../php/ZonasPagoC/Eliminar.php?D-F=" . base64_encode($id_tbl_centro_trabajo) . "&D-F2=$" . base64_encode($obj->id_tbl_zonas_pago) ?>">Eliminar</a>
                                                 </div>
                                             </div>
 
@@ -100,26 +123,36 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea eliminar el
-                                                                usuario?</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea Continuar?</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Esta accion no se puede rehacer
+                                                            La accion de eliminar no se puede rehacer.
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Cancelar</button>
-                                                            <button class="btn btn-danger"
-                                                                onclick="eliminarUsuario(<?php echo $obj->id_user ?>)">Eliminar</button>
+                                                            <a class="btn btn-danger"
+                                                                href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_centro_trabajo) . "?AD=" . $id_tbl_centro_trabajo ?>">Eliminar1</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- MODAL ELIMINAR -->
+                                        </td>
+                                        <td>
+                                            <?php echo $obj->codigo ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $obj->rfc ?>
+                                        </td>
+                                        <td>
+                                            <?php 
+                                                echo catPk($obj->id_cat_unidad_responsable); 
+                                            ?>
                                         </td>
                                     </tr>
                                     <?php
@@ -135,7 +168,7 @@
             </div>
         </div>
 
-       <?php include ("../footer.php"); ?>
+        <?php include("../footer.php"); ?>
 
 
 </body>
@@ -143,6 +176,7 @@
 <script>
     $(document).ready(function () {
         $('#t-usuarios').DataTable({
+            scrollX: true,
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",
@@ -175,7 +209,6 @@
 
 
 </script>
-
-<?php  include("libFooter.php"); ?>
+<?php include("libFooter.php"); ?>
 
 </html>

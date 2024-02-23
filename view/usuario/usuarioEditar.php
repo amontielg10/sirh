@@ -25,6 +25,7 @@ if ($listQuery) {
 <head>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <script src="../../js/usuario/usuarioEditar.js"></script>
+    <?php  include("libHeader.php"); ?>
 </head>
 
 <body>
@@ -131,5 +132,5 @@ if ($listQuery) {
             <?php include('../../footer-librerias.php') ?>
 
 </body>
-
+<?php  include("libFooter.php"); ?>
 </html>*/

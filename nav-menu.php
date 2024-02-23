@@ -215,7 +215,7 @@ $id_rol = $_SESSION['id_rol'];
                     </li>
                     <li class="sidebar-item">
                         <a href="index.php" class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
-                            <i class="fas fa-home fa-lg" style="font-size: 1.5rem;"></i>
+                            <i class="far fa-folder" style="font-size: 1.2rem;"></i>
                             <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Inicio </span>
                         </a>
                     </li>
@@ -233,19 +233,21 @@ $id_rol = $_SESSION['id_rol'];
                     <li class="sidebar-item">
                         <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
                             aria-expanded="false">
-                            <i class="far fa-folder-open" style="font-size: 1.2rem;"></i>
+                            <i class="far fa-folder" style="font-size: 1.2rem;"></i>
                             <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Administracion</span>
                         </a>
                         <ul aria-expanded="false" class="collapse  first-level">
                             <li class="sidebar-item">
                                 <a href="view/usuario/usuario.php" class="sidebar-link">
-                                <i class="fas fa-users" style="font-size: 1.2rem;"></i>
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <i class="far fa-folder" style="font-size: 1.1rem;"></i>
                                     <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Control de Usuarios</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="view/rol/rol.php" class="sidebar-link">
-                                <i class="fas fa-network-wired" style="font-size: 1.2rem;"></i>
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <i class="far fa-folder" style="font-size: 1.1rem;"></i>
                                     <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Roles</span>
                                 </a>
                             </li>
@@ -253,11 +255,44 @@ $id_rol = $_SESSION['id_rol'];
                     </li>
                     <?php } ?>
 
+                    <!-- MENU INFOTEC -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                            aria-expanded="false">
+                            <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Menu</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item">
+                                <a href="view/DatosFiscalesV/Listar.php" class="sidebar-link">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                    <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Datos Fiscales</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="view/CentroTrabajo/Listar.php" class="sidebar-link">
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                    <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Centro de Trabajo</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="view/Tabuladores/Listar.php" class="sidebar-link">
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                    <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Tabuladores</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- FIN DE INFOTEC -->
+
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="cerrar-sesion.php"
                             aria-expanded="false">
-                            <i class="fas fa-sign-out-alt" style="font-size: 1.5rem;"></i>
-                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Cerrar Sesion</span>
+                            <i class="fa fa-caret-right" style="font-size: 1.2rem;"></i>
+                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Salir</span>
                         </a>
                     </li>
                 </ul>

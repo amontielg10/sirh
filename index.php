@@ -31,58 +31,33 @@
 
         <div class="page-wrapper">
 
-            <!-- ============================================================== -->
-
-            <!-- Bread crumb and right sidebar toggle -->
-
-            <!-- ============================================================== -->
-
-            <div class="page-breadcrumb">
-
-                <div class="row">
-
-                    
-
-                   
-
-                </div>
-                
-                
-            </div>
-
-            <!-- ============================================================== -->
-
-            <!-- End Bread crumb and right sidebar toggle -->
-
-            <!-- ============================================================== -->
-
-            <!-- ============================================================== -->
-
-            <!-- Container fluid  -->
-
-            <!-- ============================================================== -->
 
             <div class="container-fluid">
 
                 <div class="row ">
+                <div class="container">
+                    <div class="col-lg-12 col-md-10 col-sm-12 text-left"><br><br><br>
 
-                    <div class="col-lg-12 col-md-10 col-sm-12 text-center"><br><br><br>
-
-                        <h1>Hola <?php echo $nombre ?> <span style="color: #2c94ea;"> @Titulo</span></h1>
-
+                        <h1 style="font-size: 50px; font-family: arial;">Hola <?php echo $nombre ?> <span style="color: #2c94ea;"></span>
+                        </h1>
+                        <h2>
+                            <p>Bienvenido al sistema</p>
+                        </h2>
                     </div>
-
+                </div>
                     <div class="col-lg-12 col-md-10 col-sm-12 text-center">
-
-                        <h2><?php echo $nombre ?></h2>
 
                         
 
                     </div>
+
+                 
+
+
 
                     <div class="col-lg-12 col-md-10 col-sm-12 text-center"><br><br>
 
-                        
+
 
                     </div>
 

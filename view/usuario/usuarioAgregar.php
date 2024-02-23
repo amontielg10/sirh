@@ -6,6 +6,7 @@
 <head>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <script src="../../js/usuario/usuarioAgregar.js"></script>
+    <?php  include("libHeader.php"); ?>
 </head>
 
 <body>
@@ -15,7 +16,7 @@
     <?php include("../../php/usuario/usuarioSQL.php") ?>
     <div id="main-wrapper">
 
-        <div class="page-wrapper" style="background-color: #f6f6f6;">
+        <div class="page-wrapper">
 
             <div class="page-breadcrumb">
                 <div class="row">
@@ -32,7 +33,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="usuario.php">Control Usuarios</a>
+                                        <a href="usuario.php" style="color:#cb9f52;">Control Usuarios</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Agregar Usuario</li>
                                 </ol>
@@ -107,17 +108,20 @@
 
                             </div>
 
-                            <a class="btn btn-secondary" href="usuario.php">Cancelar</a>
-                            <button type="submit" onclick="return validate();" class="btn btn-primary">Guardar</button>
+                            <a class="btn btn-light" style="background-color: #D4C15C; color:white;" href="usuario.php">Cancelar</a>
+                            <button type="submit" onclick="return validate();" class="btn btn-light" style="background-color: #D4C15C; color: white">Guardar</button>
 
                         </form>
                     </div>
                 </div>
 
+
+
             </div>
             <input type="hidden" id="row" value="<?php echo htmlspecialchars($json); ?> "/>
             <?php include('../../ajuste-menu.php') ?>
             <?php include('../../footer-librerias.php') ?>
+            
 
 
 </body>
@@ -178,5 +182,5 @@
 
 
 </script>
-
+<?php  include("libFooter.php"); ?>
 </html>
