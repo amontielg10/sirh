@@ -21,7 +21,7 @@ $id_tbl_empleados = base64_decode($_GET['D-F']);
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Numero Telefonico</h2>
+                        <h2 class="page-title">Agregar Medio de Contacto</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -33,7 +33,7 @@ $id_tbl_empleados = base64_decode($_GET['D-F']);
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="#" style="color:#cb9f52;">Numero Telefonico</a>
+                                        <a href="#" style="color:#cb9f52;">Jefe Inmediato</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Agregar</li>
                                 </ol>
@@ -42,28 +42,28 @@ $id_tbl_empleados = base64_decode($_GET['D-F']);
                     </div>
                 </div>
 
-                <div class="alert alert-warning" role="alert">
+                    <div class="alert alert-warning" role="alert">
                     <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                     !Solo un numero telefonico puede estar Activo!
+                    &nbsp;&nbsp;!Solo un contacto puede estar Activo!
                     </div>
 
 
                 <div class="card">
                     <h5 class="card-header">Ingresa los siguientes campos</h5>
                     <div class="card-body">
-                        <form method="POST" action="../../php/ControlTelefonoC/Agregar.php">
+                        <form method="POST" action="../../php/ControlMediosContactoC/Agregar.php">
                             <div class="form-row">
 
                                 <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados?>">
                                 
                                 <div class="form-group col-md-6">
-                                    <label >Numero Telefonico</label><label style="color:red">*</label>
+                                    <label >Correo Electronico</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="movil" placeholder="Numero Telefonico">
+                                        name="correo_electronico" placeholder="Correo electronico">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
+                                    <label for="inputCity">Status</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
                                         name="id_cat_estatus">
                                         <option value="" selected>Seleccione</option>

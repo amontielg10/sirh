@@ -13,6 +13,8 @@ $id_tbl_empleados = base64_decode($_GET['D-F']);
 <body>
     <?php include('../nav-menu.php') ?>
     <?php include ('../../php/CatEstatusC/listar.php');?>
+    <?php include ('../../php/CatBancoC/listar.php');?>
+    <?php include ('../../php/CatFormatoPagoC/listar.php');?>
 
     <div id="main-wrapper">
 
@@ -21,7 +23,7 @@ $id_tbl_empleados = base64_decode($_GET['D-F']);
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Numero Telefonico</h2>
+                        <h2 class="page-title">Agregar Cuenta Clabe</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -33,7 +35,7 @@ $id_tbl_empleados = base64_decode($_GET['D-F']);
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="#" style="color:#cb9f52;">Numero Telefonico</a>
+                                        <a href="#" style="color:#cb9f52;">Cuenta Clabe</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Agregar</li>
                                 </ol>
@@ -42,28 +44,28 @@ $id_tbl_empleados = base64_decode($_GET['D-F']);
                     </div>
                 </div>
 
-                <div class="alert alert-warning" role="alert">
+                    <div class="alert alert-warning" role="alert">
                     <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                     !Solo un numero telefonico puede estar Activo!
+                    &nbsp;&nbsp;!Solo una cuenta clabe puede estar Activa!
                     </div>
 
 
                 <div class="card">
                     <h5 class="card-header">Ingresa los siguientes campos</h5>
                     <div class="card-body">
-                        <form method="POST" action="../../php/ControlTelefonoC/Agregar.php">
+                        <form method="POST" action="../../php/ControlCuentaClabeC/Agregar.php">
                             <div class="form-row">
 
                                 <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados?>">
                                 
                                 <div class="form-group col-md-6">
-                                    <label >Numero Telefonico</label><label style="color:red">*</label>
+                                    <label >Clabe</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="movil" placeholder="Numero Telefonico">
+                                        name="clabe" placeholder="Clabe">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
+                                    <label for="inputCity">Status</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
                                         name="id_cat_estatus">
                                         <option value="" selected>Seleccione</option>
@@ -73,6 +75,42 @@ $id_tbl_empleados = base64_decode($_GET['D-F']);
                                             if (pg_num_rows($listado) > 0) {
                                                 while ($row = pg_fetch_object($listado)) {
                                                     echo '<option value="' . $row->id_cat_estatus . '">' . $row->estatus . '</option>';
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="inputCity">Banco</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" 
+                                        name="id_cat_banco">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                        $listado = listadoBanco();
+                                        if ($listado) {
+                                            if (pg_num_rows($listado) > 0) {
+                                                while ($row = pg_fetch_object($listado)) {
+                                                    echo '<option value="' . $row->id_cat_banco . '">' . $row->identificador . ' - ' . $row->nombre . '</option>';
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="inputCity">Formato de Pago</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" 
+                                        name="id_cat_formato_pago">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                        $listado = listadoFormatoPago();
+                                        if ($listado) {
+                                            if (pg_num_rows($listado) > 0) {
+                                                while ($row = pg_fetch_object($listado)) {
+                                                    echo '<option value="' . $row->id_cat_formato_pago . '">' . $row->forma_pago . '</option>';
                                                 }
                                             }
                                         }

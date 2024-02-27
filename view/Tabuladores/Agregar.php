@@ -6,6 +6,7 @@
 <head>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <?php  include("libHeader.php"); ?>
+    
 </head>
 
 <body>
@@ -51,11 +52,11 @@
                                 <div class="form-group col-md-6">
                                     <label >Niveles</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_niveles">
+                                        name="id_cat_niveles" id="id_cat_niveles" >
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                             include('../../php/CatNivelesC/listar.php');
-                                            $listado = listadoCN();                                   
+                                            $listado = listado();                                   
 
                                             if ($listado) {
                                                 if (pg_num_rows($listado) > 0) {
@@ -129,7 +130,8 @@
                                 </div>
                                 
                             </div>
-
+                            
+                            <hr>
                             <div>Sueldo Eventual</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -158,7 +160,8 @@
                                          name="c_sueldo_even" placeholder="Cantidad">
                                 </div>
                             </div>
-
+                            
+                            <hr>
                             <div>Sueldo</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -186,7 +189,8 @@
                                          name="c_sueldo" placeholder="Cantidad">
                                 </div>
                             </div>
-
+                            
+                            <hr>
                             <div>Compensa</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -215,6 +219,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Compensa Servicios</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -243,6 +248,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Polivalencia</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -271,6 +277,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Asignacion</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -299,6 +306,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Gastos Actuales</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -327,6 +335,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Beca para Medico</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -355,6 +364,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Complemento de Beca</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -383,6 +393,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Despensa</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -412,6 +423,7 @@
                             </div>
 
 
+                            <hr>
                             <div>Despensa Mandos</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -441,6 +453,7 @@
                             </div>
 
 
+                            <hr>
                             <div>Prevision</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -470,6 +483,7 @@
                             </div>
                             
 
+                            <hr>
                             <div>Ayuda de Servicios</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -498,6 +512,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Fechas</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -534,61 +549,5 @@
 
 </body>
 
-<script>
-
-    function validate() {
-        console.log(validarNick());
-        if (validar() && validarNick()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    function validarNick() {
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        let bool = false;
-        if (validateNick(nick.value)) {
-            Swal.fire({
-                title: "¡El campo Nick ya existe!",
-                text: "Verifique que las contrasenas seas iguales",
-                icon: "error"
-            });
-        } else {
-            bool = true;
-        }
-        return bool;
-    }
-
-    //Se obtienen los datos asi como los del mensaje
-    function validarCaracteresNick() {
-        let rnick = document.getElementById("rnickA"); //Se obtiene el valor de msj nick
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        nick.value = nick.value.toUpperCase(); //La funcion convierte a mayusculas el campo nick
-        if (mensajeDD(nick.value, 5, 10) === "") {
-            if (validateNick(nick.value)) {
-                rnick.value = "*El campo Nick ya existe";
-            } else {
-                rnick.value = "";
-            }
-        } else {
-            rnick.value = mensajeDD(nick.value, 5, 10);
-        }
-    }
-
-    function validateNick(nick) {
-        let arrayJS = JSON.parse(document.getElementById('row').value);
-        let bool = false;
-        for (let i = 0; i < arrayJS.length; i++) {
-            if (arrayJS[i] == nick) {
-                bool = true;
-                i++;
-            }
-        }
-        return bool;
-    }
-
-
-</script>
 <?php  include("libFooter.php"); ?>
 </html>

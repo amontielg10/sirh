@@ -1,3 +1,9 @@
+<?php
+    include ('../../php/EmpleadosC/Listar.php');
+    $id_tbl_empleados = base64_decode($_GET['D-F']);
+    $rowe = catEmpleadosId($id_tbl_empleados);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -16,17 +22,17 @@
 <body>
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
-    <?php include("../../php/EmpleadosC/Listar.php") ?>
-
+    <?php include ('../../php/ControlJefeInmediatoC/Listar.php');?>
+    <?php include ('../../php/CatEstatusC/listar.php');?>
 
     <div id="main-wrapper">
 
         <div class="page-wrapper">
 
             <div class="page-breadcrumb">
+            <h2 class="page-title">Jefe Inmediato</h2>
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Empleados</h2>
                         <div class="d-flex align-items-center">
                         </div>
                     </div>
@@ -35,9 +41,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../../index.php" style="color:#cb9f52;">Home</a>
+                                        <a href="../Empleados/Listar.php" style="color:#cb9f52;">Empleado</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Empleados</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Jefe Inmediato</li>
                                 </ol>
                             </nav>
                         </div>
@@ -48,7 +54,17 @@
 
 
             <div class="container-fluid">
-                <p>La sig. tabla muestra informacion de empleados.</p>
+                <p>Informacion de empleado seleccionado.</p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Nombre:
+                    <?php echo $rowe['nombre'] . ' ' . $rowe['primer_apellido'] . ' ' . $rowe['segundo_apellido'] ?>
+                </p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Codigo de Empleado:
+                    <?php echo $rowe['codigo_empleado']?>
+                </p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">RFC:
+                    <?php echo $rowe['rfc']?>
+                </p>
+                <br>
                 <div class=" btn-group">
                     <button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"
@@ -58,28 +74,27 @@
 
                     <div class="dropdown-menu">
                         <a class="dropdown-item"
-                            href="<?php echo 'Agregar.php'?>">Agregar</a>
+                            href="<?php echo 'Agregar.php?D-F='  . base64_encode($id_tbl_empleados) ?>">Agregar</a>
+                            <a class="dropdown-item"
+                            href="<?php echo '../Empleados/Listar.php'?>">Regresar</a>
                     </div>
                 </div>
-                <table class="table table-striped" id="t-usuarios">
+                <table class="table table-striped" id="t-usuarios" style="width: 100%;">
                     <thead>
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
                             <th style="color: white;">id</th>
-                            <th style="color: white;">Codigo</th>
-                            <th style="color: white;">Fecha Ingreso</th>
-                            <th style="color: white;">CURP</th>
                             <th style="color: white;">Nombre</th>
                             <th style="color: white;">Primer Apellido</th>
                             <th style="color: white;">Segundo Apellido</th>
-                            <th style="color: white;">RFC</th>
-                            <th style="color: white;">NSS</th>
+                            <th style="color: white;">Estatus</th>
+
                         </tr>
                     </thead>
                     <tbody>
 
                         <?php
-                        $listado = listadoEmpleados();
+                        $listado = listadoJefeInmediaroId($id_tbl_empleados);
                         if ($listado) {
                             if (pg_num_rows($listado) > 0) {
                                 while ($obj = pg_fetch_object($listado)) { ?>
@@ -95,22 +110,10 @@
                                                 </button>
                                                 <div class="dropdown-menu">
                                                         <a class="dropdown-item"
-                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Modificar</a>
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "../Telefono/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Num. Telefonico</a>
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "../JefeInmediato/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Jefe Inmediato</a>
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "../MediosContacto/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Medios de Contacto</a>
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "../CuentaClabe/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Cuenta Clabe</a>
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "../ContactoEmergencia/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Contacto Emergencia</a>
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "../DatosEmpleado/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Mas Datos</a>
+                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_jefe_inmediato) ?>">Modificar</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item"
-                                                        href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) ?>">Eliminar</a>
+                                                        href="<?php echo "../../php/ControlJefeInmediatoC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_jefe_inmediato) ?>">Eliminar</a>
                                                 </div>
                                             </div>
 
@@ -133,7 +136,7 @@
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Cancelar</button>
                                                             <a class="btn btn-danger"
-                                                                href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Eliminar1</a>
+                                                                href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_ctrl_jefe_inmediato) ?>">Eliminar1</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -141,16 +144,7 @@
                                             <!-- MODAL ELIMINAR -->
                                         </td>
                                         <td>
-                                            <?php echo $obj->id_tbl_empleados ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->codigo_empleado ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->fecha_ingreso ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->curp ?>
+                                            <?php echo $obj->id_ctrl_jefe_inmediato ?>
                                         </td>
                                         <td>
                                             <?php echo $obj->nombre ?>
@@ -162,18 +156,14 @@
                                             <?php echo $obj->segundo_apellido ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->rfc ?>
+                                            <?php echo catEstatus($obj->id_cat_estatus) ?>
                                         </td>
-                                        <td>
-                                            <?php echo $obj->nss ?>
-                                        </td>
-                                            
 
                                     </tr>
                                     <?php
                                 }
                             } else
-                                echo "<p>Sin Resultados</p>";
+                                echo "<p></p>";
                         }
                         ?>
 

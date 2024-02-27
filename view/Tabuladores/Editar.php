@@ -60,7 +60,7 @@
                                         <?php
                                             include('../../php/CatNivelesC/listar.php');
                                             echo '<option value="' . $rowe['id_cat_niveles'] . '">' . catalogoNivelesPk($rowe['id_cat_niveles']) .   '</option>';
-                                            $listado = listadoCN();                                   
+                                            $listado = listado();                                 
 
                                             if ($listado) {
                                                 if (pg_num_rows($listado) > 0) {
@@ -144,6 +144,7 @@
                                 
                             </div>
 
+                            <hr>
                             <div>Sueldo Eventual</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -175,6 +176,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Sueldo</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -206,6 +208,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Compensa</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -237,6 +240,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Compensa Servicios</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -268,6 +272,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Polivalencia</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -298,6 +303,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Asignacion</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -328,6 +334,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Gastos Actuales</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -358,6 +365,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Beca para Medico</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -388,6 +396,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Complemento de Beca</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -418,6 +427,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Despensa</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -449,6 +459,7 @@
                             </div>
 
 
+                            <hr>
                             <div>Despensa Mandos</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -480,6 +491,7 @@
                             </div>
 
 
+                            <hr>
                             <div>Prevision</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -511,6 +523,7 @@
                             </div>
                             
 
+                            <hr>
                             <div>Ayuda de Servicios</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -541,6 +554,7 @@
                                 </div>
                             </div>
 
+                            <hr>
                             <div>Fechas</div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
