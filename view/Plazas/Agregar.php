@@ -54,7 +54,7 @@
                                 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Catalogo de Plazas</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
+                                    <select class="selectpicker" aria-label="Default select example"
                                         name="id_cat_plazas">
                                         <option value="" selected>Seleccione</option>
                                         <?php

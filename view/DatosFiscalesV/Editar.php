@@ -57,7 +57,7 @@
                                 <div class="form-group col-md-6">
                                     <label >FRC*</label>
                                     <input type="text" class="form-control"
-                                        id="rfc" name="rfc" value="<?php echo $rowe["rfc"];?>">
+                                        id="rfc" name="rfc" value="<?php echo $rowe["rfc"];?>" required>
                                 </div>
                                 <!-- INPUT CURP -->
                                 <div class="form-group col-md-6">
