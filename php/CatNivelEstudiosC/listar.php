@@ -2,19 +2,19 @@
 include('../../validar_sesion.php');    //Se incluye validar_sesion
 include('../../conexion.php'); //Se incluye la conexion
 
-function listado()
+function listadoNivelEstudios()
 {
     include('../../conexion.php'); //Se incluye la conexion
-    $listado = pg_query($connectionDBsPro, "SELECT * FROM cat_niveles ORDER BY codigo ASC");
+    $listado = pg_query($connectionDBsPro, "SELECT * FROM cat_nivel_estudios ORDER BY nivel_estudios ASC");
     return $listado;
 }
 
-function catalogoNivelesPk($id)
+function catalogoNivelEstudiosPk($id)
 {
     if ($id != null) {
-        $catSQL = pg_query("SELECT * FROM cat_niveles WHERE id_cat_niveles = '$id' ");
+        $catSQL = pg_query("SELECT * FROM cat_nivel_estudios WHERE id_cat_nivel_estudios = '$id' ");
         $row = pg_fetch_array($catSQL);
-        $res = $row["codigo"];
+        $res = $row['nivel_estudios'];
         return $res;
     } else {
         return "";

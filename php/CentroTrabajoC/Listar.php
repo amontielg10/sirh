@@ -11,3 +11,16 @@ include('../../conexion.php'); //Se incluye la conexion
           $row = pg_fetch_array($catSQL);
           return $row;
      }
+
+
+     function catcentroTrabajoPk($id){
+          if ($id != null){
+          $catSQL = pg_query("SELECT * FROM tbl_centro_trabajo WHERE id_tbl_centro_trabajo = '$id' ");
+          $row = pg_fetch_array($catSQL);
+          $res = $row["clave_centro_trabajo"];
+          return $res;
+          }
+          else {
+               return "";
+          }
+     }

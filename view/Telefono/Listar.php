@@ -1,3 +1,9 @@
+<?php
+    include ('../../php/EmpleadosC/Listar.php');
+    $id_tbl_empleados = base64_decode($_GET['D-F']);
+    $rowe = catEmpleadosId($id_tbl_empleados);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -16,19 +22,17 @@
 <body>
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
-    <?php include("../../php/CentroTrabajoC/Listar.php") //Se incluye la libreria para generar su tabla ?>
-    <?php include("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region ?>
-    <?php include("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus ?>
-
+    <?php include ('../../php/ControlTelefonoC/Listar.php');?>
+    <?php include ('../../php/CatEstatusC/listar.php');?>
 
     <div id="main-wrapper">
 
         <div class="page-wrapper">
 
             <div class="page-breadcrumb">
+            <h2 class="page-title">Numero Telefonico</h2>
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Centro de Trabajo</h2>
                         <div class="d-flex align-items-center">
                         </div>
                     </div>
@@ -37,9 +41,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../../index.php" style="color:#cb9f52;">Home</a>
+                                        <a href="../Empleados/Listar.php" style="color:#cb9f52;">Empleado</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Centro de Trabajo</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Telefono</li>
                                 </ol>
                             </nav>
                         </div>
@@ -50,7 +54,17 @@
 
 
             <div class="container-fluid">
-                <p>La sig. tabla muestra informacion de centro de trabajo.</p>
+                <p>Informacion de empleado seleccionado.</p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Nombre:
+                    <?php echo $rowe['nombre'] . ' ' . $rowe['primer_apellido'] . ' ' . $rowe['segundo_apellido'] ?>
+                </p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Codigo de Empleado:
+                    <?php echo $rowe['codigo_empleado']?>
+                </p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">RFC:
+                    <?php echo $rowe['rfc']?>
+                </p>
+                <br>
                 <div class=" btn-group">
                     <button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"
@@ -60,31 +74,24 @@
 
                     <div class="dropdown-menu">
                         <a class="dropdown-item"
-                            href="<?php echo 'Agregar.php'?>">Agregar</a>
+                            href="<?php echo 'Agregar.php?D-F='  . base64_encode($id_tbl_empleados) ?>">Agregar</a>
+                            <a class="dropdown-item"
+                            href="<?php echo '../Empleados/Listar.php'?>">Regresar</a>
                     </div>
                 </div>
-                <table class="table table-striped" id="t-usuarios">
+                <table class="table table-striped" id="t-usuarios" style="width: 100%;">
                     <thead>
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
                             <th style="color: white;">id</th>
-                            <th style="color: white;">Clave de Centro de Trabajo</th>
-                            <th style="color: white;">Nombre</th>
-                            <th style="color: white;">Pais</th>
-                            <th style="color: white;">Colonia</th>
-                            <th style="color: white;">Codigo Postal</th>
-                            <th style="color: white;">Numero Exterior</th>
-                            <th style="color: white;">Numero Interior</th>
-                            <th style="color: white;">Latitud</th>
-                            <th style="color: white;">Longitud</th>
-                            <th style="color: white;">Cat-sepomex</th>
-                            <th style="color: white;">Region</th>
-                            <th style="color: white;">Status</th>
+                            <th style="color: white;">Movil</th>
+                            <th style="color: white;">Estatus</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <?php
+                        $listado = listadoTelefonoId($id_tbl_empleados);
                         if ($listado) {
                             if (pg_num_rows($listado) > 0) {
                                 while ($obj = pg_fetch_object($listado)) { ?>
@@ -99,15 +106,11 @@
                                                     <i class="fa fa-cog" style="font-size: 1.4rem; color:#cb9f52;"></i>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item"
-                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Modificar</a>
-                                                    <a class="dropdown-item"
-                                                        href="<?php echo "../RegistroPatronal/Listar.php?D-F=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Registro Patronal</a>
                                                         <a class="dropdown-item"
-                                                        href="<?php echo "../ZonasPago/Listar.php?D-F=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Zonas de Pago</a>
+                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_telefono) ?>">Modificar</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item"
-                                                        href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Eliminar</a>
+                                                        href="<?php echo "../../php/ControlTelefonoC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_telefono) ?>">Eliminar</a>
                                                 </div>
                                             </div>
 
@@ -138,43 +141,13 @@
                                             <!-- MODAL ELIMINAR -->
                                         </td>
                                         <td>
-                                            <?php echo $obj->id_tbl_centro_trabajo ?>
+                                            <?php echo $obj->id_ctrl_telefono ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->clave_centro_trabajo ?>
+                                            <?php echo $obj->movil ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->nombre ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->pais ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->colonia_origen ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->codigo_postal_origen ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->num_exterior ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->num_interior ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->latitud ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->longitud ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->id_cat_sepomex ?>
-                                        </td>
-                                        <td>
-                                            <?php echo catRegionRegion($obj->id_cat_region) ?>
-                                        </td>
-                                        <td>
-                                            <?php echo catEstatus($obj->id_estatus_centro) ?>
+                                            <?php echo catEstatus($obj->id_cat_estatus) ?>
                                         </td>
 
                                     </tr>

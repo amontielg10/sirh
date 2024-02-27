@@ -276,6 +276,27 @@ $id_rol = $_SESSION['id_rol'];
                                     <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Centro de Trabajo</span>
                                 </a>
                             </li>
+                            <li class="sidebar-item">
+                                <a href="../../view/Tabuladores/Listar.php" class="sidebar-link">
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                    <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Tabuladores</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="../../view/Plazas/Listar.php" class="sidebar-link">
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                    <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Control de Plazas</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="../../view/Empleados/Listar.php" class="sidebar-link">
+                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                    <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Empleados</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <!-- FIN DE INFOTEC -->

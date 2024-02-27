@@ -16,9 +16,7 @@
 <body>
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
-    <?php include("../../php/CentroTrabajoC/Listar.php") //Se incluye la libreria para generar su tabla ?>
-    <?php include("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region ?>
-    <?php include("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus ?>
+    <?php include("../../php/EmpleadosC/Listar.php") ?>
 
 
     <div id="main-wrapper">
@@ -28,7 +26,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Centro de Trabajo</h2>
+                        <h2 class="page-title">Empleados</h2>
                         <div class="d-flex align-items-center">
                         </div>
                     </div>
@@ -39,7 +37,7 @@
                                     <li class="breadcrumb-item">
                                         <a href="../../index.php" style="color:#cb9f52;">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Centro de Trabajo</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Empleados</li>
                                 </ol>
                             </nav>
                         </div>
@@ -50,7 +48,7 @@
 
 
             <div class="container-fluid">
-                <p>La sig. tabla muestra informacion de centro de trabajo.</p>
+                <p>La sig. tabla muestra informacion de empleados.</p>
                 <div class=" btn-group">
                     <button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"
@@ -68,23 +66,20 @@
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
                             <th style="color: white;">id</th>
-                            <th style="color: white;">Clave de Centro de Trabajo</th>
+                            <th style="color: white;">Codigo</th>
+                            <th style="color: white;">Fecha Ingreso</th>
+                            <th style="color: white;">CURP</th>
                             <th style="color: white;">Nombre</th>
-                            <th style="color: white;">Pais</th>
-                            <th style="color: white;">Colonia</th>
-                            <th style="color: white;">Codigo Postal</th>
-                            <th style="color: white;">Numero Exterior</th>
-                            <th style="color: white;">Numero Interior</th>
-                            <th style="color: white;">Latitud</th>
-                            <th style="color: white;">Longitud</th>
-                            <th style="color: white;">Cat-sepomex</th>
-                            <th style="color: white;">Region</th>
-                            <th style="color: white;">Status</th>
+                            <th style="color: white;">Primer Apellido</th>
+                            <th style="color: white;">Segundo Apellido</th>
+                            <th style="color: white;">RFC</th>
+                            <th style="color: white;">NSS</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <?php
+                        $listado = listadoEmpleados();
                         if ($listado) {
                             if (pg_num_rows($listado) > 0) {
                                 while ($obj = pg_fetch_object($listado)) { ?>
@@ -99,15 +94,15 @@
                                                     <i class="fa fa-cog" style="font-size: 1.4rem; color:#cb9f52;"></i>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item"
-                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Modificar</a>
-                                                    <a class="dropdown-item"
-                                                        href="<?php echo "../RegistroPatronal/Listar.php?D-F=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Registro Patronal</a>
                                                         <a class="dropdown-item"
-                                                        href="<?php echo "../ZonasPago/Listar.php?D-F=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Zonas de Pago</a>
+                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Modificar</a>
+                                                        <a class="dropdown-item"
+                                                        href="<?php echo "../Telefono/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Num. Telefonico</a>
+                                                        <a class="dropdown-item"
+                                                        href="<?php echo "../DatosEmpleado/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Mas Datos</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item"
-                                                        href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Eliminar</a>
+                                                        href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) ?>">Eliminar</a>
                                                 </div>
                                             </div>
 
@@ -138,44 +133,33 @@
                                             <!-- MODAL ELIMINAR -->
                                         </td>
                                         <td>
-                                            <?php echo $obj->id_tbl_centro_trabajo ?>
+                                            <?php echo $obj->id_tbl_empleados ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->clave_centro_trabajo ?>
+                                            <?php echo $obj->codigo_empleado ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $obj->fecha_ingreso ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $obj->curp ?>
                                         </td>
                                         <td>
                                             <?php echo $obj->nombre ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->pais ?>
+                                            <?php echo $obj->primer_apellido ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->colonia_origen ?>
+                                            <?php echo $obj->segundo_apellido ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->codigo_postal_origen ?>
+                                            <?php echo $obj->rfc ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->num_exterior ?>
+                                            <?php echo $obj->nss ?>
                                         </td>
-                                        <td>
-                                            <?php echo $obj->num_interior ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->latitud ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->longitud ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->id_cat_sepomex ?>
-                                        </td>
-                                        <td>
-                                            <?php echo catRegionRegion($obj->id_cat_region) ?>
-                                        </td>
-                                        <td>
-                                            <?php echo catEstatus($obj->id_estatus_centro) ?>
-                                        </td>
+                                            
 
                                     </tr>
                                     <?php

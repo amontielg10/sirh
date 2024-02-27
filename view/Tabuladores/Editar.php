@@ -1,7 +1,7 @@
 <?php
-    include("../../php/CentroTrabajoC/Listar.php");
-    $id_tbl_centro_trabajo = base64_decode($_GET['D-F']); //Se obtiene el id
-    $rowe = catcentroTrabajo($id_tbl_centro_trabajo); //Se obtiene el array con la info del cliente
+    include("../../php/TabuladoresC/Listar.php");
+    $id_tbl_tabuladores = base64_decode($_GET['D-F']); //Se obtiene el id
+    $rowe = listadoPk($id_tbl_tabuladores); //Se obtiene el array con la info del cliente
 ?>
 
 
@@ -25,7 +25,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Modificar Centro de Trabajo</h2>
+                        <h2 class="page-title">Modificar Tabulador</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -37,7 +37,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                    <a href="Listar.php" style="color:#cb9f52;">Centro de Trabajo</a>
+                                    <a href="Listar.php" style="color:#cb9f52;">Tabuladores</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Modificar</li>
                                 </ol>
@@ -50,110 +50,509 @@
                 <div class="card">
                 <h5 class="card-header">Ingresa los siguientes campos</h5>
                     <div class="card-body">
-                        <form method="POST" action="../../php/CentroTrabajoC/Editar.php">
-                            <input type="hidden" id="id_tbl_centro_trabajo" name="id_tbl_centro_trabajo" value="<?php echo $id_tbl_centro_trabajo?>">
+                        <form method="POST" action="../../php/TabuladoresC/Editar.php">
+                        <div class="form-row">
+                        <input type="hidden" id="id_tbl_tabuladores" name="id_tbl_tabuladores" value="<?php echo $id_tbl_tabuladores ?>" />
+                                <div class="form-group col-md-6">
+                                    <label >Niveles</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" 
+                                        name="id_cat_niveles">
+                                        <?php
+                                            include('../../php/CatNivelesC/listar.php');
+                                            echo '<option value="' . $rowe['id_cat_niveles'] . '">' . catalogoNivelesPk($rowe['id_cat_niveles']) .   '</option>';
+                                            $listado = listadoCN();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['id_cat_niveles'] != $row->id_cat_niveles){
+                                                        echo '<option value="' . $row->id_cat_niveles . '">' . $row->codigo .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                
+                                
+                                <div class="form-group col-md-6">
+                                    <label >Tipo de Contratacion</label><label style="color:red">*</label>
+                                    <select class="form-select" aria-label="Default select example" id="id_cat_tipo_contratacion"
+                                        name="id_cat_tipo_contratacion">
+                                        <?php
+                                            include('../../php/CatTipoContratacionC/listar.php');
+                                            echo '<option value="' . $rowe['id_cat_tipo_contratacion'] . '">' . catalogoContratacionPk($rowe['id_cat_tipo_contratacion']) .   '</option>';
+                                            $listado = listadoContratacion();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['id_cat_tipo_contratacion'] != $row->id_cat_tipo_contratacion){
+                                                        echo '<option value="' . $row->id_cat_tipo_contratacion . '">' . $row->descripcion_cont .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Codigo de Puesto</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" id="id_cat_puesto"
+                                        name="id_cat_puesto">                                        
+                                        <?php
+                                            include('../../php/CatPuestoC/listar.php');
+                                            echo '<option value="' . $rowe['id_cat_puesto'] . '">' . catalogoPuestoPk($rowe['id_cat_puesto']) .   '</option>';
+                                            $listado = listadoPuesto();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['id_cat_puesto'] != $row->id_cat_puesto){
+                                                        echo '<option value="' . $row->id_cat_puesto . '">' . $row->codigo_puesto .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Zona Tabulador</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" id="id_cat_zona_tabuladores"
+                                        name="id_cat_zona_tabuladores">
+                                        <?php
+                                            include('../../php/CatZonaTabuladoresC/listar.php') ;
+                                            echo '<option value="' . $rowe['id_cat_zona_tabuladores'] . '">' . catalogoZonaPk($rowe['id_cat_zona_tabuladores']) .   '</option>';
+                                            $listado = listadoZona();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['id_cat_zona_tabuladores'] != $row->id_cat_zonas_tabuladores){
+                                                        echo '<option value="' . $row->id_cat_zonas_tabuladores . '">' . $row->zona_tabuladores .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                
+                            </div>
+
+                            <div>Sueldo Eventual</div>
                             <div class="form-row">
-                                
                                 <div class="form-group col-md-6">
-                                    <label >Clave de Centro de Trabajo</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="clave_centro_trabajo" name="clave_centro_trabajo" value="<?php echo $rowe["clave_centro_trabajo"]; ?>">
-                                </div>
-                                
-                                <div class="form-group col-md-6">
-                                    <label >Nombre</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="nombre" name="nombre" value="<?php echo $rowe["nombre"]; ?>">
-                                </div>
-                                
-                                <div class="form-group col-md-6">
-                                    <label >Pais</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="pais" name="pais" value="<?php echo $rowe["pais"]; ?>">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Colonia</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="colonia_origen" name="colonia_origen" value="<?php echo $rowe["colonia_origen"]; ?>">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Codigo Postal Origen</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="codigo_postal_origen" name="codigo_postal_origen" value="<?php echo $rowe["codigo_postal_origen"]; ?>">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Numero Exterior</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="num_exterior" name="num_exterior" value="<?php echo $rowe["num_exterior"]; ?>">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Numero Interior</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="num_interior" name="num_interior" value="<?php echo $rowe["num_interior"]; ?>">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Latitud</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="latitud" name="latitud" value="<?php echo $rowe["latitud"]; ?>">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Longitud</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="longitud" name="longitud" value="<?php echo $rowe["longitud"]; ?>">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >id_cat_sepomex</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="id_cat_sepomex" name="id_cat_sepomex" value="<?php echo $rowe["id_cat_sepomex"]; ?>">
-                                </div>
-                                
-                                <div class="form-group col-md-6">
-                                    <label for="inputCity">Region</label><label style="color:red">*</label>
-                                    <select class="form-select" aria-label="Default select example" id="id_cat_region"
-                                        name="id_cat_region">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" id="r_sueldo_eve"
+                                        name="r_sueldo_eve">
                                         <?php
-                                        include("../../php/CatRegionC/Listar.php");
-                                        echo '<option value="' . $rowe["id_cat_region"] . '">' . catRegionRegion($rowe["id_cat_region"]) . '</option>';
-                                        
-                                        if ($listadoCR) {
-                                            if (pg_num_rows($listadoCR) > 0) {
-                                                while ($rowCR = pg_fetch_object($listadoCR)) {
-                                                    if ($rowe["id_cat_region"] != $rowCR->id_cat_region){
-                                                    echo '<option value="' . $rowCR->id_cat_region . '">' . $rowCR->clave_region .  " - "  . $rowCR->region . '</option>';
+                                            include('../../php/CatRubrosTabuladoresC/listar.php');
+                                            echo '<option value="' . $rowe['r_sueldo_eve'] . '">' . catalogoRubrosTabPk($rowe['r_sueldo_eve']) .   '</option>';
+                                            $listado = listadoRubrosTab();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['r_sueldo_eve'] != $row->id_cat_rubros_tabuladores){
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                        }
                                                     }
                                                 }
                                             }
-                                        }
                                         ?>
                                     </select>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Estatus</label><label style="color:red">*</label>
-                                    <select class="form-select" aria-label="Default select example" id="id_estatus_centro"
-                                        name="id_estatus_centro">
-                                        <?php
-                                        include("../../php/CatEstatusC/Listar.php");
-                                        echo '<option value="' . $rowe["id_estatus_centro"] . '">' . catEstatus($rowe["id_estatus_centro"]) . '</option>';
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_sueldo_eve" value="<?php echo $rowe['c_sueldo_eve']?>">
+                                </div>
+                            </div>
+
+                            <div>Sueldo</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_sueldo">
                                         
-                                        if ($listadoCE) {
-                                            if (pg_num_rows($listadoCE) > 0) {
-                                                while ($rowCE = pg_fetch_object($listadoCE)) {
-                                                    if ($rowe["id_estatus_centro"] != $rowCE->id_cat_estatus){
-                                                    echo '<option value="' . $rowCE->id_cat_estatus . '">' . $rowCE->estatus . '</option>';
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+                                            echo '<option value="' . $rowe['r_sueldo'] . '">' . catalogoRubrosTabPk($rowe['r_sueldo']) .   '</option>';                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['r_sueldo'] != $row->id_cat_rubros_tabuladores){
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                        }
                                                     }
                                                 }
                                             }
-                                        }
                                         ?>
                                     </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_sueldo" value="<?php echo $rowe['c_sueldo']?>">
+                                </div>
+                            </div>
+
+                            <div>Compensa</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_compensa">
+                                        
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+                                            echo '<option value="' . $rowe['r_compensa'] . '">' . catalogoRubrosTabPk($rowe['r_compensa']) .   '</option>';                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['r_compensa'] != $row->id_cat_rubros_tabuladores){
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_compensa" value="<?php echo $rowe['c_compensa']?>">
+                                </div>
+                            </div>
+
+                            <div>Compensa Servicios</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_comp_servicios">
+
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+                                            echo '<option value="' . $rowe['r_comp_servicios'] . '">' . catalogoRubrosTabPk($rowe['r_comp_servicios']) .   '</option>';                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['r_comp_servicios'] != $row->id_cat_rubros_tabuladores){
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_comp_servicios" value="<?php echo $rowe['c_comp_servicios']?>">
+                                </div>
+                            </div>
+
+                            <div>Polivalencia</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_polivalencia">
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+                                            echo '<option value="' . $rowe['r_polivalencia'] . '">' . catalogoRubrosTabPk($rowe['r_polivalencia']) .   '</option>';                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['r_polivalencia'] != $row->id_cat_rubros_tabuladores){
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_polivalencia" value="<?php echo $rowe['c_polivalencia']?>">
+                                </div>
+                            </div>
+
+                            <div>Asignacion</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_asignacion">
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+                                            echo '<option value="' . $rowe['r_asignacion'] . '">' . catalogoRubrosTabPk($rowe['r_asignacion']) .   '</option>';                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['r_asignacion'] != $row->id_cat_rubros_tabuladores){
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_asignacion" value="<?php echo $rowe['c_asignacion']?>">
+                                </div>
+                            </div>
+
+                            <div>Gastos Actuales</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_gastos_actu">
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+                                            echo '<option value="' . $rowe['r_gastos_actu'] . '">' . catalogoRubrosTabPk($rowe['r_gastos_actu']) .   '</option>';                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['r_gastos_actu'] != $row->id_cat_rubros_tabuladores){
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_gastos_actu" value="<?php echo $rowe['c_gastos_actu']?>">
+                                </div>
+                            </div>
+
+                            <div>Beca para Medico</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_beca_medico">
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+                                            echo '<option value="' . $rowe['r_beca_medico'] . '">' . catalogoRubrosTabPk($rowe['r_beca_medico']) .   '</option>';                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['r_beca_medico'] != $row->id_cat_rubros_tabuladores){
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_beca_medico" value="<?php echo $rowe['c_beca_medico']?>">
+                                </div>
+                            </div>
+
+                            <div>Complemento de Beca</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_complemento_beca">
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+                                            echo '<option value="' . $rowe['r_complemento_beca'] . '">' . catalogoRubrosTabPk($rowe['r_complemento_beca']) .   '</option>';                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['r_complemento_beca'] != $row->id_cat_rubros_tabuladores){
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_complemento_beca" value="<?php echo $rowe['c_complemento_beca']?>">
+                                </div>
+                            </div>
+
+                            <div>Despensa</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_despensa">
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+                                            echo '<option value="' . $rowe['r_despensa'] . '">' . catalogoRubrosTabPk($rowe['r_despensa']) .   '</option>';                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['r_despensa'] != $row->id_cat_rubros_tabuladores){
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_despensa" value="<?php echo $rowe['c_despensa']?>">
+                                </div>
+                            </div>
+
+
+                            <div>Despensa Mandos</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_despensa_mandos">
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+                                            echo '<option value="' . $rowe['r_despensa_mandos'] . '">' . catalogoRubrosTabPk($rowe['r_despensa_mandos']) .   '</option>';                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['r_despensa_mandos'] != $row->id_cat_rubros_tabuladores){
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_despensa_mandos" value="<?php echo $rowe['c_despensa_mandos']?>">
+                                </div>
+                            </div>
+
+
+                            <div>Prevision</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_prevision">
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+                                            echo '<option value="' . $rowe['r_prevision'] . '">' . catalogoRubrosTabPk($rowe['r_prevision']) .   '</option>';                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['r_prevision'] != $row->id_cat_rubros_tabuladores){
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_prevision" value="<?php echo $rowe['c_prevision']?>">
+                                </div>
+                            </div>
+                            
+
+                            <div>Ayuda de Servicios</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_ayuda_servicios">
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+                                            echo '<option value="' . $rowe['r_ayuda_servicios'] . '">' . catalogoRubrosTabPk($rowe['r_ayuda_servicios']) .   '</option>';                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        if ($rowe['r_ayuda_servicios'] != $row->id_cat_rubros_tabuladores){
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_ayuda_servicios" value="<?php echo $rowe['c_ayuda_servicios']?>">
+                                </div>
+                            </div>
+
+                            <div>Fechas</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Fecha Inicial</label><label style="color:red">*</label><br>
+                                    <input type="text" class="form-control"
+                                         name="fecha_ini" value="<?php echo $rowe['fecha_ini']?>">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Fecha Fin</label><label style="color:red">*</label><br>
+                                    <input type="text" class="form-control"
+                                         name="fecha_fin" value="<?php echo $rowe['fecha_fin']?>">
                                 </div>
                             </div>
                             

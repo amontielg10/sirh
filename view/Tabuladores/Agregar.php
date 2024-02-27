@@ -20,7 +20,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Centro de Trabajo</h2>
+                        <h2 class="page-title">Agregar Tabuladores</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -32,7 +32,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="Listar.php" style="color:#cb9f52;">Centro de Trabajo</a>
+                                        <a href="Listar.php" style="color:#cb9f52;">Tabuladores </a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Agregar</li>
                                 </ol>
@@ -45,101 +45,471 @@
                 <div class="card">
                     <h5 class="card-header">Ingresa los siguientes campos</h5>
                     <div class="card-body">
-                        <form method="POST" action="../../php/CentroTrabajoC/Agregar.php">
+                        <form method="POST" action="../../php/TabuladoresC/Agregar.php">
                             <div class="form-row">
                                 
                                 <div class="form-group col-md-6">
-                                    <label >Clave de Centro de Trabajo</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="clave_centro_trabajo" name="clave_centro_trabajo" placeholder="Clave de centro de trabajo" required maxlength="3">
-                                </div>
-                                
-                                <div class="form-group col-md-6">
-                                    <label >Nombre</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="nombre" name="nombre" placeholder="Nombre">
-                                </div>
-                                
-                                <div class="form-group col-md-6">
-                                    <label >Pais</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="pais" name="pais" placeholder="Mexico">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Colonia</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="colonia_origen" name="colonia_origen" placeholder="Codigo Postal">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Codigo Postal Origen</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="codigo_postal" name="codigo_postal" placeholder="Codigo Postal">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Numero Exterior</label><label style="color:red">*</label>
-                                    <input type="number" class="form-control"
-                                        id="num_exterior" name="num_exterior" placeholder="Numero Exterior">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Numero Interior</label><label style="color:red">*</label>
-                                    <input type="number" class="form-control"
-                                        id="num_interior" name="num_interior" placeholder="Numero Interior">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Latitud</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="latitud" name="latitud" placeholder="Latitud">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Longitud</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="longitud" name="longitud" placeholder="Longitud">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >id_cat_sepomex</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="id_cat_sepomex" name="id_cat_sepomex" placeholder="Longitud">
-                                </div>
-                                
-                                <div class="form-group col-md-6">
-                                    <label for="inputCity">Region</label><label style="color:red">*</label>
-                                    <select class="form-select" aria-label="Default select example" id="id_cat_region"
-                                        name="id_cat_region">
+                                    <label >Niveles</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" 
+                                        name="id_cat_niveles">
                                         <option value="" selected>Seleccione</option>
                                         <?php
-                                        if ($listadoCR) {
-                                            if (pg_num_rows($listadoCR) > 0) {
-                                                while ($rowCR = pg_fetch_object($listadoCR)) {
-                                                    echo '<option value="' . $rowCR->id_cat_region . '">' . $rowCR->clave_region .  " - "  . $rowCR->region . '</option>';
+                                            include('../../php/CatNivelesC/listar.php');
+                                            $listado = listadoCN();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_niveles . '">' . $row->codigo .   '</option>';
+                                                    }
                                                 }
                                             }
-                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label >Tipo de Contratacion</label><label style="color:red">*</label>
+                                    <select class="form-select" aria-label="Default select example" id="id_cat_tipo_contratacion"
+                                        name="id_cat_tipo_contratacion">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            include('../../php/CatTipoContratacionC/listar.php');
+                                            $listado = listadoContratacion();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_tipo_contratacion . '">' . $row->descripcion_cont .   '</option>';
+                                                    }
+                                                }
+                                            }
                                         ?>
                                     </select>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Estatus</label><label style="color:red">*</label>
-                                    <select class="form-select" aria-label="Default select example" id="id_estatus_centro"
-                                        name="id_estatus_centro">
+                                    <label >Codigo de Puestpo</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" id="id_cat_puesto"
+                                        name="id_cat_puesto">
                                         <option value="" selected>Seleccione</option>
                                         <?php
-                                        if ($listadoCE) {
-                                            if (pg_num_rows($listadoCE) > 0) {
-                                                while ($rowCE = pg_fetch_object($listadoCE)) {
-                                                    echo '<option value="' . $rowCE->id_cat_estatus . '">' . $rowCE->estatus . '</option>';
+                                            include('../../php/CatPuestoC/listar.php');
+                                            $listado = listadoPuesto();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_puesto . '">' . $row->codigo_puesto .   '</option>';
+                                                    }
                                                 }
                                             }
-                                        }
                                         ?>
                                     </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Zona Tabulador</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" id="id_cat_zona_tabuladores"
+                                        name="id_cat_zona_tabuladores">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            include('../../php/CatZonaTabuladoresC/listar.php') ;
+                                            $listado = listadoZona();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_zonas_tabuladores . '">' . $row->zona_tabuladores .   '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                
+                            </div>
+
+                            <div>Sueldo Eventual</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" id="r_sueldo_even"
+                                        name="r_sueldo_even">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            include('../../php/CatRubrosTabuladoresC/listar.php');
+                                            $listado = listadoRubrosTab();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_sueldo_even" placeholder="Cantidad">
+                                </div>
+                            </div>
+
+                            <div>Sueldo</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_sueldo_even">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_sueldo" placeholder="Cantidad">
+                                </div>
+                            </div>
+
+                            <div>Compensa</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_compensa">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_compensa" placeholder="Cantidad">
+                                </div>
+                            </div>
+
+                            <div>Compensa Servicios</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_comp_servicios">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_comp_servicios" placeholder="Cantidad">
+                                </div>
+                            </div>
+
+                            <div>Polivalencia</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_polivalencia">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_polivalencia" placeholder="Cantidad">
+                                </div>
+                            </div>
+
+                            <div>Asignacion</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_asignacion">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_asignacion" placeholder="Cantidad">
+                                </div>
+                            </div>
+
+                            <div>Gastos Actuales</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_gastos_actu">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_gastos_actu" placeholder="Cantidad">
+                                </div>
+                            </div>
+
+                            <div>Beca para Medico</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_beca_medico">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_beca_medico" placeholder="Cantidad">
+                                </div>
+                            </div>
+
+                            <div>Complemento de Beca</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_complemento_beca">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_complemento_beca" placeholder="Cantidad">
+                                </div>
+                            </div>
+
+                            <div>Despensa</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_despensa">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_despensa" placeholder="Cantidad">
+                                </div>
+                            </div>
+
+
+                            <div>Despensa Mandos</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_despensa_mandos">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_despensa_mandos" placeholder="Cantidad">
+                                </div>
+                            </div>
+
+
+                            <div>Prevision</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_prevision">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_privision" placeholder="Cantidad">
+                                </div>
+                            </div>
+                            
+
+                            <div>Ayuda de Servicios</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Rubro</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="r_ayuda_servicios">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                            $listado = listadoRubrosTab();                                   
+
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_rubros_tabuladores . '">' . $row->codigo .   '</option>';
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Cantidad</label><label style="color:red">*</label><br>
+                                    <input type="number" class="form-control"
+                                         name="c_ayuda_servicios" placeholder="Cantidad">
+                                </div>
+                            </div>
+
+                            <div>Fechas</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label >Fecha Inicial</label><label style="color:red">*</label><br>
+                                    <input type="Date" class="form-control"
+                                         name="fecha_ini" placeholder="Cantidad">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Fecha Fin</label><label style="color:red">*</label><br>
+                                    <input type="Date" class="form-control"
+                                         name="fecha_fin" placeholder="Cantidad">
                                 </div>
                             </div>
                             
