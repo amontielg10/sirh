@@ -200,6 +200,4 @@ $row = catcentroTrabajo($id_tbl_centro_trabajo);
 
 
 </script>
-<?php include("libFooter.php"); ?>
-
 </html>

@@ -215,6 +215,5 @@
 
 
 </script>
-<?php include("libFooter.php"); ?>
 
 </html>
