@@ -183,9 +183,6 @@
             </div>
         </div>
 
-        <?php include("../footer.php"); ?>
-
-
 </body>
 
 <script>
@@ -224,5 +221,6 @@
 
 
 </script>
+<?php include("libFooter.php"); ?>
 
 </html>

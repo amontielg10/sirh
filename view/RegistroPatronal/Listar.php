@@ -158,10 +158,6 @@ $row = catcentroTrabajo($id_tbl_centro_trabajo);
 
             </div>
         </div>
-
-        <?php include("../footer.php"); ?>
-
-
 </body>
 
 <script>
@@ -200,4 +196,6 @@ $row = catcentroTrabajo($id_tbl_centro_trabajo);
 
 
 </script>
+<?php include("libFooter.php"); ?>
+
 </html>
