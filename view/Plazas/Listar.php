@@ -23,7 +23,7 @@
     <?php include ("../../php/CatUnidadResponsableC/listar.php"); ?>
     <?php include ("../../php/CentroTrabajoC/Listar.php"); ?>
     <?php include ("../../php/CatPuestoC/Listar.php"); ?>
-    <?php //include ("../../php/CatSituacionPlazaC/listar.php"); ?>
+    <?php include ("../../php/CatSituacionPlazaC/listar.php"); ?>
     <?php include ("../../php/CatZonaTabuladoresC/Listar.php"); ?>
     
 
@@ -155,7 +155,7 @@
                                         <?php echo catalogoContratacionPk($obj->id_cat_tipo_contratacion) ?>
                                     </td>
                                     <td>
-                                        <?php echo ($obj->id_cat_situacion_plaza) ?>
+                                        <?php echo listadoSituacionPlazaPk($obj->id_cat_situacion_plaza) ?>
                                     </td>
                                     <td>
                                         <?php echo catPk($obj->id_cat_unidad_reponsable) ?>
