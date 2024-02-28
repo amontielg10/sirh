@@ -27,7 +27,7 @@ $arrayUpdate = array(
 $pgs_QRY = pg_update($connectionDBsPro, 'tbl_datos_fiscales', $arrayUpdate, $arrayCondition);
 
 if ($pgs_QRY) {
-    header("Location: ../../view/DatosFiscalesV/Listar.php"); //Regreso a la tabla
+    header("Location: ../../view/DatosFiscales/Listar.php"); //Regreso a la tabla
 } 
 } catch (\Throwable $th) {
     header("Location: error.php".$th); //Muestra error

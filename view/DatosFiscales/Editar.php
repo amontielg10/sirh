@@ -55,33 +55,33 @@
                             <div class="form-row">
                                 <!-- INPUT RFC -->
                                 <div class="form-group col-md-6">
-                                    <label >FRC*</label>
+                                    <label >FRC</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        id="rfc" name="rfc" value="<?php echo $rowe["rfc"];?>" required>
+                                        id="rfc" name="rfc" value="<?php echo $rowe["rfc"];?>" required maxlength="13">
                                 </div>
                                 <!-- INPUT CURP -->
                                 <div class="form-group col-md-6">
-                                    <label >CURP*</label>
+                                    <label >CURP</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        id="curp" name="curp" value="<?php echo $rowe["curp"];?>">
+                                        id="curp" name="curp" value="<?php echo $rowe["curp"];?>" required maxlength="18">
                                 </div>
                                 <!-- INPUT REGISTRO PATRONAL -->
                                 <div class="form-group col-md-6">
-                                    <label >Registro Patronal*</label>
-                                    <input type="text" class="form-control"
+                                    <label >Registro Patronal</label><label style="color:red">*</label>
+                                    <input type="text" class="form-control" required
                                         id="registro_patronal" name="registro_patronal" value="<?php echo $rowe["registro_patronal"];?>">
                                 </div>
                                 <!-- CODIGO POSTAL -->
                                 <div class="form-group col-md-6">
-                                    <label >Codigo Postal*</label>
-                                    <input type="Integer" class="form-control"
+                                    <label >Codigo Postal</label><label style="color:red">*</label>
+                                    <input type="Integer" class="form-control" pattern="[0-9]{1,5}"  required
                                         id="codigo_postal" name="codigo_postal" value="<?php echo $rowe["codigo_postal"];?>">
                                 </div>
                                 <!-- CODIGO ID REGIMEN FISCAL -->
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Regimen Fiscal*</label>
+                                    <label for="inputCity">Regimen Fiscal</label><label style="color:red">*</label>
                                     <select class="form-select" aria-label="Default select example" id="id_cat_regimen_fiscal"
-                                        name="id_cat_regimen_fiscal">
+                                        name="id_cat_regimen_fiscal" required>
                                         <?php
                                         include("../../php/RegimenFiscalC/listar.php");
                                         echo '<option value="' . $rowe["id_cat_regimen_fiscal"] . '">' . catRegimenFiscal($rowe["id_cat_regimen_fiscal"]) . '</option>';
@@ -101,7 +101,7 @@
                             </div>
                             <!-- CODIGO NOMBRE RAZON SOCIAL -->
                             <div class="form-group">
-                            <label >Nombre / Razon Social*</label>
+                            <label >Nombre / Razon Social</label>
                             <input type="text" class="form-control"
                                         id="nombre_razon_social" name="nombre_razon_social" value="<?php echo $rowe["nombre_razon_social"];?>">
                             </div>

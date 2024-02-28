@@ -27,7 +27,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Registro Patronal</h2>
+                        <h2 class="page-title">Datos Fiscales</h2>
                         <div class="d-flex align-items-center">
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                             <th style="color: white; width:250px">Nombre / Razon Social</th>
                             <th style="color: white; width:150px">RFC</th>
                             <th style="color: white;">CURP</th>
-                            <th style="color: white;">Registro Patronal</th>
+                            <th style="color: white; width:150px"">Registro Patronal</th>
                             <th style="color: white;">Codigo Postal</th>
                             <th style="color: white; width:250px"">Regimen Fiscal</th>
                         </tr>

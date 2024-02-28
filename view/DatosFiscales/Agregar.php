@@ -46,31 +46,31 @@
                             <div class="form-row">
                                 <!-- INPUT RFC -->
                                 <div class="form-group col-md-6">
-                                    <label >FRC*</label>
+                                    <label >FRC</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         id="rfc" name="rfc" placeholder="RFC" required maxlength="13">
                                 </div>
                                 <!-- INPUT CURP -->
                                 <div class="form-group col-md-6">
-                                    <label >CURP*</label>
+                                    <label >CURP</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         id="curp" name="curp" placeholder="CURP" required maxlength="18">
                                 </div>
                                 <!-- INPUT REGISTRO PATRONAL -->
                                 <div class="form-group col-md-6">
-                                    <label >Registro Patronal*</label>
+                                    <label >Registro Patronal</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         id="registro_patronal" name="registro_patronal" placeholder="Registro Patronal" required>
                                 </div>
                                 <!-- CODIGO POSTAL -->
                                 <div class="form-group col-md-6">
-                                    <label >Codigo Postal*</label>
-                                    <input type="number" class="form-control"
+                                    <label >Codigo Postal</label><label style="color:red">*</label>
+                                    <input type="text" class="form-control" pattern="[0-9]{1,5}"
                                         id="codigo_postal" name="codigo_postal" placeholder="Codigo Postal" required maxlength="5">
                                 </div>
                                 <!-- CODIGO ID REGIMEN FISCAL -->
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Regimen Fiscal*</label>
+                                    <label for="inputCity">Regimen Fiscal</label><label style="color:red">*</label>
                                     <select class="form-select" aria-label="Default select example" id="id_cat_regimen_fiscal"
                                         name="id_cat_regimen_fiscal" required>
                                         <option value="" selected>Seleccione</option>

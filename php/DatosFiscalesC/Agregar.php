@@ -22,7 +22,7 @@ $pgs_QRY = pg_insert($connectionDBsPro, 'tbl_datos_fiscales', array(
 ));
 
 if ($pgs_QRY ) {
-    header("Location: ../../view/DatosFiscalesV/Listar.php"); //Regreso a la tabla
+    header("Location: ../../view/DatosFiscales/Listar.php"); //Regreso a la tabla
 } 
 } catch (\Throwable $th) {
     header("Location: error.php".$th); //Muestra error
