@@ -25,6 +25,7 @@
     <?php include ("../../php/CatPuestoC/Listar.php"); ?>
     <?php include ("../../php/CatSituacionPlazaC/listar.php"); ?>
     <?php include ("../../php/CatZonaTabuladoresC/Listar.php"); ?>
+    <?php include ("../../php/CatNivelesC1/Listar.php"); ?>
     
 
 
@@ -76,15 +77,15 @@
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
                             <th style="color: white;">id</th>
-                            <th style="color: white;">Num plaza</th>
-                            <th style="color: white;">Cat plaza</th>
+                            <th style="color: white;">Numero plaza</th>
+                            <th style="color: white;">Plaza</th>
                             <th style="color: white;">Tipo contratacion</th>
                             <th style="color: white;">Situacion plaza</th>
                             <th style="color: white;">Unidad Responsable</th>
-                            <th style="color: white;">Centro de trabajo</th>
+                            <th style="color: white;">Centro de Trabajo</th>
                             <th style="color: white;">Puesto</th>
                             <th style="color: white;">Zonas tabuladores</th>
-                            <th style="color: white;">Cat Niveles</th>
+                            <th style="color: white;">Niveles</th>
                             <th style="color: white;">Zona pagadora</th>
                             <th style="color: white;">Fecha Inicio</th>
                             <th style="color: white;">Fecha Fin</th>
@@ -170,7 +171,7 @@
                                         <?php echo catalogoZonaPk($obj->id_cat_zonas_tabuladores) ?>
                                     </td>
                                     <td>
-                                        <?php echo $obj->id_cat_niveles ?>
+                                        <?php echo catalogoNivelesPk($obj->id_cat_niveles) ?>
                                     </td>
                                     <td>
                                         <?php echo $obj->zona_pagadora ?>
