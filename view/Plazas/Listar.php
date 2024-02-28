@@ -16,7 +16,7 @@
 
 <body>
     <?php include("../../conexion.php") ?>
-    <?php include('../nav-menu.php') ?>
+    <?php //include('../nav-menu.php') ?>
     <?php include("../../php/PlazasC/Listar.php")?>
     <?php include ("../../php/CatPlazasC/listar.php"); ?>
     <?php include ("../../php/CatTipoContratacionC/listar.php"); ?>
@@ -25,6 +25,7 @@
     <?php include ("../../php/CatPuestoC/Listar.php"); ?>
     <?php include ("../../php/CatZonaTabuladoresC/Listar.php"); ?>
     <?php //include ("../../php/CatNivelesC/listar.php"); ?>
+    <?php include ("../../php/CatSituacionPlazaC/listar.php"); ?>
 
 
     <div id="main-wrapper">
@@ -110,10 +111,10 @@
                                                 </button>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item"
-                                                    href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_datos_fiscales) ?>">Modificar</a>
+                                                    href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) ?>">Modificar</a>
                                                 <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item"
-                                                    href="<?php echo "../../php/DatosFiscalesC/Eliminar.php?D-F=" . base64_encode($obj->id_tbl_datos_fiscales) ?>">Eliminar</a>
+                                                    href="<?php echo "../../php/PlazasC/Eliminar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) ?>">Eliminar</a>
                                             </div>
                                          </div>
 
@@ -154,7 +155,7 @@
                                         <?php echo catalogoContratacionPk($obj->id_cat_tipo_contratacion) ?>
                                     </td>
                                     <td>
-                                        <?php echo $obj->id_cat_situacion_plaza ?>
+                                        <?php echo ($obj->id_cat_situacion_plaza) ?>
                                     </td>
                                     <td>
                                         <?php echo catPk($obj->id_cat_unidad_reponsable) ?>

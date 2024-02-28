@@ -3,7 +3,7 @@ include('../../validar_sesion.php');    //Se incluye validar_sesion
 include('../../conexion.php'); //Se incluye la conexion
 
      //La variable contiene el listado
-    $listado = pg_query($connectionDBsPro, "SELECT * FROM tbl_tabuladores ORDER BY id_tbl_tabuladores DESC"); 
+    $listado = pg_query($connectionDBsPro, "SELECT * FROM tbl_tabuladores ORDER BY id_tbl_tabuladores DESC LIMIT 100"); 
   
      //La funcion retorna los atributos dependiendo del id que se ingrese como parametro
      function listadoPk($id){
