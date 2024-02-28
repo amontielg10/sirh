@@ -15,17 +15,17 @@
 </head>
 
 <body>
-    <?php include("../../conexion.php") ?>
-    <?php //include('../nav-menu.php') ?>
-    <?php include("../../php/PlazasC/Listar.php")?>
+    <?php include ("../../conexion.php") ?>
+    <?php include ('../nav-menu.php') ?>
+    <?php include ("../../php/PlazasC/Listar.php")?>
     <?php include ("../../php/CatPlazasC/listar.php"); ?>
     <?php include ("../../php/CatTipoContratacionC/listar.php"); ?>
     <?php include ("../../php/CatUnidadResponsableC/listar.php"); ?>
     <?php include ("../../php/CentroTrabajoC/Listar.php"); ?>
     <?php include ("../../php/CatPuestoC/Listar.php"); ?>
-    <?php include ("../../php/CatZonaTabuladoresC/Listar.php"); ?>
-    <?php //include ("../../php/CatNivelesC/listar.php"); ?>
     <?php include ("../../php/CatSituacionPlazaC/listar.php"); ?>
+    <?php include ("../../php/CatZonaTabuladoresC/Listar.php"); ?>
+    
 
 
     <div id="main-wrapper">
