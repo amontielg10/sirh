@@ -23,7 +23,7 @@ $arrayUpdate = array(
 $pgs_QRY = pg_update($connectionDBsPro, 'ctrl_medios_contacto', $arrayUpdate, $arrayCondition);
 
 if ($pgs_QRY) {
-    header("Location: ../../view/MediosContacto/Listar.php?D-F=".$crypt); //Regreso a la tabla
+    header("Location: ../../view/MediosContacto/Listar.php?D-F=".$crypt.'&D-F3='.$id_tbl_control_plazas); //Regreso a la tabla
 } 
 } catch (\Throwable $th) {
     header("Location: error.php".$th); //Muestra error

@@ -75,7 +75,7 @@
 
                     <div class="dropdown-menu">
                         <a class="dropdown-item"
-                            href="<?php echo 'Agregar.php?D-F='  . base64_encode($id_tbl_empleados) ?>">Agregar</a>
+                            href="<?php echo 'Agregar.php?D-F='  . base64_encode($id_tbl_empleados).'&D-F3='.$id_tbl_control_plazas?>">Agregar</a>
                             <a class="dropdown-item"
                             href="<?php echo '../Empleados/Listar.php?D-F3='.$id_tbl_control_plazas?>">Regresar</a>
                     </div>
@@ -111,10 +111,10 @@
                                                 </button>
                                                 <div class="dropdown-menu">
                                                         <a class="dropdown-item"
-                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_jefe_inmediato) ?>">Modificar</a>
+                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_jefe_inmediato).'&D-F3='.$id_tbl_control_plazas?>">Modificar</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item"
-                                                        href="<?php echo "../../php/ControlJefeInmediatoC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_jefe_inmediato) ?>">Eliminar</a>
+                                                        href="<?php echo "../../php/ControlJefeInmediatoC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_jefe_inmediato).'&D-F3='.$id_tbl_control_plazas ?>">Eliminar</a>
                                                 </div>
                                             </div>
 
