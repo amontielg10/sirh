@@ -3,9 +3,9 @@ include('../../validar_sesion.php');    //Se incluye validar_sesion
 include('../../conexion.php'); //Se incluye la conexion
 
      //La variable contiene el listado
-     function listadoEmpleados(){
+     function listadoEmpleados($id){
           include('../../conexion.php'); //Se incluye la conexion
-          $listado = pg_query($connectionDBsPro, "SELECT * FROM tbl_empleados ORDER BY id_tbl_empleados DESC LIMIT 100"); 
+          $listado = pg_query($connectionDBsPro, "SELECT * FROM tbl_empleados WHERE id_tbl_control_plazas = '$id'"); 
           return $listado;
      }
   

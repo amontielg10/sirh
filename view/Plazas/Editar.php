@@ -103,6 +103,27 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
+                                    <label for="inputCity">Situacion Plaza</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="id_cat_situacion_plaza">
+                                        <?php
+                                        include ("../../php/CatSituacionPlazaC/listar.php");
+                                        echo '<option value="' . $rowe['id_cat_situacion_plaza'] . '">' . listadoSituacionPlazaPk($rowe['id_cat_situacion_plaza']) . '</option>';
+                                        $listado = listadoSituacionPlaza();
+                                        if ($listado) {
+                                            if (pg_num_rows($listado) > 0) {
+                                                while ($row = pg_fetch_object($listado)) {
+                                                    if ($rowe['id_cat_situacion_plaza'] != $row->id_cat_situacion_plaza){
+                                                    echo '<option value="' . $row->id_cat_situacion_plaza . '">' . listadoSituacionPlazaPk($row->id_cat_situacion_plaza) . '</option>';
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
                                     <label for="inputCity">Unidad Responsable</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
                                         name="id_cat_unidad_responsable">
@@ -187,6 +208,28 @@
                                 </div>
 
 
+                                <div class="form-group col-md-6">
+                                    <label for="inputCity">Centro de Trabajo</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="id_tbl_centro_trabajo">
+                                        <?php
+                                        include ("../../php/CatCentroTrabajoC/listar.php");
+                                        echo '<option value="' . $rowe['id_tbl_centro_trabajo'] . '">' . listadoCentroTrabajoCv($rowe['id_tbl_centro_trabajo']) . '</option>';
+                                        $listado = listadoCentroTrabajo();
+                                        if ($listado) {
+                                            if (pg_num_rows($listado) > 0) {
+                                                while ($row = pg_fetch_object($listado)) {
+                                                    if ($rowe['id_tbl_centro_trabajo'] != $row->id_tbl_centro_trabajo){
+                                                    echo '<option value="' . $row->id_tbl_centro_trabajo . '">' . listadoCentroTrabajoCv($row->id_tbl_centro_trabajo) . '</option>';
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+
 
                                 <div class="form-group col-md-6">
                                     <label >Zona pagadora</label><label style="color:red">*</label>
@@ -196,8 +239,20 @@
 
                                 <div class="form-group col-md-6">
                                     <label >Fecha Inicio Contrato</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
+                                    <input type="date" class="form-control"
                                         name="fecha_ini_contrato" placeholder="Numero de Plaza" value="<?php echo $rowe['fecha_ini_contrato']?>">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Fecha Modificacion</label><label style="color:red">*</label>
+                                    <input type="date" class="form-control"
+                                        name="fecha_modificacion" placeholder="Numero de Plaza" value="<?php echo $rowe['fecha_modificacion']?>">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Fecha Fin</label><label style="color:red">*</label>
+                                    <input type="date" class="form-control"
+                                        name="fecha_fin_contrato" placeholder="Numero de Plaza" value="<?php echo $rowe['fecha_fin_contrato']?>">
                                 </div>
                                 
                                

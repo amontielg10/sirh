@@ -1,3 +1,10 @@
+<?php
+
+$id_tbl_control_plazas = $_GET['D-F3'];
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -44,6 +51,8 @@
                         <form method="POST" action="../../php/EmpleadosC/Agregar.php">
                             <div class="form-row">
                                 
+                                <input type="hidden" name="id_tbl_control_plazas" value="<? echo $id_tbl_control_plazas?>">
+
                                 <div class="form-group col-md-6">
                                     <label >Codigo de Empleado</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
@@ -96,7 +105,7 @@
                             
 
                             <a class="btn btn-secondary" style="background-color: #cb9f52; border:none; outline:none; color: white;"
-                                href="Listar.php">Cancelar</a>
+                                href="<?php echo 'Listar.php?D-F3='.$id_tbl_control_plazas?>">Cancelar</a>
                             <button type="submit" class="btn btn-light"
                             style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 

@@ -1,3 +1,10 @@
+<?php
+include("../../php/EmpleadosC/Listar.php");
+include("../../php/PlazasC/Listar.php");
+$id_tbl_control_plazas = base64_decode(($_GET['D-F3']));
+$rowe = catControlPlazasPk($id_tbl_control_plazas);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -16,8 +23,9 @@
 <body>
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
-    <?php include("../../php/EmpleadosC/Listar.php") ?>
-
+    <?php include ("../../php/CatPlazasC/listar.php"); ?>
+    <?php include ("../../php/CatTipoContratacionC/listar.php"); ?>
+    <?php include ("../../php/CatSituacionPlazaC/listar.php"); ?>
 
     <div id="main-wrapper">
 
@@ -48,100 +56,80 @@
 
 
             <div class="container-fluid">
-                <p>La sig. tabla muestra informacion de empleados.</p>
+                <p>Informacion de la plaza seleccionada.</p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Numero de plaza:
+                    <?php echo $rowe['num_plaza']?>
+                </p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Tipo de plaza:
+                    <?php echo catalogoPlazaPk($rowe['id_cat_plazas']);?>
+                </p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Tipo Contratacion:
+                    <?php echo catalogoContratacionPk($rowe['id_cat_tipo_contratacion']);?>
+                </p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Situacion de plaza:
+                    <?php echo listadoSituacionPlazaPk($rowe['id_cat_situacion_plaza']);?>
+                </p>
+                <br>
+
                 <div class=" btn-group">
                     <button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"
-                        style="background-color: white; border:none; outline:none; color: white;">
+                        aria-expanded="false" style="background-color: white; border:none; outline:none; color: white;">
                         <i class="fa fa-cog" style="font-size: 1.4rem; color:#9f2241;"></i>
                     </button>
 
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item"
-                            href="<?php echo 'Agregar.php'?>">Agregar</a>
-                    </div>
-                </div>
-                <table class="table table-striped" id="t-usuarios">
-                    <thead>
-                        <tr style="background-color: #5c5c5c;">
-                            <th style="color: white;">Acciones</th>
-                            <th style="color: white;">id</th>
-                            <th style="color: white;">Codigo</th>
-                            <th style="color: white;">Fecha Ingreso</th>
-                            <th style="color: white;">CURP</th>
-                            <th style="color: white;">Nombre</th>
-                            <th style="color: white;">Primer Apellido</th>
-                            <th style="color: white;">Segundo Apellido</th>
-                            <th style="color: white;">RFC</th>
-                            <th style="color: white;">NSS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                    <?php
+                    $listado = listadoEmpleados($id_tbl_control_plazas);
+                    if ($listado) {
+                        if (pg_num_rows($listado) > 0) {
+                            while ($obj = pg_fetch_object($listado)) { ?>
 
-                        <?php
-                        $listado = listadoEmpleados();
-                        if ($listado) {
-                            if (pg_num_rows($listado) > 0) {
-                                while ($obj = pg_fetch_object($listado)) { ?>
+                                <div class="dropdown-menu" style="height: 1200%; overflow: auto;">
+                                    <a class="dropdown-item" href="<?php echo '../Plazas/Listar.php' ?>">Regresar</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item"
+                                        href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Modificar</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo "../Telefono/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Num.
+                                        Telefonico</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo "../JefeInmediato/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Jefe
+                                        Inmediato</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo "../MediosContacto/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Medios
+                                        de Contacto</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo "../CuentaClabe/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Cuenta
+                                        Clabe</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo "../ContactoEmergencia/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Contacto
+                                        Emergencia</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo "../DependientesEconomicos/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Dependientes
+                                        Economicos</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo "../DatosEmpleado/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Mas
+                                        Datos</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) ?>">Eliminar</a>
+                                </div>
+                            </div>
+
+                            <table class="table table-striped" id="t-usuarios">
+                                <thead>
+                                    <tr style="background-color: #5c5c5c;">
+                                        <th style="color: white;">id</th>
+                                        <th style="color: white;">Codigo</th>
+                                        <th style="color: white;">Fecha Ingreso</th>
+                                        <th style="color: white;">CURP</th>
+                                        <th style="color: white;">Nombre</th>
+                                        <th style="color: white;">Primer Apellido</th>
+                                        <th style="color: white;">Segundo Apellido</th>
+                                        <th style="color: white;">RFC</th>
+                                        <th style="color: white;">NSS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
                                     <tr>
-                                        <td>
-
-                                            <!-- Button more acctions -->
-                                            <div class=" btn-group">
-                                            <button type="button" class="btn btn-light" data-toggle="dropdown"
-                                                    aria-haspopup="true" aria-expanded="false"
-                                                    style="background-color: transparent; border:none; outline:none; color: white;">
-                                                    <i class="fa fa-cog" style="font-size: 1.4rem; color:#cb9f52;"></i>
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Modificar</a>
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "../Telefono/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Num. Telefonico</a>
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "../JefeInmediato/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Jefe Inmediato</a>
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "../MediosContacto/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Medios de Contacto</a>
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "../CuentaClabe/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Cuenta Clabe</a>
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "../ContactoEmergencia/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Contacto Emergencia</a>
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "../DatosEmpleado/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Mas Datos</a>
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "../DependientesEconomicos/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) ?>">Dependientes Economicos</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item"
-                                                        href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) ?>">Eliminar</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- MODAL ELIMINAR -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea Continuar?</h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            La accion de eliminar no se puede rehacer.
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Cancelar</button>
-                                                            <a class="btn btn-danger"
-                                                                href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Eliminar1</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- MODAL ELIMINAR -->
-                                        </td>
                                         <td>
                                             <?php echo $obj->id_tbl_empleados ?>
                                         </td>
@@ -169,15 +157,22 @@
                                         <td>
                                             <?php echo $obj->nss ?>
                                         </td>
-                                            
+
 
                                     </tr>
                                     <?php
-                                }
-                            } else
-                                echo "<p>Sin Resultados</p>";
+                            }
+                        } else { ?>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="<?php echo 'Agregar.php?D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Agregar</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="<?php echo '../Plazas/Listar.php' ?>">Regresar</a>
+                                </div>
+                            <?
                         }
-                        ?>
+                    }
+                    ?>
+                    
 
                         <?php include('../../ajuste-menu.php') ?>
                         <?php include('../../footer-librerias.php') ?>

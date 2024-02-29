@@ -10,6 +10,7 @@
 
 <body>
     <?php include('../nav-menu.php') ?>
+    <?php include ("../../php/CatCentroTrabajoC/listar.php"); ?>
 
     <div id="main-wrapper">
 
@@ -91,6 +92,25 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
+                                    <label for="inputCity">Situacion Plaza</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="id_cat_situacion_plaza">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                        include ("../../php/CatSituacionPlazaC/listar.php");
+                                        $listado = listadoSituacionPlaza();
+                                        if ($listado) {
+                                            if (pg_num_rows($listado) > 0) {
+                                                while ($row = pg_fetch_object($listado)) {
+                                                    echo '<option value="' . $row->id_cat_situacion_plaza . '">' . $row->situacion_plaza . '</option>';
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
                                     <label for="inputCity">Unidad Responsable</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
                                         name="id_cat_unidad_responsable">
@@ -101,7 +121,7 @@
                                         if ($listado) {
                                             if (pg_num_rows($listado) > 0) {
                                                 while ($row = pg_fetch_object($listado)) {
-                                                    echo '<option value="' . $row->id_cat_unidad_responsable . '">' . $row->codigo . '</option>';
+                                                    echo '<option value="' . $row->id_cat_unidad_responsable . '">' . catPk($row->id_cat_unidad_responsable) . '</option>';
                                                 }
                                             }
                                         }
@@ -167,17 +187,48 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
+                                    <label for="inputCity">Centro de Trabajo</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="id_tbl_centro_trabajo">
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                        $listado = listadoCentroTrabajo();
+                                        if ($listado) {
+                                            if (pg_num_rows($listado) > 0) {
+                                                while ($row = pg_fetch_object($listado)) {
+                                                    if ($rowe['id_tbl_centro_trabajo'] != $row->id_tbl_centro_trabajo){
+                                                    echo '<option value="' . $row->id_tbl_centro_trabajo . '">' . listadoCentroTrabajoCv($row->id_tbl_centro_trabajo) . '</option>';
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
                                     <label >Zona pagadora</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="zona_pagadora" placeholder="Numero de Plaza" >
+                                        name="zona_pagadora" placeholder="Zona Pagadora" >
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label >Fecha Inicio Contrato</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        name="fecha_ini_contrato" placeholder="Numero de Plaza" >
+                                    <input type="date" class="form-control"
+                                        name="fecha_ini_contrato" >
                                 </div>
 
+                                <div class="form-group col-md-6">
+                                    <label >Fecha Fin contrato</label><label style="color:red">*</label>
+                                    <input type="date" class="form-control"
+                                        name="fecha_fin_contrato" >
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Fecha de Modificacion</label><label style="color:red">*</label>
+                                    <input type="date" class="form-control"
+                                        name="fecha_modificacion" >
+                                </div>
                               
                             </div>
                             
@@ -202,61 +253,5 @@
 
 </body>
 
-<script>
-
-    function validate() {
-        console.log(validarNick());
-        if (validar() && validarNick()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    function validarNick() {
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        let bool = false;
-        if (validateNick(nick.value)) {
-            Swal.fire({
-                title: "¡El campo Nick ya existe!",
-                text: "Verifique que las contrasenas seas iguales",
-                icon: "error"
-            });
-        } else {
-            bool = true;
-        }
-        return bool;
-    }
-
-    //Se obtienen los datos asi como los del mensaje
-    function validarCaracteresNick() {
-        let rnick = document.getElementById("rnickA"); //Se obtiene el valor de msj nick
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        nick.value = nick.value.toUpperCase(); //La funcion convierte a mayusculas el campo nick
-        if (mensajeDD(nick.value, 5, 10) === "") {
-            if (validateNick(nick.value)) {
-                rnick.value = "*El campo Nick ya existe";
-            } else {
-                rnick.value = "";
-            }
-        } else {
-            rnick.value = mensajeDD(nick.value, 5, 10);
-        }
-    }
-
-    function validateNick(nick) {
-        let arrayJS = JSON.parse(document.getElementById('row').value);
-        let bool = false;
-        for (let i = 0; i < arrayJS.length; i++) {
-            if (arrayJS[i] == nick) {
-                bool = true;
-                i++;
-            }
-        }
-        return bool;
-    }
-
-
-</script>
 <?php  include("libFooter.php"); ?>
 </html>

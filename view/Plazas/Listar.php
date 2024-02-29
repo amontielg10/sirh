@@ -1,4 +1,4 @@
-<?php include("../../php/RegimenFiscalC/listar.php") ?>
+<?php include ("../../php/RegimenFiscalC/listar.php") ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -113,6 +113,8 @@
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item"
                                                     href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) ?>">Modificar</a>
+                                                    <a class="dropdown-item"
+                                                    href="<?php echo "../Empleados/Listar.php?D-F3=" . base64_encode($obj->id_tbl_control_plazas) ?>">Empleados</a>
                                                 <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item"
                                                     href="<?php echo "../../php/PlazasC/Eliminar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) ?>">Eliminar</a>
