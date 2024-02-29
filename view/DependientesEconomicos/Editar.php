@@ -2,6 +2,7 @@
     include("../../php/DependientesEconomicosC/Listar.php");
     $id_tbl_empleados = base64_decode($_GET['D-F']); 
     $id_tbl_dependientes_economicos = base64_decode($_GET['D-F2']); 
+    $id_tbl_control_plazas = $_GET['D-F3'];
     $rowe = listadoDependientesEconomicosPk($id_tbl_dependientes_economicos); 
 
 ?>
@@ -49,7 +50,8 @@
                 <h5 class="card-header">Ingresa los siguientes campos</h5>
                     <div class="card-body">
                         <form method="POST" action="../../php/DependientesEconomicosC/Editar.php">
-
+                                                    
+                            <input type="hidden" name="id_tbl_control_plazas" value="<?php echo $id_tbl_control_plazas?>">
                             <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados?>">
                             <input type="hidden" name="id_tbl_dependientes_economicos" value="<?php echo $id_tbl_dependientes_economicos?>">
 
@@ -103,7 +105,7 @@
                             
                             
                             <a class="btn btn-light" style="background-color: #cb9f52; border:none; outline:none; color: white;"
-                                href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados) ?>">Cancelar</a>
+                                href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados).'&D-F3='.$id_tbl_control_plazas ?>">Cancelar</a>
                             <button type="submit" class="btn btn-light"
                             style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 

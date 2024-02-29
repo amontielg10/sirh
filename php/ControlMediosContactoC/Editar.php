@@ -2,6 +2,8 @@
 include('../../validar_sesion.php');
 include("../../conexion.php"); //Se incluye la conexion
 
+
+$id_tbl_control_plazas = $_POST['id_tbl_control_plazas']; 
 $id_tbl_empleados = $_POST['id_tbl_empleados']; 
 $id_ctrl_medios_contacto = $_POST['id_ctrl_medios_contacto']; 
 $correo_electronico = $_POST['correo_electronico']; 

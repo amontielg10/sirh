@@ -3,6 +3,7 @@
 include('../../validar_sesion.php');
 include ("../../conexion.php");//Se incluye el metodo de conexion para las consultas
 
+$id_tbl_control_plazas = base64_decode($_POST['id_tbl_control_plazas']);
 $codigo_empleado = $_POST['codigo_empleado']; 
 $fecha_ingreso = $_POST['fecha_ingreso']; 
 $curp = $_POST['curp']; 
@@ -11,10 +12,12 @@ $primer_apellido = $_POST['primer_apellido'];
 $segundo_apelldio = $_POST['segundo_apelldio']; 
 $rfc = $_POST['rfc']; 
 $nss = $_POST['nss']; 
+$crypt = base64_encode($id_tbl_control_plazas);
 
 try {
 //Se ejecuta la funcion insert SQL, para guardar cambios
 $pgs_QRY = pg_insert($connectionDBsPro, 'tbl_empleados', array(
+    'id_tbl_control_plazas' => $id_tbl_control_plazas,
     'codigo_empleado' => $codigo_empleado,
     'fecha_ingreso' => $fecha_ingreso,  
     'curp' => $curp,   
@@ -26,7 +29,7 @@ $pgs_QRY = pg_insert($connectionDBsPro, 'tbl_empleados', array(
 ));
 
 if ($pgs_QRY ) {
-    header("Location: ../../view/Empleados/Listar.php"); //Regreso a la tabla
+    header("Location: ../../view/Empleados/Listar.php?D-F3=".$crypt); //Regreso a la tabla
 } 
 } catch (\Throwable $th) {
     header("Location: error.php".$th); //Muestra error

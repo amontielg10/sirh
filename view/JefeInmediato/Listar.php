@@ -1,6 +1,7 @@
 <?php
     include ('../../php/EmpleadosC/Listar.php');
     $id_tbl_empleados = base64_decode($_GET['D-F']);
+    $id_tbl_control_plazas = $_GET['D-F3'];
     $rowe = catEmpleadosId($id_tbl_empleados);
 ?>
 
@@ -76,7 +77,7 @@
                         <a class="dropdown-item"
                             href="<?php echo 'Agregar.php?D-F='  . base64_encode($id_tbl_empleados) ?>">Agregar</a>
                             <a class="dropdown-item"
-                            href="<?php echo '../Empleados/Listar.php'?>">Regresar</a>
+                            href="<?php echo '../Empleados/Listar.php?D-F3='.$id_tbl_control_plazas?>">Regresar</a>
                     </div>
                 </div>
                 <table class="table table-striped" id="t-usuarios" style="width: 100%;">

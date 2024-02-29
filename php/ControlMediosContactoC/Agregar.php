@@ -4,6 +4,7 @@ include('../../validar_sesion.php');
 include ("../../conexion.php");//Se incluye el metodo de conexion para las consultas
 
 $id_tbl_empleados = $_POST['id_tbl_empleados']; 
+$id_tbl_control_plazas = $_POST['id_tbl_control_plazas'];
 $correo_electronico = $_POST['correo_electronico']; 
 $id_cat_estatus = $_POST['id_cat_estatus']; 
 $crypt = base64_encode ($id_tbl_empleados);
@@ -17,7 +18,7 @@ $pgs_QRY = pg_insert($connectionDBsPro, 'ctrl_medios_contacto', array(
 ));
 
 if ($pgs_QRY ) {
-    header("Location: ../../view/MediosContacto/Listar.php?D-F=".$crypt); //Regreso a la tabla
+    header("Location: ../../view/MediosContacto/Listar.php?D-F=".$crypt.'&D-F3='.$id_tbl_control_plazas); //Regreso a la tabla
 } 
 } catch (\Throwable $th) {
     header("Location: error.php".$th); //Muestra error

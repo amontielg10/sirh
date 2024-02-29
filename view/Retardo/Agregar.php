@@ -8,12 +8,11 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
 <head>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <?php  include("libHeader.php"); ?>
+    <?php include("libHeader.php"); ?>
 </head>
 
 <body>
     <?php include('../nav-menu.php') ?>
-    <?php include ('../../php/CatDependientesEconomicosC/listar.php');?>
 
     <div id="main-wrapper">
 
@@ -22,7 +21,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Depeniente Economico</h2>
+                        <h2 class="page-title">Agregar Retardo</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -34,7 +33,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="#" style="color:#cb9f52;">Dependientes Economicos</a>
+                                        <a href="#" style="color:#cb9f52;">Control de Retardos</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Agregar</li>
                                 </ol>
@@ -43,66 +42,43 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                     </div>
                 </div>
 
+                <div class="alert alert-warning" role="alert">
+                    <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
+                    El formato de hora solicitado es de 24 horas.
+                </div>
+
                 <div class="card">
                     <h5 class="card-header">Ingresa los siguientes campos</h5>
                     <div class="card-body">
-                        <form method="POST" action="../../php/DependientesEconomicosC/Agregar.php">
+                        <form method="POST" action="../../php/ControlRetardoC/Agregar.php">
                             <div class="form-row">
 
-                                <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados?>">
-                                <input type="hidden" name="id_tbl_control_plazas" value="<?php echo $id_tbl_control_plazas?>">
-                                
+                                <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados ?>">
+                                <input type="hidden" name="id_tbl_control_plazas" value="<?php echo $id_tbl_control_plazas ?>">
+
                                 <div class="form-group col-md-6">
-                                    <label >CURP</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        name="curp" placeholder="CURP" required maxlength="18">
+                                    <label>Fecha</label><label style="color:red">*</label>
+                                    <input type="date" class="form-control" name="fecha" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Nombre</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        name="nombre" placeholder="Nombre">
+                                    <label>Hora Entrada</label><label style="color:red">*</label>
+                                    <input type="time" class="form-control" name="hora_entrada" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Apelldio Paterno</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        name="apellido_paterno" placeholder="Apellido Paterno">
+                                    <label>Hora de Salida</label><label style="color:red">*</label>
+                                    <input type="time" class="form-control" name="hora_salida" required>
                                 </div>
 
-                                <div class="form-group col-md-6">
-                                    <label >Apellido Materno</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        name="apellido_materno" placeholder="Apellido Materno">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="inputCity">Dependientes Economicos</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_dependientes_economicos">
-                                        <option value="" selected>Seleccione</option>
-                                        <?php
-                                        $listado = listadoDEconomicos();
-                                        if ($listado) {
-                                            if (pg_num_rows($listado) > 0) {
-                                                while ($row = pg_fetch_object($listado)) {
-                                                    echo '<option value="' . $row->id_cat_dependientes_economicos . '">' . listadoDEconomicosPK($row->id_cat_dependientes_economicos) . '</option>';
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-
-                                
-                               
                             </div>
-                            
 
-                            <a class="btn btn-secondary" style="background-color: #cb9f52; border:none; outline:none; color: white;"
-                                href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados).'&D-F3='.$id_tbl_control_plazas ?>">Cancelar</a>
+
+                            <a class="btn btn-secondary"
+                                style="background-color: #cb9f52; border:none; outline:none; color: white;"
+                                href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados) .'&D-F3='.$id_tbl_control_plazas?>">Cancelar</a>
                             <button type="submit" class="btn btn-light"
-                            style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
+                                style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 
                         </form>
                     </div>
@@ -175,5 +151,6 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
 
 </script>
-<?php  include("libFooter.php"); ?>
+<?php include("libFooter.php"); ?>
+
 </html>

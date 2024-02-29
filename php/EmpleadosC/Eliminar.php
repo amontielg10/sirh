@@ -3,6 +3,7 @@ include('../../validar_sesion.php'); //Se incluye validar_sesion
 include('../../conexion.php'); // Se incluye la conexion a la db
 
 $id_tbl_empleados = base64_decode($_GET['CT']); //Se obtiene el valor de CT encript 
+$crypt = $_GET['D-F3']; 
 
 try {
 $pgs_QRY = pg_delete(
@@ -13,7 +14,7 @@ $pgs_QRY = pg_delete(
     )
 );
 if ($pgs_QRY ) {
-    header("Location: ../../view/Empleados/Listar.php"); //Regreso a la tabla
+    header("Location: ../../view/Empleados/Listar.php?D-F3=".$crypt); //Regreso a la tabla
 } 
 } catch (\Throwable $th) {
     header("Location: error.php".$th); //Muestra error

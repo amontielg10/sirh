@@ -1,6 +1,7 @@
 <?php
     include ('../../php/EmpleadosC/Listar.php');
     $id_tbl_empleados = base64_decode($_GET['D-F']);
+    $id_tbl_control_plazas = $_GET['D-F3'];
     $rowe = catEmpleadosId($id_tbl_empleados);
 ?>
 
@@ -74,9 +75,9 @@
 
                     <div class="dropdown-menu">
                         <a class="dropdown-item"
-                            href="<?php echo 'Agregar.php?D-F='  . base64_encode($id_tbl_empleados) ?>">Agregar</a>
+                            href="<?php echo 'Agregar.php?D-F='  . base64_encode($id_tbl_empleados).'&D-F3='.$id_tbl_control_plazas?>">Agregar</a>
                             <a class="dropdown-item"
-                            href="<?php echo '../Empleados/Listar.php'?>">Regresar</a>
+                            href="<?php echo '../Empleados/Listar.php?D-F3='.$id_tbl_control_plazas?>">Regresar</a>
                     </div>
                 </div>
                 <table class="table table-striped" id="t-usuarios" style="width: 100%;">
@@ -109,10 +110,10 @@
                                                 </button>
                                                 <div class="dropdown-menu">
                                                         <a class="dropdown-item"
-                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_tbl_dependientes_economicos) ?>">Modificar</a>
+                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_tbl_dependientes_economicos).'&D-F3='.$id_tbl_control_plazas?>">Modificar</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item"
-                                                        href="<?php echo "../../php/DependientesEconomicosC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_tbl_dependientes_economicos) ?>">Eliminar</a>
+                                                        href="<?php echo "../../php/DependientesEconomicosC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_tbl_dependientes_economicos).'&D-F3='.$id_tbl_control_plazas?>">Eliminar</a>
                                                 </div>
                                             </div>
 

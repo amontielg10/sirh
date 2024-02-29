@@ -3,6 +3,7 @@
 include('../../validar_sesion.php');
 include ("../../conexion.php");//Se incluye el metodo de conexion para las consultas
 
+$id_tbl_control_plazas = $_POST['id_tbl_control_plazas']; 
 $id_tbl_empleados = $_POST['id_tbl_empleados']; 
 $nombre = $_POST['nombre']; 
 $primer_apellido = $_POST['primer_apellido']; 
@@ -25,7 +26,7 @@ $pgs_QRY = pg_insert($connectionDBsPro, 'ctrl_contacto_emergencia', array(
 ));
 
 if ($pgs_QRY ) {
-    header("Location: ../../view/ContactoEmergencia/Listar.php?D-F=".$crypt); //Regreso a la tabla
+    header("Location: ../../view/ContactoEmergencia/Listar.php?D-F=".$crypt.'&D-F3='.$id_tbl_control_plazas); //Regreso a la tabla
 } 
 } catch (\Throwable $th) {
     header("Location: error.php".$th); //Muestra error

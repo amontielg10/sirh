@@ -3,6 +3,7 @@ include('../../validar_sesion.php');
 include("../../conexion.php"); //Se incluye la conexion
 
 $id_tbl_empleados = $_POST['id_tbl_empleados']; 
+$id_tbl_control_plazas = $_POST['id_tbl_control_plazas']; 
 $id_ctrl_cuenta_clabe = $_POST['id_ctrl_cuenta_clabe']; 
 $clabe = $_POST['clabe']; 
 $id_cat_estatus = $_POST['id_cat_estatus']; 
@@ -25,7 +26,7 @@ $arrayUpdate = array(
 $pgs_QRY = pg_update($connectionDBsPro, 'ctrl_cuenta_clabe', $arrayUpdate, $arrayCondition);
 
 if ($pgs_QRY) {
-    header("Location: ../../view/CuentaClabe/Listar.php?D-F=".$crypt); //Regreso a la tabla
+    header("Location: ../../view/CuentaClabe/Listar.php?D-F=".$crypt.'&D-F3='.$id_tbl_control_plazas); //Regreso a la tabla
 } 
 } catch (\Throwable $th) {
     header("Location: error.php".$th); //Muestra error

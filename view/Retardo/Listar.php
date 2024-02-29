@@ -1,7 +1,7 @@
 <?php
     include ('../../php/EmpleadosC/Listar.php');
-    $id_tbl_empleados = base64_decode($_GET['D-F']);
     $id_tbl_control_plazas = $_GET['D-F3'];
+    $id_tbl_empleados = base64_decode($_GET['D-F']);
     $rowe = catEmpleadosId($id_tbl_empleados);
 ?>
 
@@ -23,15 +23,14 @@
 <body>
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
-    <?php include ('../../php/ControlMediosContactoC/Listar.php');?>
-    <?php include ('../../php/CatEstatusC/listar.php');?>
+    <?php include ('../../php/ControlRetardoC/Listar.php');?>
 
     <div id="main-wrapper">
 
         <div class="page-wrapper">
 
             <div class="page-breadcrumb">
-            <h2 class="page-title">Medios de Contacto</h2>
+            <h2 class="page-title">Control de Retardos</h2>
                 <div class="row">
                     <div class="col-5 align-self-center">
                         <div class="d-flex align-items-center">
@@ -42,9 +41,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="#" style="color:#cb9f52;">Empleado</a>
+                                        <a href="../Empleados/Listar.php" style="color:#cb9f52;">Empleado</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Medios de Contacto</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Telefono</li>
                                 </ol>
                             </nav>
                         </div>
@@ -75,9 +74,9 @@
 
                     <div class="dropdown-menu">
                         <a class="dropdown-item"
-                            href="<?php echo 'Agregar.php?D-F='  . base64_encode($id_tbl_empleados).'&D-F3='.$id_tbl_control_plazas ?>">Agregar</a>
+                            href="<?php echo 'Agregar.php?D-F='  . base64_encode($id_tbl_empleados) . '&D-F3=' . $id_tbl_control_plazas?>">Agregar</a>
                             <a class="dropdown-item"
-                            href="<?php echo '../Empleados/Listar.php?D-F3='.$id_tbl_control_plazas.'&D-F3='.$id_tbl_control_plazas?>">Regresar</a>
+                            href="<?php echo '../Empleados/Listar.php?D-F3='.$id_tbl_control_plazas?>">Regresar</a>
                     </div>
                 </div>
                 <table class="table table-striped" id="t-usuarios" style="width: 100%;">
@@ -85,14 +84,15 @@
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
                             <th style="color: white;">id</th>
-                            <th style="color: white;">Correo Electronico</th>
-                            <th style="color: white;">Estatus</th>
+                            <th style="color: white;">Fecha</th>
+                            <th style="color: white;">Hora Entrada</th>
+                            <th style="color: white;">Hora Salida</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <?php
-                        $listado = listadoMediosContactoId($id_tbl_empleados);
+                        $listado = listadoRetardoId($id_tbl_empleados);
                         if ($listado) {
                             if (pg_num_rows($listado) > 0) {
                                 while ($obj = pg_fetch_object($listado)) { ?>
@@ -108,10 +108,12 @@
                                                 </button>
                                                 <div class="dropdown-menu">
                                                         <a class="dropdown-item"
-                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_medios_contacto).'&D-F3='.$id_tbl_control_plazas ?>">Modificar</a>
+                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_retardo) . '&D-F3=' . $id_tbl_control_plazas?>"
+                                                        >Modificar</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item"
-                                                        href="<?php echo "../../php/ControlMediosContactoC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_medios_contacto).'&D-F3='.$id_tbl_control_plazas ?>">Eliminar</a>
+                                                        href="<?php echo "../../php/ControlRetardoC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_retardo) . '&D-F3=' . $id_tbl_control_plazas?>"
+                                                        >Eliminar</a>
                                                 </div>
                                             </div>
 
@@ -134,7 +136,7 @@
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Cancelar</button>
                                                             <a class="btn btn-danger"
-                                                                href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_ctrl_jefe_inmediato) ?>">Eliminar1</a>
+                                                                href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Eliminar1</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -142,13 +144,16 @@
                                             <!-- MODAL ELIMINAR -->
                                         </td>
                                         <td>
-                                            <?php echo $obj->id_ctrl_medios_contacto ?>
+                                            <?php echo $obj->id_ctrl_retardo ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->correo_electronico ?>
+                                            <?php echo $obj->fecha ?>
                                         </td>
                                         <td>
-                                            <?php echo catEstatus($obj->id_cat_estatus) ?>
+                                            <?php echo $obj->hora_entrada ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $obj->hora_salida ?>
                                         </td>
 
                                     </tr>

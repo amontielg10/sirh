@@ -1,8 +1,5 @@
 <?php
-
 $id_tbl_control_plazas = $_GET['D-F3'];
-
-
 ?>
 
 <!DOCTYPE html>

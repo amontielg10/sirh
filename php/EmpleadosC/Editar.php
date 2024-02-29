@@ -2,6 +2,7 @@
 include('../../validar_sesion.php');
 include("../../conexion.php"); //Se incluye la conexion
 
+$id_tbl_control_plazas = base64_decode($_POST['id_tbl_control_plazas']);
 $id_tbl_empleados = $_POST['id_tbl_empleados']; 
 $codigo_empleado = $_POST['codigo_empleado']; 
 $fecha_ingreso = $_POST['fecha_ingreso']; 
@@ -11,6 +12,7 @@ $primer_apellido = $_POST['primer_apellido'];
 $segundo_apellido = $_POST['segundo_apellido']; 
 $rfc = $_POST['rfc']; 
 $nss = $_POST['nss']; 
+$crypt = base64_encode($id_tbl_control_plazas);
 
 try {
 //El array trae la condicion
@@ -31,7 +33,7 @@ $arrayUpdate = array(
 $pgs_QRY = pg_update($connectionDBsPro, 'tbl_empleados', $arrayUpdate, $arrayCondition);
 
 if ($pgs_QRY) {
-    header("Location: ../../view/Empleados/Listar.php"); //Regreso a la tabla
+    header("Location: ../../view/Empleados/Listar.php?D-F3=".$crypt); //Regreso a la tabla
 } 
 } catch (\Throwable $th) {
     header("Location: error.php".$th); //Muestra error

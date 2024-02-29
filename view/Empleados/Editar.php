@@ -1,5 +1,6 @@
 <?php
     include("../../php/EmpleadosC/Listar.php");
+    $id_tbl_control_plazas = $_GET['D-F3'];
     $id_tbl_empleados = base64_decode($_GET['D-F']); //Se obtiene el id
     $rowe = catEmpleadosId($id_tbl_empleados); //Se obtiene el array con la info del cliente
 ?>
@@ -51,7 +52,9 @@
                 <h5 class="card-header">Ingresa los siguientes campos</h5>
                     <div class="card-body">
                         <form method="POST" action="../../php/EmpleadosC/Editar.php">
+                            <input type="hidden" name="id_tbl_control_plazas" value="<? echo $id_tbl_control_plazas?>">
                             <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados?>">
+                            
                             <div class="form-row">
                             <div class="form-group col-md-6">
                                     <label >Codigo de Empleado</label><label style="color:red">*</label>
@@ -103,7 +106,7 @@
                             </div>
                             
                             <a class="btn btn-light" style="background-color: #cb9f52; border:none; outline:none; color: white;"
-                                href="Listar.php">Cancelar</a>
+                            href="<?php echo 'Listar.php?D-F3='.$id_tbl_control_plazas?>">Cancelar</a>
                             <button type="submit" class="btn btn-light"
                             style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 
