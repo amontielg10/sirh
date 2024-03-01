@@ -23,15 +23,17 @@
 <body>
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
-    <?php include ('../../php/ControlTelefonoC/Listar.php');?>
-    <?php include ('../../php/CatEstatusC/listar.php');?>
+    <?php include ('../../php/ControlTurnoc/Listar.php');?>
+    <?php include('../../php/CatEstatusC/listar.php'); ?>
+    <?php include('../../php/CatTurnoC/listar.php'); ?>
+    <?php include('../../php/CatHorarioC/listar.php'); ?>
 
     <div id="main-wrapper">
 
         <div class="page-wrapper">
 
             <div class="page-breadcrumb">
-            <h2 class="page-title">Numero Telefonico</h2>
+            <h2 class="page-title">Jornada</h2>
                 <div class="row">
                     <div class="col-5 align-self-center">
                         <div class="d-flex align-items-center">
@@ -42,9 +44,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../Empleados/Listar.php" style="color:#cb9f52;">Empleado</a>
+                                        <a href="#" style="color:#cb9f52;">Empleado</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Telefono</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Jornada</li>
                                 </ol>
                             </nav>
                         </div>
@@ -85,14 +87,15 @@
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
                             <th style="color: white;">id</th>
-                            <th style="color: white;">Movil</th>
+                            <th style="color: white;">Turno</th>
+                            <th style="color: white;">Horario</th>
                             <th style="color: white;">Estatus</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <?php
-                        $listado = listadoTelefonoId($id_tbl_empleados);
+                        $listado = listadoTurnoId($id_tbl_empleados);
                         if ($listado) {
                             if (pg_num_rows($listado) > 0) {
                                 while ($obj = pg_fetch_object($listado)) { ?>
@@ -108,10 +111,10 @@
                                                 </button>
                                                 <div class="dropdown-menu">
                                                         <a class="dropdown-item"
-                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_telefono).'&D-F3='.$id_tbl_control_plazas?>">Modificar</a>
+                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_turno).'&D-F3='.$id_tbl_control_plazas?>">Modificar</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item"
-                                                        href="<?php echo "../../php/ControlTelefonoC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_telefono).'&D-F3='.$id_tbl_control_plazas ?>">Eliminar</a>
+                                                        href="<?php echo "../../php/ControlTelefonoC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_turno).'&D-F3='.$id_tbl_control_plazas ?>">Eliminar</a>
                                                 </div>
                                             </div>
 
@@ -142,15 +145,16 @@
                                             <!-- MODAL ELIMINAR -->
                                         </td>
                                         <td>
-                                            <?php echo $obj->id_ctrl_telefono ?>
+                                            <?php echo $obj->id_ctrl_turno ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->movil ?>
+                                            <?php echo listadoCatTurnoPk($obj->id_cat_turno) ?>
                                         </td>
                                         <td>
-                                            <?php "<span style='background-color: #f9b424;'>" ?>
-                                                 <?php echo catEstatus($obj->id_cat_estatus) ?>
-                                            </span>
+                                            <?php echo listadoHorarioPk($obj->id_cat_horario) ?>
+                                        </td>
+                                        <td>
+                                            <?php echo catEstatus($obj->id_cat_estatus) ?>
                                         </td>
 
                                     </tr>

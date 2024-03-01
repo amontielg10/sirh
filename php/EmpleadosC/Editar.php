@@ -12,6 +12,9 @@ $primer_apellido = $_POST['primer_apellido'];
 $segundo_apellido = $_POST['segundo_apellido']; 
 $rfc = $_POST['rfc']; 
 $nss = $_POST['nss']; 
+$fecha_baja = $_POST['fecha_baja']; 
+$id_cat_estatus = $_POST['id_cat_estatus']; 
+$id_tbl_movimientos = $_POST['id_tbl_movimientos']; 
 $crypt = base64_encode($id_tbl_control_plazas);
 
 try {
@@ -28,7 +31,10 @@ $arrayUpdate = array(
     'primer_apellido' => $primer_apellido,  
     'segundo_apellido' => $segundo_apellido,  
     'rfc' => $rfc, 
-    'nss' => $nss
+    'nss' => $nss,
+    'fecha_baja' => $fecha_baja,
+    'id_cat_estatus' => $id_cat_estatus,
+    'id_tbl_movimientos' => $id_tbl_movimientos
 );
 $pgs_QRY = pg_update($connectionDBsPro, 'tbl_empleados', $arrayUpdate, $arrayCondition);
 

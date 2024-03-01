@@ -26,6 +26,8 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
     <?php include("../../php/CatPlazasC/listar.php"); ?>
     <?php include("../../php/CatTipoContratacionC/listar.php"); ?>
     <?php include("../../php/CatSituacionPlazaC/listar.php"); ?>
+    <?php include("../../php/CatEstatusC/listar.php"); ?>
+    <?php include("../../php/CatMovimientoC/listar.php"); ?>
 
     <div id="main-wrapper">
 
@@ -107,13 +109,18 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                         href="<?php echo "../DependientesEconomicos/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Dependientes
                                         Economicos</a>
                                     <a class="dropdown-item"
+                                        href="<?php echo "../Jornada/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Jornada</a>
+                                    <a class="dropdown-item"
                                         href="<?php echo "../DatosEmpleado/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Mas
                                         Datos</a>
                                     <a class="dropdown-item"
                                         href="<?php echo "../Retardo/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Retardos</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>"><div style="color:#9f2241;">Eliminar</div></p></a>
+                                        href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">
+                                        <div style="color:#9f2241;">Eliminar</div>
+                                        </p>
+                                    </a>
                                 </div>
                             </div>
 
@@ -122,13 +129,16 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                     <tr style="background-color: #5c5c5c;">
                                         <th style="color: white;">id</th>
                                         <th style="color: white;">Codigo</th>
-                                        <th style="color: white;">Fecha Ingreso</th>
                                         <th style="color: white;">CURP</th>
                                         <th style="color: white;">Nombre</th>
                                         <th style="color: white;">Primer Apellido</th>
                                         <th style="color: white;">Segundo Apellido</th>
                                         <th style="color: white;">RFC</th>
                                         <th style="color: white;">NSS</th>
+                                        <th style="color: white;">Fecha Ingreso</th>
+                                        <th style="color: white;">Fecha de Baja</th>
+                                        <th style="color: white;">Estatus</th>
+                                        <th style="color: white;">Movimiento</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -138,9 +148,6 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                         </td>
                                         <td>
                                             <?php echo $obj->codigo_empleado ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->fecha_ingreso ?>
                                         </td>
                                         <td>
                                             <?php echo $obj->curp ?>
@@ -160,8 +167,18 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                         <td>
                                             <?php echo $obj->nss ?>
                                         </td>
-
-
+                                        <td>
+                                            <?php echo $obj->fecha_ingreso ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $obj->fecha_baja ?>
+                                        </td>
+                                        <td>
+                                            <?php echo catEstatus($obj->id_cat_estatus) ?>
+                                        </td>
+                                        <td>
+                                            <?php echo catMovimientoPk($obj->id_tbl_movimientos) ?>
+                                        </td>
                                     </tr>
                                     <?php
                             }
@@ -185,6 +202,47 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
         </div>
 
 </body>
+
+
+<script>
+    // window.onload = message();
+
+    function message() {
+        return swal({
+            title: 'Confirmation',
+            html: ' Are you sure? ',
+            type: 'warning',
+            showCancelButton: true,
+            closeOnConfirm: true,
+            closeOnCancel: true
+        }, function (isConfirm) {
+            if (isConfirm) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+    }
+
+
+
+    /*
+        window.onload = message();
+    
+        let messageTxt = "No es posible eliminar un empleado que cuente con..";
+        message(messageTxt);
+    
+        function message(message) {
+            Swal.fire({
+                icon: "error",
+                title: "Algo Fallo",
+                text: message
+            });
+        }
+    */
+
+</script>
+
 
 <script>
     $(document).ready(function () {

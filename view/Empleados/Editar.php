@@ -56,16 +56,10 @@
                             <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados?>">
                             
                             <div class="form-row">
-                            <div class="form-group col-md-6">
+                                 <div class="form-group col-md-6">
                                     <label >Codigo de Empleado</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         name="codigo_empleado" value="<?php echo $rowe['codigo_empleado']?>">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Fecha de Ingreso</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        name="fecha_ingreso" value="<?php echo $rowe['fecha_ingreso']?>">
                                 </div>
                                 
                                 <div class="form-group col-md-6">
@@ -102,6 +96,60 @@
                                     <label >Numero de Seguro Social</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         name="nss" value="<?php echo $rowe['nss']?>">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Fecha de Ingreso</label><label style="color:red">*</label>
+                                    <input type="date" class="form-control"
+                                        name="fecha_ingreso" value="<?php echo $rowe['fecha_ingreso']?>">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Fecha de Baja</label><label style="color:red">*</label>
+                                    <input type="date" class="form-control"
+                                        name="fecha_baja" value="<?php echo $rowe['fecha_baja']?>">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="inputCity">Status</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" 
+                                        name="id_cat_estatus">
+                                        <?php
+                                        include("../../php/CatEstatusC/listar.php");
+                                        echo '<option value="' . $rowe['id_cat_estatus'] . '">' . catEstatus($rowe['id_cat_estatus']) . '</option>';
+                                        $listado = $listadoCE;
+                                        if ($listado) {
+                                            if (pg_num_rows($listado) > 0) {
+                                                while ($row = pg_fetch_object($listado)) {
+                                                    if ($rowe['id_cat_estatus'] != $row->id_cat_estatus){
+                                                    echo '<option value="' . $row->id_cat_estatus . '">' . catEstatus($row->id_cat_estatus) . '</option>';
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="inputCity">Movimiento</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" 
+                                        name="id_tbl_movimientos">
+                                        <?php
+                                        include("../../php/CatMovimientoC/listar.php");
+                                        echo '<option value="' . $rowe['id_tbl_movimientos'] . '">' . catMovimientoPk($rowe['id_tbl_movimientos']) . '</option>';
+                                        $listado = listadoMovimientoAll();
+                                        if ($listado) {
+                                            if (pg_num_rows($listado) > 0) {
+                                                while ($row = pg_fetch_object($listado)) {
+                                                    if ($rowe['id_tbl_movimientos'] != $row->id_tbl_movimientos){
+                                                    echo '<option value="' . $row->id_tbl_movimientos . '">' . catMovimientoPk($row->id_tbl_movimientos) . '</option>';
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                             

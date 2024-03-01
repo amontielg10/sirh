@@ -47,11 +47,11 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                     <h5 class="card-header">Ingresa los siguientes campos</h5>
                     <div class="card-body">
                         <form method="POST" action="../../php/ControlContactoEmergenciaC/Agregar.php">
-                            <div class="form-row">
 
                                 <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados?>">
                                 <input type="hidden" name="id_tbl_control_plazas" value="<?php echo $id_tbl_control_plazas?>">
                                 
+                                <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label >Nombre<label style="color:red">*</label>
                                     <input type="text" class="form-control"

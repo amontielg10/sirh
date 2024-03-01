@@ -7,8 +7,12 @@ include('../../conexion.php'); //Se incluye la conexion
   
 //La funcion retorna solo el estatus
 function catEstatus($id){
+    if ($id != null){
     $catSQL = pg_query("SELECT * FROM cat_estatus WHERE id_cat_estatus = '$id' ");
     $row = pg_fetch_array($catSQL);
     $res = $row["estatus"];
     return $res;
+    } else {
+        return "";
+    }
 }

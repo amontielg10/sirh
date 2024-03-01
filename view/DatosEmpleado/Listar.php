@@ -79,7 +79,7 @@
 
                     <div class="dropdown-menu">
                         <a class="dropdown-item"
-                            href="<?php echo 'Agregar.php?D-F='  . base64_encode($id_tbl_empleados) . '&D-F='.$id_tbl_control_plazas.'&D-F3='.$id_tbl_control_plazas ?>">Agregar</a>
+                            href="<?php echo 'Agregar.php?D-F='  . base64_encode($id_tbl_empleados) .'&D-F3='.$id_tbl_control_plazas ?>">Agregar</a>
                             <a class="dropdown-item"
                             href="<?php echo '../Empleados/Listar.php?D-F3='.$id_tbl_control_plazas?>">Regresar</a>
                     </div>
