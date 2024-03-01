@@ -2,7 +2,7 @@
 include('../../validar_sesion.php');    //Se incluye validar_sesion
 include('../../conexion.php'); //Se incluye la conexion
 
-function listado()
+function listar()
 {
     include('../../conexion.php'); //Se incluye la conexion
     $listado = pg_query($connectionDBsPro, "SELECT * FROM cat_niveles ORDER BY codigo ASC");
