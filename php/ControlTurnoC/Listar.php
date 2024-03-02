@@ -6,7 +6,7 @@ include('../../conexion.php'); //Se incluye la conexion
 function listadoTurnoId($id)
 {
      include('../../conexion.php'); //Se incluye la conexion
-     $listado = pg_query("SELECT * FROM ctrl_turno WHERE id_tbl_empleados = '$id'");
+     $listado = pg_query("SELECT * FROM ctrl_turno WHERE id_tbl_empleados = '$id' ORDER BY id_ctrl_turno DESC");
      return $listado;
 }
 

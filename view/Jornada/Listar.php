@@ -114,7 +114,7 @@
                                                         href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_turno).'&D-F3='.$id_tbl_control_plazas?>">Modificar</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item"
-                                                        href="<?php echo "../../php/ControlTelefonoC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_turno).'&D-F3='.$id_tbl_control_plazas ?>">Eliminar</a>
+                                                        href="<?php echo "../../php/ControlTurnoC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_turno).'&D-F3='.$id_tbl_control_plazas ?>">Eliminar</a>
                                                 </div>
                                             </div>
 
