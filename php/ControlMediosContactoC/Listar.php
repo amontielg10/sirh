@@ -16,3 +16,15 @@ function listadoMediosContactoPk($id)
      $row = pg_fetch_array($catSQL);
      return $row;
 }
+
+
+function estatusMediosCon($id)
+{
+     $catSQL = pg_query("SELECT * FROM ctrl_medios_contacto WHERE id_tbl_empleados = '$id' AND id_cat_estatus = 1");
+     while ($value = pg_fetch_array($catSQL)) {
+          $row[] = $value["id_cat_estatus"];
+          $row[] = $value["id_ctrl_medios_contacto"];
+     }
+     $json = json_encode($row);
+     return $json;
+}

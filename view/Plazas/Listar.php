@@ -26,6 +26,7 @@
     <?php include ("../../php/CatSituacionPlazaC/listar.php"); ?>
     <?php include ("../../php/CatZonaTabuladoresC/Listar.php"); ?>
     <?php include ("../../php/CatNivelesC1/Listar.php"); ?>
+    <?php include("../../php/EmpleadosC/Listar.php");?>
     
 
 
@@ -77,6 +78,9 @@
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
                             <th style="color: white;">id</th>
+                            <th style="color: white;">Codigo de Empleado</th>
+                            <th style="color: white;">Nombre Empleado</th>
+                            <th style="color: white;">RFC</th>
                             <th style="color: white;">Numero plaza</th>
                             <th style="color: white;">Plaza</th>
                             <th style="color: white;">Tipo contratacion</th>
@@ -147,6 +151,15 @@
                                     </td>
                                     <td>
                                         <?php echo $obj->id_tbl_control_plazas ?>
+                                    </td>
+                                    <td>
+                                        <?php echo codigoEmpleado($obj->id_tbl_control_plazas) ?>
+                                    </td>
+                                    <td>
+                                        <?php echo nombreEmpleado($obj->id_tbl_control_plazas) ?>
+                                    </td>
+                                    <td>
+                                        <?php echo rfcEmpleado($obj->id_tbl_control_plazas) ?>
                                     </td>
                                     <td>
                                         <?php echo $obj->num_plaza ?>

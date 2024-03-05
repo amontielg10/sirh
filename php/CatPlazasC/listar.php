@@ -10,7 +10,7 @@ function listadoCP(){
   
 function catalogoPlazaPk($id){
     if ($id != null){   
-    $catSQL = pg_query("SELECT * FROM cat_plazas WHERE id_cat_plazas = '$id' ");
+    $catSQL = pg_query("SELECT codigo_plaza FROM cat_plazas WHERE id_cat_plazas = '$id' LIMIT 1");
     $row = pg_fetch_array($catSQL);
     $res = $row["codigo_plaza"];
     return $res;

@@ -1,4 +1,5 @@
 <?php
+include("../../php/ControlTelefonoC/Listar.php");
 $id_tbl_empleados = base64_decode($_GET['D-F']);
 $id_tbl_control_plazas = $_GET['D-F3'];
 ?>
@@ -8,12 +9,14 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
 <head>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <?php  include("libHeader.php"); ?>
+    <script src="../../js/messages.js"></script>
+    <?php include("libHeader.php"); ?>
+
 </head>
 
 <body>
     <?php include('../nav-menu.php') ?>
-    <?php include ('../../php/CatEstatusC/listar.php');?>
+    <?php include('../../php/CatEstatusC/listar.php'); ?>
 
     <div id="main-wrapper">
 
@@ -22,7 +25,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Numero Telefonico</h2>
+                        <h2 class="page-title">Agregar n&uacutemero telef&oacutenico</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -34,7 +37,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="#" style="color:#cb9f52;">Numero Telefonico</a>
+                                        <a href="#" style="color:#cb9f52;">N&uacutemero Telef&oacutenico</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Agregar</li>
                                 </ol>
@@ -45,8 +48,8 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
                 <div class="alert alert-warning" role="alert">
                     <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                     !Solo un numero telefonico puede estar Activo!
-                    </div>
+                    &nbsp;&nbsp;Solo un n&uacutemero telef&oacutenico puede estar activo.
+                </div>
 
 
                 <div class="card">
@@ -55,19 +58,20 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                         <form method="POST" action="../../php/ControlTelefonoC/Agregar.php">
                             <div class="form-row">
 
-                                <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados?>">
-                                <input type="hidden" name="id_tbl_control_plazas" value="<?php echo $id_tbl_control_plazas?>">
-                                
+                                <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados ?>">
+                                <input type="hidden" name="id_tbl_control_plazas"
+                                    value="<?php echo $id_tbl_control_plazas ?>">
+
                                 <div class="form-group col-md-6">
-                                    <label >Numero Telefonico</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        name="movil" placeholder="Numero Telefonico">
+                                    <label>N&uacutemero Telef&oacutenico</label><label style="color:red">*</label>
+                                    <input type="text" class="form-control" name="movil" placeholder="Numero Telefonico"
+                                        required pattern="[0-9]{1,14}" maxlength="13" id="movil12">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_estatus">
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="id_cat_estatus" id="id_cat_estatus" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = $listadoCE;
@@ -81,14 +85,15 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                         ?>
                                     </select>
                                 </div>
-                               
-                            </div>
-                            
 
-                            <a class="btn btn-secondary" style="background-color: #cb9f52; border:none; outline:none; color: white;"
-                                href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados).'&D-F3='.$id_tbl_control_plazas?>">Cancelar</a>
-                            <button type="submit" class="btn btn-light"
-                            style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
+                            </div>
+
+
+                            <a class="btn btn-secondary"
+                                style="background-color: #cb9f52; border:none; outline:none; color: white;"
+                                href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados) . '&D-F3=' . $id_tbl_control_plazas ?>">Cancelar</a>
+                            <button type="submit" class="btn btn-light" onclick="return validateE();"
+                                style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 
                         </form>
                     </div>
@@ -97,7 +102,8 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
 
             </div>
-            <input type="hidden" id="row" value="<?php echo htmlspecialchars($json); ?> " />
+            <input type="hidden" id="list_cat_estatus"
+                value="<?php echo htmlspecialchars(estatusTelefono($id_tbl_empleados)); ?> " />
             <?php include('../../ajuste-menu.php') ?>
             <?php include('../../footer-librerias.php') ?>
 
@@ -106,60 +112,36 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 </body>
 
 <script>
-
-    function validate() {
-        console.log(validarNick());
-        if (validar() && validarNick()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    function validarNick() {
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        let bool = false;
-        if (validateNick(nick.value)) {
-            Swal.fire({
-                title: "¡El campo Nick ya existe!",
-                text: "Verifique que las contrasenas seas iguales",
-                icon: "error"
-            });
+    /**
+     * El script permite validar que solo exista un status activo de los numeros
+     * telefonicos que pertenecen al usuario
+     */
+    function validateE() {
+        let id_cat_estatus = document.getElementById("id_cat_estatus").value;
+        bool = false;
+        if (validateEstatus(id_cat_estatus)) {
+            messajeError("Solo un numero telefonico puede estar activo.");
         } else {
             bool = true;
         }
         return bool;
     }
 
-    //Se obtienen los datos asi como los del mensaje
-    function validarCaracteresNick() {
-        let rnick = document.getElementById("rnickA"); //Se obtiene el valor de msj nick
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        nick.value = nick.value.toUpperCase(); //La funcion convierte a mayusculas el campo nick
-        if (mensajeDD(nick.value, 5, 10) === "") {
-            if (validateNick(nick.value)) {
-                rnick.value = "*El campo Nick ya existe";
-            } else {
-                rnick.value = "";
-            }
-        } else {
-            rnick.value = mensajeDD(nick.value, 5, 10);
-        }
-    }
-
-    function validateNick(nick) {
-        let arrayJS = JSON.parse(document.getElementById('row').value);
+    function validateEstatus(id_estatus) {
+        let arrayJS = JSON.parse(document.getElementById('list_cat_estatus').value);
         let bool = false;
         for (let i = 0; i < arrayJS.length; i++) {
-            if (arrayJS[i] == nick) {
+            if (arrayJS[i] == id_estatus) {
                 bool = true;
                 i++;
             }
         }
         return bool;
     }
-
-
+    
 </script>
-<?php  include("libFooter.php"); ?>
+
+
+<?php include("libFooter.php"); ?>
+
 </html>

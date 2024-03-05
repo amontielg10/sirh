@@ -57,13 +57,13 @@
                             <div class="form-group col-md-6">
                                     <label >Numero de Plaza</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="num_plaza" value="<?php echo $rowe['num_plaza']?>" >
+                                        name="num_plaza" value="<?php echo $rowe['num_plaza']?>" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Catalogo de Plazas</label><label style="color:red">*</label><br>
                                     <select class="selectpicker" aria-label="Default select example"
-                                        name="id_cat_plazas">
+                                        name="id_cat_plazas" required>
                                         <?php
                                         include ("../../php/CatPlazasC/listar.php");
                                         echo '<option value="' . $rowe['id_cat_plazas'] . '">' . catalogoPlazaPk($rowe['id_cat_plazas']) . '</option>';
@@ -84,7 +84,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Tipo de Contratacion</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_tipo_contratacion">
+                                        name="id_cat_tipo_contratacion" required>
                                         <?php
                                         include ("../../php/CatTipoContratacionC/listar.php");
                                         echo '<option value="' . $rowe['id_cat_tipo_contratacion'] . '">' . catalogoContratacionPk($rowe['id_cat_tipo_contratacion']) . '</option>';
@@ -105,7 +105,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Situacion Plaza</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_situacion_plaza">
+                                        name="id_cat_situacion_plaza" required>
                                         <?php
                                         include ("../../php/CatSituacionPlazaC/listar.php");
                                         echo '<option value="' . $rowe['id_cat_situacion_plaza'] . '">' . listadoSituacionPlazaPk($rowe['id_cat_situacion_plaza']) . '</option>';
@@ -126,7 +126,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Unidad Responsable</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_unidad_responsable">
+                                        name="id_cat_unidad_responsable" required>
                                         <?php
                                         include ("../../php/CatUnidadResponsableC/listar.php");
                                         echo '<option value="' . $rowe['id_cat_unidad_reponsable'] . '">' . catPk($rowe['id_cat_unidad_reponsable']) . '</option>';
@@ -147,7 +147,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Puesto</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_puesto">
+                                        name="id_cat_puesto" required>
                                         <?php
                                         include ("../../php/CatPuestoC/listar.php");
                                         echo '<option value="' . $rowe['id_cat_puesto'] . '">' . catalogoPuestoPk($rowe['id_cat_puesto'])  . '</option>';
@@ -168,7 +168,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Zona tabulares</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_zonas_tabuladores">
+                                        name="id_cat_zonas_tabuladores" required>
                                         <?php
                                         include ("../../php/CatZonaTabuladoresC/listar.php");
                                         echo '<option value="' . $rowe['id_cat_zonas_tabuladores'] . '">' . catalogoZonaPk($rowe['id_cat_zonas_tabuladores']) . '</option>';
@@ -189,7 +189,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Niveles</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_niveles">
+                                        name="id_cat_niveles" required>
                                         <?php
                                         include ("../../php/CatNivelesC1/listar.php");
                                         echo '<option value="' . $rowe['id_cat_niveles'] . '">' . catalogoNivelesPk($rowe['id_cat_niveles']) . '</option>';
@@ -211,7 +211,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Centro de Trabajo</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_tbl_centro_trabajo">
+                                        name="id_tbl_centro_trabajo" required>
                                         <?php
                                         include ("../../php/CatCentroTrabajoC/listar.php");
                                         echo '<option value="' . $rowe['id_tbl_centro_trabajo'] . '">' . listadoCentroTrabajoCv($rowe['id_tbl_centro_trabajo']) . '</option>';
@@ -234,13 +234,13 @@
                                 <div class="form-group col-md-6">
                                     <label >Zona pagadora</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="zona_pagadora" value="<?php echo $rowe['zona_pagadora']?>" >
+                                        name="zona_pagadora" value="<?php echo $rowe['zona_pagadora']?>"  required>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label >Fecha Inicio Contrato</label><label style="color:red">*</label>
                                     <input type="date" class="form-control"
-                                        name="fecha_ini_contrato" placeholder="Numero de Plaza" value="<?php echo $rowe['fecha_ini_contrato']?>">
+                                        name="fecha_ini_contrato" placeholder="Numero de Plaza" value="<?php echo $rowe['fecha_ini_contrato']?>" required>
                                 </div>
 
                                 <div class="form-group col-md-6">

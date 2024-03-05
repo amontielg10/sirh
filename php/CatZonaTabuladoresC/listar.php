@@ -11,7 +11,7 @@ function listadoZona(){
   
 function catalogoZonaPk($id){
     if ($id != null){
-    $catSQL = pg_query("SELECT * FROM cat_zona_tabuladores WHERE id_cat_zonas_tabuladores = '$id' ");
+    $catSQL = pg_query("SELECT zona_tabuladores FROM cat_zona_tabuladores WHERE id_cat_zonas_tabuladores = '$id' LIMIT 1");
     $row = pg_fetch_array($catSQL);
     $res = $row["zona_tabuladores"];
     return $res;

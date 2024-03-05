@@ -21,17 +21,19 @@
 </head>
 
 <body>
+    
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
     <?php include ('../../php/ControlTelefonoC/Listar.php');?>
     <?php include ('../../php/CatEstatusC/listar.php');?>
+    <?php include("../../php/CentroTrabajoC/Listar.php");?>
 
     <div id="main-wrapper">
 
         <div class="page-wrapper">
 
             <div class="page-breadcrumb">
-            <h2 class="page-title">Numero Telefonico</h2>
+            <h2 class="page-title">N&uacutemero Telef&oacutenico</h2>
                 <div class="row">
                     <div class="col-5 align-self-center">
                         <div class="d-flex align-items-center">
@@ -44,7 +46,7 @@
                                     <li class="breadcrumb-item">
                                         <a href="../Empleados/Listar.php" style="color:#cb9f52;">Empleado</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Telefono</li>
+                                    <li class="breadcrumb-item active" aria-current="page">N&uacutemero Telef&oacutenico</li>
                                 </ol>
                             </nav>
                         </div>
@@ -55,15 +57,18 @@
 
 
             <div class="container-fluid">
-                <p>Informacion de empleado seleccionado.</p>
+                <p>Informaci&oacuten de empleado seleccionado.</p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">Nombre:
                     <?php echo $rowe['nombre'] . ' ' . $rowe['primer_apellido'] . ' ' . $rowe['segundo_apellido'] ?>
                 </p>
-                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Codigo de Empleado:
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">C&oacutedigo de Empleado:
                     <?php echo $rowe['codigo_empleado']?>
                 </p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">RFC:
                     <?php echo $rowe['rfc']?>
+                </p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Centro de Trabajo:
+                    <?php echo claveCentro(base64_decode($id_tbl_control_plazas))?>
                 </p>
                 <br>
                 <div class=" btn-group">
@@ -84,8 +89,7 @@
                     <thead>
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
-                            <th style="color: white;">id</th>
-                            <th style="color: white;">Movil</th>
+                            <th style="color: white;">N&uacutemero Telef&oacutenico</th>
                             <th style="color: white;">Estatus</th>
                         </tr>
                     </thead>
@@ -142,9 +146,6 @@
                                             <!-- MODAL ELIMINAR -->
                                         </td>
                                         <td>
-                                            <?php echo $obj->id_ctrl_telefono ?>
-                                        </td>
-                                        <td>
                                             <?php echo $obj->movil ?>
                                         </td>
                                         <td>
@@ -167,6 +168,7 @@
             </div>
         </div>
 </body>
+
 
 <script>
     $(document).ready(function () {
@@ -201,9 +203,8 @@
 
         );
     });
-
-
 </script>
+
 <?php include("libFooter.php"); ?>
 
 </html>

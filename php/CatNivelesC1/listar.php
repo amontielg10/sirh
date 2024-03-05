@@ -19,7 +19,7 @@ function listado12()
 function catalogoNivelesPk($id)
 {
     if ($id != null) {
-        $catSQL = pg_query("SELECT * FROM cat_niveles WHERE id_cat_niveles = '$id' ");
+        $catSQL = pg_query("SELECT codigo FROM cat_niveles WHERE id_cat_niveles = '$id' LIMIT 1");
         $row = pg_fetch_array($catSQL);
         $res = $row["codigo"];
         return $res;

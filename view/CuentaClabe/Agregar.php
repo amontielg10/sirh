@@ -1,4 +1,5 @@
 <?php
+include("../../php/ControlCuentaClabeC/Listar.php");
 $id_tbl_empleados = base64_decode($_GET['D-F']);
 $id_tbl_control_plazas = $_GET['D-F3'];
 ?>
@@ -8,14 +9,16 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
 <head>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <?php  include("libHeader.php"); ?>
+    <script src="../../js/messages.js"></script>
+    <script src="../../js/estatus/validarEstatus.js"></script>
+    <?php include("libHeader.php"); ?>
 </head>
 
 <body>
     <?php include('../nav-menu.php') ?>
-    <?php include ('../../php/CatEstatusC/listar.php');?>
-    <?php include ('../../php/CatBancoC/listar.php');?>
-    <?php include ('../../php/CatFormatoPagoC/listar.php');?>
+    <?php include('../../php/CatEstatusC/listar.php'); ?>
+    <?php include('../../php/CatBancoC/listar.php'); ?>
+    <?php include('../../php/CatFormatoPagoC/listar.php'); ?>
 
     <div id="main-wrapper">
 
@@ -24,7 +27,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Cuenta Clabe</h2>
+                        <h2 class="page-title">Agregar cuenta clabe</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -45,10 +48,10 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                     </div>
                 </div>
 
-                    <div class="alert alert-warning" role="alert">
+                <div class="alert alert-warning" role="alert">
                     <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                    &nbsp;&nbsp;!Solo una cuenta clabe puede estar Activa!
-                    </div>
+                    &nbsp;&nbsp;Solo una cuenta clabe puede estar Activa.
+                </div>
 
 
                 <div class="card">
@@ -57,19 +60,20 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                         <form method="POST" action="../../php/ControlCuentaClabeC/Agregar.php">
                             <div class="form-row">
 
-                                <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados?>">
-                                <input type="hidden" name="id_tbl_control_plazas" value="<?php echo $id_tbl_control_plazas?>">
-                                
+                                <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados ?>">
+                                <input type="hidden" name="id_tbl_control_plazas"
+                                    value="<?php echo $id_tbl_control_plazas ?>">
+
                                 <div class="form-group col-md-6">
-                                    <label >Clabe</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        name="clabe" placeholder="Clabe">
+                                    <label>Cuenta Clabe</label><label style="color:red">*</label>
+                                    <input type="text" class="form-control" name="clabe" placeholder="Cuenta clabe"
+                                        required>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Status</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_estatus">
+                                    <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="id_cat_estatus" id="id_cat_estatus" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = $listadoCE;
@@ -86,8 +90,8 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Banco</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_banco">
+                                    <select class="form-select" aria-label="Default select example" name="id_cat_banco"
+                                        required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = listadoBanco();
@@ -104,8 +108,8 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Formato de Pago</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_formato_pago">
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="id_cat_formato_pago" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = listadoFormatoPago();
@@ -119,14 +123,15 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                         ?>
                                     </select>
                                 </div>
-                               
-                            </div>
-                            
 
-                            <a class="btn btn-secondary" style="background-color: #cb9f52; border:none; outline:none; color: white;"
-                                href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados).'&D-F3='.$id_tbl_control_plazas?>">Cancelar</a>
-                            <button type="submit" class="btn btn-light"
-                            style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
+                            </div>
+
+
+                            <a class="btn btn-secondary"
+                                style="background-color: #cb9f52; border:none; outline:none; color: white;"
+                                href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados) . '&D-F3=' . $id_tbl_control_plazas ?>">Cancelar</a>
+                            <button type="submit" class="btn btn-light" onclick="return validateE();"
+                                style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 
                         </form>
                     </div>
@@ -135,7 +140,8 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
 
             </div>
-            <input type="hidden" id="row" value="<?php echo htmlspecialchars($json); ?> " />
+            <input type="hidden" id="list_cat_estatus"
+                value="<?php echo htmlspecialchars(estatusCuentaCv($id_tbl_empleados)); ?> " />
             <?php include('../../ajuste-menu.php') ?>
             <?php include('../../footer-librerias.php') ?>
 
@@ -143,61 +149,25 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
 </body>
 
+</body>
+
 <script>
-
-    function validate() {
-        console.log(validarNick());
-        if (validar() && validarNick()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    function validarNick() {
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        let bool = false;
-        if (validateNick(nick.value)) {
-            Swal.fire({
-                title: "¡El campo Nick ya existe!",
-                text: "Verifique que las contrasenas seas iguales",
-                icon: "error"
-            });
+    /**
+     * El script permite validar que solo exista un status activo
+     */
+    function validateE() {
+        let id_cat_estatus = document.getElementById("id_cat_estatus").value;
+        let arraJS = JSON.parse(document.getElementById('list_cat_estatus').value);
+        bool = false;
+        if (validateEstatusAdd(id_cat_estatus, arraJS)) {
+            messajeError("Solo una cuenta clabe puede estar activa.");
         } else {
             bool = true;
         }
         return bool;
     }
-
-    //Se obtienen los datos asi como los del mensaje
-    function validarCaracteresNick() {
-        let rnick = document.getElementById("rnickA"); //Se obtiene el valor de msj nick
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        nick.value = nick.value.toUpperCase(); //La funcion convierte a mayusculas el campo nick
-        if (mensajeDD(nick.value, 5, 10) === "") {
-            if (validateNick(nick.value)) {
-                rnick.value = "*El campo Nick ya existe";
-            } else {
-                rnick.value = "";
-            }
-        } else {
-            rnick.value = mensajeDD(nick.value, 5, 10);
-        }
-    }
-
-    function validateNick(nick) {
-        let arrayJS = JSON.parse(document.getElementById('row').value);
-        let bool = false;
-        for (let i = 0; i < arrayJS.length; i++) {
-            if (arrayJS[i] == nick) {
-                bool = true;
-                i++;
-            }
-        }
-        return bool;
-    }
-
-
 </script>
-<?php  include("libFooter.php"); ?>
+
+<?php include("libFooter.php"); ?>
+
 </html>

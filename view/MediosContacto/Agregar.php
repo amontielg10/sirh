@@ -1,4 +1,5 @@
 <?php
+include("../../php/ControlMediosContactoC/Listar.php");
 $id_tbl_empleados = base64_decode($_GET['D-F']);
 $id_tbl_control_plazas = $_GET['D-F3'];
 ?>
@@ -8,6 +9,8 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
 <head>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <script src="../../js/messages.js"></script>
+    <script src="../../js/estatus/validarEstatus.js"></script> 
     <?php  include("libHeader.php"); ?>
 </head>
 
@@ -22,7 +25,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Medio de Contacto</h2>
+                        <h2 class="page-title">Agregar medio de contacto</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -34,7 +37,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="#" style="color:#cb9f52;">Jefe Inmediato</a>
+                                        <a href="#" style="color:#cb9f52;">Medios de Contacto</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Agregar</li>
                                 </ol>
@@ -45,7 +48,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
                     <div class="alert alert-warning" role="alert">
                     <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                    &nbsp;&nbsp;!Solo un contacto puede estar Activo!
+                    &nbsp;&nbsp;Solo un contacto puede estar activo
                     </div>
 
 
@@ -60,14 +63,14 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 
                                 <div class="form-group col-md-6">
                                     <label >Correo Electronico</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
+                                    <input type="email" class="form-control" required
                                         name="correo_electronico" placeholder="Correo electronico">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Status</label><label style="color:red">*</label><br>
+                                    <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_estatus">
+                                        name="id_cat_estatus" id="id_cat_estatus" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = $listadoCE;
@@ -87,7 +90,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
                             <a class="btn btn-secondary" style="background-color: #cb9f52; border:none; outline:none; color: white;"
                                 href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados).'&D-F3='.$id_tbl_control_plazas?>">Cancelar</a>
-                            <button type="submit" class="btn btn-light"
+                            <button type="submit" class="btn btn-light" onclick="return validateE();"
                             style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 
                         </form>
@@ -97,7 +100,8 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
 
             </div>
-            <input type="hidden" id="row" value="<?php echo htmlspecialchars($json); ?> " />
+            <input type="hidden" id="list_cat_estatus"
+                value="<?php echo htmlspecialchars(estatusMediosCon($id_tbl_empleados)); ?> " />
             <?php include('../../ajuste-menu.php') ?>
             <?php include('../../footer-librerias.php') ?>
 
@@ -106,60 +110,21 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 </body>
 
 <script>
-
-    function validate() {
-        console.log(validarNick());
-        if (validar() && validarNick()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    function validarNick() {
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        let bool = false;
-        if (validateNick(nick.value)) {
-            Swal.fire({
-                title: "¡El campo Nick ya existe!",
-                text: "Verifique que las contrasenas seas iguales",
-                icon: "error"
-            });
+    /**
+     * El script permite validar que solo exista un status activo
+     */
+    function validateE() {
+        let id_cat_estatus = document.getElementById("id_cat_estatus").value;
+        let arraJS = JSON.parse(document.getElementById('list_cat_estatus').value);
+        bool = false;
+        if (validateEstatusAdd(id_cat_estatus, arraJS)) {
+            messajeError("Solo un contacto puede estar activo.");
         } else {
             bool = true;
         }
         return bool;
     }
-
-    //Se obtienen los datos asi como los del mensaje
-    function validarCaracteresNick() {
-        let rnick = document.getElementById("rnickA"); //Se obtiene el valor de msj nick
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        nick.value = nick.value.toUpperCase(); //La funcion convierte a mayusculas el campo nick
-        if (mensajeDD(nick.value, 5, 10) === "") {
-            if (validateNick(nick.value)) {
-                rnick.value = "*El campo Nick ya existe";
-            } else {
-                rnick.value = "";
-            }
-        } else {
-            rnick.value = mensajeDD(nick.value, 5, 10);
-        }
-    }
-
-    function validateNick(nick) {
-        let arrayJS = JSON.parse(document.getElementById('row').value);
-        let bool = false;
-        for (let i = 0; i < arrayJS.length; i++) {
-            if (arrayJS[i] == nick) {
-                bool = true;
-                i++;
-            }
-        }
-        return bool;
-    }
-
-
 </script>
+
 <?php  include("libFooter.php"); ?>
 </html>

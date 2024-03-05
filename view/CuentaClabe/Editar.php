@@ -12,6 +12,8 @@
 
 <head>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <script src="../../js/messages.js"></script>
+    <script src="../../js/estatus/validarEstatus.js"></script>
     <?php  include("libHeader.php"); ?>
 </head>
 
@@ -25,7 +27,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Modificar Cuenta Clabe</h2>
+                        <h2 class="page-title">Modificar cuenta clabe</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -48,7 +50,7 @@
 
                 <div class="alert alert-warning" role="alert">
                     <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                    &nbsp;&nbsp;!Solo una cuenta clabe puede estar Activa!
+                    &nbsp;&nbsp;Solo una cuenta clabe puede estar Activa.
                 </div>
 
                 <div class="card">
@@ -64,13 +66,13 @@
                             <div class="form-group col-md-6">
                                     <label >Clabe</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="clabe" value="<?php echo $rowe['clabe']?>">
+                                        name="clabe" value="<?php echo $rowe['clabe']?>" required>
                                 </div>
 
                             <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_estatus">
+                                        name="id_cat_estatus" id="id_cat_estatus" required>
                                         <?php
                                         include ('../../php/CatEstatusC/listar.php');
                                         echo '<option value="' . $rowe['id_cat_estatus'] . '">' . catEstatus($rowe['id_cat_estatus']) . '</option>';
@@ -91,7 +93,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Banco</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_banco">
+                                        name="id_cat_banco" required>
                                         <?php
                                         include ('../../php/CatBancoC/listar.php');
                                         echo '<option value="' . $rowe['id_cat_banco'] . '">' . listadoBancoPk($rowe['id_cat_banco']) . '</option>';
@@ -112,7 +114,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Formato de Pago</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_formato_pago">
+                                        name="id_cat_formato_pago" required>
                                         <?php
                                         include ('../../php/CatFormatoPagoC/listar.php');
                                         echo '<option value="' . $rowe['id_cat_formato_pago'] . '">' . listadoFormatoPagoPk($rowe['id_cat_formato_pago']) . '</option>';
@@ -135,7 +137,7 @@
                             
                             <a class="btn btn-light" style="background-color: #cb9f52; border:none; outline:none; color: white;"
                                 href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados).'&D-F3='.$id_tbl_control_plazas?>">Cancelar</a>
-                            <button type="submit" class="btn btn-light"
+                            <button type="submit" class="btn btn-light" onclick="return validateE();"
                             style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 
                         </form>
@@ -143,10 +145,30 @@
                 </div>
 
             </div>
-
+            <input type="hidden" id="list_cat_estatus"
+                value="<?php echo htmlspecialchars(estatusCuentaCv($id_tbl_empleados)); ?> " />
             <?php include('../../ajuste-menu.php') ?>
             <?php include('../../footer-librerias.php') ?>
 
 </body>
+<script>
+    /**
+     * El script permite validar que solo exista un status activo
+     */
+    function validateE() {
+        let id_ctrl_cuenta_clabe = document.getElementById("id_ctrl_cuenta_clabe").value;
+        let id_cat_estatus = document.getElementById("id_cat_estatus").value;
+        let arraJS = JSON.parse(document.getElementById('list_cat_estatus').value);
+        bool = false;
+        if (validateEstatusEdi(id_cat_estatus, id_ctrl_cuenta_clabe, arraJS)) {
+            messajeError("Solo una cuenta clabe puede estar activa.");
+        } else {
+            bool = true;
+        }
+        return bool;
+    }
+</script>
+
+
 <?php  include("libFooter.php"); ?>
 </html>

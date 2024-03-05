@@ -13,7 +13,7 @@ function listadoSituacionPlaza()
 function listadoSituacionPlazaPk($id)
 {
     if ($id != null){
-    $catSQL = pg_query("SELECT * FROM cat_situacion_plaza WHERE id_cat_situacion_plaza = '$id' ");
+    $catSQL = pg_query("SELECT situacion_plaza FROM cat_situacion_plaza WHERE id_cat_situacion_plaza = '$id' LIMIT 1");
     $row = pg_fetch_array($catSQL);
     $res = $row['situacion_plaza'];
     return $res;

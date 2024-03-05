@@ -28,6 +28,7 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
     <?php include("../../php/CatSituacionPlazaC/listar.php"); ?>
     <?php include("../../php/CatEstatusC/listar.php"); ?>
     <?php include("../../php/CatMovimientoC/listar.php"); ?>
+    <?php include("../../php/CentroTrabajoC/Listar.php"); ?>
 
     <div id="main-wrapper">
 
@@ -68,8 +69,8 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">Tipo Contratacion:
                     <?php echo catalogoContratacionPk($rowe['id_cat_tipo_contratacion']); ?>
                 </p>
-                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Situacion de plaza:
-                    <?php echo listadoSituacionPlazaPk($rowe['id_cat_situacion_plaza']); ?>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Centro de Trabajo:
+                    <?php echo claveCentro($id_tbl_control_plazas); ?>
                 </p>
                 <br>
 
@@ -111,10 +112,10 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                     <a class="dropdown-item"
                                         href="<?php echo "../Jornada/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Jornada</a>
                                     <a class="dropdown-item"
+                                        href="<?php echo "../Retardo/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Retardos</a>
+                                    <a class="dropdown-item"
                                         href="<?php echo "../DatosEmpleado/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Mas
                                         Datos</a>
-                                    <a class="dropdown-item"
-                                        href="<?php echo "../Retardo/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Retardos</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item"
                                         href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">

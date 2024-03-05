@@ -16,3 +16,15 @@ function listadoCuentaClabePk($id)
      $row = pg_fetch_array($catSQL);
      return $row;
 }
+
+function estatusCuentaCv($id)
+{
+     $catSQL = pg_query("SELECT * FROM ctrl_cuenta_clabe WHERE id_tbl_empleados = '$id' AND id_cat_estatus = 1");
+     while ($value = pg_fetch_array($catSQL)) {
+          $row[] = $value["id_cat_estatus"];
+          $row[] = $value["id_ctrl_cuenta_clabe"];
+     }
+     $json = json_encode($row);
+     return $json;
+}
+

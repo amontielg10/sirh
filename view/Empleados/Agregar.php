@@ -55,25 +55,25 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <div class="form-group col-md-6">
                                     <label >Codigo de Empleado</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="codigo_empleado" placeholder="Codigo de Empleado">
+                                        name="codigo_empleado" placeholder="Codigo de Empleado" required>
                                 </div>
                                 
                                 <div class="form-group col-md-6">
                                     <label >CURP</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="curp" placeholder="CURP">
+                                        name="curp" placeholder="CURP" required maxlength="18">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label >Nombre</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="nombre" placeholder="Nombre">
+                                        name="nombre" placeholder="Nombre" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label >Primer Apellido</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="primer_apellido" placeholder="Primer Apellido">
+                                        name="primer_apellido" placeholder="Primer Apellido" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -85,19 +85,19 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <div class="form-group col-md-6">
                                     <label >RFC</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="rfc" placeholder="RFC">
+                                        name="rfc" placeholder="RFC" required maxlength="13">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label >Numero de Seguro Social</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        name="nss" placeholder="Numero de Seguro Social">
+                                    <input type="number" class="form-control"
+                                        name="nss" placeholder="Numero de Seguro Social" required maxlength="11">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label >Fecha de Ingreso</label><label style="color:red">*</label>
                                     <input type="date" class="form-control"
-                                        name="fecha_ingreso" >
+                                        name="fecha_ingreso" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -109,7 +109,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Status</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_estatus">
+                                        name="id_cat_estatus" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = $listadoCE;

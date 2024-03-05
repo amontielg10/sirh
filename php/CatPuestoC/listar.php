@@ -11,7 +11,7 @@ function listadoPuesto(){
   
 function catalogoPuestoPk($id){
     if ($id != null){
-    $catSQL = pg_query("SELECT * FROM cat_puesto WHERE id_cat_puesto = '$id' ");
+    $catSQL = pg_query("SELECT codigo_puesto FROM cat_puesto WHERE id_cat_puesto = '$id' LIMIT 1");
     $row = pg_fetch_array($catSQL);
     $res = $row["codigo_puesto"];
     return $res;

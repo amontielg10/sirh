@@ -8,7 +8,7 @@ include('../../conexion.php'); //Se incluye la conexion
 //La funcion retorna solo el estatus
 function catPk($id){
     if ($id != null){
-    $catSQL = pg_query("SELECT * FROM cat_unidad_responsable WHERE id_cat_unidad_responsable = '$id' ");
+    $catSQL = pg_query("SELECT codigo, nombre FROM cat_unidad_responsable WHERE id_cat_unidad_responsable = '$id' LIMIT 1");
     $row = pg_fetch_array($catSQL);
     $res = $row["codigo"].' - '.$row['nombre'];
     return $res;

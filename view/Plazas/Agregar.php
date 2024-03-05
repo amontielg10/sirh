@@ -31,7 +31,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="Listar.php" style="color:#cb9f52;">Centro de Trabajo</a>
+                                        <a href="Listar.php" style="color:#cb9f52;">Control de Plazas</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Agregar</li>
                                 </ol>
@@ -56,7 +56,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Catalogo de Plazas</label><label style="color:red">*</label><br>
                                     <select class="selectpicker" aria-label="Default select example"
-                                        name="id_cat_plazas">
+                                        name="id_cat_plazas" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         include ("../../php/CatPlazasC/listar.php");
@@ -75,7 +75,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Tipo de Contratacion</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_tipo_contratacion">
+                                        name="id_cat_tipo_contratacion" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         include ("../../php/CatTipoContratacionC/listar.php");
@@ -94,7 +94,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Situacion Plaza</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_situacion_plaza">
+                                        name="id_cat_situacion_plaza" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         include ("../../php/CatSituacionPlazaC/listar.php");
@@ -113,7 +113,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Unidad Responsable</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_unidad_responsable">
+                                        name="id_cat_unidad_responsable" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         include ("../../php/CatUnidadResponsableC/listar.php");
@@ -132,7 +132,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Puesto</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_puesto">
+                                        name="id_cat_puesto" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         include ("../../php/CatPuestoC/listar.php");
@@ -151,7 +151,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Zona tabulares</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_zonas_tabuladores">
+                                        name="id_cat_zonas_tabuladores" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         include ("../../php/CatZonaTabuladoresC/listar.php");
@@ -170,7 +170,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Niveles</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_niveles">
+                                        name="id_cat_niveles" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         include ("../../php/CatNivelesC/listar.php");
@@ -189,7 +189,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Centro de Trabajo</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_tbl_centro_trabajo">
+                                        name="id_tbl_centro_trabajo" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = listadoCentroTrabajo();
@@ -209,13 +209,13 @@
                                 <div class="form-group col-md-6">
                                     <label >Zona pagadora</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="zona_pagadora" placeholder="Zona Pagadora" >
+                                        name="zona_pagadora" placeholder="Zona Pagadora" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label >Fecha Inicio Contrato</label><label style="color:red">*</label>
                                     <input type="date" class="form-control"
-                                        name="fecha_ini_contrato" >
+                                        name="fecha_ini_contrato" required>
                                 </div>
 
                                 <div class="form-group col-md-6">

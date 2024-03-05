@@ -28,7 +28,7 @@
     <?php include ('../../php/CatGeneroC/Listar.php');?>
     <?php include ('../../php/CatEstadoCivilC/listar.php');?>
     <?php include ('../../php/CatNivelEstudiosC/listar.php');?>
-
+    <?php include("../../php/CentroTrabajoC/Listar.php");?>
 
     <div id="main-wrapper">
 
@@ -68,6 +68,9 @@
                 </p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">RFC:
                     <?php echo $rowe['rfc']?>
+                </p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Centro de Trabajo:
+                    <?php echo claveCentro(base64_decode($id_tbl_control_plazas))?>
                 </p>
                 <br>
                 <div class=" btn-group">
