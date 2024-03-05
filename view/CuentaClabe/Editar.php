@@ -4,7 +4,6 @@
     $id_ctrl_cuenta_clabe = base64_decode($_GET['D-F2']); 
     $id_tbl_control_plazas = $_GET['D-F3'];
     $rowe = listadoCuentaClabePk($id_ctrl_cuenta_clabe); 
-
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +49,7 @@
 
                 <div class="alert alert-warning" role="alert">
                     <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                    &nbsp;&nbsp;Solo una cuenta clabe puede estar Activa.
+                    &nbsp;&nbsp;Solo una cuenta clabe puede estar activa.
                 </div>
 
                 <div class="card">
@@ -58,15 +57,15 @@
                     <div class="card-body">
                         <form method="POST" action="../../php/ControlCuentaClabeC/Editar.php">
 
-                            <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados?>">
+                            <input type="hidden" name="id_tbl_empleados" id="id_tbl_empleados" value="<?php echo $id_tbl_empleados?>">
                             <input type="hidden" name="id_tbl_control_plazas" value="<?php echo $id_tbl_control_plazas?>">
-                            <input type="hidden" name="id_ctrl_cuenta_clabe" value="<?php echo $id_ctrl_cuenta_clabe?>">
+                            <input type="hidden" name="id_ctrl_cuenta_clabe" id="id_ctrl_cuenta_clabe" value="<?php echo $id_ctrl_cuenta_clabe?>">
 
                             <div class="form-row">
                             <div class="form-group col-md-6">
-                                    <label >Clabe</label><label style="color:red">*</label>
+                                    <label >Cuenta clabe</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="clabe" value="<?php echo $rowe['clabe']?>" required>
+                                        name="clabe" value="<?php echo $rowe['clabe']?>" required maxlength="25">
                                 </div>
 
                             <div class="form-group col-md-6">
@@ -151,6 +150,7 @@
             <?php include('../../footer-librerias.php') ?>
 
 </body>
+
 <script>
     /**
      * El script permite validar que solo exista un status activo

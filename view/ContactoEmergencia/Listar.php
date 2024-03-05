@@ -45,7 +45,7 @@
                                     <li class="breadcrumb-item">
                                         <a href="#" style="color:#cb9f52;">Empleado</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Medios de Contacto</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Contactos de Emergencia</li>
                                 </ol>
                             </nav>
                         </div>
@@ -56,11 +56,11 @@
 
 
             <div class="container-fluid">
-                <p>Informacion de empleado seleccionado.</p>
+                <p>Informaci&oacuten de empleado seleccionado.</p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">Nombre:
                     <?php echo $rowe['nombre'] . ' ' . $rowe['primer_apellido'] . ' ' . $rowe['segundo_apellido'] ?>
                 </p>
-                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Codigo de Empleado:
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">C&oacutedigo de Empleado:
                     <?php echo $rowe['codigo_empleado']?>
                 </p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">RFC:
@@ -88,7 +88,6 @@
                     <thead>
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
-                            <th style="color: white;">id</th>
                             <th style="color: white;">Nombre</th>
                             <th style="color: white;">Primer Apellido</th>
                             <th style="color: white;">Segundo Apellido</th>
@@ -148,9 +147,6 @@
                                                 </div>
                                             </div>
                                             <!-- MODAL ELIMINAR -->
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->id_ctrl_contacto_emergencia ?>
                                         </td>
                                         <td>
                                             <?php echo $obj->nombre ?>

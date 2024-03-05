@@ -59,37 +59,37 @@
                             <div class="form-group col-md-6">
                                     <label >Nombre</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="nombre" value="<?php echo $rowe['nombre']?>">
+                                        name="nombre" value="<?php echo $rowe['nombre']?>" required maxlength="39">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                    <label >Segundo Apellido</label><label style="color:red"></label>
+                                    <input type="text" class="form-control"
+                                        name="segundo_apellido" value="<?php echo $rowe['segundo_apellido']?>" maxlength="39">
                             </div>
 
                             <div class="form-group col-md-6">
                                     <label >Primer Apellido</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="primer_apellido" value="<?php echo $rowe['primer_apellido']?>">
+                                        name="primer_apellido" value="<?php echo $rowe['primer_apellido']?>" required maxlength="39">
                             </div>
 
                             <div class="form-group col-md-6">
                                     <label >Parentesco</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="parentesco" value="<?php echo $rowe['parentesco']?>">
+                                        name="parentesco" value="<?php echo $rowe['parentesco']?>" required maxlength="39">
                             </div>
 
                             <div class="form-group col-md-6">
                                     <label >Telefono Celular</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="movil" value="<?php echo $rowe['movil']?>">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                    <label >Segundo Apellido</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        name="segundo_apellido" value="<?php echo $rowe['segundo_apellido']?>">
+                                        name="movil" value="<?php echo $rowe['movil']?>" required maxlength="15" pattern="[0-9]{1,15}">
                             </div>
 
                             <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_estatus">
+                                        name="id_cat_estatus" required>
                                         <?php
                                         include ('../../php/CatEstatusC/listar.php');
                                         echo '<option value="' . $rowe['id_cat_estatus'] . '">' . catEstatus($rowe['id_cat_estatus']) . '</option>';

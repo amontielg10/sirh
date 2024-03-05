@@ -6,9 +6,13 @@ include ("../../conexion.php");//Se incluye el metodo de conexion para las consu
 $id_tbl_empleados = $_POST['id_tbl_empleados'];
 $id_tbl_control_plazas = $_POST['id_tbl_control_plazas']; 
 $fecha = $_POST['fecha']; 
-$hora_entrada = $_POST['hora_entrada']; 
-$hora_salida = $_POST['hora_salida']; 
+$hora_entradaCC = $_POST['hora_entrada']; 
+$hora_salidaCC = $_POST['hora_salida']; 
 $crypt = base64_encode ($id_tbl_empleados);
+
+//Se para la hora concatenada
+list($hora_entrada, $minuto_entrada) = explode(':', $hora_entradaCC);
+list($hora_salida, $minuto_salida) = explode(':', $hora_salidaCC);
 
 
 try {
@@ -16,7 +20,9 @@ try {
 $pgs_QRY = pg_insert($connectionDBsPro, 'ctrl_retardo', array(
     'fecha' => $fecha,
     'hora_entrada' => $hora_entrada,  
+    'minuto_entrada' => $minuto_entrada,
     'hora_salida' => $hora_salida,
+    'minuto_salida' => $minuto_salida,
     'id_tbl_empleados' => $id_tbl_empleados
 ));
 

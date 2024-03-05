@@ -48,7 +48,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
                     <div class="alert alert-warning" role="alert">
                     <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                    &nbsp;&nbsp;Solo un contacto puede estar activo
+                    &nbsp;&nbsp;Solo un contacto puede estar activo.
                     </div>
 
 
@@ -64,7 +64,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <div class="form-group col-md-6">
                                     <label >Correo Electronico</label><label style="color:red">*</label>
                                     <input type="email" class="form-control" required
-                                        name="correo_electronico" placeholder="Correo electronico">
+                                        name="correo_electronico" placeholder="Correo electronico" maxlength="30">
                                 </div>
 
                                 <div class="form-group col-md-6">

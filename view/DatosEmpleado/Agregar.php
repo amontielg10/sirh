@@ -24,7 +24,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Datos del Empleado</h2>
+                        <h2 class="page-title">Agregar datos de empleado</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -58,13 +58,13 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <div class="form-group col-md-6">
                                     <label >Pais de Nacimiento</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="pais_nacimiento" placeholder="Pais Nacimiento">
+                                        name="pais_nacimiento" placeholder="Pais Nacimiento" required maxlength="30">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Genero</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_genero">
+                                        name="id_cat_genero" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = listadoGenero();
@@ -82,7 +82,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Estado Civil</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_estado_civil">
+                                        name="id_cat_estado_civil" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = listadoCivil();
@@ -100,7 +100,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Nivel de Estudios</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_nivel_estudios">
+                                        name="id_cat_nivel_estudios" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = listadoNivelEstudios();

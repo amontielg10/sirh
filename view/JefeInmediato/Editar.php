@@ -68,19 +68,19 @@ $rowe = listadoJefeInmediaroPk($id_ctrl_jefe_inmediato);
                                 <div class="form-group col-md-6">
                                     <label>Nombre</label><label style="color:red">*</label>
                                     <input type="text" class="form-control" required name="nombre"
-                                        value="<?php echo $rowe['nombre'] ?>">
+                                        value="<?php echo $rowe['nombre'] ?>" maxlength="25">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label>Primer Apellido</label><label style="color:red">*</label>
                                     <input type="text" class="form-control" required name="primer_apellido"
-                                        value="<?php echo $rowe['primer_apellido'] ?>">
+                                        value="<?php echo $rowe['primer_apellido'] ?>" maxlength="25">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label>Segundo Apellido</label>
                                     <input type="text" class="form-control" name="segundo_apellido"
-                                        value="<?php echo $rowe['segundo_apellido'] ?>">
+                                        value="<?php echo $rowe['segundo_apellido'] ?>" maxlength="25">
                                 </div>
 
                                 <div class="form-group col-md-6">

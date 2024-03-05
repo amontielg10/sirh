@@ -42,9 +42,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../Empleados/Listar.php" style="color:#cb9f52;">Empleado</a>
+                                        <a href="#" style="color:#cb9f52;">Empleado</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Telefono</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Control de Retardos</li>
                                 </ol>
                             </nav>
                         </div>
@@ -55,11 +55,11 @@
 
 
             <div class="container-fluid">
-                <p>Informacion de empleado seleccionado.</p>
+                <p>Informaci&oacuten de empleado seleccionado.</p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">Nombre:
                     <?php echo $rowe['nombre'] . ' ' . $rowe['primer_apellido'] . ' ' . $rowe['segundo_apellido'] ?>
                 </p>
-                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Codigo de Empleado:
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">C&oacutedigo de Empleado:
                     <?php echo $rowe['codigo_empleado']?>
                 </p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">RFC:
@@ -87,7 +87,6 @@
                     <thead>
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
-                            <th style="color: white;">id</th>
                             <th style="color: white;">Fecha</th>
                             <th style="color: white;">Hora Entrada</th>
                             <th style="color: white;">Hora Salida</th>
@@ -148,16 +147,13 @@
                                             <!-- MODAL ELIMINAR -->
                                         </td>
                                         <td>
-                                            <?php echo $obj->id_ctrl_retardo ?>
-                                        </td>
-                                        <td>
                                             <?php echo $obj->fecha ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->hora_entrada ?>
+                                            <?php echo horaAdd($obj->hora_entrada, $obj->minuto_entrada) ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->hora_salida ?>
+                                            <?php echo horaAdd($obj->hora_salida, $obj->minuto_salida) ?>
                                         </td>
 
                                     </tr>

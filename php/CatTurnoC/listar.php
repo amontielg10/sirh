@@ -12,7 +12,7 @@ function listadoTurnoAll()
 function listadoCatTurnoPk($id)
 {
     if ($id != null) {
-        $catSQL = pg_query("SELECT * FROM cat_turno WHERE id_cat_turno = '$id' ");
+        $catSQL = pg_query("SELECT clave_turno,turno_desc FROM cat_turno WHERE id_cat_turno = '$id' ");
         $row = pg_fetch_array($catSQL);
         $res = $row['clave_turno'].' - '.$row['turno_desc'];
         return $res;

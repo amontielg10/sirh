@@ -32,7 +32,7 @@
         <div class="page-wrapper">
 
             <div class="page-breadcrumb">
-            <h2 class="page-title">Dependientes Economicos</h2>
+            <h2 class="page-title">Dependientes Econ&oacutemicos</h2>
                 <div class="row">
                     <div class="col-5 align-self-center">
                         <div class="d-flex align-items-center">
@@ -45,7 +45,7 @@
                                     <li class="breadcrumb-item">
                                         <a href="#" style="color:#cb9f52;">Empleado</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Dependientes Economicos</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Dependientes Econ&oacutemicos</li>
                                 </ol>
                             </nav>
                         </div>
@@ -56,11 +56,11 @@
 
 
             <div class="container-fluid">
-                <p>Informacion de empleado seleccionado.</p>
+                <p>Informaci&oacuten de empleado seleccionado.</p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">Nombre:
                     <?php echo $rowe['nombre'] . ' ' . $rowe['primer_apellido'] . ' ' . $rowe['segundo_apellido'] ?>
                 </p>
-                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Codigo de Empleado:
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">C&oacutedigo de Empleado:
                     <?php echo $rowe['codigo_empleado']?>
                 </p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">RFC:

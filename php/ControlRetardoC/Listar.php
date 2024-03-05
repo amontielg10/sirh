@@ -16,3 +16,11 @@ function listadoRetardoPk($id)
      $row = pg_fetch_array($catSQL);
      return $row;
 }
+
+function horaAdd($hora, $minuto){
+     $concat = $hora.':'.$minuto;
+     if ($hora == null && $minuto == null){
+          $concat = "";
+     }
+     return $concat;
+}

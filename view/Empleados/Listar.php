@@ -37,7 +37,7 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Empleados</h2>
+                        <h2 class="page-title">Control de Empleados</h2>
                         <div class="d-flex align-items-center">
                         </div>
                     </div>
@@ -59,14 +59,14 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
 
 
             <div class="container-fluid">
-                <p>Informacion de la plaza seleccionada.</p>
-                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Numero de plaza:
+                <p>Informaci&oacuten de la plaza seleccionada.</p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">N&uacutemero de plaza:
                     <?php echo $rowe['num_plaza'] ?>
                 </p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">Tipo de plaza:
                     <?php echo catalogoPlazaPk($rowe['id_cat_plazas']); ?>
                 </p>
-                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Tipo Contratacion:
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Tipo Contrataci&oacuten:
                     <?php echo catalogoContratacionPk($rowe['id_cat_tipo_contratacion']); ?>
                 </p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">Centro de Trabajo:
@@ -92,7 +92,7 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                     <a class="dropdown-item"
                                         href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Modificar</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../Telefono/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Num.
+                                        href="<?php echo "../Telefono/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">N&uacutem.
                                         Telefonico</a>
                                     <a class="dropdown-item"
                                         href="<?php echo "../JefeInmediato/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Jefe
@@ -119,7 +119,7 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item"
                                         href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">
-                                        <div style="color:#9f2241;">Eliminar</div>
+                                        <div style="color:red;">Eliminar</div>
                                         </p>
                                     </a>
                                 </div>
@@ -128,8 +128,7 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                             <table class="table table-striped" id="t-usuarios">
                                 <thead>
                                     <tr style="background-color: #5c5c5c;">
-                                        <th style="color: white;">id</th>
-                                        <th style="color: white;">Codigo</th>
+                                        <th style="color: white;">C&oacutedigo</th>
                                         <th style="color: white;">CURP</th>
                                         <th style="color: white;">Nombre</th>
                                         <th style="color: white;">Primer Apellido</th>
@@ -144,9 +143,6 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>
-                                            <?php echo $obj->id_tbl_empleados ?>
-                                        </td>
                                         <td>
                                             <?php echo $obj->codigo_empleado ?>
                                         </td>

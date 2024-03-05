@@ -77,7 +77,6 @@
                     <thead>
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
-                            <th style="color: white;">id</th>
                             <th style="color: white;">Codigo de Empleado</th>
                             <th style="color: white;">Nombre Empleado</th>
                             <th style="color: white;">RFC</th>
@@ -118,7 +117,7 @@
                                                 <a class="dropdown-item"
                                                     href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) ?>">Modificar</a>
                                                     <a class="dropdown-item"
-                                                    href="<?php echo "../Empleados/Listar.php?D-F3=" . base64_encode($obj->id_tbl_control_plazas) ?>">Empleados</a>
+                                                    href="<?php echo "../Empleados/Listar.php?D-F3=" . base64_encode($obj->id_tbl_control_plazas) ?>">Empleado</a>
                                                 <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item"
                                                     href="<?php echo "../../php/PlazasC/Eliminar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) ?>">Eliminar</a>
@@ -148,9 +147,6 @@
                                         </div>
                                     </div>
                                     <!-- MODAL ELIMINAR -->
-                                    </td>
-                                    <td>
-                                        <?php echo $obj->id_tbl_control_plazas ?>
                                     </td>
                                     <td>
                                         <?php echo codigoEmpleado($obj->id_tbl_control_plazas) ?>

@@ -50,7 +50,7 @@ $rowe = listadoMediosContactoPk($id_ctrl_medios_contacto);
 
                 <div class="alert alert-warning" role="alert">
                     <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                    &nbsp;&nbsp;Solo un contacto puede estar activo
+                    &nbsp;&nbsp;Solo un contacto puede estar activo.
                 </div>
 
                 <div class="card">
@@ -68,7 +68,7 @@ $rowe = listadoMediosContactoPk($id_ctrl_medios_contacto);
                                 <div class="form-group col-md-6">
                                     <label>Correo Electronico</label><label style="color:red">*</label>
                                     <input type="email" class="form-control" required name="correo_electronico"
-                                        value="<?php echo $rowe['correo_electronico'] ?>">
+                                        value="<?php echo $rowe['correo_electronico'] ?>" maxlength="30">
                                 </div>
 
                                 <div class="form-group col-md-6">

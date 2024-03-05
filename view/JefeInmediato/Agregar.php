@@ -63,23 +63,23 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <div class="form-group col-md-6">
                                     <label >Nombre</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="nombre" placeholder="Nombre" required>
+                                        name="nombre" placeholder="Nombre" required maxlength="25">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label >Primer Apellido</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="primer_apellido" placeholder="Numero Telefonico" required>
+                                        name="primer_apellido" placeholder="Primer Apellido" required maxlength="25">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label >Segundo Apellido</label>
                                     <input type="text" class="form-control"
-                                        name="segundo_apellido" placeholder="Segundo Apellido">
+                                        name="segundo_apellido" placeholder="Segundo Apellido" maxlength="25">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Status</label><label style="color:red">*</label><br>
+                                    <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
                                         name="id_cat_estatus" id="id_cat_estatus" required>
                                         <option value="" selected>Seleccione</option>   

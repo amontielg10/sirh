@@ -22,7 +22,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Depeniente Economico</h2>
+                        <h2 class="page-title">Agregar dependiente</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -34,7 +34,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="#" style="color:#cb9f52;">Dependientes Economicos</a>
+                                        <a href="#" style="color:#cb9f52;">Dependientes Ec&oacutenomicos</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Agregar</li>
                                 </ol>
@@ -61,25 +61,25 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <div class="form-group col-md-6">
                                     <label >Nombre</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="nombre" placeholder="Nombre">
+                                        name="nombre" placeholder="Nombre" required maxlength=“35”>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Apelldio Paterno</label><label style="color:red">*</label>
+                                    <label >Apellido Paterno</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="apellido_paterno" placeholder="Apellido Paterno">
+                                        name="apellido_paterno" placeholder="Apellido Paterno" required maxlength=“35”>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Apellido Materno</label><label style="color:red">*</label>
+                                    <label >Apellido Materno</label><label style="color:red"></label>
                                     <input type="text" class="form-control"
-                                        name="apellido_materno" placeholder="Apellido Materno">
+                                        name="apellido_materno" placeholder="Apellido Materno" maxlength=“35”>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Dependientes Economicos</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_dependientes_economicos">
+                                        name="id_cat_dependientes_economicos" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = listadoDEconomicos();

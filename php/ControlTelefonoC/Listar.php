@@ -6,7 +6,7 @@ include('../../conexion.php'); //Se incluye la conexion
 function listadoTelefonoId($id)
 {
      include('../../conexion.php'); //Se incluye la conexion
-     $listado = pg_query("SELECT * FROM ctrl_telefono WHERE id_tbl_empleados = '$id' ORDER BY id_ctrl_telefono DESC");
+     $listado = pg_query("SELECT * FROM ctrl_telefono WHERE id_tbl_empleados = '$id' ORDER BY id_cat_estatus ASC");
      return $listado;
 }
 

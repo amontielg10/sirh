@@ -44,7 +44,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
                 <div class="alert alert-warning" role="alert">
                     <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                    El formato de hora solicitado es de 24 horas.
+                    &nbsp;&nbsp;El formato de hora solicitado es de 24 horas.
                 </div>
 
                 <div class="card">
@@ -67,8 +67,8 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label>Hora de Salida</label><label style="color:red">*</label>
-                                    <input type="time" class="form-control" name="hora_salida" required>
+                                    <label>Hora de Salida</label><label style="color:red"></label>
+                                    <input type="time" class="form-control" name="hora_salida">
                                 </div>
 
                             </div>

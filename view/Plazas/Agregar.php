@@ -48,13 +48,13 @@
                             <div class="form-row">
                                 
                                 <div class="form-group col-md-6">
-                                    <label >Numero de Plaza</label><label style="color:red">*</label>
+                                    <label >Num. de Plaza</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="num_plaza" placeholder="Numero de Plaza" >
+                                        name="num_plaza" placeholder="Numero de Plaza" required maxlength="30" pattern="[0-9]{1,31}">
                                 </div>
                                 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Catalogo de Plazas</label><label style="color:red">*</label><br>
+                                    <label for="inputCity">Tipo de Plaza</label><label style="color:red">*</label><br>
                                     <select class="selectpicker" aria-label="Default select example"
                                         name="id_cat_plazas" required>
                                         <option value="" selected>Seleccione</option>
@@ -73,7 +73,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Tipo de Contratacion</label><label style="color:red">*</label><br>
+                                    <label for="inputCity">Tipo de Contrataci&oacuten</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
                                         name="id_cat_tipo_contratacion" required>
                                         <option value="" selected>Seleccione</option>
@@ -92,7 +92,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Situacion Plaza</label><label style="color:red">*</label><br>
+                                    <label for="inputCity">Situaci&oacuten Plaza</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
                                         name="id_cat_situacion_plaza" required>
                                         <option value="" selected>Seleccione</option>
@@ -149,7 +149,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Zona tabulares</label><label style="color:red">*</label><br>
+                                    <label for="inputCity">Zona Tabulares</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
                                         name="id_cat_zonas_tabuladores" required>
                                         <option value="" selected>Seleccione</option>
@@ -207,7 +207,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Zona pagadora</label><label style="color:red">*</label>
+                                    <label >Zona Pagadora</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         name="zona_pagadora" placeholder="Zona Pagadora" required>
                                 </div>
@@ -219,13 +219,13 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Fecha Fin contrato</label><label style="color:red">*</label>
+                                    <label >Fecha Fin de Contrato</label><label style="color:red"></label>
                                     <input type="date" class="form-control"
                                         name="fecha_fin_contrato" >
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Fecha de Modificacion</label><label style="color:red">*</label>
+                                    <label >Fecha de Modificacion</label><label style="color:red"></label>
                                     <input type="date" class="form-control"
                                         name="fecha_modificacion" >
                                 </div>

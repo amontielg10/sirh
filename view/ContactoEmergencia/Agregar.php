@@ -22,7 +22,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Contacto</h2>
+                        <h2 class="page-title">Agregar contacto</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -53,39 +53,39 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 
                                 <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label >Nombre<label style="color:red">*</label>
+                                    <label >Nombre</label ><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="nombre" placeholder="Nombre">
+                                        name="nombre" placeholder="Nombre" required maxlength="39">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Primer Apellido<label style="color:red">*</label>
+                                    <label >Primer Apellido</label ><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="primer_apellido" placeholder="Primer Apellido">
+                                        name="primer_apellido" placeholder="Primer Apellido" required maxlength="39"> 
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Segundo Apellido<label style="color:red">*</label>
+                                    <label >Segundo Apellido</label ><label style="color:red"></label>
                                     <input type="text" class="form-control"
-                                        name="segundo_apellido" placeholder="Segundo Apellido">
+                                        name="segundo_apellido" placeholder="Segundo Apellido" maxlength="39">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Parentesco<label style="color:red">*</label>
+                                    <label >Parentesco</label ><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="parentesco" placeholder="Parentesco">
+                                        name="parentesco" placeholder="Parentesco" required maxlength="39">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Numero telefonico<label style="color:red">*</label>
+                                    <label >Numero telefonico</label ><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="movil" placeholder="Numero Telefonico">
+                                        name="movil" placeholder="Numero Telefonico" required maxlength="15" pattern="[0-9]{1,15}">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Status</label><label style="color:red">*</label><br>
+                                    <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_estatus">
+                                        name="id_cat_estatus" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = $listadoCE;

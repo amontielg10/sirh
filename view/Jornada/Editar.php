@@ -13,6 +13,8 @@ $rowe = listadoTurnoPk($id_ctrl_turno);
 <head>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <?php include("libHeader.php"); ?>
+    <script src="../../js/messages.js"></script>
+    <script src="../../js/estatus/validarEstatus.js"></script>
 </head>
 
 <body>
@@ -29,7 +31,7 @@ $rowe = listadoTurnoPk($id_ctrl_turno);
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Modificar Jornada</h2>
+                        <h2 class="page-title">Modificar jornada</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -56,8 +58,10 @@ $rowe = listadoTurnoPk($id_ctrl_turno);
                     <div class="card-body">
                         <form method="POST" action="../../php/ControlTurnoC/Editar.php">
 
-                            <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados ?>">
-                            <input type="hidden" name="id_ctrl_turno" value="<?php echo $id_ctrl_turno ?>">
+                            <input type="hidden" name="id_tbl_empleados" id="id_tbl_empleados"
+                                value="<?php echo $id_tbl_empleados ?>">
+                            <input type="hidden" name="id_ctrl_turno" id="id_ctrl_turno"
+                                value="<?php echo $id_ctrl_turno ?>">
                             <input type="hidden" name="id_tbl_control_plazas"
                                 value="<?php echo $id_tbl_control_plazas ?>">
 
@@ -65,7 +69,7 @@ $rowe = listadoTurnoPk($id_ctrl_turno);
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Turno</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" id="id_cat_turno"
-                                        name="id_cat_turno">
+                                        name="id_cat_turno" required>
                                         <?php
                                         echo '<option value="' . $rowe['id_cat_turno'] . '">' . listadoCatTurnoNewPk($rowe['id_cat_turno']) . '</option>';
                                         $listado = listadoTurnoNewAll();
@@ -85,7 +89,7 @@ $rowe = listadoTurnoPk($id_ctrl_turno);
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Horario</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" id="id_cat_horario"
-                                        name="id_cat_horario">
+                                        name="id_cat_horario" required>
                                         <?php
                                         echo '<option value="' . $rowe['id_cat_horario'] . '">' . listadoHorarioPk($rowe['id_cat_horario']) . '</option>';
                                         ?>
@@ -95,7 +99,7 @@ $rowe = listadoTurnoPk($id_ctrl_turno);
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_estatus">
+                                        name="id_cat_estatus" id="id_cat_estatus" required>
                                         <?php
                                         echo '<option value="' . $rowe['id_cat_estatus'] . '">' . catEstatus($rowe['id_cat_estatus']) . '</option>';
                                         $listado = $listadoCE;
@@ -117,7 +121,7 @@ $rowe = listadoTurnoPk($id_ctrl_turno);
                             <a class="btn btn-light"
                                 style="background-color: #cb9f52; border:none; outline:none; color: white;"
                                 href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados) . '&D-F3=' . $id_tbl_control_plazas ?>">Cancelar</a>
-                            <button type="submit" class="btn btn-light"
+                            <button type="submit" class="btn btn-light" onclick="return validateE();"
                                 style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 
                         </form>
@@ -126,6 +130,8 @@ $rowe = listadoTurnoPk($id_ctrl_turno);
 
             </div>
 
+            <input type="hidden" id="list_cat_estatus"
+                value="<?php echo htmlspecialchars(estatusTurno($id_tbl_empleados)); ?> " />
             <?php include('../../ajuste-menu.php') ?>
             <?php include('../../footer-librerias.php') ?>
 
@@ -145,6 +151,24 @@ $rowe = listadoTurnoPk($id_ctrl_turno);
             });
         });
     });
+</script>
+
+<script>
+    /**
+     * El script permite validar que solo exista un status activo
+     */
+    function validateE() {
+        let id_ctrl_turno = document.getElementById("id_ctrl_turno").value;
+        let id_cat_estatus = document.getElementById("id_cat_estatus").value;
+        let arraJS = JSON.parse(document.getElementById('list_cat_estatus').value);
+        bool = false;
+        if (validateEstatusEdi(id_cat_estatus, id_ctrl_turno, arraJS)) {
+            messajeError("Solo una jornada puede estar activa.");
+        } else {
+            bool = true;
+        }
+        return bool;
+    }
 </script>
 
 <?php include("libFooter.php"); ?>

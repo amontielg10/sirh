@@ -29,7 +29,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Modificar Empleados</h2>
+                        <h2 class="page-title">Modificar datos de empleado</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -62,9 +62,9 @@
 
                             <div class="form-row">
                             <div class="form-group col-md-6">
-                                    <label >Codigo de Empleado</label><label style="color:red">*</label>
+                                    <label >Pais de Nacimiento</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="pais_nacimiento" value="<?php echo $rowe['pais_nacimiento']?>">
+                                        name="pais_nacimiento" value="<?php echo $rowe['pais_nacimiento']?>" required maxlength="30">
                                 </div>
 
                             
@@ -72,7 +72,7 @@
                             <div class="form-group col-md-6">
                                     <label for="inputCity">Genero</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_genero">
+                                        name="id_cat_genero" required>
                                         <?php
                                         echo '<option value="' . $rowe['id_cat_genero'] . '">' . catGeneroPk($rowe['id_cat_genero']) . '</option>';
                                         $listado = listadoGenero();
@@ -92,7 +92,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Estado Civil</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_estado_civil">
+                                        name="id_cat_estado_civil" required>
                                         <?php
                                         echo '<option value="' . $rowe['id_cat_estado_civil'] . '">' . catalogoCivilPk($rowe['id_cat_estado_civil']) . '</option>';
                                         $listado = listadoCivil();
@@ -112,7 +112,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Nivel de Estudios</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_nivel_estudios">
+                                        name="id_cat_nivel_estudios" required>
                                         <?php
                                         echo '<option value="' . $rowe['id_cat_nivel_estudios'] . '">' . catalogoNivelEstudiosPk($rowe['id_cat_nivel_estudios']) . '</option>';
                                         $listado = listadoNivelEstudios();

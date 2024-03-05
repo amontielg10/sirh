@@ -22,7 +22,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Empleado</h2>
+                        <h2 class="page-title">Agregar empleado</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -34,7 +34,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="Listar.php" style="color:#cb9f52;">Empleados</a>
+                                        <a href="#" style="color:#cb9f52;">Control de Empleados</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Agregar</li>
                                 </ol>
@@ -53,9 +53,9 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <input type="hidden" name="id_tbl_control_plazas" value="<? echo $id_tbl_control_plazas?>">
 
                                 <div class="form-group col-md-6">
-                                    <label >Codigo de Empleado</label><label style="color:red">*</label>
+                                    <label >C&oacutedigo de Empleado</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="codigo_empleado" placeholder="Codigo de Empleado" required>
+                                        name="codigo_empleado" placeholder="Codigo de Empleado" required maxlength="30">
                                 </div>
                                 
                                 <div class="form-group col-md-6">
@@ -67,19 +67,19 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <div class="form-group col-md-6">
                                     <label >Nombre</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="nombre" placeholder="Nombre" required>
+                                        name="nombre" placeholder="Nombre" required maxlength="30">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label >Primer Apellido</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="primer_apellido" placeholder="Primer Apellido" required>
+                                        name="primer_apellido" placeholder="Primer Apellido" required maxlength="30">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Segundo Apellido</label><label style="color:red">*</label>
+                                    <label >Segundo Apellido</label><label style="color:red"></label>
                                     <input type="text" class="form-control"
-                                        name="segundo_apellido" placeholder="Segundo Apellido">
+                                        name="segundo_apellido" placeholder="Segundo Apellido" maxlength="30">
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -91,7 +91,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <div class="form-group col-md-6">
                                     <label >Numero de Seguro Social</label><label style="color:red">*</label>
                                     <input type="number" class="form-control"
-                                        name="nss" placeholder="Numero de Seguro Social" required maxlength="11">
+                                        name="nss" placeholder="Numero de Seguro Social" required maxlength="11" pattern="[0-9]{1,11}>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -101,13 +101,13 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Fecha de Baja</label><label style="color:red">*</label>
+                                    <label >Fecha de Baja</label><label style="color:red"></label>
                                     <input type="date" class="form-control"
                                         name="fecha_baja" >
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Status</label><label style="color:red">*</label><br>
+                                    <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
                                         name="id_cat_estatus" required>
                                         <option value="" selected>Seleccione</option>
@@ -127,7 +127,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Movimiento</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" 
-                                        name="id_tbl_movimientos">
+                                        name="id_tbl_movimientos" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = listadoMovimientoAll();

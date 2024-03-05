@@ -55,13 +55,13 @@
                             <div class="form-row">
                                 
                             <div class="form-group col-md-6">
-                                    <label >Numero de Plaza</label><label style="color:red">*</label>
+                            <label >Num. de Plaza</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="num_plaza" value="<?php echo $rowe['num_plaza']?>" required>
+                                        name="num_plaza" value="<?php echo $rowe['num_plaza']?>" required maxlength="30" pattern="[0-9]{1,31}>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Catalogo de Plazas</label><label style="color:red">*</label><br>
+                                    <label for="inputCity">Tipo de Plazas</label><label style="color:red">*</label><br>
                                     <select class="selectpicker" aria-label="Default select example"
                                         name="id_cat_plazas" required>
                                         <?php
@@ -82,7 +82,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Tipo de Contratacion</label><label style="color:red">*</label><br>
+                                    <label for="inputCity">Tipo de Contrataci&oacuten</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
                                         name="id_cat_tipo_contratacion" required>
                                         <?php
@@ -103,7 +103,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Situacion Plaza</label><label style="color:red">*</label><br>
+                                    <label for="inputCity">Situaci&oacuten Plaza</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
                                         name="id_cat_situacion_plaza" required>
                                         <?php
@@ -166,7 +166,7 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Zona tabulares</label><label style="color:red">*</label><br>
+                                    <label for="inputCity">Zona Tabulares</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
                                         name="id_cat_zonas_tabuladores" required>
                                         <?php
@@ -232,27 +232,27 @@
 
 
                                 <div class="form-group col-md-6">
-                                    <label >Zona pagadora</label><label style="color:red">*</label>
+                                    <label >Zona Pagadora</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         name="zona_pagadora" value="<?php echo $rowe['zona_pagadora']?>"  required>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Fecha Inicio Contrato</label><label style="color:red">*</label>
+                                    <label >Fecha Inicio de Contrato</label><label style="color:red">*</label>
                                     <input type="date" class="form-control"
-                                        name="fecha_ini_contrato" placeholder="Numero de Plaza" value="<?php echo $rowe['fecha_ini_contrato']?>" required>
+                                        name="fecha_ini_contrato" value="<?php echo $rowe['fecha_ini_contrato']?>" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Fecha Modificacion</label><label style="color:red">*</label>
+                                    <label >Fecha Modificacion</label><label style="color:red"></label>
                                     <input type="date" class="form-control"
-                                        name="fecha_modificacion" placeholder="Numero de Plaza" value="<?php echo $rowe['fecha_modificacion']?>">
+                                        name="fecha_modificacion"  value="<?php echo $rowe['fecha_modificacion']?>">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Fecha Fin</label><label style="color:red">*</label>
+                                    <label >Fecha Fin</label><label style="color:red"></label>
                                     <input type="date" class="form-control"
-                                        name="fecha_fin_contrato" placeholder="Numero de Plaza" value="<?php echo $rowe['fecha_fin_contrato']?>">
+                                        name="fecha_fin_contrato"  value="<?php echo $rowe['fecha_fin_contrato']?>">
                                 </div>
                                 
                                

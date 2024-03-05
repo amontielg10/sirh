@@ -48,7 +48,7 @@ $rowe = listadoRetardoPk($id_ctrl_retardo);
 
                 <div class="alert alert-warning" role="alert">
                     <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                    El formato de hora solicitado es de 24 horas.
+                    &nbsp;&nbsp;El formato de hora solicitado es de 24 horas.
                 </div>
 
 
@@ -69,12 +69,12 @@ $rowe = listadoRetardoPk($id_ctrl_retardo);
 
                                 <div class="form-group col-md-6">
                                     <label>Hora Entrada</label><label style="color:red">*</label>
-                                    <input type="time" class="form-control" name="hora_entrada" required value="<?php echo $rowe['hora_entrada']?>">
+                                    <input type="time" class="form-control" name="hora_entrada" required value="<?php echo horaAdd($rowe['hora_entrada'],$rowe['minuto_entrada'])?>">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label>Hora de Salida</label><label style="color:red">*</label>
-                                    <input type="time" class="form-control" name="hora_salida" required value="<?php echo $rowe['hora_salida']?>">
+                                    <label>Hora de Salida</label><label style="color:red"></label>
+                                    <input type="time" class="form-control" name="hora_salida" value="<?php echo horaAdd($rowe['hora_salida'], $rowe['minuto_salida'])?>">
                                 </div>
                             </div>
 

@@ -50,7 +50,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
                 <div class="alert alert-warning" role="alert">
                     <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                    &nbsp;&nbsp;Solo una cuenta clabe puede estar Activa.
+                    &nbsp;&nbsp;Solo una cuenta clabe puede estar activa.
                 </div>
 
 
@@ -67,7 +67,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <div class="form-group col-md-6">
                                     <label>Cuenta Clabe</label><label style="color:red">*</label>
                                     <input type="text" class="form-control" name="clabe" placeholder="Cuenta clabe"
-                                        required>
+                                        required maxlength="25">
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -109,7 +109,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Formato de Pago</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_formato_pago" required>
+                                        name="id_cat_formato_pago" id="id_cat_formato_pago" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = listadoFormatoPago();
@@ -156,6 +156,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
      * El script permite validar que solo exista un status activo
      */
     function validateE() {
+        let id_cat_formato_pago = document.getElementById("id_cat_formato_pago").value;
         let id_cat_estatus = document.getElementById("id_cat_estatus").value;
         let arraJS = JSON.parse(document.getElementById('list_cat_estatus').value);
         bool = false;
@@ -164,6 +165,8 @@ $id_tbl_control_plazas = $_GET['D-F3'];
         } else {
             bool = true;
         }
+        if ()
+
         return bool;
     }
 </script>
