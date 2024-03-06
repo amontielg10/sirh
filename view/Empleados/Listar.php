@@ -208,7 +208,7 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="<?php echo '../Plazas/Listar.php' ?>">Regresar</a>
                                 </div>
-                            <?
+                            <?php
                         }
                     }
                     ?>
@@ -226,7 +226,7 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
     function messageInfo() {
         let messageInfo = document.getElementById("messageInfo").value;
         if (messageInfo == 1) {
-            messajeError('No es posible eliminar un empleado que cuente con num. Telefonico, Jefe inmediato, Medios de contacto ...');
+            messajeError('No es posible eliminar un empleado que cuente num. Telefonico, Jefe inmediato, Medios de contacto ...');
         }
     }
 </script>

@@ -52,7 +52,7 @@
                 <h5 class="card-header">Ingresa los siguientes campos</h5>
                     <div class="card-body">
                         <form method="POST" action="../../php/EmpleadosC/Editar.php">
-                            <input type="hidden" name="id_tbl_control_plazas" value="<? echo $id_tbl_control_plazas?>">
+                            <input type="hidden" name="id_tbl_control_plazas" value="<?php echo $id_tbl_control_plazas?>">
                             <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados?>">
                             
                             <div class="form-row">
