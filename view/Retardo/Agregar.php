@@ -42,11 +42,6 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                     </div>
                 </div>
 
-                <div class="alert alert-warning" role="alert">
-                    <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                    &nbsp;&nbsp;El formato de hora solicitado es de 24 horas.
-                </div>
-
                 <div class="card">
                     <h5 class="card-header">Ingresa los siguientes campos</h5>
                     <div class="card-body">
@@ -95,62 +90,6 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
 </body>
 
-<script>
-
-    function validate() {
-        console.log(validarNick());
-        if (validar() && validarNick()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    function validarNick() {
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        let bool = false;
-        if (validateNick(nick.value)) {
-            Swal.fire({
-                title: "¡El campo Nick ya existe!",
-                text: "Verifique que las contrasenas seas iguales",
-                icon: "error"
-            });
-        } else {
-            bool = true;
-        }
-        return bool;
-    }
-
-    //Se obtienen los datos asi como los del mensaje
-    function validarCaracteresNick() {
-        let rnick = document.getElementById("rnickA"); //Se obtiene el valor de msj nick
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        nick.value = nick.value.toUpperCase(); //La funcion convierte a mayusculas el campo nick
-        if (mensajeDD(nick.value, 5, 10) === "") {
-            if (validateNick(nick.value)) {
-                rnick.value = "*El campo Nick ya existe";
-            } else {
-                rnick.value = "";
-            }
-        } else {
-            rnick.value = mensajeDD(nick.value, 5, 10);
-        }
-    }
-
-    function validateNick(nick) {
-        let arrayJS = JSON.parse(document.getElementById('row').value);
-        let bool = false;
-        for (let i = 0; i < arrayJS.length; i++) {
-            if (arrayJS[i] == nick) {
-                bool = true;
-                i++;
-            }
-        }
-        return bool;
-    }
-
-
-</script>
 <?php include("libFooter.php"); ?>
 
 </html>

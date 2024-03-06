@@ -18,9 +18,16 @@ function listadoRetardoPk($id)
 }
 
 function horaAdd($hora, $minuto){
-     $concat = $hora.':'.$minuto;
+     $concat = addCero($hora).':'.addCero($minuto);
      if ($hora == null && $minuto == null){
           $concat = "";
      }
      return $concat;
+}
+
+function addCero($time){
+     if ($time <= 9){
+          $time = '0'. $time;
+     } 
+     return $time;
 }

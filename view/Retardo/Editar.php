@@ -46,12 +46,6 @@ $rowe = listadoRetardoPk($id_ctrl_retardo);
                     </div>
                 </div>
 
-                <div class="alert alert-warning" role="alert">
-                    <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                    &nbsp;&nbsp;El formato de hora solicitado es de 24 horas.
-                </div>
-
-
                 <div class="card">
                     <h5 class="card-header">Ingresa los siguientes campos</h5>
                     <div class="card-body">
