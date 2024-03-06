@@ -20,7 +20,7 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
 
 </head>
 
-<body>
+<body onload="messageInfo();">
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
     <?php include("../../php/CatPlazasC/listar.php"); ?>
@@ -117,13 +117,35 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                         href="<?php echo "../DatosEmpleado/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Mas
                                         Datos</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item"
-                                        href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">
-                                        <div style="color:red;">Eliminar</div>
-                                        </p>
-                                    </a>
+                                    <a class="dropdown-item" data-toggle="modal"
+                                        data-target="<?php echo '#modal-' . $obj->id_tbl_empleados ?>">Eliminar</a>
                                 </div>
                             </div>
+
+                            <!-- MODAL ELIMINAR -->
+                            <div class="modal fade" id="<?php echo 'modal-' . $obj->id_tbl_empleados ?>" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea Continuar?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            La accion de eliminar no se puede rehacer.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <a class="btn btn-danger"
+                                                href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Eliminar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- MODAL ELIMINAR -->
+
 
                             <table class="table table-striped" id="t-usuarios">
                                 <thead>
@@ -197,49 +219,17 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
 
             </div>
         </div>
-
+        <input type="hidden" id="messageInfo" value="<?php echo base64_decode($_GET['MS3']); ?>">
 </body>
 
-
 <script>
-    // window.onload = message();
-
-    function message() {
-        return swal({
-            title: 'Confirmation',
-            html: ' Are you sure? ',
-            type: 'warning',
-            showCancelButton: true,
-            closeOnConfirm: true,
-            closeOnCancel: true
-        }, function (isConfirm) {
-            if (isConfirm) {
-                return true;
-            } else {
-                return false;
-            }
-        });
-    }
-
-
-
-    /*
-        window.onload = message();
-    
-        let messageTxt = "No es posible eliminar un empleado que cuente con..";
-        message(messageTxt);
-    
-        function message(message) {
-            Swal.fire({
-                icon: "error",
-                title: "Algo Fallo",
-                text: message
-            });
+    function messageInfo() {
+        let messageInfo = document.getElementById("messageInfo").value;
+        if (messageInfo == 1) {
+            messajeError('No es posible eliminar un empleado que cuente num. Telefonico, Jefe inmediato, Medios de contacto...');
         }
-    */
-
+    }
 </script>
-
 
 <script>
     $(document).ready(function () {

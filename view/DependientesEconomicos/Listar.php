@@ -20,7 +20,7 @@
 
 </head>
 
-<body>
+<body onload="messageInfo();">
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
     <?php include ('../../php/DependientesEconomicosC/Listar.php');?>
@@ -116,13 +116,12 @@
                                                         <a class="dropdown-item"
                                                         href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_tbl_dependientes_economicos).'&D-F3='.$id_tbl_control_plazas?>">Modificar</a>
                                                     <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item"
-                                                        href="<?php echo "../../php/DependientesEconomicosC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_tbl_dependientes_economicos).'&D-F3='.$id_tbl_control_plazas?>">Eliminar</a>
+                                                    <a class="dropdown-item" data-toggle="modal" data-target="<?php echo '#modal-'.$obj->id_tbl_dependientes_economicos?>">Eliminar</a>
                                                 </div>
                                             </div>
 
                                             <!-- MODAL ELIMINAR -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                            <div class="modal fade" id="<?php echo 'modal-'.$obj->id_tbl_dependientes_economicos?>" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
@@ -140,7 +139,7 @@
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Cancelar</button>
                                                             <a class="btn btn-danger"
-                                                                href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_ctrl_jefe_inmediato) ?>">Eliminar1</a>
+                                                            href="<?php echo "../../php/DependientesEconomicosC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_tbl_dependientes_economicos).'&D-F3='.$id_tbl_control_plazas?>">Eliminar</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -177,8 +176,17 @@
             </div>
         </div>
 
-
+        <input type="hidden" id="messageInfo" value="<?php echo base64_decode($_GET['MS3']);?>">
 </body>
+
+<script>
+    function messageInfo(){
+        let messageInfo = document.getElementById("messageInfo").value;
+        if (messageInfo == 1){
+            messajeError('No fue posible eliminar el elemento.');
+        }
+    }
+</script>
 
 <script>
     $(document).ready(function () {
