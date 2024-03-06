@@ -11,8 +11,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <title>@Titulo</title>
+    <link rel="icon" type="image/png" href="assets/images/favico.png">
+    <title>SIHR</title>
     <!-- Custom CSS -->
     <link href="./dist/css/style.min.css" rel="stylesheet">
     <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
@@ -21,10 +21,15 @@
     <!-- Custom CSS -->
     <link href="./dist/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/extra-libs/css/css.css">
+    <style>
+        body{
+            background-color: #DBF9FC;
+        }
+    </style>
 
 </head>
 
-<body>
+<body style="B">
     <div class="main-wrapper">
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
@@ -41,13 +46,12 @@
         <!-- ============================================================== -->
         <!-- Login box.scss -->
         <!-- ============================================================== -->
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url('assets/background.jfif') no-repeat center center;">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:#fbf4e8;">
             <div class="auth-box">
                 <div id="loginform">
                     <div class="logo">
-                        <span class="db"><img src="assets/logo.png" alt="logo" width="25%" /></span>
-                        <h3>@Titulo</h3>
-                        <h5 class="font-medium m-b-20">Inciar sesi&oacute;n</h5>
+                        <span class="db"><img src="assets/logo/imssLogo.png" alt="logo" width="80%" /></span>
+                        <h2 style="color: #cb9f52;">SIRH</h2>
                     </div>
                     <!-- Form -->
                     <div class="row">
@@ -67,7 +71,7 @@
                                 </div>
                                 <div class="form-group text-center">
                                     <div class="col-xs-12 p-b-20">
-                                        <button class="btn btn-block btn-lg" style="background-color: #2c94ea; color: white;" type="submit" id="inicio-sesion">Iniciar sesi&oacute;n</button>
+                                        <button class="btn btn-block btn-lg" style="background-color: #cb9f52; color: white;" type="submit" id="inicio-sesion">Ingresar</button>
                                     </div>
                                 </div>
                             </form>
@@ -77,6 +81,7 @@
             </div>
         </div>
 
+        
     </div>
     <!-- ============================================================== -->
     <!-- All Required js -->
@@ -124,6 +129,10 @@
             });
         }
     </script>
+
+    
 </body>
+
+
 
 </html>

@@ -6,6 +6,12 @@
 <head>
     <link rel="icon" type="image/png" href="../assets/images/favicon.png">
     <script src="../../js/usuario/usuario.js"></script>
+
+    <style>
+        a.dropdown-item:hover { background-color: #fbf4e8;;}
+        
+    </style>
+    <?php  include("libHeader.php"); ?>
 </head>
 
 <body>
@@ -16,7 +22,7 @@
 
     <div id="main-wrapper">
 
-        <div class="page-wrapper" style="background-color: #f6f6f6;">
+        <div class="page-wrapper">
 
             <div class="page-breadcrumb">
                 <div class="row">
@@ -31,7 +37,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="index.php">Home</a>
+                                        <a href="index.php" style="color:#cb9f52;">Home</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Control Usuarios</li>
                                 </ol>
@@ -42,7 +48,6 @@
             </div>
 
             <div class="container-fluid">
-                <a class="btn my-3 btn-info" href="<?php echo "usuarioAgregar.php" ?>">Agregar Usuario</a>
                 <table class="table table-striped" id="t-usuarios">
                     <thead>
                         <tr style="background-color: #5c5c5c;">
@@ -73,11 +78,21 @@
                                             <?php echo rolFunction($obj->id_rol) ?>
                                         </td>
                                         <td>
-                                            <a class="btn" style="background-color: #5c5c5c; color: white;"
-                                                href="<?php echo "usuarioEditar.php?id_user=" . base64_encode($obj->id_user) ?>">Modificar</a>
 
-                                                <button class="btn btn-danger"
-                                                                onclick="eliminarUsuario(<?php echo $obj->id_user ?>)">Eliminar</button>
+                                        <!-- Button more acctions -->
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-light" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false" style="background-color: #D4C15C; border:none; outline:none; color: white">
+                                                    Acciones
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="<?php echo "usuarioAgregar.php" ?>">Agregar</a>
+                                                    <a class="dropdown-item" href="<?php echo "usuarioEditar.php?id_user=" . base64_encode($obj->id_user) ?>">Modificar</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item"
+                                                        href="<?php echo "e.php?id_user=" . base64_encode($obj->id_user) ?>">Eliminar</a>
+                                                </div>
+                                            </div>
 
                                             <!-- MODAL ELIMINAR -->
                                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -85,7 +100,8 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea eliminar el usuario?</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea eliminar el
+                                                                usuario?</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
@@ -113,20 +129,16 @@
                         }
                         ?>
 
-
-
-
-
                         <?php include('../../ajuste-menu.php') ?>
                         <?php include('../../footer-librerias.php') ?>
 
+            </div>
+        </div>
+
+       <?php include ("../footer.php"); ?>
+
+
 </body>
-
-<script>
-    //Funciones para modificar en js
-
-
-</script>
 
 <script>
     $(document).ready(function () {
@@ -153,43 +165,17 @@
             },
             responsive: "true",
             dom: 'Bfrtilp',
-            buttons: [{
-                extend: 'excelHtml5',
-                text: '<i class="fas fa-file-excel"></i> ',
-                titleAttr: 'Exportar a Excel',
-                className: 'btn btn-success',
-                exportOptions: {
-                    columns: ':not(.evita)',
-                },
-                filename: 'Usuarios'
-            },
-            {
-                extend: 'pdfHtml5',
-                text: '<i class="fas fa-file-pdf"></i> ',
-                titleAttr: 'Exportar a PDF',
-                className: 'btn btn-danger',
-                orientation: 'landscape',
-                exportOptions: {
-                    columns: ':not(.evita)',
-                },
-                filename: 'Requisiciones_ 2023:12:18:12:05'
-            },
-            {
-                extend: 'print',
-                text: '<i class="fa fa-print"></i> ',
-                titleAttr: 'Imprimir',
-                className: 'btn btn-info',
-                title: 'Control de Usuarios',
-                exportOptions: {
-                    columns: [0, 1, 2, 3],
-                },
-                filename: 'Requisiciones_ 2023:12:18:12:05'
-            },
-            ]
+            buttons: [
+
+            ],
         }
 
         );
     });
+
+
 </script>
+
+<?php  include("libFooter.php"); ?>
 
 </html>

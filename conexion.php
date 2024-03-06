@@ -2,7 +2,7 @@
 
 $password = "pgs2023";
 $username = "postgres";
-$dbname = "infotec_db";
+$dbname = "DSINFOTEC";
 $host = "localhost";
 $port = "5432";
 
