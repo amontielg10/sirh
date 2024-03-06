@@ -50,7 +50,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                         <form method="POST" action="../../php/EmpleadosC/Agregar.php">
                             <div class="form-row">
                                 
-                                <input type="hidden" name="id_tbl_control_plazas" value="<? echo $id_tbl_control_plazas?>">
+                                <input type="hidden" name="id_tbl_control_plazas" value="<?php echo $id_tbl_control_plazas?>">
 
                                 <div class="form-group col-md-6">
                                     <label >C&oacutedigo de Empleado</label><label style="color:red">*</label>
