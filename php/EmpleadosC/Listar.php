@@ -10,6 +10,12 @@ function listadoEmpleados($id)
      return $listado;
 }
 
+function listadoLikeEmp($like)
+{
+     $listado = pg_query("SELECT * FROM tbl_empleados WHERE codigo_empleado LIKE '%$like%'");
+     return $listado;
+}
+
 //La funcion retorna los atributos dependiendo del id que se ingrese como parametro
 function catEmpleadosId($id)
 {

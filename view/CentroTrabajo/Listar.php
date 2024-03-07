@@ -16,9 +16,9 @@
 <body>
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
-    <?php include("../../php/CentroTrabajoC/Listar.php") //Se incluye la libreria para generar su tabla ?>
-    <?php include("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region ?>
-    <?php include("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus ?>
+    <?php include("../../php/CentroTrabajoC/Listar.php") //Se incluye la libreria para generar su tabla                 ?>
+    <?php include("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region                 ?>
+    <?php include("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus                 ?>
 
 
     <div id="main-wrapper">
@@ -53,14 +53,13 @@
                 <p>La sig. tabla muestra informacion de centro de trabajo.</p>
                 <div class=" btn-group">
                     <button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"
-                        style="background-color: white; border:none; outline:none; color: white;">
+                        aria-expanded="false" style="background-color: white; border:none; outline:none; color: white;">
                         <i class="fa fa-cog" style="font-size: 1.4rem; color:#9f2241;"></i>
                     </button>
 
                     <div class="dropdown-menu">
-                        <a class="dropdown-item"
-                            href="<?php echo 'Agregar.php'?>">Agregar</a>
+                        <a class="dropdown-item" href="<?php echo 'Agregar.php' ?>">Agregar</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#modal-serarch">Buscar</a>
                     </div>
                 </div>
                 <table class="table table-striped" id="t-usuarios">
@@ -93,7 +92,7 @@
 
                                             <!-- Button more acctions -->
                                             <div class=" btn-group">
-                                            <button type="button" class="btn btn-light" data-toggle="dropdown"
+                                                <button type="button" class="btn btn-light" data-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false"
                                                     style="background-color: transparent; border:none; outline:none; color: white;">
                                                     <i class="fa fa-cog" style="font-size: 1.4rem; color:#cb9f52;"></i>
@@ -102,9 +101,11 @@
                                                     <a class="dropdown-item"
                                                         href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Modificar</a>
                                                     <a class="dropdown-item"
-                                                        href="<?php echo "../RegistroPatronal/Listar.php?D-F=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Registro Patronal</a>
-                                                        <a class="dropdown-item"
-                                                        href="<?php echo "../ZonasPago/Listar.php?D-F=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Zonas de Pago</a>
+                                                        href="<?php echo "../RegistroPatronal/Listar.php?D-F=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Registro
+                                                        Patronal</a>
+                                                    <a class="dropdown-item"
+                                                        href="<?php echo "../ZonasPago/Listar.php?D-F=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Zonas
+                                                        de Pago</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item"
                                                         href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Eliminar</a>
@@ -184,16 +185,98 @@
                                 echo "<p>Sin Resultados</p>";
                         }
                         ?>
-
-                        <?php include('../../ajuste-menu.php') ?>
-                        <?php include('../../footer-librerias.php') ?>
+                    </tbody>
+                    <?php include('../../ajuste-menu.php') ?>
+                    <?php include('../../footer-librerias.php') ?>
 
             </div>
         </div>
 
 
+        <!-- Modal -->
+        <div style="display: none" class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Emil</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>16</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Modal AGREGAR PRODUCTOS-->
+        <div class="modal fade bd-example-modal-lg" id="modal-serarch" tabindex="-1" role="dialog"
+            aria-labelledby="newModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Buscar Productos</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+                        <label>Campo de busqueda</label><label style="color:red">*</label>
+                        <input type="text" class="form-control" onkeyup="search();" id="idSearch" name="curp"
+                            placeholder="CURP/RFC/">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="table-search">
+
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal AGREGAR-->
+
+
+
+
 
 </body>
+
+<script>
+    function search() {
+        let idSearch = document.getElementById("idSearch").value;
+        console.log(idSearch);
+
+        $.ajax({
+            type: 'POST',
+            url: '../../php/EmpleadosC/busqueda.php',
+            data: { idSearch: idSearch },
+            success: function (data) {
+                $('#table-search').html(data);
+            }
+        });
+    }
+</script>
 
 <script>
     $(document).ready(function () {
