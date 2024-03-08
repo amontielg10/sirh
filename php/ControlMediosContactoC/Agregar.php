@@ -3,7 +3,7 @@
 include('../../validar_sesion.php');
 include ("../../conexion.php");//Se incluye el metodo de conexion para las consultas
 
-$id_tbl_centro_trabajo = ($_GET['RP']);
+$id_tbl_centro_trabajo = $_POST['id_tbl_centro_trabajo'];
 $id_tbl_empleados = $_POST['id_tbl_empleados']; 
 $id_tbl_control_plazas = $_POST['id_tbl_control_plazas'];
 $correo_electronico = $_POST['correo_electronico']; 

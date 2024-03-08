@@ -13,12 +13,12 @@
 
 </head>
 
-<body>
+<body onload="messageInfo();">
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
-    <?php include("../../php/CentroTrabajoC/Listar.php") //Se incluye la libreria para generar su tabla                   ?>
-    <?php include("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region                   ?>
-    <?php include("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus                   ?>
+    <?php include("../../php/CentroTrabajoC/Listar.php") //Se incluye la libreria para generar su tabla                    ?>
+    <?php include("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region                    ?>
+    <?php include("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus                    ?>
 
 
     <div id="main-wrapper">
@@ -261,8 +261,17 @@
 
 
 
-
+        <input type="hidden" id="messageInfo" value="<?php echo base64_decode($_GET['MS3']); ?>">
 </body>
+
+<script>
+    function messageInfo(){
+        let messageInfo = document.getElementById("messageInfo").value;
+        if (messageInfo == 1){
+            messajeError('No es posible eliminar un centro de trabajo con tenga plazas.');
+        }
+    }
+</script>
 
 <script>
     function search() {

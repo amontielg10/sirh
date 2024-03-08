@@ -2,6 +2,7 @@
 include('../../validar_sesion.php');
 include("../../conexion.php"); //Se incluye la conexion
 
+$id_tbl_centro_trabajo = $_POST['id_tbl_centro_trabajo'];
 $id_tbl_control_plazas = $_POST['id_tbl_control_plazas'];
 $id_tbl_empleados = $_POST['id_tbl_empleados']; 
 $id_tbl_datos_empleado = $_POST['id_tbl_datos_empleado']; 
@@ -26,7 +27,7 @@ $arrayUpdate = array(
 $pgs_QRY = pg_update($connectionDBsPro, 'tbl_datos_empleado', $arrayUpdate, $arrayCondition);
 
 if ($pgs_QRY) {
-    header("Location: ../../view/DatosEmpleado/Listar.php?D-F=".$crypt.'&D-F3='.$id_tbl_control_plazas); //Regreso a la tabla
+    header("Location: ../../view/DatosEmpleado/Listar.php?D-F=".$crypt.'&D-F3='.$id_tbl_control_plazas.'&RP='.$id_tbl_centro_trabajo); //Regreso a la tabla
 } 
 } catch (\Throwable $th) {
     header("Location: error.php".$th); //Muestra error

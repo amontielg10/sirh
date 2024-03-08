@@ -14,7 +14,10 @@ $pgs_QRY = pg_delete(
 );
 if ($pgs_QRY ) {
     header("Location: ../../view/CentroTrabajo/Listar.php"); //Regreso a la tabla
-} 
+} else{
+    $messageError = base64_encode($messageError = 1);
+    header("Location: ../../view/CentroTrabajo/Listar.php?MS3=".$messageError); //Regreso a la tabla
+}
 } catch (\Throwable $th) {
     header("Location: error.php".$th); //Muestra error
 }
