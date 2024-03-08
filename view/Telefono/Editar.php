@@ -3,6 +3,7 @@ include("../../php/ControlTelefonoC/Listar.php");
 $id_tbl_empleados = base64_decode($_GET['D-F']);
 $id_ctrl_telefono = base64_decode($_GET['D-F2']);
 $id_tbl_control_plazas = $_GET['D-F3'];
+$id_tbl_centro_trabajo = ($_GET['RP']);     
 $rowe = listadoTelefonoPk($id_ctrl_telefono);
 
 ?>
@@ -64,6 +65,7 @@ $rowe = listadoTelefonoPk($id_ctrl_telefono);
 
                             <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados ?>">
                             <input type="hidden" name="id_ctrl_telefono" id="id_ctrl_telefono" value="<?php echo $id_ctrl_telefono ?>">
+                            <input type="hidden" id="id_tbl_centro_trabajo" name="id_tbl_centro_trabajo" value="<?php echo $id_tbl_centro_trabajo?>">
                             <input type="hidden" name="id_tbl_control_plazas"
                                 value="<?php echo $id_tbl_control_plazas ?>">
 
@@ -100,7 +102,7 @@ $rowe = listadoTelefonoPk($id_ctrl_telefono);
 
                             <a class="btn btn-light"
                                 style="background-color: #cb9f52; border:none; outline:none; color: white;"
-                                href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados) . '&D-F3=' . $id_tbl_control_plazas ?>">Cancelar</a>
+                                href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados) . '&D-F3=' . $id_tbl_control_plazas .'&RP='.$id_tbl_centro_trabajo?>">Cancelar</a>
                             <button type="submit" class="btn btn-light" onclick="return validateE();"
                                 style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 

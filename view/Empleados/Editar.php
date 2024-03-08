@@ -1,5 +1,6 @@
 <?php
     include("../../php/EmpleadosC/Listar.php");
+    $id_tbl_centro_trabajo = ($_GET['RP']);
     $id_tbl_control_plazas = $_GET['D-F3'];
     $id_tbl_empleados = base64_decode($_GET['D-F']); //Se obtiene el id
     $rowe = catEmpleadosId($id_tbl_empleados); //Se obtiene el array con la info del cliente
@@ -54,6 +55,7 @@
                         <form method="POST" action="../../php/EmpleadosC/Editar.php">
                             <input type="hidden" name="id_tbl_control_plazas" value="<?php echo $id_tbl_control_plazas?>">
                             <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados?>">
+                            <input type="hidden" id="id_tbl_centro_trabajo" name="id_tbl_centro_trabajo" value="<?php echo $id_tbl_centro_trabajo?>">
                             
                             <div class="form-row">
                                  <div class="form-group col-md-6">
@@ -154,7 +156,7 @@
                             </div>
                             
                             <a class="btn btn-light" style="background-color: #cb9f52; border:none; outline:none; color: white;"
-                            href="<?php echo 'Listar.php?D-F3='.$id_tbl_control_plazas?>">Cancelar</a>
+                            href="<?php echo 'Listar.php?D-F3='.$id_tbl_control_plazas.'&RP='.$id_tbl_centro_trabajo?>">Cancelar</a>
                             <button type="submit" class="btn btn-light"
                             style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 

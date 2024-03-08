@@ -1,4 +1,6 @@
-<?php include("../../php/RegimenFiscalC/listar.php") ?>
+<?php include("../../php/RegimenFiscalC/listar.php");
+$id_tbl_centro_trabajo = ($_GET['RP']);
+ ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -47,6 +49,8 @@
                         <form method="POST" action="../../php/PlazasC/Agregar.php">
                             <div class="form-row">
                                 
+                                <input type="hidden" name="id_tbl_centro_trabajo" value="<?php echo $id_tbl_centro_trabajo?>">
+
                                 <div class="form-group col-md-6">
                                     <label >Num. de Plaza</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
@@ -187,26 +191,6 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Centro de Trabajo</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
-                                        name="id_tbl_centro_trabajo" required>
-                                        <option value="" selected>Seleccione</option>
-                                        <?php
-                                        $listado = listadoCentroTrabajo();
-                                        if ($listado) {
-                                            if (pg_num_rows($listado) > 0) {
-                                                while ($row = pg_fetch_object($listado)) {
-                                                    if ($rowe['id_tbl_centro_trabajo'] != $row->id_tbl_centro_trabajo){
-                                                    echo '<option value="' . $row->id_tbl_centro_trabajo . '">' . listadoCentroTrabajoCv($row->id_tbl_centro_trabajo) . '</option>';
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-6">
                                     <label >Zona Pagadora</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         name="zona_pagadora" placeholder="Zona Pagadora" required>
@@ -234,7 +218,7 @@
                             
 
                             <a class="btn btn-secondary" style="background-color: #cb9f52; border:none; outline:none; color: white;"
-                                href="Listar.php">Cancelar</a>
+                                href="<?php echo 'Listar.php?RP='.$id_tbl_centro_trabajo?>">Cancelar</a>
                             <button type="submit" class="btn btn-light"
                             style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 

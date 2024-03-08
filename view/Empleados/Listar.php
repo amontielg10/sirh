@@ -2,6 +2,7 @@
 include("../../php/EmpleadosC/Listar.php");
 include("../../php/PlazasC/Listar.php");
 $id_tbl_control_plazas = base64_decode(($_GET['D-F3']));
+$id_tbl_centro_trabajo = ($_GET['RP']);
 $rowe = catControlPlazasPk($id_tbl_control_plazas);
 ?>
 
@@ -87,34 +88,34 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                             while ($obj = pg_fetch_object($listado)) { ?>
 
                                 <div class="dropdown-menu" style="height: 1200%; overflow: auto;">
-                                    <a class="dropdown-item" href="<?php echo '../Plazas/Listar.php' ?>">Regresar</a>
+                                    <a class="dropdown-item" href="<?php echo '../Plazas/Listar.php?RP='.$id_tbl_centro_trabajo ?>">Regresar</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item"
-                                        href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Modificar</a>
+                                        href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) .'&RP='.$id_tbl_centro_trabajo?>">Modificar</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../Telefono/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">N&uacutem.
+                                        href="<?php echo "../Telefono/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">N&uacutem.
                                         Telefonico</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../JefeInmediato/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Jefe
+                                        href="<?php echo "../JefeInmediato/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Jefe
                                         Inmediato</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../MediosContacto/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Medios
+                                        href="<?php echo "../MediosContacto/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Medios
                                         de Contacto</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../CuentaClabe/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Cuenta
+                                        href="<?php echo "../CuentaClabe/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo?>">Cuenta
                                         Clabe</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../ContactoEmergencia/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Contacto
+                                        href="<?php echo "../ContactoEmergencia/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Contacto
                                         Emergencia</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../DependientesEconomicos/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Dependientes
+                                        href="<?php echo "../DependientesEconomicos/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Dependientes
                                         Economicos</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../Jornada/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Jornada</a>
+                                        href="<?php echo "../Jornada/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Jornada</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../Retardo/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Retardos</a>
+                                        href="<?php echo "../Retardo/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Retardos</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../DatosEmpleado/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Mas
+                                        href="<?php echo "../DatosEmpleado/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Mas
                                         Datos</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" data-toggle="modal"
@@ -139,7 +140,7 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                             <a class="btn btn-danger"
-                                                href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Eliminar</a>
+                                                href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Eliminar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -204,9 +205,9 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                         } else { ?>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item"
-                                        href="<?php echo 'Agregar.php?D-F3=' . base64_encode($id_tbl_control_plazas) ?>">Agregar</a>
+                                        href="<?php echo 'Agregar.php?D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Agregar</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="<?php echo '../Plazas/Listar.php' ?>">Regresar</a>
+                                    <a class="dropdown-item" href="<?php echo '../Plazas/Listar.php?RP='.$id_tbl_centro_trabajo ?>">Regresar</a>
                                 </div>
                             <?php
                         }

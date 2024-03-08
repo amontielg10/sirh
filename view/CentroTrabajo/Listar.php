@@ -16,9 +16,9 @@
 <body>
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
-    <?php include("../../php/CentroTrabajoC/Listar.php") //Se incluye la libreria para generar su tabla                 ?>
-    <?php include("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region                 ?>
-    <?php include("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus                 ?>
+    <?php include("../../php/CentroTrabajoC/Listar.php") //Se incluye la libreria para generar su tabla                   ?>
+    <?php include("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region                   ?>
+    <?php include("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus                   ?>
 
 
     <div id="main-wrapper">
@@ -100,6 +100,8 @@
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item"
                                                         href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Modificar</a>
+                                                    <a class="dropdown-item"
+                                                        href="<?php echo "../Plazas/Listar.php?RP=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Plazas</a>
                                                     <a class="dropdown-item"
                                                         href="<?php echo "../RegistroPatronal/Listar.php?D-F=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Registro
                                                         Patronal</a>
@@ -207,20 +209,17 @@
                     <table>
                         <thead>
                             <tr>
-                                <td>Emil</td>
+                                <td></td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>16</td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -233,14 +232,15 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3>Buscar Productos</h3>
+                        <h3>Buscar empleado</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
 
                     <div class="modal-body">
-                        <label>Campo de busqueda</label><label style="color:red">*</label>
+                        <label>Ingresa CURP / RFC / C&oacutedigo de empleado</label><label style="color:red">*</label>
                         <input type="text" class="form-control" onkeyup="search();" id="idSearch" name="curp"
-                            placeholder="CURP/RFC/">
+                            placeholder="CURP / RFC / Codigo de Empleado">
+                        <br>
                         <div class="table-responsive">
                             <table class="table table-striped" id="table-search">
 
@@ -249,7 +249,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-light"
+                            style="background-color: #cb9f52; border:none; outline:none; color: white;"
+                            data-dismiss="modal">Cerrar</button>
                     </div>
 
                 </div><!-- /.modal-content -->
@@ -265,16 +267,19 @@
 <script>
     function search() {
         let idSearch = document.getElementById("idSearch").value;
-        console.log(idSearch);
-
-        $.ajax({
-            type: 'POST',
-            url: '../../php/EmpleadosC/busqueda.php',
-            data: { idSearch: idSearch },
-            success: function (data) {
-                $('#table-search').html(data);
-            }
-        });
+        var numberSearch = document.getElementById("idSearch").value.length;
+        if (numberSearch >= 10) {
+            $.ajax({
+                type: 'POST',
+                url: '../../php/EmpleadosC/busqueda.php',
+                data: { idSearch: idSearch },
+                success: function (data) {
+                    $('#table-search').html(data);
+                }
+            });
+        } else {
+            $('#table-search').html('Ingrese mas de 10 caracteres');
+        }
     }
 </script>
 

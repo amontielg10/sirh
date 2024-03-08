@@ -1,4 +1,7 @@
-<?php include("../../php/RegimenFiscalC/listar.php") ?>
+<?php 
+include("../../php/RegimenFiscalC/listar.php");
+$id_tbl_centro_trabajo = ($_GET['RP']);
+ ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -67,7 +70,8 @@
                     </button>
 
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="<?php echo 'Agregar.php' ?>">Agregar</a>
+                        <a class="dropdown-item" href="<?php echo 'Agregar.php?RP='.$id_tbl_centro_trabajo ?>">Agregar</a>
+                        <a class="dropdown-item" href="<?php echo '../CentroTrabajo/Listar.php' ?>">Regresar</a>
                     </div>
                 </div>
 
@@ -97,7 +101,7 @@
                     <tbody>
 
                         <?php
-                        $listado = listado();
+                        $listado = listadoPlazas(base64_decode($id_tbl_centro_trabajo));
                         if ($listado) {
                             if (pg_num_rows($listado) > 0) {
                                 while ($obj = pg_fetch_object($listado)) { ?>
@@ -113,9 +117,9 @@
                                                 </button>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item"
-                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) ?>">Modificar</a>
+                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo?>">Modificar</a>
                                                     <a class="dropdown-item"
-                                                        href="<?php echo "../Empleados/Listar.php?D-F3=" . base64_encode($obj->id_tbl_control_plazas) ?>">Empleado</a>
+                                                        href="<?php echo "../Empleados/Listar.php?D-F3=" . base64_encode($obj->id_tbl_control_plazas) .'&RP='.$id_tbl_centro_trabajo?>">Empleado</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item" data-toggle="modal"
                                                         data-target="<?php echo '#modal-' . $obj->id_tbl_control_plazas ?>">Eliminar</a>
@@ -141,7 +145,7 @@
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Cancelar</button>
                                                             <a class="btn btn-danger"
-                                                                href="<?php echo "../../php/PlazasC/Eliminar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) ?>">Eliminar</a>
+                                                                href="<?php echo "../../php/PlazasC/Eliminar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) .'&RP='.$id_tbl_centro_trabajo?>">Eliminar</a>
                                                         </div>
                                                     </div>
                                                 </div>
