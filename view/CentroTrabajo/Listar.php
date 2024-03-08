@@ -59,7 +59,8 @@
 
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="<?php echo 'Agregar.php' ?>">Agregar</a>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#modal-serarch">Buscar</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#modal-serarch">Buscar empleado</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#modal-serarch-plaza">Buscar plaza</a>
                     </div>
                 </div>
                 <table class="table table-striped" id="t-usuarios">
@@ -258,6 +259,38 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal AGREGAR-->
 
+                <!-- Modal AGREGAR PRODUCTOS-->
+                <div class="modal fade bd-example-modal-lg" id="modal-serarch-plaza" tabindex="-1" role="dialog"
+            aria-labelledby="newModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Buscar plaza</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+                        <label>Ingresa n&uacutemero de plaza</label><label style="color:red">*</label>
+                        <input type="text" class="form-control" onkeyup="searchPlaza();" id="idSearchPlaza" name="curp"
+                            placeholder="Num. de plaza">
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="table-search-plaza">
+
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light"
+                            style="background-color: #cb9f52; border:none; outline:none; color: white;"
+                            data-dismiss="modal">Cerrar</button>
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal AGREGAR-->
+
 
 
 
@@ -269,6 +302,25 @@
         let messageInfo = document.getElementById("messageInfo").value;
         if (messageInfo == 1){
             messajeError('No es posible eliminar un centro de trabajo con tenga plazas.');
+        }
+    }
+</script>
+
+<script>
+    function searchPlaza() {
+        let idSearchPlaza = document.getElementById("idSearchPlaza").value;
+        var numberSearch = document.getElementById("idSearchPlaza").value.length;
+        if (numberSearch >= 6) {
+            $.ajax({
+                type: 'POST',
+                url: '../../php/PlazasC/busqueda.php',
+                data: { idSearchPlaza: idSearchPlaza },
+                success: function (data) {
+                    $('#table-search-plaza').html(data);
+                }
+            });
+        } else {
+            $('#table-search-plaza').html('Ingrese mas de 6 caracteres');
         }
     }
 </script>

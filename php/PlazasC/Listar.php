@@ -32,10 +32,22 @@ function catControlPlazasPk($id)
      return $row;
 }
 
+function listadoPlazasCPk($id)
+{
+     $listado = pg_query("SELECT * FROM tbl_control_plazas WHERE id_tbl_control_plazas = '$id' ");
+     return $listado;
+}
+
 function listarIdPlazasCentro($id)
 {
      $listado = pg_query("SELECT id_tbl_centro_trabajo FROM tbl_control_plazas WHERE id_tbl_control_plazas = '$id' LIMIT 1");
      $row = pg_fetch_array($listado);
      $res = $row['id_tbl_centro_trabajo'];
      return $res;
+}
+
+function listarLikePlaza($like)
+{
+     $listado = pg_query("SELECT * FROM tbl_control_plazas WHERE num_plaza LIKE '%$like%'");
+     return $listado;
 }
