@@ -110,13 +110,13 @@
                                                         href="<?php echo "../ZonasPago/Listar.php?D-F=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Zonas
                                                         de Pago</a>
                                                     <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item"
-                                                        href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Eliminar</a>
+                                                    <a class="dropdown-item" data-toggle="modal"
+                                                         data-target="<?php echo '#modal-' . $obj->id_tbl_centro_trabajo ?>">Eliminar</a>
                                                 </div>
                                             </div>
 
                                             <!-- MODAL ELIMINAR -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                            <div class="modal fade" id="<?php echo 'modal-' . $obj->id_tbl_centro_trabajo ?>" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
@@ -134,7 +134,7 @@
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Cancelar</button>
                                                             <a class="btn btn-danger"
-                                                                href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Eliminar1</a>
+                                                            href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Eliminar</a>
                                                         </div>
                                                     </div>
                                                 </div>
