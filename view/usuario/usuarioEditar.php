@@ -4,7 +4,7 @@
 include("../../conexion.php");
 include("../../php/usuario/listarUsuario.php");
 
-$id_user = base64_decode($_GET['id_user']);
+$id_user = base64_decode($_GET['D-F']);
 $listQuery = pg_query($connectionDBsPro, "SELECT * FROM users WHERE id_user='$id_user'");
 
 if ($listQuery) {
