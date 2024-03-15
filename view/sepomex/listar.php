@@ -14,13 +14,12 @@ include("../../php/CatSepomexC/listar.php");
 
 <body>
 
-       <div class="form-group col-md-6">
+                                <div class="form-group col-md-6">
                                     <label for="inputCity">Estado</label><label style="color:red">*</label><br>
                                     <select class="form-select" aria-label="Default select example" id="c_estado"
                                         name="c_estado" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
-                                        //Se incluye la conexion
                                         $listado = listarCatSepmexEstado();
                                         if ($listado) {
                                             if (pg_num_rows($listado) > 0) {
@@ -59,6 +58,7 @@ include("../../php/CatSepomexC/listar.php");
 
 </body>
 <script>
+    var select = document.getElementById('c_estado');
     $(document).ready(function () {
         $('#c_estado').change(function () {
             var c_estado = $(this).val();
@@ -74,10 +74,11 @@ include("../../php/CatSepomexC/listar.php");
 
         $('#d_mnpio').change(function () {
             var d_mnpio = $(this).val();
+            var c_estado = select.value;
             $.ajax({
                 type: 'POST',
                 url: '../../php/CatSepomexC/SelectColonia.php',
-                data: { d_mnpio: d_mnpio },
+                data: { d_mnpio: d_mnpio, c_estado: c_estado},
                 success: function (data) {
                     $('#colonia_origen').html(data);
                 }

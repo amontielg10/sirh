@@ -1,7 +1,9 @@
 <?php
     include("../../php/CentroTrabajoC/Listar.php");
+    include("../../php/CatSepomexC/listar.php");
     $id_tbl_centro_trabajo = base64_decode($_GET['D-F']); //Se obtiene el id
     $rowe = catcentroTrabajo($id_tbl_centro_trabajo); //Se obtiene el array con la info del cliente
+    $rowx = lisSepmexById($rowe['id_cat_sepomex']);
 ?>
 
 
@@ -65,6 +67,24 @@
                                     <input type="text" class="form-control"
                                         id="nombre" name="nombre" value="<?php echo $rowe["nombre"]; ?>">
                                 </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="inputCity">Estado</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" id="c_estado"
+                                        name="c_estado" required>
+                                        <?php
+                                        echo '<option value="' . $rowx['id_cat_sepomex'] . '">' . $rowx['d_estado'] . '</option>';
+                                        $listado = listarCatSepmexEstado();
+                                        if ($listado) {
+                                            if (pg_num_rows($listado) > 0) {
+                                                while ($row = pg_fetch_object($listado)) {
+                                                    echo '<option value="' . $row->c_estado . '">' . $row->d_estado . '</option>';
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                                 
                                 <div class="form-group col-md-6">
                                     <label >Pais</label><label style="color:red">*</label>
@@ -73,21 +93,29 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Colonia</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="colonia_origen" name="colonia_origen" value="<?php echo $rowe["colonia_origen"]; ?>">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Codigo Postal Origen</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="codigo_postal_origen" name="codigo_postal_origen" value="<?php echo $rowe["codigo_postal_origen"]; ?>">
+                                    <label for="inputCity">Municipio</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" id="d_mnpio"
+                                        name="d_mnpio" required>
+                                        <?php
+                                            echo '<option value="' . $rowx['id_cat_sepomex'] . '">' . $rowx['d_mnpio'] . '</option>';
+                                        ?>
+                                    </select>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label >Numero Exterior</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         id="num_exterior" name="num_exterior" value="<?php echo $rowe["num_exterior"]; ?>">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="inputCity">Colonia</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" id="colonia_origen"
+                                        name="colonia_origen" required>
+                                        <?php
+                                            echo '<option value="' . $rowx['id_cat_sepomex'] . '">' . $rowx['d_asenta'] . '</option>';
+                                        ?>
+                                    </select>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -106,12 +134,6 @@
                                     <label >Longitud</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         id="longitud" name="longitud" value="<?php echo $rowe["longitud"]; ?>">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >id_cat_sepomex</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="id_cat_sepomex" name="id_cat_sepomex" value="<?php echo $rowe["id_cat_sepomex"]; ?>">
                                 </div>
                                 
                                 <div class="form-group col-md-6">
@@ -173,4 +195,38 @@
 
 </body>
 <?php  include("libFooter.php"); ?>
+
+<script>
+    var select = document.getElementById('c_estado');
+    $(document).ready(function () {
+        $('#c_estado').change(function () {
+            var c_estado = $(this).val();
+            console.log("entro: ",c_estado);
+            $.ajax({
+                type: 'POST',
+                url: '../../php/CatSepomexC/SelectMunicipio.php',
+                data: { c_estado: c_estado },
+                success: function (data) {
+                    $('#d_mnpio').html(data);
+                }
+            });
+        });
+
+        $('#d_mnpio').change(function () {
+            var d_mnpio = $(this).val();
+            var c_estado = select.value;
+            $.ajax({
+                type: 'POST',
+                url: '../../php/CatSepomexC/SelectColonia.php',
+                data: { d_mnpio: d_mnpio, c_estado: c_estado},
+                success: function (data) {
+                    $('#colonia_origen').html(data);
+                }
+            });
+        });
+
+
+    });
+</script>
+
 </html>

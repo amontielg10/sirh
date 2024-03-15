@@ -99,7 +99,6 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                             <th style="color: white;">Tipo contratacion</th>
                             <th style="color: white;">Situacion plaza</th>
                             <th style="color: white;">Unidad Responsable</th>
-                            <th style="color: white;">Centro de Trabajo</th>
                             <th style="color: white;">Puesto</th>
                             <th style="color: white;">Zonas tabuladores</th>
                             <th style="color: white;">Niveles</th>
@@ -131,7 +130,7 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                                                     style="background-color: transparent; border:none; outline:none; color: white;">
                                                     <i class="fa fa-cog" style="font-size: 1.4rem; color:#cb9f52;"></i>
                                                 </button>
-                                                <div class="dropdown-menu">
+                                                <div class="dropdown-menu" <?php if(pg_num_rows($listado) == 1){echo 'style="height: 130%; overflow: auto;"';}?>>
                                                     <a class="dropdown-item"
                                                         href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Modificar</a>
                                                     <a class="dropdown-item"
@@ -191,9 +190,6 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                                         </td>
                                         <td>
                                             <?php echo catPk($obj->id_cat_unidad_reponsable) ?>
-                                        </td>
-                                        <td>
-                                            <?php echo catcentroTrabajoPk($obj->id_tbl_centro_trabajo) ?>
                                         </td>
                                         <td>
                                             <?php echo catalogoPuestoPk($obj->id_cat_puesto) ?>

@@ -15,8 +15,12 @@ function catRegionClave($id){
 
 //La funcion retorna la concatenacion de clave-region con region eje. 01 - Region Centro
 function catRegionRegion($id){
+    if ($id != null){
     $catSQL = pg_query("SELECT * FROM cat_region WHERE id_cat_region = '$id' ");
     $row = pg_fetch_array($catSQL);
     $res = $row["clave_region"]." - ".$row['region'];
     return $res;
+    } else {
+        return "";
+    }
 }

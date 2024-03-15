@@ -15,21 +15,26 @@ function listarCatSepmexMunicipio($id)
     return $listado;
 }
 
-function listarCatSepmexColonia($id)
-{
-    $listado = pg_query("SELECT DISTINCT id_cat_sepomex, colonia_origen,c_mnpio FROM cat_sepomex WHERE c_mnpio = $id ORDER BY colonia_origen ASC");
+function listarCatSepmexColonia($id, $id_estado){
+    $listado = pg_query("SELECT DISTINCT id_cat_sepomex, colonia_origen,c_mnpio, c_estado 
+                        FROM cat_sepomex
+                        WHERE c_estado = $id_estado
+                        AND c_mnpio = $id
+                        ORDER BY colonia_origen ASC");
     return $listado;
 }
 
-function listadoCatTurnoPk($id)
+
+function lisSepmexById($id)
 {
-    if ($id != null) {
-        $catSQL = pg_query("SELECT clave_turno,turno_desc FROM cat_turno WHERE id_cat_turno = '$id' ");
-        $row = pg_fetch_array($catSQL);
-        $res = $row['clave_turno'].' - '.$row['turno_desc'];
-        return $res;
+    if ($id){
+    $catSQL = pg_query("SELECT id_cat_sepomex,d_asenta,d_mnpio,d_estado 
+                        FROM cat_sepomex
+                        WHERE id_cat_sepomex = $id
+                        LIMIT 1");
+    $row = pg_fetch_array($catSQL);
+    return $row;
     } else {
-        return "";
+        $row = "";
     }
 }
-

@@ -12,7 +12,7 @@
     <?php include('../nav-menu.php') ?>
     <?php include("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region?> 
     <?php include("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus?> 
-
+    <?php include("../../php/CatSepomexC/listar.php");?>
     <div id="main-wrapper">
 
         <div class="page-wrapper">
@@ -59,6 +59,24 @@
                                     <input type="text" class="form-control"
                                         id="nombre" name="nombre" placeholder="Nombre">
                                 </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="inputCity">Estado</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" id="c_estado"
+                                        name="c_estado" required>
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                        $listado = listarCatSepmexEstado();
+                                        if ($listado) {
+                                            if (pg_num_rows($listado) > 0) {
+                                                while ($row = pg_fetch_object($listado)) {
+                                                    echo '<option value="' . $row->c_estado . '">' . $row->d_estado . '</option>';
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                                 
                                 <div class="form-group col-md-6">
                                     <label >Pais</label><label style="color:red">*</label>
@@ -67,21 +85,25 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Colonia</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="colonia_origen" name="colonia_origen" placeholder="Codigo Postal">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Codigo Postal Origen</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="codigo_postal" name="codigo_postal" placeholder="Codigo Postal">
+                                    <label for="inputCity">Municipio</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" id="d_mnpio"
+                                        name="d_mnpio" required>
+                                        <option value="" selected>Seleccione</option>
+                                    </select>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label >Numero Exterior</label><label style="color:red">*</label>
                                     <input type="number" class="form-control"
                                         id="num_exterior" name="num_exterior" placeholder="Numero Exterior">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="inputCity">Colonia</label><label style="color:red">*</label><br>
+                                    <select class="form-select" aria-label="Default select example" id="colonia_origen"
+                                        name="colonia_origen" required>
+                                        <option value="" selected>Seleccione</option>
+                                    </select>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -100,12 +122,6 @@
                                     <label >Longitud</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         id="longitud" name="longitud" placeholder="Longitud">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >id_cat_sepomex</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        id="id_cat_sepomex" name="id_cat_sepomex" placeholder="Longitud">
                                 </div>
                                 
                                 <div class="form-group col-md-6">
@@ -163,62 +179,36 @@
 
 
 </body>
-
 <script>
-
-    function validate() {
-        console.log(validarNick());
-        if (validar() && validarNick()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    function validarNick() {
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        let bool = false;
-        if (validateNick(nick.value)) {
-            Swal.fire({
-                title: "¡El campo Nick ya existe!",
-                text: "Verifique que las contrasenas seas iguales",
-                icon: "error"
+    var select = document.getElementById('c_estado');
+    $(document).ready(function () {
+        $('#c_estado').change(function () {
+            var c_estado = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: '../../php/CatSepomexC/SelectMunicipio.php',
+                data: { c_estado: c_estado },
+                success: function (data) {
+                    $('#d_mnpio').html(data);
+                }
             });
-        } else {
-            bool = true;
-        }
-        return bool;
-    }
+        });
 
-    //Se obtienen los datos asi como los del mensaje
-    function validarCaracteresNick() {
-        let rnick = document.getElementById("rnickA"); //Se obtiene el valor de msj nick
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        nick.value = nick.value.toUpperCase(); //La funcion convierte a mayusculas el campo nick
-        if (mensajeDD(nick.value, 5, 10) === "") {
-            if (validateNick(nick.value)) {
-                rnick.value = "*El campo Nick ya existe";
-            } else {
-                rnick.value = "";
-            }
-        } else {
-            rnick.value = mensajeDD(nick.value, 5, 10);
-        }
-    }
-
-    function validateNick(nick) {
-        let arrayJS = JSON.parse(document.getElementById('row').value);
-        let bool = false;
-        for (let i = 0; i < arrayJS.length; i++) {
-            if (arrayJS[i] == nick) {
-                bool = true;
-                i++;
-            }
-        }
-        return bool;
-    }
+        $('#d_mnpio').change(function () {
+            var d_mnpio = $(this).val();
+            var c_estado = select.value;
+            $.ajax({
+                type: 'POST',
+                url: '../../php/CatSepomexC/SelectColonia.php',
+                data: { d_mnpio: d_mnpio, c_estado: c_estado},
+                success: function (data) {
+                    $('#colonia_origen').html(data);
+                }
+            });
+        });
 
 
+    });
 </script>
 <?php  include("libFooter.php"); ?>
 </html>

@@ -16,6 +16,7 @@
 <body onload="messageInfo();">
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
+    <?php include('../../php/CatSepomexC/listar.php') ?>
     <?php include("../../php/CentroTrabajoC/Listar.php") //Se incluye la libreria para generar su tabla                    ?>
     <?php include("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region                    ?>
     <?php include("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus                    ?>
@@ -67,17 +68,15 @@
                     <thead>
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
-                            <th style="color: white;">id</th>
                             <th style="color: white;">Clave de Centro de Trabajo</th>
                             <th style="color: white;">Nombre</th>
                             <th style="color: white;">Pais</th>
+                            <th style="color: white;">Estado</th>
+                            <th style="color: white;">Municipio</th>
                             <th style="color: white;">Colonia</th>
                             <th style="color: white;">Codigo Postal</th>
                             <th style="color: white;">Numero Exterior</th>
                             <th style="color: white;">Numero Interior</th>
-                            <th style="color: white;">Latitud</th>
-                            <th style="color: white;">Longitud</th>
-                            <th style="color: white;">Cat-sepomex</th>
                             <th style="color: white;">Region</th>
                             <th style="color: white;">Status</th>
                         </tr>
@@ -142,9 +141,6 @@
                                             <!-- MODAL ELIMINAR -->
                                         </td>
                                         <td>
-                                            <?php echo $obj->id_tbl_centro_trabajo ?>
-                                        </td>
-                                        <td>
                                             <?php echo $obj->clave_centro_trabajo ?>
                                         </td>
                                         <td>
@@ -154,7 +150,15 @@
                                             <?php echo $obj->pais ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->colonia_origen ?>
+                                            <?php $rowe = lisSepmexById ($obj->id_cat_sepomex);
+                                            echo $rowe['d_estado'];
+                                             ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $rowe['d_mnpio']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $rowe['d_asenta']; ?>
                                         </td>
                                         <td>
                                             <?php echo $obj->codigo_postal_origen ?>
@@ -164,15 +168,6 @@
                                         </td>
                                         <td>
                                             <?php echo $obj->num_interior ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->latitud ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->longitud ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->id_cat_sepomex ?>
                                         </td>
                                         <td>
                                             <?php echo catRegionRegion($obj->id_cat_region) ?>
