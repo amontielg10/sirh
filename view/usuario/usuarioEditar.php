@@ -35,7 +35,7 @@ if ($listQuery) {
 
     <div id="main-wrapper">
 
-        <div class="page-wrapper" style="background-color: #f6f6f6;">
+        <div class="page-wrapper">
 
             <div class="page-breadcrumb">
                 <div class="row">
@@ -52,7 +52,7 @@ if ($listQuery) {
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="usuario.php">Control Usuarios</a>
+                                        <a href="usuario.php" style="color:#cb9f52;">Control Usuarios</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Modificar Usuario</li>
                                 </ol>
@@ -60,6 +60,7 @@ if ($listQuery) {
                         </div>
                     </div>
                 </div>
+
 
 
                 <div class="card">
@@ -119,8 +120,8 @@ if ($listQuery) {
 
                             </div>
 
-                            <a class="btn btn-secondary" href="usuario.php">Cancelar</a>
-                            <button type="submit" onclick="return validar();" class="btn btn-primary">Guardar</button>
+                            <a class="btn btn-light" style="background-color: #D4C15C; color:white;" href="usuario.php">Cancelar</a>
+                            <button type="submit" onclick="return validar();" style="background-color: #D4C15C; color:white;" class="btn btn-light">Guardar</button>
 
                         </form>
                     </div>

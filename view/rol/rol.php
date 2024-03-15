@@ -13,34 +13,34 @@
 
     <div id="main-wrapper">
 
-        <div class="page-wrapper" style="background-color: #f6f6f6;">
+<div class="page-wrapper">
 
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-5 align-self-center">
-                        <h2 class="page-title">Control de Roles</h2>
-                        <div class="d-flex align-items-center">
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-5 align-self-center">
+                <h2 class="page-title">Control de Roles</h2>
+                <div class="d-flex align-items-center">
 
-                        </div>
-                    </div>
-                    <div class="col-7 align-self-center">
-                        <div class="d-flex no-block justify-content-end align-items-center">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">
-                                        <a href="index.php">Home</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Control de Roles</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
                 </div>
             </div>
-
+            <div class="col-7 align-self-center">
+                <div class="d-flex no-block justify-content-end align-items-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="../../index.php" style="color:#cb9f52;">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Control Role</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
             <div class="container-fluid">
+            <p>La sig. tabla muestra informacion de control de roles.</p>
                 <table class="table table-striped" id="t-usuarios">
                     <thead>
                         <tr style="background-color: #5c5c5c;">
@@ -76,7 +76,6 @@
 </body>
 
 <script>
-
     $(document).ready(function () {
         $('#t-usuarios').DataTable({
             language: {
@@ -101,43 +100,15 @@
             },
             responsive: "true",
             dom: 'Bfrtilp',
-            buttons: [{
-                extend: 'excelHtml5',
-                text: '<i class="fas fa-file-excel"></i> ',
-                titleAttr: 'Exportar a Excel',
-                className: 'btn btn-success',
-                exportOptions: {
-                    columns: ':not(.evita)',
-                },
-                filename: 'Usuarios'
-            },
-            {
-                extend: 'pdfHtml5',
-                text: '<i class="fas fa-file-pdf"></i> ',
-                titleAttr: 'Exportar a PDF',
-                className: 'btn btn-danger',
-                orientation: 'landscape',
-                exportOptions: {
-                    columns: ':not(.evita)',
-                },
-                filename: 'Requisiciones_ 2023:12:18:12:05'
-            },
-            {
-                extend: 'print',
-                text: '<i class="fa fa-print"></i> ',
-                titleAttr: 'Imprimir',
-                className: 'btn btn-info',
-                title: 'Control de Roles',
-                exportOptions: {
-                    columns: [0, 1, 2],
-                },
-                filename: 'Requisiciones_ 2023:12:18:12:05'
-            },
-            ]
+            buttons: [
+
+            ],
         }
 
         );
     });
+
+
 </script>
 
 <?php  include("libFooter.php"); ?>
