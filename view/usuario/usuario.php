@@ -1,4 +1,5 @@
 <?php include("../validar_rol.php") ?>
+<?php include('../../validar_sesion.php'); ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -37,7 +38,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="index.php" style="color:#cb9f52;">Home</a>
+                                        <a href="../../index.php" style="color:#cb9f52;">Home</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Control Usuarios</li>
                                 </ol>
@@ -48,14 +49,25 @@
             </div>
 
             <div class="container-fluid">
+            <p>La sig. tabla muestra informacion de control de usuarios.</p>
+            <div class=" btn-group">
+                    <button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" style="background-color: white; border:none; outline:none; color: white;">
+                        <i class="fa fa-cog" style="font-size: 1.4rem; color:#9f2241;"></i>
+                    </button>
+
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="<?php echo 'usuarioAgregar.php' ?>">Agregar</a>
+                    </div>
+                </div>
                 <table class="table table-striped" id="t-usuarios">
                     <thead>
                         <tr style="background-color: #5c5c5c;">
+                            <th style="color: white;">Acciones</th>
                             <th style="color: white;">Nick</th>
                             <th style="color: white;">Nombre</th>
                             <th style="color: white;">Status</th>
                             <th style="color: white;">Rol</th>
-                            <th style="color: white;">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,6 +77,48 @@
                             if (pg_num_rows($usEx) > 0) {
                                 while ($obj = pg_fetch_object($usEx)) { ?>
                                     <tr>
+                                        <td>
+                                        <div class=" btn-group">
+                                                <button type="button" class="btn btn-light" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false"
+                                                    style="background-color: transparent; border:none; outline:none; color: white;">
+                                                    <i class="fa fa-cog" style="font-size: 1.4rem; color:#cb9f52;"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="<?php echo "usuarioEditar.php?D-F=" . base64_encode($obj->id_user) ?>">Modificar</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item" data-toggle="modal"
+                                                         data-target="<?php echo '#modal-' . $obj->id_user ?>">Eliminar</a>
+                                                </div>
+                                            </div>
+
+                                            <!-- MODAL ELIMINAR -->
+                                             <div class="modal fade" id="<?php echo 'modal-' . $obj->id_user ?>" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea Continuar?</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            La accion de eliminar no se puede rehacer.
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Cancelar</button>
+                                                            <a class="btn btn-danger"
+                                                            href="<?php echo "../../php/usuario/eliminarUsuario.php?D-F=" . base64_encode($obj->id_user) ?>">Eliminar</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- MODAL ELIMINAR -->
+
+                                        </td>
                                         <td>
                                             <?php echo $obj->nick ?>
                                         </td>
@@ -76,50 +130,6 @@
                                         </td>
                                         <td>
                                             <?php echo rolFunction($obj->id_rol) ?>
-                                        </td>
-                                        <td>
-
-                                        <!-- Button more acctions -->
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-light" data-toggle="dropdown"
-                                                    aria-haspopup="true" aria-expanded="false" style="background-color: #D4C15C; border:none; outline:none; color: white">
-                                                    Acciones
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="<?php echo "usuarioAgregar.php" ?>">Agregar</a>
-                                                    <a class="dropdown-item" href="<?php echo "usuarioEditar.php?id_user=" . base64_encode($obj->id_user) ?>">Modificar</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item"
-                                                        href="<?php echo "e.php?id_user=" . base64_encode($obj->id_user) ?>">Eliminar</a>
-                                                </div>
-                                            </div>
-
-                                            <!-- MODAL ELIMINAR -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea eliminar el
-                                                                usuario?</h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Esta accion no se puede rehacer
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Cancelar</button>
-                                                            <button class="btn btn-danger"
-                                                                onclick="eliminarUsuario(<?php echo $obj->id_user ?>)">Eliminar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- MODAL ELIMINAR -->
                                         </td>
                                     </tr>
                                     <?php
@@ -134,10 +144,6 @@
 
             </div>
         </div>
-
-       <?php include ("../footer.php"); ?>
-
-
 </body>
 
 <script>
