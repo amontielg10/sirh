@@ -2,6 +2,7 @@
     include ('../../php/EmpleadosC/Listar.php');
     $id_tbl_empleados = base64_decode($_GET['D-F']);
     $id_tbl_control_plazas = $_GET['D-F3'];
+    $id_tbl_centro_trabajo = ($_GET['RP']);
     $rowe = catEmpleadosId($id_tbl_empleados);
 ?>
 
@@ -79,9 +80,9 @@
 
                     <div class="dropdown-menu">
                         <a class="dropdown-item"
-                            href="<?php echo 'Agregar.php?D-F='  . base64_encode($id_tbl_empleados).'&D-F3='.$id_tbl_control_plazas?>">Agregar</a>
+                            href="<?php echo 'Agregar.php?D-F='  . base64_encode($id_tbl_empleados).'&D-F3='.$id_tbl_control_plazas.'&RP='.$id_tbl_centro_trabajo?>">Agregar</a>
                             <a class="dropdown-item"
-                            href="<?php echo '../Empleados/Listar.php?D-F3='.$id_tbl_control_plazas?>">Regresar</a>
+                            href="<?php echo '../Empleados/Listar.php?D-F3='.$id_tbl_control_plazas.'&RP='.$id_tbl_centro_trabajo?>">Regresar</a>
                     </div>
                 </div>
                 <table class="table table-striped" id="t-usuarios" style="width: 100%;">
@@ -114,7 +115,7 @@
                                                 </button>
                                                 <div class="dropdown-menu">
                                                         <a class="dropdown-item"
-                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_tbl_dependientes_economicos).'&D-F3='.$id_tbl_control_plazas?>">Modificar</a>
+                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_tbl_dependientes_economicos).'&D-F3='.$id_tbl_control_plazas.'&RP='.$id_tbl_centro_trabajo?>">Modificar</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item" data-toggle="modal" data-target="<?php echo '#modal-'.$obj->id_tbl_dependientes_economicos?>">Eliminar</a>
                                                 </div>
@@ -139,7 +140,7 @@
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Cancelar</button>
                                                             <a class="btn btn-danger"
-                                                            href="<?php echo "../../php/DependientesEconomicosC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_tbl_dependientes_economicos).'&D-F3='.$id_tbl_control_plazas?>">Eliminar</a>
+                                                            href="<?php echo "../../php/DependientesEconomicosC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_tbl_dependientes_economicos).'&D-F3='.$id_tbl_control_plazas.'&RP='.$id_tbl_centro_trabajo?>">Eliminar</a>
                                                         </div>
                                                     </div>
                                                 </div>

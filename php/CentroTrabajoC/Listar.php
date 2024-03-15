@@ -13,6 +13,13 @@ function catcentroTrabajo($id)
      return $row;
 }
 
+function listarIdCentro($id)
+{
+     $catSQL = pg_query("SELECT * FROM tbl_centro_trabajo WHERE id_tbl_centro_trabajo = '$id'");
+     $row = pg_fetch_array($catSQL);
+     $res = $row["clave_centro_trabajo"];
+     return $res;
+}
 
 function catcentroTrabajoPk($id)
 {

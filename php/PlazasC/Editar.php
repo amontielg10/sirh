@@ -31,7 +31,6 @@ $arrayUpdate = array(
     'id_cat_puesto' => $id_cat_puesto,
     'id_cat_zonas_tabuladores' => $id_cat_zonas_tabuladores,
     'id_cat_niveles' => $id_cat_niveles,
-    'id_tbl_centro_trabajo' => $id_tbl_centro_trabajo,
     'zona_pagadora' => $zona_pagadora,
     'fecha_ini_contrato' => $fecha_ini_contrato,
     'fecha_modificacion' => $fecha_modificacion,
@@ -41,7 +40,7 @@ $arrayUpdate = array(
 $pgs_QRY = pg_update($connectionDBsPro, 'tbl_control_plazas', $arrayUpdate, $arrayCondition);
 
 if ($pgs_QRY) {
-    header("Location: ../../view/Plazas/Listar.php"); //Regreso a la tabla
+    header("Location: ../../view/Plazas/Listar.php?RP=".$id_tbl_centro_trabajo); //Regreso a la tabla
 } 
 } catch (\Throwable $th) {
     header("Location: error.php".$th); //Muestra error

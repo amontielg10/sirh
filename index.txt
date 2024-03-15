@@ -1,0 +1,6 @@
+-- CREATE INDEX FOR DATABASE
+
+-- ----- 
+-- Create index for table tbl_centro_trabajo
+CREATE INDEX IF NOT EXISTS id_cat_sepomex_d_asenta_d_mnpio_d_estado ON cat_sepomeX(id_cat_sepomex,d_asenta,d_mnpio,d_estado);
+CREATE INDEX IF NOT EXISTS all_tbl_centro_trabajo_ix ON tbl_centro_trabajo (id_estatus_centro, id_cat_region, id_cat_sepomex, longitud, latitud, num_interior, num_exterior, codigo_postal_origen, colonia_origen, pais, nombre, clave_centro_trabajo, id_tbl_centro_trabajo);

@@ -12,7 +12,7 @@ $num_exterior = $_POST['num_exterior']; //Se obtiene el valor de num_exterior
 $num_interior = $_POST['num_interior']; //Se obtiene el valor de num_interior
 $latitud = $_POST['latitud']; //Se obtiene el valor de latitud
 $longitud = $_POST['longitud']; //Se obtiene el valor de longitud
-$id_cat_sepomex = $_POST['id_cat_sepomex']; //Se obtiene el valor de id_cat_sepomex
+$id_cat_sepomex = $_POST['colonia_origen']; //Se obtiene el valor de id_cat_sepomex
 $id_cat_region = $_POST['id_cat_region']; //Se obtiene el valor de id_cat_region
 $id_estatus_centro = $_POST['id_estatus_centro']; //Se obtiene el valor de id_estatus_centro
 

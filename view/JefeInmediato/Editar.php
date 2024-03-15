@@ -3,6 +3,7 @@ include("../../php/ControlJefeInmediatoC/Listar.php");
 $id_tbl_empleados = base64_decode($_GET['D-F']);
 $id_ctrl_jefe_inmediato = base64_decode($_GET['D-F2']);
 $id_tbl_control_plazas = $_GET['D-F3'];
+$id_tbl_centro_trabajo = ($_GET['RP']);
 $rowe = listadoJefeInmediaroPk($id_ctrl_jefe_inmediato);
 
 ?>
@@ -59,6 +60,7 @@ $rowe = listadoJefeInmediaroPk($id_ctrl_jefe_inmediato);
                         <form method="POST" action="../../php/ControlJefeInmediatoC/Editar.php">
 
                             <input type="hidden" name="id_tbl_empleados" value="<?php echo $id_tbl_empleados ?>">
+                            <input type="hidden" id="id_tbl_centro_trabajo" name="id_tbl_centro_trabajo" value="<?php echo $id_tbl_centro_trabajo?>">
                             <input type="hidden" name="id_ctrl_jefe_inmediato" id="id_ctrl_jefe_inmediato"
                                 value="<?php echo $id_ctrl_jefe_inmediato ?>">
                             <input type="hidden" name="id_tbl_control_plazas"
@@ -108,7 +110,7 @@ $rowe = listadoJefeInmediaroPk($id_ctrl_jefe_inmediato);
 
                             <a class="btn btn-light"
                                 style="background-color: #cb9f52; border:none; outline:none; color: white;"
-                                href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados) . '&D-F3=' . $id_tbl_control_plazas ?>">Cancelar</a>
+                                href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados) . '&D-F3=' . $id_tbl_control_plazas .'&RP='.$id_tbl_centro_trabajo?>">Cancelar</a>
                             <button type="submit" class="btn btn-light" onclick="return validateE();"
                                 style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 
