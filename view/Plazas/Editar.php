@@ -1,5 +1,6 @@
 <?php
     include("../../php/PlazasC/Listar.php");
+    $id_tbl_centro_trabajo = ($_GET['RP']);
     $id_tbl_control_plazas = base64_decode($_GET['D-F']); //Se obtiene el id
     $rowe = catControlPlazasPk($id_tbl_control_plazas); //Se obtiene el array con la info del cliente
 ?>
@@ -52,12 +53,13 @@
                     <div class="card-body">
                         <form method="POST" action="../../php/PlazasC/Editar.php">
                             <input type="hidden" id="id_tbl_control_plazas" name="id_tbl_control_plazas" value="<?php echo $id_tbl_control_plazas?>">
+                            <input type="hidden" id="id_tbl_centro_trabajo" name="id_tbl_centro_trabajo" value="<?php echo $id_tbl_centro_trabajo?>">
                             <div class="form-row">
                                 
                             <div class="form-group col-md-6">
                             <label >Num. de Plaza</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="num_plaza" value="<?php echo $rowe['num_plaza']?>" required maxlength="30" pattern="[0-9]{1,31}>
+                                        name="num_plaza" value="<?php echo $rowe['num_plaza']?>" required maxlength="30" >
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -207,30 +209,6 @@
                                     </select>
                                 </div>
 
-
-                                <div class="form-group col-md-6">
-                                    <label for="inputCity">Centro de Trabajo</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
-                                        name="id_tbl_centro_trabajo" required>
-                                        <?php
-                                        include ("../../php/CatCentroTrabajoC/listar.php");
-                                        echo '<option value="' . $rowe['id_tbl_centro_trabajo'] . '">' . listadoCentroTrabajoCv($rowe['id_tbl_centro_trabajo']) . '</option>';
-                                        $listado = listadoCentroTrabajo();
-                                        if ($listado) {
-                                            if (pg_num_rows($listado) > 0) {
-                                                while ($row = pg_fetch_object($listado)) {
-                                                    if ($rowe['id_tbl_centro_trabajo'] != $row->id_tbl_centro_trabajo){
-                                                    echo '<option value="' . $row->id_tbl_centro_trabajo . '">' . listadoCentroTrabajoCv($row->id_tbl_centro_trabajo) . '</option>';
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-
-
-
                                 <div class="form-group col-md-6">
                                     <label >Zona Pagadora</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
@@ -260,7 +238,7 @@
                             </div>
                             
                             <a class="btn btn-light" style="background-color: #cb9f52; border:none; outline:none; color: white;"
-                                href="Listar.php">Cancelar</a>
+                                href="<?php echo 'Listar.php?RP='.$id_tbl_centro_trabajo?>">Cancelar</a>
                             <button type="submit" class="btn btn-light"
                             style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 

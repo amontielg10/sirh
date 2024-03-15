@@ -12,3 +12,12 @@ try {
 } catch (\Throwable $e) {
     echo "Error connecting to data base + ".$e; 
 }
+
+/// Connection to server
+/*
+$password = "pgs2023";
+$username = "postgres";
+$dbname = "DSINFOTEC";
+$host = "localhost";
+$port = "5432";
+*/

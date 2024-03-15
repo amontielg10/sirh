@@ -4,6 +4,7 @@ include('../../validar_sesion.php');
 include ("../../conexion.php");//Se incluye el metodo de conexion para las consultas
 
 $id_tbl_empleados = $_POST['id_tbl_empleados']; 
+$id_tbl_centro_trabajo = $_POST['id_tbl_centro_trabajo'];
 $id_tbl_control_plazas = $_POST['id_tbl_control_plazas']; 
 $nombre = $_POST['nombre']; 
 $primer_apellido = $_POST['primer_apellido']; 
@@ -22,7 +23,7 @@ $pgs_QRY = pg_insert($connectionDBsPro, 'ctrl_jefe_inmediato', array(
 ));
 
 if ($pgs_QRY ) {
-    header("Location: ../../view/JefeInmediato/Listar.php?D-F=".$crypt.'&D-F3='.$id_tbl_control_plazas); //Regreso a la tabla
+    header("Location: ../../view/JefeInmediato/Listar.php?D-F=".$crypt.'&D-F3='.$id_tbl_control_plazas.'&RP='.$id_tbl_centro_trabajo); //Regreso a la tabla
 } 
 } catch (\Throwable $th) {
     header("Location: error.php".$th); //Muestra error

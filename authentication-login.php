@@ -114,7 +114,7 @@
                 if (response == 'acceso') {
                     window.location.href = 'index.php';
                 } else {
-                    ventanaMensaje(response);
+                    ventanaMensaje("Usuario o contraseña incorrectos");
                 }
             });
             e.preventDefault();

@@ -4,6 +4,7 @@ include('../../validar_sesion.php');
 include ("../../conexion.php");//Se incluye el metodo de conexion para las consultas
 
 $id_tbl_control_plazas = base64_decode($_POST['id_tbl_control_plazas']);
+$id_tbl_centro_trabajo = $_POST['id_tbl_centro_trabajo'];
 $codigo_empleado = $_POST['codigo_empleado']; 
 $fecha_ingreso = $_POST['fecha_ingreso']; 
 $curp = $_POST['curp']; 
@@ -35,7 +36,7 @@ $pgs_QRY = pg_insert($connectionDBsPro, 'tbl_empleados', array(
 ));
 
 if ($pgs_QRY ) {
-    header("Location: ../../view/Empleados/Listar.php?D-F3=".$crypt); //Regreso a la tabla
+    header("Location: ../../view/Empleados/Listar.php?D-F3=".$crypt.'&RP='.$id_tbl_centro_trabajo); //Regreso a la tabla
 } 
 } catch (\Throwable $th) {
     header("Location: error.php".$th); //Muestra error

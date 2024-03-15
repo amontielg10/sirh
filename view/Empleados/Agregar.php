@@ -1,5 +1,6 @@
 <?php
 $id_tbl_control_plazas = $_GET['D-F3'];
+$id_tbl_centro_trabajo = ($_GET['RP']);
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +52,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                             <div class="form-row">
                                 
                                 <input type="hidden" name="id_tbl_control_plazas" value="<?php echo $id_tbl_control_plazas?>">
+                                <input type="hidden" id="id_tbl_centro_trabajo" name="id_tbl_centro_trabajo" value="<?php echo $id_tbl_centro_trabajo?>">
 
                                 <div class="form-group col-md-6">
                                     <label >C&oacutedigo de Empleado</label><label style="color:red">*</label>
@@ -146,7 +148,7 @@ $id_tbl_control_plazas = $_GET['D-F3'];
                             
 
                             <a class="btn btn-secondary" style="background-color: #cb9f52; border:none; outline:none; color: white;"
-                                href="<?php echo 'Listar.php?D-F3='.$id_tbl_control_plazas?>">Cancelar</a>
+                                href="<?php echo 'Listar.php?D-F3='.$id_tbl_control_plazas.'&RP='.$id_tbl_centro_trabajo?>">Cancelar</a>
                             <button type="submit" class="btn btn-light"
                             style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 
@@ -165,61 +167,5 @@ $id_tbl_control_plazas = $_GET['D-F3'];
 
 </body>
 
-<script>
-
-    function validate() {
-        console.log(validarNick());
-        if (validar() && validarNick()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    function validarNick() {
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        let bool = false;
-        if (validateNick(nick.value)) {
-            Swal.fire({
-                title: "¡El campo Nick ya existe!",
-                text: "Verifique que las contrasenas seas iguales",
-                icon: "error"
-            });
-        } else {
-            bool = true;
-        }
-        return bool;
-    }
-
-    //Se obtienen los datos asi como los del mensaje
-    function validarCaracteresNick() {
-        let rnick = document.getElementById("rnickA"); //Se obtiene el valor de msj nick
-        let nick = document.getElementById("nickA"); //Se obtiene el valor de nick
-        nick.value = nick.value.toUpperCase(); //La funcion convierte a mayusculas el campo nick
-        if (mensajeDD(nick.value, 5, 10) === "") {
-            if (validateNick(nick.value)) {
-                rnick.value = "*El campo Nick ya existe";
-            } else {
-                rnick.value = "";
-            }
-        } else {
-            rnick.value = mensajeDD(nick.value, 5, 10);
-        }
-    }
-
-    function validateNick(nick) {
-        let arrayJS = JSON.parse(document.getElementById('row').value);
-        let bool = false;
-        for (let i = 0; i < arrayJS.length; i++) {
-            if (arrayJS[i] == nick) {
-                bool = true;
-                i++;
-            }
-        }
-        return bool;
-    }
-
-
-</script>
 <?php  include("libFooter.php"); ?>
 </html>

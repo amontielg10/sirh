@@ -1,4 +1,9 @@
-<?php include("../../php/RegimenFiscalC/listar.php") ?>
+<?php
+include("../../php/RegimenFiscalC/listar.php");
+include("../../php/CentroTrabajoC/Listar.php"); 
+$id_tbl_centro_trabajo = ($_GET['RP']);
+$rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -21,7 +26,6 @@
     <?php include("../../php/CatPlazasC/listar.php"); ?>
     <?php include("../../php/CatTipoContratacionC/listar.php"); ?>
     <?php include("../../php/CatUnidadResponsableC/listar.php"); ?>
-    <?php include("../../php/CentroTrabajoC/Listar.php"); ?>
     <?php include("../../php/CatPuestoC/Listar.php"); ?>
     <?php include("../../php/CatSituacionPlazaC/listar.php"); ?>
     <?php include("../../php/CatZonaTabuladoresC/Listar.php"); ?>
@@ -59,7 +63,17 @@
 
 
             <div class="container-fluid">
-                <p>La sig. tabla muestra informacion de control de plazas.</p>
+            <p>Informaci&oacuten de centro de trabajo seleccionado.</p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Clave de centro de trabajo:
+                    <?php echo $rowx['clave_centro_trabajo']?>
+                </p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">C&oacutedigo postal:
+                    <?php echo $rowx['codigo_postal_origen']?>
+                </p>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">Nombre:
+                    <?php echo $rowx['nombre']?>
+                </p>
+                <br>
                 <div class=" btn-group">
                     <button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false" style="background-color: white; border:none; outline:none; color: white;">
@@ -67,7 +81,9 @@
                     </button>
 
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="<?php echo 'Agregar.php' ?>">Agregar</a>
+                        <a class="dropdown-item"
+                            href="<?php echo 'Agregar.php?RP=' . $id_tbl_centro_trabajo ?>">Agregar</a>
+                        <a class="dropdown-item" href="<?php echo '../CentroTrabajo/Listar.php' ?>">Regresar</a>
                     </div>
                 </div>
 
@@ -83,7 +99,6 @@
                             <th style="color: white;">Tipo contratacion</th>
                             <th style="color: white;">Situacion plaza</th>
                             <th style="color: white;">Unidad Responsable</th>
-                            <th style="color: white;">Centro de Trabajo</th>
                             <th style="color: white;">Puesto</th>
                             <th style="color: white;">Zonas tabuladores</th>
                             <th style="color: white;">Niveles</th>
@@ -97,7 +112,11 @@
                     <tbody>
 
                         <?php
-                        $listado = listado();
+                        if (isset($_GET['CP3'])) {
+                            $listado = listadoPlazasCPk(base64_decode($_GET['CP3']));
+                        } else {
+                            $listado = listadoPlazas(base64_decode($id_tbl_centro_trabajo));
+                        }
                         if ($listado) {
                             if (pg_num_rows($listado) > 0) {
                                 while ($obj = pg_fetch_object($listado)) { ?>
@@ -111,11 +130,11 @@
                                                     style="background-color: transparent; border:none; outline:none; color: white;">
                                                     <i class="fa fa-cog" style="font-size: 1.4rem; color:#cb9f52;"></i>
                                                 </button>
-                                                <div class="dropdown-menu">
+                                                <div class="dropdown-menu" <?php if(pg_num_rows($listado) == 1){echo 'style="height: 130%; overflow: auto;"';}?>>
                                                     <a class="dropdown-item"
-                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) ?>">Modificar</a>
+                                                        href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Modificar</a>
                                                     <a class="dropdown-item"
-                                                        href="<?php echo "../Empleados/Listar.php?D-F3=" . base64_encode($obj->id_tbl_control_plazas) ?>">Empleado</a>
+                                                        href="<?php echo "../Empleados/Listar.php?D-F3=" . base64_encode($obj->id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Empleado</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item" data-toggle="modal"
                                                         data-target="<?php echo '#modal-' . $obj->id_tbl_control_plazas ?>">Eliminar</a>
@@ -141,7 +160,7 @@
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Cancelar</button>
                                                             <a class="btn btn-danger"
-                                                                href="<?php echo "../../php/PlazasC/Eliminar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) ?>">Eliminar</a>
+                                                                href="<?php echo "../../php/PlazasC/Eliminar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Eliminar</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -171,9 +190,6 @@
                                         </td>
                                         <td>
                                             <?php echo catPk($obj->id_cat_unidad_reponsable) ?>
-                                        </td>
-                                        <td>
-                                            <?php echo catcentroTrabajoPk($obj->id_tbl_centro_trabajo) ?>
                                         </td>
                                         <td>
                                             <?php echo catalogoPuestoPk($obj->id_cat_puesto) ?>
