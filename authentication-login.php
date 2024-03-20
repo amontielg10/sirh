@@ -10,7 +10,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" href="assets/images/favico.png">
     <title>SIHR</title>
     <!-- Custom CSS -->
     <link href="./dist/css/style.min.css" rel="stylesheet">

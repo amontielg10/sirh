@@ -20,8 +20,8 @@ $id_rol = $_SESSION['id_rol'];
     <meta name="author" content="">
     <!-- Favicon icon -->
     <!-- <link rel="icon" type="image/png" href=""> -->
-    <title>@tituto</title>
-    <link rel="shortcut icon" href="<?php echo $favicon ?>" type="image/x-icon" />
+    <title>SIRH</title>
+    <link rel="icon" type="image/png" href="assets/images/imss.svg">
     <!-- Custom CSS -->
     <link href="../../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link href="../.././assets/extra-libs/c3/c3.min.css" rel="stylesheet">
@@ -304,5 +304,36 @@ $id_rol = $_SESSION['id_rol'];
         integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
         crossorigin="anonymous"></script>
     </body>
+
+    <script>
+    let setTimeOut = 600000; // 10''
+    let setTimeOutIn = 180000; // 3'''
+
+    setTimeout(function () {
+       Swal.bindClickHandler();
+        Swal.fire({
+            title: "La sesi\u00f3n esta por terminar.",
+            text: "Para seguir utilizando el sistema, pulse regresar.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Salir",
+            cancelButtonText: "Cancelar",
+            allowOutsideClick: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '../../cerrar-sesion.php';
+            } else {
+                location.reload()
+            }
+        }),
+            ///ON FUNCTIN TIME - EXIT
+            setTimeout(function () {
+                window.location.href = '../../cerrar-sesion.php';
+            }, setTimeOutIn);
+            
+    }, setTimeOut);
+</script>
 
 </html>

@@ -20,8 +20,7 @@ $id_rol = $_SESSION['id_rol'];
     <meta name="author" content="">
     <!-- Favicon icon -->
     <!-- <link rel="icon" type="image/png" href=""> -->
-    <title>SIRH - Inicio</title>
-    <link rel="shortcut icon" href="<?php echo $favicon ?>" type="image/x-icon" />
+    <title>SIHR</title>
     <!-- Custom CSS -->
     <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link href="./assets/extra-libs/c3/c3.min.css" rel="stylesheet">
@@ -305,5 +304,5 @@ $id_rol = $_SESSION['id_rol'];
         integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
         crossorigin="anonymous"></script>
     </body>
-
+    <?php include ('inactividad.php') ?>
 </html>
