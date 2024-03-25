@@ -1,11 +1,11 @@
 <?php
     session_start();
 
-    unset($_SESSION['id']);
+    unset($_SESSION['id_user']);
     unset($_SESSION['nombre']);
-    unset($_SESSION['app']);
-    unset($_SESSION['apm']);
-    unset($_SESSION['correo']);
+    unset($_SESSION['nick']);
+    unset($_SESSION['status']);
+    unset($_SESSION['id_rol']);
 
     session_destroy();
 

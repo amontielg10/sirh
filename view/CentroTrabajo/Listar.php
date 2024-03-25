@@ -150,15 +150,15 @@
                                             <?php echo $obj->pais ?>
                                         </td>
                                         <td>
-                                            <?php $rowe = lisSepmexById ($obj->id_cat_sepomex);
-                                            echo $rowe['d_estado'];
+                                            <?php 
+                                            echo $obj->id_cat_sepomex
                                              ?>
                                         </td>
                                         <td>
-                                            <?php echo $rowe['d_mnpio']; ?>
+                                            <?php echo $obj->id_cat_sepomex ?>
                                         </td>
                                         <td>
-                                            <?php echo $rowe['d_asenta']; ?>
+                                            <?php echo $obj->id_cat_sepomex ?>
                                         </td>
                                         <td>
                                             <?php echo $obj->codigo_postal_origen ?>

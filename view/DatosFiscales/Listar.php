@@ -91,17 +91,17 @@
                                                     style="background-color: transparent; border:none; outline:none; color: white;">
                                                     <i class="fa fa-cog" style="font-size: 1.4rem; color:#cb9f52;"></i>
                                                 </button>
-                                            <div class="dropdown-menu">
+                                                <div class="dropdown-menu" <?php if(pg_num_rows($listado) == 1){echo 'style="height: 130%; overflow: auto;"';}?>>
                                                 <a class="dropdown-item"
                                                     href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_datos_fiscales) ?>">Modificar</a>
                                                 <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item"
-                                                    href="<?php echo "../../php/DatosFiscalesC/Eliminar.php?D-F=" . base64_encode($obj->id_tbl_datos_fiscales) ?>">Eliminar</a>
+                                                <a class="dropdown-item" data-toggle="modal"
+                                                        data-target="<?php echo '#modal-' . $obj->id_tbl_datos_fiscales ?>">Eliminar</a>
                                             </div>
                                          </div>
 
                                     <!-- MODAL ELIMINAR -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                    <div class="modal fade" id="<?php echo 'modal-' . $obj->id_tbl_datos_fiscales ?>"
                                         aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -117,7 +117,8 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                                     <a class="btn btn-danger"
-                                                        href="<?php echo "../../php/DatosFiscalesC/Eliminar.php?D-F=" . base64_encode($obj->id_tbl_datos_fiscales) ?>">Eliminar</a>
+                                                    href="<?php echo "../../php/DatosFiscalesC/Eliminar.php?D-F=" . base64_encode($obj->id_tbl_datos_fiscales) ?>">Eliminar</a>
+                                            </div>
                                                 </div>
                                             </div>
                                         </div>
