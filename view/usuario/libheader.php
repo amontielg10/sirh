@@ -1,19 +1,19 @@
 
-    <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="../../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link href="../../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
-    <link href="../../.assets/libs/morris.js/morris.css" rel="stylesheet">
+    <link href="../../assets/libs/morris.js/morris.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="../.././dist/css/style.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../.././assets/extra-libs/css/css.css">
-    <link rel="stylesheet" type="text/css" href="../.././assets/extra-libs/alertifyjs/css/alertify.css">
-    <link rel="stylesheet" type="text/css" href="../.././assets/extra-libs/select2/css/select2.css">
-    <link rel="stylesheet" type="text/css" href="../.././assets/extra-libs/alertifyjs/css/themes/default.css">
-    <link rel="stylesheet" href="../.././assets/libs/sweetalert2/dist/sweetalert2.min.css">
+    <link href="../../dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/extra-libs/css/css.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/extra-libs/alertifyjs/css/alertify.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/extra-libs/select2/css/select2.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/extra-libs/alertifyjs/css/themes/default.css">
+    <link rel="stylesheet" href="../../assets/libs/sweetalert2/dist/sweetalert2.min.css">
     <link rel="stylesheet" type="text/css"
-        href="../.././assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+        href="../../assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
 
 
-    <link rel="stylesheet" href="../..///code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+   
     <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
     <!-- jQuery UI CSS -->
     <link rel="stylesheet" type="text/css"
@@ -31,8 +31,8 @@
 
 
     <!-- <script src="./dist/js/jquery-3.2.1.min.js"></script> -->
-    <script src="../.././assets/extra-libs/alertifyjs/alertify.js"></script>
-    <script src="../.././assets/extra-libs/select2/js/select2.js"></script>
+    <script src="../../assets/extra-libs/alertifyjs/alertify.js"></script>
+    <script src="../../assets/extra-libs/select2/js/select2.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
         integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
@@ -67,7 +67,12 @@
             padding-bottom: 15px;
             padding-right: 25px;
         }
+
+        
     </style>
 
+<!--
+ <link rel="stylesheet" href="../../code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    -->
 
 

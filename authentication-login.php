@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="es">
 
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +10,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" href="assets/images/favico.png">
     <title>SIHR</title>
     <!-- Custom CSS -->
     <link href="./dist/css/style.min.css" rel="stylesheet">
