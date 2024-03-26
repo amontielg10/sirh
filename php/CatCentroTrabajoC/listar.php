@@ -5,7 +5,7 @@ include('../../conexion.php'); //Se incluye la conexion
      //La variable contiene el listado
      function listadoCentroTrabajo(){
      include('../../conexion.php'); //Se incluye la conexion
-    $listado = pg_query($connectionDBsPro, "SELECT id_tbl_centro_trabajo,clave_centro_trabajo FROM tbl_centro_trabajo ORDER BY id_tbl_centro_trabajo"); 
+    $listado = pg_query($connectionDBsPro, "SELECT id_tbl_centro_trabajo,clave_centro_trabajo FROM tbl_centro_trabajo ORDER BY id_tbl_centro_trabajo limit 50"); 
      return $listado;
      }
      //La funcion retorna los atributos dependiendo del id que se ingrese como parametro

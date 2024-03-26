@@ -1,6 +1,6 @@
 <?php
 
-$password = "pg2024";
+$password = "pgs2023";
 $username = "postgres";
 $dbname = "DSINFOTEC";
 $host = "localhost";
