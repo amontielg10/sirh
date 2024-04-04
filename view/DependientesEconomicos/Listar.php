@@ -61,8 +61,8 @@
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">Nombre:
                     <?php echo $rowe['nombre'] . ' ' . $rowe['primer_apellido'] . ' ' . $rowe['segundo_apellido'] ?>
                 </p>
-                <p style="font-size:14px; margin-top:0; margin-bottom:0;">C&oacutedigo de Empleado:
-                    <?php echo $rowe['codigo_empleado']?>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">CURP:
+                    <?php echo $rowe['curp']?>
                 </p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">RFC:
                     <?php echo $rowe['rfc']?>

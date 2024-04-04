@@ -68,7 +68,7 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                     <?php echo $rowx['clave_centro_trabajo']?>
                 </p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">C&oacutedigo postal:
-                    <?php echo $rowx['codigo_postal_origen']?>
+                    <?php echo $rowx['codigo_postal']?>
                 </p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">Nombre:
                     <?php echo $rowx['nombre']?>
@@ -91,13 +91,12 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                     <thead>
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
-                            <th style="color: white;">Codigo de Empleado</th>
+                            <th style="color: white;">CURP</th>
                             <th style="color: white;">Nombre Empleado</th>
                             <th style="color: white;">RFC</th>
                             <th style="color: white;">Numero plaza</th>
                             <th style="color: white;">Plaza</th>
                             <th style="color: white;">Tipo contratacion</th>
-                            <th style="color: white;">Situacion plaza</th>
                             <th style="color: white;">Unidad Responsable</th>
                             <th style="color: white;">Puesto</th>
                             <th style="color: white;">Zonas tabuladores</th>
@@ -184,9 +183,6 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                                         </td>
                                         <td>
                                             <?php echo catalogoContratacionPk($obj->id_cat_tipo_contratacion) ?>
-                                        </td>
-                                        <td>
-                                            <?php echo listadoSituacionPlazaPk($obj->id_cat_situacion_plaza) ?>
                                         </td>
                                         <td>
                                             <?php echo catPk($obj->id_cat_unidad_reponsable) ?>

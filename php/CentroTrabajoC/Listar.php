@@ -3,13 +3,24 @@ include('../../validar_sesion.php');    //Se incluye validar_sesion
 include('../../conexion.php'); //Se incluye la conexion
 
 //La variable contiene el listado
-$listado = pg_query($connectionDBsPro, "SELECT id_estatus_centro, id_cat_region, id_cat_sepomex, longitud, latitud, num_interior, num_exterior, codigo_postal_origen, colonia_origen, pais, nombre, clave_centro_trabajo, id_tbl_centro_trabajo FROM tbl_centro_trabajo ORDER BY id_tbl_centro_trabajo DESC");
+function listarCentroTrabajo(){
+     $listado = pg_query("SELECT id_tbl_centro_trabajo, clave_centro_trabajo, nombre,
+                                 pais, id_cat_entidad, colonia, codigo_postal, num_exterior,
+                                 num_interior, latitud, longitud, id_cat_region, id_estatus_centro  
+                         FROM tbl_centro_trabajo 
+                         ORDER BY id_tbl_centro_trabajo DESC");
+     return $listado;
+}
+
 
 //La funcion retorna los atributos dependiendo del id que se ingrese como parametro
-function catcentroTrabajo($id)
+function catcentroTrabajo($idTblCentroTrabajo)
 {
-     $catSQL = pg_query("SELECT * FROM tbl_centro_trabajo WHERE id_tbl_centro_trabajo = '$id'");
-     $row = pg_fetch_array($catSQL);
+     $listado = pg_query("SELECT id_tbl_centro_trabajo, clave_centro_trabajo, 
+                                codigo_postal, nombre
+                         FROM tbl_centro_trabajo 
+                         WHERE id_tbl_centro_trabajo = '$idTblCentroTrabajo'");
+     $row = pg_fetch_array($listado);
      return $row;
 }
 

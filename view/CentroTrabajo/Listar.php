@@ -16,11 +16,10 @@
 <body onload="messageInfo();">
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
-    <?php include('../../php/CatSepomexC/listar.php') ?>
     <?php include("../../php/CentroTrabajoC/Listar.php") //Se incluye la libreria para generar su tabla                    ?>
     <?php include("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region                    ?>
     <?php include("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus                    ?>
-
+    <?php include("../../php/CatEntidadC/Listar.php") ?>   
 
     <div id="main-wrapper">
 
@@ -71,19 +70,21 @@
                             <th style="color: white;">Clave de Centro de Trabajo</th>
                             <th style="color: white;">Nombre</th>
                             <th style="color: white;">Pais</th>
-                            <th style="color: white;">Estado</th>
-                            <th style="color: white;">Municipio</th>
+                            <th style="color: white;">Entidad</th>
                             <th style="color: white;">Colonia</th>
                             <th style="color: white;">Codigo Postal</th>
                             <th style="color: white;">Numero Exterior</th>
                             <th style="color: white;">Numero Interior</th>
+                            <th style="color: white;">Latitud</th>
+                            <th style="color: white;">Longitud</th>
                             <th style="color: white;">Region</th>
-                            <th style="color: white;">Status</th>
+                            <th style="color: white;">Estatus</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <?php
+                        $listado = listarCentroTrabajo();
                         if ($listado) {
                             if (pg_num_rows($listado) > 0) {
                                 while ($obj = pg_fetch_object($listado)) { ?>
@@ -150,24 +151,25 @@
                                             <?php echo $obj->pais ?>
                                         </td>
                                         <td>
-                                            <?php 
-                                            echo $obj->id_cat_sepomex
-                                             ?>
+                                            <?php echo listadoCatEntidadPk($obj->id_cat_entidad) ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->id_cat_sepomex ?>
+                                            <?php echo $obj->colonia ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->id_cat_sepomex ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->codigo_postal_origen ?>
+                                            <?php echo $obj->codigo_postal ?>
                                         </td>
                                         <td>
                                             <?php echo $obj->num_exterior ?>
                                         </td>
                                         <td>
                                             <?php echo $obj->num_interior ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $obj->latitud ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $obj->longitud ?>
                                         </td>
                                         <td>
                                             <?php echo catRegionRegion($obj->id_cat_region) ?>

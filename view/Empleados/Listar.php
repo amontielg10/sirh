@@ -151,23 +151,24 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                             <table class="table table-striped" id="t-usuarios">
                                 <thead>
                                     <tr style="background-color: #5c5c5c;">
-                                        <th style="color: white;">C&oacutedigo</th>
+                                        <th style="color: white;">Fecha de Ingreso</th>
+                                        <th style="color: white;">RFC</th>
                                         <th style="color: white;">CURP</th>
                                         <th style="color: white;">Nombre</th>
                                         <th style="color: white;">Primer Apellido</th>
                                         <th style="color: white;">Segundo Apellido</th>
-                                        <th style="color: white;">RFC</th>
                                         <th style="color: white;">NSS</th>
-                                        <th style="color: white;">Fecha Ingreso</th>
                                         <th style="color: white;">Fecha de Baja</th>
                                         <th style="color: white;">Estatus</th>
-                                        <th style="color: white;">Movimiento</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <?php echo $obj->codigo_empleado ?>
+                                            <?php echo $obj->fecha_ingreso ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $obj->rfc ?>
                                         </td>
                                         <td>
                                             <?php echo $obj->curp ?>
@@ -182,22 +183,13 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                             <?php echo $obj->segundo_apellido ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->rfc ?>
-                                        </td>
-                                        <td>
                                             <?php echo $obj->nss ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->fecha_ingreso ?>
                                         </td>
                                         <td>
                                             <?php echo $obj->fecha_baja ?>
                                         </td>
                                         <td>
                                             <?php echo catEstatus($obj->id_cat_estatus) ?>
-                                        </td>
-                                        <td>
-                                            <?php echo catMovimientoPk($obj->id_tbl_movimientos) ?>
                                         </td>
                                     </tr>
                                     <?php

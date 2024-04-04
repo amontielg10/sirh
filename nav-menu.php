@@ -287,6 +287,26 @@ $id_rol = $_SESSION['id_rol'];
                     </li>
                     <!-- FIN DE INFOTEC -->
 
+                    <!-- MENU CARGA MASIVA -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                            aria-expanded="false">
+                            <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;M&aacutes Datos</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item">
+                                <a href="view/DatosFiscales/Listar.php" class="sidebar-link">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                    <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Dependientes Econ&oacutemicos</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- MENU CARGA MASIVA-->
+
+
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="cerrar-sesion.php"
                             aria-expanded="false">
