@@ -21,7 +21,10 @@ function listadoEmpleados($id)
 
 function listadoLikeEmp($like)
 {
-     $listado = pg_query("SELECT * FROM tbl_empleados WHERE codigo_empleado LIKE '%$like%' OR curp LIKE '%$like%' OR rfc LIKE '%$like%'");
+     $listado = pg_query("SELECT curp,rfc,nombre,primer_apellido,segundo_apellido,id_tbl_empleados
+                          FROM tbl_empleados 
+                          WHERE (curp LIKE '%$like%' 
+                          OR rfc LIKE '%$like%')");
      return $listado;
 }
 

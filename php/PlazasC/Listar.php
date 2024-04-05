@@ -39,11 +39,24 @@ function listadoPlazasCPk($id)
 }
 
 function listarIdPlazasCentro($id)
-{
-     $listado = pg_query("SELECT id_tbl_centro_trabajo FROM tbl_control_plazas WHERE id_tbl_control_plazas = '$id' LIMIT 1");
+{    
+     $listado = pg_query("SELECT tbl_control_plazas.id_tbl_centro_trabajo
+                         FROM tbl_control_plazas
+                         INNER JOIN tbl_plazas_empleados
+                         ON tbl_control_plazas.id_tbl_control_plazas = tbl_plazas_empleados.id_tbl_control_plazas
+                         WHERE tbl_plazas_empleados.id_tbl_empleados = $id;");
      $row = pg_fetch_array($listado);
-     $res = $row['id_tbl_centro_trabajo'];
+     $res = $row[0];
      return $res;
+}
+
+function listarIdControlPlazas($id){
+     $listado = pg_query("SELECT id_tbl_control_plazas
+                          FROM tbl_plazas_empleados
+                          WHERE id_tbl_empleados = $id;");
+     $row = pg_fetch_array($listado);
+     $res = $row[0];
+     return $res;                     
 }
 
 function listarLikePlaza($like)

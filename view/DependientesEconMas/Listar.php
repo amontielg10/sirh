@@ -15,6 +15,7 @@
 
 <body>
     <?php include ("../../conexion.php") ?>
+    <?php include ("../../php/CatFechaJuguetesC/listar.php") ?>
     <?php include ('../nav-menu.php') ?>
 
 
@@ -90,10 +91,35 @@
                                 </button>
                             </div>
                             <div class="modal-body">
+
                                 <form action="../../php/DependientesEcoMC/CargaMasiva.php" method="post"
                                     enctype="multipart/form-data">
-                                    <label for="formFile" class="form-label">Ingrese el archivo</label>
+
+                                    <div class="form-group">
+                                    <label for="inputCity">Seleccione la Fecha</label><label style="color:red">*</label><br>
+                                    <select class="form-control" aria-label="Default select example" id="id_cat_fecha_juguetes"
+                                        name="id_cat_fecha_juguetes" required>
+                                        <option value="" selected>Seleccione</option>
+                                        <?php
+                                        //Se incluye la conexion
+                                        $listado = listadoFechaJuguetes();
+                                        if ($listado) {
+                                            if (pg_num_rows($listado) > 0) {
+                                                while ($row = pg_fetch_object($listado)) {
+                                                    echo '<option value="' . $row->id_cat_fecha_juguetes . '">' . $row->fecha . '</option>';
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label for="inputCity">Seleccione el archivo</label><label style="color:red">*</label><br>
                                     <input class="form-control" type="file" id="formFile" name="archivo" required>
+                                    </div>
+
+                                </select>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
@@ -123,51 +149,71 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                    <h6 style="color: green">Total de registros agregados: <?php echo base64_decode($_GET['Re']) ?></h6>
-                    <h6 style="color: red">Total de registros erroneos: <?php echo base64_decode($_GET['Rr']) ?></h6>
-                    <br>
-                    <table class="table table-striped" id="t-usuarios">
-                    <thead>
-                        <tr style="background-color: #5c5c5c;">
-                            <th style="color: white;">Estatus</th>
-                            <th style="color: white;">RFC Empleado</th>
-                            <th style="color: white;">CURP Empleado</th>
-                            <th style="color: white;">CURP Menor</th>
-                            <th style="color: white;">Nombre</th>
-                            <th style="color: white;">Apellido Paterno</th>
-                            <th style="color: white;">Apellido Materno</th>
-                            <th style="color: white;">Observaciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                        <?php
-                        $roEx = pg_query("SELECT * FROM tmp_error_dependientes_economicos");
-                        if ($roEx) {
-                            if (pg_num_rows($roEx) > 0) {
-                                while ($obj = pg_fetch_object($roEx)){?>
-                                    <tr>
-                                    <td> <?php echo $obj->estatus ?></td>    
-                                    <td> <?php echo $obj->rfc_empleado ?></td>
-                                    <td><?php  echo $obj->curp_empleado ?></td>
-                                    <td><?php  echo $obj->curp_menor ?></td>
-                                    <td><?php  echo $obj->nombre ?></td>
-                                    <td><?php  echo $obj->apellido_paterno ?></td>
-                                    <td><?php  echo $obj->apellido_materno ?></td>
-                                    <td><?php  echo $obj->descripcion ?></td>
+                        <h6 style="color: green">Total de registros agregados:
+                            <?php echo base64_decode($_GET['Re']) ?>
+                        </h6>
+                        <h6 style="color: red">Total de registros erroneos:
+                            <?php echo base64_decode($_GET['Rr']) ?>
+                        </h6>
+                        <br>
+                        <table class="table table-striped" id="t-usuarios">
+                            <thead>
+                                <tr style="background-color: #5c5c5c;">
+                                    <th style="color: white;">Estatus</th>
+                                    <th style="color: white;">RFC Empleado</th>
+                                    <th style="color: white;">CURP Empleado</th>
+                                    <th style="color: white;">CURP Menor</th>
+                                    <th style="color: white;">Nombre</th>
+                                    <th style="color: white;">Apellido Paterno</th>
+                                    <th style="color: white;">Apellido Materno</th>
+                                    <th style="color: white;">Observaciones</th>
                                 </tr>
-                                    <?php
+                            </thead>
+                            <tbody>
+
+                                <?php
+                                $roEx = pg_query("SELECT * FROM tmp_error_dependientes_economicos");
+                                if ($roEx) {
+                                    if (pg_num_rows($roEx) > 0) {
+                                        while ($obj = pg_fetch_object($roEx)) { ?>
+                                            <tr>
+                                                <td>
+                                                    <?php echo $obj->estatus ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $obj->rfc_empleado ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $obj->curp_empleado ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $obj->curp_menor ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $obj->nombre ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $obj->apellido_paterno ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $obj->apellido_materno ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $obj->descripcion ?>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                        }
+                                    } else
+                                    echo "<h6 style='color: green'>Registros Agregados</h6>";
                                 }
-                            } else
-                         echo "<p>Sin Resultados</p>";
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                    style="background-color: #cb9f52; border:none; outline:none; color: white;">Cerrar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            style="background-color: #cb9f52; border:none; outline:none; color: white;">Cerrar</button>
                     </div>
                 </div>
             </div>
@@ -194,7 +240,7 @@
         $('#t-usuarios').DataTable({
             scrollX: true,
             language: {
-                
+
                 "decimal": "",
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
