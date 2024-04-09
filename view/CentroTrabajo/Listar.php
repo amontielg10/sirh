@@ -52,8 +52,7 @@
                 </div>
             </div>
 
-
-
+        
             <div class="container-fluid">
                 <p>La siguiente tabla muestra informaci&oacuten de centro de trabajo.</p>
                 <div class=" btn-group">
@@ -68,6 +67,9 @@
                         <a class="dropdown-item" data-toggle="modal" data-target="#modal-serarch">Buscar empleado</a>
                     </div>
                 </div>
+
+                <input type="text">
+                
                 <table class="table table-striped" id="t-usuarios">
                     <thead>
                         <tr style="background-color: #5c5c5c;">
@@ -239,9 +241,9 @@
                     </div>
 
                     <div class="modal-body">
-                        <label>Ingresa CURP / RFC / C&oacutedigo de empleado</label><label style="color:red">*</label>
+                        <label>Ingresa CURP / RFC </label><label style="color:red">*</label>
                         <input type="text" class="form-control" onkeyup="search();" id="idSearch" name="curp"
-                            placeholder="CURP / RFC / Codigo de Empleado">
+                            placeholder="CURP / RFC ">
                         <br>
                         <div class="table-responsive">
                             <table class="table table-striped" id="table-search">
@@ -311,6 +313,7 @@
     function searchPlaza() {
         let idSearchPlaza = document.getElementById("idSearchPlaza").value;
         var numberSearch = document.getElementById("idSearchPlaza").value.length;
+        idSearchPlaza = idSearchPlaza.trim();
         if (numberSearch >= 6) {
             $.ajax({
                 type: 'POST',
@@ -330,6 +333,7 @@
     function search() {
         let idSearch = document.getElementById("idSearch").value;
         var numberSearch = document.getElementById("idSearch").value.length;
+        idSearch = idSearch.trim();
         if (numberSearch >= 10) {
             $.ajax({
                 type: 'POST',
@@ -349,6 +353,7 @@
     $(document).ready(function () {
         $('#t-usuarios').DataTable({
             scrollX: true,
+            searching: false,
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",

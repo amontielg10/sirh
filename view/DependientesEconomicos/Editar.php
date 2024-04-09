@@ -13,6 +13,8 @@
 
 <head>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <script src="../../js/messages.js"></script>
+    <script src="../../js/Central/Curp/curp.js"></script>
     <?php  include("libHeader.php"); ?>
 </head>
 
@@ -60,7 +62,7 @@
                             <div class="form-row">
                             <div class="form-group col-md-6">
                                     <label >CURP</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
+                                    <input type="text" class="form-control" id="curp"
                                         name="curp" value="<?php echo $rowe['curp']?>" required maxlength="18">
                                 </div>
 
@@ -71,20 +73,20 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Apellido Paterno</label><label style="color:red">*</label>
+                                    <label >Apellido paterno</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         name="apellido_paterno" value="<?php echo $rowe['apellido_paterno']?>" required maxlength="35">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Apellido Materno</label><label style="color:red"></label>
+                                    <label >Apellido materno</label><label style="color:red"></label>
                                     <input type="text" class="form-control"
                                         name="apellido_materno" value="<?php echo $rowe['apellido_materno']?>" maxlength="35">
                                 </div>
 
                             <div class="form-group col-md-6">
-                                    <label for="inputCity">Dependiente Economico</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
+                                    <label for="inputCity">Tipo dependiente ec&oacutenomico</label><label style="color:red">*</label><br>
+                                    <select class="form-control" aria-label="Default select example" 
                                         name="id_cat_dependientes_economicos">
                                         <?php
                                         include ('../../php/CatDependientesEconomicosC/listar.php');
@@ -108,7 +110,7 @@
                             
                             <a class="btn btn-light" style="background-color: #cb9f52; border:none; outline:none; color: white;"
                                 href="<?php echo "Listar.php?D-F=" . base64_encode($id_tbl_empleados).'&D-F3='.$id_tbl_control_plazas.'&RP='.$id_tbl_centro_trabajo ?>">Cancelar</a>
-                            <button type="submit" class="btn btn-light"
+                            <button type="submit" class="btn btn-light" onclick="return validarCurp();"
                             style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 
                         </form>
@@ -121,5 +123,21 @@
             <?php include('../../footer-librerias.php') ?>
 
 </body>
+
+<script>
+    function validarCurp() {
+        var curp = document.getElementById('curp').value.toUpperCase()
+        var valido = false;
+
+        if (!curpValida(curp)) {
+            messajeError("CURP inválida");
+        } else {
+            valido = true;
+        }
+        return valido;
+        // resultado.innerText = "CURP: " + curp + "\nFormato: " + valido;
+    }
+</script>
+
 <?php  include("libFooter.php"); ?>
 </html>

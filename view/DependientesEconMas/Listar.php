@@ -16,6 +16,7 @@
 <body>
     <?php include ("../../conexion.php") ?>
     <?php include ("../../php/CatFechaJuguetesC/listar.php") ?>
+    <?php include ("../../php/PlazasEmpleadosC/listar.php") ?>
     <?php include ('../nav-menu.php') ?>
 
 

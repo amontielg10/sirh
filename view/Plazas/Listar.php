@@ -31,7 +31,8 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
     <?php include ("../../php/CatZonaTabuladoresC/Listar.php"); ?>
     <?php include ("../../php/CatNivelesC1/Listar.php"); ?>
     <?php include ("../../php/EmpleadosC/Listar.php"); ?>
-
+    <?php include ("../../php/PlazasEmpleadosC/Listar.php") ?>    
+    <?php include ("../../php/CatMovimientoC/Listar.php") ?>  
 
 
     <div id="main-wrapper">
@@ -136,6 +137,8 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                                                         href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Modificar</a>
                                                     <a class="dropdown-item"
                                                         href="<?php echo "../Empleados/Listar.php?D-F3=" . base64_encode($obj->id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Empleado</a>
+                                                    <a class="dropdown-item" data-toggle="modal"
+                                                        data-target="<?php echo '#modal-plazas-' . $obj->id_tbl_control_plazas ?>">Historial</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item" data-toggle="modal"
                                                         data-target="<?php echo '#modal-' . $obj->id_tbl_control_plazas ?>">Eliminar</a>
@@ -166,6 +169,72 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                                                 </div>
                                             </div>
                                             <!-- MODAL ELIMINAR -->
+
+                                            <!-- MODAL LISTADO DE PLAZAS EMPLEADOS -->
+                                            <div class="modal fade" id="<?php echo 'modal-plazas-' . $obj->id_tbl_control_plazas ?>"
+                                                tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Historial de plaza</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <table class="table table-striped" id="t-usuarios1">
+                                                                <thead>
+                                                                    <tr style="background-color: #5c5c5c;">
+                                                                        <th style="color: white;">Movimiento</th>
+                                                                        <th style="color: white;">Empleado</th>
+                                                                        <th style="color: white;">Fecha de incio</th>
+                                                                        <th style="color: white;">Fecha de termino</th>
+                                                                        <th style="color: white;">Fecha de movimiento</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                    <?php
+                                                                    $listadox = listadoPlazasEmpleadosByIdPlaza($obj->id_tbl_control_plazas);
+                                                                    if ($listadox) {
+                                                                        if (pg_num_rows($listadox) > 0) {
+                                                                            while ($objx = pg_fetch_object($listadox)) { ?>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <?php echo catMovimientoPkByName($objx->id_tbl_movimientos) ?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <?php echo rfcEmpleado($obj->id_tbl_control_plazas) ?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <?php echo $objx->fecha_inicio ?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <?php echo $objx->fecha_termino ?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <?php echo $objx->fecha_movimiento ?>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <?php
+                                                                            }
+                                                                        } else
+                                                                            echo "<p></p>";
+                                                                    }
+                                                                    ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-light"
+                                                                style="background-color: #cb9f52; border:none; outline:none; color: white;"
+                                                                data-dismiss="modal">Cerrar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- MODAL LISTADO DE PLAZAS EMPLEADOS -->
                                         </td>
                                         <td>
                                             <?php echo codigoEmpleado($obj->id_tbl_control_plazas) ?>
@@ -273,7 +342,6 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
 
         );
     });
-
 
 </script>
 <?php include ("libFooter.php"); ?>

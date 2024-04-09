@@ -64,14 +64,14 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                                 <input type="hidden" id="id_tbl_centro_trabajo" name="id_tbl_centro_trabajo" value="<?php echo $id_tbl_centro_trabajo?>">
                                 
                                 <div class="form-group col-md-6">
-                                    <label >Correo Electronico</label><label style="color:red">*</label>
+                                    <label >Correo electronico</label><label style="color:red">*</label>
                                     <input type="email" class="form-control" required
                                         name="correo_electronico" placeholder="Correo electronico" maxlength="30">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
+                                    <select class="form-control" aria-label="Default select example" 
                                         name="id_cat_estatus" id="id_cat_estatus" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php

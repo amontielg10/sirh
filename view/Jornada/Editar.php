@@ -70,7 +70,7 @@ $rowe = listadoTurnoPk($id_ctrl_turno);
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Turno</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" id="id_cat_turno"
+                                    <select class="form-control" aria-label="Default select example" id="id_cat_turno"
                                         name="id_cat_turno" required>
                                         <?php
                                         echo '<option value="' . $rowe['id_cat_turno'] . '">' . listadoCatTurnoNewPk($rowe['id_cat_turno']) . '</option>';
@@ -90,7 +90,7 @@ $rowe = listadoTurnoPk($id_ctrl_turno);
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Horario</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" id="id_cat_horario"
+                                    <select class="form-control" aria-label="Default select example" id="id_cat_horario"
                                         name="id_cat_horario" required>
                                         <?php
                                         echo '<option value="' . $rowe['id_cat_horario'] . '">' . listadoHorarioPk($rowe['id_cat_horario']) . '</option>';
@@ -100,8 +100,8 @@ $rowe = listadoTurnoPk($id_ctrl_turno);
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_estatus" id="id_cat_estatus" required>
+                                    <select class="form-control" aria-label="Default select example"
+                                        name="id_cat_estatus" id="id_cat_estatus_x" required>
                                         <?php
                                         echo '<option value="' . $rowe['id_cat_estatus'] . '">' . catEstatus($rowe['id_cat_estatus']) . '</option>';
                                         $listado = $listadoCE;

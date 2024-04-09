@@ -68,14 +68,14 @@ $rowe = listadoMediosContactoPk($id_ctrl_medios_contacto);
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label>Correo Electronico</label><label style="color:red">*</label>
+                                    <label>Correo electronico</label><label style="color:red">*</label>
                                     <input type="email" class="form-control" required name="correo_electronico"
                                         value="<?php echo $rowe['correo_electronico'] ?>" maxlength="30">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
+                                    <select class="form-control" aria-label="Default select example"
                                         name="id_cat_estatus" id="id_cat_estatus" required>
                                         <?php
                                         include('../../php/CatEstatusC/listar.php');

@@ -103,8 +103,7 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                         href="<?php echo "../MediosContacto/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Medios
                                         de Contacto</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../CuentaClabe/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Cuenta
-                                        Clabe</a>
+                                        href="<?php echo "../CuentaClabe/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Forma de pago</a>
                                     <a class="dropdown-item"
                                         href="<?php echo "../ContactoEmergencia/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Contacto
                                         Emergencia</a>
@@ -187,9 +186,11 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                             }
                         } else { ?>
                                 <div class="dropdown-menu">
+                                    <!--
                                     <a class="dropdown-item"
-                                        href="<?php echo 'Agregar.php?D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Agregar</a>
-                                    <div class="dropdown-divider"></div>
+                                        href="<?//php echo 'Agregar.php?D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Agregar</a>
+                                    -->
+                                        <div class="dropdown-divider"></div>
                                     <a class="dropdown-item"
                                         href="<?php echo '../Plazas/Listar.php?RP=' . $id_tbl_centro_trabajo ?>">Regresar</a>
                                 </div>

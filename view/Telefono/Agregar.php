@@ -72,7 +72,7 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
+                                    <select class="form-control" aria-label="Default select example"
                                         name="id_cat_estatus" id="id_cat_estatus" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php

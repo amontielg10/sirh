@@ -33,7 +33,7 @@
         <div class="page-wrapper">
 
             <div class="page-breadcrumb">
-            <h2 class="page-title">Dependientes Econ&oacutemicos</h2>
+            <h2 class="page-title">Dependientes econ&oacutemicos</h2>
                 <div class="row">
                     <div class="col-5 align-self-center">
                         <div class="d-flex align-items-center">
@@ -127,20 +127,18 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea Continuar?</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea continuar?</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            La accion de eliminar no se puede rehacer.
+                                                            La acci&oacuten eliminar no se puede rehacer.
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Cancelar</button>
-                                                            <a class="btn btn-danger"
-                                                            href="<?php echo "../../php/DependientesEconomicosC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_tbl_dependientes_economicos).'&D-F3='.$id_tbl_control_plazas.'&RP='.$id_tbl_centro_trabajo?>">Eliminar</a>
+                                                            <a class="btn btn-light" style="background-color: #cb9f52; border:none; outline:none; color: white;"
+                                                            href="<?php echo "../../php/DependientesEconomicosC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_tbl_dependientes_economicos).'&D-F3='.$id_tbl_control_plazas.'&RP='.$id_tbl_centro_trabajo?>">Confirmar</a>
                                                         </div>
                                                     </div>
                                                 </div>

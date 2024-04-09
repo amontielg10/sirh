@@ -50,10 +50,12 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                     </div>
                 </div>
 
+                <!--
                 <div class="alert alert-warning" role="alert">
                     <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
                     &nbsp;&nbsp;Solo una jornada puede estar activa.
                 </div>
+                -->
 
 
                 <div class="card">
@@ -70,7 +72,7 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Turno</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" id="id_cat_turno"
+                                    <select class="form-control" aria-label="Default select example" id="id_cat_turno"
                                         name="id_cat_turno" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
@@ -89,7 +91,7 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Horario</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" id="id_cat_horario"
+                                    <select class="form-control" aria-label="Default select example" id="id_cat_horario"
                                         name="id_cat_horario" required>
                                         <option value="" selected>Seleccione</option>
                                     </select>
@@ -97,8 +99,8 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_estatus" id="id_cat_estatus" required>
+                                    <select class="form-control" aria-label="Default select example"
+                                        name="id_cat_estatus" id="id_cat_estatus_x" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         $listado = $listadoCE;

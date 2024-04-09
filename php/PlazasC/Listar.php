@@ -10,7 +10,7 @@ function listado()
                               id_cat_plazas, id_cat_tipo_contratacion, id_cat_situacion_plaza,
                               id_cat_unidad_responsable, id_tbl_centro_trabajo, id_cat_puesto, id_cat_zonas_tabuladores,
                               id_cat_niveles, zona_pagadora, fecha_ini_contrato, fecha_fin_contrato,
-                              fecha_modificacion FROM tbl_control_plazas ORDER BY id_tbl_control_plazas DESC LIMIT 50");
+                              fecha_modificacion FROM tbl_control_plazas ORDER BY id_tbl_control_plazas DESC LIMIT 100");
      return $listado;
 }
 
@@ -21,7 +21,9 @@ function listadoPlazas($id)
                                  id_cat_unidad_responsable, id_cat_puesto, id_cat_zonas_tabuladores,
                                  id_cat_niveles, zona_pagadora, fecha_ingreso_inst, fecha_inicio_movimiento,
                                  fecha_termino_movimiento, fecha_modificacion 
-                          FROM tbl_control_plazas WHERE id_tbl_centro_trabajo = '$id' ");
+                          FROM tbl_control_plazas 
+                          WHERE id_tbl_centro_trabajo = '$id' 
+                          LIMIT 100");
      return $listado;
 }
 
