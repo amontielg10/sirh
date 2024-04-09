@@ -8,7 +8,8 @@ function listarCentroTrabajo(){
                                  pais, id_cat_entidad, colonia, codigo_postal, num_exterior,
                                  num_interior, latitud, longitud, id_cat_region, id_estatus_centro  
                          FROM tbl_centro_trabajo 
-                         ORDER BY id_tbl_centro_trabajo DESC");
+                         ORDER BY id_tbl_centro_trabajo DESC
+                         LIMIT 100");
      return $listado;
 }
 
@@ -16,8 +17,7 @@ function listarCentroTrabajo(){
 //La funcion retorna los atributos dependiendo del id que se ingrese como parametro
 function catcentroTrabajo($idTblCentroTrabajo)
 {
-     $listado = pg_query("SELECT id_tbl_centro_trabajo, clave_centro_trabajo, 
-                                codigo_postal, nombre
+     $listado = pg_query("SELECT *
                          FROM tbl_centro_trabajo 
                          WHERE id_tbl_centro_trabajo = '$idTblCentroTrabajo'");
      $row = pg_fetch_array($listado);

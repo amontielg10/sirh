@@ -154,22 +154,16 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                             <table class="table table-striped" id="t-usuarios">
                                 <thead>
                                     <tr style="background-color: #5c5c5c;">
-                                        <th style="color: white;">Fecha de Ingreso</th>
                                         <th style="color: white;">RFC</th>
                                         <th style="color: white;">CURP</th>
                                         <th style="color: white;">Nombre</th>
                                         <th style="color: white;">Primer Apellido</th>
                                         <th style="color: white;">Segundo Apellido</th>
                                         <th style="color: white;">NSS</th>
-                                        <th style="color: white;">Fecha de Baja</th>
-                                        <th style="color: white;">Estatus</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>
-                                            <?php echo $obj->fecha_ingreso ?>
-                                        </td>
                                         <td>
                                             <?php echo $obj->rfc ?>
                                         </td>
@@ -187,12 +181,6 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                         </td>
                                         <td>
                                             <?php echo $obj->nss ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->fecha_baja ?>
-                                        </td>
-                                        <td>
-                                            <?php echo catEstatus($obj->id_cat_estatus) ?>
                                         </td>
                                     </tr>
                                     <?php
@@ -231,7 +219,6 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
 <script>
     $(document).ready(function () {
         $('#t-usuarios').DataTable({
-            scrollX: true,
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",

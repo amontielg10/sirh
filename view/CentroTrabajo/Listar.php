@@ -9,17 +9,22 @@
             ;
         }
     </style>
-    <?php include("libHeader.php"); ?>
+
+    <?php include ("libHeader.php"); ?>
 
 </head>
 
 <body onload="messageInfo();">
-    <?php include("../../conexion.php") ?>
-    <?php include('../nav-menu.php') ?>
-    <?php include("../../php/CentroTrabajoC/Listar.php") //Se incluye la libreria para generar su tabla                    ?>
-    <?php include("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region                    ?>
-    <?php include("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus                    ?>
-    <?php include("../../php/CatEntidadC/Listar.php") ?>   
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <div class="loader-page"></div>
+
+    <?php include ("../../conexion.php") ?>
+    <?php include ('../nav-menu.php') ?>
+    <?php include ("../../php/CentroTrabajoC/Listar.php") //Se incluye la libreria para generar su tabla                       ?>
+    <?php include ("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region                       ?>
+    <?php include ("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus                       ?>
+    <?php include ("../../php/CatEntidadC/Listar.php") ?>
 
     <div id="main-wrapper">
 
@@ -50,7 +55,7 @@
 
 
             <div class="container-fluid">
-                <p>La sig. tabla muestra informacion de centro de trabajo.</p>
+                <p>La siguiente tabla muestra informaci&oacuten de centro de trabajo.</p>
                 <div class=" btn-group">
                     <button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false" style="background-color: white; border:none; outline:none; color: white;">
@@ -59,25 +64,25 @@
 
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="<?php echo 'Agregar.php' ?>">Agregar</a>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#modal-serarch">Buscar empleado</a>
                         <a class="dropdown-item" data-toggle="modal" data-target="#modal-serarch-plaza">Buscar plaza</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#modal-serarch">Buscar empleado</a>
                     </div>
                 </div>
                 <table class="table table-striped" id="t-usuarios">
                     <thead>
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
-                            <th style="color: white;">Clave de Centro de Trabajo</th>
-                            <th style="color: white;">Nombre</th>
-                            <th style="color: white;">Pais</th>
-                            <th style="color: white;">Entidad</th>
-                            <th style="color: white;">Colonia</th>
-                            <th style="color: white;">Codigo Postal</th>
-                            <th style="color: white;">Numero Exterior</th>
-                            <th style="color: white;">Numero Interior</th>
+                            <th style="color: white;white; width:150px">Clave de Centro de Trabajo</th>
+                            <th style="color: white;white; width:120px">Nombre</th>
+                            <th style="color: white;">Pa&iacutes</th>
+                            <th style="color: white;white; width:150px">Entidad</th>
+                            <th style="color: white;white; width:110px">Colonia</th>
+                            <th style="color: white;white; width:110px">C&oacutedigo Postal</th>
+                            <th style="color: white;white; width:100px">N&uacutem. Exterior</th>
+                            <th style="color: white;white; width:100px">N&uacutem. Interior</th>
                             <th style="color: white;">Latitud</th>
                             <th style="color: white;">Longitud</th>
-                            <th style="color: white;">Region</th>
+                            <th style="color: white;white; width:100px">Regi&oacuten</th>
                             <th style="color: white;">Estatus</th>
                         </tr>
                     </thead>
@@ -111,30 +116,29 @@
                                                         de Pago</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item" data-toggle="modal"
-                                                         data-target="<?php echo '#modal-' . $obj->id_tbl_centro_trabajo ?>">Eliminar</a>
+                                                        data-target="<?php echo '#modal-' . $obj->id_tbl_centro_trabajo ?>">Eliminar</a>
                                                 </div>
                                             </div>
 
                                             <!-- MODAL ELIMINAR -->
-                                            <div class="modal fade" id="<?php echo 'modal-' . $obj->id_tbl_centro_trabajo ?>" tabindex="-1" role="dialog"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="<?php echo 'modal-' . $obj->id_tbl_centro_trabajo ?>"
+                                                tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea Continuar?</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea continuar?</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            La accion de eliminar no se puede rehacer.
+                                                            La acci&oacuten eliminar no se puede rehacer.
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Cancelar</button>
-                                                            <a class="btn btn-danger"
-                                                            href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Eliminar</a>
+                                                            <a class="btn btn-light"
+                                                                style="background-color: #cb9f52; border:none; outline:none; color: white;"
+                                                                href="<?php echo "../../php/CentroTrabajoC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_centro_trabajo) ?>">Confirmar</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -182,12 +186,12 @@
                                     <?php
                                 }
                             } else
-                                echo "<p>Sin Resultados</p>";
+                                echo "<p></p>";
                         }
                         ?>
                     </tbody>
-                    <?php include('../../ajuste-menu.php') ?>
-                    <?php include('../../footer-librerias.php') ?>
+                    <?php include ('../../ajuste-menu.php') ?>
+                    <?php include ('../../footer-librerias.php') ?>
 
             </div>
         </div>
@@ -256,8 +260,8 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal AGREGAR-->
 
-                <!-- Modal AGREGAR PRODUCTOS-->
-                <div class="modal fade bd-example-modal-lg" id="modal-serarch-plaza" tabindex="-1" role="dialog"
+        <!-- Modal AGREGAR PRODUCTOS-->
+        <div class="modal fade bd-example-modal-lg" id="modal-serarch-plaza" tabindex="-1" role="dialog"
             aria-labelledby="newModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -295,10 +299,10 @@
 </body>
 
 <script>
-    function messageInfo(){
+    function messageInfo() {
         let messageInfo = document.getElementById("messageInfo").value;
-        if (messageInfo == 1){
-            messajeError('No es posible eliminar un centro de trabajo con tenga plazas.');
+        if (messageInfo == 1) {
+            messajeError('No es posible eliminar un centro de trabajo con plazas asignadas.');
         }
     }
 </script>
@@ -377,6 +381,6 @@
 
 
 </script>
-<?php include("libFooter.php"); ?>
+<?php include ("libFooter.php"); ?>
 
 </html>

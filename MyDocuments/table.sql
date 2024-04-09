@@ -46,3 +46,11 @@ CREATE TABLE IF NOT EXISTS ctrl_juguetes (
 	id_tbl_empleados INTEGER,
 	id_tbl_dependientes_economicos INTEGER
 )
+
+
+-- SCRIPT 1.1
+INSERT INTO rol (id_rol,nombre, descripcion) VALUES 
+(1, 'ROL ADMINISTRADOR', 'Permite el acceso total a los modulos del sistema'),
+(2, 'ROL CENTRAL', 'Permite el acceso al modulo central del sistema'),
+(3, 'ROL HRAE', 'Permite el acceso al modulo hrae del sistema'),
+(4, 'ROL NO FEDERALIZADA', 'Permite el acceso al modulo no federalizada del sistema');

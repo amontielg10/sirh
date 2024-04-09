@@ -12,7 +12,7 @@
     <?php include('../nav-menu.php') ?>
     <?php include("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region?> 
     <?php include("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus?> 
-    <?php include("../../php/CatSepomexC/listar.php");?>
+    <?php include("../../php/CatEntidadC/listar.php");?>
     <div id="main-wrapper">
 
         <div class="page-wrapper">
@@ -20,7 +20,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Centro de Trabajo</h2>
+                        <h2 class="page-title">Agregar centro de trabajo</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -43,91 +43,87 @@
 
 
                 <div class="card">
-                    <h5 class="card-header">Ingresa los siguientes campos</h5>
+                    <h5 class="card-header">Ingresa los siguientes campos.</h5>
                     <div class="card-body">
                         <form method="POST" action="../../php/CentroTrabajoC/Agregar.php">
                             <div class="form-row">
                                 
                                 <div class="form-group col-md-6">
-                                    <label >Clave de Centro de Trabajo</label><label style="color:red">*</label>
+                                    <label >Clave de centro de trabajo</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        id="clave_centro_trabajo" name="clave_centro_trabajo" placeholder="Clave de centro de trabajo" required maxlength="3">
+                                        id="clave_centro_trabajo" name="clave_centro_trabajo" placeholder="Clave de centro de trabajo" required maxlength="50">
                                 </div>
                                 
                                 <div class="form-group col-md-6">
                                     <label >Nombre</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        id="nombre" name="nombre" placeholder="Nombre">
+                                        id="nombre" name="nombre" placeholder="Nombre" required maxlength="50">
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label >Pa&iacutes</label><label style="color:red">*</label>
+                                    <input type="text" class="form-control" required maxlength="50"
+                                        id="pais" name="pais" placeholder="Pais">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Estado</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" id="c_estado"
-                                        name="c_estado" required>
+                                    <label for="inputCity">Entidad</label><label style="color:red">*</label>
+                                    <select class="form-control" aria-label="Default select example" id="entidad"
+                                        name="entidad" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
-                                        $listado = listarCatSepmexEstado();
+                                        $listado = listadoCatEntidadByName();
                                         if ($listado) {
                                             if (pg_num_rows($listado) > 0) {
                                                 while ($row = pg_fetch_object($listado)) {
-                                                    echo '<option value="' . $row->c_estado . '">' . $row->d_estado . '</option>';
+                                                    echo '<option value="' . $row->id_cat_entidad . '">' . $row->entidad . '</option>';
                                                 }
                                             }
                                         }
                                         ?>
                                     </select>
                                 </div>
-                                
+
                                 <div class="form-group col-md-6">
-                                    <label >Pais</label><label style="color:red">*</label>
+                                    <label >Colonia</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        id="pais" name="pais" placeholder="Mexico">
+                                        id="colonia" name="colonia" placeholder="Colonia" required maxlength="50">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Municipio</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" id="d_mnpio"
-                                        name="d_mnpio" required>
-                                        <option value="" selected>Seleccione</option>
-                                    </select>
+                                    <label >C&oacutedigo postal</label><label style="color:red">*</label>
+                                    <input type="text" class="form-control" required maxlength="5"
+                                        id="codigo_postal" name="codigo_postal" placeholder="Codigo Postal">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Numero Exterior</label><label style="color:red">*</label>
-                                    <input type="number" class="form-control"
-                                        id="num_exterior" name="num_exterior" placeholder="Numero Exterior">
+                                    <label >N&uacutem. exterior</label><label style="color:red">*</label>
+                                    <input type="text" class="form-control" required maxlength="30"
+                                        id="num_exterior" name="num_exterior" placeholder="Numero Exterior" >
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Colonia</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" id="colonia_origen"
-                                        name="colonia_origen" required>
-                                        <option value="" selected>Seleccione</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Numero Interior</label><label style="color:red">*</label>
-                                    <input type="number" class="form-control"
+                                    <label >N&uacutem. interior</label><label style="color:red">*</label>
+                                    <input type="text" class="form-control" required maxlength="30"
                                         id="num_interior" name="num_interior" placeholder="Numero Interior">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label >Latitud</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
+                                    <input type="text" class="form-control" required maxlength="30"
                                         id="latitud" name="latitud" placeholder="Latitud">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label >Longitud</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
+                                    <input type="text" class="form-control" required maxlength="30"
                                         id="longitud" name="longitud" placeholder="Longitud">
                                 </div>
-                                
+                      
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Region</label><label style="color:red">*</label>
-                                    <select class="form-select" aria-label="Default select example" id="id_cat_region"
-                                        name="id_cat_region">
+                                    <select class="form-control" aria-label="Default select example" id="id_cat_region"
+                                        name="id_cat_region" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         if ($listadoCR) {
@@ -143,8 +139,8 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label>
-                                    <select class="form-select" aria-label="Default select example" id="id_estatus_centro"
-                                        name="id_estatus_centro">
+                                    <select class="form-control" aria-label="Default select example" id="id_estatus_centro"
+                                        name="id_estatus_centro" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         if ($listadoCE) {

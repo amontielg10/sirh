@@ -1,42 +1,90 @@
-<?php
-// Your code here!
-function is_curp( $string = '' ){
-    $string = trim($string);
-    if (strlen($string) != 18) {
-        return false;
-    }
-// By @JorhelR
-// TRANSFORMARMOS EN STRING EN MAYÚSCULAS RESPETANDO LAS Ñ PARA EVITAR ERRORES
-        $string = mb_strtoupper($string, "UTF-8");
-// EL REGEX POR @MARIANO
-        $pattern = "/^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/";
-        $validate = preg_match($pattern, $string, $match);
-        if( $validate === false ){
-// SI EL STRING NO CUMPLE CON EL PATRÓN REQUERIDO RETORNA FALSE
-            return false;
-        }
-        if (count($match) == 0) {
-            return false;
-        }
-// ASIGNAMOS VALOR DE 0 A 36 DIVIDIENDO EL STRING EN UN ARRAY
-        $ind = preg_split( '//u', '0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ', null, PREG_SPLIT_NO_EMPTY );
-// REVERTIMOS EL CURP Y LE COLOCAMOS UN DÍGITO EXTRA PARA QUE EL VALOR DEL PRIMER CARACTER SEA 0 Y EL DEL PRIMER DIGITO DE LA CURP (INVERSA) SEA 1
-        $vals = str_split( strrev( $match[0]."?" ) );
-// ELIMINAMOS EL CARACTER ADICIONAL Y EL PRIMER DIGITO DE LA CURP (INVERSA)
-        unset( $vals[0] );
-        unset( $vals[1] );
-        $tempSum = 0;
-        foreach( $vals as $v => $d ){
-// SE BUSCA EL DÍGITO DE LA CURP EN EL INDICE DE LETRAS Y SU CLAVE(VALOR) SE MULTIPLICA POR LA CLAVE(VALOR) DEL DÍGITO. TODO ESTO SE SUMA EN $tempSum
-            $tempSum = (array_search( $d, $ind ) * $v)+$tempSum;
-        }
-// ESTO ES DE @MARIANO NO SUPE QUE ERA
-        $digit = 10 - $tempSum % 10;
-// SI EL DIGITO CALCULADO ES 10 ENTONCES SE REASIGNA A 0
-        $digit = $digit == 10 ? 0 : $digit;
-// SI EL DIGITO COINCIDE CON EL ÚLTIMO DÍGITO DE LA CURP RETORNA TRUE, DE LO CONTRARIO FALSE
-        return $match[2] == $digit;
-    }
-    
-    var_dump(is_curp('EOAM141001HCSSG3A3'));
-?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+                .loader-page {
+                        position: fixed;
+                        z-index: 25000;
+                        background: rgb(255, 255, 255);
+                        left: 0px;
+                        top: 0px;
+                        height: 100%;
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: all .3s ease;
+                }
+
+                .loader-page::before {
+                        content: "";
+                        position: absolute;
+                        border: 2px solid rgb(50, 150, 176);
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        box-sizing: border-box;
+                        border-left: 2px solid rgba(50, 150, 176, 0);
+                        border-top: 2px solid rgba(50, 150, 176, 0);
+                        animation: rotarload 1s linear infinite;
+                        transform: rotate(0deg);
+                }
+
+                @keyframes rotarload {
+                        0% {
+                                transform: rotate(0deg)
+                        }
+
+                        100% {
+                                transform: rotate(360deg)
+                        }
+                }
+
+                .loader-page::after {
+                        content: "";
+                        position: absolute;
+                        border: 2px solid rgba(50, 150, 176, .5);
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        box-sizing: border-box;
+                        border-left: 2px solid rgba(50, 150, 176, 0);
+                        border-top: 2px solid rgba(50, 150, 176, 0);
+                        animation: rotarload 1s ease-out infinite;
+                        transform: rotate(0deg);
+                }
+        </style>
+</head>
+
+<body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <div class="loader-page"></div>
+        <h1>Contenido de la pagina</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
+</body>
+
+<script>
+        /*
+        $(window).on('load', function () {
+                function () {
+                        $(".loader-page").css({ visibility: "hidden", opacity: "0" })
+                };
+
+        });*/
+        document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    console.log ("Listp");
+  }
+};
+</script>
+
+
+</html>

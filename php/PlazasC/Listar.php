@@ -8,18 +8,19 @@ function listado()
      include('../../conexion.php'); //Se incluye la conexion
      $listado = pg_query($connectionDBsPro, "SELECT id_tbl_control_plazas, num_plaza,
                               id_cat_plazas, id_cat_tipo_contratacion, id_cat_situacion_plaza,
-                              id_cat_unidad_reponsable, id_tbl_centro_trabajo, id_cat_puesto, id_cat_zonas_tabuladores,
+                              id_cat_unidad_responsable, id_tbl_centro_trabajo, id_cat_puesto, id_cat_zonas_tabuladores,
                               id_cat_niveles, zona_pagadora, fecha_ini_contrato, fecha_fin_contrato,
                               fecha_modificacion FROM tbl_control_plazas ORDER BY id_tbl_control_plazas DESC LIMIT 50");
      return $listado;
 }
 
+///LISTADO DE PLAZA X CENTRO DE TRABAJO S/N BUSQUEDA
 function listadoPlazas($id)
 {
      $listado = pg_query("SELECT id_tbl_control_plazas, num_plaza, id_cat_plazas, id_cat_tipo_contratacion,
-                                 id_cat_unidad_reponsable, id_cat_puesto, id_cat_zonas_tabuladores,
-                                 id_cat_niveles, zona_pagadora, fecha_ini_contrato, fecha_fin_contrato, 
-                                 fecha_modificacion  
+                                 id_cat_unidad_responsable, id_cat_puesto, id_cat_zonas_tabuladores,
+                                 id_cat_niveles, zona_pagadora, fecha_ingreso_inst, fecha_inicio_movimiento,
+                                 fecha_termino_movimiento, fecha_modificacion 
                           FROM tbl_control_plazas WHERE id_tbl_centro_trabajo = '$id' ");
      return $listado;
 }

@@ -1,6 +1,6 @@
 <?php
-include("../../php/RegimenFiscalC/listar.php");
-include("../../php/CentroTrabajoC/Listar.php"); 
+include ("../../php/RegimenFiscalC/listar.php");
+include ("../../php/CentroTrabajoC/Listar.php");
 $id_tbl_centro_trabajo = ($_GET['RP']);
 $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
 ?>
@@ -15,22 +15,22 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
             ;
         }
     </style>
-    <?php include("libHeader.php"); ?>
+    <?php include ("libHeader.php"); ?>
 
 </head>
 
 <body onload="messageInfo();">
-    <?php include("../../conexion.php") ?>
-    <?php include('../nav-menu.php') ?>
-    <?php include("../../php/PlazasC/Listar.php") ?>
-    <?php include("../../php/CatPlazasC/listar.php"); ?>
-    <?php include("../../php/CatTipoContratacionC/listar.php"); ?>
-    <?php include("../../php/CatUnidadResponsableC/listar.php"); ?>
-    <?php include("../../php/CatPuestoC/Listar.php"); ?>
-    <?php include("../../php/CatSituacionPlazaC/listar.php"); ?>
-    <?php include("../../php/CatZonaTabuladoresC/Listar.php"); ?>
-    <?php include("../../php/CatNivelesC1/Listar.php"); ?>
-    <?php include("../../php/EmpleadosC/Listar.php"); ?>
+    <?php include ("../../conexion.php") ?>
+    <?php include ('../nav-menu.php') ?>
+    <?php include ("../../php/PlazasC/Listar.php") ?>
+    <?php include ("../../php/CatPlazasC/listar.php"); ?>
+    <?php include ("../../php/CatTipoContratacionC/listar.php"); ?>
+    <?php include ("../../php/CatUnidadResponsableC/listar.php"); ?>
+    <?php include ("../../php/CatPuestoC/Listar.php"); ?>
+    <?php include ("../../php/CatSituacionPlazaC/listar.php"); ?>
+    <?php include ("../../php/CatZonaTabuladoresC/Listar.php"); ?>
+    <?php include ("../../php/CatNivelesC1/Listar.php"); ?>
+    <?php include ("../../php/EmpleadosC/Listar.php"); ?>
 
 
 
@@ -63,15 +63,15 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
 
 
             <div class="container-fluid">
-            <p>Informaci&oacuten de centro de trabajo seleccionado.</p>
+                <p>Informaci&oacuten de centro de trabajo seleccionado.</p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">Clave de centro de trabajo:
-                    <?php echo $rowx['clave_centro_trabajo']?>
+                    <?php echo $rowx['clave_centro_trabajo'] ?>
                 </p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">C&oacutedigo postal:
-                    <?php echo $rowx['codigo_postal']?>
+                    <?php echo $rowx['codigo_postal'] ?>
                 </p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">Nombre:
-                    <?php echo $rowx['nombre']?>
+                    <?php echo $rowx['nombre'] ?>
                 </p>
                 <br>
                 <div class=" btn-group">
@@ -92,20 +92,20 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
                             <th style="color: white;">CURP</th>
-                            <th style="color: white;">Nombre Empleado</th>
-                            <th style="color: white;">RFC</th>
-                            <th style="color: white;">Numero plaza</th>
-                            <th style="color: white;">Plaza</th>
-                            <th style="color: white;">Tipo contratacion</th>
-                            <th style="color: white;">Unidad Responsable</th>
+                            <th style="color: white;white; width:150px"">Nombre de empleado</th>
+                            <th style=" color: white;">RFC</th>
+                            <th style="color: white;white; width:100px"">N&uacutem. plaza</th>
+                            <th style=" color: white;">Plaza</th>
+                            <th style="color: white;white; width:130px"">Tipo de contratacion</th>
+                            <th style=" color: white;white; width:130px"">Unidad responsable</th>
                             <th style="color: white;">Puesto</th>
                             <th style="color: white;">Zonas tabuladores</th>
                             <th style="color: white;">Niveles</th>
                             <th style="color: white;">Zona pagadora</th>
-                            <th style="color: white;">Fecha Inicio</th>
-                            <th style="color: white;">Fecha Fin</th>
-                            <th style="color: white;">Fecha modificacion</th>
-
+                            <th style="color: white;">Fecha de ingreso instancia</th>
+                            <th style="color: white;white; width:130px"">Fecha inicio de movimiento</th>
+                            <th style=" color: white;">Fecha de termino de movimiento</th>
+                            <th style="color: white;">Fecha de modificacion</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -129,7 +129,9 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                                                     style="background-color: transparent; border:none; outline:none; color: white;">
                                                     <i class="fa fa-cog" style="font-size: 1.4rem; color:#cb9f52;"></i>
                                                 </button>
-                                                <div class="dropdown-menu" <?php if(pg_num_rows($listado) == 1){echo 'style="height: 130%; overflow: auto;"';}?>>
+                                                <div class="dropdown-menu" <?php if (pg_num_rows($listado) == 1) {
+                                                    echo 'style="height: 130%; overflow: auto;"';
+                                                } ?>>
                                                     <a class="dropdown-item"
                                                         href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Modificar</a>
                                                     <a class="dropdown-item"
@@ -146,19 +148,18 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea Continuar?</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea continuar?</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            La accion de eliminar no se puede rehacer.
+                                                            La acci&oacuten eliminar no se puede rehacer.
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Cancelar</button>
-                                                            <a class="btn btn-danger"
+                                                            <a class="btn btn-light"
+                                                                style="background-color: #cb9f52; border:none; outline:none; color: white;"
                                                                 href="<?php echo "../../php/PlazasC/Eliminar.php?D-F=" . base64_encode($obj->id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Eliminar</a>
                                                         </div>
                                                     </div>
@@ -185,7 +186,7 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                                             <?php echo catalogoContratacionPk($obj->id_cat_tipo_contratacion) ?>
                                         </td>
                                         <td>
-                                            <?php echo catPk($obj->id_cat_unidad_reponsable) ?>
+                                            <?php echo catPk($obj->id_cat_unidad_responsable) ?>
                                         </td>
                                         <td>
                                             <?php echo catalogoPuestoPk($obj->id_cat_puesto) ?>
@@ -200,10 +201,13 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                                             <?php echo $obj->zona_pagadora ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->fecha_ini_contrato ?>
+                                            <?php echo $obj->fecha_ingreso_inst ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->fecha_fin_contrato ?>
+                                            <?php echo $obj->fecha_inicio_movimiento ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $obj->fecha_termino_movimiento ?>
                                         </td>
                                         <td>
                                             <?php echo $obj->fecha_modificacion ?>
@@ -217,13 +221,14 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                         }
                         ?>
 
-                        <?php include('../../ajuste-menu.php') ?>
-                        <?php include('../../footer-librerias.php') ?>
+                        <?php include ('../../ajuste-menu.php') ?>
+                        <?php include ('../../footer-librerias.php') ?>
 
             </div>
         </div>
         <input type="hidden" id="messageInfo" value="<?php echo base64_decode($_GET['MS3']); ?>">
 </body>
+
 
 <script>
     function messageInfo() {
@@ -271,6 +276,6 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
 
 
 </script>
-<?php include("libFooter.php"); ?>
+<?php include ("libFooter.php"); ?>
 
 </html>

@@ -27,7 +27,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Datos Fiscales</h2>
+                        <h2 class="page-title">Datos F&iacutescales</h2>
                         <div class="d-flex align-items-center">
                         </div>
                     </div>
@@ -49,7 +49,7 @@
             
 
             <div class="container-fluid">
-            <p>La sig. tabla muestra informacion de datos fiscales.</p>
+            <p>La siguiente tabla muestra informaci&oacuten de datos f&iacutescales.</p>
             <div class=" btn-group">
                     <button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"
@@ -67,12 +67,12 @@
                     <thead>
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
-                            <th style="color: white; width:250px">Nombre / Razon Social</th>
+                            <th style="color: white; width:250px">Nombre / Raz&oacuten Social</th>
                             <th style="color: white; width:150px">RFC</th>
                             <th style="color: white;">CURP</th>
                             <th style="color: white; width:150px"">Registro Patronal</th>
-                            <th style="color: white;">Codigo Postal</th>
-                            <th style="color: white; width:250px"">Regimen Fiscal</th>
+                            <th style="color: white;">C&oacutedigo Postal</th>
+                            <th style="color: white; width:250px"">R&eacutegimen F&iacutescal</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -106,18 +106,17 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">¿Desea Continuar?</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">¿Desea continuar?</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    La accion de eliminar no se puede rehacer.
+                                                    La acci&oacuten eliminar no se puede rehacer.
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                    <a class="btn btn-danger"
-                                                    href="<?php echo "../../php/DatosFiscalesC/Eliminar.php?D-F=" . base64_encode($obj->id_tbl_datos_fiscales) ?>">Eliminar</a>
+                                                    <a class="btn btn-light" style="background-color: #cb9f52; border:none; outline:none; color: white;"
+                                                    href="<?php echo "../../php/DatosFiscalesC/Eliminar.php?D-F=" . base64_encode($obj->id_tbl_datos_fiscales) ?>">Confirmar</a>
                                             </div>
                                                 </div>
                                             </div>

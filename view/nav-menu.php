@@ -235,7 +235,7 @@ $id_rol = $_SESSION['id_rol'];
                             <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
                                 aria-expanded="false">
                                 <i class="far fa-folder" style="font-size: 1.2rem;"></i>
-                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Administracion</span>
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Administraci&oacuten</span>
                             </a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item">
@@ -259,63 +259,99 @@ $id_rol = $_SESSION['id_rol'];
                         </li>
                     <?php } ?>
 
-                    <!-- MENU INFOTEC -->
-                    <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                            aria-expanded="false">
-                            <i class="far fa-folder" style="font-size: 1.2rem;"></i>
-                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Menu</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item">
-                                <a href="../DatosFiscales/Listar.php" class="sidebar-link">
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                    <span class="hide-menu"
-                                        style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Datos Fiscales</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../CentroTrabajo/Listar.php" class="sidebar-link">
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                    <span class="hide-menu"
-                                        style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Centro de
-                                        Trabajo</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../../view/Tabuladores/Listar.php" class="sidebar-link">
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <i class="far fa-folder" style="font-size: 1.2rem;"></i>
-                                    <span class="hide-menu"
-                                        style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Tabuladores</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- FIN DE INFOTEC -->
+                    <!-- MENU CENTRAL -->
+                    <?php if ($id_rol == 1 || $id_rol == 2) { ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
+                                <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Central</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="../DatosFiscales/Listar.php" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Datos F&iacutescales</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../CentroTrabajo/Listar.php" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Centro de
+                                            Trabajo</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../../view/Tabuladores/Listar.php" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Tabuladores</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../DependientesEconMas/Listar.php" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Dependientes
+                                            Econ&oacutemicos</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    <?php } ?>
+                    <!-- FMENU CENTRAL -->
 
-                    <!-- MENU CARGA MASIVA -->
-                    <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                            aria-expanded="false">
-                            <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;M&aacutes Datos</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item">
-                                <a href="../DependientesEconMas/Listar.php" class="sidebar-link">
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                    <span class="hide-menu"
-                                        style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Dependientes
-                                        Econ&oacutemicos</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- MENU CARGA MASIVA-->
+                    <!-- MENU HRAE -->
+                    <?php if ($id_rol == 1 || $id_rol == 3) { ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
+                                <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;HRAE</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Titulo</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    <?php } ?>
+                    <!-- FMENU HRAE -->
+
+                    <!-- MENU HRAE -->
+                    <?php if ($id_rol == 1 || $id_rol == 4) { ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
+                                <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;No Federalizada</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Titulo</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    <?php } ?>
+                    <!-- FMENU HRAE -->
+
+
 
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../../cerrar-sesion.php"
