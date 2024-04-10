@@ -1,63 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+ <head>
+        <style>
+                #toggle {
+  display: none;
+}
 
-<head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+label {
+  display: inline-block;;
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  margin-left: 32px;
+}
 
-</head>
+label::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
 
+#toggle:checked + label {
+  background-color: #2196F3;
+}
+
+#toggle:checked + label::before {
+  transform: translateX(20px);
+}
+        </style>
+ </head>
 <body>
-        <input type="text" id="curp_input" oninput="validarInput(this)" style="width:100%;"
-                placeholder="Ingrese su CURP">
-        <pre id="resultado"></pre>
+   <span>Toggle Switch </span>
+   <input type="checkbox" id="toggle" />
+   <label for="toggle"></label>
 </body>
-
-<script>
-        function validarInput(input) {
-                var curp = input.value.toUpperCase(),
-                        resultado = document.getElementById("resultado"),
-                        valido = "No válido";
-
-                if (curpValida(curp)) {
-                        valido = "Válido";
-                       // resultado.classList.add("ok");
-                       console.log('Verdadero');
-                } else {
-                       // resultado.classList.remove("ok");
-                       console.log('falso');
-                }
-
-               // resultado.innerText = "CURP: " + curp + "\nFormato: " + valido;
-        }
-
-        function curpValida(curp) {
-                var re = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0\d|1[0-2])(?:[0-2]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
-                        validado = curp.match(re);
-
-                if (!validado)  //Coincide con el formato general?
-                        return false;
-
-                //Validar que coincida el dígito verificador
-                function digitoVerificador(curp17) {
-                        //Fuente https://consultas.curp.gob.mx/CurpSP/
-                        var diccionario = "0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ",
-                                lngSuma = 0.0,
-                                lngDigito = 0.0;
-                        for (var i = 0; i < 17; i++)
-                                lngSuma = lngSuma + diccionario.indexOf(curp17.charAt(i)) * (18 - i);
-                        lngDigito = 10 - lngSuma % 10;
-                        if (lngDigito == 10)
-                                return 0;
-                        return lngDigito;
-                }
-                if (validado[2] != digitoVerificador(validado[1]))
-                        return false;
-
-                return true; //Validado
-        }
-
-</script>
-
 </html>

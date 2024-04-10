@@ -62,6 +62,15 @@ function listarIdControlPlazas($id){
      return $res;                     
 }
 
+function listarNumPlazaByIdPlaza($id){
+     $listado = pg_query("SELECT id_tbl_control_plazas, num_plaza
+                          FROM tbl_control_plazas
+                          WHERE id_tbl_control_plazas = $id;");
+     $row = pg_fetch_array($listado);
+     $res = $row['num_plaza'];
+     return $res;                     
+}
+
 function listarLikePlaza($like)
 {
      $listado = pg_query("SELECT * FROM tbl_control_plazas WHERE num_plaza LIKE '%$like%'");

@@ -138,7 +138,7 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                                                     <a class="dropdown-item"
                                                         href="<?php echo "../Empleados/Listar.php?D-F3=" . base64_encode($obj->id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Empleado</a>
                                                     <a class="dropdown-item" data-toggle="modal"
-                                                        data-target="<?php echo '#modal-plazas-' . $obj->id_tbl_control_plazas ?>">Historial</a>
+                                                        data-target="<?php echo '#modal-plazas-' . $obj->id_tbl_control_plazas ?>">Historia</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item" data-toggle="modal"
                                                         data-target="<?php echo '#modal-' . $obj->id_tbl_control_plazas ?>">Eliminar</a>
@@ -176,7 +176,7 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
                                                 <div class="modal-dialog modal-lg" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Historial de plaza</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Historia de plaza</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>

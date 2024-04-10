@@ -58,14 +58,14 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                                 <input type="hidden" id="id_tbl_centro_trabajo" name="id_tbl_centro_trabajo" value="<?php echo $id_tbl_centro_trabajo?>">
                                 
                                 <div class="form-group col-md-6">
-                                    <label >Pais de Nacimiento</label><label style="color:red">*</label>
+                                    <label >Pa&iacutes de nacimiento</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         name="pais_nacimiento" placeholder="Pais Nacimiento" required maxlength="30">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Genero</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
+                                    <select class="form-control" aria-label="Default select example" 
                                         name="id_cat_genero" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
@@ -82,8 +82,8 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Estado Civil</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
+                                    <label for="inputCity">Estado civil</label><label style="color:red">*</label><br>
+                                    <select class="form-control" aria-label="Default select example" 
                                         name="id_cat_estado_civil" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
@@ -100,8 +100,8 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Nivel de Estudios</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
+                                    <label for="inputCity">Nivel de estudios</label><label style="color:red">*</label><br>
+                                    <select class="form-control" aria-label="Default select example" 
                                         name="id_cat_nivel_estudios" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
