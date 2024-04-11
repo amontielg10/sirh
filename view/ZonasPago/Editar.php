@@ -67,7 +67,7 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Unidad Responsable</label><label style="color:red">*</label>
-                                    <select class="form-select" aria-label="Default select example" id="id_cat_unidad_responsable"
+                                    <select class="form-control" aria-label="Default select example" id="id_cat_unidad_responsable"
                                         name="id_cat_unidad_responsable" required>
                                         <?php
                                         include ('../../php/CatUnidadResponsableC/listar.php');

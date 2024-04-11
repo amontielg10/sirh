@@ -16,3 +16,8 @@ function catEstatus($id){
         return "";
     }
 }
+
+function listadoEstatusByAll(){
+    $listado = pg_query("SELECT * FROM cat_estatus ORDER BY estatus ASC"); 
+    return $listado;
+}

@@ -11,7 +11,35 @@ function listadoDomicilioByIdDatosEmpleado($id_tbl_datos_empleado)
                                  esdireccion_fiscal2,id_tbl_domicilios,id_tbl_datos_empleado
                           FROM tbl_domicilios
                           WHERE id_tbl_datos_empleado = $id_tbl_datos_empleado;");
-     return $listado;
+     $row = pg_fetch_array($listado);
+     return $row;
+}
+
+function listadoIsNull()
+{
+     $array = [
+          "entidad1" => null,
+          "municipio1" => null,
+          "colonia1" => null,
+          "codigo_postal1" => null,
+          "calle1" => null,
+          "num_exterior1" => null,
+          "num_interior1" => null,
+          "id_estatus1" => null,
+          "esdireccion_fiscal1" => null,
+          "entidad2" => null,
+          "municipio2" => null,
+          "colonia2" => null,
+          "codigo_postal2" => null,
+          "calle2" => null,
+          "num_exterior2" => null,
+          "num_interior2" => null,
+          "id_estatus2" => null,
+          "esdireccion_fiscal2" => null,
+          "id_tbl_domicilios" => null,
+          "id_tbl_datos_empleado" => null
+     ];
+     return $array;
 }
 
 /*
