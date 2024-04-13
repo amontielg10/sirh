@@ -74,19 +74,6 @@ $rowe = catEmpleadosId($id_tbl_empleados);
                     <?php echo claveCentro(base64_decode($id_tbl_control_plazas)) ?>
                 </p>
                 <br>
-                <div class=" btn-group">
-                    <button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false" style="background-color: white; border:none; outline:none; color: white;">
-                        <i class="fa fa-cog" style="font-size: 1.4rem; color:#9f2241;"></i>
-                    </button>
-
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item"
-                            href="<?php echo 'Agregar.php?D-F=' . base64_encode($id_tbl_empleados) . '&D-F3=' . $id_tbl_control_plazas . '&RP=' . $id_tbl_centro_trabajo ?>">Agregar</a>
-                        <a class="dropdown-item"
-                            href="<?php echo '../Empleados/Listar.php?D-F3=' . $id_tbl_control_plazas . '&RP=' . $id_tbl_centro_trabajo ?>">Regresar</a>
-                    </div>
-                </div>
 
 
                 <?php

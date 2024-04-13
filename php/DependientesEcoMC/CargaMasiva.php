@@ -1,7 +1,11 @@
 <?php
 include ('../../conexion.php');
 include ('../CatFechaJuguetesC/listar.php');
+include ('../ControlCargaMasivaC/Listar.php');
+include ('../ControlErrorDependientesC/Listar.php');
 
+$tipo_carga = "Modulo Juguetes";
+$id_usuario = $_SESSION['id_user'];
 $id_cat_fecha_juguetes = $_POST['id_cat_fecha_juguetes'];
 $anio = listadoFechaJuguetesByAnio($id_cat_fecha_juguetes);
 $fechaLimit = listadoFechaJuguetesByFecha($id_cat_fecha_juguetes); ///FECHA LIMITE PARA LA ADQUISION DE PROCUTO
@@ -13,107 +17,128 @@ $messageErrorMenor = "El menor no cumple con los criterios para ser candidato";
 $messageErrorMenorDupli = "Ya existe un registro con la curp del menor en el modulo de juguetes";
 $messageErrorMenorCurp = "CURP invalida del menor";
 $messgeEstatusError = "Error al agregar";
+$messageErrorDatosIncompletos = "Faltan algunos campos por llenar";
 $registroExito = 0;
 $registroError = 0;
 
 ///Ejecutar funcion de limpieza de tabla
-trucateErrorDependienteEconomico();
+//trucateErrorDependienteEconomico();
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["archivo"])) {
     $archivo_temporal = $_FILES["archivo"]["tmp_name"];
     $nombre_archivo = basename($_FILES["archivo"]["name"]);
     $extension = pathinfo($nombre_archivo, PATHINFO_EXTENSION);
     $lineas = file($archivo_temporal);
     $permitidos = array("csv");
+
     if (!in_array($extension, $permitidos)) {
         echo "Solo se permiten archivos CSV";
     } else {
         $i = 0;
+        /// SE AGREGA LA PRIMER CARGA MASIVA
+        agregarControlCargaMasiva($tipo_carga, $id_usuario, $connectionDBsPro);
+        $idCtrlCargaMasiva = listarControlCargaMasivaByMax();
 
+        echo $idCtrlCargaMasiva;
         foreach ($lineas as $linea) {
             $cantidad_registros = count($lineas);
             $cantidad_regist_agregados = ($cantidad_registros - 4);
+            $lineaExel = $i + 1;
 
             if ($i != 0) {
                 $datos = explode(",", $linea);
-                $rfc = !empty($datos[0]) ? ($datos[0]) : '';
-                $curp = !empty($datos[1]) ? ($datos[1]) : '';
-                $curpConyuge = !empty($datos[2]) ? ($datos[2]) : '';
-                $apellidoPaterno = !empty($datos[3]) ? ($datos[3]) : '';
-                $apellidoMaterno = !empty($datos[4]) ? ($datos[4]) : '';
-                $nombre = !empty($datos[5]) ? ($datos[5]) : '';
 
-                $idTblEmpleado = validacionEmpleado($curp, $rfc); ///id_tbl_empleado
-                $dateCurp = obtenerFechaNacimiento($curpConyuge); ///OBTENER FECHA DE NACIMIENTO
-                $edadMenor = validarFechaNecimiento($dateCurp, $fechaLimit); /// OBTENER LA FECHA DE NACIMIENTO DEL MENOR
+                $rfc = !empty($datos[0]) ? trim($datos[0]) : '';
+                $curp = !empty($datos[1]) ? trim($datos[1]) : '';
+                $curpConyuge = !empty($datos[2]) ? trim($datos[2]) : '';
+                $apellidoPaterno = !empty($datos[3]) ? trim($datos[3]) : '';
+                $apellidoMaterno = !empty($datos[4]) ? trim($datos[4]) : '';
+                $nombre = !empty($datos[5]) ? trim($datos[5]) : '';
 
-                if (!empty($idTblEmpleado)) { ///VALIDACION DE RFC O CURP DE EMPLEADO
-                    /// LOS RFC/CURP EMPATAN CON LAS CARACTERISTICAS PARA EL REGALO
 
-                    if (validateCurp($curpConyuge)) {///VALIDACION DE CURP
-                        /// LA CURP ES VALIDA
-                        if ($edadMenor < $edadLimit) { ///COMPARACION DE EDAD DE MENOR QUE SEA MENOR A 12
-                            /// LA EDAD DEL MENOR ES CORRECTA, POR LO TANTO ES CANDIDATO
-                            //echo "empleado $curp es verdadero - $idTblEmpleado - $curpConyuge- $dateCurp - $edadMenor";
-                            //echo "<br>";
 
-                            ///------------------------
-                            //VALIDACION QUE EL MENOR NO ESTE REGISTRADO DOS VECES EN LA TABLA
-                            $consultaCurpMenor = validacionCurpMenorExista($curpConyuge,$id_cat_fecha_juguetes);
-                            if ($consultaCurpMenor == 0) { /// VALIDA QUE LA CURP DEL MENOR NO ESTE REGISTRADA EN LA BASE DE DARTOS
-                                ///EL REGISTRO NO EXISTE ASI QUE SE AGREGA
-                                /// SE INSERTA EN LA TABLA CTRL_DEPENDIENTES_ECONOMICOS
-                                insertarDependienteEconomico($connectionDBsPro, $curpConyuge, $nombre, $apellidoPaterno, $apellidoMaterno, $idTipoContratacion, $idTblEmpleado);
-                                //LA VARIABLE OBTIENE EL ID DEL DEPENDIENTE ECONOMICO
-                                $idDependienreEconomico = idDependieEconomico($curpConyuge);
+                if (empty($rfc) || empty($curp) || empty($curpConyuge) || empty($apellidoPaterno)) {
+                    //echo "No existen datos en linea $lineaExel";
+                    insertarErrorDependieteEco($connectionDBsPro, $rfc, $curp, $curpConyuge, $nombre, $apellidoPaterno, $apellidoMaterno, $messgeEstatusError, $messageErrorDatosIncompletos, $lineaExel, $idCtrlCargaMasiva);
+                    $registroError++;
+                } else {
+                    //echo "Datos correctos en linea $lineaExel";
 
-                                /// SE INGRESAN LOS REGISTROS AL SISTEMA  EN LA TABLA CTRL_JUGUETES
-                                insertarCtrlJuguetes($connectionDBsPro, $id_cat_fecha_juguetes, $idEstatusJuguete, $idTblEmpleado, $idDependienreEconomico);
-                                //echo "$curpConyuge agregado con exito";
+
+
+                    
+                    $idTblEmpleado = validacionEmpleado($curp, $rfc); ///id_tbl_empleado
+                    $dateCurp = obtenerFechaNacimiento($curpConyuge); ///OBTENER FECHA DE NACIMIENTO
+                    $edadMenor = validarFechaNecimiento($dateCurp, $fechaLimit); /// OBTENER LA FECHA DE NACIMIENTO DEL MENOR
+
+                    if (!empty($idTblEmpleado)) { ///VALIDACION DE RFC O CURP DE EMPLEADO
+                        /// LOS RFC/CURP EMPATAN CON LAS CARACTERISTICAS PARA EL REGALO
+
+                        if (validateCurp($curpConyuge)) {///VALIDACION DE CURP
+                            /// LA CURP ES VALIDA
+                            if ($edadMenor < $edadLimit) { ///COMPARACION DE EDAD DE MENOR QUE SEA MENOR A 12
+                                /// LA EDAD DEL MENOR ES CORRECTA, POR LO TANTO ES CANDIDATO
+                                //echo "empleado $curp es verdadero - $idTblEmpleado - $curpConyuge- $dateCurp - $edadMenor";
                                 //echo "<br>";
-                                $registroExito++;
 
-                            } else {
-                                /// EL REGISTRO YA EXISTE, SE MANDA EL ERROR
-                                insertarErrorDependieteEco($connectionDBsPro, $rfc, $curp, $curpConyuge, $nombre, $apellidoPaterno, $apellidoMaterno, $messgeEstatusError, $messageErrorMenorDupli);
+                                ///------------------------
+                                //VALIDACION QUE EL MENOR NO ESTE REGISTRADO DOS VECES EN LA TABLA
+                                $consultaCurpMenor = validacionCurpMenorExista($curpConyuge,$id_cat_fecha_juguetes);
+                                if ($consultaCurpMenor == 0) { /// VALIDA QUE LA CURP DEL MENOR NO ESTE REGISTRADA EN LA BASE DE DARTOS
+                                    ///EL REGISTRO NO EXISTE ASI QUE SE AGREGA
+                                    /// SE INSERTA EN LA TABLA CTRL_DEPENDIENTES_ECONOMICOS
+                                    insertarDependienteEconomico($connectionDBsPro, $curpConyuge, $nombre, $apellidoPaterno, $apellidoMaterno, $idTipoContratacion, $idTblEmpleado);
+                                    //LA VARIABLE OBTIENE EL ID DEL DEPENDIENTE ECONOMICO
+                                    $idDependienreEconomico = idDependieEconomico($curpConyuge);
+
+                                    /// SE INGRESAN LOS REGISTROS AL SISTEMA  EN LA TABLA CTRL_JUGUETES
+                                    insertarCtrlJuguetes($connectionDBsPro, $id_cat_fecha_juguetes, $idEstatusJuguete, $idTblEmpleado, $idDependienreEconomico);
+                                    //echo "$curpConyuge agregado con exito";
+                                    //echo "<br>";
+                                    $registroExito++;
+
+                                } else {
+                                    /// EL REGISTRO YA EXISTE, SE MANDA EL ERROR
+                                    insertarErrorDependieteEco($connectionDBsPro, $rfc, $curp, $curpConyuge, $nombre, $apellidoPaterno, $apellidoMaterno, $messgeEstatusError, $messageErrorMenorDupli);
+                                    $registroError++;
+                                }
+
+
+
+
+                            } else { ///LA EDAD DEL MENOR ES MAYOR PARA EL PRODUCTO
+                                insertarErrorDependieteEco($connectionDBsPro, $rfc, $curp, $curpConyuge, $nombre, $apellidoPaterno, $apellidoMaterno, $messgeEstatusError, $messageErrorMenor);
                                 $registroError++;
+
+                                //echo "$rfc / $curp empleado, $curpConyuge $edadMenor, El menor no cumple con la edad";
+                                //echo "<br>";
                             }
-
-
-
-
-                        } else { ///LA EDAD DEL MENOR ES MAYOR PARA EL PRODUCTO
-                            insertarErrorDependieteEco($connectionDBsPro, $rfc, $curp, $curpConyuge, $nombre, $apellidoPaterno, $apellidoMaterno, $messgeEstatusError, $messageErrorMenor);
+                        } else {///CURP DEL MENOR INVALIDA
+                            insertarErrorDependieteEco($connectionDBsPro, $rfc, $curp, $curpConyuge, $nombre, $apellidoPaterno, $apellidoMaterno, $messgeEstatusError, $messageErrorMenorCurp);
                             $registroError++;
-
-                            //echo "$rfc / $curp empleado, $curpConyuge $edadMenor, El menor no cumple con la edad";
+                            //echo "$rfc / $curp empleado, $curpConyuge $edadMenor, CURP invalida";
                             //echo "<br>";
                         }
-                    } else {///CURP DEL MENOR INVALIDA
-                        insertarErrorDependieteEco($connectionDBsPro, $rfc, $curp, $curpConyuge, $nombre, $apellidoPaterno, $apellidoMaterno, $messgeEstatusError, $messageErrorMenorCurp);
+                        //echo "empleado $curp es verdadero - $idTblEmpleado - $dateCurp - $fecha - $edad";
+
+
+
+
+
+
+                    } else {
+                        //Empleados que No cumplen las caracteristicas para su regalo
+                        insertarErrorDependieteEco($connectionDBsPro, $rfc, $curp, $curpConyuge, $nombre, $apellidoPaterno, $apellidoMaterno, $messgeEstatusError, $messageErrorEmpleado);
                         $registroError++;
-                        //echo "$rfc / $curp empleado, $curpConyuge $edadMenor, CURP invalida";
+                        //echo "$rfc / $curp empleado, $curpConyuge $edadMenor, El empleado no cumple con los criterios";
                         //echo "<br>";
                     }
-                    //echo "empleado $curp es verdadero - $idTblEmpleado - $dateCurp - $fecha - $edad";
 
 
 
 
 
-
-                } else {
-                    //Empleados que No cumplen las caracteristicas para su regalo
-                    insertarErrorDependieteEco($connectionDBsPro, $rfc, $curp, $curpConyuge, $nombre, $apellidoPaterno, $apellidoMaterno, $messgeEstatusError, $messageErrorEmpleado);
-                    $registroError++;
-                    //echo "$rfc / $curp empleado, $curpConyuge $edadMenor, El empleado no cumple con los criterios";
-                    //echo "<br>";
+                    //END*/
                 }
-
-
-
-
-
-                //END
             }
             $i++;
         }
@@ -125,7 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["archivo"])) {
 $active = base64_encode("true");
 $registroExito = base64_encode($registroExito);
 $registroError = base64_encode($registroError);
-header("Location: ../../view/DependientesEconMas/Listar.php?Me=$active&Re=$registroExito&Rr=$registroError");
+//header("Location: ../../view/DependientesEconMas/Listar.php?Me=$active&Re=$registroExito&Rr=$registroError");
 
 function idDependieEconomico($curp)
 {
@@ -237,32 +262,7 @@ function insertarDependienteEconomico($connectionDBsPro, $curp, $nombre, $apelli
     );
 }
 
-function insertarErrorDependieteEco(
-    $connectionDBsPro,
-    $rfc_empleado,
-    $curp_empleado,
-    $curp_menor,
-    $nombre,
-    $apellido_paterno,
-    $apellido_materno,
-    $estatus,
-    $descripcion
-) {
-    $pgs_QRY = pg_insert(
-        $connectionDBsPro,
-        'tmp_error_dependientes_economicos',
-        array(
-            'rfc_empleado' => utf8_encode($rfc_empleado),
-            'curp_empleado' => utf8_encode($curp_empleado),
-            'curp_menor' => utf8_encode($curp_menor),
-            'apellido_paterno' => utf8_encode($apellido_paterno),
-            'apellido_materno' => utf8_encode($apellido_materno),
-            'estatus' => utf8_encode($estatus),
-            'nombre' => utf8_encode($nombre),
-            'descripcion' => utf8_encode($descripcion),
-        )
-    );
-}
+
 
 
 

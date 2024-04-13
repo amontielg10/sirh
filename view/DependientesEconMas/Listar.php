@@ -10,7 +10,6 @@
         }
     </style>
     <?php include ("libHeader.php"); ?>
-
 </head>
 
 <body>
@@ -27,7 +26,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">M&aacutes Datos</h2>
+                        <h2 class="page-title">Juguetes</h2>
                         <h4 class="page-title">Dependientes Econ&oacutemicos</h4>
                         <div class="d-flex align-items-center">
                         </div>
@@ -60,7 +59,7 @@
 
                     <div class="dropdown-menu">
                         <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Importar</a>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Descargar
+                        <a class="dropdown-item">Descargar
                             Plantilla</a>
                     </div>
                 </div>
@@ -97,35 +96,37 @@
                                     enctype="multipart/form-data">
 
                                     <div class="form-group">
-                                    <label for="inputCity">Seleccione la Fecha</label><label style="color:red">*</label><br>
-                                    <select class="form-control" aria-label="Default select example" id="id_cat_fecha_juguetes"
-                                        name="id_cat_fecha_juguetes" required>
-                                        <option value="" selected>Seleccione</option>
-                                        <?php
-                                        //Se incluye la conexion
-                                        $listado = listadoFechaJuguetes();
-                                        if ($listado) {
-                                            if (pg_num_rows($listado) > 0) {
-                                                while ($row = pg_fetch_object($listado)) {
-                                                    echo '<option value="' . $row->id_cat_fecha_juguetes . '">' . $row->fecha . '</option>';
+                                        <label for="inputCity">Seleccione la fecha</label><label
+                                            style="color:red">*</label><br>
+                                        <select class="form-control" aria-label="Default select example"
+                                            id="id_cat_fecha_juguetes" name="id_cat_fecha_juguetes" required>
+                                            <option value="" selected>Seleccione</option>
+                                            <?php
+                                            //Se incluye la conexion
+                                            $listado = listadoFechaJuguetes();
+                                            if ($listado) {
+                                                if (pg_num_rows($listado) > 0) {
+                                                    while ($row = pg_fetch_object($listado)) {
+                                                        echo '<option value="' . $row->id_cat_fecha_juguetes . '">' . $row->fecha . '</option>';
+                                                    }
                                                 }
                                             }
-                                        }
-                                        ?>
-                                    </select>
+                                            ?>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="inputCity">Seleccione el archivo</label><label style="color:red">*</label><br>
-                                    <input class="form-control" type="file" id="formFile" name="archivo" required>
+                                        <label for="inputCity">Seleccione el archivo</label><label
+                                            style="color:red">*</label><br>
+                                        <input class="form-control" type="file" id="formFile" name="archivo" required>
                                     </div>
 
-                                </select>
+                                    </select>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
                                     style="background-color: #cb9f52; border:none; outline:none; color: white;">Cancelar</button>
-                                <button type="submit" class="btn btn-secondary"
+                                <button type="submit" class="btn btn-secondary" onclick="return validateExtension();"
                                     style="background-color: #cb9f52; border:none; outline:none; color: white;">Importar</button>
                                 </form>
                             </div>
@@ -206,7 +207,7 @@
                                             <?php
                                         }
                                     } else
-                                    echo "<h6 style='color: green'>Registros Agregados</h6>";
+                                        echo "<h6 style='color: green'>Registros Agregados</h6>";
                                 }
                                 ?>
                             </tbody>
@@ -227,6 +228,26 @@
 
 </body>
 
+
+<script>
+    function validateExtension() {
+        let bool = false;
+        let fileExtension = document.getElementById('formFile').files[0].name;
+
+        if (getFileExtension(fileExtension) != 'csv') {
+            messajeError("Ingresar solo archivos con extensi\u00f3n .csv");
+        } else {
+            bool = true;
+            //console.log("Exito");
+        }
+        return bool;
+    }
+
+    function getFileExtension(filename) {
+        return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
+    }
+</script>
+
 <script>
 
     $(document).ready(function () {
@@ -236,41 +257,7 @@
         }
     });
 </script>
-<script>
-    $(document).ready(function () {
-        $('#t-usuarios').DataTable({
-            scrollX: true,
-            language: {
 
-                "decimal": "",
-                "emptyTable": "No hay información",
-                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-                "infoPostFix": "",
-                "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ Entradas",
-                "loadingRecords": "Cargando...",
-                "processing": "Procesando...",
-                "search": "Buscar:",
-                "zeroRecords": "Sin resultados encontrados",
-                "paginate": {
-                    "first": "Primero",
-                    "last": "Ultimo",
-                    "next": "Siguiente",
-                    "previous": "Anterior"
-                }
-            },
-            responsive: "true",
-            dom: 'Bfrtilp',
-            buttons: ['excel'],
-        }
-
-        );
-    });
-
-
-</script>
 
 <?php include ("libFooter.php"); ?>
 

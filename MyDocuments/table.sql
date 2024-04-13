@@ -1,8 +1,24 @@
 -- TABLE
 
+DROP TABLE IF EXISTS ctrl_error_dependientes_economicos;
+CREATE TABLE IF NOT EXISTS ctrl_error_dependientes_economicos(
+	id_ctrl_error_dependientes_economicos SERIAL PRIMARY KEY,
+	rfc_empleado VARCHAR,
+	curp_empleado VARCHAR,
+	curp_menor VARCHAR,
+	nombre VARCHAR,
+	apellido_paterno VARCHAR,
+	apellido_materno VARCHAR,
+	estatus VARCHAR,
+	descripcion TEXT,
+	linea_exel INTEGER,
+	id_carga_masiva INTEGER
+);
+
 --TABLE temp error carga masiva
-CREATE TABLE IF NOT EXISTS tmp_error_dependientes_economicos(
-	id_tmp_error_dependientes_economicos SERIAL PRIMARY KEY,
+DROP TABLE IF EXISTS ctrl_error_dependientes_economicos
+CREATE TABLE IF NOT EXISTS ctrl_error_dependientes_economicos(
+	id_ctrl_error_dependientes_economicos SERIAL PRIMARY KEY,
 	rfc_empleado VARCHAR,
 	curp_empleado VARCHAR,
 	curp_menor VARCHAR,
@@ -54,3 +70,13 @@ INSERT INTO rol (id_rol,nombre, descripcion) VALUES
 (2, 'ROL CENTRAL', 'Permite el acceso al modulo central del sistema'),
 (3, 'ROL HRAE', 'Permite el acceso al modulo hrae del sistema'),
 (4, 'ROL NO FEDERALIZADA', 'Permite el acceso al modulo no federalizada del sistema');
+
+
+-- 
+DROP TABLE IF EXISTS ctrl_carga_masiva;
+CREATE TABLE IF NOT EXISTS ctrl_carga_masiva (
+	id_ctrl_carga_masiva SERIAL PRIMARY KEY,
+	tipo_carga VARCHAR(50),
+	id_usuario INTEGER,
+	fecha TIMESTAMP
+)
