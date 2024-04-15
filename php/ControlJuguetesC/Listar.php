@@ -34,31 +34,17 @@ function listarCtrlJuguetesByJson()
      return $json;
 }
 
-/*
-//La variable contiene el listado
-function listadoCuentaClabeId($id)
+function insertarCtrlJuguetes($connectionDBsPro, $id_cat_fecha_juguetes, $id_cat_estatus_juguetes, $id_tbl_empleados, $id_tbl_dependientes_economicos,$id_ctrl_carga_masiva)
 {
-     include('../../conexion.php'); //Se incluye la conexion
-     $listado = pg_query("SELECT * FROM ctrl_cuenta_clabe WHERE id_tbl_empleados = '$id' ORDER BY id_cat_estatus ASC");
-     return $listado;
+    $pgs_QRY = pg_insert(
+        $connectionDBsPro,
+        'ctrl_juguetes',
+        array(
+            'id_cat_fecha_juguetes' => $id_cat_fecha_juguetes,
+            'id_cat_estatus_juguetes' => $id_cat_estatus_juguetes,
+            'id_tbl_empleados' => $id_tbl_empleados,
+            'id_tbl_dependientes_economicos' => $id_tbl_dependientes_economicos,
+            'id_ctrl_carga_masiva' => $id_ctrl_carga_masiva
+        )
+    );
 }
-
-function listadoCuentaClabePk($id)
-{
-     $catSQL = pg_query("SELECT * FROM ctrl_cuenta_clabe WHERE id_ctrl_cuenta_clabe = '$id' ");
-     $row = pg_fetch_array($catSQL);
-     return $row;
-}
-
-function estatusCuentaCv($id)
-{
-     $catSQL = pg_query("SELECT * FROM ctrl_cuenta_clabe WHERE id_tbl_empleados = '$id' AND id_cat_estatus = 1");
-     while ($value = pg_fetch_array($catSQL)) {
-          $row[] = $value["id_cat_estatus"];
-          $row[] = $value["id_ctrl_cuenta_clabe"];
-     }
-     $json = json_encode($row);
-     return $json;
-}
-
-*/

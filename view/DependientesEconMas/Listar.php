@@ -17,6 +17,7 @@
     <?php include ("../../php/CatFechaJuguetesC/listar.php") ?>
     <?php include ("../../php/PlazasEmpleadosC/listar.php") ?>
     <?php include ('../nav-menu.php') ?>
+    <?php include ('modal.php') ?>
 
 
     <div id="main-wrapper">
@@ -61,12 +62,13 @@
                         <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Importar</a>
                         <a class="dropdown-item">Descargar
                             Plantilla</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalHistoria">Historia</a>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        Instrucciones
+                        Configuracion
                     </div>
                     <div class="card-body">
                         <blockquote class="blockquote mb-0">
@@ -134,6 +136,8 @@
                     </div>
                 </div>
 
+
+
                 <?php include ('../../ajuste-menu.php') ?>
                 <?php include ('../../footer-librerias.php') ?>
 
@@ -161,6 +165,7 @@
                         <table class="table table-striped" id="t-usuarios">
                             <thead>
                                 <tr style="background-color: #5c5c5c;">
+                                    <th style="color: white;">Id</th>
                                     <th style="color: white;">Estatus</th>
                                     <th style="color: white;">RFC Empleado</th>
                                     <th style="color: white;">CURP Empleado</th>
@@ -169,16 +174,21 @@
                                     <th style="color: white;">Apellido Paterno</th>
                                     <th style="color: white;">Apellido Materno</th>
                                     <th style="color: white;">Observaciones</th>
+                                    <th style="color: white;">Exel</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 <?php
-                                $roEx = pg_query("SELECT * FROM tmp_error_dependientes_economicos");
+                                $idCtrlCargaMasiva = base64_decode($_GET['MS']);
+                                $roEx = pg_query("SELECT * FROM ctrl_error_dependientes_economicos WHERE id_carga_masiva = $idCtrlCargaMasiva");
                                 if ($roEx) {
                                     if (pg_num_rows($roEx) > 0) {
                                         while ($obj = pg_fetch_object($roEx)) { ?>
                                             <tr>
+                                                <td>
+                                                    <?php echo "ER$obj->id_carga_masiva" ?>
+                                                </td>
                                                 <td>
                                                     <?php echo $obj->estatus ?>
                                                 </td>
@@ -202,6 +212,9 @@
                                                 </td>
                                                 <td>
                                                     <?php echo $obj->descripcion ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $obj->linea_exel ?>
                                                 </td>
                                             </tr>
                                             <?php
@@ -258,6 +271,42 @@
     });
 </script>
 
+<script>
+    $(document).ready(function () {
+        $('#t-usuarios').DataTable({
+            scrollX: true,
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            responsive: "true",
+            dom: 'Bfrtilp',
+            buttons: [
+
+            ],
+        }
+
+        );
+    });
+
+
+</script>
 
 <?php include ("libFooter.php"); ?>
 

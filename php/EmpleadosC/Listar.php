@@ -80,3 +80,22 @@ function codigoEmpleado($id_tbl_control_plaza)
      }
      return $res;
 }
+
+function validacionEmpleado($curp, $rfc)
+{
+    $listado = pg_query("SELECT tbl_empleados.id_tbl_empleados, tbl_empleados.curp,
+                                tbl_empleados.rfc, cat_tipo_contratacion.id_cat_tipo_contratacion
+                        FROM tbl_empleados
+                        INNER JOIN tbl_plazas_empleados
+                        ON tbl_empleados.id_tbl_empleados = tbl_plazas_empleados.id_tbl_empleados
+                        INNER JOIN tbl_control_plazas
+                        ON tbl_plazas_empleados.id_tbl_control_plazas = tbl_control_plazas.id_tbl_control_plazas
+                        INNER JOIN cat_tipo_contratacion
+                        ON tbl_control_plazas.id_cat_tipo_contratacion = cat_tipo_contratacion.id_cat_tipo_contratacion
+                        WHERE cat_tipo_contratacion.id_cat_tipo_contratacion = 3 
+                        AND (tbl_empleados.curp = TRIM('$curp') 
+                        OR tbl_empleados.rfc = TRIM('$rfc'))");
+    $row = pg_fetch_array($listado);
+    $res = $row[0];
+    return $res;
+}

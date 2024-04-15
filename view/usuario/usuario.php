@@ -138,6 +138,8 @@
                                 echo "<p>Sin Resultados</p>";
                         }
                         ?>
+                        </tbody>
+                    </table>
 
                         <?php include('../../ajuste-menu.php') ?>
                         <?php include('../../footer-librerias.php') ?>

@@ -60,7 +60,8 @@ CREATE TABLE IF NOT EXISTS ctrl_juguetes (
 	id_cat_fecha_juguetes INTEGER,
 	id_cat_estatus_juguetes INTEGER,
 	id_tbl_empleados INTEGER,
-	id_tbl_dependientes_economicos INTEGER
+	id_tbl_dependientes_economicos INTEGER,
+	id_ctrl_carga_masiva INTEGER
 )
 
 
