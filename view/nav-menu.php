@@ -116,7 +116,7 @@ $id_rol = $_SESSION['id_rol'];
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <a class="navbar-brand" href="index.php">
+                <a class="navbar-brand" href="#">
                     <!-- Logo icon -->
                     <b class="logo-icon">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->

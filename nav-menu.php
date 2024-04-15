@@ -292,12 +292,11 @@ $id_rol = $_SESSION['id_rol'];
                                     </a>
                                 </li>
                                 <li class="sidebar-item">
-                                    <a href="view/DatosFiscales/Listar.php" class="sidebar-link">
+                                    <a href="view/DependientesEconMas/Listar.php" class="sidebar-link">
                                         <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         <i class="far fa-folder" style="font-size: 1.1rem;"></i>
                                         <span class="hide-menu"
-                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Dependientes
-                                            Econ&oacutemicos</span>
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Juguetes</span>
                                     </a>
                                 </li>
                             </ul>

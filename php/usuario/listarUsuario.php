@@ -24,4 +24,10 @@ function statusFunction($statusF){
     return $statusR;
 }
 
-//pg_close(); //Cierre de
+function listarUsuarioByNick($id_user){
+    $listar = pg_query("SELECT id_user, nick
+                       FROM users 
+                       WHERE id_user = $id_user ");
+    $row = pg_fetch_array($listar);
+    return $row['nick'];
+}

@@ -16,6 +16,7 @@
     <?php include ("../../conexion.php") ?>
     <?php include ("../../php/CatFechaJuguetesC/listar.php") ?>
     <?php include ("../../php/PlazasEmpleadosC/listar.php") ?>
+    <?php //include ("../../php/ControlCargaMasivaC/Listar.php") ?>
     <?php include ('../nav-menu.php') ?>
     <?php include ('modal.php') ?>
 
@@ -87,7 +88,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLongTitle">Carga Masiva (Dependientes
-                                    Econ&oacutemicos)</h5>
+                                    Econ&oacutemicos) - ER<?php echo (listarControlCargaMasivaByMax() + 1)?></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -96,7 +97,7 @@
 
                                 <form action="../../php/DependientesEcoMC/CargaMasiva.php" method="post"
                                     enctype="multipart/form-data">
-
+                                    
                                     <div class="form-group">
                                         <label for="inputCity">Seleccione la fecha</label><label
                                             style="color:red">*</label><br>

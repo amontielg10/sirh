@@ -25,6 +25,8 @@ function listarControlCargaMasivaByMax()
 function listarCargaMasivaByAll()
 {
     $listado = pg_query("SELECT id_ctrl_carga_masiva, tipo_carga, id_usuario, fecha
-                          FROM ctrl_carga_masiva");
+                         FROM ctrl_carga_masiva
+                         ORDER BY id_ctrl_carga_masiva DESC
+                         LIMIT 25");
     return $listado;
 }
