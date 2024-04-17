@@ -61,13 +61,13 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Primer Apellido</label ><label style="color:red">*</label>
+                                    <label >Primer apellido</label ><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         name="primer_apellido" placeholder="Primer Apellido" required maxlength="39"> 
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Segundo Apellido</label ><label style="color:red"></label>
+                                    <label >Segundo apellido</label ><label style="color:red"></label>
                                     <input type="text" class="form-control"
                                         name="segundo_apellido" placeholder="Segundo Apellido" maxlength="39">
                                 </div>
@@ -86,7 +86,7 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
+                                    <select class="form-control" aria-label="Default select example" 
                                         name="id_cat_estatus" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php

@@ -87,7 +87,7 @@ $rowe = listadoJefeInmediaroPk($id_ctrl_jefe_inmediato);
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
+                                    <select class="form-control" aria-label="Default select example"
                                         name="id_cat_estatus" id="id_cat_estatus" required>
                                         <?php
                                         include('../../php/CatEstatusC/listar.php');
@@ -147,10 +147,9 @@ $rowe = listadoJefeInmediaroPk($id_ctrl_jefe_inmediato);
     function validateEstatus(id_cat_estatus, id_ctrl_jefe_inmediato) {
         let bool = false;
         let arrayJS = JSON.parse(document.getElementById('list_cat_estatus').value);
-        for (let i = 0; i < arrayJS.length; i++) {
+        for (let i = 0; i < arrayJS.length; i+=2) {
             if (arrayJS[i] == id_cat_estatus && arrayJS[i + 1] != id_ctrl_jefe_inmediato) {
                 bool = true;
-                i += 2;
             }
         }
         return bool;

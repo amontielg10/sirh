@@ -46,19 +46,13 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
 
 
                 <div class="card">
-                    <h5 class="card-header">Ingresa los siguientes campos</h5>
+                    <h5 class="card-header">Ingresa los siguientes campos.</h5>
                     <div class="card-body">
                         <form method="POST" action="../../php/EmpleadosC/Agregar.php">
                             <div class="form-row">
                                 
                                 <input type="hidden" name="id_tbl_control_plazas" value="<?php echo $id_tbl_control_plazas?>">
                                 <input type="hidden" id="id_tbl_centro_trabajo" name="id_tbl_centro_trabajo" value="<?php echo $id_tbl_centro_trabajo?>">
-
-                                <div class="form-group col-md-6">
-                                    <label >C&oacutedigo de Empleado</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        name="codigo_empleado" placeholder="Codigo de Empleado" required maxlength="30">
-                                </div>
                                 
                                 <div class="form-group col-md-6">
                                     <label >CURP</label><label style="color:red">*</label>
@@ -93,55 +87,7 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                                 <div class="form-group col-md-6">
                                     <label >Numero de Seguro Social</label><label style="color:red">*</label>
                                     <input type="number" class="form-control"
-                                        name="nss" placeholder="Numero de Seguro Social" required maxlength="11" pattern="[0-9]{1,11}>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Fecha de Ingreso</label><label style="color:red">*</label>
-                                    <input type="date" class="form-control"
-                                        name="fecha_ingreso" required>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Fecha de Baja</label><label style="color:red"></label>
-                                    <input type="date" class="form-control"
-                                        name="fecha_baja" >
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_estatus" required>
-                                        <option value="" selected>Seleccione</option>
-                                        <?php
-                                        $listado = $listadoCE;
-                                        if ($listado) {
-                                            if (pg_num_rows($listado) > 0) {
-                                                while ($row = pg_fetch_object($listado)) {
-                                                    echo '<option value="' . $row->id_cat_estatus . '">' . catEstatus($row->id_cat_estatus) . '</option>';
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="inputCity">Movimiento</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
-                                        name="id_tbl_movimientos" required>
-                                        <option value="" selected>Seleccione</option>
-                                        <?php
-                                        $listado = listadoMovimientoAll();
-                                        if ($listado) {
-                                            if (pg_num_rows($listado) > 0) {
-                                                while ($row = pg_fetch_object($listado)) {
-                                                    echo '<option value="' . $row->id_tbl_movimientos . '">' . catMovimientoPk($row->id_tbl_movimientos) . '</option>';
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </select>
+                                        name="nss" placeholder="Numero de Seguro Social" required maxlength="11">
                                 </div>
                                
                             </div>

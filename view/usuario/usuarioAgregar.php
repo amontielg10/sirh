@@ -21,7 +21,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Usuario</h2>
+                        <h2 class="page-title">Agregar usuario</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -44,12 +44,12 @@
 
 
                 <div class="card">
-                    <h5 class="card-header">Agregar</h5>
+                    <h5 class="card-header">Ingrese los siguientes campos.</h5>
                     <div class="card-body">
                         <form method="POST" action="../../php/usuario/agregarUsuario.php">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="inputEmail4">Nick*</label>
+                                    <label for="inputEmail4">Nick</label><label style="color:red">*</label><br>
                                     <input type="text" onkeyup="validarCaracteresNick();" class="form-control"
                                         id="nickA" name="nickA" placeholder="Nick">
                                     <input readonly
@@ -57,7 +57,7 @@
                                         id="rnickA">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Nombre*</label>
+                                    <label for="inputPassword4">Nombre</label><label style="color:red">*</label><br>
                                     <input onkeyup="validarCaracteresNombre();" id="nombreA" name="nombreA" type="text"
                                         class="form-control" placeholder="Nombre">
                                     <input readonly
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputAddress">Password*</label>
+                                <label for="inputAddress">Password</label><label style="color:red">*</label><br>
                                 <input id="pwA" onkeyup="validarCaracteresPW1()" name="pwA" type="password"
                                     class="form-control" placeholder="******">
                                 <input readonly
@@ -74,7 +74,7 @@
                                     id="rpwA">
                             </div>
                             <div class="form-group">
-                                <label for="inputAddress2">Confirmar Password*</label>
+                                <label for="inputAddress2">Confirmar Password</label><label style="color:red">*</label><br>
                                 <input id="psA2" onkeyup="validarCaracteresPW2()" name="psA2" type="password"
                                     class="form-control" placeholder="******">
                                 <input readonly
@@ -83,9 +83,9 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Rol*</label>
-                                    <select class="form-select" aria-label="Default select example" id="rolA"
-                                        name="rolA">
+                                    <label for="inputCity">Rol</label><label style="color:red">*</label><br>
+                                    <select class="form-control" aria-label="Default select example" id="rolA"
+                                        name="rolA" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
                                         if ($roEx) {
@@ -103,13 +103,13 @@
                                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckCheckedDisabled"
                                         checked disabled>
                                     <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">
-                                        Estatus* Activo</label>
+                                       Activo</label><label style="color:red">*</label><br>
                                 </div>
 
                             </div>
 
-                            <a class="btn btn-light" style="background-color: #D4C15C; color:white;" href="usuario.php">Cancelar</a>
-                            <button type="submit" onclick="return validate();" class="btn btn-light" style="background-color: #D4C15C; color: white">Guardar</button>
+                            <a class="btn btn-light" style="background-color: #cb9f52; border:none; outline:none; color: white;" href="usuario.php">Cancelar</a>
+                            <button type="submit" onclick="return validate();" class="btn btn-light" style="background-color: #cb9f52; border:none; outline:none; color: white;">Guardar</button>
 
                         </form>
                     </div>

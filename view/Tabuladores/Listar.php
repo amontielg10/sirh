@@ -53,7 +53,7 @@
 
 
             <div class="container-fluid">
-                <p>La sig. tabla muestra informacion de tabuladores.</p>
+                <p>La sig. tabla muestra informaci&oacuten de tabuladores.</p>
                 <div class=" btn-group">
                     <button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"
@@ -70,44 +70,32 @@
                     <thead>
                         <tr style="background-color: #5c5c5c;">
                             <th style="color: white;">Acciones</th>
-                            <th style="color: white;">id</th>
+                            <th style="color: white;">Sbe</th>
+                            <th style="color: white;">Cg</th>
+                            <th style="color: white;">Sb</th>
+                            <th style="color: white;">Cs</th>
+                            <th style="color: white;">Cp</th>
+                            <th style="color: white;">Ab</th>
+                            <th style="color: white;">Aga</th>
+                            <th style="color: white;">Bmr</th>
+                            <th style="color: white;">Cbmr</th>
+                            <th style="color: white;">Ad</th>
+                            <th style="color: white;">Adm</th>
+                            <th style="color: white;">Psm</th>
+                            <th style="color: white;">Asx</th>
+                            <th style="color: white;">Sh</th>
+                            <th style="color: white;">Fecha inicial</th>
+                            <th style="color: white;">Fecha final</th>
                             <th style="color: white;">Niveles</th>
-                            <th style="color: white;">Tipo Contratacion</th>
-                            <th style="color: white;">Codigo Puesto</th>
-                            <th style="color: white;">Zona Tabulador</th>
-                            <th style="color: white;">Sueldo Eventual Rubro 1</th>
-                            <th style="color: white;">Sueldo Eventual Cantidad</th>
-                            <th style="color: white;">Sueldo Rubro 1</th>
-                            <th style="color: white;">Sueldo Cantidad</th>
-                            <th style="color: white;">Compensa Rubro 1</th>
-                            <th style="color: white;">Compensa Cantidad</th>
-                            <th style="color: white;">Compensa Servicios Rubro 2</th>
-                            <th style="color: white;">Compensa servicios Cantidad</th>
-                            <th style="color: white;">Polivalencia Rubro 1</th>
-                            <th style="color: white;">Polivalencia Cantidad</th>
-                            <th style="color: white;">Asignacion Rubro 1</th>
-                            <th style="color: white;">Asignacion Cantidad</th>
-                            <th style="color: white;">Gastos Rubro 2</th>
-                            <th style="color: white;">Gastos Cantidad</th>
-                            <th style="color: white;">Beca Medico Rubro 2</th>
-                            <th style="color: white;">Beca Medico Cantidad</th>
-                            <th style="color: white;">Complemento Beca Rubro 2</th>
-                            <th style="color: white;">Complemento Beca Cantidad</th>
-                            <th style="color: white;">Despensa Rubros 2</th>
-                            <th style="color: white;">Despensa Cantidad</th>
-                            <th style="color: white;">Despensa Mandos Rubro 2</th>
-                            <th style="color: white;">Despensa Mandos Cantidad</th>
-                            <th style="color: white;">Prevision Rubros 2</th>
-                            <th style="color: white;">Prevision Cantidad</th>
-                            <th style="color: white;">A. Servicios Rubro 2</th>
-                            <th style="color: white;">A. Servicios Cantidad</th>
-                            <th style="color: white;">Fecha Inicio</th>
-                            <th style="color: white;">Fecha Fin</th>
+                            <th style="color: white;">Tipo de contrataci&oacuten</th>
+                            <th style="color: white;">Puesto</th>
+                            <th style="color: white;">Zona tabulares</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <?php
+                        $listado = listadoTabuladore();
                         if ($listado) {
                             if (pg_num_rows($listado) > 0) {
                                 while ($obj = pg_fetch_object($listado)) { ?>
@@ -136,20 +124,18 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea Continuar?</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea continuar?</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            La accion de eliminar no se puede rehacer.
+                                                            La acci&oacuten eliminar no se puede rehacer.
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Cancelar</button>
-                                                            <a class="btn btn-danger"
-                                                            href="<?php echo "../../php/TabuladoresC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_tabuladores) ?>">Eliminar</a>
+                                                            <a class="btn btn-light" style="background-color: #cb9f52; border:none; outline:none; color: white;"
+                                                            href="<?php echo "../../php/TabuladoresC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_tabuladores) ?>">Confirmar</a>
                                                              </div>
                                                         </div>
                                                     </div>
@@ -158,103 +144,64 @@
                                             <!-- MODAL ELIMINAR -->
                                         </td>
                                         <td>
-                                            <?php echo $obj->id_tbl_tabuladores ?>
+                                            <?php echo $obj->sbe ?>
                                         </td>
                                         <td>
-                                            <?php echo catalogoNivelesPk($obj->id_cat_niveles); ?>
+                                            <?php echo $obj->cg ?>
                                         </td>
                                         <td>
-                                            <?php echo catalogoContratacionPk($obj->id_cat_tipo_contratacion) ?>
+                                            <?php echo $obj->sb ?>
                                         </td>
                                         <td>
-                                            <?php echo catalogoPuestoPk($obj->id_cat_puesto) ?>
+                                            <?php echo $obj->cs ?>
                                         </td>
                                         <td>
-                                            <?php echo catalogoZonaPk($obj->id_cat_zona_tabuladores)?>
+                                            <?php echo $obj->cp?>
                                         </td>
                                         <td>
-                                            <?php echo catalogoRubrosTabPk($obj->r_sueldo_eve)?>
+                                            <?php echo $obj->ab?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->c_sueldo_eve?>
+                                            <?php echo $obj->aga?>
                                         </td>
                                         <td>
-                                            <?php echo catalogoRubrosTabPk($obj->r_sueldo)?>
+                                            <?php echo $obj->bmr?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->c_sueldo?>
+                                            <?php echo $obj->cbmr?>
                                         </td>
                                         <td>
-                                            <?php echo catalogoRubrosTabPk($obj->r_compensa)?>
+                                            <?php echo $obj->ad?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->c_compensa?>
+                                            <?php echo $obj->adm?>
                                         </td>
                                         <td>
-                                            <?php echo catalogoRubrosTabPk($obj->r_comp_servicios)?>
+                                            <?php echo $obj->psm?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->c_comp_servicios?>
+                                            <?php echo $obj->asx?>
                                         </td>
                                         <td>
-                                            <?php echo catalogoRubrosTabPk($obj->r_polivalencia)?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->c_polivalencia?>
-                                        </td>
-                                        <td>
-                                            <?php echo catalogoRubrosTabPk($obj->r_asignacion)?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->c_asignacion?>
-                                        </td>
-                                        <td>
-                                            <?php echo catalogoRubrosTabPk($obj->r_gastos_actu)?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->c_gastos_actu?>
-                                        </td>
-                                        <td>
-                                            <?php echo catalogoRubrosTabPk($obj->r_beca_medico)?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->c_beca_medico?>
-                                        </td>
-                                        <td>
-                                            <?php echo catalogoRubrosTabPk($obj->r_complemento_beca)?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->c_complemento_beca?>
-                                        </td>
-                                        <td>
-                                            <?php echo catalogoRubrosTabPk($obj->r_despensa)?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->c_despensa?>
-                                        </td>
-                                        <td>
-                                            <?php echo catalogoRubrosTabPk($obj->r_despensa_mandos)?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->c_despensa_mandos?>
-                                        </td>
-                                        <td>
-                                            <?php echo catalogoRubrosTabPk($obj->r_prevision)?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->c_prevision?>
-                                        </td>
-                                        <td>
-                                            <?php echo catalogoRubrosTabPk($obj->r_ayuda_servicios)?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->c_ayuda_servicios?>
+                                            <?php echo$obj->sh?>
                                         </td>
                                         <td>
                                             <?php echo $obj->fecha_ini?>
                                         </td>
                                         <td>
                                             <?php echo $obj->fecha_fin?>
+                                        </td>
+                                        <td>
+                                            <?php echo catalogoNivelesPk($obj->id_cat_niveles)?>
+                                        </td>
+                                        <td>
+                                            <?php echo catalogoContratacionPk($obj->id_cat_tipo_contratacion) ?>
+                                        </td>
+                                        <td>
+                                            <?php echo catalogoPuestoPk($obj->id_cat_puesto)?>
+                                        </td>
+                                        <td>
+                                            <?php echo catalogoZonaPk($obj->id_cat_zona_tabuladores)?>
                                         </td>
                                     </tr>
                                     <?php

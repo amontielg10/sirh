@@ -50,7 +50,7 @@
 
 
                 <div class="card">
-                <h5 class="card-header">Ingresa los siguientes campos</h5>
+                <h5 class="card-header">Ingresa los siguientes campos.</h5>
                     <div class="card-body">
                         <form method="POST" action="../../php/EmpleadosC/Editar.php">
                             <input type="hidden" name="id_tbl_control_plazas" value="<?php echo $id_tbl_control_plazas?>">
@@ -58,14 +58,9 @@
                             <input type="hidden" id="id_tbl_centro_trabajo" name="id_tbl_centro_trabajo" value="<?php echo $id_tbl_centro_trabajo?>">
                             
                             <div class="form-row">
-                                 <div class="form-group col-md-6">
-                                    <label >C&oacutedigo de Empleado</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
-                                        name="codigo_empleado" value="<?php echo $rowe['codigo_empleado']?>" required maxlength="30">
-                                </div>
                                 
                                 <div class="form-group col-md-6">
-                                    <label >CURP</label><label style="color:red">*</label>
+                                    <label >Curp</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         name="curp" value="<?php echo $rowe['curp']?>" required maxlength="18">
                                 </div>
@@ -77,82 +72,29 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Primer Apellido</label><label style="color:red">*</label>
+                                    <label >Primer apellido</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         name="primer_apellido" value="<?php echo $rowe['primer_apellido']?>" required maxlength="30">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Segundo Apellido</label><label style="color:red"></label>
+                                    <label >Segundo apellido</label><label style="color:red"></label>
                                     <input type="text" class="form-control"
                                         name="segundo_apellido" value="<?php echo $rowe['segundo_apellido']?>" maxlength="30">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >RFC</label><label style="color:red">*</label>
+                                    <label >Rfc</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         name="rfc" value="<?php echo $rowe['rfc']?>" required maxlength="13">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Numero de Seguro Social</label><label style="color:red">*</label>
+                                    <label >N&uacutem. de seguro social</label><label style="color:red"></label>
                                     <input type="number" class="form-control"
-                                        name="nss" value="<?php echo $rowe['nss']?>" required maxlength="11" pattern="[0-9]{1,11}>
+                                        name="nss" value="<?php echo $rowe['nss']?>" maxlength="11">
                                 </div>
 
-                                <div class="form-group col-md-6">
-                                    <label >Fecha de Ingreso</label><label style="color:red">*</label>
-                                    <input type="date" class="form-control"
-                                        name="fecha_ingreso" value="<?php echo $rowe['fecha_ingreso']?>" required>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label >Fecha de Baja</label><label style="color:red"></label>
-                                    <input type="date" class="form-control"
-                                        name="fecha_baja" value="<?php echo $rowe['fecha_baja']?>">
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
-                                        name="id_cat_estatus" required>
-                                        <?php
-                                        include("../../php/CatEstatusC/listar.php");
-                                        echo '<option value="' . $rowe['id_cat_estatus'] . '">' . catEstatus($rowe['id_cat_estatus']) . '</option>';
-                                        $listado = $listadoCE;
-                                        if ($listado) {
-                                            if (pg_num_rows($listado) > 0) {
-                                                while ($row = pg_fetch_object($listado)) {
-                                                    if ($rowe['id_cat_estatus'] != $row->id_cat_estatus){
-                                                    echo '<option value="' . $row->id_cat_estatus . '">' . catEstatus($row->id_cat_estatus) . '</option>';
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="inputCity">Movimiento</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
-                                        name="id_tbl_movimientos" required>
-                                        <?php
-                                        include("../../php/CatMovimientoC/listar.php");
-                                        echo '<option value="' . $rowe['id_tbl_movimientos'] . '">' . catMovimientoPk($rowe['id_tbl_movimientos']) . '</option>';
-                                        $listado = listadoMovimientoAll();
-                                        if ($listado) {
-                                            if (pg_num_rows($listado) > 0) {
-                                                while ($row = pg_fetch_object($listado)) {
-                                                    if ($rowe['id_tbl_movimientos'] != $row->id_tbl_movimientos){
-                                                    echo '<option value="' . $row->id_tbl_movimientos . '">' . catMovimientoPk($row->id_tbl_movimientos) . '</option>';
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
                             </div>
                             
                             <a class="btn btn-light" style="background-color: #cb9f52; border:none; outline:none; color: white;"

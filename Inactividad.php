@@ -4,23 +4,18 @@
 
   setTimeout(function () {
     Swal.bindClickHandler();
-    /* Bind a mixin to a click handler */
     Swal.fire({
-      title: "Tu sesi\u00f3n ha expidaro.",
-      text: "",
+      title: "La sesi\u00f3n ha expidaro.",
       icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#9F2241",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Continuar trabajando",
+      confirmButtonText: "Salir",
       cancelButtonText: "Salir",
       allowOutsideClick: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        location.reload()
-      } else {
         window.location.href = 'cerrar-sesion.php';
-      }
+      } 
     }),
       ///ON FUNCTIN TIME - EXIT
       setTimeout(function () {

@@ -49,7 +49,7 @@
                 <div id="loginform">
                     <div class="logo">
                         <span class="db"><img src="assets/logo/imssLogo.png" alt="logo" width="80%" /></span>
-                        <h2 style="color: #cb9f52;">SIRH</h2>
+                        <h5 style="color: #cb9f52;">Sistema Integral de Recursos Humanos</h5>
                     </div>
                     <!-- Form -->
                     <div class="row">

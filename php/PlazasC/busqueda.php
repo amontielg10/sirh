@@ -13,7 +13,6 @@ echo "
     <th style='color: white;'>Menu</th>
     <th style='color: white;'>Plaza</th>
     <th style='color: white;'>Contratacion</th>
-    <th style='color: white;'>Situacion</th>
     <th style='color: white;'>Puesto</th>
     </tr>
 </thead>";
@@ -29,7 +28,6 @@ while ($obj = pg_fetch_object($listado)) {
     <td><a href='../../view/Plazas/Listar.php?RP=$id_tbl_centro_trabajo&CP3=$id_tbl_control_plazas' class='btn btn-light' style='background-color: #cb9f52; border:none; outline:none; color: white'>Ir</a></td>
     <td>$obj->num_plaza</td>
     <td>$id_cat_tipo_contratacion</td>
-    <td>$id_cat_situacion_plaza</td>
     <td>$id_cat_puesto</td>
 </tr>";
 }

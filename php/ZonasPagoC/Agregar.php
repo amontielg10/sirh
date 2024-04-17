@@ -15,7 +15,7 @@ $pgs_QRY = pg_insert($connectionDBsPro, 'tbl_zonas_pago', array(
     'codigo' => $codigo,
     'rfc' => $rfc,
     'id_cat_unidad_responsable' => $id_cat_unidad_responsable,
-    'id_cat_centro_trabajo' => $id_tbl_centro_trabajo,
+    'id_tbl_centro_trabajo' => $id_tbl_centro_trabajo,
 ));
 
 if ($pgs_QRY ) {

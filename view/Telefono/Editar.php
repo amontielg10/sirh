@@ -79,7 +79,7 @@ $rowe = listadoTelefonoPk($id_ctrl_telefono);
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
+                                    <select class="form-control" aria-label="Default select example"
                                         name="id_cat_estatus" id="id_cat_estatus" required>
                                         <?php
                                         include('../../php/CatEstatusC/listar.php');
