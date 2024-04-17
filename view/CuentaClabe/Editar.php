@@ -27,7 +27,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Modificar cuenta clabe</h2>
+                        <h2 class="page-title">Modificar forma de pago</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -50,7 +50,7 @@
 
                 <div class="alert alert-warning" role="alert">
                     <i class="fa fa-exclamation-triangle" style="font-size: .85rem; color:#cb9f52;"></i>
-                    &nbsp;&nbsp;Solo una cuenta clabe puede estar activa.
+                    &nbsp;&nbsp;Solo una forma de pago puede estar activa.
                 </div>
 
                 <div class="card">
@@ -72,7 +72,7 @@
 
                             <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
+                                    <select class="form-control" aria-label="Default select example" 
                                         name="id_cat_estatus" id="id_cat_estatus" required>
                                         <?php
                                         include ('../../php/CatEstatusC/listar.php');
@@ -93,7 +93,7 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Banco</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
+                                    <select class="form-control" aria-label="Default select example" 
                                         name="id_cat_banco" required>
                                         <?php
                                         include ('../../php/CatBancoC/listar.php');
@@ -113,8 +113,8 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Formato de Pago</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
+                                    <label for="inputCity">Formato de pago</label><label style="color:red">*</label><br>
+                                    <select class="form-control" aria-label="Default select example" 
                                         name="id_cat_formato_pago" required>
                                         <?php
                                         include ('../../php/CatFormatoPagoC/listar.php');

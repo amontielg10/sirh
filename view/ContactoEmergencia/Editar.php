@@ -65,13 +65,13 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                    <label >Segundo Apellido</label><label style="color:red"></label>
+                                    <label >Segundo apellido</label><label style="color:red"></label>
                                     <input type="text" class="form-control"
                                         name="segundo_apellido" value="<?php echo $rowe['segundo_apellido']?>" maxlength="39">
                             </div>
 
                             <div class="form-group col-md-6">
-                                    <label >Primer Apellido</label><label style="color:red">*</label>
+                                    <label >Primer apellido</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         name="primer_apellido" value="<?php echo $rowe['primer_apellido']?>" required maxlength="39">
                             </div>
@@ -83,14 +83,14 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                    <label >Telefono Celular</label><label style="color:red">*</label>
+                                    <label >Telefono celular</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
                                         name="movil" value="<?php echo $rowe['movil']?>" required maxlength="15" pattern="[0-9]{1,15}">
                             </div>
 
                             <div class="form-group col-md-6">
                                     <label for="inputCity">Estatus</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example" 
+                                    <select class="form-control" aria-label="Default select example" 
                                         name="id_cat_estatus" required>
                                         <?php
                                         include ('../../php/CatEstatusC/listar.php');

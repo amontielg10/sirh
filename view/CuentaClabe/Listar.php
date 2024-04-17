@@ -35,7 +35,7 @@
         <div class="page-wrapper">
 
             <div class="page-breadcrumb">
-            <h2 class="page-title">Cuenta Clabe</h2>
+            <h2 class="page-title">Forma de pago</h2>
                 <div class="row">
                     <div class="col-5 align-self-center">
                         <div class="d-flex align-items-center">
@@ -48,7 +48,7 @@
                                     <li class="breadcrumb-item">
                                         <a href="#" style="color:#cb9f52;">Empleado</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Cuenta Clabe</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Forma de pago</li>
                                 </ol>
                             </nav>
                         </div>
@@ -63,8 +63,8 @@
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">Nombre:
                     <?php echo $rowe['nombre'] . ' ' . $rowe['primer_apellido'] . ' ' . $rowe['segundo_apellido'] ?>
                 </p>
-                <p style="font-size:14px; margin-top:0; margin-bottom:0;">C&oacutedigo de Empleado:
-                    <?php echo $rowe['codigo_empleado']?>
+                <p style="font-size:14px; margin-top:0; margin-bottom:0;">CURP:
+                    <?php echo $rowe['curp']?>
                 </p>
                 <p style="font-size:14px; margin-top:0; margin-bottom:0;">RFC:
                     <?php echo $rowe['rfc']?>
@@ -128,20 +128,18 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea Continuar?</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea continuar?</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            La accion de eliminar no se puede rehacer.
+                                                            La acci&oacuten eliminar no se puede rehacer.
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Cancelar</button>
-                                                            <a class="btn btn-danger"
-                                                            href="<?php echo "../../php/ControlCuentaClabeC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_cuenta_clabe).'&D-F3='.$id_tbl_control_plazas.'&RP='.$id_tbl_centro_trabajo ?>">Eliminar</a>
+                                                            <a class="btn btn-light" style="background-color: #cb9f52; border:none; outline:none; color: white;"
+                                                            href="<?php echo "../../php/ControlCuentaClabeC/Eliminar.php?D-F=" . base64_encode($id_tbl_empleados) . "&D-F2=" . base64_encode($obj->id_ctrl_cuenta_clabe).'&D-F3='.$id_tbl_control_plazas.'&RP='.$id_tbl_centro_trabajo ?>">Confirmar</a>
                                                         </div>
                                                     </div>
                                                 </div>

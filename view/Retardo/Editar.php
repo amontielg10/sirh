@@ -64,12 +64,12 @@ $rowe = listadoRetardoPk($id_ctrl_retardo);
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label>Hora Entrada</label><label style="color:red">*</label>
+                                    <label>Hora de entrada</label><label style="color:red">*</label>
                                     <input type="time" class="form-control" name="hora_entrada" required value="<?php echo horaAdd($rowe['hora_entrada'],$rowe['minuto_entrada'])?>">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label>Hora de Salida</label><label style="color:red"></label>
+                                    <label>Hora de salida</label><label style="color:red"></label>
                                     <input type="time" class="form-control" name="hora_salida" value="<?php echo horaAdd($rowe['hora_salida'], $rowe['minuto_salida'])?>">
                                 </div>
                             </div>

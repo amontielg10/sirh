@@ -18,3 +18,16 @@ function catMovimientoPk($id){
         return "";
     }
 }
+
+function catMovimientoPkByName($id){
+    if ($id != null){
+    $catSQL = pg_query("SELECT nombre_movimiento,id_tbl_movimientos 
+                        FROM tbl_movimientos 
+                        WHERE id_tbl_movimientos = $id");
+    $row = pg_fetch_array($catSQL);
+    $res = $row['nombre_movimiento'];
+    return $res;
+    } else {
+        return "";
+    }
+}

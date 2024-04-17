@@ -13,6 +13,7 @@ $apellido_materno = $_POST['apellido_materno'];
 $id_cat_dependientes_economicos = $_POST['id_cat_dependientes_economicos']; 
 $crypt = base64_encode ($id_tbl_empleados);
 
+
 try {
 //Se ejecuta la funcion insert SQL, para guardar cambios
 $pgs_QRY = pg_insert($connectionDBsPro, 'tbl_dependientes_economicos', array(

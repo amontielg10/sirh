@@ -11,7 +11,7 @@ function listadoContratacion(){
   
 function catalogoContratacionPk($id){
     if ($id != null){
-    $catSQL = pg_query("SELECT descripcion_cont FROM cat_tipo_contratacion WHERE id_cat_tipo_contratacion = '$id' LIMIT 1");
+    $catSQL = pg_query("SELECT descripcion_cont FROM cat_tipo_contratacion WHERE id_cat_tipo_contratacion = '$id'");
     $row = pg_fetch_array($catSQL);
     $res = $row["descripcion_cont"];
     return $res;

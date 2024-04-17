@@ -18,7 +18,7 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-5 align-self-center">
-                <h2 class="page-title">Control de Roles</h2>
+                <h2 class="page-title">Control de roles</h2>
                 <div class="d-flex align-items-center">
 
                 </div>
@@ -44,7 +44,6 @@
                 <table class="table table-striped" id="t-usuarios">
                     <thead>
                         <tr style="background-color: #5c5c5c;">
-                            <th style="color: white;">Prefijo</th>
                             <th style="color: white;">Nombre</th>
                             <th style="color: white;">Descripcion</th>
                         </tr>
@@ -56,14 +55,13 @@
                             if (pg_num_rows($roEx) > 0) {
                                 while ($obj = pg_fetch_object($roEx)){?>
                                     <tr>
-                                    <td> <?php echo $obj->prefijo ?></td>
                                     <td><?php  echo $obj->nombre ?></td>
                                     <td><?php  echo $obj->descripcion ?></td>
                                 </tr>
                                     <?php
                                 }
                             } else
-                         echo "<p>Sin Resultados</p>";
+                         echo "<p></p>";
                         }
                         ?>
                     </tbody>

@@ -12,10 +12,10 @@ $id_cat_puesto = $_POST["id_cat_puesto"];
 $id_cat_zonas_tabuladores = $_POST["id_cat_zonas_tabuladores"]; 
 $id_cat_niveles = $_POST["id_cat_niveles"]; 
 $zona_pagadora = $_POST["zona_pagadora"]; 
-$fecha_ini_contrato = $_POST["fecha_ini_contrato"]; 
+$fecha_ingreso_inst = $_POST["fecha_ingreso_inst"]; 
+$fecha_inicio_movimiento = $_POST["fecha_inicio_movimiento"]; 
+$fecha_termino_movimiento = $_POST["fecha_termino_movimiento"]; 
 $fecha_modificacion = $_POST["fecha_modificacion"]; 
-$fecha_fin_contrato = $_POST["fecha_fin_contrato"]; 
-$id_cat_situacion_plaza = $_POST["id_cat_situacion_plaza"]; 
 $id_tbl_centro_trabajoCryp = base64_encode($id_tbl_centro_trabajo);
 
 try {
@@ -24,16 +24,16 @@ $pgs_QRY = pg_insert($connectionDBsPro, 'tbl_control_plazas', array(
     'num_plaza' => $num_plaza,
     'id_cat_plazas' => $id_cat_plazas,
     'id_cat_tipo_contratacion' => $id_cat_tipo_contratacion,
-    'id_cat_unidad_reponsable' => $id_cat_unidad_responsable,
+    'id_cat_unidad_responsable' => $id_cat_unidad_responsable,
     'id_cat_puesto' => $id_cat_puesto,
     'id_cat_zonas_tabuladores' => $id_cat_zonas_tabuladores,
     'id_cat_niveles' => $id_cat_niveles,
     'id_tbl_centro_trabajo' => $id_tbl_centro_trabajo,
     'zona_pagadora' => $zona_pagadora,
-    'fecha_ini_contrato' => $fecha_ini_contrato,
+    'fecha_ingreso_inst' => $fecha_ingreso_inst,
+    'fecha_inicio_movimiento' => $fecha_inicio_movimiento,
+    'fecha_termino_movimiento' => $fecha_termino_movimiento,
     'fecha_modificacion' => $fecha_modificacion,
-    'fecha_fin_contrato' => $fecha_fin_contrato,
-    'id_cat_situacion_plaza' => $id_cat_situacion_plaza,
 ));
 
 if ($pgs_QRY ) {

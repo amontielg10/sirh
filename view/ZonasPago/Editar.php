@@ -55,7 +55,7 @@
                                 
                                 <div class="form-group col-md-6">
                                     <label >Codigo</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
+                                    <input type="number" class="form-control"
                                         id="codigo" name="codigo" value="<?php echo $rowe['codigo'];?>">
                                 </div>
                                 
@@ -67,7 +67,7 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Unidad Responsable</label><label style="color:red">*</label>
-                                    <select class="form-select" aria-label="Default select example" id="id_cat_unidad_responsable"
+                                    <select class="form-control" aria-label="Default select example" id="id_cat_unidad_responsable"
                                         name="id_cat_unidad_responsable" required>
                                         <?php
                                         include ('../../php/CatUnidadResponsableC/listar.php');

@@ -21,7 +21,7 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Plaza</h2>
+                        <h2 class="page-title">Agregar plaza</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -33,7 +33,7 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="Listar.php" style="color:#cb9f52;">Control de Plazas</a>
+                                        <a href="Listar.php" style="color:#cb9f52;">Control de plazas</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Agregar</li>
                                 </ol>
@@ -44,7 +44,7 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
 
 
                 <div class="card">
-                    <h5 class="card-header">Ingresa los siguientes campos</h5>
+                    <h5 class="card-header">Ingresa los siguientes campos.</h5>
                     <div class="card-body">
                         <form method="POST" action="../../php/PlazasC/Agregar.php">
                             <div class="form-row">
@@ -52,14 +52,14 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                                 <input type="hidden" name="id_tbl_centro_trabajo" value="<?php echo $id_tbl_centro_trabajo?>">
 
                                 <div class="form-group col-md-6">
-                                    <label >Num. de Plaza</label><label style="color:red">*</label>
+                                    <label >N&uacutem. de plaza</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="num_plaza" placeholder="Numero de Plaza" required maxlength="30" pattern="[0-9]{1,31}">
+                                        name="num_plaza" placeholder="Numero de Plaza" required maxlength="30" >
                                 </div>
                                 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Tipo de Plaza</label><label style="color:red">*</label><br>
-                                    <select class="selectpicker" aria-label="Default select example"
+                                    <label for="inputCity">Tipo de plaza</label><label style="color:red">*</label><br>
+                                    <select class="form-control" aria-label="Default select example"
                                         name="id_cat_plazas" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
@@ -77,8 +77,8 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Tipo de Contrataci&oacuten</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
+                                    <label for="inputCity">Tipo de contrataci&oacuten</label><label style="color:red">*</label><br>
+                                    <select class="form-control" aria-label="Default select example"
                                         name="id_cat_tipo_contratacion" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
@@ -96,27 +96,8 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Situaci&oacuten Plaza</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
-                                        name="id_cat_situacion_plaza" required>
-                                        <option value="" selected>Seleccione</option>
-                                        <?php
-                                        include ("../../php/CatSituacionPlazaC/listar.php");
-                                        $listado = listadoSituacionPlaza();
-                                        if ($listado) {
-                                            if (pg_num_rows($listado) > 0) {
-                                                while ($row = pg_fetch_object($listado)) {
-                                                    echo '<option value="' . $row->id_cat_situacion_plaza . '">' . $row->situacion_plaza . '</option>';
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="inputCity">Unidad Responsable</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
+                                    <label for="inputCity">Unidad responsable</label><label style="color:red">*</label><br>
+                                    <select class="form-control" aria-label="Default select example"
                                         name="id_cat_unidad_responsable" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
@@ -132,10 +113,10 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                                         ?>
                                     </select>
                                 </div>
-
+                            
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Puesto</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
+                                    <select class="form-control" aria-label="Default select example"
                                         name="id_cat_puesto" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
@@ -153,8 +134,8 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="inputCity">Zona Tabulares</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
+                                    <label for="inputCity">Zona tabulares</label><label style="color:red">*</label><br>
+                                    <select class="form-control" aria-label="Default select example"
                                         name="id_cat_zonas_tabuladores" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
@@ -173,7 +154,7 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Niveles</label><label style="color:red">*</label><br>
-                                    <select class="form-select" aria-label="Default select example"
+                                    <select class="form-control" aria-label="Default select example"
                                         name="id_cat_niveles" required>
                                         <option value="" selected>Seleccione</option>
                                         <?php
@@ -191,27 +172,33 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Zona Pagadora</label><label style="color:red">*</label>
+                                    <label >Zona pagadora</label><label style="color:red">*</label>
                                     <input type="text" class="form-control"
-                                        name="zona_pagadora" placeholder="Zona Pagadora" required>
+                                        name="zona_pagadora" placeholder="Zona Pagadora" required maxlength="30">
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Fecha Inicio Contrato</label><label style="color:red">*</label>
+                                    <label >Fecha de ingreso</label><label style="color:red">*</label>
                                     <input type="date" class="form-control"
-                                        name="fecha_ini_contrato" required>
+                                        name="fecha_ingreso_inst" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Fecha Fin de Contrato</label><label style="color:red"></label>
+                                    <label >Fecha incio de movimiento</label><label style="color:red">*</label>
                                     <input type="date" class="form-control"
-                                        name="fecha_fin_contrato" >
+                                        name="fecha_inicio_movimiento" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label >Fecha de Modificacion</label><label style="color:red"></label>
+                                    <label >Fecha termino de movimiento</label><label style="color:red">*</label>
                                     <input type="date" class="form-control"
-                                        name="fecha_modificacion" >
+                                        name="fecha_termino_movimiento" required>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label >Fecha de modifici&oacuten</label><label style="color:red">*</label>
+                                    <input type="date" class="form-control"
+                                        name="fecha_modificacion" required>
                                 </div>
                               
                             </div>

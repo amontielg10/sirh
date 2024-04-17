@@ -7,7 +7,7 @@ include('../../conexion.php'); //Se incluye la conexion
   
 
     function listadoFk($id){
-     $catSQL = pg_query("SELECT * FROM tbl_zonas_pago WHERE id_cat_centro_trabajo = '$id' ");
+     $catSQL = pg_query("SELECT * FROM tbl_zonas_pago WHERE id_tbl_centro_trabajo = '$id' ");
      return $catSQL;
 }
      //La funcion retorna los atributos dependiendo del id que se ingrese como parametro

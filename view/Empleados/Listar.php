@@ -1,6 +1,6 @@
 <?php
-include("../../php/EmpleadosC/Listar.php");
-include("../../php/PlazasC/Listar.php");
+include ("../../php/EmpleadosC/Listar.php");
+include ("../../php/PlazasC/Listar.php");
 $id_tbl_control_plazas = base64_decode(($_GET['D-F3']));
 $id_tbl_centro_trabajo = ($_GET['RP']);
 $rowe = catControlPlazasPk($id_tbl_control_plazas);
@@ -17,19 +17,20 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
             ;
         }
     </style>
-    <?php include("libHeader.php"); ?>
+    <?php include ("libHeader.php"); ?>
 
 </head>
 
 <body onload="messageInfo();">
-    <?php include("../../conexion.php") ?>
-    <?php include('../nav-menu.php') ?>
-    <?php include("../../php/CatPlazasC/listar.php"); ?>
-    <?php include("../../php/CatTipoContratacionC/listar.php"); ?>
-    <?php include("../../php/CatSituacionPlazaC/listar.php"); ?>
-    <?php include("../../php/CatEstatusC/listar.php"); ?>
-    <?php include("../../php/CatMovimientoC/listar.php"); ?>
-    <?php include("../../php/CentroTrabajoC/Listar.php"); ?>
+    <?php include ("../../conexion.php") ?>
+    <?php include ('../nav-menu.php') ?>
+    <?php include ("../../php/CatPlazasC/listar.php"); ?>
+    <?php include ("../../php/CatTipoContratacionC/listar.php"); ?>
+    <?php include ("../../php/CatSituacionPlazaC/listar.php"); ?>
+    <?php include ("../../php/CatEstatusC/listar.php"); ?>
+    <?php include ("../../php/CatMovimientoC/listar.php"); ?>
+    <?php include ("../../php/CentroTrabajoC/Listar.php"); ?>
+    <?php include ("../../php/PlazasEmpleadosC/Listar.php") ?>
 
     <div id="main-wrapper">
 
@@ -88,35 +89,46 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                             while ($obj = pg_fetch_object($listado)) { ?>
 
                                 <div class="dropdown-menu" style="height: 1200%; overflow: auto;">
-                                    <a class="dropdown-item" href="<?php echo '../Plazas/Listar.php?RP='.$id_tbl_centro_trabajo ?>">Regresar</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo '../Plazas/Listar.php?RP=' . $id_tbl_centro_trabajo ?>">Regresar</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item"
-                                        href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) .'&RP='.$id_tbl_centro_trabajo?>">Modificar</a>
+                                        href="<?php echo "Editar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Modificar</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../Telefono/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">N&uacutem.
+                                        href="<?php echo "../Telefono/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">N&uacutem.
                                         Telefonico</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../JefeInmediato/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Jefe
+                                        href="<?php echo "../JefeInmediato/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Jefe
                                         Inmediato</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../MediosContacto/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Medios
+                                        href="<?php echo "../MediosContacto/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Medios
                                         de Contacto</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../CuentaClabe/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo?>">Cuenta
-                                        Clabe</a>
+                                        href="<?php echo "../CamposPerson/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Campos
+                                        personalizados</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../ContactoEmergencia/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Contacto
+                                        href="<?php echo "../Cedula/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">C&eacutedula
+                                        profesional</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo "../CuentaClabe/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Forma
+                                        de pago</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo "../ContactoEmergencia/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Contacto
                                         Emergencia</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../DependientesEconomicos/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Dependientes
+                                        href="<?php echo "../DependientesEconomicos/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Dependientes
                                         Economicos</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../Jornada/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Jornada</a>
+                                        href="<?php echo "../Jornada/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Jornada</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../Retardo/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Retardos</a>
+                                        href="<?php echo "../Juguetes/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Juguetes</a>
                                     <a class="dropdown-item"
-                                        href="<?php echo "../DatosEmpleado/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Mas
+                                        href="<?php echo "../Retardo/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Retardos</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo "../DatosEmpleado/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Mas
                                         Datos</a>
+                                    <a class="dropdown-item" data-toggle="modal"
+                                        data-target="<?php echo '#modal-plazas-' . $obj->id_tbl_empleados ?>">Historia</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" data-toggle="modal"
                                         data-target="<?php echo '#modal-' . $obj->id_tbl_empleados ?>">Eliminar</a>
@@ -129,45 +141,105 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea Continuar?</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea continuar?</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            La accion de eliminar no se puede rehacer.
+                                            La acci&oacuten eliminar no se puede rehacer.
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                            <a class="btn btn-danger"
-                                                href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Eliminar</a>
+                                            <a class="btn btn-light"
+                                                style="background-color: #cb9f52; border:none; outline:none; color: white;"
+                                                href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Confirmar</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- MODAL ELIMINAR -->
+                            <!-- MODAL LISTADO DE PLAZAS EMPLEADOS -->
+                            <div class="modal fade" id="<?php echo 'modal-plazas-' . $obj->id_tbl_empleados ?>" tabindex="-1"
+                                role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Historia de empleado</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-striped" id="t-usuarios1">
+                                                <thead>
+                                                    <tr style="background-color: #5c5c5c;">
+                                                        <th style="color: white;">Movimiento</th>
+                                                        <th style="color: white;">Plaza</th>
+                                                        <th style="color: white;">Fecha de incio</th>
+                                                        <th style="color: white;">Fecha de termino</th>
+                                                        <th style="color: white;">Fecha de movimiento</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    <?php
+                                                    $listadox = listadoPlazasEmpleadosByIdPlaza($obj->id_tbl_control_plazas);
+                                                    if ($listadox) {
+                                                        if (pg_num_rows($listadox) > 0) {
+                                                            while ($objx = pg_fetch_object($listadox)) { ?>
+                                                                <tr>
+                                                                    <td>
+                                                                        <?php echo catMovimientoPkByName($objx->id_tbl_movimientos) ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?php echo listarNumPlazaByIdPlaza($obj->id_tbl_control_plazas) ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?php echo $objx->fecha_inicio ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?php echo $objx->fecha_termino ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?php echo $objx->fecha_movimiento ?>
+                                                                    </td>
+                                                                </tr>
+                                                                <?php
+                                                            }
+                                                        } else
+                                                            echo "<p></p>";
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light"
+                                                style="background-color: #cb9f52; border:none; outline:none; color: white;"
+                                                data-dismiss="modal">Cerrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- MODAL LISTADO DE PLAZAS EMPLEADOS -->
+
 
 
                             <table class="table table-striped" id="t-usuarios">
                                 <thead>
                                     <tr style="background-color: #5c5c5c;">
-                                        <th style="color: white;">C&oacutedigo</th>
+                                        <th style="color: white;">RFC</th>
                                         <th style="color: white;">CURP</th>
                                         <th style="color: white;">Nombre</th>
                                         <th style="color: white;">Primer Apellido</th>
                                         <th style="color: white;">Segundo Apellido</th>
-                                        <th style="color: white;">RFC</th>
                                         <th style="color: white;">NSS</th>
-                                        <th style="color: white;">Fecha Ingreso</th>
-                                        <th style="color: white;">Fecha de Baja</th>
-                                        <th style="color: white;">Estatus</th>
-                                        <th style="color: white;">Movimiento</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <?php echo $obj->codigo_empleado ?>
+                                            <?php echo $obj->rfc ?>
                                         </td>
                                         <td>
                                             <?php echo $obj->curp ?>
@@ -182,41 +254,31 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                             <?php echo $obj->segundo_apellido ?>
                                         </td>
                                         <td>
-                                            <?php echo $obj->rfc ?>
-                                        </td>
-                                        <td>
                                             <?php echo $obj->nss ?>
                                         </td>
-                                        <td>
-                                            <?php echo $obj->fecha_ingreso ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $obj->fecha_baja ?>
-                                        </td>
-                                        <td>
-                                            <?php echo catEstatus($obj->id_cat_estatus) ?>
-                                        </td>
-                                        <td>
-                                            <?php echo catMovimientoPk($obj->id_tbl_movimientos) ?>
-                                        </td>
                                     </tr>
-                                    <?php
+                                </tbody>
+                            </table>
+                            <?php
                             }
                         } else { ?>
-                                <div class="dropdown-menu">
+                        <div class="dropdown-menu">
+                            <!--
                                     <a class="dropdown-item"
-                                        href="<?php echo 'Agregar.php?D-F3=' . base64_encode($id_tbl_control_plazas).'&RP='.$id_tbl_centro_trabajo ?>">Agregar</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="<?php echo '../Plazas/Listar.php?RP='.$id_tbl_centro_trabajo ?>">Regresar</a>
-                                </div>
-                            <?php
+                                        href="<?//php echo 'Agregar.php?D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo    ?>">Agregar</a>
+                                    -->
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item"
+                                href="<?php echo '../Plazas/Listar.php?RP=' . $id_tbl_centro_trabajo ?>">Regresar</a>
+                        </div>
+                        <?php
                         }
                     }
                     ?>
 
 
-                        <?php include('../../ajuste-menu.php') ?>
-                        <?php include('../../footer-librerias.php') ?>
+                <?php include ('../../ajuste-menu.php') ?>
+                <?php include ('../../footer-librerias.php') ?>
 
             </div>
         </div>
@@ -235,7 +297,6 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
 <script>
     $(document).ready(function () {
         $('#t-usuarios').DataTable({
-            scrollX: true,
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",
@@ -268,6 +329,6 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
 
 
 </script>
-<?php include("libFooter.php"); ?>
+<?php include ("libFooter.php"); ?>
 
 </html>

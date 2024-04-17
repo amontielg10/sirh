@@ -116,15 +116,17 @@ $id_rol = $_SESSION['id_rol'];
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <a class="navbar-brand" href="index.php">
+                <a class="navbar-brand" href="#">
                     <!-- Logo icon -->
                     <b class="logo-icon">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon --><br>
-                        <img src="../../assets/logo/Iimsslogo1.png" alt="homepage" class="dark-logo" style="width: 30%;" />
-                        
+                        <img src="../../assets/logo/Iimsslogo1.png" alt="homepage" class="dark-logo"
+                            style="width: 30%;" />
+
                         <!-- Light Logo icon -->
-                        <img src="../../assets/logo/imsslogo1.png" alt="homepage" class="light-logo" style="width: 41%;" />
+                        <img src="../../assets/logo/imsslogo1.png" alt="homepage" class="light-logo"
+                            style="width: 41%;" />
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
@@ -206,7 +208,7 @@ $id_rol = $_SESSION['id_rol'];
                             </div><br><br>
                             <div class="user-content hide-menu m-t-10">
                                 <h5 class="m-b-10 user-name font-medium" style="color: #cb9f52;">
-                                    <?php echo $nombre?>
+                                    <?php echo $nombre ?>
                                 </h5>
                             </div>
                         </div>
@@ -214,78 +216,141 @@ $id_rol = $_SESSION['id_rol'];
                     </li>
                     <li class="sidebar-item">
                         <a href="../../index.php" class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
-                        <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                            <i class="far fa-folder" style="font-size: 1.2rem;"></i>
                             <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Inicio </span>
                         </a>
                     </li>
-                    
-                    <?php if (false){?>
-                    <li class="sidebar-item">
-                        <a href="miPerfil.php" class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
-                            <i class="far fa-user-circle" style="font-size: 1.5rem;"></i>
-                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Mi Perfil</span>
-                        </a>
-                    </li>
+
+                    <?php if (false) { ?>
+                        <li class="sidebar-item">
+                            <a href="miPerfil.php" class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                                <i class="far fa-user-circle" style="font-size: 1.5rem;"></i>
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Mi Perfil</span>
+                            </a>
+                        </li>
                     <?php } ?>
 
-                    <?php if ($id_rol == 1){?>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                            aria-expanded="false">
-                            <i class="far fa-folder" style="font-size: 1.2rem;"></i>
-                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Administracion</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item">
-                                <a href="../usuario/usuario.php" class="sidebar-link">
-                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                    <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Control de Usuarios</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../rol/rol.php" class="sidebar-link">
-                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                    <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Roles</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <?php } ?>
-
-                    <!-- MENU INFOTEC -->
-                    <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                            aria-expanded="false">
-                            <i class="far fa-folder" style="font-size: 1.2rem;"></i>
-                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Menu</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item">
-                                <a href="../DatosFiscales/Listar.php" class="sidebar-link">
-                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                    <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Datos Fiscales</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../CentroTrabajo/Listar.php" class="sidebar-link">
-                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                    <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Centro de Trabajo</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="../../view/Tabuladores/Listar.php" class="sidebar-link">
-                                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <?php if ($id_rol == 1) { ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
                                 <i class="far fa-folder" style="font-size: 1.2rem;"></i>
-                                    <span class="hide-menu" style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Tabuladores</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- FIN DE INFOTEC -->
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Administraci&oacuten</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="../usuario/usuario.php" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Control de
+                                            Usuarios</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../rol/rol.php" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Roles</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    <?php } ?>
+
+                    <!-- MENU CENTRAL -->
+                    <?php if ($id_rol == 1 || $id_rol == 2) { ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
+                                <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Central</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="../DatosFiscales/Listar.php" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Datos F&iacutescales</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../CentroTrabajo/Listar.php" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Centro de
+                                            Trabajo</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../../view/Tabuladores/Listar.php" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Tabuladores</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="../DependientesEconMas/Listar.php" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Juguetes</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    <?php } ?>
+                    <!-- FMENU CENTRAL -->
+
+                    <!-- MENU HRAE -->
+                    <?php if ($id_rol == 1 || $id_rol == 3) { ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
+                                <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;HRAE</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Titulo</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    <?php } ?>
+                    <!-- FMENU HRAE -->
+
+                    <!-- MENU HRAE -->
+                    <?php if ($id_rol == 1 || $id_rol == 4) { ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
+                                <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;No Federalizada</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Titulo</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    <?php } ?>
+                    <!-- FMENU HRAE -->
+
+
 
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../../cerrar-sesion.php"
@@ -306,34 +371,29 @@ $id_rol = $_SESSION['id_rol'];
     </body>
 
     <script>
-    let setTimeOut = 600000; // 10''
-    let setTimeOutIn = 180000; // 3'''
+            let setTimeOut = 600000; // 10'' 600000
+            let setTimeOutIn = 180000; // 3''' 180000
 
-    setTimeout(function () {
-       Swal.bindClickHandler();
-       Swal.fire({
-      title: "Tu sesi\u00f3n ha expidaro.",
-      text: "",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Continuar trabajando",
-      cancelButtonText: "Salir",
-      allowOutsideClick: false,
+            setTimeout(function () {
+                Swal.bindClickHandler();
+            Swal.fire({
+                title: "La sesi\u00f3n ha expidaro.",
+            icon: "warning",
+            confirmButtonColor: "#9F2241",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Salir",
+            cancelButtonText: "Salir",
+            allowOutsideClick: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        location.reload()
-      } else {
-        window.location.href = '../../cerrar-sesion.php';
-      }
+                window.location.href = '../../cerrar-sesion.php';
+      } 
     }),
             ///ON FUNCTIN TIME - EXIT
             setTimeout(function () {
                 window.location.href = '../../cerrar-sesion.php';
-            }, setTimeOutIn);
-            
-    }, setTimeOut);
-</script>
+      }, setTimeOutIn);
+  }, setTimeOut);
+    </script>
 
 </html>

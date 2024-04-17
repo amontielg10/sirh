@@ -22,7 +22,7 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Agregar Retardo</h2>
+                        <h2 class="page-title">Agregar retardo</h2>
                         <div class="d-flex align-items-center">
                             <br>
                         </div>
@@ -59,12 +59,12 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label>Hora Entrada</label><label style="color:red">*</label>
+                                    <label>Hora de entrada</label><label style="color:red">*</label>
                                     <input type="time" class="form-control" name="hora_entrada" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label>Hora de Salida</label><label style="color:red"></label>
+                                    <label>Hora de salida</label><label style="color:red"></label>
                                     <input type="time" class="form-control" name="hora_salida">
                                 </div>
 
