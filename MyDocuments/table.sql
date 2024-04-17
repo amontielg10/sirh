@@ -1,5 +1,13 @@
 -- TABLE
 
+DROP TABLE IF EXISTS ctrl_carga_masiva;
+CREATE TABLE IF NOT EXISTS ctrl_carga_masiva (
+	id_ctrl_carga_masiva SERIAL PRIMARY KEY,
+	tipo_carga VARCHAR(50),
+	id_usuario INTEGER,
+	fecha TIMESTAMP
+)
+
 DROP TABLE IF EXISTS ctrl_error_dependientes_economicos;
 CREATE TABLE IF NOT EXISTS ctrl_error_dependientes_economicos(
 	id_ctrl_error_dependientes_economicos SERIAL PRIMARY KEY,
@@ -29,6 +37,7 @@ CREATE TABLE IF NOT EXISTS ctrl_error_dependientes_economicos(
 	descripcion TEXT
 );
 
+-----------------------------------------------
 DROP TABLE IF EXISTS cat_fecha_juguetes;
 CREATE TABLE IF NOT EXISTS cat_fecha_juguetes (
 	id_cat_fecha_juguetes SERIAL PRIMARY KEY,
@@ -63,14 +72,10 @@ CREATE TABLE IF NOT EXISTS ctrl_juguetes (
 	id_tbl_dependientes_economicos INTEGER,
 	id_ctrl_carga_masiva INTEGER
 )
+---------------------------------------------------
 
 
--- SCRIPT 1.1
-INSERT INTO rol (id_rol,nombre, descripcion) VALUES 
-(1, 'ROL ADMINISTRADOR', 'Permite el acceso total a los modulos del sistema'),
-(2, 'ROL CENTRAL', 'Permite el acceso al modulo central del sistema'),
-(3, 'ROL HRAE', 'Permite el acceso al modulo hrae del sistema'),
-(4, 'ROL NO FEDERALIZADA', 'Permite el acceso al modulo no federalizada del sistema');
+
 
 
 -- 
@@ -81,3 +86,11 @@ CREATE TABLE IF NOT EXISTS ctrl_carga_masiva (
 	id_usuario INTEGER,
 	fecha TIMESTAMP
 )
+
+--- YA
+-- SCRIPT 1.1
+INSERT INTO rol (id_rol,nombre, descripcion) VALUES 
+(1, 'ROL ADMINISTRADOR', 'Permite el acceso total a los modulos del sistema'),
+(2, 'ROL CENTRAL', 'Permite el acceso al modulo central del sistema'),
+(3, 'ROL HRAE', 'Permite el acceso al modulo hrae del sistema'),
+(4, 'ROL NO FEDERALIZADA', 'Permite el acceso al modulo no federalizada del sistema');

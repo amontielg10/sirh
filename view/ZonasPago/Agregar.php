@@ -50,7 +50,7 @@
                                 
                                 <div class="form-group col-md-6">
                                     <label >Codigo</label><label style="color:red">*</label>
-                                    <input type="text" class="form-control"
+                                    <input type="number" class="form-control"
                                         id="codigo" name="codigo" placeholder="Codigo">
                                 </div>
                                 

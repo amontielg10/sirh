@@ -1,9 +1,9 @@
 <?php
 $password = "pg2024";
 $username = "postgres";
-$dbname = "sirh2";
+$dbname = "sirh";
 $host = "localhost";
-$port = "5433";
+$port = "5432";
 $options = "--client_encoding=UTF8";
 
 try {

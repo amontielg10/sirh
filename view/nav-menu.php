@@ -371,7 +371,6 @@ $id_rol = $_SESSION['id_rol'];
     </body>
 
     <script>
-        <script>
             let setTimeOut = 600000; // 10'' 600000
             let setTimeOutIn = 180000; // 3''' 180000
 
@@ -395,7 +394,6 @@ $id_rol = $_SESSION['id_rol'];
                 window.location.href = '../../cerrar-sesion.php';
       }, setTimeOutIn);
   }, setTimeOut);
-    </script>
     </script>
 
 </html>

@@ -30,7 +30,7 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
     <?php include ("../../php/CatEstatusC/listar.php"); ?>
     <?php include ("../../php/CatMovimientoC/listar.php"); ?>
     <?php include ("../../php/CentroTrabajoC/Listar.php"); ?>
-    <?php include ("../../php/PlazasEmpleadosC/Listar.php") ?> 
+    <?php include ("../../php/PlazasEmpleadosC/Listar.php") ?>
 
     <div id="main-wrapper">
 
@@ -104,6 +104,12 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                         href="<?php echo "../MediosContacto/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Medios
                                         de Contacto</a>
                                     <a class="dropdown-item"
+                                        href="<?php echo "../CamposPerson/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Campos
+                                        personalizados</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo "../Cedula/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">C&eacutedula
+                                        profesional</a>
+                                    <a class="dropdown-item"
                                         href="<?php echo "../CuentaClabe/Listar.php?D-F=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Forma
                                         de pago</a>
                                     <a class="dropdown-item"
@@ -135,18 +141,18 @@ $rowe = catControlPlazasPk($id_tbl_control_plazas);
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea Continuar?</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">¿Desea continuar?</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            La accion de eliminar no se puede rehacer.
+                                            La acci&oacuten eliminar no se puede rehacer.
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                            <a class="btn btn-danger"
-                                                href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Eliminar</a>
+                                            <a class="btn btn-light"
+                                                style="background-color: #cb9f52; border:none; outline:none; color: white;"
+                                                href="<?php echo "../../php/EmpleadosC/Eliminar.php?CT=" . base64_encode($obj->id_tbl_empleados) . '&D-F3=' . base64_encode($id_tbl_control_plazas) . '&RP=' . $id_tbl_centro_trabajo ?>">Confirmar</a>
                                         </div>
                                     </div>
                                 </div>
