@@ -1,15 +1,15 @@
 <?php
 
-include ("conexion.php");
-require 'vendor/autoload.php';
+include 'Listar.php';
+require '../../vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 ///OBTENER VARIABLE
 $id_cat_fecha_juguetes = $_POST['id_cat_fecha_juguetes'];
 
-///ELIMINAR EL ANTERIOR ARCHIVO PARA SOBREECRIBIR
-unlink('pagoJuguetes.xlsx');
+///ELIMINAR EL ANTERIOR ARCHIVO PARA NO SOBREECRIBIR
+unlink('../../assets/documents/templateData/pagoJuguetes.xlsx');
 
 ///CONDICION DE LISTADO
 $data = pg_fetch_all(juguetesByExportExel($id_cat_fecha_juguetes));
@@ -63,11 +63,11 @@ foreach ($data as $row_data) {
 // Guardar la hoja de cálculo en un archivo Excel
 $writer = new Xlsx($spreadsheet);
 $filename = 'pagoJuguetes.xlsx';
-$writer->save($filename);
+$writer->save('../../assets/documents/templateData/pagoJuguetes.xlsx');
 
 //echo "Los datos se han exportado correctamente a '$filename'.";
 
-$rutaArchivo = 'pagoJuguetes.xlsx'; // Cambia esto por la ruta real de tu archivo
+$rutaArchivo = '../../assets/documents/templateData/pagoJuguetes.xlsx'; // Cambia esto por la ruta real de tu archivo
 
 // Nombre del archivo que se descargará
 $nombreArchivo = 'pagoJuguetes.xlsx'; // Cambia esto por el nombre que deseas para el archivo descargado
@@ -88,32 +88,4 @@ if (file_exists($rutaArchivo)) {
 } else {
     // Si el archivo no existe, mostrar un mensaje de error
     echo "El archivo no existe.";
-}
-
-
-
-function juguetesByExportExel($id_cat_fecha_juguetes){
-	$listado = pg_query("SELECT ce.entidad, pz.zona_pagadora, tc.desc_tipo_cont, em.rfc, pz.num_plaza,
-								CONCAT(em.segundo_apellido,' ',em.primer_apellido,' ',em.nombre),
-								cp.nombre_posicion, cp.codigo_puesto, COUNT(cj.id_tbl_empleados) / 2
-						FROM tbl_centro_trabajo AS ctr
-						INNER JOIN tbl_control_plazas AS pz
-							ON pz.id_tbl_centro_trabajo = ctr.id_tbl_centro_trabajo
-						INNER JOIN cat_tipo_contratacion AS tc
-							ON pz.id_cat_tipo_contratacion  = tc.id_cat_tipo_contratacion
-						INNER JOIN cat_puesto AS cp
-							ON pz.id_cat_puesto = cp.id_cat_puesto 
-						INNER JOIN tbl_plazas_empleados AS tpe
-							ON pz.id_tbl_control_plazas = tpe.id_tbl_control_plazas
-						INNER JOIN tbl_empleados AS em
-							ON tpe.id_tbl_empleados = em.id_tbl_empleados
-						INNER JOIN ctrl_juguetes AS cj
-							ON cj.id_tbl_empleados = em.id_tbl_empleados
-						INNER JOIN cat_entidad AS ce
-							ON ctr.id_cat_entidad = ce.id_cat_entidad
-						WHERE cj.id_cat_fecha_juguetes = $id_cat_fecha_juguetes 
-						GROUP BY pz.zona_pagadora, tc.desc_tipo_cont, em.rfc, pz.num_plaza,
-								 CONCAT(em.segundo_apellido,' ',em.primer_apellido,' ',em.nombre),
-								 cp.nombre_posicion, cp.codigo_puesto,ce.entidad");
-	return $listado;
 }

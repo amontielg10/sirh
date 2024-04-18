@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
 
-                <form action="../../curp.php" method="post" enctype="multipart/form-data">
+                <form action="../../php/ControlJuguetesC/ExportarExel.php" method="post" enctype="multipart/form-data">
 
                     <div class="form-group">
                         <label for="inputCity">Seleccione la fecha</label><label style="color:red">*</label><br>

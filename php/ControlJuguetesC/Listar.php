@@ -48,3 +48,29 @@ function insertarCtrlJuguetes($connectionDBsPro, $id_cat_fecha_juguetes, $id_cat
         )
     );
 }
+
+function juguetesByExportExel($id_cat_fecha_juguetes){
+	$listado = pg_query("SELECT ce.entidad, pz.zona_pagadora, tc.desc_tipo_cont, em.rfc, pz.num_plaza,
+								CONCAT(em.segundo_apellido,' ',em.primer_apellido,' ',em.nombre),
+								cp.nombre_posicion, cp.codigo_puesto, COUNT(cj.id_tbl_empleados) / 2
+						FROM tbl_centro_trabajo AS ctr
+						INNER JOIN tbl_control_plazas AS pz
+							ON pz.id_tbl_centro_trabajo = ctr.id_tbl_centro_trabajo
+						INNER JOIN cat_tipo_contratacion AS tc
+							ON pz.id_cat_tipo_contratacion  = tc.id_cat_tipo_contratacion
+						INNER JOIN cat_puesto AS cp
+							ON pz.id_cat_puesto = cp.id_cat_puesto 
+						INNER JOIN tbl_plazas_empleados AS tpe
+							ON pz.id_tbl_control_plazas = tpe.id_tbl_control_plazas
+						INNER JOIN tbl_empleados AS em
+							ON tpe.id_tbl_empleados = em.id_tbl_empleados
+						INNER JOIN ctrl_juguetes AS cj
+							ON cj.id_tbl_empleados = em.id_tbl_empleados
+						INNER JOIN cat_entidad AS ce
+							ON ctr.id_cat_entidad = ce.id_cat_entidad
+						WHERE cj.id_cat_fecha_juguetes = $id_cat_fecha_juguetes 
+						GROUP BY pz.zona_pagadora, tc.desc_tipo_cont, em.rfc, pz.num_plaza,
+								 CONCAT(em.segundo_apellido,' ',em.primer_apellido,' ',em.nombre),
+								 cp.nombre_posicion, cp.codigo_puesto,ce.entidad");
+	return $listado;
+}

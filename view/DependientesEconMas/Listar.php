@@ -20,6 +20,7 @@
     <?php include ('../nav-menu.php') ?>
     <?php include ('modal.php') ?>
     <?php include ('modalPagoJuguetes.php') ?>
+    <?php include ('modalTemplate.php') ?>
 
 
     <div id="main-wrapper">
@@ -63,8 +64,7 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Importar</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item">Descargar
-                            Plantilla</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalPlantilla">Descargar Plantilla</a>
                         <a class="dropdown-item" data-toggle="modal" data-target="#modalPagoJuguetes">Descargar pago de juguetes</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalHistoria">Historia</a>
