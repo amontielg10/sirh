@@ -19,6 +19,7 @@
     <?php //include ("../../php/ControlCargaMasivaC/Listar.php") ?>
     <?php include ('../nav-menu.php') ?>
     <?php include ('modal.php') ?>
+    <?php include ('modalPagoJuguetes.php') ?>
 
 
     <div id="main-wrapper">
@@ -61,8 +62,11 @@
 
                     <div class="dropdown-menu">
                         <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Importar</a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item">Descargar
                             Plantilla</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#modalPagoJuguetes">Descargar pago de juguetes</a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalHistoria">Historia</a>
                     </div>
                 </div>
@@ -88,7 +92,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLongTitle">Carga Masiva (Dependientes
-                                    Econ&oacutemicos) - ER<?php echo (listarControlCargaMasivaByMax() + 1)?></h5>
+                                    Econ&oacutemicos) - ER<?php echo (listarControlCargaMasivaByMax() + 1) ?></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -97,7 +101,7 @@
 
                                 <form action="../../php/DependientesEcoMC/CargaMasiva.php" method="post"
                                     enctype="multipart/form-data">
-                                    
+
                                     <div class="form-group">
                                         <label for="inputCity">Seleccione la fecha</label><label
                                             style="color:red">*</label><br>
