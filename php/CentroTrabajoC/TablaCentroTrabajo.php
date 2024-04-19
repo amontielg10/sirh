@@ -101,7 +101,7 @@ if ($listado) {
                                             $obj->pais
                                         </td>
                                         <td>
-                                            $obj->id_cat_entidad
+                                            "; echo listadoCatEntidadPk($obj->id_cat_entidad); echo "
                                         </td>
                                         <td>
                                             $obj->colonia
@@ -122,10 +122,10 @@ if ($listado) {
                                             $obj->longitud
                                         </td>
                                         <td>
-                                            $obj->id_cat_region
+                                            "; echo catRegionRegion($obj->id_cat_region); echo "
                                         </td>
                                         <td>
-                                            $obj->id_estatus_centro
+                                            "; echo catEstatus($obj->id_estatus_centro); echo "
                                         </td>
 
                                     </tr>
