@@ -2,6 +2,7 @@
 <?php include ("../../php/Usuario/listarUsuario.php") ?>
 
 
+
 <div class="modal fade" id="exampleModalHistoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -21,6 +22,7 @@
                             <th style="color: white;">Registro</th>
                             <th style="color: white;">ID</th>
                             <th style="color: white;">Usuario</th>
+                            <th style="color: white;">Tipo</th>
                             <th style="color: white;">Fecha</th>
                             <th style="color: white;">Hora</th>
                         </tr>
@@ -38,7 +40,7 @@
                                                 <button type="button" class="btn btn-light" data-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false"
                                                     style="background-color: transparent; border:none; outline:none; color: white;">
-                                                    <i class="fa fa-file" style="font-size: 1.4rem; color:#cb9f52;"></i>
+                                                    <i class="fa fa-file" style="font-size: 1.4rem; color:#235B4E;"></i>
                                                 </button>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item"
@@ -73,6 +75,7 @@
                                                                         <th style="color: white;">Registro</th>
                                                                         <th style="color: white;">ID</th>
                                                                         <th style="color: white;">Usuario</th>
+                                                                        <th style="color: white;">Tipo</th>
                                                                         <th style="color: white;">Fecha</th>
                                                                         <th style="color: white;">Hora</th>
                                                                     </tr>
@@ -92,7 +95,7 @@
                                                                                                 aria-expanded="false"
                                                                                                 style="background-color: transparent; border:none; outline:none; color: white;">
                                                                                                 <i class="fa fa-file"
-                                                                                                    style="font-size: 1.4rem; color:#cb9f52;"></i>
+                                                                                                    style="font-size: 1.4rem; color:#235B4E;"></i>
                                                                                             </button>
                                                                                             <div class="dropdown-menu">
                                                                                                 <a class="dropdown-item"
@@ -110,6 +113,9 @@
                                                                                     </td>
                                                                                     <td>
                                                                                         <?php echo listarUsuarioByNick($objx->id_usuario) ?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <?php echo $objx->id_cat_carga_masiva ?>
                                                                                     </td>
                                                                                     <td>
                                                                                         <?php
@@ -152,9 +158,12 @@
                                             <?php echo listarUsuarioByNick($obj->id_usuario) ?>
                                         </td>
                                         <td>
+                                            <?php echo listadoCargaMasivaByNombre($obj->id_cat_carga_masiva) ?>
+                                        </td>
+                                        <td>
                                             <?php
                                             $date = new DateTime($obj->fecha);
-                                            echo $date->format('Y-m-d');
+                                            echo $date->format('d-m-y');
                                             ?>
                                         </td>
                                         <td>

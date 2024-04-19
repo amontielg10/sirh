@@ -7,7 +7,7 @@ include ('../../conexion.php'); //Se incluye la conexion
 function listarCtrlJuguetes($id_tbl_empleados)
 {
      $listado = pg_query("SELECT id_ctrl_juguetes, id_cat_fecha_juguetes, id_cat_estatus_juguetes, 
-                                 id_tbl_empleados, id_tbl_dependientes_economicos
+                                 id_tbl_empleados, id_tbl_dependientes_economicos, monto
                           FROM ctrl_juguetes
                           WHERE id_tbl_empleados = $id_tbl_empleados");
      return $listado;
@@ -87,4 +87,18 @@ function listadoControlJuguetesByCount($id_tbl_empleados, $id_cat_fecha_juguetes
                          AND ctrl_juguetes.id_cat_fecha_juguetes = $id_cat_fecha_juguetes");
      $row = pg_fetch_array($listado);
      return $row[0];
+}
+
+function updateCtrlJuguetesByEstatus($id_Cat_estatus_juguetes,$monto,$id_tbl_empleados,$id_Cat_fecha_juguetes)
+{
+     include ('../../conexion.php');
+     pg_update($connectionDBsPro,'ctrl_juguetes', 
+     $arrayUpdate = [
+          "id_cat_estatus_juguetes" => $id_Cat_estatus_juguetes,
+          "monto" => $monto,
+      ], $arrayCondition = [
+          "id_tbl_empleados" => $id_tbl_empleados,
+          "id_cat_fecha_juguetes" => $id_Cat_fecha_juguetes,
+      ]);
+      //echo "$id_Cat_estatus_juguetes,$monto,$id_tbl_empleados,$id_Cat_fecha_juguetes";
 }

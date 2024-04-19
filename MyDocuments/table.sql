@@ -12,6 +12,7 @@ INSERT INTO cat_carga_masiva (nombre) VALUES
 
 TRUNCATE ctrl_carga_masiva RESTART IDENTITY; 
 --- Cambiar el tipo de dato tipo_carga = id_cat_carga_masiva = integer
+--- Agregar columna a ctrl_juguetes -> monto varchar(10);
 
 
 

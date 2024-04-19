@@ -31,8 +31,8 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h2 class="page-title">Juguetes</h2>
-                        <h4 class="page-title">Dependientes Econ&oacutemicos</h4>
+                        <h2 class="page-title">Carga masiva</h2>
+                        <h4 class="page-title">Modulo de carga masiva</h4>
                         <div class="d-flex align-items-center">
                         </div>
                     </div>
@@ -43,8 +43,7 @@
                                     <li class="breadcrumb-item">
                                         <a href="../../index.php" style="color:#cb9f52;">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Carga Masiva (Dependientes
-                                        Econ&oacutemicos)</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Carga Masiva</li>
                                 </ol>
                             </nav>
                         </div>
@@ -55,7 +54,7 @@
 
 
             <div class="container-fluid">
-                <p>M&oacutedulo de cargas masivas.</p>
+                <p></p>
                 <div class=" btn-group">
                     <button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false" style="background-color: white; border:none; outline:none; color: white;">
@@ -248,9 +247,9 @@
 
 
 <script>
-    function validateExtension() {
+    function validateExtension1() {
         let bool = false;
-        let fileExtension = document.getElementById('formFile').files[0].name;
+        let fileExtension = document.getElementById('archivo').files[0].name;
 
         if (getFileExtension(fileExtension) != 'csv') {
             messajeError("Ingresar solo archivos con extensi\u00f3n .csv");

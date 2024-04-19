@@ -172,5 +172,5 @@ $idCtrlCargaMasivaR = base64_encode(listarControlCargaMasivaByMax());
 $active = base64_encode("true");
 $registroExito = base64_encode($registroExito);
 $registroError = base64_encode($registroError);
-header("Location: ../../view/DependientesEconMas/Listar.php?Me=$active&Re=$registroExito&Rr=$registroError&MS=$idCtrlCargaMasivaR");
+header("Location: ../../view/CargaMasiva/Listar.php?Me=$active&Re=$registroExito&Rr=$registroError&MS=$idCtrlCargaMasivaR");
 

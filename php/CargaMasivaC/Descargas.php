@@ -6,7 +6,7 @@ include '../ControlJuguetesC/ExportarExel.php';
  * CATALOGO DE DESCARGAS 
  * ID   NOMBRE                    RUTA
  * 1    'ModuloJuguetes.xlsx'     '../../assets/documents/template/ModuloJuguetes.xlsx'
- * 2
+ * 2    'ModuloJuguetesPago.xlsx'     '../../assets/documents/template/ModuloJuguetesPago.xlsx'
  * 10
  */
 
@@ -18,7 +18,7 @@ switch ($id_cat_plantilla) {
         descargarPlantilla('../../assets/documents/template/ModuloJuguetes.xlsx','ModuloJuguetes.xlsx');
         break;
     case '2':
-        echo "2";
+        descargarPlantilla('../../assets/documents/template/ModuloJuguetesPago.xlsx','ModuloJuguetesPago.xlsx');
         break;
     case '10':
         exportarExel($id_cat_fecha_juguetes);

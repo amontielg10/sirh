@@ -1,9 +1,10 @@
+
 <div class="modal fade" id="exampleModalImportar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modulo de importar</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Carga Masiva - ER<?php echo (listarControlCargaMasivaByMax() + 1) ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -59,7 +60,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
                     style="background-color: #cb9f52; border:none; outline:none; color: white;">Cancelar</button>
-                <button type="submit" class="btn btn-secondary"
+                <button type="" class="btn btn-secondary" onclick="return validateExtension1();"
                     style="background-color: #cb9f52; border:none; outline:none; color: white;">Importar</button>
                 </form>
             </div>
