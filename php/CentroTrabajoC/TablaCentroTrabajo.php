@@ -2,7 +2,7 @@
 include ('Listar.php');
 include ("../CatRegionC/Listar.php");
 include ("../CatEstatusC/Listar.php");
-include ("../CatEntidadC/Listar.php") ;
+
 
 $idCentroTrabajo = $_POST['idCentroTrabajo'];
 if ($idCentroTrabajo == 0){
@@ -37,6 +37,8 @@ if ($listado) {
     if (pg_num_rows($listado) > 0) {
         while ($obj = pg_fetch_object($listado)) {
             $data = "msj";
+
+            include ("../CatEntidadC/Listar.php") ;
 
             $entidad = listadoCatEntidadPk($obj->id_cat_entidad);
             $region = catRegionRegion($obj->id_cat_region);
