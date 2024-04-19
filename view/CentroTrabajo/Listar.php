@@ -210,6 +210,7 @@
             messajeError('No es posible eliminar un centro de trabajo con plazas asignadas.');
         }
         iniciarTabla();
+        console.log('Iniciar');
     }
 </script>
 
