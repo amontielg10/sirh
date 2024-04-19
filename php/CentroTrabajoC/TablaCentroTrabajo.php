@@ -3,7 +3,6 @@ include ('Listar.php');
 include ("../CatRegionC/Listar.php");
 include ("../CatEstatusC/Listar.php");
 
-
 $idCentroTrabajo = $_POST['idCentroTrabajo'];
 if ($idCentroTrabajo == 0){
     $listado = listarCentroTrabajoByIdLike($idCentroTrabajo);
@@ -38,7 +37,7 @@ if ($listado) {
         while ($obj = pg_fetch_object($listado)) {
             $data = "msj";
 
-            include ("../CatEntidadC/Listar.php") ;
+            
 
             $entidad = listadoCatEntidadPk($obj->id_cat_entidad);
             $region = catRegionRegion($obj->id_cat_region);
@@ -138,4 +137,18 @@ if ($listado) {
                                     </tbody>";
         }
     }
+}
+
+{
+    include ('../../conexion.php');
+    $res = '';
+    if ($idCatEntidad != null){
+    $listado = pg_query($connectionDBsPro, "SELECT id_cat_entidad, entidad
+                                            FROM cat_entidad 
+                                            WHERE id_cat_entidad = $idCatEntidad
+                                            ORDER BY entidad ASC");
+    $row = pg_fetch_array($listado);
+    $res = $row['entidad'];
+    } 
+    return $res;
 }
