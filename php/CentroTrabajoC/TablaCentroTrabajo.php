@@ -122,10 +122,10 @@ if ($listado) {
                                             $obj->longitud
                                         </td>
                                         <td>
-                                            ".catRegionRegion($obj->id_cat_region)."
+                                            $obj->id_cat_region
                                         </td>
                                         <td>
-                                            ".catEstatus($obj->id_estatus_centro)."
+                                            $obj->id_estatus_centro
                                         </td>
 
                                     </tr>
