@@ -26,13 +26,13 @@ $rowx = catcentroTrabajo(base64_decode($id_tbl_centro_trabajo));
     <?php include ("../../php/CatPlazasC/listar.php"); ?>
     <?php include ("../../php/CatTipoContratacionC/listar.php"); ?>
     <?php include ("../../php/CatUnidadResponsableC/listar.php"); ?>
-    <?php include ("../../php/CatPuestoC/Listar.php"); ?>
+    <?php include ("../../php/CatPuestoC/listar.php"); ?>
     <?php include ("../../php/CatSituacionPlazaC/listar.php"); ?>
     <?php include ("../../php/CatZonaTabuladoresC/Listar.php"); ?>
-    <?php include ("../../php/CatNivelesC1/Listar.php"); ?>
+    <?php include ("../../php/CatNivelesC1/listar.php"); ?>
     <?php include ("../../php/EmpleadosC/Listar.php"); ?>
     <?php include ("../../php/PlazasEmpleadosC/Listar.php") ?>    
-    <?php include ("../../php/CatMovimientoC/Listar.php") ?>  
+    <?php include ("../../php/CatMovimientoC/listar.php") ?>  
 
 
     <div id="main-wrapper">
