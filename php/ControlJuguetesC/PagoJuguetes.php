@@ -1,10 +1,10 @@
 <?php
 include ('../../conexion.php');
-include ('../EmpleadosC/Listar.php');
-include ('../ControlJuguetesC/Listar.php');
+//include ('../EmpleadosC/Listar.php');
+//include ('../ControlJuguetesC/Listar.php');
 include ('../MensajesC/mensajes.php');
-include ('../ControlCargaMasivaC/Listar.php');
-include ('../ControlErrorDependientesC/Listar.php');
+//include ('../ControlCargaMasivaC/Listar.php');
+//include ('../ControlErrorDependientesC/Listar.php');
 
 function pagoJuguetes($archivo, $id_cat_fecha_juguetes, $id_cat_carga_masiva)
 {
@@ -34,7 +34,7 @@ function pagoJuguetes($archivo, $id_cat_fecha_juguetes, $id_cat_carga_masiva)
             /// SE AGREGA LA PRIMER CARGA MASIVA
             //echo $idCtrlCargaMasiva;
 
-            agregarControlCargaMasiva($id_cat_carga_masiva, $id_usuario);
+            agregarControlCargaMasivaNew($id_cat_carga_masiva, $id_usuario);
             $idCtrlCargaMasiva = listarControlCargaMasivaByMax();
 
             foreach ($lineas as $linea) {

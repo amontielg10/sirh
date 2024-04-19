@@ -2,7 +2,7 @@
 include ('../../validar_sesion.php');    //Se incluye validar_sesion
 include ('../../conexion.php'); //Se incluye la conexion
 
-function agregarControlCargaMasiva($id_cat_carga_masiva, $id_usuario)
+function agregarControlCargaMasivaNew($id_cat_carga_masiva, $id_usuario)
 {
     include ('../../conexion.php');
     $now = 'NOW()';

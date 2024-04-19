@@ -62,7 +62,7 @@
                     </button>
 
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Importar old</a>
+                        <!--<a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Importar old</a>-->
                         <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalImportar">Importar</a>
                         <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalDescargas">Descargar</a>
                         <div class="dropdown-divider"></div>

@@ -36,8 +36,9 @@ function listarCtrlJuguetesByJson()
      return $json;
 }
 
-function insertarCtrlJuguetes($connectionDBsPro, $id_cat_fecha_juguetes, $id_cat_estatus_juguetes, $id_tbl_empleados, $id_tbl_dependientes_economicos, $id_ctrl_carga_masiva)
+function insertarCtrlJuguetes($id_cat_fecha_juguetes, $id_cat_estatus_juguetes, $id_tbl_empleados, $id_tbl_dependientes_economicos, $id_ctrl_carga_masiva)
 {
+     include ('../../conexion.php');
      $pgs_QRY = pg_insert(
           $connectionDBsPro,
           'ctrl_juguetes',
@@ -55,7 +56,7 @@ function juguetesByExportExel($id_cat_fecha_juguetes)
 {
      $listado = pg_query("SELECT ce.entidad, pz.zona_pagadora, tc.desc_tipo_cont, em.rfc, pz.num_plaza,
 								CONCAT(em.segundo_apellido,' ',em.primer_apellido,' ',em.nombre),
-								cp.nombre_posicion, cp.codigo_puesto, COUNT(cj.id_tbl_empleados) / 2
+								cp.nombre_posicion, cp.codigo_puesto, COUNT(cj.id_tbl_empleados) 
 						FROM tbl_centro_trabajo AS ctr
 						INNER JOIN tbl_control_plazas AS pz
 							ON pz.id_tbl_centro_trabajo = ctr.id_tbl_centro_trabajo
