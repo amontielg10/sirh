@@ -1,13 +1,17 @@
 <?php
 
+include '../ControlJuguetesC/ExportarExel.php';
+
 /**
- * CATALOGO DE DESCARGAS DE PLANTILLAS
+ * CATALOGO DE DESCARGAS 
  * ID   NOMBRE                    RUTA
  * 1    'ModuloJuguetes.xlsx'     '../../assets/documents/template/ModuloJuguetes.xlsx'
  * 2
+ * 10
  */
 
 $id_cat_plantilla = $_POST['id_cat_plantilla'];
+$id_cat_fecha_juguetes = $_POST['id_cat_fecha_juguetes'];
 
 switch ($id_cat_plantilla) {
     case '1':
@@ -15,6 +19,9 @@ switch ($id_cat_plantilla) {
         break;
     case '2':
         echo "2";
+        break;
+    case '10':
+        exportarExel($id_cat_fecha_juguetes);
         break;
 }
 

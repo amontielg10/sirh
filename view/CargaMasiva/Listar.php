@@ -16,11 +16,12 @@
     <?php include ("../../conexion.php") ?>
     <?php include ("../../php/CatFechaJuguetesC/listar.php") ?>
     <?php include ("../../php/PlazasEmpleadosC/listar.php") ?>
-    <?php //include ("../../php/ControlCargaMasivaC/Listar.php") ?>
+    <?php include ("../../php/CatCargaMasivaC/listar.php") ?>
     <?php include ('../nav-menu.php') ?>
     <?php include ('modal.php') ?>
     <?php include ('modalPagoJuguetes.php') ?>
     <?php include ('modalTemplate.php') ?>
+    <?php include ('modalimport.php') ?>
 
 
     <div id="main-wrapper">
@@ -62,10 +63,9 @@
                     </button>
 
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Importar</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalPlantilla">Descargar Plantilla</a>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#modalPagoJuguetes">Descargar pago de juguetes</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Importar old</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalImportar">Importar</a>
+                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalDescargas">Descargar</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalHistoria">Historia</a>
                     </div>
@@ -106,7 +106,7 @@
                                         <label for="inputCity">Seleccione la fecha</label><label
                                             style="color:red">*</label><br>
                                         <select class="form-control" aria-label="Default select example"
-                                            id="id_cat_fecha_juguetes" name="id_cat_fecha_juguetes" required>
+                                            id="id_cat_fecha_juguetes" name="id_cat_fecha_juguetes" >
                                             <option value="" selected>Seleccione</option>
                                             <?php
                                             //Se incluye la conexion

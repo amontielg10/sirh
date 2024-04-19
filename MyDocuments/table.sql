@@ -1,4 +1,28 @@
--- TABLE
+
+
+DROP TABLE IF EXISTS cat_carga_masiva;
+CREATE TABLE IF NOT EXISTS cat_carga_masiva(
+	id_cat_carga_masiva SERIAL PRIMARY KEY,
+	nombre VARCHAR(60)
+);
+
+INSERT INTO cat_carga_masiva (nombre) VALUES
+('Modulo juguetes (Dependientes economicos)'),
+('Modulo juguetes (Dependientes economicos - pago)');
+
+TRUNCATE ctrl_carga_masiva RESTART IDENTITY; 
+--- Cambiar el tipo de dato tipo_carga = id_cat_carga_masiva = integer
+
+
+
+
+
+
+
+
+--------------------
+--------------------
+-------------------- TABLE
 
 DROP TABLE IF EXISTS ctrl_carga_masiva;
 CREATE TABLE IF NOT EXISTS ctrl_carga_masiva (

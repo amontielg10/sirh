@@ -1,18 +1,20 @@
 <?php
-include('../../validar_sesion.php');    //Se incluye validar_sesion
-include('../../conexion.php'); //Se incluye la conexion
+include ('../../validar_sesion.php');    //Se incluye validar_sesion
+include ('../../conexion.php'); //Se incluye la conexion
 
 
 
-function listarCtrlJuguetes($id_tbl_empleados){
+function listarCtrlJuguetes($id_tbl_empleados)
+{
      $listado = pg_query("SELECT id_ctrl_juguetes, id_cat_fecha_juguetes, id_cat_estatus_juguetes, 
                                  id_tbl_empleados, id_tbl_dependientes_economicos
                           FROM ctrl_juguetes
                           WHERE id_tbl_empleados = $id_tbl_empleados");
-     return $listado; 
+     return $listado;
 }
 
-function listarCtrlJuguetesById($id_ctrl_juguetes){
+function listarCtrlJuguetesById($id_ctrl_juguetes)
+{
      $listado = pg_query("SELECT id_ctrl_juguetes, id_cat_fecha_juguetes, id_cat_estatus_juguetes, 
                                  id_tbl_dependientes_economicos
                           FROM ctrl_juguetes
@@ -34,23 +36,24 @@ function listarCtrlJuguetesByJson()
      return $json;
 }
 
-function insertarCtrlJuguetes($connectionDBsPro, $id_cat_fecha_juguetes, $id_cat_estatus_juguetes, $id_tbl_empleados, $id_tbl_dependientes_economicos,$id_ctrl_carga_masiva)
+function insertarCtrlJuguetes($connectionDBsPro, $id_cat_fecha_juguetes, $id_cat_estatus_juguetes, $id_tbl_empleados, $id_tbl_dependientes_economicos, $id_ctrl_carga_masiva)
 {
-    $pgs_QRY = pg_insert(
-        $connectionDBsPro,
-        'ctrl_juguetes',
-        array(
-            'id_cat_fecha_juguetes' => $id_cat_fecha_juguetes,
-            'id_cat_estatus_juguetes' => $id_cat_estatus_juguetes,
-            'id_tbl_empleados' => $id_tbl_empleados,
-            'id_tbl_dependientes_economicos' => $id_tbl_dependientes_economicos,
-            'id_ctrl_carga_masiva' => $id_ctrl_carga_masiva
-        )
-    );
+     $pgs_QRY = pg_insert(
+          $connectionDBsPro,
+          'ctrl_juguetes',
+          array(
+               'id_cat_fecha_juguetes' => $id_cat_fecha_juguetes,
+               'id_cat_estatus_juguetes' => $id_cat_estatus_juguetes,
+               'id_tbl_empleados' => $id_tbl_empleados,
+               'id_tbl_dependientes_economicos' => $id_tbl_dependientes_economicos,
+               'id_ctrl_carga_masiva' => $id_ctrl_carga_masiva
+          )
+     );
 }
 
-function juguetesByExportExel($id_cat_fecha_juguetes){
-	$listado = pg_query("SELECT ce.entidad, pz.zona_pagadora, tc.desc_tipo_cont, em.rfc, pz.num_plaza,
+function juguetesByExportExel($id_cat_fecha_juguetes)
+{
+     $listado = pg_query("SELECT ce.entidad, pz.zona_pagadora, tc.desc_tipo_cont, em.rfc, pz.num_plaza,
 								CONCAT(em.segundo_apellido,' ',em.primer_apellido,' ',em.nombre),
 								cp.nombre_posicion, cp.codigo_puesto, COUNT(cj.id_tbl_empleados) / 2
 						FROM tbl_centro_trabajo AS ctr
@@ -72,5 +75,16 @@ function juguetesByExportExel($id_cat_fecha_juguetes){
 						GROUP BY pz.zona_pagadora, tc.desc_tipo_cont, em.rfc, pz.num_plaza,
 								 CONCAT(em.segundo_apellido,' ',em.primer_apellido,' ',em.nombre),
 								 cp.nombre_posicion, cp.codigo_puesto,ce.entidad");
-	return $listado;
+     return $listado;
+}
+
+function listadoControlJuguetesByCount($id_tbl_empleados, $id_cat_fecha_juguetes)
+{
+     $listado = pg_query("SELECT COUNT(ctrl_juguetes.id_tbl_empleados) FROM ctrl_juguetes
+                         INNER JOIN tbl_empleados
+                         ON ctrl_juguetes.id_tbl_empleados = tbl_empleados.id_tbl_empleados 
+                         WHERE tbl_empleados.id_tbl_empleados = $id_tbl_empleados
+                         AND ctrl_juguetes.id_cat_fecha_juguetes = $id_cat_fecha_juguetes");
+     $row = pg_fetch_array($listado);
+     return $row[0];
 }
