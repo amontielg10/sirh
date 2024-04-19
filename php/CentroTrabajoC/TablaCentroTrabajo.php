@@ -139,6 +139,7 @@ if ($listado) {
     }
 }
 
+function listadoCatEntidadPk($idCatEntidad)
 {
     include ('../../conexion.php');
     $res = '';
