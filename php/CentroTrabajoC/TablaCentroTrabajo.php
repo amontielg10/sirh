@@ -101,7 +101,7 @@ if ($listado) {
                                             $obj->pais
                                         </td>
                                         <td>
-                                            ".listadoCatEntidadPk($obj->id_cat_entidad)."
+                                            $obj->id_cat_entidad
                                         </td>
                                         <td>
                                             $obj->colonia
