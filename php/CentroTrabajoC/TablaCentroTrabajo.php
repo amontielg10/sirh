@@ -1,7 +1,8 @@
 <?php
 include ('Listar.php');
-include ("../CatRegionC/Listar.php");
-include ("../CatEstatusC/Listar.php");
+require ("../CatRegionC/Listar.php");
+require ("../CatEstatusC/Listar.php");
+require ("../CatEntidadC/Listar.php") ;
 
 $idCentroTrabajo = $_POST['idCentroTrabajo'];
 if ($idCentroTrabajo == 0){
@@ -36,12 +37,6 @@ if ($listado) {
     if (pg_num_rows($listado) > 0) {
         while ($obj = pg_fetch_object($listado)) {
             $data = "msj";
-
-            
-
-            $entidad = listadoCatEntidadPk($obj->id_cat_entidad);
-            $region = catRegionRegion($obj->id_cat_region);
-            $estatus = catEstatus($obj->id_estatus_centro);
 
             echo "<tbody>
                         <tr>
@@ -106,7 +101,7 @@ if ($listado) {
                                             $obj->pais
                                         </td>
                                         <td>
-                                            $entidad
+                                            ".listadoCatEntidadPk($obj->id_cat_entidad)."
                                         </td>
                                         <td>
                                             $obj->colonia
@@ -127,29 +122,14 @@ if ($listado) {
                                             $obj->longitud
                                         </td>
                                         <td>
-                                            $region
+                                            ".catRegionRegion($obj->id_cat_region)."
                                         </td>
                                         <td>
-                                            $estatus
+                                            ".catEstatus($obj->id_estatus_centro)."
                                         </td>
 
                                     </tr>
                                     </tbody>";
         }
     }
-}
-
-function listadoCatEntidadPk($idCatEntidad)
-{
-    include ('../../conexion.php');
-    $res = '';
-    if ($idCatEntidad != null){
-    $listado = pg_query($connectionDBsPro, "SELECT id_cat_entidad, entidad
-                                            FROM cat_entidad 
-                                            WHERE id_cat_entidad = $idCatEntidad
-                                            ORDER BY entidad ASC");
-    $row = pg_fetch_array($listado);
-    $res = $row['entidad'];
-    } 
-    return $res;
 }
