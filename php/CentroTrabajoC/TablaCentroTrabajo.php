@@ -38,6 +38,10 @@ if ($listado) {
         while ($obj = pg_fetch_object($listado)) {
             $data = "msj";
 
+            $entidad = listadoCatEntidadPk($obj->id_cat_entidad);
+            $region = catRegionRegion($obj->id_cat_region);
+            $estatus = catEstatus($obj->id_estatus_centro);
+
             echo "<tbody>
                         <tr>
                             <td>
@@ -101,7 +105,7 @@ if ($listado) {
                                             $obj->pais
                                         </td>
                                         <td>
-                                            "; echo listadoCatEntidadPk($obj->id_cat_entidad); echo "
+                                            $entidad
                                         </td>
                                         <td>
                                             $obj->colonia
@@ -122,10 +126,10 @@ if ($listado) {
                                             $obj->longitud
                                         </td>
                                         <td>
-                                            "; echo catRegionRegion($obj->id_cat_region); echo "
+                                            $region
                                         </td>
                                         <td>
-                                            "; echo catEstatus($obj->id_estatus_centro); echo "
+                                            $estatus
                                         </td>
 
                                     </tr>
