@@ -26,7 +26,7 @@ $rowe = catEmpleadosId($id_tbl_empleados);
     <?php include('../nav-menu.php') ?>
     <?php include('../../php/ControlTurnoc/Listar.php'); ?>
     <?php include('../../php/CatEstatusC/listar.php'); ?>
-    <?php include('../../php/CatTurnoC/listar.php'); ?>
+    <?php include('../../php/CatTurnoC/Listar.php'); ?>
     <?php include('../../php/CatHorarioC/listar.php'); ?>
     <?php include("../../php/CentroTrabajoC/Listar.php"); ?>
 
