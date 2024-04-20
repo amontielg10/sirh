@@ -1,6 +1,6 @@
 <?php
 
-include ('../../validar_sesion.php');
+include ('validar_sesion.php');
 include ('../../conexion.php');
 
 $nombre = $_SESSION['nombre'];
