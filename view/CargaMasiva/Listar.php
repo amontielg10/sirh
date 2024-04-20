@@ -21,7 +21,7 @@
     <?php include ('modal.php') ?>
     <?php include ('modalPagoJuguetes.php') ?>
     <?php include ('modalTemplate.php') ?>
-    <?php include ('modalimport.php') ?>
+    <?php include ('modalImport.php') ?>
 
 
     <div id="main-wrapper">
