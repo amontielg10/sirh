@@ -176,7 +176,7 @@
                                     <?php
                                 }
                             } else
-                                echo "<p>Sin Resultados</p>";
+                                echo "<p></p>";
                         }
                         ?>
                     </tbody>

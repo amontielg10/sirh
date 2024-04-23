@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-5 align-self-center">
                         <h2 class="page-title">Carga masiva</h2>
-                        <h4 class="page-title">Modulo de carga masiva</h4>
+                        <h4 class="page-title">M&oacutedulo de carga masiva</h4>
                         <div class="d-flex align-items-center">
                         </div>
                     </div>
@@ -76,9 +76,8 @@
                     </div>
                     <div class="card-body">
                         <blockquote class="blockquote mb-0">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source
-                                    Title</cite></footer>
+                            <p>Configuracion de carga masiva</p>
+                            <footer class="blockquote-footer"><cite title="Source Title"></cite></footer>
                         </blockquote>
                     </div>
                 </div>
