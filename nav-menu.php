@@ -320,15 +320,15 @@ $id_rol = $_SESSION['id_rol'];
                             <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
                                 aria-expanded="false">
                                 <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;HRAE</span>
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;HRAES</span>
                             </a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">
+                                    <a href="App/View/Hrae/Empleados/index.php" class="sidebar-link">
                                         <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         <i class="far fa-folder" style="font-size: 1.1rem;"></i>
                                         <span class="hide-menu"
-                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Titulo</span>
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Empleados</span>
                                     </a>
                                 </li>
                             </ul>

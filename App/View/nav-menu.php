@@ -1,4 +1,4 @@
-<?php include '../../../conexion.php';?>
+<?php include '../../../../conexion.php';?>
 
 
 <!DOCTYPE html>
@@ -16,18 +16,18 @@
     <title>Sistema Integral de Recursos Humanos</title>
     <link rel="icon" type="image/png" href="assets/images/imss.svg">
     <!-- Custom CSS -->
-    <link href="../../../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link href="../../.././assets/extra-libs/c3/c3.min.css" rel="stylesheet">
-    <link href="../../.././assets/libs/morris.js/morris.css" rel="stylesheet">
+    <link href="../../../../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="../../../.././assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="../../../.././assets/libs/morris.js/morris.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="../../.././dist/css/style.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../.././assets/extra-libs/css/css.css">
-    <link rel="stylesheet" type="text/css" href="../../.././assets/extra-libs/alertifyjs/css/alertify.css">
-    <link rel="stylesheet" type="text/css" href="../../.././assets/extra-libs/select2/css/select2.css">
-    <link rel="stylesheet" type="text/css" href="../../.././assets/extra-libs/alertifyjs/css/themes/default.css">
-    <link rel="stylesheet" href="../../.././assets/libs/sweetalert2/dist/sweetalert2.min.css">
+    <link href="../../../.././dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../.././assets/extra-libs/css/css.css">
+    <link rel="stylesheet" type="text/css" href="../../../.././assets/extra-libs/alertifyjs/css/alertify.css">
+    <link rel="stylesheet" type="text/css" href="../../../.././assets/extra-libs/select2/css/select2.css">
+    <link rel="stylesheet" type="text/css" href="../../../.././assets/extra-libs/alertifyjs/css/themes/default.css">
+    <link rel="stylesheet" href="../../../.././assets/libs/sweetalert2/dist/sweetalert2.min.css">
     <link rel="stylesheet" type="text/css"
-        href="../../.././assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+        href="../../../.././assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
 
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -48,14 +48,14 @@
 
 
     <!-- <script src="./dist/js/jquery-3.2.1.min.js"></script> -->
-    <script src="../../.././assets/extra-libs/alertifyjs/alertify.js"></script>
-    <script src="../../.././assets/extra-libs/select2/js/select2.js"></script>
+    <script src="../../../.././assets/extra-libs/alertifyjs/alertify.js"></script>
+    <script src="../../../.././assets/extra-libs/select2/js/select2.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
         integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
-    <script src="../../../js/Mensajes/mensajes.js"></script>
+    <script src="../../../../js/Mensajes/mensajes.js"></script>
     <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
@@ -119,10 +119,10 @@
                     <b class="logo-icon">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon --><br>
-                        <img src="../../../assets/logo/Iimsslogo1.png" alt="homepage" class="dark-logo" style="width: 30%;" />
+                        <img src="../../../../assets/logo/Iimsslogo1.png" alt="homepage" class="dark-logo" style="width: 30%;" />
                         
                         <!-- Light Logo icon -->
-                        <img src="../../../assets/logo/imsslogo1.png" alt="homepage" class="light-logo" style="width: 41%;" />
+                        <img src="../../../../assets/logo/imsslogo1.png" alt="homepage" class="light-logo" style="width: 41%;" />
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
@@ -210,7 +210,7 @@
                         </div>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../../../index.php" class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
+                        <a href="../../../../index.php" class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
                         <i class="far fa-folder" style="font-size: 1.2rem;"></i>
                             <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Inicio </span>
                         </a>
@@ -222,6 +222,24 @@
                             <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Usuarios</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
+                                <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;HRAES</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item">
+                                    <a href="../../Hraes/Empleados/index.php" class="sidebar-link">
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                        <span class="hide-menu"
+                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Empleados</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
 
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
