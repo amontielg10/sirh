@@ -17,6 +17,28 @@ $datos = [
     'nss' => $_POST['nss'],
 ];
 
+/*
+$datosPerson = [
+    'porcentaje_ahorro_s' => $_POST['porcentaje_ahorro_s'],
+    'dias_medio_sueldo' => $_POST['dias_medio_sueldo'],
+    'dias_sin_sueldo' => $_POST['dias_sin_sueldo'],
+    'reintegro_faltas_retardo' => $_POST['reintegro_faltas_retardo'],
+    'importe_festivo' => $_POST['importe_festivo'],
+    'importe_horas_ex' => $_POST['importe_horas_ex'],
+    'importe_prima_dominical' => $_POST['importe_prima_dominical'],
+    'importe_descuentos_indebidos' => $_POST['importe_descuentos_indebidos'],
+    'quinquenio' => $_POST['quinquenio'],
+    'num_hijos' => $_POST['num_hijos'],
+    'aplicar_juguetes' => $_POST['aplicar_juguetes'],
+    'apoyo_titulacion' => $_POST['apoyo_titulacion'],
+    'licencia_manejo' => $_POST['licencia_manejo'],
+    'importe_recuperacion_pagos_indebidos' => $_POST['importe_recuperacion_pagos_indebidos'],
+    'num_dias_jornada_dominical' => $_POST['num_dias_jornada_dominical'],
+    'num_dias_guardia_festiva' => $_POST['num_dias_guardia_festiva'],
+    'porcentajes_svi' => $_POST['porcentajes_svi'],
+    'dias_sancion_adma' => $_POST['dias_sancion_adma'],
+];*/
+
 if($_POST['id_object'] != null){ //Modificar
     if($model -> editarByArray($connectionDBsPro,$datos, $condicion)){
         echo 'edit';

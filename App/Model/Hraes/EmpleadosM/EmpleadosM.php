@@ -27,12 +27,12 @@ class modelEmpleadosHraes{
     }
 
     public function listarByIdEdit($id_object){
-        $listado = "SELECT id_tbl_empleados_hraes, rfc, curp, nombre, primer_apellido,
-                           segundo_apellido, nss
-                    FROM tbl_empleados_hraes
-                    WHERE id_tbl_empleados_hraes = $id_object
-                    ORDER BY id_tbl_empleados_hraes DESC
-                    LIMIT 6";
+        $listado = pg_query("SELECT id_tbl_empleados_hraes, rfc, curp, nombre, primer_apellido,
+                                    segundo_apellido, nss
+                            FROM tbl_empleados_hraes
+                            WHERE id_tbl_empleados_hraes = $id_object
+                            ORDER BY id_tbl_empleados_hraes DESC
+                            LIMIT 6");
         return $listado;
     }
 
