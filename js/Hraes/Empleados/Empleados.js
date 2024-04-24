@@ -42,18 +42,8 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
         id_object: id_object
     },
         function (data, status) {
-            console.log(data);
-
-
-            var jsonString = '{"array1":[1,2,3],"array2":["a","b","c"]}';
-            console.log('aqui');
-            var jsonData = JSON.parse(data);
-
-            var array1 = jsonData.response;
-
-            console.log(array1); // [1, 2, 3]
-
-            var entity = array1;
+            var jsonData = JSON.parse(data);//se obtiene el json
+            var entity = jsonData.response; //Se agrega a emtidad 
             $("#nombre").val(entity.nombre);
             $("#rfc").val(entity.rfc);
             $("#primer_apellido").val(entity.primer_apellido);
