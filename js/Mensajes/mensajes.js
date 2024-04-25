@@ -25,7 +25,7 @@ function mensanjeExito(text){
   });
 }
 
-function mensanjeError(text){
+function mensajeError(text){
   const Toast = Swal.mixin({
    toast: true,
    position: "top-end",
@@ -57,4 +57,22 @@ function confirmarEliminar(){
       return true;
     }
   });
+}
+
+
+function validarNull(cadena){
+  let bool = false;
+  if(cadena.length === 0){
+      bool = true;
+  }
+  return bool;
+} 
+
+function validarData(data, text){
+  let bool = true;
+  if (validarNull(data)){
+      mensajeError('Campo '+ text + '* no puede estar vacio.');
+      bool = false;
+  } 
+  return bool;
 }

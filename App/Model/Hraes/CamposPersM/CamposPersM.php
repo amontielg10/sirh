@@ -33,7 +33,7 @@ class modelCamposPersHraes{
     }
 
     function editarByArray($conexion, $datos, $condicion){
-        $pg_update = pg_update($conexion, 'tbl_empleados_hraes', $datos, $condicion);
+        $pg_update = pg_update($conexion, 'ctrl_campos_pers_hraes', $datos, $condicion);
         return $pg_update;
     }
 
