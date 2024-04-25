@@ -1,3 +1,10 @@
+<?php
+$id_tbl_centro_trabajo_hraes = 'ok';
+if (isset($_POST['id_tbl_centro_trabajo_hraes'])){
+    $id_tbl_centro_trabajo_hraes = $_POST['id_tbl_centro_trabajo_hraes'];
+} 
+?>
+
 <body>
 
     <?php include '../../nav-menu.php' ?>
@@ -28,7 +35,19 @@
             </div>
 
             <div class="container-fluid">
+                <input type="hidden" id="id_tbl_centro_trabajo_hraes" value="<?php echo $id_tbl_centro_trabajo_hraes?>" />
+                
+                <?php if ($id_tbl_centro_trabajo_hraes != 'ok'){?>
+                <p>Informaci&oacuten de las plazas correspondientes con el centro de trabajo seleccionado.</p>
+                <div class="form-inline">
+                    <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i class="fas fa-plus"></i>
+                        <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar una plaza</span>
+                    </button>
+                </div>
+                <?php } else {?>
                 <p>Informaci&oacuten de los &uacuteltimos movimientos de plazas.</p>
+                <?php }?>
+
                 <p></p>
                 <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar"
                     onkeyup="buscarInBd();" aria-label="Search">
@@ -38,6 +57,7 @@
                 </table>
 
                 <?php include 'AgregarEditar.php' ?>
+                <?php include 'Detalles.php' ?>
 
             </div>
         </div>

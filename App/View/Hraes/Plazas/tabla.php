@@ -4,12 +4,21 @@ include '../../../Model/Hraes/PlazasM/PlazasM.php';
 
 $listado = new modelPlazasHraes();
 
-$query = $listado->listarByAll();
+$query = $listado->listarByAll(); //INICIO DE LA TABLA CON LA INFORMACION
 
-if (isset($_POST['busqueda'])) {
-    $busqueda = $_POST['busqueda'];
-    $query = $listado->listarByLike($busqueda);
-}
+if (isset($_POST['busqueda'])) { /// INICIO DE LA TABLA SI SE INGRESA UNA BUSQUEDA
+    if (isset($_POST['id_object']) != 'ok') {
+        $busqueda = $_POST['busqueda'];
+        $id_object = $_POST['id_object'];
+        $query = $listado->listarByLikeByIdCentroTrabajo($busqueda, $id_object);
+    } else {
+        $busqueda = $_POST['busqueda'];
+        $query = $listado->listarByLike($busqueda);
+    }
+} else if (isset($_POST['id_object'])) { //INICIO DE LA TABLA CON EL ID DEL CENTRO DE TRABAJO SELECCIONADO
+    $id_object = $_POST['id_object'];
+    $query = $listado->listarByAllByIdCentroTrabajo($id_object);///INICIO DE LA TABLA SI SE INGRESA UNA BUSQUEDA CON EL CENTRO DE TRABAJO SELECCIONADO
+} 
 
 $data =
     '<table class="table table-striped" id="t-table" style="width:100%">
@@ -36,13 +45,14 @@ if (pg_num_rows($result) > 0) {
                                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i></button>
                             <div class="dropdown-menu">
                                 <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar</button>
+                                <button onclick="detallesEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-align-left"></i> Detalles</button>
                                 <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-user-alt"></i> Empleado</button>
-                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>  
+                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>   
                             </div>
                           </div>
                                 </td>
                             <td>
-                                ' . $row[1]  . '
+                                ' . $row[1] . '
                             </td>
                             <td>
                                 ' . $row[2] . '

@@ -122,7 +122,7 @@
                         <img src="../../../../assets/logo/Iimsslogo1.png" alt="homepage" class="dark-logo" style="width: 30%;" />
                         
                         <!-- Light Logo icon -->
-                        <img src="../../../../assets/logo/imsslogo1.png" alt="homepage" class="light-logo" style="width: 41%;" />
+                        
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
