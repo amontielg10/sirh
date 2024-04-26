@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" style="font-weight: bold;color:#235B4E"></label>Agregar centro de trabajo</h5>
+                <h5 class="modal-title" style="font-weight: bold;color:#235B4E"></label>Agregar plaza</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,70 +11,77 @@
 
             <div class="card-body">
                 <div class="form-row">
-                    
-                    <div class="form-group col-md-6">
-                        <label>Nombre</label><label style="color:red">*</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
-                    </div>
 
                     <div class="form-group col-md-6">
-                        <label>Clave centro de trabajo</label><label style="color:red">*</label>
-                        <input type="text" class="form-control" id="clave_centro_trabajo" name="clave_centro_trabajo"
-                            placeholder="Clave centro de trabajo">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Colonia</label><label style="color:red">*</label>
-                        <input type="text" class="form-control" id="colonia" name="colonia" placeholder="Colonia">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Region</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example"
-                            id="id_cat_region" required>
+                        <label>Tipo de plaza</label><label style="color:red">*</label>
+                        <select class="form-control" aria-label="Default select example" id="id_cat_plazas"
+                            required>
                         </select>
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label>Estatus</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example"
-                            id="id_estatus_centro" required>
+                        <label>Tipo de contrataci&oacute</label><label style="color:red">*</label>
+                        <select class="form-control" aria-label="Default select example" id="id_cat_tipo_contratacion_hraes"
+                            required>
                         </select>
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label>Entidad</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example"
-                            id="id_cat_entidad" required>
+                        <label>Unidad responsable</label><label style="color:red">*</label>
+                        <select class="form-control" aria-label="Default select example" id="id_cat_unidad_responsable"
+                            required>
                         </select>
                     </div>
 
-                    <div class="form-group col-md-4">
-                        <label>N&uacutem. exterior</label><label style="color:red"></label>
-                        <input type="text" class="form-control" id="num_exterior" name="num_exterior"
-                            placeholder="Núm. exterior">
+                    <div class="form-group col-md-6">
+                        <label>Puesto</label><label style="color:red">*</label>
+                        <select class="form-control" aria-label="Default select example" id="id_cat_puesto_hraes"
+                            required>
+                        </select>
                     </div>
 
-                    <div class="form-group col-md-4">
-                        <label>N&uacutem. interior</label><label style="color:red"></label>
-                        <input type="text" class="form-control" id="num_interior" name="num_interior"
-                            placeholder="Núm. interior">
+                    <div class="form-group col-md-6">
+                        <label>Zonas tabuladores</label><label style="color:red">*</label>
+                        <select class="form-control" aria-label="Default select example" id="id_cat_zonas_tabuladores"
+                            required>
+                        </select>
                     </div>
 
-                    <div class="form-group col-md-4">
-                        <label>Latitud</label><label style="color:red"></label>
-                        <input type="text" class="form-control" id="latitud" name="latitud" placeholder="Latitud">
+                    <div class="form-group col-md-6">
+                        <label>Niveles</label><label style="color:red">*</label>
+                        <select class="form-control" aria-label="Default select example" id="id_cat_niveles_hraes"
+                            required>
+                        </select>
                     </div>
 
-                    <div class="form-group col-md-4">
-                        <label>Longitud</label><label style="color:red"></label>
-                        <input type="text" class="form-control" id="longitud" name="longitud" placeholder="Longitud">
+                    <div class="form-group col-md-6">
+                        <label>N&uacutemero de plaza</label><label style="color:red">*</label>
+                        <input type="text" class="form-control" id="num_plaza" placeholder="Número de plaza">
                     </div>
 
-                    <div class="form-group col-md-4">
-                        <label>C&oacutedigo postal</label><label style="color:red">*</label>
-                        <input type="number" class="form-control" id="codigo_postal" name="codigo_postal"
-                            placeholder="Código postal">
+                    <div class="form-group col-md-6">
+                        <label>Zona pagadora</label><label style="color:red">*</label>
+                        <input type="number" class="form-control" id="zona_pagadora" placeholder="Zona pagadora">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Fecha de ingreso</label><label style="color:red"></label>
+                        <input type="date" class="form-control" id="fecha_ingreso_inst" >
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Fecha inicio de movimiento</label><label style="color:red"></label>
+                        <input type="date" class="form-control" id="fecha_inicio_movimiento" >
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Fecha termino de movimiento</label><label style="color:red"></label>
+                        <input type="date" class="form-control" id="fecha_termino_movimiento" >
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Fecha de modificaci&oacuten</label><label style="color:red"></label>
+                        <input type="date" class="form-control" id="fecha_modificacion" >
                     </div>
 
                 </div>
@@ -85,6 +92,7 @@
                 <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
                     onclick="return validar();">Guardar</button>
                 <input type="hidden" id="id_object">
+                <input type="hidden" id="id_tbl_centro_trabajo_hraes">
             </div>
 
         </div>

@@ -108,7 +108,10 @@ function iniciarTablaHistoria(id_object) { ///INGRESA LA TABLA
 }
 
 function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONADO
+    let id_tbl_centro_trabajo_hraes = document.getElementById("id_tbl_centro_trabajo_hraes").value;
     $("#id_object").val(id_object);
+    $("#id_tbl_centro_trabajo_hraes").val(id_tbl_centro_trabajo_hraes);
+
     if (id_object == null){
         $("#agregar_editar_modal").find("input,textarea,select").val("");
     }
@@ -117,30 +120,86 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
         id_object: id_object
     },
         function (data, status) {
+            console.log(data);
             var jsonData = JSON.parse(data);//se obtiene el json
-            var entidad = jsonData.entidad;
-            var entity = jsonData.response; //Se agrega a emtidad 
-            var region = jsonData.region;
-            var estatus = jsonData.estatus;
+            var entity = jsonData.entity; //Se agrega a emtidad 
+            var plazas = jsonData.plazas;
+            var contratacion = jsonData.contratacion;
+            var unidadResp = jsonData.unidadResp;
+            var puesto = jsonData.puesto;
+            var tabulares = jsonData.tabulares;
+            var niveles = jsonData.niveles;
 
             //Catalogos
-            $('#id_cat_entidad').empty();
-            $('#id_cat_region').empty();
-            $('#id_estatus_centro').empty();
-            $('#id_cat_entidad').html(entidad); 
-            $('#id_cat_region').html(region); 
-            $('#id_estatus_centro').html(estatus); 
+            $('#id_cat_plazas').empty();
+            $('#id_cat_plazas').html(plazas); 
+            $('#id_cat_tipo_contratacion_hraes').empty();
+            $('#id_cat_tipo_contratacion_hraes').html(contratacion);
+            $('#id_cat_unidad_responsable').empty();
+            $('#id_cat_unidad_responsable').html(unidadResp);
+            $('#id_cat_puesto_hraes').empty();
+            $('#id_cat_puesto_hraes').html(puesto);
+            $('#id_cat_zonas_tabuladores').empty();
+            $('#id_cat_zonas_tabuladores').html(tabulares);
+            $('#id_cat_niveles_hraes').empty();
+            $('#id_cat_niveles_hraes').html(niveles);
+            
+            $("#num_plaza").val(entity.num_plaza);
+            $("#zona_pagadora").val(entity.zona_pagadora);
+            $("#fecha_ingreso_inst").val(entity.fecha_ingreso_inst);
+            $("#fecha_inicio_movimiento").val(entity.fecha_inicio_movimiento);
+            $("#fecha_termino_movimiento").val(entity.fecha_termino_movimiento);
+            $("#fecha_modificacion").val(entity.fecha_modificacion);
 
-            $("#nombre").val(entity.nombre);
-            $("#clave_centro_trabajo").val(entity.clave_centro_trabajo);
-            $("#colonia").val(entity.colonia);
-            $("#codigo_postal").val(entity.codigo_postal);
-            $("#num_exterior").val(entity.num_exterior);
-            $("#num_interior").val(entity.num_interior);
-            $("#latitud").val(entity.latitud);
-            $("#longitud").val(entity.longitud);
         }
     );
 
     $("#agregar_editar_modal").modal("show");
+}
+
+function agregarEditarByDb() {
+    var id_cat_plazas = $("#id_cat_plazas").val();
+    var id_cat_tipo_contratacion_hraes = $("#id_cat_tipo_contratacion_hraes").val();
+    var id_cat_unidad_responsable = $("#id_cat_unidad_responsable").val();
+    var id_cat_puesto_hraes = $("#id_cat_puesto_hraes").val();
+    var id_cat_zonas_tabuladores = $("#id_cat_zonas_tabuladores").val();
+    var id_cat_niveles_hraes = $("#id_cat_niveles_hraes").val();
+    var num_plaza = $("#num_plaza").val();
+    var zona_pagadora = $("#zona_pagadora").val();
+    var fecha_ingreso_inst = $("#fecha_ingreso_inst").val();
+    var fecha_inicio_movimiento = $("#fecha_inicio_movimiento").val();
+    var fecha_termino_movimiento = $("#fecha_termino_movimiento").val();
+    var fecha_modificacion = $("#fecha_modificacion").val();
+    var id_object = $("#id_object").val();
+    var id_tbl_centro_trabajo_hraes = $("#id_tbl_centro_trabajo_hraes").val();
+
+    $.post("../../../../App/Controllers/Hrae/PlazasC/AgregarEditarC.php", {
+        id_cat_plazas: id_cat_plazas,
+        id_cat_tipo_contratacion_hraes: id_cat_tipo_contratacion_hraes,
+        id_cat_unidad_responsable:id_cat_unidad_responsable,
+        id_cat_puesto_hraes:id_cat_puesto_hraes,
+        id_cat_zonas_tabuladores:id_cat_zonas_tabuladores,
+        id_cat_niveles_hraes:id_cat_niveles_hraes,
+        num_plaza:num_plaza,
+        zona_pagadora:zona_pagadora,
+        fecha_ingreso_inst:fecha_ingreso_inst,
+        fecha_inicio_movimiento:fecha_inicio_movimiento,
+        fecha_termino_movimiento:fecha_termino_movimiento,
+        fecha_modificacion:fecha_modificacion,
+        id_object:id_object,
+        id_tbl_centro_trabajo_hraes:id_tbl_centro_trabajo_hraes,
+
+    },
+        function (data, status) {
+            if (data == 'edit'){
+                mensajeExito('Centro de trabajo modificado');
+            } else if (data == 'add') {
+                mensajeExito('Centro de trabajo agregado');  
+            } else {
+                mensajeError(data);
+            }
+            $("#agregar_editar_modal").modal("hide");
+            iniciarPlazas();
+        }
+    );
 }
