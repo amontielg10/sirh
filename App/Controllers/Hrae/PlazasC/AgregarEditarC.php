@@ -16,6 +16,7 @@ $datos = [
     'id_cat_zonas_tabuladores_hraes' => $_POST['id_cat_zonas_tabuladores'],
     'id_cat_niveles_hraes' => $_POST['id_cat_niveles_hraes'],
     'zona_pagadora' => $_POST['zona_pagadora'],
+    'num_plaza' => $_POST['num_plaza'],
     'fecha_ingreso_inst' => $_POST['fecha_ingreso_inst'],
     'fecha_inicio_movimiento' => $_POST['fecha_inicio_movimiento'],
     'fecha_termino_movimiento' => $_POST['fecha_termino_movimiento'],

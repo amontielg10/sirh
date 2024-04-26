@@ -102,11 +102,11 @@ function agregarEditarByDb() {
         function (data, status) {
             console.log(data);
             if (data == 'edit'){
-                mensanjeExito('Centro de trabajo modificado');
+                mensajeExito('Centro de trabajo modificado');
             } else if (data == 'add') {
-                mensanjeExito('Centro de trabajo agregado');  
+                mensajeExito('Centro de trabajo agregado');  
             } else {
-                mensanjeError(data);
+                mensajeError(data);
             }
             $("#agregar_editar_modal").modal("hide");
             iniciarTabla();
@@ -131,9 +131,9 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
             },
             function (data, status) {
                 if (data == 'delete'){
-                    mensanjeExito('Centro de trabajo eliminado')
+                    mensajeExito('Centro de trabajo eliminado')
                 } else {
-                    mensanjeError('No fue posible eliminar el elemento');
+                    mensajeError('No fue posible eliminar el elemento');
                 }
                 iniciarTabla();
             }
