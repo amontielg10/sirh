@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label>Tipo de contrataci&oacute</label><label style="color:red">*</label>
+                        <label>Tipo de contrataci&oacuten</label><label style="color:red">*</label>
                         <select class="form-control" aria-label="Default select example" id="id_cat_tipo_contratacion_hraes"
                             required>
                         </select>
@@ -42,7 +42,7 @@
 
                     <div class="form-group col-md-6">
                         <label>Zonas tabuladores</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example" id="id_cat_zonas_tabuladores"
+                        <select class="form-control" aria-label="Default select example" id="id_cat_zonas_tabuladores_hraes"
                             required>
                         </select>
                     </div>
@@ -56,7 +56,7 @@
 
                     <div class="form-group col-md-6">
                         <label>N&uacutemero de plaza</label><label style="color:red">*</label>
-                        <input type="text" class="form-control" id="num_plaza" placeholder="Número de plaza">
+                        <input type="number" class="form-control" id="num_plaza" placeholder="Número de plaza">
                     </div>
 
                     <div class="form-group col-md-6">

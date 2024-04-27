@@ -13,7 +13,7 @@ class catalogoPlazasM
     {
         $listado = pg_query("SELECT id_cat_plazas, CONCAT(tipo_plaza, ' - ', codigo_plaza)
                              FROM cat_plazas
-                             WHERE tipo_plaza = $idObject");
+                             WHERE id_cat_plazas = $idObject");
         return $listado;
     }
 }

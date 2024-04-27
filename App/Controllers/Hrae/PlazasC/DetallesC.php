@@ -32,8 +32,24 @@ $catalogoNivelesM = new catalogoNivelesM();
 $id_object = $_POST['id_object'];
 
 if ($id_object != null){
-
-} else {
+    $entity = returnArray($modelPlazasHraes -> listarByIdEdit($id_object));
+    $plazas = $catalogoPlazasC ->returnCatPLazasByIdObject($catalogoPlazasM ->listarByAll(), returnArrayById($catalogoPlazasM ->obtenerElemetoById($entity['id_cat_plazas'])));
+    $contratacion = $catalogoTipoContratcionHraesC ->returnCatContratacionByIdObject($catalogoTipoContratacionM ->listarByAll(),returnArrayById($catalogoTipoContratacionM ->obtenerElemetoById($entity['id_cat_tipo_contratacion_hraes'])));
+    $unidadResp = $catalogoUnidadResponsableC ->returnCatUnidadByIdObject($cataloUnidadResposableM->listarByAll(), returnArrayById($cataloUnidadResposableM->obtenerElemetoById($entity['id_cat_unidad_responsable'])));
+    $puesto = $catalogoPuestosC ->returnCatPuestosByIdObject($catalogoPuestoM->listarByAll(),returnArrayById($catalogoPuestoM->obtenerElemetoById($entity['id_cat_puesto_hraes'])));
+    $tabulares = $catalogoTabularesC->returnSelectByIdObject($catalogoTabularesM->listarByAll(),returnArrayById($catalogoTabularesM->obtenerElemetoById($entity['id_cat_zonas_tabuladores_hraes'])));
+    $niveles = $catalogoNivelesC ->returnSelectByIdObject($catalogoNivelesM->listarByAll(),returnArrayById($catalogoNivelesM->obtenerElemetoById($entity['id_cat_niveles_hraes'])));
+    $raw = [
+        'entity' => $entity,
+        'plazas' => $plazas,
+        'unidadResp' => $unidadResp,
+        'contratacion' => $contratacion,
+        'puesto' => $puesto,
+        'tabulares' => $tabulares,
+        'niveles' => $niveles,
+    ];
+    echo json_encode($raw);
+} else { ///Agregar
     $plazas = $catalogoPlazasC -> returnCatPlazas($catalogoPlazasM->listarByAll());
     $contratacion = $catalogoTipoContratcionHraesC -> returnCatContratacion($catalogoTipoContratacionM->listarByAll());
     $entity = $modelPlazasHraes -> listarByNull();
@@ -53,51 +69,6 @@ if ($id_object != null){
     echo json_encode($raw);
 }
 
-/*
-include '../../../Model/Hraes/CentroTrabajoM/CentroTrabajoM.php';
-include '../../../Model/Catalogos/CatEntidadM/CatEntidadM.php';
-include '../../../Model/Catalogos/CatRegionM/CatRegionM.php';
-include '../../../Model/Catalogos/CatEstatusM/CatEstatusM.php';
-include '../../../Controllers/Catalogos/CatEntidadC/CatEntidadC.php';
-include '../../../Controllers/Catalogos/CatRegionC/CatRegionC.php';
-include '../../../Controllers/Catalogos/CatEstatusC/CatEstatusC.php';
-
-$model = new modelCentroTrabajoHraes();
-$catEntidad = new catalogoEntidad();
-$catalogoEntidad = new catalogoEntidadC();
-$catalogoRegionC = new catalogoRegionC();
-$catalogoRegion = new catalogoRegion();
-$catalogoEstatus = new catalogoEstatus();
-$catalogoEstatusC = new catalogoEstatusC();
-
-$id_object = $_POST['id_object'];
-
-if ($id_object != null) {
-    $response = returnArray($model->listarByIdEdit($id_object));
-    $entidad = $catalogoEntidad->returnCatEntidadByIdObject($catEntidad->listarByAll(),returnArrayById($catEntidad->obtenerElemetoById($response['id_cat_entidad'])));
-    $region = $catalogoRegionC->returnCatRegionByIdObject($catalogoRegion->listarByAll(),returnArrayById($catalogoRegion->obtenerElemetoById($response['id_cat_region'])));
-    $estatus = $catalogoEstatusC->returnCatEstatusByIdObject($catalogoEstatus->listarByAll(),returnArrayById($catalogoEstatus->obtenerElemetoById($response['id_estatus_centro'])));
-    $var = [
-        'entidad' => $entidad,
-        'response' => $response,
-        'region' => $region,
-        'estatus' => $estatus,
-    ];
-    echo json_encode($var);
-
-} else {
-    $entidad = $catalogoEntidad->returnCatEntidad($catEntidad->listarByAll());
-    $region = $catalogoRegionC->returnCatRegion($catalogoRegion->listarByAll());
-    $estatus = $catalogoEstatusC->returnCatEstatus($catalogoEstatus->listarByAll());
-    $response = $model->listarByNull();
-    $var = [
-        'entidad' => $entidad,
-        'response' => $response,
-        'region' => $region,
-        'estatus' => $estatus,
-    ];
-    echo json_encode($var);
-}
 
 function returnArray($result)
 {
@@ -118,5 +89,3 @@ function returnArrayById($result)
     }
     return $response;
 }
-
-*/

@@ -12,7 +12,7 @@ class catalogoPuestoM
 
     public function obtenerElemetoById($idObject)
     {
-        $listado = pg_query("SELECT id_cat_puesto_hraes, CONCAT(nombre_posicion, ' - '. codigo_puesto) 
+        $listado = pg_query("SELECT id_cat_puesto_hraes, CONCAT(nombre_posicion, ' - ', codigo_puesto) 
                              FROM cat_puesto_hraes
                              WHERE id_cat_puesto_hraes = $idObject");
         return $listado;

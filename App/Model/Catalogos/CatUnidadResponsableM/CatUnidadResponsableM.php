@@ -11,7 +11,7 @@ class cataloUnidadResposableM
 
     public function obtenerElemetoById($idObject)
     {
-        $listado = pg_query("SELECT id_cat_unidad_responsable, codigo, nombre
+        $listado = pg_query("SELECT id_cat_unidad_responsable, CONCAT(codigo,' - ',nombre)
                              FROM cat_unidad_responsable
                              WHERE id_cat_unidad_responsable = $idObject");
         return $listado;

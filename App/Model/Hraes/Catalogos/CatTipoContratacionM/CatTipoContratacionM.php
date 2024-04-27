@@ -14,7 +14,7 @@ class catalogoTipoContratacionM
     {
         $listado = pg_query("SELECT id_cat_tipo_contratacion_hraes, descripcion_cont
                              FROM cat_tipo_contratacion_hraes
-                             WHERE descripcion_cont = $idObject");
+                             WHERE id_cat_tipo_contratacion_hraes = $idObject");
         return $listado;
     }
 }

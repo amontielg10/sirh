@@ -111,13 +111,14 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
     let id_tbl_centro_trabajo_hraes = document.getElementById("id_tbl_centro_trabajo_hraes").value;
     $("#id_object").val(id_object);
     $("#id_tbl_centro_trabajo_hraes").val(id_tbl_centro_trabajo_hraes);
+    
 
     if (id_object == null){
         $("#agregar_editar_modal").find("input,textarea,select").val("");
     }
 
     $.post("../../../../App/Controllers/Hrae/PlazasC/DetallesC.php", {
-        id_object: id_object
+        id_object: id_object,
     },
         function (data, status) {
             console.log(data);
@@ -129,8 +130,7 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             var puesto = jsonData.puesto;
             var tabulares = jsonData.tabulares;
             var niveles = jsonData.niveles;
-
-            //Catalogos
+            
             $('#id_cat_plazas').empty();
             $('#id_cat_plazas').html(plazas); 
             $('#id_cat_tipo_contratacion_hraes').empty();
@@ -139,8 +139,8 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             $('#id_cat_unidad_responsable').html(unidadResp);
             $('#id_cat_puesto_hraes').empty();
             $('#id_cat_puesto_hraes').html(puesto);
-            $('#id_cat_zonas_tabuladores').empty();
-            $('#id_cat_zonas_tabuladores').html(tabulares);
+            $('#id_cat_zonas_tabuladores_hraes').empty();
+            $('#id_cat_zonas_tabuladores_hraes').html(tabulares);
             $('#id_cat_niveles_hraes').empty();
             $('#id_cat_niveles_hraes').html(niveles);
             
@@ -162,7 +162,7 @@ function agregarEditarByDb() {
     var id_cat_tipo_contratacion_hraes = $("#id_cat_tipo_contratacion_hraes").val();
     var id_cat_unidad_responsable = $("#id_cat_unidad_responsable").val();
     var id_cat_puesto_hraes = $("#id_cat_puesto_hraes").val();
-    var id_cat_zonas_tabuladores = $("#id_cat_zonas_tabuladores").val();
+    var id_cat_zonas_tabuladores_hraes = $("#id_cat_zonas_tabuladores_hraes").val();
     var id_cat_niveles_hraes = $("#id_cat_niveles_hraes").val();
     var num_plaza = $("#num_plaza").val();
     var zona_pagadora = $("#zona_pagadora").val();
@@ -178,7 +178,7 @@ function agregarEditarByDb() {
         id_cat_tipo_contratacion_hraes: id_cat_tipo_contratacion_hraes,
         id_cat_unidad_responsable:id_cat_unidad_responsable,
         id_cat_puesto_hraes:id_cat_puesto_hraes,
-        id_cat_zonas_tabuladores:id_cat_zonas_tabuladores,
+        id_cat_zonas_tabuladores_hraes:id_cat_zonas_tabuladores_hraes,
         id_cat_niveles_hraes:id_cat_niveles_hraes,
         num_plaza:num_plaza,
         zona_pagadora:zona_pagadora,
@@ -202,4 +202,32 @@ function agregarEditarByDb() {
             iniciarPlazas();
         }
     );
+}
+
+function eliminarEntity(id_object) {//ELIMINAR USUARIO
+    Swal.fire({
+        title: "¿Está seguro?",
+        text: "¡No podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminar",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+        $.post("../../../../App/Controllers/Hrae/PlazasC/EliminarC.php", {
+                id_object: id_object
+            },
+            function (data, status) {
+                if (data == 'delete'){
+                    mensajeExito('Centro de trabajo eliminado')
+                } else {
+                    mensajeError('No fue posible eliminar el elemento');
+                }
+                iniciarPlazas();
+            }
+        );
+    }
+    });
 }

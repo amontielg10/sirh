@@ -1,17 +1,12 @@
+<?php
+// Arreglo inicial
+$arreglo = [
+    'a' => "elemento1", 
+    'b' => "elemento2", 
+    'c' => "elemento3"];
 
-<label id="miLabel">Texto Original</label>
-<button onclick="cambiarTexto()">Cambiar Texto</button>
-<a href="curp2.php">ir</a>
+// Agregar un nuevo elemento al final del arreglo
+array_push($arreglo, 'd',"nuevo_elemento");
 
-
-<script>
-function cambiarTexto() {
-    // Accede al elemento label por su ID
-    var label = document.getElementById("miLabel");
-    
-    // Cambia el texto del label
-    label.textContent = "Nuevo Texto";
-}   
-</script>
-
-
+// Mostrar el arreglo actualizado
+print_r($arreglo);

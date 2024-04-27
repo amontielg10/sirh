@@ -4,16 +4,13 @@ include '../../../Model/Hraes/EmpleadosM/EmpleadosM.php';
 include '../../../Model/Hraes/CamposPersM/CamposPersM.php';
 
 $model = new modelEmpleadosHraes();
-$modelCp = new modelCamposPersHraes();
 
 $id_object = $_POST['id_object'];
 
 if ($id_object != null) {
     $response = returnArray($model -> listarByIdEdit($id_object));
-    $responseCp = returnArray($modelCp -> listarByIdEdit($id_object));
     $var = [
         'response' => $response,
-        'responseCp' => $responseCp
     ];
     echo json_encode($var);
 
