@@ -42,12 +42,12 @@
                 </table>
 
                 <?php include 'AgregarEditar.php' ?>
+                <?php include 'DatosEmpleado.php' ?>
+                <?php include 'CamposPersonalizados/AgregarEditar.php' ?>
             </div>
         </div>
     </div>
 
-    <script src="../../../../js/Hraes/Empleados/Empleados.js"></script>
-    <script src="../../../../js/Hraes/Empleados/validar.js"></script>
-
+    <?php include ('libreriasJS.php') ?>
     <?php include ('../../footer-librerias.php') ?>
 </body>

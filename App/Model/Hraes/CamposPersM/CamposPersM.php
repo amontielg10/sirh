@@ -1,16 +1,13 @@
 <?php
 
-class modelCamposPersHraes{
-    public function listarByAll(){
-        $listado = "SELECT id_tbl_empleados_hraes, rfc, curp, nombre, primer_apellido,
-                           segundo_apellido, nss
-                    FROM ctrl_campos_pers_hraes
-                    ORDER BY id_ctrl_campos_pers_hraes DESC
-                    LIMIT 6";
+class ModelCamposPersM{
 
+    public function selectCountById($id_object){
+        $listado = pg_query("SELECT COUNT (*)
+                             FROM ctrl_campos_pers_hraes
+                             WHERE id_tbl_empleados_hraes = $id_object;");
         return $listado;
     }
-
     public function listarByIdEdit($id_object){
         $listado = pg_query("SELECT *
                             FROM ctrl_campos_pers_hraes
@@ -22,13 +19,27 @@ class modelCamposPersHraes{
 
     public function listarByNull(){
         return $array = [
+            'id_ctrl_campos_pers_hraes' => null,
             'id_tbl_empleados_hraes' => null,
-            'rfc' => null,
-            'curp' => null,
-            'nombre' => null,
-            'primer_apellido' => null,
-            'segundo_apellido' => null,
-            'nss' => null,
+            'porcentaje_ahorro_s' => null,
+            'dias_medio_sueldo' => null,
+            'dias_sin_sueldo' => null,
+            'reintegro_faltas_retardos' => null,
+            'porcentaje_svi' => null,
+            'importe_festivo' => null,
+            'importe_horas_ex' => null,
+            'importe_prima_dominical' => null,
+            'importe_descuentos_indebidos' => null,
+            'importe_recuperacion_pagos_indebidos' => null,
+            'dias_sansion_adma' => null,
+            'regimen_pen' => null,
+            'quinquenio' => null,
+            'num_hijos' => null,
+            'num_dias_jornada_dominical' => null,
+            'num_dias_guardia_festiva' => null,
+            'aplicar_juguetes' => null,
+            'apoyo_titulacion' => null,
+            'licencia_manejo' => null,
         ];
     }
 
@@ -38,12 +49,12 @@ class modelCamposPersHraes{
     }
 
     function agregarByArray($conexion, $datos){
-        $pg_add = pg_insert($conexion, 'tbl_empleados_hraes', $datos);
+        $pg_add = pg_insert($conexion, 'ctrl_campos_pers_hraes', $datos);
         return $pg_add;
     }
 
     function eliminarByArray($conexion, $condicion){
-        $pgs_delete = pg_delete($conexion,'tbl_empleados_hraes',$condicion);
+        $pgs_delete = pg_delete($conexion,'ctrl_campos_pers_hraes',$condicion);
         return $pgs_delete;
     }
 
