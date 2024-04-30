@@ -1,15 +1,14 @@
-<?php 
-include '../../../../conexion.php';
-include '../../../Model/Hraes/CentroTrabajoM/CentroTrabajoM.php';
+<?php
+include '../librerias.php';
 
-$model = new modelCentroTrabajoHraes();
+$modelTelefonoM = new ModelTelefonoM();
 
 $condicion = [
-    'id_tbl_centro_trabajo_hraes' => $_POST['id_object']
+    'id_ctrl_telefono_hraes' => $_POST['id_object']
 ];
 
 if (isset($_POST['id_object'])){
-    if ($model -> eliminarByArray($connectionDBsPro, $condicion)){
+    if ($modelTelefonoM-> eliminarByArray($connectionDBsPro, $condicion)){
         echo 'delete';
     }
 } 

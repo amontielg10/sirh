@@ -68,7 +68,7 @@ function agregarEditarByDbByTelefono() {
     );
 }
 
-function eliminarEntity(id_object) {//ELIMINAR USUARIO
+function eliminarTelefono(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -80,16 +80,16 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/PlazasC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Hrae/TelefonoC/EliminarC.php", {
                 id_object: id_object
             },
             function (data, status) {
                 if (data == 'delete'){
-                    mensajeExito('Centro de trabajo eliminado')
+                    mensajeExito('Número telefonico eliminado')
                 } else {
-                    mensajeError('No fue posible eliminar el elemento');
+                    mensajeError(data);
                 }
-                iniciarPlazas();
+                iniciarNumeroTelefonico();
             }
         );
     }
