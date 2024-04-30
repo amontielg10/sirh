@@ -1,4 +1,33 @@
-function camposPersonDetalles(id_object){
+
+function numTelefonico(id_object){
+    iniciarTablaTelefono(id_object);
+}
+
+function iniciarTablaTelefono(id_object){
+    $.ajax({
+        type: 'POST',
+        url: '../../../../App/View/Hraes/Empleados/NumeroTelefonico/tabla.php',
+        data: { 
+            id_object:id_object 
+        },
+        success: function (data) {
+            $("#modal_numero_telefonico").modal("show");
+            $('#example').html(data);
+        }
+    });
+}
+
+
+function agregarEditarTelefono(){
+    var x = document.getElementById("agregar_editar_telefono");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+/*function camposPersonDetalles(id_object){
     $.post("../../../../App/Controllers/Hrae/CamposPerC/DetallesC.php", {
         id_object: id_object
     },
@@ -94,3 +123,4 @@ function agregarEditarByDbCamposPersonalizados() {
         }
     );
 }
+*/

@@ -7,9 +7,12 @@ include '../../../../conexion.php';
 include '../../../Model/Hraes/DatosEmpleadoM/DatosEmpleadoM.php';
 include '../../../Model/Catalogos/CatGeneroM/CatGeneroM.php';
 include '../../../Model/Catalogos/CatEstadoCivilM/CatEstadoCivilM.php';
+include '../../../Model/Catalogos/CatEstatusM/CatEstatusM.php';
 include '../../../Model/Hraes/CamposPersM/CamposPersM.php';
+include '../../../Model/Hraes/TelefonoM/TelefonoM.php';
 
 ///CONTROLLERS
 include '../../../Controllers/Hrae/GlobalC/ArrayC.php';
 include '../../../Controllers/Catalogos/CatGeneroC/CatGeneroC.php';
 include '../../../Controllers/Catalogos/CatEstadoCivilC/CatEstadoCivilC.php';
+include '../../../Controllers/Catalogos/CatEstatusC/CatEstatusC.php';

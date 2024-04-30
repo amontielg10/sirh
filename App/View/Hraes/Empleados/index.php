@@ -1,3 +1,4 @@
+
 <body>
     <?php include '../../nav-menu.php' ?>
     <div id="main-wrapper">
@@ -41,13 +42,10 @@
                 <table class="table table-striped" id="t-table" style="width:100%">
                 </table>
 
-                <?php include 'AgregarEditar.php' ?>
-                <?php include 'DatosEmpleado.php' ?>
-                <?php include 'CamposPersonalizados/AgregarEditar.php' ?>
             </div>
         </div>
     </div>
 
-    <?php include ('libreriasJS.php') ?>
+    <?php include ('librerias.php') ?>
     <?php include ('../../footer-librerias.php') ?>
 </body>

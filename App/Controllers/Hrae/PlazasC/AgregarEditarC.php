@@ -1,6 +1,5 @@
 <?php
-include '../../../../conexion.php';
-include '../../../Model/Hraes/PlazasM/PlazasM.php';
+include '../librerias.php';
 
 $model = new modelPlazasHraes();
 
