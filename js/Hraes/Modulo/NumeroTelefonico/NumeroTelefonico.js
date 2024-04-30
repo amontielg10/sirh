@@ -32,9 +32,7 @@ function agregarEditarTelefono(id_object){
 
             $('#id_cat_estatus').empty();
             $('#id_cat_estatus').html(estatus); 
-
             $("#movil").val(entity.movil);
-            $("#id_object").val(entity.id_object);
         }
     );
 
@@ -58,14 +56,14 @@ function agregarEditarByDbByTelefono() {
     },
         function (data, status) {
             if (data == 'edit'){
-                mensajeExito('Centro de trabajo modificado');
+                mensajeExito('Número telefonico modificado');
             } else if (data == 'add') {
-                mensajeExito('Centro de trabajo agregado');  
+                mensajeExito('Número telefonico agregado');  
             } else {
                 mensajeError(data);
             }
-            $("#agregar_editar_modal").modal("hide");
-            iniciarPlazas();
+            $("#agregar_editar_telefono").modal("hide");
+            iniciarNumeroTelefonico();
         }
     );
 }
