@@ -29,7 +29,7 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
                     </div>
                 </div>
                 <a type="button" href="../Empleados/index.php" class="btn btn-light" style="color:#235B4E"
-                    aria-haspopup="true" aria-expanded="false"><i class="	fas fa-arrow-alt-circle-left"></i></a>
+                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-arrow-alt-circle-left"></i></a>
             </div>
 
             <input type="hidden" id="id_tbl_empleados_hraes" value="<?php echo $id_tbl_empleados_hraes ?>" />
@@ -64,7 +64,11 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"
                         tabindex="0"><?php include 'CedulaProf/index.php' ?></div>
                     <div class="tab-pane fade" id="nav-clabe" role="tabpanel" aria-labelledby="nav-clabe" tabindex="0">
-                        <?php include 'FormaPago/index.php' ?></div>
+                        <?php include 'FormaPago/index.php' ?>
+                    </div>
+                    <div class="tab-pane fade" id="nav-clabe" role="tabpanel" aria-labelledby="nav-clabe" tabindex="0">
+                        <?php include 'FormaPago/index.php' ?>
+                    </div>
                 </div>
             </div>
 
