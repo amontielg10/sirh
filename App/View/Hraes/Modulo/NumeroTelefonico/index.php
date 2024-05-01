@@ -4,7 +4,10 @@
         <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar n&uacutemero telefonico</span>
     </button>
 </div>
-<br>
+<p></p>
+<input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscarTelefono" onkeyup="buscarTelefono();"
+    aria-label="Search">
+<p></p>
 <table class="table table-striped" id="modulo_telefono" style="width:100%">
 </table>
 

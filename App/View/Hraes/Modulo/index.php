@@ -28,10 +28,11 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
                         </div>
                     </div>
                 </div>
-                <a type="button" href="../Empleados/index.php" class="btn btn-light" style="color:#235B4E" aria-haspopup="true" aria-expanded="false"><i class="	fas fa-arrow-alt-circle-left"></i></a>
+                <a type="button" href="../Empleados/index.php" class="btn btn-light" style="color:#235B4E"
+                    aria-haspopup="true" aria-expanded="false"><i class="	fas fa-arrow-alt-circle-left"></i></a>
             </div>
 
-            <input type="hidden" id="id_tbl_empleados_hraes"  value="<?php echo $id_tbl_empleados_hraes ?>" />
+            <input type="hidden" id="id_tbl_empleados_hraes" value="<?php echo $id_tbl_empleados_hraes ?>" />
 
             <div class="card-body">
                 <p>Informaci&oacuten de empleado seleccionado</p>
@@ -39,26 +40,31 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
                             data-bs-target="#nav-empleado" type="button" role="tab" aria-controls="nav-home"
-                            aria-selected="true">M&aacutes datos</button>
+                            aria-selected="true"><i class="fas fa-list-alt"></i> M&aacutes datos</button>
                         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
-                            type="button" role="tab" aria-controls="nav-profile" aria-selected="false" onclick="iniciarNumeroTelefonico();">N&uacutem.
+                            type="button" role="tab" aria-controls="nav-profile" aria-selected="false"
+                            onclick="iniciarNumeroTelefonico();"><i class="fas fa-phone"></i> N&uacutem.
                             telefonico</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
-                            type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
-                        <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab"
-                            data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled"
-                            aria-selected="false" disabled>Disabled</button>
+                            type="button" role="tab" aria-controls="nav-contact" aria-selected="false"
+                            onclick="iniciarCedulaProf();"><i class="fas fa-book"></i> C&eacutedula prof.</button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-clabe"
+                            type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
+                            onclick="iniciarFormaPago();"><i class="fas fa-money-check"></i> Forma pago</button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-clabe"
+                            type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
+                            onclick="iniciarFormaPago();"><i class="fas fa-ambulance"></i> Contacto emergencia</button>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-empleado" role="tabpanel"
-                        aria-labelledby="nav-home-tab" tabindex="0"><?php  ?></div>
+                        aria-labelledby="nav-home-tab" tabindex="0"><?php ?></div>
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
                         tabindex="0"><?php include 'NumeroTelefonico/index.php' ?></div>
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"
-                        tabindex="0">...</div>
-                    <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab"
-                        tabindex="0">...</div>
+                        tabindex="0"><?php include 'CedulaProf/index.php' ?></div>
+                    <div class="tab-pane fade" id="nav-clabe" role="tabpanel" aria-labelledby="nav-clabe" tabindex="0">
+                        <?php include 'FormaPago/index.php' ?></div>
                 </div>
             </div>
 

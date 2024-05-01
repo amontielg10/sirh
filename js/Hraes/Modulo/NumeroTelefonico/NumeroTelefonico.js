@@ -95,3 +95,31 @@ function eliminarTelefono(id_object) {//ELIMINAR USUARIO
     }
     });
 }
+
+
+function buscarTelefono(){ //BUSQUEDA
+    let buscar = document.getElementById("buscarTelefono").value.trim();
+    buscar = buscar.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
+    buscarlenth = buscar.length;
+    
+    if (buscarlenth == 0){
+        iniciarNumeroTelefonico();
+    } else {
+        iniciarTablaTelefonoByBusqueda(buscar,id_tbl_empleados_hraes);
+    }
+}
+
+
+function iniciarTablaTelefonoByBusqueda(buscar, id_tbl_empleados_hraes) { ///INGRESA LA TABLA
+    $.ajax({
+        type: 'POST',
+        url: '../../../../App/View/Hraes/Modulo/NumeroTelefonico/tabla.php',
+        data: { 
+            buscar: buscar,
+            id_tbl_empleados_hraes: id_tbl_empleados_hraes,
+         },
+        success: function (data) {
+            $('#modulo_telefono').html(data);
+        }
+    });
+}
