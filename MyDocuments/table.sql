@@ -1,4 +1,23 @@
 
+-- --SCRIPT NEW
+DROP TABLE IF EXISTS ctrl_dependientes_economicos_hraes;
+CREATE TABLE IF NOT EXISTS ctrl_dependientes_economicos_hraes (
+	id_ctrl_dependientes_economicos_hraes SERIAL PRIMARY KEY,
+	curp character varying(20) NOT NULL,
+	nombre character varying(40) COLLATE pg_catalog."default",
+    apellido_materno character varying(40) COLLATE pg_catalog."default",
+    apellido_paterno character varying(40) COLLATE pg_catalog."default",
+    id_tbl_empleados_hraes integer,
+    id_cat_dependientes_economicos integer
+);
+	
+
+
+
+-----------------
+-----------------
+-----------------
+-----------------
 
 DROP TABLE IF EXISTS cat_carga_masiva;
 CREATE TABLE IF NOT EXISTS cat_carga_masiva(

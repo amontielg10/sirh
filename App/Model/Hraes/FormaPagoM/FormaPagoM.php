@@ -44,10 +44,10 @@ class ModelFormaPagoM
                                 cat_estatus.id_cat_estatus
                             WHERE ctrl_cuenta_clabe_hraes.id_tbl_empleados = $id_object
                             AND (
-                                ctrl_cuenta_clabe_hraes.clabe LIKE '%$busqueda%'
-                             OR cat_banco.nombre LIKE '%$busqueda%'
-                             OR cat_formato_pago.forma_pago LIKE  '%$busqueda%'
-                             OR cat_estatus.estatus LIKE '%$busqueda%'
+                                TRIM(UPPER(UNACCENT(ctrl_cuenta_clabe_hraes.clabe))) LIKE '%$busqueda%'
+                             OR TRIM(UPPER(UNACCENT(cat_banco.nombre))) LIKE '%$busqueda%'
+                             OR TRIM(UPPER(UNACCENT(cat_formato_pago.forma_pago))) LIKE  '%$busqueda%'
+                             OR TRIM(UPPER(UNACCENT(cat_estatus.estatus))) LIKE '%$busqueda%'
                             )
                             ORDER BY ctrl_cuenta_clabe_hraes.id_ctrl_cuenta_clabe_hraes DESC
                             LIMIT 5");

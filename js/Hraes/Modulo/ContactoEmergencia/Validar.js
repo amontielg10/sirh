@@ -1,0 +1,17 @@
+function validarEmergencia(){
+    let nombre = document.getElementById('nombre').value.trim();
+    let parentesco = document.getElementById('parentesco').value.trim();
+    let primer_apellido = document.getElementById('primer_apellido').value.trim();
+    let movil_emergencia = document.getElementById('movil_emergencia').value.trim();
+    let id_cat_estatus_emergencia = document.getElementById('id_cat_estatus_emergencia').value.trim();
+
+    if (validarData(nombre,'Nombre') &&
+        validarData(parentesco,'Parentesco') &&
+        validarData(primer_apellido,'Apellido paterno') &&
+        validarData(movil_emergencia,'Número telefónico') &&
+        validarData(id_cat_estatus_emergencia,'Estatus') 
+    ){
+        agregarEditarByDbByEmergencia();
+    }
+
+}

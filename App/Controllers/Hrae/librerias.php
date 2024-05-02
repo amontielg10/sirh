@@ -11,9 +11,12 @@ include '../../../Model/Catalogos/CatEstatusM/CatEstatusM.php';
 include '../../../Model/Hraes/CamposPersM/CamposPersM.php';
 include '../../../Model/Hraes/TelefonoM/TelefonoM.php';
 include '../../../Model/Hraes/CedulaM/CedulaM.php';
+include '../../../Model/Hraes/DependientesM/DependientesM.php';
+include '../../../Model/Hraes/ContactoEmergenciaM/ContactoEmergenciaM.php';
 include '../../../Model/Hraes/FormaPagoM/FormaPagoM.php';
 include '../../../Model/Catalogos/CatFormatoPagoM/CatFormatoPagoM.php';
 include '../../../Model/Catalogos/CatBancoM/CatBancoM.php';
+include '../../../Model/Catalogos/CatDependientesM/CatDependientesM.php';
 
 ///CONTROLLERS
 include '../../../Controllers/Hrae/GlobalC/ArrayC.php';
@@ -21,3 +24,4 @@ include '../../../Controllers/Catalogos/CatGeneroC/CatGeneroC.php';
 include '../../../Controllers/Catalogos/CatEstadoCivilC/CatEstadoCivilC.php';
 include '../../../Controllers/Catalogos/CatEstatusC/CatEstatusC.php';
 include '../../../Controllers/Catalogos/CatFormatoPagoC/CatFormatoPagoC.php';
+include '../../../Controllers/Catalogos/CatDependientesC/CatDependientesC.php';
