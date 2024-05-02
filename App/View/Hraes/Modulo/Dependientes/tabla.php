@@ -6,7 +6,7 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
 $modelDependientesM = new ModelDependientesM();
 $listado = $modelDependientesM ->listarById($id_tbl_empleados_hraes);
 if(isset($_POST['buscar'])){
-    $listado = $modelEmergenciaM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['buscar']);
+    $listado = $modelDependientesM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['buscar']);
 }
 
 $data =
@@ -29,8 +29,8 @@ if (pg_num_rows($listado) > 0) {
                             <div class="btn-group">
                                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i></button>
                             <div class="dropdown-menu">
-                                <button onclick="agregarEditarEmergencia(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar</button>
-                                <button onclick="eliminarEmergencia(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>   
+                                <button onclick="agregarEditarDependiente(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar</button>
+                                <button onclick="eliminarDependiente(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>   
                             </div>
                           </div>
                                 </td>

@@ -9,8 +9,8 @@
 -->
 </div>
 <p></p>
-<input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscarEmergencia"
-    onkeyup="buscarEmergencia();" aria-label="Search">
+<input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscarDependiente"
+    onkeyup="buscarDependiente();" aria-label="Search">
 <p></p>
 <table class="table table-striped" id="modulo_dependientes_economicos" style="width:100%">
 </table>

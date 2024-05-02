@@ -15,7 +15,6 @@ function iniciarTablaDependiente(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
     });
 }
 
-
 function agregarEditarDependiente(id_object){
     $("#id_object").val(id_object);
     let titulo = document.getElementById("titulo_dependiete");
@@ -30,7 +29,6 @@ function agregarEditarDependiente(id_object){
         id_object: id_object
     },
         function (data) {
-            console.log(data);
             var jsonData = JSON.parse(data);
             var entity = jsonData.response; 
             var dependiente = jsonData.dependiente; 
@@ -53,35 +51,38 @@ function salirAgregarEditarDependiente(){
     $("#agregar_editar_dependiente").modal("hide");
 }
 
-/*
-
-
-
-
-function agregarEditarByDbByCedula() {
-    let cedula_profesional = $("#cedula_profesional").val();
+function agregarEditarByDbByDependiente() {
+    let nombre = $("#nombre_d").val();
+    let curp = $("#curp_d").val();
+    let apellido_paterno = $("#apellido_paterno_d").val();
+    let apellido_materno = $("#apellido_materno_d").val();
+    let id_cat_dependientes_economicos = $("#id_cat_dependientes_economicos_d").val();
     let id_object = $("#id_object").val();
 
-    $.post("../../../../App/Controllers/Hrae/CedulaC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Hrae/DependientesC/AgregarEditarC.php", {
         id_object: id_object,
-        cedula_profesional: cedula_profesional,
-        id_tbl_empleados_hraes:id_tbl_empleados_hraes,
+        nombre: nombre,
+        curp:curp,
+        apellido_paterno:apellido_paterno,
+        apellido_materno:apellido_materno,
+        id_cat_dependientes_economicos:id_cat_dependientes_economicos,
+        id_tbl_empleados_hraes:id_tbl_empleados_hraes
     },
-        function (data, status) {
+        function (data) {
             if (data == 'edit'){
-                mensajeExito('Cédula profesional modificada');
+                mensajeExito('Dependiente económico modificado');
             } else if (data == 'add') {
-                mensajeExito('Cédula profesional agregada');  
+                mensajeExito('Dependiente económico modificado');  
             } else {
                 mensajeError(data);
             }
-            $("#agregar_editar_cedula").modal("hide");
-            iniciarCedulaProf();
+            $("#agregar_editar_dependiente").modal("hide");
+            iniciarDependiente();
         }
     );
 }
 
-function eliminarCedula(id_object) {//ELIMINAR USUARIO
+function eliminarDependiente(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -93,46 +94,46 @@ function eliminarCedula(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/CedulaC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Hrae/DependientesC/EliminarC.php", {
                 id_object: id_object
             },
             function (data, status) {
                 if (data == 'delete'){
-                    mensajeExito('Cédula profesional eliminada')
+                    mensajeExito('Dependiente económico eliminado')
                 } else {
                     mensajeError(data);
                 }
-                iniciarCedulaProf();
+                iniciarDependiente();
             }
         );
     }
     });
 }
 
-function buscarCedula(){ //BUSQUEDA
-    let buscar = document.getElementById("buscarCedulaText").value.trim();
+
+function buscarDependiente(){ //BUSQUEDA
+    let buscar = document.getElementById("buscarDependiente").value.trim();
     buscar = buscar.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
     buscarlenth = buscar.length;
     
     if (buscarlenth == 0){
-        iniciarCedulaProf();
+        iniciarDependiente();
     } else {
-        iniciarTablaCedulaByBusqueda(buscar,id_tbl_empleados_hraes);
+        iniciarTablaCedulaByDependiente(buscar,id_tbl_empleados_hraes);
     }
 }
 
 
-function iniciarTablaCedulaByBusqueda(buscar, id_tbl_empleados_hraes) { ///INGRESA LA TABLA
+function iniciarTablaCedulaByDependiente(buscar, id_tbl_empleados_hraes) { ///INGRESA LA TABLA
     $.ajax({
         type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/CedulaProf/tabla.php',
+        url: '../../../../App/View/Hraes/Modulo/Dependientes/tabla.php',
         data: { 
             buscar: buscar,
             id_tbl_empleados_hraes: id_tbl_empleados_hraes,
          },
         success: function (data) {
-            $('#tabla_cedula').html(data);
+            $('#modulo_dependientes_economicos').html(data);
         }
     });
 }
-*/

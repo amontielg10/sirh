@@ -1,14 +1,14 @@
 <?php
 include '../librerias.php';
 
-$modelEmergenciaM = new ModelEmergenciaM();
+$modelDependientesM = new ModelDependientesM();
 
 $condicion = [
-    'id_ctrl_contacto_emergencia_hraes' => $_POST['id_object']
+    'id_ctrl_dependientes_economicos_hraes' => $_POST['id_object']
 ];
 
 if (isset($_POST['id_object'])){
-    if ($modelEmergenciaM-> eliminarByArray($connectionDBsPro, $condicion)){
+    if ($modelDependientesM-> eliminarByArray($connectionDBsPro, $condicion)){
         echo 'delete';
     }
 } 

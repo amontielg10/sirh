@@ -15,7 +15,7 @@
                 <div class="form-row">
 
                     <div class="form-group col-md-6">
-                        <label>Nombre</label><label style="color:red">*</label>
+                        <label>Nombre (s)</label><label style="color:red">*</label>
                         <input type="text" class="form-control" id="nombre_d" placeholder="Nombre"
                             maxlength="20">
                     </div>
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label>Apellido materno</label><label style="color:red">*</label>
+                        <label>Apellido materno</label><label style="color:red"></label>
                         <input type="text" class="form-control" id="apellido_materno_d" placeholder="Apellido materno"
                             maxlength="20">
                     </div>

@@ -1,29 +1,28 @@
 <?php
 include '../librerias.php';
 
-$modelEmergenciaM = new modelEmergenciaM();
+$modelDependientesM = new ModelDependientesM();
 
 $condicion = [
-    'id_ctrl_contacto_emergencia_hraes' => $_POST['id_object']
+    'id_ctrl_dependientes_economicos_hraes' => $_POST['id_object']
 ];
 
 $datos = [
-    'movil' => $_POST['movil'],
     'nombre' => $_POST['nombre'],
-    'primer_apellido' => $_POST['primer_apellido'],
-    'segundo_apellido' => $_POST['segundo_apellido'],
-    'parentesco' => $_POST['parentesco'],
-    'id_cat_estatus' => $_POST['id_cat_estatus_emergencia'],
-    'id_tbl_empleados' => $_POST['id_tbl_empleados_hraes'],
+    'curp' => $_POST['curp'],
+    'apellido_paterno' => $_POST['apellido_paterno'],
+    'apellido_materno' => $_POST['apellido_materno'],
+    'id_cat_dependientes_economicos' => $_POST['id_cat_dependientes_economicos'],
+    'id_tbl_empleados_hraes' => $_POST['id_tbl_empleados_hraes']
 ];
 
 if ($_POST['id_object'] != null) { //Modificar
-    if ($modelEmergenciaM ->editarByArray($connectionDBsPro, $datos, $condicion)) {
+    if ($modelDependientesM ->editarByArray($connectionDBsPro, $datos, $condicion)) {
         echo 'edit';
     }
 
 } else { //Agregar
-    if ($modelEmergenciaM ->agregarByArray($connectionDBsPro, $datos)) {
+    if ($modelDependientesM ->agregarByArray($connectionDBsPro, $datos)) {
         echo 'add';
     }
 }

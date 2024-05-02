@@ -1,5 +1,17 @@
 
 -- --SCRIPT NEW
+
+DROP TABLE IF EXISTS ctrl_juguetes_hraes;
+CREATE TABLE IF NOT EXISTS public.ctrl_juguetes_hraes
+(
+    id_ctrl_juguetes_hraes SERIAL PRIMARY KEY,
+    id_cat_fecha_juguetes integer,
+    id_cat_estatus_juguetes integer,
+    id_tbl_empleados_hraes integer,
+    id_ctrl_dependientes_economicos_hraes integer,
+    id_ctrl_carga_masiva integer
+);
+
 DROP TABLE IF EXISTS ctrl_dependientes_economicos_hraes;
 CREATE TABLE IF NOT EXISTS ctrl_dependientes_economicos_hraes (
 	id_ctrl_dependientes_economicos_hraes SERIAL PRIMARY KEY,
