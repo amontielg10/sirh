@@ -45,7 +45,6 @@ function agregarEditarJuguete(id_object){
             $('#id_cat_estatus_juguetes_j').empty();
             $('#id_cat_estatus_juguetes_j').html(estatus); 
             $('#curp_j').val(value.curp);
-
         }
     );
 

@@ -2,7 +2,7 @@
 
 class ModelJuguetesM
 {
-    function listarById($id_object)
+    public function listarById($id_object)
     {
         $listado = pg_query("SELECT ctrl_juguetes_hraes.id_ctrl_juguetes_hraes,
                                     CONCAT(ctrl_dependientes_economicos_hraes.nombre, ' ',
@@ -26,7 +26,7 @@ class ModelJuguetesM
         return $listado;
     }
 
-    function listarByNull()
+    public function listarByNull()
     {
         return $raw = [
             'id_ctrl_juguetes_hraes' => null,
@@ -37,7 +37,7 @@ class ModelJuguetesM
         ];
     }
 
-    function listarEditById($id_object)
+    public function listarEditById($id_object)
     {
         $listado = pg_query("SELECT id_ctrl_juguetes_hraes,id_cat_fecha_juguetes,
                                     id_cat_estatus_juguetes,id_tbl_empleados_hraes,
@@ -47,25 +47,25 @@ class ModelJuguetesM
         return $listado;
     }
 
-    function editarByArray($conexion, $datos, $condicion)
+    public function editarByArray($conexion, $datos, $condicion)
     {
         $pg_update = pg_update($conexion, 'ctrl_juguetes_hraes', $datos, $condicion);
         return $pg_update;
     }
 
-    function agregarByArray($conexion, $datos)
+    public function agregarByArray($conexion, $datos)
     {
         $pg_add = pg_insert($conexion, 'ctrl_juguetes_hraes', $datos);
         return $pg_add;
     }
 
-    function eliminarByArray($conexion, $condicion)
+    public function eliminarByArray($conexion, $condicion)
     {
         $pgs_delete = pg_delete($conexion, 'ctrl_juguetes_hraes', $condicion);
         return $pgs_delete;
     }
 
-    function listarByBusqueda($id_object, $busqueda)
+    public function listarByBusqueda($id_object, $busqueda)
     {
         $listado = pg_query("SELECT ctrl_juguetes_hraes.id_ctrl_juguetes_hraes,
                                     CONCAT(ctrl_dependientes_economicos_hraes.nombre, ' ',
@@ -97,6 +97,31 @@ class ModelJuguetesM
                             )
                             ORDER BY ctrl_juguetes_hraes.id_ctrl_juguetes_hraes DESC
                             LIMIT 5;");
+        return $listado;
+    }
+
+    public function validarMenorAdd($curp,$id_cat_fecha)
+    {
+        $listado = pg_query("SELECT COUNT (ctrl_juguetes_hraes.id_ctrl_juguetes_hraes)
+                                    FROM ctrl_juguetes_hraes
+                                    INNER JOIN ctrl_dependientes_economicos_hraes
+                                    ON ctrl_juguetes_hraes.id_ctrl_dependientes_economicos_hraes =
+                                        ctrl_dependientes_economicos_hraes.id_ctrl_dependientes_economicos_hraes
+                                    WHERE ctrl_dependientes_economicos_hraes.curp = '$curp'
+                                    AND ctrl_juguetes_hraes.id_cat_fecha_juguetes = $id_cat_fecha;");
+        return $listado;
+    }
+
+    public function validarMenorEdit($curp,$id_cat_fecha,$id_object)
+    {
+        $listado = pg_query("SELECT COUNT (ctrl_juguetes_hraes.id_ctrl_juguetes_hraes)
+                            FROM ctrl_juguetes_hraes
+                            INNER JOIN ctrl_dependientes_economicos_hraes
+                            ON ctrl_juguetes_hraes.id_ctrl_dependientes_economicos_hraes =
+                                ctrl_dependientes_economicos_hraes.id_ctrl_dependientes_economicos_hraes
+                            WHERE ctrl_dependientes_economicos_hraes.curp = '$curp'
+                            AND ctrl_juguetes_hraes.id_cat_fecha_juguetes = $id_cat_fecha
+                            AND ctrl_juguetes_hraes.id_ctrl_juguetes_hraes <> $id_object;");
         return $listado;
     }
 }

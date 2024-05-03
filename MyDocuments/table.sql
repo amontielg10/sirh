@@ -1,5 +1,14 @@
 
 -- --SCRIPT NEW
+DROP TABLE IF EXISTS bitacora_hraes;
+CREATE TABLE IF NOT EXISTS bitacora_hraes(
+	id_bitacora_hraes SERIAL PRIMARY KEY,
+	nombre_tabla VARCHAR(60) NOT NULL,
+	accion VARCHAR(30) NOT NULL,
+	valores TEXT NOT NULL,
+	fecha TIMESTAMP NOT NULL,
+	id_users INTEGER NOT NULL
+)
 
 DROP TABLE IF EXISTS ctrl_juguetes_hraes;
 CREATE TABLE IF NOT EXISTS public.ctrl_juguetes_hraes

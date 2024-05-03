@@ -1,23 +1,23 @@
-function validarJuguete(){
-    agregarEditarByDbByJuguete();
-    /*
-    let nombre_d = document.getElementById('nombre_d').value;
-    let curp_d = document.getElementById('curp_d').value;
-    let apellido_paterno_d = document.getElementById('apellido_paterno_d').value;
-    let id_cat_dependientes_economicos_d = document.getElementById('id_cat_dependientes_economicos_d').value;
-    
-    if (validarData(nombre_d,'Nombre') &&
-        validarData(curp_d,'Curp') &&
-        validarData(apellido_paterno_d,'Apellido paterno') &&
-        validarData(id_cat_dependientes_economicos_d,'Tipo dependiente') &&
-        campoInvalido(validarCurp(curp_d),'Curp')
+var id_ctrl_dependientes_economicos_j = document.getElementById('id_ctrl_dependientes_economicos_j');
+var id_cat_fecha_juguetes_j = document.getElementById('id_cat_fecha_juguetes_j');
+var id_cat_estatus_juguetes_j = document.getElementById('id_cat_estatus_juguetes_j');
+var id_object = document.getElementById('id_object');
+var curp_j = document.getElementById('curp_j');
+
+function validarJuguete(){/// LA FUNCION
+    if (validarData(id_ctrl_dependientes_economicos_j.value,'Dependiente económico') &&
+        validarData(id_cat_fecha_juguetes_j.value,'Fecha') &&
+        validarData(id_cat_estatus_juguetes_j.value,'Estatus')
     ){
-        agregarEditarByDbByDependiente();
-    }   
-    */ 
+        if (validarFechaNacimiento(curp_j.value,obtenerValorSelect(id_cat_fecha_juguetes_j))){
+            existeMenor(id_object.value,curp_j.value,id_cat_fecha_juguetes_j.value);
+        } else{
+            mensajeError('El usuario ingresado no cumple con la edad solicitada');
+        }
+    }
 }
 
-
+///FUNCION PARA CAMBIAR EL ESTADO DE CURP
 function handleChange(event){
     let selectedOption = event.target.options[event.target.selectedIndex];
     let id_ctrl_dependientes_economicos_hraes = selectedOption.value;
@@ -32,3 +32,22 @@ function handleChange(event){
         }
     );
 }
+
+///LA FUNCION PERMITE VALIDAR QUE LA CURP NO EXISTA EN EL SISTEMA DE JUEGOS
+function existeMenor(id_object,curp_j,id_cat_fecha_juguetes_j){
+    $.post("../../../../App/Controllers/Hrae/JuguetesC/ValidarMenorC.php", {
+        id_object: id_object,
+        curp_j:curp_j,
+        id_cat_fecha_juguetes_j:id_cat_fecha_juguetes_j
+    },
+        function (data) {
+            if (data != 'true'){
+                agregarEditarByDbByJuguete(); ///CANDIDATO VALIDO -> GUARDAR INFO
+            } else {
+                mensajeError('Ya se encuentra un registro con la información proporcionada');
+            }
+        }
+    );
+}
+
+

@@ -1,6 +1,8 @@
 
 <!-- LIBRERIAS JS -->
 <script src="../../../../js/Global/FormaPago/Validar.js"></script>
+<script src="../../../../js/Global/Curp/ValidarCurpMenor.js"></script>
+<script src="../../../../js/Global/Funciones/Select.js"></script>
 
 <script src="../../../../js/Hraes/Modulo/NumeroTelefonico/NumeroTelefonico.js"></script>
 <script src="../../../../js/Hraes/Modulo/NumeroTelefonico/validarTelefono.js"></script>
