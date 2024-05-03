@@ -61,7 +61,7 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
                             Dependientes econ&oacutemicos</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
                             data-bs-target="#nav-juguetes" type="button" role="tab" aria-controls="nav-clabe"
-                            aria-selected="false" onclick="iniciarDependiente();"><i class="fa fa-paper-plane"></i> 
+                            aria-selected="false" onclick="iniciarJueguetes();"><i class="fa fa-paper-plane"></i> 
                             Juguetes</button>
                     </div>
                 </nav>
@@ -85,7 +85,7 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
                     </div>
                     <div class="tab-pane fade" id="nav-juguetes" role="tabpanel" aria-labelledby="nav-dependiente"
                         tabindex="0">
-                        <?php include 'Dependientes/index.php' ?>
+                        <?php include 'Juguetes/index.php' ?>
                     </div>
                 </div>
             </div>
