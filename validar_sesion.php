@@ -7,5 +7,5 @@ if(!isset($_SESSION))
 if (isset($_SESSION['id_user']) && isset($_SESSION['nombre']) && isset($_SESSION['nick']) && isset($_SESSION['status']) && isset($_SESSION['id_rol'])){
 
 }else {
-    header('Location: authentication-login.php');
+    header('Location: ../../authentication-login.php');
 }

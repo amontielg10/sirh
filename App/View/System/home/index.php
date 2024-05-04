@@ -3,7 +3,7 @@
 <html lang="es">
 
 <body>
-    <?php include ('../nav-menu.php') ?>
+<?php include '../../nav-menu.php' ?>
     <div id="main-wrapper">
         <div class="page-wrapper">
             <div class="container-fluid">
@@ -23,11 +23,11 @@
                     </div>
                 </div>
             </div>
-            <?php include ('../footer.php') ?>
+            <?php include ('../../footer.php') ?>
         </div>
     </div>
 
-    <?php include ('../footer-librerias.php') ?>
+    <?php include ('../../footer-librerias.php') ?>
 
 </body>
 

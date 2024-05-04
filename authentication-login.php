@@ -82,7 +82,7 @@
             };
             $.post('inicio_sesion.php', data, function(response) {
                 if (response == 'acceso') {
-                    window.location.href = 'index.php';
+                    window.location.href = 'App/View/System/home/index.php';
                 } else {
                     ventanaMensaje("Usuario o contraseña incorrectos");
                 }

@@ -1,5 +1,5 @@
-<?php include '../../../../conexion.php';?>
-
+<?php include '../../../../conexion.php'; ?>
+<?php include 'validar_sesion.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -119,10 +119,11 @@
                     <b class="logo-icon">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon --><br>
-                        <img src="../../../../assets/logo/Iimsslogo1.png" alt="homepage" class="dark-logo" style="width: 30%;" />
-                        
+                        <img src="../../../../assets/logo/Iimsslogo1.png" alt="homepage" class="dark-logo"
+                            style="width: 30%;" />
+
                         <!-- Light Logo icon -->
-                        
+
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
@@ -210,103 +211,92 @@
                         </div>
                     </li>
                     <li class="sidebar-item">
-                        <a href="../../../../index.php" class="sidebar-link" href="javascript:void(0)" aria-expanded="false">
-                        <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                        <a href="../../System/home/index.php" class="sidebar-link" href="javascript:void(0)"
+                            aria-expanded="false">
+                            <i class="far fa-folder" style="font-size: 1.2rem;"></i>
                             <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Inicio </span>
                         </a>
                     </li>
 
+                    <!-- CENTRAL INICIO -->
                     <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                aria-expanded="false">
-                                <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Central</span>
-                            </a>
-                            <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item">
-                                    <a href="view/DatosFiscales/Listar.php" class="sidebar-link">
-                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                        <span class="hide-menu"
-                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Datos
-                                            F&iacutescales</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="view/CentroTrabajo/Listar.php" class="sidebar-link">
-                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        <i class="far fa-folder" style="font-size: 1.2rem;"></i>
-                                        <span class="hide-menu"
-                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Centro de
-                                            Trabajo</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="view/Tabuladores/Listar.php" class="sidebar-link">
-                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        <i class="far fa-folder" style="font-size: 1.2rem;"></i>
-                                        <span class="hide-menu"
-                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Tabuladores</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="view/CargaMasiva/Listar.php" class="sidebar-link">
-                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                        <span class="hide-menu"
-                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Carga masiva</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="App/View/reclutamiento/index.php" class="sidebar-link">
-                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                        <span class="hide-menu"
-                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Reclutamiento</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <!-- HRAES INICIO -->
-                        <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
-                                aria-expanded="false">
-                                <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;HRAES</span>
-                            </a>
-                            <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item">
-                                    <a href="../../Hraes/CentroTrabajo/index.php" class="sidebar-link">
-                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                        <span class="hide-menu"
-                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Centro de trabajo</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="../../Hraes/Plazas/index.php" class="sidebar-link">
-                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        <i class="far fa-folder" style="font-size: 1.2rem;"></i>
-                                        <span class="hide-menu"
-                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Plazas</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="../../Hraes/Empleados/index.php" class="sidebar-link">
-                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        <i class="far fa-folder" style="font-size: 1.2rem;"></i>
-                                        <span class="hide-menu"
-                                            style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Empleado</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                         <!-- HRAES FIN -->
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
                             aria-expanded="false">
+                            <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;CENTRAL</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                    <span class="hide-menu"
+                                        style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Centro de
+                                        trabajo</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                    <span class="hide-menu"
+                                        style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Plazas</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                    <span class="hide-menu"
+                                        style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Empleado</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- CENTRAL FIN -->
+
+                    <!-- HRAES INICIO -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                            aria-expanded="false">
+                            <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;HRAES</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item">
+                                <a href="../../Hraes/CentroTrabajo/index.php" class="sidebar-link">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                    <span class="hide-menu"
+                                        style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Centro de
+                                        trabajo</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="../../Hraes/Plazas/index.php" class="sidebar-link">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                    <span class="hide-menu"
+                                        style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Plazas</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="../../Hraes/Empleados/index.php" class="sidebar-link">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                    <span class="hide-menu"
+                                        style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Empleado</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- HRAES FIN -->
+
+
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" data-toggle="modal"
+                            data-target="#exampleModalCenter" aria-expanded="false">
                             <i class="fa fa-caret-right" style="font-size: 1.2rem;"></i>
                             <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Salir</span>
                         </a>
@@ -316,11 +306,36 @@
             <!-- End Sidebar navigation -->
         </div>
         <!-- End Sidebar scroll-->
+
+
+
+
     </aside>
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
         integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
         crossorigin="anonymous"></script>
     </body>
 
+    <!-- MODAL SALIR-->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle">Confirmar cierre de ses&oacuten</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <a href="../../salir.php" style="color:  #235B4E;" class="btn btn-light"><i class=""></i>
+                        <span class="hide-menu" style="font-weight: bold;">&nbsp;Cerrar sesi&oacuten</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL SALIR-->
 
 </html>
