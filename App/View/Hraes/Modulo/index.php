@@ -14,7 +14,7 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
 
                         <div class="d-flex align-items-center">
                         </div>
-                    </div>
+                    </div> 
                     <div class="col-7 align-self-center">
                         <div class="d-flex no-block justify-content-end align-items-center">
                             <nav aria-label="breadcrumb">
