@@ -1,6 +1,12 @@
 <?php include '../../../../conexion.php'; ?>
 <?php include 'validar_sesion.php'; ?>
 
+<?php
+$nick = $_SESSION['nick'];
+$nombre = $_SESSION['nombre'];
+$id_rol = $_SESSION['id_rol'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -205,7 +211,7 @@
                             </div><br><br>
                             <div class="user-content hide-menu m-t-10">
                                 <h5 class="m-b-10 user-name font-medium" style="color: #cb9f52;">
-                                    Administrador
+                                    <?php echo $nick;?>
                                 </h5>
                             </div>
                         </div>
@@ -218,7 +224,38 @@
                         </a>
                     </li>
 
+                    <!-- ADMIN INICIO -->
+                    <?php if ($id_rol == 1) { ?>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                            aria-expanded="false">
+                            <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;ADMINISTRACI&OacuteN</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item">
+                                <a href="../../Admin/Usuarios/index.php" class="sidebar-link">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <i class="far fa-folder" style="font-size: 1.1rem;"></i>
+                                    <span class="hide-menu"
+                                        style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Usuarios</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="../../Admin/Rol/index.php" class="sidebar-link">
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                    <span class="hide-menu"
+                                        style="font-weight: bold; font-size:0.8rem;">&nbsp;&nbsp;Roles</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <?php } ?>
+                    <!-- ADMIN FIN -->
+
                     <!-- CENTRAL INICIO -->
+                    <?php if ($id_rol == 1 || $id_rol == 2) { ?>
                     <li class="sidebar-item">
                         <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
                             aria-expanded="false">
@@ -253,9 +290,11 @@
                             </li>
                         </ul>
                     </li>
+                    <?php } ?>
                     <!-- CENTRAL FIN -->
 
                     <!-- HRAES INICIO -->
+                    <?php if ($id_rol == 1 || $id_rol == 3) { ?>
                     <li class="sidebar-item">
                         <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
                             aria-expanded="false">
@@ -290,6 +329,7 @@
                             </li>
                         </ul>
                     </li>
+                    <?php } ?>
                     <!-- HRAES FIN -->
 
 

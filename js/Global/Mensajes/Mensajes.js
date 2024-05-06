@@ -5,4 +5,4 @@ function campoInvalido(data, text){
         bool = false;
     } 
     return bool;
-  }
+}

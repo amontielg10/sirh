@@ -64,8 +64,8 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
                             aria-selected="false" onclick="iniciarJueguetes();"><i class="fa fa-paper-plane"></i>
                             Juguetes</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
-                            data-bs-target="#nav-juguetes" type="button" role="tab" aria-controls="nav-clabe"
-                            aria-selected="false" onclick="iniciarJueguetes();"><i class="fa fa-hourglass"></i>
+                            data-bs-target="#nav-retardo" type="button" role="tab" aria-controls="nav-clabe"
+                            aria-selected="false" onclick="iniciarRetardo();"><i class="fa fa-hourglass"></i>
                             Retardos</button>
                     </div>
                 </nav>
@@ -90,6 +90,10 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
                     <div class="tab-pane fade" id="nav-juguetes" role="tabpanel" aria-labelledby="nav-dependiente"
                         tabindex="0">
                         <?php include 'Juguetes/index.php' ?>
+                    </div>
+                    <div class="tab-pane fade" id="nav-retardo" role="tabpanel" aria-labelledby="nav-dependiente"
+                        tabindex="0">
+                        <?php include 'Retardo/index.php' ?>
                     </div>
                 </div>
             </div>

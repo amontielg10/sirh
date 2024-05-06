@@ -1,5 +1,17 @@
 
 -- --SCRIPT NEW
+
+DROP TABLE IF EXISTS ctrl_retardo_hraes;
+CREATE TABLE IF NOT EXISTS ctrl_retardo_hraes(
+	id_ctrl_retardo_hraes SERIAL PRIMARY KEY,
+	fecha DATE,
+	hora_entrada INTEGER,
+	minuto_entrada INTEGER,
+	hora_salida INTEGER,
+	minuto_salida INTEGER,
+	id_tbl_empleados_hraes INTEGER
+);
+
 DROP TABLE IF EXISTS bitacora_hraes;
 CREATE TABLE IF NOT EXISTS bitacora_hraes(
 	id_bitacora_hraes SERIAL PRIMARY KEY,

@@ -10,7 +10,7 @@
                 <div class="row ">
                     <div class="container">
                         <div class="col-lg-12 col-md-10 col-sm-12 text-left"><br><br><br>
-                            <h1 style="font-size: 50px; font-family: arial;">Hola Administrador
+                            <h1 style="font-size: 50px; font-family: arial;">Hola <?php echo $nombre?>
                             </h1>
                             <h2>
                                 <p>Bienvenido al sistema</p>

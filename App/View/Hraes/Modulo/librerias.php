@@ -21,3 +21,6 @@
 
 <script src="../../../../js/Hraes/Modulo/Juguetes/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Juguetes/Validar.js"></script>
+
+<script src="../../../../js/Hraes/Modulo/Retardo/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Retardo/Validar.js"></script>

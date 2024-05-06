@@ -21,6 +21,7 @@ include '../../../Model/Hraes/Catalogos/CatDependientesM/CatDependientesM.php';
 include '../../../Model/Hraes/JuguetesM/JuguetesM.php';
 include '../../../Model/Catalogos/CatFechaJuguetesM/CatFechaJuguetesM.php';
 include '../../../Model/Catalogos/CatEstatusJuguetesM/CatEstatusJuguetesM.php';
+include '../../../Model/Hraes/RetardoM/RetardoM.php';
 
 ///CONTROLLERS
 include '../../../Controllers/Hrae/GlobalC/ArrayC.php';
