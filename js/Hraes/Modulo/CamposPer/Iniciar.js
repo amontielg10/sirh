@@ -1,3 +1,9 @@
+var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
+
+function iniciarCampos(){
+    camposPersonDetalles(id_tbl_empleados_hraes);
+}
+
 function camposPersonDetalles(id_object){
     $.post("../../../../App/Controllers/Hrae/CamposPerC/DetallesC.php", {
         id_object: id_object
@@ -6,7 +12,8 @@ function camposPersonDetalles(id_object){
             var jsonData = JSON.parse(data);
             var entity = jsonData.response; 
 
-            $("#id_tbl_empleados_hraes").val(id_object);
+            
+            //$("#id_tbl_empleados_hraes").val(id_object);
             $("#id_ctrl_campos_pers_hraes").val(entity.id_ctrl_campos_pers_hraes);
             
             $("#porcentaje_ahorro_s").val(entity.porcentaje_ahorro_s);
@@ -30,11 +37,11 @@ function camposPersonDetalles(id_object){
             $("#licencia_manejo").val(entity.licencia_manejo);
         }
     );
-    $("#agregar_editar_campos_personalizados").modal("show");
+    //$("#agregar_editar_campos_personalizados").modal("show");
 }
 
 function agregarEditarByDbCamposPersonalizados() {
-    var id_tbl_empleados_hraes = $("#id_tbl_empleados_hraes").val();
+    //var id_tbl_empleados_hraes = $("#id_tbl_empleados_hraes").val();
     var id_ctrl_campos_pers_hraes = $("#id_ctrl_campos_pers_hraes").val();
 
     var porcentaje_ahorro_s = $("#porcentaje_ahorro_s").val();
@@ -82,6 +89,7 @@ function agregarEditarByDbCamposPersonalizados() {
 
     },
         function (data) {
+            console.log(data);
             if (data == 'edit'){
                 mensajeExito('Información modificada con éxito');
             } else if (data == 'add') {
@@ -89,8 +97,8 @@ function agregarEditarByDbCamposPersonalizados() {
             } else {
                 mensajeError(data);
             }
-            $("#agregar_editar_campos_personalizados").modal("hide");
-            iniciarTabla();
+            //$("#agregar_editar_campos_personalizados").modal("hide");
+            iniciarCampos();
         }
     );
 }

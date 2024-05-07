@@ -9,7 +9,7 @@
 -->
 </div>
 <p></p>
-<input class="form-control mr-sm-2" type="date" placeholder="Buscar..." id="buscarDependiente"
+<input class="form-control mr-sm-2" type="date" placeholder="Buscar..." id="campoFecha"
     onkeyup="buscarDependiente();" aria-label="Search">
 <p></p>
 <table class="table table-striped" id="tabla_retardo" style="width:100%">

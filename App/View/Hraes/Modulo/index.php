@@ -2,6 +2,32 @@
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
 ?>
 
+<head>
+    <style>
+        --#{$prefix}accordion-color: #{$accordion-color};
+--#{$prefix}accordion-bg: #{$accordion-bg};
+--#{$prefix}accordion-transition: #{$accordion-transition};
+--#{$prefix}accordion-border-color: #{$accordion-border-color};
+--#{$prefix}accordion-border-width: #{$accordion-border-width};
+--#{$prefix}accordion-border-radius: #{$accordion-border-radius};
+--#{$prefix}accordion-inner-border-radius: #{$accordion-inner-border-radius};
+--#{$prefix}accordion-btn-padding-x: #{$accordion-button-padding-x};
+--#{$prefix}accordion-btn-padding-y: #{$accordion-button-padding-y};
+--#{$prefix}accordion-btn-color: #{$accordion-button-color};
+--#{$prefix}accordion-btn-bg: #{$accordion-button-bg};
+--#{$prefix}accordion-btn-icon: #{escape-svg($accordion-button-icon)};
+--#{$prefix}accordion-btn-icon-width: #{$accordion-icon-width};
+--#{$prefix}accordion-btn-icon-transform: #{$accordion-icon-transform};
+--#{$prefix}accordion-btn-icon-transition: #{$accordion-icon-transition};
+--#{$prefix}accordion-btn-active-icon: #{escape-svg($accordion-button-active-icon)};
+--#{$prefix}accordion-btn-focus-box-shadow: #{$accordion-button-focus-box-shadow};
+--#{$prefix}accordion-body-padding-x: #{$accordion-body-padding-x};
+--#{$prefix}accordion-body-padding-y: #{$accordion-body-padding-y};
+--#{$prefix}accordion-active-color: #{$accordion-button-active-color};
+--#{$prefix}accordion-active-bg: #{$accordion-button-active-bg};
+    </style>
+</head>
+
 <body>
     <?php include '../../nav-menu.php' ?>
     <div id="main-wrapper">
@@ -14,7 +40,7 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
 
                         <div class="d-flex align-items-center">
                         </div>
-                    </div> 
+                    </div>
                     <div class="col-7 align-self-center">
                         <div class="d-flex no-block justify-content-end align-items-center">
                             <nav aria-label="breadcrumb">
@@ -63,10 +89,18 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
                             data-bs-target="#nav-juguetes" type="button" role="tab" aria-controls="nav-clabe"
                             aria-selected="false" onclick="iniciarJueguetes();"><i class="fa fa-paper-plane"></i>
                             Juguetes</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
-                            data-bs-target="#nav-retardo" type="button" role="tab" aria-controls="nav-clabe"
-                            aria-selected="false" onclick="iniciarRetardo();"><i class="fa fa-hourglass"></i>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-retardo"
+                            type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
+                            onclick="iniciarRetardo();"><i class="fa fa-hourglass"></i>
                             Retardos</button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-campos"
+                            type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
+                            onclick="iniciarCampos();"><i class="fa fa-cubes"></i>
+                            Campos personalizados</button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-domicilio" type="button" role="tab" aria-controls="nav-clabe"
+                            aria-selected="false"><i class="fa fa-home"></i>
+                            Domicilio</button>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -94,6 +128,14 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
                     <div class="tab-pane fade" id="nav-retardo" role="tabpanel" aria-labelledby="nav-dependiente"
                         tabindex="0">
                         <?php include 'Retardo/index.php' ?>
+                    </div>
+                    <div class="tab-pane fade" id="nav-campos" role="tabpanel" aria-labelledby="nav-dependiente"
+                        tabindex="0">
+                        <?php include 'CamposPer/index.php' ?>
+                    </div>
+                    <div class="tab-pane fade" id="nav-domicilio" role="tabpanel" aria-labelledby="nav-domicilio"
+                        tabindex="0">
+                        <?php include 'Domicilio/index.php' ?>
                     </div>
                 </div>
             </div>

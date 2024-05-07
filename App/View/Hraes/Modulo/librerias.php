@@ -24,3 +24,6 @@
 
 <script src="../../../../js/Hraes/Modulo/Retardo/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Retardo/Validar.js"></script>
+
+<script src="../../../../js/Hraes/Modulo/CamposPer/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/CamposPer/Validar.js"></script>

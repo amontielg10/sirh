@@ -6,7 +6,7 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
 $modelRetardoM = new ModelRetardoM();
 $listado = $modelRetardoM ->listarById($id_tbl_empleados_hraes);
 if(isset($_POST['buscar'])){
-    //$listado = $modelDependientesM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['buscar']);
+    $listado = $modelRetardoM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['buscar']);
 }
 
 $data =
@@ -30,7 +30,7 @@ if (pg_num_rows($listado) > 0) {
                                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i></button>
                             <div class="dropdown-menu">
                                 <button onclick="agregarEditarRetardo(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar</button>
-                                <button onclick="eliminarDependiente(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>   
+                                <button onclick="eliminarRetardo(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>   
                             </div>
                           </div>
                                 </td>

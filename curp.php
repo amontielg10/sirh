@@ -1,24 +1,25 @@
-<?php
-// Definir un array asociativo
-$array = [
-    'nombre' => 'Juan', 
-    'edad' => 30, 
-    'ciudad' => 'Barcelona'
-];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<input type="time" id="campoTiempo">
+<button onclick="verificarCampo()">Verificar</button>
+</body>
+</html>
 
-$array1 = [
-    '1' => 'Juan', 
-    '2' => 30, 
-    '3' => 'Barcelona'
-];
-// Convertir el array en una cadena usando http_build_query
+<script>
+    function verificarCampo() {
+    // Obtener el valor del campo de tiempo
+    var valorCampo = document.getElementById("campoTiempo").value;
 
+    // Verificar si el campo tiene datos utilizando un operador ternario
+    var tieneDatos = valorCampo ? true : false;
 
-// Imprimir la cadena resultante
-echo concatArray($array, $array1); // Esto imprimirá: nombre=Juan&edad=30&ciudad=Barcelona
-
-function concatArray($dataX, $dataY){
-    $resultX = http_build_query($dataX);
-    $resultY = http_build_query($dataY);
-    return "$resultX $resultY";
+    // Mostrar el resultado
+    alert("El campo tiene datos: " + tieneDatos);
 }
+</script>

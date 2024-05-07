@@ -1,3 +1,3 @@
-function validarCamposPersonalizados(){
+function validarCamposPers(){
     agregarEditarByDbCamposPersonalizados();
 }

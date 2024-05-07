@@ -1,4 +1,5 @@
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
+var campoFecha = document.getElementById("campoFecha");
 
 function iniciarRetardo(){
     iniciarTablaRetardo(id_tbl_empleados_hraes);
@@ -52,6 +53,7 @@ function guardarRetardo() {
     let hora_entrada = $("#hora_entrada").val();
     let hora_salida = $("#hora_salida").val();
     let id_object = $("#id_object").val();
+    hora_salida = hora_salida  ? hora_salida  : '0:0';
 
     $.post("../../../../App/Controllers/Hrae/RetardoC/AgregarEditarC.php", {
         id_object: id_object,
@@ -74,8 +76,8 @@ function guardarRetardo() {
         }
     );
 }
-/*
-function eliminarDependiente(id_object) {//ELIMINAR USUARIO
+
+function eliminarRetardo(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -87,16 +89,16 @@ function eliminarDependiente(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/DependientesC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Hrae/RetardoC/EliminarC.php", {
                 id_object: id_object
             },
             function (data, status) {
                 if (data == 'delete'){
-                    mensajeExito('Dependiente económico eliminado')
+                    mensajeExito('Retardo eliminado con éxito')
                 } else {
                     mensajeError(data);
                 }
-                iniciarDependiente();
+                iniciarRetardo();
             }
         );
     }
@@ -104,33 +106,25 @@ function eliminarDependiente(id_object) {//ELIMINAR USUARIO
 }
 
 
-function buscarDependiente(){ //BUSQUEDA
-    let buscar = document.getElementById("buscarDependiente").value.trim();
-    buscar = buscar.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
-    buscarlenth = buscar.length;
-    
-    if (buscarlenth == 0){
-        iniciarDependiente();
-    } else {
-        iniciarTablaCedulaByDependiente(buscar,id_tbl_empleados_hraes);
-    }
-}
+campoFecha.addEventListener("change", function() {
+    let fecha = campoFecha.value;
+    iniciarTabla(fecha, id_tbl_empleados_hraes)
+});
 
-
-function iniciarTablaCedulaByDependiente(buscar, id_tbl_empleados_hraes) { ///INGRESA LA TABLA
+function iniciarTabla(buscar, id_tbl_empleados_hraes) { ///INGRESA LA TABLA
     $.ajax({
         type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/Dependientes/tabla.php',
+        url: '../../../../App/View/Hraes/Modulo/Retardo/tabla.php',
         data: { 
             buscar: buscar,
             id_tbl_empleados_hraes: id_tbl_empleados_hraes,
          },
         success: function (data) {
-            $('#modulo_dependientes_economicos').html(data);
+            console.log(data);
+            $('#tabla_retardo').html(data);
         }
     });
 }
-*/
 
 
 function concatHora(hora,minuto){
