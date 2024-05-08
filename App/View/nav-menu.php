@@ -220,7 +220,7 @@ $id_rol = $_SESSION['id_rol'];
                         <a href="../../System/home/index.php" class="sidebar-link" href="javascript:void(0)"
                             aria-expanded="false">
                             <i class="far fa-folder" style="font-size: 1.2rem;"></i>
-                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Inicio </span>
+                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;INICIO </span>
                         </a>
                     </li>
 
