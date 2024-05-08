@@ -99,7 +99,7 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
                             Campos personalizados</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
                             data-bs-target="#nav-domicilio" type="button" role="tab" aria-controls="nav-clabe"
-                            aria-selected="false"><i class="fa fa-home"></i>
+                            aria-selected="false" onclick="iniciarDomicilio();"><i class="fa fa-home"></i>
                             Domicilio</button>
                     </div>
                 </nav>

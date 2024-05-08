@@ -27,3 +27,6 @@
 
 <script src="../../../../js/Hraes/Modulo/CamposPer/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/CamposPer/Validar.js"></script>
+
+<script src="../../../../js/Hraes/Modulo/Domicilio/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Domicilio/Validar.js"></script>
