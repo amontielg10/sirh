@@ -51,7 +51,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
                     onclick="salirAgregarEditarDependiente();">Cancelar</button>
                 <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
-                    onclick="return validarDependiente();">Guardar</button>
+                    onclick="return validarDependienteD();">Guardar</button>
                 <input type="hidden" id="id_object">
             </div>
 

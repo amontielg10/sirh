@@ -85,6 +85,9 @@
                 <input type="hidden" id="id_object">
                 <input type="hidden" id="id_tipo_plaza">
                 <input type="hidden" id="id_plaza">
+
+                <input type="hidden" id="num_plaza_validate">
+                <input type="hidden" id="id_tbl_movimientos_validate">
             </div>
 
         </div>

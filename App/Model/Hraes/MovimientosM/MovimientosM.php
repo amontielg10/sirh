@@ -27,7 +27,17 @@ class ModelMovimientosM
         return $listado;
     }
 
-    public function listarByNull(){
+    public function listarByEdit($idMovimiento){
+        $listado = pg_query("SELECT id_tbl_plazas_empleados_hraes,codigo_trabajador,fecha_inicio,
+                                    fecha_termino,id_tbl_movimientos,tipo_movimiento,fecha_movimiento,
+                                    id_tbl_control_plazas_hraes,id_tbl_empleados_hraes
+                             FROM tbl_plazas_empleados_hraes
+                             WHERE id_tbl_plazas_empleados_hraes = $idMovimiento;");
+        return $listado;
+    }
+
+    public function listarByNull()
+    {
         return $array = [
             'id_tbl_plazas_empleados_hraes' => null,
             'codigo_trabajador' => null,
@@ -42,7 +52,8 @@ class ModelMovimientosM
     }
 
 
-    public function countUltimoMovimiento($idEmpleado){
+    public function countUltimoMovimiento($idEmpleado)
+    {
         $listado = pg_query("SELECT COUNT(id_tbl_plazas_empleados_hraes)
                              FROM tbl_plazas_empleados_hraes 
                              WHERE id_tbl_empleados_hraes = $idEmpleado");
@@ -50,7 +61,8 @@ class ModelMovimientosM
     }
 
 
-    public function listadoUltimoMovimiento($idEmpleado){
+    public function listadoUltimoMovimiento($idEmpleado)
+    {
         $listado = pg_query("SELECT tbl_movimientos.id_tipo_movimiento
                              FROM tbl_plazas_empleados_hraes 
                              INNER JOIN tbl_movimientos
@@ -63,73 +75,32 @@ class ModelMovimientosM
                              LIMIT 1;");
         return $listado;
     }
-    /*
-    public function listarByAll()
+
+    public function listadoByIdPlaza($idEmpleado)
     {
-        $listado = "SELECT tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes,
-                            tbl_centro_trabajo_hraes.clave_centro_trabajo,
-                            tbl_centro_trabajo_hraes.nombre,
-                            cat_entidad.entidad, tbl_centro_trabajo_hraes.codigo_postal
-                    FROM tbl_centro_trabajo_hraes
-                    INNER JOIN cat_entidad
-                    ON tbl_centro_trabajo_hraes.id_cat_entidad = 
-                        cat_entidad.id_cat_entidad
-                    ORDER BY tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes DESC
-                    LIMIT 6";
-
+        $listado = pg_query("SELECT id_tbl_control_plazas_hraes
+                             FROM tbl_plazas_empleados_hraes
+                             WHERE id_tbl_empleados_hraes = $idEmpleado
+                             ORDER BY fecha_movimiento DESC
+                             LIMIT 1");
         return $listado;
     }
 
-    public function listarByLike($busqueda)
+    function editarByArray($conexion, $datos, $condicion, $name)
     {
-        $listado = "SELECT tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes,
-                            tbl_centro_trabajo_hraes.clave_centro_trabajo,
-                            tbl_centro_trabajo_hraes.nombre,
-                            cat_entidad.entidad, tbl_centro_trabajo_hraes.codigo_postal
-                    FROM tbl_centro_trabajo_hraes
-                    INNER JOIN cat_entidad
-                    ON tbl_centro_trabajo_hraes.id_cat_entidad = 
-                        cat_entidad.id_cat_entidad
-                    WHERE TRIM(UPPER(UNACCENT(tbl_centro_trabajo_hraes.clave_centro_trabajo))) 
-                          LIKE '%$busqueda%'
-                    OR TRIM(UPPER(UNACCENT(tbl_centro_trabajo_hraes.nombre)))
-                          LIKE '%$busqueda%'
-                    OR TRIM(UPPER(UNACCENT(cat_entidad.entidad)))
-                          LIKE '%$busqueda%'
-                    OR TRIM(UPPER(UNACCENT(tbl_centro_trabajo_hraes.codigo_postal)))
-                          LIKE '%$busqueda%'
-                    ORDER BY tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes DESC
-                    LIMIT 6";
-
-        return $listado;
-    }
-
-    public function listarByIdEdit($id_object){
-        $listado = pg_query("SELECT id_tbl_centro_trabajo_hraes, clave_centro_trabajo, nombre,
-                                    colonia, codigo_postal, num_exterior, num_interior, latitud, longitud,
-                                    id_cat_region, id_estatus_centro, id_cat_entidad
-                            FROM tbl_centro_trabajo_hraes
-                            WHERE id_tbl_centro_trabajo_hraes = $id_object
-                            ORDER BY id_tbl_centro_trabajo_hraes DESC
-                            LIMIT 6");
-        return $listado;
-    }
-
-    function editarByArray($conexion, $datos, $condicion){
-        $pg_update = pg_update($conexion, 'tbl_centro_trabajo_hraes', $datos, $condicion);
+        $pg_update = pg_update($conexion, $name, $datos, $condicion);
         return $pg_update;
     }
 
-    function agregarByArray($conexion, $datos){
-        $pg_add = pg_insert($conexion, 'tbl_centro_trabajo_hraes', $datos);
+    function agregarByArray($conexion, $datos, $name)
+    {
+        $pg_add = pg_insert($conexion, $name, $datos);
         return $pg_add;
     }
 
-    function eliminarByArray($conexion, $condicion){
-        $pgs_delete = pg_delete($conexion,'tbl_centro_trabajo_hraes',$condicion);
+    function eliminarByArray($conexion, $condicion, $name)
+    {
+        $pgs_delete = pg_delete($conexion, $name, $condicion);
         return $pgs_delete;
     }
-
-
-    */
 }

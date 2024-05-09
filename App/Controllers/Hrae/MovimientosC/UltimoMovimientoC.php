@@ -12,6 +12,7 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
 $id_movimiento = $_POST['id_movimiento'];
 $count = $row->returnArrayById($modelMovimientosM->countUltimoMovimiento($id_tbl_empleados_hraes));
 $ultimoMovimiento = 0;
+$id_plaza_x = null;
 $bool = false; ///Variable que controla el error
 
 
@@ -44,6 +45,8 @@ if ($id_movimiento == $baja){///CODIGO DE BAJA DE USUARIOS
     if ($count[0] != 0){///Existen registros en la tabla
         ///Se consulta el ultimo movimiento
         $ultimoMovimiento = $row->returnArrayById($modelMovimientosM->listadoUltimoMovimiento($id_tbl_empleados_hraes));
+        $idPlaza = $row->returnArrayById($modelMovimientosM->listadoByIdPlaza($id_tbl_empleados_hraes));
+        $id_plaza_x = $idPlaza[0];
         if ($ultimoMovimiento[0] != $baja){///Se tengan registros de algo que sea disntinto de baja
             $bool = true;///Variable cambia a true para continuar con el registro
         }
@@ -54,7 +57,7 @@ if ($id_movimiento == $baja){///CODIGO DE BAJA DE USUARIOS
 $row = [
     'bool' => $bool,
     'mensaje' => $mensaje,
-    'ulltimo' => $ultimoMovimiento,
+    'id_plaza_x' => $id_plaza_x
 ];
 
 echo json_encode($row);

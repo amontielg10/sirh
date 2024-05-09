@@ -31,7 +31,7 @@ if (pg_num_rows($listado) > 0) {
                                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i></button>
                             <div class="dropdown-menu">
                                 <button onclick="agregarEditarMovimiento(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar</button>
-                                <button onclick="eliminarFormaPago(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>   
+                                <button onclick="eliminarMovimiento(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>   
                             </div>
                           </div>
                                 </td>

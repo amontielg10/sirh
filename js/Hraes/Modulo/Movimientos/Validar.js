@@ -15,42 +15,33 @@ function validarMovimiento(){
 
     let id_tipo_plaza = document.getElementById('id_tipo_plaza').value;
 
-    validarUltimoMovimiento(movimiento_general);
+    let num_plaza_validate = document.getElementById('num_plaza_validate').value;
+    let id_tbl_movimientos_validate = document.getElementById('id_tbl_movimientos_validate').value;
 
-    /*
-    if(movimiento_general == id_baja || movimiento_general == id_movimiento){
-        validarUltimoMovimiento();
-    } else {
-        if (id_tipo_plaza != id_movimiento_vacante){
-            //La plaza se encuentra ocupada, congelada etc.
-            mensajeError('La plaza no se encuentra disponible');
-        } else {
-            //Plaza disponible
-        }
-        console.log('agregar o movimiento')
-    }
-*/
- 
-
-
-
-
-    /*
-    let clabe = document.getElementById('clabe').value;
-    let id_cat_estatus_formato_pago = document.getElementById('id_cat_estatus_formato_pago').value;
-    let id_cat_formato_pago = document.getElementById('id_cat_formato_pago').value;
-
-    if (validarData(clabe,'Cuenta clabe') &&
-        validarData(id_cat_estatus_formato_pago,'Estatus') &&
-        validarData(id_cat_formato_pago,'Forma de pago') 
+    if (validarData(movimiento_general,'Movimiento general') &&
+    validarData(id_tbl_movimientos,'Movimiento especifico') &&
+    validarData(fecha_movimiento,'Fecha de movimiento')   
     ){
-        if(validarCLABE(clabe)){
-            agregarEditarByDbByFormatoPago();
+        if (movimiento_general != id_baja){
+            if (validarData(num_plaza_m,'Núm. de plaza') &&
+            validarData(fecha_inicio,'Fecha inicio') &&
+            validarData(fecha_termino,'Fecha termino') 
+        ){
+            if (num_plaza_validate == num_plaza_m && id_tbl_movimientos_validate == id_tbl_movimientos){
+                guardarMovimiento(null);
+            } else {
+                validarUltimoMovimiento(movimiento_general,id_tipo_plaza,movimiento_general);
+            }
+        }
         } else {
-            mensajeError('Campo Cuenta clabe* invalida');
+            if (num_plaza_validate == num_plaza_m && id_tbl_movimientos_validate == id_tbl_movimientos){
+                guardarMovimiento(null);
+            } else {
+                validarUltimoMovimiento(movimiento_general,id_tipo_plaza,movimiento_general);
+            }
+            
         }
     }
-    */
 }
 
 document.getElementById("movimiento_general").addEventListener("change", function() {
@@ -91,13 +82,12 @@ function validarNumPlaza(){
             $("#id_plaza").val(id_plaza);
             $("#tipo_plaza_m").val(tipo_plaza);
             $("#unidad_responsable_m").val(unidad_responsable);
-            
         }
     });
 }
 
 ///LA FUNCION PERMITE CONSULTAR EL ULTIMO MOVIMIENTO DEL EMPLEADO
-function validarUltimoMovimiento(id_movimiento){
+function validarUltimoMovimiento(id_movimiento,id_tipo_plaza,movimiento_general){
     $.ajax({
         type: 'POST',
         url: "../../../../App/Controllers/Hrae/MovimientosC/UltimoMovimientoC.php",
@@ -109,13 +99,22 @@ function validarUltimoMovimiento(id_movimiento){
             jsonData = JSON.parse(data);
             let bool = jsonData.bool;
             let mensaje = jsonData.mensaje;
+            let id_plaza_x = jsonData.id_plaza_x;
 
             if (bool){
-                console.log('exito');
+                if (movimiento_general != id_baja){
+                if (id_tipo_plaza == id_movimiento_vacante){
+                    ///Guardar
+                    guardarMovimiento(null);
+                } else {
+                    mensajeError('La plaza no se encuentra vacante');
+                }
+            } else {
+                guardarMovimiento(id_plaza_x);
+            }
             } else {   
                 mensajeError(mensaje);
             }
-            
         }
     });
 }

@@ -1,14 +1,15 @@
 <?php
 include '../librerias.php';
 
-$modelTelefonoM = new ModelTelefonoM();
+$modelMovimientosM = new ModelMovimientosM();
+$nombreTabla = 'tbl_plazas_empleados_hraes';
 
 $condicion = [
-    'id_ctrl_telefono_hraes' => $_POST['id_object']
+    'id_tbl_plazas_empleados_hraes' => $_POST['id_object']
 ];
 
 if (isset($_POST['id_object'])){
-    if ($modelTelefonoM-> eliminarByArray($connectionDBsPro, $condicion)){
+    if ($modelMovimientosM-> eliminarByArray($connectionDBsPro, $condicion,$nombreTabla)){
         echo 'delete';
     }
 } 

@@ -70,9 +70,9 @@ function agregarEditarByDbByDependiente() {
     },
         function (data) {
             if (data == 'edit'){
-                mensajeExito('Dependiente económico modificado');
+                mensajeExito('Dependiente modificado con éxito');
             } else if (data == 'add') {
-                mensajeExito('Dependiente económico modificado');  
+                mensajeExito('Dependiente agregado con éxito');  
             } else {
                 mensajeError(data);
             }

@@ -207,6 +207,21 @@ class modelPlazasHraes
         ];
     }
 
+    public function listarByEditMovimiento($id){
+        $listado = pg_query("SELECT tbl_control_plazas_hraes.num_plaza,
+                                    cat_plazas.tipo_plaza,
+                                    cat_unidad_responsable.nombre
+                            FROM tbl_control_plazas_hraes
+                            INNER JOIN cat_plazas
+                            ON tbl_control_plazas_hraes.id_cat_plazas =
+                                cat_plazas.id_cat_plazas
+                            INNER JOIN cat_unidad_responsable
+                            ON tbl_control_plazas_hraes.id_cat_unidad_responsable =
+                                cat_unidad_responsable.id_cat_unidad_responsable
+                            WHERE tbl_control_plazas_hraes.id_tbl_control_plazas_hraes = $id");
+        return $listado;
+    }
+
     function editarByArray($conexion, $datos, $condicion){
         $pg_update = pg_update($conexion, 'tbl_control_plazas_hraes', $datos, $condicion);
         return $pg_update;

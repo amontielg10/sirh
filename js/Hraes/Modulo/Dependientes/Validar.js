@@ -1,4 +1,4 @@
-function validarDependiente(){
+function validarDependienteD(){
     let nombre_d = document.getElementById('nombre_d').value;
     let curp_d = document.getElementById('curp_d').value;
     let apellido_paterno_d = document.getElementById('apellido_paterno_d').value;
