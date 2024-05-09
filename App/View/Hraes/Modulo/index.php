@@ -1,30 +1,33 @@
 <?php
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
+if ($id_tbl_empleados_hraes == null){
+    header('Location: ../Empleados/index.php');
+}
 ?>
 
 <head>
     <style>
         --#{$prefix}accordion-color: #{$accordion-color};
---#{$prefix}accordion-bg: #{$accordion-bg};
---#{$prefix}accordion-transition: #{$accordion-transition};
---#{$prefix}accordion-border-color: #{$accordion-border-color};
---#{$prefix}accordion-border-width: #{$accordion-border-width};
---#{$prefix}accordion-border-radius: #{$accordion-border-radius};
---#{$prefix}accordion-inner-border-radius: #{$accordion-inner-border-radius};
---#{$prefix}accordion-btn-padding-x: #{$accordion-button-padding-x};
---#{$prefix}accordion-btn-padding-y: #{$accordion-button-padding-y};
---#{$prefix}accordion-btn-color: #{$accordion-button-color};
---#{$prefix}accordion-btn-bg: #{$accordion-button-bg};
---#{$prefix}accordion-btn-icon: #{escape-svg($accordion-button-icon)};
---#{$prefix}accordion-btn-icon-width: #{$accordion-icon-width};
---#{$prefix}accordion-btn-icon-transform: #{$accordion-icon-transform};
---#{$prefix}accordion-btn-icon-transition: #{$accordion-icon-transition};
---#{$prefix}accordion-btn-active-icon: #{escape-svg($accordion-button-active-icon)};
---#{$prefix}accordion-btn-focus-box-shadow: #{$accordion-button-focus-box-shadow};
---#{$prefix}accordion-body-padding-x: #{$accordion-body-padding-x};
---#{$prefix}accordion-body-padding-y: #{$accordion-body-padding-y};
---#{$prefix}accordion-active-color: #{$accordion-button-active-color};
---#{$prefix}accordion-active-bg: #{$accordion-button-active-bg};
+        --#{$prefix}accordion-bg: #{$accordion-bg};
+        --#{$prefix}accordion-transition: #{$accordion-transition};
+        --#{$prefix}accordion-border-color: #{$accordion-border-color};
+        --#{$prefix}accordion-border-width: #{$accordion-border-width};
+        --#{$prefix}accordion-border-radius: #{$accordion-border-radius};
+        --#{$prefix}accordion-inner-border-radius: #{$accordion-inner-border-radius};
+        --#{$prefix}accordion-btn-padding-x: #{$accordion-button-padding-x};
+        --#{$prefix}accordion-btn-padding-y: #{$accordion-button-padding-y};
+        --#{$prefix}accordion-btn-color: #{$accordion-button-color};
+        --#{$prefix}accordion-btn-bg: #{$accordion-button-bg};
+        --#{$prefix}accordion-btn-icon: #{escape-svg($accordion-button-icon)};
+        --#{$prefix}accordion-btn-icon-width: #{$accordion-icon-width};
+        --#{$prefix}accordion-btn-icon-transform: #{$accordion-icon-transform};
+        --#{$prefix}accordion-btn-icon-transition: #{$accordion-icon-transition};
+        --#{$prefix}accordion-btn-active-icon: #{escape-svg($accordion-button-active-icon)};
+        --#{$prefix}accordion-btn-focus-box-shadow: #{$accordion-button-focus-box-shadow};
+        --#{$prefix}accordion-body-padding-x: #{$accordion-body-padding-x};
+        --#{$prefix}accordion-body-padding-y: #{$accordion-body-padding-y};
+        --#{$prefix}accordion-active-color: #{$accordion-button-active-color};
+        --#{$prefix}accordion-active-bg: #{$accordion-button-active-bg};
     </style>
 </head>
 
@@ -101,6 +104,10 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
                             data-bs-target="#nav-domicilio" type="button" role="tab" aria-controls="nav-clabe"
                             aria-selected="false" onclick="iniciarDomicilio();"><i class="fa fa-home"></i>
                             Domicilio</button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-movimientos_f" type="button" role="tab" aria-controls="nav-clabe"
+                            aria-selected="false" onclick="iniciarMovimientos();"><i class="fa fa-list"></i>
+                            Movimientos</button>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -136,6 +143,10 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
                     <div class="tab-pane fade" id="nav-domicilio" role="tabpanel" aria-labelledby="nav-domicilio"
                         tabindex="0">
                         <?php include 'Domicilio/index.php' ?>
+                    </div>
+                    <div class="tab-pane fade" id="nav-movimientos_f" role="tabpanel" aria-labelledby="nav-movimientos"
+                        tabindex="0">
+                        <?php include 'Movimientos/index.php' ?>
                     </div>
                 </div>
             </div>

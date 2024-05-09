@@ -30,3 +30,6 @@
 
 <script src="../../../../js/Hraes/Modulo/Domicilio/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Domicilio/Validar.js"></script>
+
+<script src="../../../../js/Hraes/Modulo/Movimientos/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Movimientos/Validar.js"></script>

@@ -31,7 +31,7 @@
                 <p>Informaci&oacuten de los &uacuteltimos movimientos de empleados.</p>
                 <div class="form-inline">
                     <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i class="fas fa-plus"></i>
-                        <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar una empleado</span>
+                        <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar un empleado</span>
                     </button>
                 </div>
                 <p></p>

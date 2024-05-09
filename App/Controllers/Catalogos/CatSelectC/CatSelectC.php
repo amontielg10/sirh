@@ -1,0 +1,47 @@
+<?php
+
+class CatSelectC
+{
+
+    function selectMunicipioByCp($resultados, $text)
+    {
+        $options = '<option value="' . $text . '">' . $text . '</option>';
+        while ($row = pg_fetch_array($resultados)) {
+            if ($row[0] != $text) {
+                $options .= '<option value="' . $row[0] . '">' . $row[0]. '</option>';
+            }
+        }
+        return $options;
+    }
+
+    function selecStaticText($text)
+    {
+        $options = '<option value="' . $text . '">' . $text . '</option>';
+        return $options;
+    }
+
+    function selecStaticByNull()
+    {
+        $options = '<option value="' . '' . '">' . 'Seleccione' . '</option>';
+        return $options;
+    }
+
+    function selectByAll($resultados)
+    {
+        $options = '<option value="">Seleccione</option>';
+        while ($row = pg_fetch_array($resultados)) {
+            $options .= '<option value="' . $row [0] . '">' . $row [0] . '</option>';
+        }
+        return $options;
+    }
+
+    function selectByAllById($resultados,$value,$text)
+    {
+        $options = '<option value="">Seleccione</option>';
+        while ($row = pg_fetch_array($resultados)) {
+            $options .= '<option value="' . $row [$value] . '">' . $row [$text] . '</option>';
+        }
+        return $options;
+    }
+
+}

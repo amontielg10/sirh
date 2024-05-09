@@ -165,6 +165,29 @@ class modelPlazasHraes
         return $listado;
     }
 
+    public function listarCountByNum($numPlaza){
+        $listado = pg_query("SELECT COUNT (id_tbl_control_plazas_hraes)
+                             FROM tbl_control_plazas_hraes
+                             WHERE num_plaza = '$numPlaza';");
+        return $listado;
+    } 
+
+    public function listarNumPlazaUResp($numPlaza){
+        $listado = pg_query("SELECT tbl_control_plazas_hraes.id_tbl_control_plazas_hraes,
+                                    tbl_control_plazas_hraes.id_cat_plazas,
+                                    cat_plazas.tipo_plaza,
+                                    cat_unidad_responsable.nombre
+                            FROM tbl_control_plazas_hraes
+                            INNER JOIN cat_plazas
+                            ON tbl_control_plazas_hraes.id_cat_plazas = 
+                                cat_plazas.id_cat_plazas
+                            INNER JOIN cat_unidad_responsable
+                            ON tbl_control_plazas_hraes.id_cat_unidad_responsable = 
+                                cat_unidad_responsable.id_cat_unidad_responsable
+                            WHERE tbl_control_plazas_hraes.num_plaza = '$numPlaza';");
+        return $listado;
+    }
+
     function listarByNull(){
         return $raw = [
             'id_tbl_control_plazas_hraes' => null, 
