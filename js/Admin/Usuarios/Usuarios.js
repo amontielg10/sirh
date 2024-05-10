@@ -2,13 +2,75 @@ $(document).ready(function () {
     iniciarTabla();
 });
 
+/*
+var table = $('#t-table').DataTable({
+    pageLength : 1,
+    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']]
+  })
+  */
 
 function iniciarTabla() { ///INGRESA LA TABLA
     $.get("../../../../App/View/Admin/Usuarios/tabla.php", {}, function (data, status) {
         $("#t-table").html(data);
+        //tableData('t-table');
     });
 }
 
+function tableData(name){
+    $("#" + name).DataTable({
+        recordsTotal: 4,
+    //"pageLength": 5,  
+    /*  
+    "pageLength": 1,
+    "lengthMenu": [ [5], [5] ],
+    searching: false,
+    "dom": 'rtip',
+    "info": false,
+    "order": [],
+    language: {
+        "paginate": {
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+    },
+    "bDestroy": true,*/
+});
+}
+
+/*
+
+
+    $('#t-table').DataTable({
+        scrollX: true,
+        language: {
+            "decimal": "",
+            "emptyTable": "No hay información",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+            "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ Entradas",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscar:",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        },
+        responsive: "true",
+        dom: 'Bfrtilp',
+        buttons: [
+
+        ],
+    }
+
+    );
+    */
 
 function agregarEditarUsuarios(id_object) { //SE OBTIENEN INFO DE ID SELECCIONADO
     let titulo = document.getElementById("titulo_usuario");
@@ -75,6 +137,7 @@ function guardarUsuario() {
 
 
 function eliminarUsuario(id_object) {//ELIMINAR USUARIO
+    if(validarAccion()){
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -100,6 +163,7 @@ function eliminarUsuario(id_object) {//ELIMINAR USUARIO
         );
     }
     });
+}
 }
 
 

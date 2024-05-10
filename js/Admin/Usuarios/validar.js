@@ -13,7 +13,9 @@ function validarUsuario(){
         validarData(id_rol,'Rol') &&
         validarPw(password,passwordConfirm) 
     ){
-        guardarUsuario();
+        //if(validarAccion()){
+            guardarUsuario();
+        //}
     } 
 }
 

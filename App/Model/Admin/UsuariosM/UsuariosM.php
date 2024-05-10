@@ -10,7 +10,7 @@ class ModelUsuariosM
                     INNER JOIN rol
                     ON users.id_rol = rol.id_rol
                     ORDER BY users.id_user DESC
-                    LIMIT 6;";
+                    LIMIT 5;";
 
         return $listado;
     }

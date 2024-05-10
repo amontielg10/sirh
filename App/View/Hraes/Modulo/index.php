@@ -1,6 +1,6 @@
 <?php
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
-if ($id_tbl_empleados_hraes == null){
+if ($id_tbl_empleados_hraes == null) {
     header('Location: ../Empleados/index.php');
 }
 ?>
@@ -154,8 +154,7 @@ if ($id_tbl_empleados_hraes == null){
         </div>
     </div>
 
-    <?php include 'librerias.php' ?>
-    <?php include ('../../footer-librerias.php') ?>
+
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -163,5 +162,8 @@ if ($id_tbl_empleados_hraes == null){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+
+    <?php include 'librerias.php' ?>
+    <?php include ('../../footer-librerias.php') ?>
 
 </body>

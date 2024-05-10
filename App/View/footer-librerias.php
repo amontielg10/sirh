@@ -2,6 +2,7 @@
 <script src="../../../../js/Mensajes/mensajes.js"></script> 
 <script src="../../../../js/Global/Curp/ValidarCurp.js"></script> 
 <script src="../../../../js/Global/Mensajes/Mensajes.js"></script> 
+<script src="../../../../js/Global/Seguridad/Confirmacion.js"></script> 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../../../.././assets/libs/jquery/dist/jquery.min.js"></script>
