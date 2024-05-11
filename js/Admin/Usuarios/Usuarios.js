@@ -1,76 +1,45 @@
-$(document).ready(function () {
-    iniciarTabla();
-});
+var valorInicial = 1;
+var textValor = document.getElementById('idUsertable');
+//var buscar = document.getElementById("buscarUsuario").value.trim();
 
-/*
-var table = $('#t-table').DataTable({
-    pageLength : 1,
-    lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']]
-  })
-  */
 
-function iniciarTabla() { ///INGRESA LA TABLA
-    $.get("../../../../App/View/Admin/Usuarios/tabla.php", {}, function (data, status) {
-        $("#t-table").html(data);
-        //tableData('t-table');
-    });
+function siguienteValor(){
+    valorInicial++;
+    textValor.textContent = valorInicial;
+    buscarUsuario();
 }
 
-function tableData(name){
-    $("#" + name).DataTable({
-        recordsTotal: 4,
-    //"pageLength": 5,  
-    /*  
-    "pageLength": 1,
-    "lengthMenu": [ [5], [5] ],
-    searching: false,
-    "dom": 'rtip',
-    "info": false,
-    "order": [],
-    language: {
-        "paginate": {
-            "next": "Siguiente",
-            "previous": "Anterior"
-        }
-    },
-    "bDestroy": true,*/
-});
-}
-
-/*
-
-
-    $('#t-table').DataTable({
-        scrollX: true,
-        language: {
-            "decimal": "",
-            "emptyTable": "No hay información",
-            "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-            "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-            "infoPostFix": "",
-            "thousands": ",",
-            "lengthMenu": "Mostrar _MENU_ Entradas",
-            "loadingRecords": "Cargando...",
-            "processing": "Procesando...",
-            "search": "Buscar:",
-            "zeroRecords": "Sin resultados encontrados",
-            "paginate": {
-                "first": "Primero",
-                "last": "Ultimo",
-                "next": "Siguiente",
-                "previous": "Anterior"
-            }
-        },
-        responsive: "true",
-        dom: 'Bfrtilp',
-        buttons: [
-
-        ],
+function anteriorValor(){
+    valorInicial--;
+    if(valorInicial < 1){
+        valorInicial = 1;
     }
+    textValor.textContent = valorInicial;
+    buscarUsuario();
+}
 
+function iniciarBusqueda(){
+    let valorInicialAux = valorInicial;
+    valorInicialAux --;
+    let valoroff = valorInicialAux * 5;
+    return valoroff;
+}
+
+///INCIO DOCUMENTO
+$(document).ready(function () {///INICIAR TABLA DE USUARIOS
+    buscarUsuario();
+});
+
+function iniciarTabla(busqueda, paginador) { ///INGRESA LA TABLA USUARIOS PARAMETROS 'BUSQUEDA' Y 'PAGINADOR'
+    $.post('../../../../App/View/Admin/Usuarios/tabla.php', {
+        busqueda: busqueda, //DATOS INGRESADOS PARAMETROS
+        paginador: paginador, //DATOS INGRESADOS PARAMETROS
+    },
+        function (data) {
+            $("#tabla_usuarios").html(data); ///RESULTADO PARA TABLA
+        }
     );
-    */
+}
 
 function agregarEditarUsuarios(id_object) { //SE OBTIENEN INFO DE ID SELECCIONADO
     let titulo = document.getElementById("titulo_usuario");
@@ -84,7 +53,8 @@ function agregarEditarUsuarios(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
     $.post("../../../../App/Controllers/Admin/UsuariosC/DetallesC.php", {
         id_object: id_object
     },
-        function (data, status) {
+        function (data) {
+            console.log(data);
             var jsonData = JSON.parse(data);//se obtiene el json
             var entity = jsonData.response; 
             var rol = jsonData.rol;
@@ -120,7 +90,7 @@ function guardarUsuario() {
         id_rol:id_rol,
         password:password
     },
-        function (data, status) {
+        function (data) {
             console.log(data);
             if (data == 'edit'){
                 mensajeExito('Usuario modificado con éxito');
@@ -130,7 +100,7 @@ function guardarUsuario() {
                 mensajeError(data);
             }
             $("#agregar_editar_usuario").modal("hide");
-            iniciarTabla();
+            buscarUsuario();
         }
     );
 }
@@ -152,13 +122,13 @@ function eliminarUsuario(id_object) {//ELIMINAR USUARIO
         $.post("../../../../App/Controllers/Admin/UsuariosC/EliminarC.php", {
                 id_object: id_object
             },
-            function (data, status) {
+            function (data) {
                 if (data == 'delete'){
                     mensajeExito('Usuario eliminado con éxito');
                 } else {
                     mensajeError(data);
                 }
-                iniciarTabla();
+                buscarUsuario();
             }
         );
     }
@@ -178,23 +148,25 @@ function iniciarBusquedaUsuarios(busqueda) { //BUSQUEDA
     });
 }
 
+var buscar = document.getElementById("buscarUsuario");
+
 function buscarUsuario(){ //BUSQUEDA
-    let buscar = document.getElementById("buscarUsuario").value.trim();
-    buscar = buscar.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
-    buscarlenth = buscar.length;
+    let buscarNew = clearElement(buscar);
+    let buscarlenth = lengthValue(buscarNew);
     
     if (buscarlenth == 0){
-        iniciarTabla();
+        iniciarTabla(null, iniciarBusqueda());
     } else {
-        iniciarBusquedaUsuarios(buscar);
+        iniciarTabla(buscarNew, iniciarBusqueda());
     }
 }
-/*
 
+///LA FUNCION RETORNA EL VALOR SIN ACENTOS, ESPACIOS EN BLANCA O CARACTERES ESPECIALES
+function clearElement(value){
+    return value.value.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
+}
 
-
-
-
-
-
-*/
+///LA FUNCION RETORNA EL TOTAL DE CARACTERES DEL VALOR
+function lengthValue(value){
+    return value.length;
+}

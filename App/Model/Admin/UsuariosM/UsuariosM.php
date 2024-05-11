@@ -1,8 +1,11 @@
 <?php
 
-class ModelUsuariosM
+class UsuariosM
 {
-    public function listarByAll()
+    ///INICIALIZACION DE FUNCIONES
+
+    ///LA FUNCION LISTA LOS USUARIOS DEL SISTEMA
+    public function listarByAll($paginator)
     {
         $listado = "SELECT users.id_user, users.nick, users.nombre, users.status,
                             rol.nombre
@@ -10,7 +13,7 @@ class ModelUsuariosM
                     INNER JOIN rol
                     ON users.id_rol = rol.id_rol
                     ORDER BY users.id_user DESC
-                    LIMIT 5;";
+                    LIMIT 5 OFFSET $paginator;";
 
         return $listado;
     }
@@ -49,7 +52,7 @@ class ModelUsuariosM
         ];
     }
 
-    public function listarByLike($busqueda)
+    public function listarByLike($busqueda,$paginator)
     {
         $listado = "SELECT users.id_user, users.nick, users.nombre, users.status,
                             rol.nombre
@@ -63,7 +66,7 @@ class ModelUsuariosM
                     OR TRIM(UPPER(UNACCENT(rol.nombre))) 
                         LIKE '%$busqueda%' 
                     ORDER BY users.id_user DESC
-                    LIMIT 6;";
+                    LIMIT 5 OFFSET $paginator;";
         return $listado;
     }
 }

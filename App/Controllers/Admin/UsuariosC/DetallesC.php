@@ -1,7 +1,7 @@
 <?php
 include '../librerias.php';
 
-$modelUsuariosM = new ModelUsuariosM();
+$modelUsuariosM = new UsuariosM();
 $catRolC = new CatRolC();
 $catRolM = new CatRolM();
 $row = new Row();

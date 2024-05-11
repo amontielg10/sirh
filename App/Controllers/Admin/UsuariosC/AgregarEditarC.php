@@ -1,7 +1,7 @@
 <?php
 include '../librerias.php';
 
-$modelUsuariosM = new ModelUsuariosM();
+$modelUsuariosM = new UsuariosM();
 
 $condicion = [
     'id_user' => $_POST['id_object']

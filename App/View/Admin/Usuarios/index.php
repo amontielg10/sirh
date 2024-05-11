@@ -29,7 +29,7 @@
             <div class="container-fluid">
                 <p>Informaci&oacuten de los &uacuteltimos movimientos de usuarios.</p>
                 <div class="form-inline">
-                    <button onclick="agregarEditarUsuarios(null)" class="btn btn-light"><i class="fas fa-plus"></i>
+                    <button onclick="agregarEditarUsuarios(null)" class="btn btn-light"><i class="fa fa-user-plus"></i>
                         <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar usuario</span>
                     </button>
                 </div>
@@ -38,16 +38,19 @@
                     onkeyup="buscarUsuario();" aria-label="Search">
                 <p></p>
 
-                <table class="table table-striped" id="t-table" style="width:100%">
+                <table class="table table-striped" id="tabla_usuarios" style="width:100%">
                 </table>
 
-                <button onclick="anteriorUsuarios()" class="btn btn-light"><i class="fa fa-angle-double-left"></i>
+                <div class="position-absolute top-50 start-50">
+                <button onclick="anteriorValor()" class="btn btn-light"><i class="fa fa-angle-double-left"></i>
                         <span class="hide-menu" style="font-weight: bold;"></span>
                 </button>
                 <label id="idUsertable">1</label>
-                <button onclick="siguienteUsuarios()" class="btn btn-light"><i class="fa fa-angle-double-right"></i>
+                <button onclick="siguienteValor()" class="btn btn-light"><i class="fa fa-angle-double-right"></i>
                         <span class="hide-menu" style="font-weight: bold;"></span>
                 </button>
+                </div>
+                <br>
 
                 <?php include 'AgregarEditar.php' ?>
 
@@ -59,35 +62,3 @@
     <script src="../../../../js/Admin/Usuarios/validar.js"></script>
     <?php include ('../../footer-librerias.php') ?>
 </body>
-
-<script>
-
-    var valorUsuario = 1;
-    var idUsertable = document.getElementById('idUsertable');
-
-    function siguienteUsuarios(){
-        valorUsuario++;
-        idUsertable.textContent = valorUsuario;
-        iniciarBusqueda();
-    }
-
-    function anteriorUsuarios(){
-        valorUsuario--;
-        if(valorUsuario < 1){
-            valorUsuario = 1;
-        }
-        idUsertable.textContent = valorUsuario;
-        iniciarBusqueda();
-    }
-
-    function iniciarBusqueda(){
-        let valorFinal = valorUsuario * 5;
-        let valorAnterior = 1;
-        if (valorUsuario != 0){
-            valorAnterior = valorFinal - 5;
-        }
-        console.log(valorAnterior + ' - ' + valorFinal);
-    }
-
-
-</script>

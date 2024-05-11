@@ -2,17 +2,19 @@
 include '../../../../conexion.php';
 include '../../../Model/Admin/UsuariosM/UsuariosM.php';
 
-$listado = new modelUsuariosM();
+$listado = new UsuariosM();
+$paginador = $_POST['paginador'];
 
-$query = $listado->listarByAll();
+$query = $listado->listarByAll($paginador);
+
 
 if (isset($_POST['busqueda'])) {
     $busqueda = $_POST['busqueda'];
-    $query = $listado->listarByLike($busqueda);
+    $query = $listado->listarByLike($busqueda,$paginador);
 }
 
 $data =
-    '<table class="table table-striped" id="t-table" style="width:100%">
+    '<table class="table table-striped" id="tabla_usuarios" style="width:100%">
     <thead>
         <tr style="background-color:#235B4E;">
             <th style="color: white; width: 50px">Acciones</th>
@@ -27,7 +29,6 @@ if (!$result = pg_query($connectionDBsPro, $query)) {
 }
 if (pg_num_rows($result) > 0) {
     while ($row = pg_fetch_row($result)) {
-        $id_tbl_centro_trabajo_hraes = base64_encode($row[0]);
         $data .=
             '<tbody>
                         <tr>
@@ -53,6 +54,8 @@ if (pg_num_rows($result) > 0) {
                     </tbody>
                 </table>';
     }
+} else {
+    $data .= '<h6>Sin resultados</h6>';
 }
 
 echo $data;
