@@ -216,13 +216,25 @@ $id_rol = $_SESSION['id_rol'];
                             </div>
                         </div>
                     </li>
+                    <!-- HOME -->
                     <li class="sidebar-item">
                         <a href="../../System/home/index.php" class="sidebar-link" href="javascript:void(0)"
                             aria-expanded="false">
                             <i class="far fa-folder" style="font-size: 1.2rem;"></i>
-                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;INICIO </span>
+                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Inicio</span>
                         </a>
                     </li>
+                    <!-- HOME -->
+
+                    <!-- MY PROFILE -->
+                    <li class="sidebar-item">
+                        <a href="../../Admin/MiPerfil/index.php" class="sidebar-link" href="javascript:void(0)"
+                            aria-expanded="false">
+                            <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Mi perfil </span>
+                        </a>
+                    </li>
+                    <!-- MY PROFILE -->
 
                     <!-- ADMIN INICIO -->
                     <?php if ($id_rol == 1) { ?>
