@@ -17,9 +17,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../../../../index.php" style="color:#cb9f52;">Home</a>
+                                        <a href="../../System/home/index.php" style="color:#cb9f52;">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Empleados</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Centros de trabajo</li>
                                 </ol>
                             </nav>
                         </div>
@@ -36,11 +36,23 @@
                 </div>
                 <p></p>
                 <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar"
-                    onkeyup="buscarInBd();" aria-label="Search">
+                    onkeyup="buscarCentro();" aria-label="Search">
                 <p></p>
 
-                <table class="table table-striped" id="t-table" style="width:100%">
+                <table class="table table-striped" id="tabla_centro_trabajo" style="width:100%">
                 </table>
+
+                <div class="position-absolute top-50 start-50">
+                <button onclick="anteriorValor()" class="btn btn-light"><i class="fa fa-angle-double-left"></i>
+                        <span class="hide-menu" style="font-weight: bold;"></span>
+                </button>
+                <label id="idtable">1</label>
+                <button onclick="siguienteValor()" class="btn btn-light"><i class="fa fa-angle-double-right"></i>
+                        <span class="hide-menu" style="font-weight: bold;"></span>
+                </button>
+                </div>
+                <br>
+
 
                 <?php include 'AgregarEditar.php' ?>
 
@@ -50,5 +62,6 @@
 
     <script src="../../../../js/Hraes/CentroTrabajo/CentroTrabajo.js"></script>
     <script src="../../../../js/Hraes/CentroTrabajo/validar.js"></script>
+    <script src="../../../../js/Hraes/CentroTrabajo/Busqueda.js"></script>
     <?php include ('../../footer-librerias.php') ?>
 </body>

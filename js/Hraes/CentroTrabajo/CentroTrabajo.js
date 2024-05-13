@@ -1,41 +1,40 @@
 $(document).ready(function () {
-    iniciarTabla();
+    buscarCentro();
 });
 
 
-function iniciarTabla() { ///INGRESA LA TABLA
-    $.get("../../../../App/View/Hraes/CentroTrabajo/tabla.php", {}, function (data, status) {
-        $("#t-table").html(data);
-    });
-}
-
-function iniciarBusqueda(busqueda) { //BUSQUEDA
+function iniciarTabla(busqueda, paginador) { ///INGRESA LA TABLA
     $.ajax({
         type: 'POST',
         url: '../../../../App/View/Hraes/CentroTrabajo/tabla.php',
-        data: { busqueda: busqueda },
+        data: { 
+            busqueda: busqueda,
+            paginador:paginador
+         },
         success: function (data) {
-            $('#t-table').html(data);
+            $('#tabla_centro_trabajo').html(data);
         }
     });
 }
 
-function buscarInBd(){ //BUSQUEDA
-    let buscar = document.getElementById("buscar").value.trim();
-    buscar = buscar.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
-    buscarlenth = buscar.length;
+function buscarCentro(){ //BUSQUEDA
+    let buscarNew = clearElement(buscar);
+    let buscarlenth = lengthValue(buscarNew);
     
     if (buscarlenth == 0){
-        iniciarTabla();
+        iniciarTabla(null, iniciarBusqueda());
     } else {
-        iniciarBusqueda(buscar);
+        iniciarTabla(buscarNew, iniciarBusqueda());
     }
 }
 
 function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONADO
     $("#id_object").val(id_object);
+    let titulo = document.getElementById("titulo_centro_trabajo");
+    titulo.textContent = 'Modificar';
     if (id_object == null){
         $("#agregar_editar_modal").find("input,textarea,select").val("");
+        titulo.textContent = 'Agregar';
     }
 
     $.post("../../../../App/Controllers/Hrae/CentroTrabajoC/DetallesC.php", {
@@ -64,6 +63,7 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             $("#num_interior").val(entity.num_interior);
             $("#latitud").val(entity.latitud);
             $("#longitud").val(entity.longitud);
+            $("#pais").val(entity.pais);
         }
     );
 
@@ -83,6 +83,7 @@ function agregarEditarByDb() {
     var latitud = $("#latitud").val();
     var longitud = $("#longitud").val();
     var id_object = $("#id_object").val();
+    var pais = $("#pais").val();
 
     $.post("../../../../App/Controllers/Hrae/CentroTrabajoC/AgregarEditarC.php", {
         id_object: id_object,
@@ -97,24 +98,26 @@ function agregarEditarByDb() {
         num_interior:num_interior,
         latitud:latitud,
         longitud:longitud,
+        pais:pais
 
     },
         function (data, status) {
             console.log(data);
             if (data == 'edit'){
-                mensajeExito('Centro de trabajo modificado');
+                mensajeExito('Centro de trabajo modificado con éxito');
             } else if (data == 'add') {
-                mensajeExito('Centro de trabajo agregado');  
+                mensajeExito('Centro de trabajo agregado con éxito');  
             } else {
                 mensajeError(data);
             }
             $("#agregar_editar_modal").modal("hide");
-            iniciarTabla();
+            buscarCentro();
         }
     );
 }
 
-function eliminarEntity(id_object) {//ELIMINAR USUARIO
+function eliminarEntity(id_object) {
+    if(validarAccion()){
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -131,13 +134,14 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
             },
             function (data, status) {
                 if (data == 'delete'){
-                    mensajeExito('Centro de trabajo eliminado')
+                    mensajeExito('Centro de trabajo eliminado con éxito')
                 } else {
                     mensajeError('No fue posible eliminar el elemento');
                 }
-                iniciarTabla();
+                buscarCentro();
             }
         );
     }
     });
+}
 }

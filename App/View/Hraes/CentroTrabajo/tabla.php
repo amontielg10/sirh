@@ -3,12 +3,13 @@ include '../../../../conexion.php';
 include '../../../Model/Hraes/CentroTrabajoM/CentroTrabajoM.php';
 
 $listado = new modelCentroTrabajoHraes();
+$paginador = $_POST['paginador'];
 
-$query = $listado->listarByAll();
+$query = $listado->listarByAll($paginador);
 
 if (isset($_POST['busqueda'])) {
     $busqueda = $_POST['busqueda'];
-    $query = $listado->listarByLike($busqueda);
+    $query = $listado->listarByLike($busqueda,$paginador);
 }
 
 $data =
@@ -62,6 +63,8 @@ if (pg_num_rows($result) > 0) {
                     </tbody>
                 </table>';
     }
+}else {
+    $data .= '<h6>Sin resultados</h6>';
 }
 
 echo $data;

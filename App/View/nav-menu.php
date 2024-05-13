@@ -2,6 +2,7 @@
 <?php include 'validar_sesion.php'; ?>
 
 <?php
+$id_user = $_SESSION['id_user'];
 $nick = $_SESSION['nick'];
 $nombre = $_SESSION['nombre'];
 $id_rol = $_SESSION['id_rol'];

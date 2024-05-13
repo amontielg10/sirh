@@ -8,12 +8,16 @@ function validar(){
     let id_cat_entidad = document.getElementById('id_cat_entidad').value.trim();
     let codigo_postal = document.getElementById('codigo_postal').value.trim();
 
+    let latitud = document.getElementById('latitud').value.trim();
+    let longitud = document.getElementById('longitud').value.trim();
+
     if (validarData(nombre,'Nombre') &&
         validarData(clave_centro_trabajo,'Clave centro de trabajo') &&
-        validarData(colonia,'Colonia') &&
         validarData(id_cat_region,'Región') &&
         validarData(id_estatus_centro,'Estatus') &&
         validarData(id_cat_entidad,'Entidad')&&
+        validarData(latitud,'Latitud')&&
+        validarData(longitud,'Longitud')&&
         validarData(codigo_postal,'Código postal') 
     ){
         agregarEditarByDb();

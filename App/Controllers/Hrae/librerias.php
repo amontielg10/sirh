@@ -27,9 +27,11 @@ include '../../../Model/Catalogos/CatSepomexM/CatSepomexM.php';
 include '../../../Model/Catalogos/CatMovimientoM/CatMovimientoM.php';
 include '../../../Model/Hraes/MovimientosM/MovimientosM.php';
 include '../../../Model/Hraes/PlazasM/PlazasM.php';
+include '../../../Model/Hraes/BitacoraM/BitacoraM.php';
 
 ///CONTROLLERS
 include '../../../Controllers/Hrae/GlobalC/ArrayC.php';
+include '../../../Controllers/Hrae/BitacoraC/BitacoraC.php';
 include '../../../Controllers/Catalogos/CatGeneroC/CatGeneroC.php';
 include '../../../Controllers/Catalogos/CatEstadoCivilC/CatEstadoCivilC.php';
 include '../../../Controllers/Catalogos/CatEstatusC/CatEstatusC.php';

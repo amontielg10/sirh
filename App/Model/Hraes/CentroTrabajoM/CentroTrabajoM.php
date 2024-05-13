@@ -2,7 +2,7 @@
 
 class modelCentroTrabajoHraes
 {
-    public function listarByAll()
+    public function listarByAll($paginator)
     {
         $listado = "SELECT tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes,
                             tbl_centro_trabajo_hraes.clave_centro_trabajo,
@@ -13,12 +13,12 @@ class modelCentroTrabajoHraes
                     ON tbl_centro_trabajo_hraes.id_cat_entidad = 
                         cat_entidad.id_cat_entidad
                     ORDER BY tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes DESC
-                    LIMIT 6";
+                    LIMIT 5 OFFSET $paginator;";
 
         return $listado;
     }
 
-    public function listarByLike($busqueda)
+    public function listarByLike($busqueda,$paginator)
     {
         $listado = "SELECT tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes,
                             tbl_centro_trabajo_hraes.clave_centro_trabajo,
@@ -37,7 +37,7 @@ class modelCentroTrabajoHraes
                     OR TRIM(UPPER(UNACCENT(tbl_centro_trabajo_hraes.codigo_postal)))
                           LIKE '%$busqueda%'
                     ORDER BY tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes DESC
-                    LIMIT 6";
+                    LIMIT 5 OFFSET $paginator;";
 
         return $listado;
     }
@@ -45,7 +45,7 @@ class modelCentroTrabajoHraes
     public function listarByIdEdit($id_object){
         $listado = pg_query("SELECT id_tbl_centro_trabajo_hraes, clave_centro_trabajo, nombre,
                                     colonia, codigo_postal, num_exterior, num_interior, latitud, longitud,
-                                    id_cat_region, id_estatus_centro, id_cat_entidad
+                                    id_cat_region, id_estatus_centro, id_cat_entidad, pais
                             FROM tbl_centro_trabajo_hraes
                             WHERE id_tbl_centro_trabajo_hraes = $id_object
                             ORDER BY id_tbl_centro_trabajo_hraes DESC
@@ -53,18 +53,18 @@ class modelCentroTrabajoHraes
         return $listado;
     }
 
-    function editarByArray($conexion, $datos, $condicion){
-        $pg_update = pg_update($conexion, 'tbl_centro_trabajo_hraes', $datos, $condicion);
+    function editarByArray($conexion, $datos, $condicion,$tablaCentroTrabajo){
+        $pg_update = pg_update($conexion, $tablaCentroTrabajo, $datos, $condicion);
         return $pg_update;
     }
 
-    function agregarByArray($conexion, $datos){
-        $pg_add = pg_insert($conexion, 'tbl_centro_trabajo_hraes', $datos);
+    function agregarByArray($conexion, $datos,$tablaCentroTrabajo){
+        $pg_add = pg_insert($conexion, $tablaCentroTrabajo, $datos);
         return $pg_add;
     }
 
-    function eliminarByArray($conexion, $condicion){
-        $pgs_delete = pg_delete($conexion,'tbl_centro_trabajo_hraes',$condicion);
+    function eliminarByArray($conexion, $condicion,$tablaCentroTrabajo){
+        $pgs_delete = pg_delete($conexion,$tablaCentroTrabajo,$condicion);
         return $pgs_delete;
     }
 
@@ -82,6 +82,7 @@ class modelCentroTrabajoHraes
             'id_cat_region' => null,
             'id_estatus_centro' => null,
             'id_cat_entidad' => null,
+            'pais' => null
         ];
     }
 }

@@ -1,5 +1,6 @@
 var valorInicial = 1;
 var textValor = document.getElementById('idUsertable');
+var buscar = document.getElementById("buscarUsuario");
 //var buscar = document.getElementById("buscarUsuario").value.trim();
 
 
@@ -147,8 +148,6 @@ function iniciarBusquedaUsuarios(busqueda) { //BUSQUEDA
         }
     });
 }
-
-var buscar = document.getElementById("buscarUsuario");
 
 function buscarUsuario(){ //BUSQUEDA
     let buscarNew = clearElement(buscar);
