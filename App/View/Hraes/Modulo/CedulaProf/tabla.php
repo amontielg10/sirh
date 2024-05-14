@@ -3,12 +3,19 @@ include '../../../../../conexion.php';
 include '../../../../Model/Hraes/CedulaM/CedulaM.php';
 
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
+$paginador = $_POST['paginador'];
+
 $modelCedulaM = new ModelCedulaM();
-$listado = $modelCedulaM -> listarById($id_tbl_empleados_hraes);
-if(isset($_POST['buscar'])){
-    $listado = $modelCedulaM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['buscar']);
+$listado = $modelCedulaM -> listarById($id_tbl_empleados_hraes,$paginador);
+if($_POST['buscar'] != ''){
+    $listado = $modelCedulaM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['buscar'],$paginador);
+    echo 'busqueda';
+} else {
+    echo 'vacio';
 }
 
+
+/*
 $data =
     '<table class="table table-striped" id="tabla_cedula" style="width:100%">
     <thead>
@@ -39,6 +46,9 @@ if (pg_num_rows($listado) > 0) {
                     </tbody>
                 </table>';
     }
-} 
+} else {
+    $data .= '<h6>Sin resultados</h6>';
+}
 
 echo $data;
+*/

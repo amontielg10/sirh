@@ -1,5 +1,7 @@
 
 <!-- LIBRERIAS JS -->
+<script src="../../../../js/Hraes/Modulo/Iniciar.js"></script>
+
 <script src="../../../../js/Global/FormaPago/Validar.js"></script>
 <script src="../../../../js/Global/Curp/ValidarCurpMenor.js"></script>
 <script src="../../../../js/Global/Funciones/Select.js"></script>
@@ -9,6 +11,7 @@
 
 <script src="../../../../js/Hraes/Modulo/CedulaProf/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/CedulaProf/Validar.js"></script>
+<script src="../../../../js/Hraes/Modulo/CedulaProf/buscar.js"></script>
 
 <script src="../../../../js/Hraes/Modulo/FormaPago/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/FormaPago/Validar.js"></script>
@@ -33,3 +36,6 @@
 
 <script src="../../../../js/Hraes/Modulo/Movimientos/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Movimientos/Validar.js"></script>
+
+<script src="../../../../js/Hraes/Modulo/Adicional/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Adicional/Validar.js"></script>

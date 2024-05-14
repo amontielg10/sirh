@@ -5,39 +5,13 @@ if ($id_tbl_empleados_hraes == null) {
 }
 ?>
 
-<head>
-    <style>
-        --#{$prefix}accordion-color: #{$accordion-color};
-        --#{$prefix}accordion-bg: #{$accordion-bg};
-        --#{$prefix}accordion-transition: #{$accordion-transition};
-        --#{$prefix}accordion-border-color: #{$accordion-border-color};
-        --#{$prefix}accordion-border-width: #{$accordion-border-width};
-        --#{$prefix}accordion-border-radius: #{$accordion-border-radius};
-        --#{$prefix}accordion-inner-border-radius: #{$accordion-inner-border-radius};
-        --#{$prefix}accordion-btn-padding-x: #{$accordion-button-padding-x};
-        --#{$prefix}accordion-btn-padding-y: #{$accordion-button-padding-y};
-        --#{$prefix}accordion-btn-color: #{$accordion-button-color};
-        --#{$prefix}accordion-btn-bg: #{$accordion-button-bg};
-        --#{$prefix}accordion-btn-icon: #{escape-svg($accordion-button-icon)};
-        --#{$prefix}accordion-btn-icon-width: #{$accordion-icon-width};
-        --#{$prefix}accordion-btn-icon-transform: #{$accordion-icon-transform};
-        --#{$prefix}accordion-btn-icon-transition: #{$accordion-icon-transition};
-        --#{$prefix}accordion-btn-active-icon: #{escape-svg($accordion-button-active-icon)};
-        --#{$prefix}accordion-btn-focus-box-shadow: #{$accordion-button-focus-box-shadow};
-        --#{$prefix}accordion-body-padding-x: #{$accordion-body-padding-x};
-        --#{$prefix}accordion-body-padding-y: #{$accordion-body-padding-y};
-        --#{$prefix}accordion-active-color: #{$accordion-button-active-color};
-        --#{$prefix}accordion-active-bg: #{$accordion-button-active-bg};
-    </style>
-</head>
-
 <body>
     <?php include '../../nav-menu.php' ?>
     <div id="main-wrapper">
         <div class="page-wrapper">
 
             <div class="page-breadcrumb">
-                <h2 class="page-title">M&oacutedulo Hospital Regional de Alta Especialidad</h2>
+                <h4 class="page-title">M&oacutedulo Hospital Regional de Alta Especialidad</h4>
                 <div class="row">
                     <div class="col-5 align-self-center">
 
@@ -69,14 +43,15 @@ if ($id_tbl_empleados_hraes == null) {
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
                             data-bs-target="#nav-empleado" type="button" role="tab" aria-controls="nav-home"
-                            aria-selected="true"><i class="fas fa-list-alt"></i> M&aacutes datos</button>
+                            onclick="iniciarAdicional();" aria-selected="true"><i class="fas fa-list-alt"></i>
+                            Informaci&oacuten adicional</button>
                         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
                             type="button" role="tab" aria-controls="nav-profile" aria-selected="false"
                             onclick="iniciarNumeroTelefonico();"><i class="fas fa-phone"></i> N&uacutem.
                             telefonico</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
                             type="button" role="tab" aria-controls="nav-contact" aria-selected="false"
-                            onclick="iniciarCedulaProf();"><i class="fas fa-book"></i> C&eacutedula prof.</button>
+                            onclick="buscarCedula();"><i class="fas fa-book"></i> C&eacutedula prof.</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-clabe"
                             type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
                             onclick="iniciarFormaPago();"><i class="fas fa-money-check"></i> Forma pago</button>
@@ -112,7 +87,7 @@ if ($id_tbl_empleados_hraes == null) {
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-empleado" role="tabpanel"
-                        aria-labelledby="nav-home-tab" tabindex="0"><?php ?></div>
+                        aria-labelledby="nav-home-tab" tabindex="0"><?php include 'Adicional/index.php' ?></div>
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
                         tabindex="0"><?php include 'NumeroTelefonico/index.php' ?></div>
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"
@@ -167,3 +142,9 @@ if ($id_tbl_empleados_hraes == null) {
     <?php include ('../../footer-librerias.php') ?>
 
 </body>
+
+<script>
+    $(document).ready(function () {
+        detallesAdicional(id_tbl_empleados_hraes);
+    });
+</script>

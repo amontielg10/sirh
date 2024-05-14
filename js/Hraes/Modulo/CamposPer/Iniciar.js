@@ -93,7 +93,7 @@ function agregarEditarByDbCamposPersonalizados() {
             if (data == 'edit'){
                 mensajeExito('Información modificada con éxito');
             } else if (data == 'add') {
-                mensajeExito('Información modificada con éxito');  
+                mensajeExito('Información agregada con éxito');  
             } else {
                 mensajeError(data);
             }

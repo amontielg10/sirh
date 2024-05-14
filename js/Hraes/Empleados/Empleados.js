@@ -27,32 +27,6 @@ function iniciarTablaEmpleados(busqueda, paginador) { ///INGRESA LA TABLA
     });
 }
 
-/*
-function iniciarBusqueda(busqueda) { //BUSQUEDA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Empleados/tabla.php',
-        data: { busqueda: busqueda },
-        success: function (data) {
-            $('#t-table').html(data);
-        }
-    });
-}
-
-
-function buscarInBd(){ //BUSQUEDA
-    let buscar = document.getElementById("buscar").value.trim();
-    buscar = buscar.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
-    buscarlenth = buscar.length;
-    
-    if (buscarlenth == 0){
-        iniciarTabla();
-    } else {
-        iniciarBusqueda(buscar);
-    }
-}
-*/
-
 function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONADO
     var titulo = document.getElementById("titulo");
     titulo.textContent = 'Modificar';
@@ -130,6 +104,7 @@ function agregarEditarByDb() {
 }
 
 function eliminarEntity(id_object) {//ELIMINAR USUARIO
+    if(validarAccion()){
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -155,4 +130,5 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
         );
     }
     });
+}
 }

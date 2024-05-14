@@ -2,6 +2,7 @@
 include '../librerias.php';
 
 $modelCamposPersM = new ModelCamposPersM();
+$bitacoraM = new BitacoraM();
 
 $condicion = [
     'id_ctrl_campos_pers_hraes' => $_POST['id_ctrl_campos_pers_hraes']
@@ -30,14 +31,34 @@ $datos = [
     'licencia_manejo' => $_POST['licencia_manejo'],
 ];
 
+$var = [
+    'datos' => $datos,
+    'condicion' => $condicion
+];
 
 if ($_POST['id_ctrl_campos_pers_hraes'] != null) { //Modificar
     if ($modelCamposPersM->editarByArray($connectionDBsPro, $datos, $condicion)) {
+        $dataBitacora = [
+            'nombre_tabla' => 'ctrl_campos_pers_hraes',
+            'accion' => 'MODIFICAR',
+            'valores' => json_encode($var),
+            'fecha' => $timestamp,
+            'id_users' => $_SESSION['id_user']
+        ];
+        $bitacoraM->agregarByArray($connectionDBsPro,$dataBitacora,'bitacora_hraes');
         echo 'edit';
     }
 
 } else { //Agregar
     if ($modelCamposPersM->agregarByArray($connectionDBsPro, $datos)) {
+        $dataBitacora = [
+            'nombre_tabla' => 'ctrl_campos_pers_hraes',
+            'accion' => 'AGREGAR',
+            'valores' => json_encode($var),
+            'fecha' => $timestamp,
+            'id_users' => $_SESSION['id_user']
+        ];
+        $bitacoraM->agregarByArray($connectionDBsPro,$dataBitacora,'bitacora_hraes');
         echo 'add';
     }
 }

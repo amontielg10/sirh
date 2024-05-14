@@ -1,6 +1,40 @@
 <?php
 
 class modelEmpleadosHraes{
+
+    public function validarCurp($value,$id_object){
+        $result ="";
+        if($id_object != ''){
+            $result = "AND id_tbl_empleados_hraes != $id_object;";
+        }
+        $listado = pg_query("SELECT COUNT(id_tbl_empleados_hraes)
+                             FROM tbl_empleados_hraes
+                             WHERE curp = '$value' " . $result);
+        return $listado;
+    }
+
+    public function validarRfc($value,$id_object){
+        $result ="";
+        if($id_object != ''){
+            $result = "AND id_tbl_empleados_hraes != $id_object;";
+        }
+        $listado = pg_query("SELECT COUNT(id_tbl_empleados_hraes)
+                             FROM tbl_empleados_hraes
+                             WHERE rfc = '$value' " . $result);
+        return $listado;
+    }
+
+    public function validarNoEmpleado($value,$id_object){
+        $result ="";
+        if($id_object != ''){
+            $result = "AND id_tbl_empleados_hraes != $id_object;";
+        }
+        $listado = pg_query("SELECT COUNT(id_tbl_empleados_hraes)
+                             FROM tbl_empleados_hraes
+                             WHERE num_empleado = '$value' " . $result);
+        return $listado;
+    }
+
     public function listarByAll($paginador){
         $listado = "SELECT id_tbl_empleados_hraes, rfc, curp, nombre, primer_apellido,
                            segundo_apellido, num_empleado

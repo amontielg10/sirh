@@ -2,6 +2,7 @@
 
 ///INCLUDE CONEXION
 include '../../../../conexion.php';
+include '../../../View/validar_sesion.php';
 
 ///MODEL
 include '../../../Model/Hraes/DatosEmpleadoM/DatosEmpleadoM.php';
@@ -29,6 +30,7 @@ include '../../../Model/Hraes/MovimientosM/MovimientosM.php';
 include '../../../Model/Hraes/PlazasM/PlazasM.php';
 include '../../../Model/Hraes/BitacoraM/BitacoraM.php';
 include '../../../Model/Hraes/EmpleadosM/EmpleadosM.php';
+include '../../../Model/Hraes/AdicionalM/AdicionalM.php';
 
 ///CONTROLLERS
 include '../../../Controllers/Hrae/GlobalC/ArrayC.php';

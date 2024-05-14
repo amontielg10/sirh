@@ -2,32 +2,32 @@
 
 class ModelCedulaM
 {
-    function listarById($id_object)
+    function listarById($id_object, $paginator)
     {
-        $listado = pg_query("SELECT id_ctrl_cedula_empleados_hraes, id_tbl_empleados,
+        $listado = pg_query("SELECT id_ctrl_cedula_empleados_hraes, id_tbl_empleados_hraes,
                                     cedula_profesional
                             FROM ctrl_cedula_empleados_hraes
-                            WHERE id_tbl_empleados = $id_object
+                            WHERE id_tbl_empleados_hraes = $id_object
                             ORDER BY id_ctrl_cedula_empleados_hraes DESC 
-                            LIMIT 5");
+                            LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
 
-    function listarByBusqueda($id_object, $busqueda)
+    function listarByBusqueda($id_object, $busqueda,$paginator)
     {
-        $listado = pg_query("SELECT id_ctrl_cedula_empleados_hraes, id_tbl_empleados,
+        $listado = pg_query("SELECT id_ctrl_cedula_empleados_hraes, id_tbl_empleados_hraes,
                                     cedula_profesional
                             FROM ctrl_cedula_empleados_hraes
-                            WHERE id_tbl_empleados = $id_object
+                            WHERE id_tbl_empleados_hraes = $id_object
                             AND cedula_profesional LIKE '%$busqueda%'
                             ORDER BY id_ctrl_cedula_empleados_hraes DESC 
-                            LIMIT 5");
+                            LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
 
     function listarByIdCedula($id_object)
     {
-        $listado = pg_query("SELECT id_ctrl_cedula_empleados_hraes, id_tbl_empleados,
+        $listado = pg_query("SELECT id_ctrl_cedula_empleados_hraes, id_tbl_empleados_hraes,
                                     cedula_profesional
                             FROM ctrl_cedula_empleados_hraes
                             WHERE id_ctrl_cedula_empleados_hraes = $id_object");
@@ -38,7 +38,7 @@ class ModelCedulaM
     {
         return $raw = [
             'id_ctrl_cedula_empleados_hraes' => null,
-            'id_tbl_empleados' => null,
+            'id_tbl_empleados_hraes' => null,
             'cedula_profesional' => null
         ];
     }

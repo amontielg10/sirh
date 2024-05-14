@@ -15,17 +15,17 @@
 
                     <div class="form-group col-md-6">
                         <label>Nombre (s)</label><label style="color:red">*</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+                        <input maxlength="40" type="text" class="form-control" id="nombre" placeholder="Nombre" required>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label>Apellido paterno</label><label style="color:red">*</label>
-                        <input type="text" class="form-control" id="primer_apellido" placeholder="Apellido paterno">
+                        <input maxlength="40" type="text" class="form-control" id="primer_apellido" placeholder="Apellido paterno">
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label>Apelldio materno</label><label style="color:red">*</label>
-                        <input type="text" class="form-control" id="segundo_apellido" placeholder="Apellido materno">
+                        <label>Apelldio materno</label><label style="color:red"></label>
+                        <input maxlength="40" type="text" class="form-control" id="segundo_apellido" placeholder="Apellido materno">
                     </div>
 
                     <div class="form-group col-md-6">
@@ -35,22 +35,22 @@
 
                     <div class="form-group col-md-6">
                         <label>Rfc</label><label style="color:red">*</label>
-                        <input type="text" class="form-control" id="rfc" placeholder="Rfc">
+                        <input maxlength="13" type="text" class="form-control" id="rfc" placeholder="Rfc">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label>Curp</label><label style="color:red">*</label>
-                        <input type="text" class="form-control" id="curp" placeholder="Curp">
+                        <input maxlength="18" type="text" class="form-control" id="curp" placeholder="Curp">
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label>N&uacutemero de seguro social</label><label style="color:red">*</label>
+                        <label>N&uacutemero de seguro social</label><label style="color:red"></label>
                         <input type="number" class="form-control" id="nss" placeholder="Número de seguro social">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label>Pa&iacutes de nacimiento</label><label style="color:red">*</label>
-                        <input type="text" class="form-control" id="pais_nacimiento" placeholder="País de nacimiento">
+                        <input maxlength="20" type="text" class="form-control" id="pais_nacimiento" placeholder="País de nacimiento">
                     </div>
 
                     <div class="form-group col-md-6">

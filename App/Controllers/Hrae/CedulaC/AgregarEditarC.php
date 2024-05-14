@@ -9,7 +9,7 @@ $condicion = [
 
 $datos = [
     'cedula_profesional' => $_POST['cedula_profesional'],
-    'id_tbl_empleados' => $_POST['id_tbl_empleados_hraes']
+    'id_tbl_empleados_hraes' => $_POST['id_tbl_empleados_hraes']
 ];
 
 if ($_POST['id_object'] != null) { //Modificar

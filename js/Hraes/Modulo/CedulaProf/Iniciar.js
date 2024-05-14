@@ -1,5 +1,29 @@
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
 
+function buscarCedula(){ //BUSQUEDA
+    let buscarNew = clearElement(buscar_c);
+    let buscarlenth = lengthValue(buscarNew);
+    
+    if (buscarlenth == 0){
+        iniciarTabla_c(null, iniciarBusqueda_c(),id_tbl_empleados_hraes);
+    } else {
+        iniciarTabla_c(buscarNew, iniciarBusqueda_c(),id_tbl_empleados_hraes);
+    }
+}
+
+function iniciarTabla_c(busqueda, paginador, id_tbl_empleados_hraes) { 
+    $.post('../../../../App/View/Hraes/Modulo/CedulaProf/tabla.php', {
+        busqueda: busqueda, 
+        paginador: paginador, 
+        id_tbl_empleados_hraes:id_tbl_empleados_hraes
+    },
+        function (data) {
+            $("#tabla_cedula").html(data); 
+        }
+    );
+}
+/*
+
 function iniciarCedulaProf(){
     iniciarTablaCedula(id_tbl_empleados_hraes);
 }
@@ -56,9 +80,9 @@ function agregarEditarByDbByCedula() {
     },
         function (data, status) {
             if (data == 'edit'){
-                mensajeExito('Cédula profesional modificada');
+                mensajeExito('Cédula profesional modificada con éxito');
             } else if (data == 'add') {
-                mensajeExito('Cédula profesional agregada');  
+                mensajeExito('Cédula profesional agregada con éxito');  
             } else {
                 mensajeError(data);
             }
@@ -122,3 +146,4 @@ function iniciarTablaCedulaByBusqueda(buscar, id_tbl_empleados_hraes) { ///INGRE
         }
     });
 }
+*/

@@ -2,10 +2,10 @@
     aria-hidden="true" id="agregar_editar_cedula">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" style="font-weight: bold;color:#235B4E"><label id="tituloCedula"
-                        style="font-weight: bold;color:#235B4E"></label> c&eacutedula profesional</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="salirAgregarEditarCedula();">
+            <div class="modal-header" style="background:#235B4E">
+                <h5 class="modal-title" style="font-weight: bold;color:white"><label id="tituloCedula"
+                        style="font-weight: bold;color:white"></label> c&eacutedula profesional</h5>
+                <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="salirAgregarEditarCedula();">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>

@@ -1,8 +1,12 @@
 <?php
 include '../../../../conexion.php';
 include '../../../Model/Hraes/EmpleadosM/EmpleadosM.php';
+include '../../../Model/Hraes/BitacoraM/BitacoraM.php';
+include '../../../View/validar_sesion.php';
 
 $model = new modelEmpleadosHraes();
+$bitacoraM = new BitacoraM();
+$tablaEmpleados = 'tbl_empleados_hraes';
 
 $condicion = [
     'id_tbl_empleados_hraes' => $_POST['id_object']
@@ -21,14 +25,34 @@ $datos = [
     'pais_nacimiento' => $_POST['pais_nacimiento'],
 ];
 
+$var = [
+    'datos' => $datos,
+    'condicion' => $condicion
+];
 
 if ($_POST['id_object'] != null) { //Modificar
     if ($model->editarByArray($connectionDBsPro, $datos, $condicion)) {
+        $dataBitacora = [
+            'nombre_tabla' => $tablaEmpleados,
+            'accion' => 'MODIFICAR',
+            'valores' => json_encode($var),
+            'fecha' => $timestamp,
+            'id_users' => $_SESSION['id_user']
+        ];
+        $bitacoraM->agregarByArray($connectionDBsPro,$dataBitacora,'bitacora_hraes');
         echo 'edit';
     }
 
 } else { //Agregar
     if ($model->agregarByArray($connectionDBsPro, $datos)) {
+        $dataBitacora = [
+            'nombre_tabla' => $tablaEmpleados,
+            'accion' => 'AGREGAR',
+            'valores' => json_encode($var),
+            'fecha' => $timestamp,
+            'id_users' => $_SESSION['id_user']
+        ];
+        $bitacoraM->agregarByArray($connectionDBsPro,$dataBitacora,'bitacora_hraes');
         echo 'add';
     }
 }
