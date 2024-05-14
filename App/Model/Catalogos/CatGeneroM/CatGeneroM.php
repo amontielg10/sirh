@@ -9,7 +9,7 @@ class CatalogoGeneroM
         return $listado;
     }
 
-    public function obtenerElemetoById($idObject)
+    public function listarElemetoById($idObject)
     {
         $listado = pg_query("SELECT id_cat_genero, genero
                              FROM cat_genero

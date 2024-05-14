@@ -1,29 +1,34 @@
 <?php
-include '../../../../conexion.php';
-include '../../../Model/Hraes/EmpleadosM/EmpleadosM.php';
-include '../../../Model/Hraes/CamposPersM/CamposPersM.php';
+include '../librerias.php';
 
 $model = new modelEmpleadosHraes();
+$row = new Row();
+$catalogoGeneroM = new CatalogoGeneroM();
+$catalogoGeneroC = new CatalogoGeneroC();
+$catEstadoCivilM = new CatEstadoCivilM();
+$catEstadoCivilC = new CatEstadoCivilC();
 
 $id_object = $_POST['id_object'];
 
 if ($id_object != null) {
-    $response = returnArray($model -> listarByIdEdit($id_object));
+    $response = $row->returnArray($model -> listarByIdEdit($id_object));
+    $estadoCivil = $catEstadoCivilC->selectById($catEstadoCivilM->listarByAll(),$row->returnArrayById($catEstadoCivilM->obtenerElemetoById($response['id_cat_estado_civil'])));
+    $genero = $catalogoGeneroC->selectById($catalogoGeneroM->listarByAll(),$row->returnArrayById($catalogoGeneroM->listarElemetoById($response['id_cat_genero'])));
     $var = [
         'response' => $response,
+        'genero' => $genero,
+        'estadoCivil' => $estadoCivil,
     ];
     echo json_encode($var);
 
 } else {
     $response = $model->listarByNull();
-    echo json_encode($response);
-}
-
-function returnArray($result){
-    if (pg_num_rows($result) > 0) {
-        while ($row = pg_fetch_assoc($result)) {
-            $response = $row;
-        }
-    }
-    return $response;
+    $genero = $catalogoGeneroC->selectByAll($catalogoGeneroM->listarByAll());
+    $estadoCivil = $catEstadoCivilC->selectByAll($catEstadoCivilM->listarByAll());
+    $var = [
+        'response' => $response,
+        'genero' => $genero,
+        'estadoCivil' => $estadoCivil,
+    ];
+    echo json_encode($var);
 }

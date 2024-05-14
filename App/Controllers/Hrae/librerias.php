@@ -28,6 +28,7 @@ include '../../../Model/Catalogos/CatMovimientoM/CatMovimientoM.php';
 include '../../../Model/Hraes/MovimientosM/MovimientosM.php';
 include '../../../Model/Hraes/PlazasM/PlazasM.php';
 include '../../../Model/Hraes/BitacoraM/BitacoraM.php';
+include '../../../Model/Hraes/EmpleadosM/EmpleadosM.php';
 
 ///CONTROLLERS
 include '../../../Controllers/Hrae/GlobalC/ArrayC.php';

@@ -3,12 +3,13 @@ include '../../../../conexion.php';
 include '../../../Model/Hraes/EmpleadosM/EmpleadosM.php';
 
 $listado = new modelEmpleadosHraes();
+$paginador = $_POST['paginador'];
 
-$query = $listado->listarByAll();
+$query = $listado->listarByAll($paginador);
 
 if (isset($_POST['busqueda'])) {
     $busqueda = $_POST['busqueda'];
-    $query = $listado->listarByLike($busqueda);
+    $query = $listado->listarByLike($busqueda,$paginador);
 }
 
 $data =
@@ -19,7 +20,7 @@ $data =
             <th style="color: white;">Nombre</th>
             <th style="color: white;">Curp</th>
             <th style="color: white;">Rfc</th>
-            <th style="color: white;">Nss</th>
+            <th style="color: white;">N&uacutem. empleado</th>
         </tr>
     </thead>';
 
@@ -58,12 +59,14 @@ if (pg_num_rows($result) > 0) {
                                 ' . $row['rfc'] . '
                             </td>
                             <td>
-                                ' . $row['nss'] . '
+                                ' . $row['num_empleado'] . '
                             </td>
                         </tr>
                     </tbody>
                 </table>';
     }
+}else {
+    $data .= '<h6>Sin resultados</h6>';
 }
 
 echo $data;

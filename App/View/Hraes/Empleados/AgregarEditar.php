@@ -2,10 +2,10 @@
     aria-hidden="true" id="agregar_editar_modal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" style="font-weight: bold;color:#235B4E"><label id="titulo"
-                        style="font-weight: bold;color:#235B4E"></label> empleado</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div class="modal-header" style="background:#235B4E">
+                <h5 class="modal-title" style="font-weight: bold;color:white"><label id="titulo"
+                        style="font-weight: bold;color:white"></label> empleado.</h5>
+                <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -19,18 +19,8 @@
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label>Rfc</label><label style="color:red">*</label>
-                        <input type="text" class="form-control" id="rfc" placeholder="Rfc">
-                    </div>
-
-                    <div class="form-group col-md-6">
                         <label>Apellido paterno</label><label style="color:red">*</label>
                         <input type="text" class="form-control" id="primer_apellido" placeholder="Apellido paterno">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Curp</label><label style="color:red">*</label>
-                        <input type="text" class="form-control" id="curp" placeholder="Curp">
                     </div>
 
                     <div class="form-group col-md-6">
@@ -39,8 +29,40 @@
                     </div>
 
                     <div class="form-group col-md-6">
+                        <label>N&uacutem. de empleado</label><label style="color:red">*</label>
+                        <input type="number" class="form-control" id="num_empleado" placeholder="Núm de empleado">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Rfc</label><label style="color:red">*</label>
+                        <input type="text" class="form-control" id="rfc" placeholder="Rfc">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Curp</label><label style="color:red">*</label>
+                        <input type="text" class="form-control" id="curp" placeholder="Curp">
+                    </div>
+
+                    <div class="form-group col-md-6">
                         <label>N&uacutemero de seguro social</label><label style="color:red">*</label>
                         <input type="number" class="form-control" id="nss" placeholder="Número de seguro social">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Pa&iacutes de nacimiento</label><label style="color:red">*</label>
+                        <input type="text" class="form-control" id="pais_nacimiento" placeholder="País de nacimiento">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>G&eacutenero</label><label style="color:red">*</label>
+                        <select class="form-control" aria-label="Default select example" id="id_cat_genero" required>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Estado civil</label><label style="color:red">*</label>
+                        <select class="form-control" aria-label="Default select example" id="id_cat_estado_civil" required>
+                        </select>
                     </div>
 
                 </div>

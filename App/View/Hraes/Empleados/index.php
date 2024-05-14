@@ -36,11 +36,22 @@
                 </div>
                 <p></p>
                 <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar"
-                    onkeyup="buscarInBd();" aria-label="Search">
+                    onkeyup="buscarEmpleado();" aria-label="Search">
                 <p></p>
+                
 
-                <table class="table table-striped" id="t-table" style="width:100%">
+                <table class="table table-striped" id="tabla_empleados" style="width:100%">
                 </table>
+                <div class="position-absolute top-50 start-50">
+                <button onclick="anteriorValor()" class="btn btn-light"><i class="fa fa-angle-double-left"></i>
+                        <span class="hide-menu" style="font-weight: bold;"></span>
+                </button>
+                <label id="idEmpleadotable">1</label>
+                <button onclick="siguienteValor()" class="btn btn-light"><i class="fa fa-angle-double-right"></i>
+                        <span class="hide-menu" style="font-weight: bold;"></span>
+                </button>
+                </div>
+                <br>
 
             </div>
         </div>

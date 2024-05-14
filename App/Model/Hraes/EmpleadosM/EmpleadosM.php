@@ -1,34 +1,35 @@
 <?php
 
 class modelEmpleadosHraes{
-    public function listarByAll(){
+    public function listarByAll($paginador){
         $listado = "SELECT id_tbl_empleados_hraes, rfc, curp, nombre, primer_apellido,
-                           segundo_apellido, nss
+                           segundo_apellido, num_empleado
                     FROM tbl_empleados_hraes
                     ORDER BY id_tbl_empleados_hraes DESC
-                    LIMIT 6";
+                    LIMIT 5 OFFSET $paginador;";
 
         return $listado;
     }
 
-    public function listarByLike($busqueda){
+    public function listarByLike($busqueda,$paginador){
         $listado = "SELECT id_tbl_empleados_hraes, rfc, curp, nombre, primer_apellido,
-                           segundo_apellido, nss
+                           segundo_apellido,num_empleado
                     FROM tbl_empleados_hraes
                     WHERE TRIM(UPPER(UNACCENT(rfc))) LIKE '%$busqueda%'
                     OR TRIM(UPPER(UNACCENT(curp))) LIKE '%$busqueda%'
                     OR TRIM(UPPER(UNACCENT(nombre))) LIKE '%$busqueda%'
                     OR TRIM(UPPER(UNACCENT(primer_apellido))) LIKE '%$busqueda%'
                     OR TRIM(UPPER(UNACCENT(segundo_apellido))) LIKE '%$busqueda%'
-                    OR TRIM(UPPER(UNACCENT(CAST(nss AS TEXT)))) LIKE '%$busqueda%'
+                    OR TRIM(UPPER(UNACCENT(CAST(num_empleado AS TEXT)))) LIKE '%$busqueda%'
                     ORDER BY id_tbl_empleados_hraes DESC
-                    LIMIT 6";
+                    LIMIT 5 OFFSET $paginador;";
         return $listado;
     }
 
     public function listarByIdEdit($id_object){
         $listado = pg_query("SELECT id_tbl_empleados_hraes, rfc, curp, nombre, primer_apellido,
-                                    segundo_apellido, nss
+                                    segundo_apellido, nss,num_empleado,pais_nacimiento,
+                                    id_cat_estado_civil,id_cat_genero
                             FROM tbl_empleados_hraes
                             WHERE id_tbl_empleados_hraes = $id_object
                             ORDER BY id_tbl_empleados_hraes DESC
@@ -45,6 +46,10 @@ class modelEmpleadosHraes{
             'primer_apellido' => null,
             'segundo_apellido' => null,
             'nss' => null,
+            'num_empleado' => null,
+            'pais_nacimiento' => null,
+            'id_cat_estado_civil' => null,
+            'id_cat_genero' => null,
         ];
     }
 
