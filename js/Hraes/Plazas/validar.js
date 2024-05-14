@@ -6,7 +6,8 @@ function validar(){
     let id_cat_zonas_tabuladores_hraes = document.getElementById('id_cat_zonas_tabuladores_hraes').value.trim();
     let id_cat_niveles_hraes = document.getElementById('id_cat_niveles_hraes').value.trim();
     let num_plaza = document.getElementById('num_plaza').value.trim();
-    let zona_pagadora = document.getElementById('zona_pagadora').value.trim();
+    let id_tbl_zonas_pago = document.getElementById('id_tbl_zonas_pago').value.trim();
+    let fecha_ingreso_inst = document.getElementById('fecha_ingreso_inst').value.trim();
 
 
     if (validarData(id_cat_plazas,'Tipo de plaza') &&
@@ -16,7 +17,8 @@ function validar(){
         validarData(id_cat_zonas_tabuladores_hraes,'Zona tabuladores') &&
         validarData(id_cat_niveles_hraes,'Niveles')&&
         validarData(num_plaza,'Número de plaza') &&
-        validarData(zona_pagadora,'Zona pagadora')
+        validarData(id_tbl_zonas_pago,'Zona pagadora') &&
+        validarData(fecha_ingreso_inst,'Fecha de ingreso')
     ){
         agregarEditarByDb();
     } 

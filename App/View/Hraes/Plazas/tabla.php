@@ -3,25 +3,27 @@ include '../../../../conexion.php';
 include '../../../Model/Hraes/PlazasM/PlazasM.php';
 
 $listado = new modelPlazasHraes();
+//$query = $listado->listarByAll(); //INICIO DE LA TABLA CON LA INFORMACION
+$busqueda = $_POST['busqueda'];
+$paginador = $_POST['paginador'];
+$id_tbl_centro_trabajo_hraes = $_POST['id_tbl_centro_trabajo_hraes'];
 
-$query = $listado->listarByAll(); //INICIO DE LA TABLA CON LA INFORMACION
-
-if (isset($_POST['busqueda'])) { /// INICIO DE LA TABLA SI SE INGRESA UNA BUSQUEDA
-    if (isset($_POST['id_object']) != 'ok') {
-        $busqueda = $_POST['busqueda'];
-        $id_object = $_POST['id_object'];
-        $query = $listado->listarByLikeByIdCentroTrabajo($busqueda, $id_object);
-    } else {
-        $busqueda = $_POST['busqueda'];
-        $query = $listado->listarByLike($busqueda);
+if ($id_tbl_centro_trabajo_hraes != null){///LISTAR CON ID DE CENTRO DE TRABAJO
+    if($busqueda != ''){ ///LISTAR CON BUSQUEDA
+        $query = $listado->listarByLike($id_tbl_centro_trabajo_hraes,$busqueda,$paginador);
+    } else{ ///LISTAR SIN BUSQUEDA
+        $query = $listado->listarByAll($id_tbl_centro_trabajo_hraes,$paginador);
     }
-} else if (isset($_POST['id_object'])) { //INICIO DE LA TABLA CON EL ID DEL CENTRO DE TRABAJO SELECCIONADO
-    $id_object = $_POST['id_object'];
-    $query = $listado->listarByAllByIdCentroTrabajo($id_object);///INICIO DE LA TABLA SI SE INGRESA UNA BUSQUEDA CON EL CENTRO DE TRABAJO SELECCIONADO
-} 
+} else { ///LISTAR SIN ID DE CENTRO DE TRABAJO
+    if($busqueda != ''){ ///LISTAR CON BUSQUEDA
+        $query = $listado->listarByLike($id_tbl_centro_trabajo_hraes,$busqueda,$paginador);
+    } else{ ///LISTAR SIN BUSQUEDA
+        $query = $listado->listarByAll($id_tbl_centro_trabajo_hraes,$paginador);
+    }
+}
 
 $data =
-    '<table class="table table-striped" id="t-table" style="width:100%">
+    '<table class="table table-striped" id="tabla_plazas" style="width:100%">
     <thead>
         <tr style="background-color:#235B4E;">
             <th style="color: white; width: 50px">Acciones</th>
@@ -46,7 +48,6 @@ if (pg_num_rows($result) > 0) {
                             <div class="dropdown-menu">
                                 <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar</button>
                                 <button onclick="detallesEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-align-left"></i> Detalles</button>
-                                <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-user-alt"></i> Empleado</button>
                                 <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>   
                             </div>
                           </div>
@@ -67,8 +68,9 @@ if (pg_num_rows($result) > 0) {
                     </tbody>
                 </table>';
     }
+} else {
+    $data .= '<h6>Sin resultados</h6>';
 }
-
 echo $data;
 
 

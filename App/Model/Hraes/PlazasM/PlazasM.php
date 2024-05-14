@@ -2,6 +2,71 @@
 
 class modelPlazasHraes
 {
+    public function listarByAll($id_tbl_centro_trabajo_hraes,$paginator)
+    {
+        $result = "
+            ORDER BY id_tbl_control_plazas_hraes DESC
+            LIMIT 5 OFFSET $paginator;";
+
+        if ($id_tbl_centro_trabajo_hraes != null){
+            $result = "
+                WHERE tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes = $id_tbl_centro_trabajo_hraes
+                ORDER BY tbl_control_plazas_hraes.id_tbl_control_plazas_hraes DESC
+                LIMIT 5 OFFSET $paginator;";
+        }
+
+        $listado = "SELECT tbl_control_plazas_hraes.id_tbl_control_plazas_hraes,
+                           tbl_control_plazas_hraes.num_plaza, cat_plazas.tipo_plaza,
+                           cat_tipo_contratacion_hraes.descripcion_cont, 
+                           cat_unidad_responsable.nombre
+                    FROM tbl_control_plazas_hraes
+                    INNER JOIN cat_plazas
+                        ON tbl_control_plazas_hraes.id_cat_plazas = cat_plazas.id_cat_plazas
+                    INNER JOIN cat_tipo_contratacion_hraes
+                        ON tbl_control_plazas_hraes.id_cat_tipo_contratacion_hraes = 
+                           cat_tipo_contratacion_hraes.id_cat_tipo_contratacion_hraes
+                    INNER JOIN cat_unidad_responsable
+                        ON tbl_control_plazas_hraes.id_cat_unidad_responsable = 
+                           cat_unidad_responsable.id_cat_unidad_responsable " . $result;
+
+        return $listado;
+    }
+
+    public function listarByLike($id_tbl_centro_trabajo_hraes,$busqueda,$paginator)
+    {
+        $result = "AND (TRIM(UPPER(UNACCENT(tbl_control_plazas_hraes.num_plaza))) 
+                            LIKE '%$busqueda%'
+                    OR TRIM(UPPER(UNACCENT(cat_plazas.tipo_plaza)))
+                            LIKE '%$busqueda%'
+                    OR TRIM(UPPER(UNACCENT(cat_tipo_contratacion_hraes.descripcion_cont)))
+                            LIKE '%$busqueda%'
+                    OR TRIM(UPPER(UNACCENT(cat_unidad_responsable.nombre)))
+                            LIKE '%$busqueda%')
+                    ORDER BY id_tbl_control_plazas_hraes DESC
+                    LIMIT 5 OFFSET $paginator;";
+        $condition = "";
+        if($id_tbl_centro_trabajo_hraes != null){
+            $condition = "WHERE tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes = 
+                          $id_tbl_centro_trabajo_hraes ";
+        }
+        $condition = $condition . $result;
+
+        $listado = "SELECT tbl_control_plazas_hraes.id_tbl_control_plazas_hraes,
+                           tbl_control_plazas_hraes.num_plaza, cat_plazas.tipo_plaza,
+                           cat_tipo_contratacion_hraes.descripcion_cont, 
+                           cat_unidad_responsable.nombre
+                    FROM tbl_control_plazas_hraes
+                    INNER JOIN cat_plazas
+                        ON tbl_control_plazas_hraes.id_cat_plazas = cat_plazas.id_cat_plazas
+                    INNER JOIN cat_tipo_contratacion_hraes
+                        ON tbl_control_plazas_hraes.id_cat_tipo_contratacion_hraes = 
+                           cat_tipo_contratacion_hraes.id_cat_tipo_contratacion_hraes
+                    INNER JOIN cat_unidad_responsable
+                        ON tbl_control_plazas_hraes.id_cat_unidad_responsable = 
+                           cat_unidad_responsable.id_cat_unidad_responsable " .  $condition;
+        return $listado;
+    }
+    /*
     public function listarByAll()
     {
         $listado = "SELECT tbl_control_plazas_hraes.id_tbl_control_plazas_hraes,
@@ -74,36 +139,8 @@ class modelPlazasHraes
         return $listado;
     }
 
-    public function listarByLikeByIdCentroTrabajo($busqueda, $id_object)
-    {
-        $listado = "SELECT tbl_control_plazas_hraes.id_tbl_control_plazas_hraes,
-                           tbl_control_plazas_hraes.num_plaza, cat_plazas.tipo_plaza,
-                           cat_tipo_contratacion_hraes.descripcion_cont, 
-                           cat_unidad_responsable.nombre
-                    FROM tbl_control_plazas_hraes
-                    INNER JOIN cat_plazas
-                        ON tbl_control_plazas_hraes.id_cat_plazas = cat_plazas.id_cat_plazas
-                    INNER JOIN cat_tipo_contratacion_hraes
-                        ON tbl_control_plazas_hraes.id_cat_tipo_contratacion_hraes = 
-                           cat_tipo_contratacion_hraes.id_cat_tipo_contratacion_hraes
-                    INNER JOIN cat_unidad_responsable
-                        ON tbl_control_plazas_hraes.id_cat_unidad_responsable = 
-                           cat_unidad_responsable.id_cat_unidad_responsable
-                    WHERE tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes = $id_object
-                    AND (TRIM(UPPER(UNACCENT(tbl_control_plazas_hraes.num_plaza))) 
-                          LIKE '%$busqueda%'
-                    OR TRIM(UPPER(UNACCENT(cat_plazas.tipo_plaza)))
-                          LIKE '%$busqueda%'
-                    OR TRIM(UPPER(UNACCENT(cat_tipo_contratacion_hraes.descripcion_cont)))
-                          LIKE '%$busqueda%'
-                    OR TRIM(UPPER(UNACCENT(cat_unidad_responsable.nombre)))
-                          LIKE '%$busqueda%')
-                    ORDER BY id_tbl_control_plazas_hraes DESC
-                    LIMIT 6";
-
-        return $listado;
-    }
-
+    
+    */
 
     function detallesPlazas($id_object)
     {
@@ -158,7 +195,7 @@ class modelPlazasHraes
                                     id_cat_tipo_contratacion_hraes,id_cat_unidad_responsable,
                                     id_tbl_centro_trabajo_hraes,id_cat_puesto_hraes,
                                     id_cat_zonas_tabuladores_hraes,id_cat_niveles_hraes,
-                                    zona_pagadora,fecha_ingreso_inst,fecha_inicio_movimiento,
+                                    id_tbl_zonas_pago,fecha_ingreso_inst,fecha_inicio_movimiento,
                                     fecha_termino_movimiento,fecha_modificacion
                             FROM tbl_control_plazas_hraes
                             WHERE id_tbl_control_plazas_hraes = $id_object");
@@ -199,7 +236,7 @@ class modelPlazasHraes
             'id_cat_puesto_hraes' => null,
             'id_cat_zonas_tabuladores_hraes' => null,
             'id_cat_niveles_hraes' => null,
-            'zona_pagadora' => null,
+            'id_tbl_zonas_pago' => null,
             'fecha_ingreso_inst' => null,
             'fecha_inicio_movimiento' => null,
             'fecha_termino_movimiento' => null,

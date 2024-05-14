@@ -1,8 +1,8 @@
 <?php
-$id_tbl_centro_trabajo_hraes = 'ok';
-if (isset($_POST['id_tbl_centro_trabajo_hraes'])){
+$id_tbl_centro_trabajo_hraes = null;
+if(isset($_POST['id_tbl_centro_trabajo_hraes'])){
     $id_tbl_centro_trabajo_hraes = $_POST['id_tbl_centro_trabajo_hraes'];
-} 
+}
 ?>
 
 <body>
@@ -24,9 +24,9 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])){
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../../../../index.php" style="color:#cb9f52;">Home</a>
+                                        <a href="../../System/home/index.php" style="color:#cb9f52;">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Empleados</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Plaza</li>
                                 </ol>
                             </nav>
                         </div>
@@ -37,7 +37,7 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])){
             <div class="container-fluid">
                 <input type="hidden" id="id_tbl_centro_trabajo_hraes" value="<?php echo $id_tbl_centro_trabajo_hraes?>" />
                 
-                <?php if ($id_tbl_centro_trabajo_hraes != 'ok'){?>
+                <?php if ($id_tbl_centro_trabajo_hraes != null){?>
                 <p>Informaci&oacuten de las plazas correspondientes con el centro de trabajo seleccionado.</p>
                 <div class="form-inline">
                     <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i class="fas fa-plus"></i>
@@ -50,11 +50,23 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])){
 
                 <p></p>
                 <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar"
-                    onkeyup="buscarInBd();" aria-label="Search">
+                    onkeyup="buscarPlaza();" aria-label="Search">
                 <p></p>
 
-                <table class="table table-striped" id="t-table" style="width:100%">
+                <table class="table table-striped" id="tabla_plazas" style="width:100%">
                 </table>
+
+                <div class="position-absolute top-50 start-50">
+                <button onclick="anteriorValor()" class="btn btn-light"><i class="fa fa-angle-double-left"></i>
+                        <span class="hide-menu" style="font-weight: bold;"></span>
+                </button>
+                <label id="idtable">1</label>
+                <button onclick="siguienteValor()" class="btn btn-light"><i class="fa fa-angle-double-right"></i>
+                        <span class="hide-menu" style="font-weight: bold;"></span>
+                </button>
+                </div>
+                <br>
+
 
                 <?php include 'AgregarEditar.php' ?>
                 <?php include 'Detalles.php' ?>
@@ -63,6 +75,7 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])){
         </div>
     </div>
 
+    <script src="../../../../js/Hraes/Plazas/Busqueda.js"></script>
     <script src="../../../../js/Hraes/Plazas/Plazas.js"></script>
     <script src="../../../../js/Hraes/Plazas/validar.js"></script>
     <?php include ('../../footer-librerias.php') ?>
