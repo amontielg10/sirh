@@ -3,10 +3,12 @@ include '../../../../../conexion.php';
 include '../../../../Model/Hraes/TelefonoM/TelefonoM.php';
 
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
+$paginador = $_POST['paginador'];
 $modelTelefonoM = new ModelTelefonoM();
-$listado = $modelTelefonoM ->listarById($id_tbl_empleados_hraes);
-if(isset($_POST['buscar'])){
-    $listado = $modelTelefonoM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['buscar']);
+
+$listado = $modelTelefonoM ->listarById($id_tbl_empleados_hraes,$paginador);
+if(isset($_POST['busqueda'])){
+    $listado = $modelTelefonoM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['busqueda'],$paginador);
 }
 
 $data =
@@ -15,6 +17,7 @@ $data =
         <tr style="background-color:#235B4E;">
             <th style="color: white; width: 50px">Acciones</th>
             <th style="color: white;">N&uacutem. telefonico</th>
+            <th style="color: white;">Tel&eacutefono fijo</th>
             <th style="color: white;">Estatus</th>
         </tr>
     </thead>';
@@ -37,12 +40,17 @@ if (pg_num_rows($listado) > 0) {
                                 ' . $row[1] . '
                             </td>
                             <td>
-                                ' . $row[4] . '
+                                ' . $row[2] . '
+                            </td>
+                            <td>
+                                ' . $row[3] . '
                             </td>
                         </tr>
                     </tbody>
                 </table>';
     }
-} 
+} else {
+    $data .= '<h6>Sin resultados</h6>';
+}
 
 echo $data;

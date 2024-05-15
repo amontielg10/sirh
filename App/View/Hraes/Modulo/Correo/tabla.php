@@ -1,22 +1,22 @@
 <?php
 include '../../../../../conexion.php';
-include '../../../../Model/Hraes/JefeM/JefeM.php';
+include '../../../../Model/Hraes/CorreoM/CorreoM.php';
 
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
 $paginador = $_POST['paginador'];
 
-$modelJefeM = new ModelJefeM();
+$modelCorreoM = new ModelCorreoM();
 
-$listado = $modelJefeM -> listarById($id_tbl_empleados_hraes,$paginador);
+$listado = $modelCorreoM -> listarById($id_tbl_empleados_hraes,$paginador);
 if(isset($_POST['busqueda'])){
-    $listado = $modelJefeM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['busqueda'],$paginador);
+    $listado = $modelCorreoM ->listarByBusqueda($id_tbl_empleados_hraes,$_POST['busqueda'],$paginador);
 } 
 $data =
-    '<table class="table table-striped" id="tabla_jefe" style="width:100%">
+    '<table class="table table-striped" id="tabla_correo" style="width:100%">
     <thead>
         <tr style="background-color:#235B4E;">
             <th style="color: white; width: 50px">Acciones</th>
-            <th style="color: white;">Nombre</th>
+            <th style="color: white;">Correo electrónico</th>
         </tr>
     </thead>';
 
@@ -29,8 +29,8 @@ if (pg_num_rows($listado) > 0) {
                             <div class="btn-group">
                                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i></button>
                             <div class="dropdown-menu">
-                                <button onclick="agregarEditarJefe(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar</button>
-                                <button onclick="eliminarJefe(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>   
+                                <button onclick="agregarEditarCorreo(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar</button>
+                                <button onclick="eliminarCorreo(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>   
                             </div>
                           </div>
                                 </td>

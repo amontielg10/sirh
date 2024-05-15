@@ -1,17 +1,15 @@
 <?php
 include '../librerias.php';
 
-$modelTelefonoM = new ModelTelefonoM();
+$modelCorreoM = new ModelCorreoM();
 $bitacoraM = new BitacoraM();
 
 $condicion = [
-    'id_ctrl_telefono_hraes' => $_POST['id_object']
+    'id_ctrl_medios_contacto_hraes' => $_POST['id_object']
 ];
 
 $datos = [
-    'movil' => $_POST['movil'],
-    'id_cat_estatus' => $_POST['id_cat_estatus'],
-    'telefono' => $_POST['telefono'],
+    'correo_electronico' => $_POST['correo_electronico'],
     'id_tbl_empleados_hraes' => $_POST['id_tbl_empleados_hraes']
 ];
 
@@ -21,9 +19,9 @@ $var = [
 ];
 
 if ($_POST['id_object'] != null) { //Modificar
-    if ($modelTelefonoM->editarByArray($connectionDBsPro, $datos, $condicion)) {
+    if ($modelCorreoM->editarByArray($connectionDBsPro, $datos, $condicion)) {
         $dataBitacora = [
-            'nombre_tabla' => 'ctrl_telefono_hraes',
+            'nombre_tabla' => 'ctrl_medios_contacto_hraes',
             'accion' => 'MODIFICAR',
             'valores' => json_encode($var),
             'fecha' => $timestamp,
@@ -34,9 +32,9 @@ if ($_POST['id_object'] != null) { //Modificar
     }
 
 } else { //Agregar
-    if ($modelTelefonoM->agregarByArray($connectionDBsPro, $datos)) {
+    if ($modelCorreoM->agregarByArray($connectionDBsPro, $datos)) {
         $dataBitacora = [
-            'nombre_tabla' => 'ctrl_telefono_hraes',
+            'nombre_tabla' => 'ctrl_medios_contacto_hraes',
             'accion' => 'AGREGAR',
             'valores' => json_encode($var),
             'fecha' => $timestamp,

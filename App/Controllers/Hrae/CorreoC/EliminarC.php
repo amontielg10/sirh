@@ -1,17 +1,17 @@
 <?php
 include '../librerias.php';
 
-$modelTelefonoM = new ModelTelefonoM();
+$modelCorreoM = new ModelCorreoM();
 $bitacoraM = new BitacoraM();
 
 $condicion = [
-    'id_ctrl_telefono_hraes' => $_POST['id_object']
+    'id_ctrl_medios_contacto_hraes' => $_POST['id_object']
 ];
 
 if (isset($_POST['id_object'])){
-    if ($modelTelefonoM-> eliminarByArray($connectionDBsPro, $condicion)){
+    if ($modelCorreoM-> eliminarByArray($connectionDBsPro, $condicion)){
         $dataBitacora = [
-            'nombre_tabla' => 'ctrl_telefono_hraes',
+            'nombre_tabla' => 'ctrl_medios_contacto_hraes',
             'accion' => 'ELIMINAR',
             'valores' => json_encode($condicion),
             'fecha' => $timestamp,

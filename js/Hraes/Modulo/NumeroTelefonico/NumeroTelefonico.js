@@ -1,7 +1,26 @@
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
 
-function iniciarNumeroTelefonico(){
-    iniciarTablaTelefono(id_tbl_empleados_hraes);
+function buscarNumTelefonico(){ //BUSQUEDA
+    let buscarNew = clearElement(buscar_nt);
+    let buscarlenth = lengthValue(buscarNew);
+    
+    if (buscarlenth == 0){
+        iniciarTabla_nt(null, iniciarBusqueda_nt(),id_tbl_empleados_hraes);
+    } else {
+        iniciarTabla_nt(buscarNew, iniciarBusqueda_nt(),id_tbl_empleados_hraes);
+    }
+}
+
+function iniciarTabla_nt(busqueda, paginador, id_tbl_empleados_hraes) { 
+    $.post('../../../../App/View/Hraes/Modulo/NumeroTelefonico/tabla.php', {
+        busqueda: busqueda, 
+        paginador: paginador, 
+        id_tbl_empleados_hraes:id_tbl_empleados_hraes
+    },
+        function (data) {
+            $("#modulo_telefono").html(data); 
+        }
+    );
 }
 
 function iniciarTablaTelefono(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
@@ -17,9 +36,12 @@ function iniciarTablaTelefono(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
 
 function agregarEditarTelefono(id_object){
 
+    let titulo = document.getElementById("titulo_fijo");
+    titulo.textContent = 'Modificar';
     $("#id_object").val(id_object);
     if (id_object == null){
         $("#agregar_editar_telefono").find("input,textarea,select").val("");
+        titulo.textContent = 'Agregar';
     }
 
     $.post("../../../../App/Controllers/Hrae/TelefonoC/DetallesC.php", {
@@ -33,6 +55,7 @@ function agregarEditarTelefono(id_object){
             $('#id_cat_estatus').empty();
             $('#id_cat_estatus').html(estatus); 
             $("#movil").val(entity.movil);
+            $("#telefono").val(entity.telefono);
         }
     );
 
@@ -45,6 +68,7 @@ function salirAgregarEditarTelefono(){
 
 function agregarEditarByDbByTelefono() {
     var movil = $("#movil").val();
+    var telefono = $("#telefono").val();
     var id_cat_estatus = $("#id_cat_estatus").val();
     var id_object = $("#id_object").val();
 
@@ -53,17 +77,18 @@ function agregarEditarByDbByTelefono() {
         id_cat_estatus: id_cat_estatus,
         id_object:id_object,
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
+        telefono:telefono
     },
-        function (data, status) {
+        function (data) {
             if (data == 'edit'){
-                mensajeExito('Número telefonico modificado');
+                mensajeExito('Número telefonico modificado con éxito');
             } else if (data == 'add') {
-                mensajeExito('Número telefonico agregado');  
+                mensajeExito('Número telefonico agregado con éxito');  
             } else {
                 mensajeError(data);
             }
             $("#agregar_editar_telefono").modal("hide");
-            iniciarNumeroTelefonico();
+            buscarNumTelefonico();
         }
     );
 }
@@ -85,16 +110,22 @@ function eliminarTelefono(id_object) {//ELIMINAR USUARIO
             },
             function (data, status) {
                 if (data == 'delete'){
-                    mensajeExito('Número telefonico eliminado')
+                    mensajeExito('Número telefonico eliminado con éxito')
                 } else {
                     mensajeError(data);
                 }
-                iniciarNumeroTelefonico();
+                buscarNumTelefonico();
             }
         );
     }
     });
 }
+
+/*
+function buscarNumTelefonico(){
+    iniciarTablaTelefono(id_tbl_empleados_hraes);
+}
+
 
 
 function buscarTelefono(){ //BUSQUEDA
@@ -123,3 +154,5 @@ function iniciarTablaTelefonoByBusqueda(buscar, id_tbl_empleados_hraes) { ///ING
         }
     });
 }
+
+*/

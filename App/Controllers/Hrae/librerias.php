@@ -35,6 +35,7 @@ include '../../../Model/Hraes/AdicionalM/AdicionalM.php';
 include '../../../Model/Hraes/Catalogos/CatEspecialidadM/CatEspecialidadM.php';
 include '../../../Model/Hraes/EstudioM/EstudioM.php';
 include '../../../Model/Hraes/JefeM/JefeM.php';
+include '../../../Model/Hraes/CorreoM/CorreoM.php';
 include '../../../Model/Catalogos/CatEstudioM/CatEstudioM.php';
 
 ///CONTROLLERS

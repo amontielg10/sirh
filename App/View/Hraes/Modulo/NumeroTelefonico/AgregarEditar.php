@@ -2,9 +2,9 @@
     aria-hidden="true" id="agregar_editar_telefono">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" style="font-weight: bold;color:#235B4E"><label id="titulo"
-                        style="font-weight: bold;color:#235B4E"></label> n&uacutemero telef&oacutenico</h5>
+            <div class="modal-header" style="background: #235B4E">
+                <h5 class="modal-title" style="font-weight: bold;color:white"><label id="titulo_fijo"
+                        style="font-weight: bold;color:white"></label> n&uacutemero telef&oacutenico</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="salirAgregarEditarTelefono();">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -15,7 +15,7 @@
 
                     <div class="form-group col-md-6">
                         <label>N&uacutemero telef&oacutenico</label><label style="color:red">*</label>
-                        <input type="text" class="form-control" id="movil" placeholder="Número telefónico" maxlength="10">
+                        <input type="number" class="form-control" id="movil" placeholder="Número telefónico" maxlength="10">
                     </div>
 
                     <div class="form-group col-md-6">
@@ -23,6 +23,11 @@
                         <select class="form-control" aria-label="Default select example"
                             id="id_cat_estatus" required>
                         </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Telefono fijo</label><label style="color:red"></label>
+                        <input type="number" class="form-control" id="telefono" placeholder="Telefono" maxlength="10">
                     </div>
 
                 </div>

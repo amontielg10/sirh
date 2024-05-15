@@ -8,10 +8,15 @@
 
 <script src="../../../../js/Hraes/Modulo/NumeroTelefonico/NumeroTelefonico.js"></script>
 <script src="../../../../js/Hraes/Modulo/NumeroTelefonico/validarTelefono.js"></script>
+<script src="../../../../js/Hraes/Modulo/NumeroTelefonico/buscar.js"></script>
 
 <script src="../../../../js/Hraes/Modulo/CedulaProf/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/CedulaProf/Validar.js"></script>
 <script src="../../../../js/Hraes/Modulo/CedulaProf/buscar.js"></script>
+
+<script src="../../../../js/Hraes/Modulo/Correo/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Correo/Validar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Correo/buscar.js"></script>
 
 <script src="../../../../js/Hraes/Modulo/Especialidad/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Especialidad/Validar.js"></script>
