@@ -87,6 +87,16 @@ if ($id_tbl_empleados_hraes == null) {
                             data-bs-target="#nav-especialidad" type="button" role="tab" aria-controls="nav-clabe"
                             aria-selected="false" onclick="buscarEspecialidad();"><i class="fa fa-plus-square"></i>
                             Especialidad</button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-nivel_estudio" type="button" role="tab" aria-controls="nav-clabe"
+                            aria-selected="false" onclick="buscarEstudio();"><i class="fa fa-graduation-cap"></i> Nivel
+                            estudio</button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-jefe"
+                            type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
+                            onclick="buscarJefe();"><i class="fa fa-user-circle"></i> Jefe inmediato</button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-correo"
+                            type="button" role="tab" aria-controls="nav-correo" aria-selected="false"
+                            onclick="buscarJefe();"><i class="fa fa-at"></i> Correo</button>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -96,7 +106,7 @@ if ($id_tbl_empleados_hraes == null) {
                         tabindex="0"><?php include 'NumeroTelefonico/index.php' ?></div>
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"
                         tabindex="0"><?php include 'CedulaProf/index.php' ?></div>
-                    <div class="tab-pane fade" id="nav-clabe" role="tabpanel" aria-labelledby="nav-clabe" tabindex="0">
+                    <div class="tab-pane fade" id="nav-contacto" role="tabpanel" aria-labelledby="nav-clabe" tabindex="0">
                         <?php include 'FormaPago/index.php' ?>
                     </div>
                     <div class="tab-pane fade" id="nav-emergencia" role="tabpanel" aria-labelledby="nav-clabe"
@@ -130,6 +140,18 @@ if ($id_tbl_empleados_hraes == null) {
                     <div class="tab-pane fade" id="nav-especialidad" role="tabpanel" aria-labelledby="nav-movimientos"
                         tabindex="0">
                         <?php include 'Especialidad/index.php' ?>
+                    </div>
+                    <div class="tab-pane fade" id="nav-nivel_estudio" role="tabpanel" aria-labelledby="nav-movimientos"
+                        tabindex="0">
+                        <?php include 'Estudio/index.php' ?>
+                    </div>
+                    <div class="tab-pane fade" id="nav-jefe" role="tabpanel" aria-labelledby="nav-movimientos"
+                        tabindex="0">
+                        <?php include 'Jefe/index.php' ?>
+                    </div>
+                    <div class="tab-pane fade" id="nav-correo" role="tabpanel" aria-labelledby="nav-movimientos"
+                        tabindex="0">
+                        <?php include 'Correo/index.php' ?>
                     </div>
                 </div>
             </div>

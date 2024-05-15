@@ -17,6 +17,14 @@
 <script src="../../../../js/Hraes/Modulo/Especialidad/Validar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Especialidad/buscar.js"></script>
 
+<script src="../../../../js/Hraes/Modulo/Jefe/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Jefe/Validar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Jefe/buscar.js"></script>
+
+<script src="../../../../js/Hraes/Modulo/Estudio/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Estudio/Validar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Estudio/buscar.js"></script>
+
 <script src="../../../../js/Hraes/Modulo/FormaPago/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/FormaPago/Validar.js"></script>
 <script src="../../../../js/Hraes/Modulo/FormaPago/buscar.js"></script>

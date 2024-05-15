@@ -33,6 +33,9 @@ include '../../../Model/Hraes/BitacoraM/BitacoraM.php';
 include '../../../Model/Hraes/EmpleadosM/EmpleadosM.php';
 include '../../../Model/Hraes/AdicionalM/AdicionalM.php';
 include '../../../Model/Hraes/Catalogos/CatEspecialidadM/CatEspecialidadM.php';
+include '../../../Model/Hraes/EstudioM/EstudioM.php';
+include '../../../Model/Hraes/JefeM/JefeM.php';
+include '../../../Model/Catalogos/CatEstudioM/CatEstudioM.php';
 
 ///CONTROLLERS
 include '../../../Controllers/Hrae/GlobalC/ArrayC.php';
@@ -48,3 +51,4 @@ include '../../../Controllers/Catalogos/CatEstatusJuguetesC/CatEstatusJuguetesC.
 include '../../../Controllers/Catalogos/CatSepomexC/CatSepomexC.php';
 include '../../../Controllers/Catalogos/CatSelectC/CatSelectC.php';
 include '../../../Controllers/Hrae/Catalogos/CatEspecialidadC/CatEspecialidadC.php';
+include '../../../Controllers/Catalogos/CatEstudioC/CatEstudioC.php';

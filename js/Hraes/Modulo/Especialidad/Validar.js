@@ -1,14 +1,10 @@
 function validarEspecialidad(){
-    guardarCedula();
-    /*
-    let cedula_profesional = document.getElementById('cedula_profesional').value.trim();
+    let id_cat_especialidad_hraes = document.getElementById('id_cat_especialidad_hraes').value.trim();
 
-    if (validarData(cedula_profesional,'Cédula profesional') &&
-        caracteresCount('Cédula profesional',20,cedula_profesional)
+    if (validarData(id_cat_especialidad_hraes,'Especialidad')
     ){
-        agregarEditarByDbByCedula();
+        guardarCedula();
     }
-    */
 }
                             
 
