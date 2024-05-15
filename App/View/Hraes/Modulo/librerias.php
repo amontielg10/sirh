@@ -18,6 +18,7 @@
 
 <script src="../../../../js/Hraes/Modulo/ContactoEmergencia/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/ContactoEmergencia/Validar.js"></script>
+<script src="../../../../js/Hraes/Modulo/ContactoEmergencia/buscar.js"></script>
 
 <script src="../../../../js/Hraes/Modulo/Dependientes/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Dependientes/Validar.js"></script>

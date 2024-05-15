@@ -22,5 +22,7 @@
     </button>
 </div>
 <br>
+<br>
+<br>
 
 <?php include 'agregarEditar.php' ?>

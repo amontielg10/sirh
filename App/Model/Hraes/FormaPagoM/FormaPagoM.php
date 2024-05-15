@@ -19,7 +19,7 @@ class ModelFormaPagoM
                             INNER JOIN cat_estatus
                             ON ctrl_cuenta_clabe_hraes.id_cat_estatus =
                                 cat_estatus.id_cat_estatus
-                            WHERE ctrl_cuenta_clabe_hraes.id_tbl_empleados = $id_object
+                            WHERE ctrl_cuenta_clabe_hraes.id_tbl_empleados_hraes = $id_object
                             ORDER BY ctrl_cuenta_clabe_hraes.id_ctrl_cuenta_clabe_hraes DESC
                             LIMIT 5");
         return $listado;
@@ -42,7 +42,7 @@ class ModelFormaPagoM
                             INNER JOIN cat_estatus
                             ON ctrl_cuenta_clabe_hraes.id_cat_estatus =
                                 cat_estatus.id_cat_estatus
-                            WHERE ctrl_cuenta_clabe_hraes.id_tbl_empleados = $id_object
+                            WHERE ctrl_cuenta_clabe_hraes.id_tbl_empleados_hraes = $id_object
                             AND (
                                 TRIM(UPPER(UNACCENT(ctrl_cuenta_clabe_hraes.clabe))) LIKE '%$busqueda%'
                              OR TRIM(UPPER(UNACCENT(cat_banco.nombre))) LIKE '%$busqueda%'
@@ -56,7 +56,7 @@ class ModelFormaPagoM
 
     function listarByIdFormaPago($id_object){
         $listado = pg_query("SELECT id_ctrl_cuenta_clabe_hraes, clabe, id_cat_estatus,
-                                    id_cat_banco,id_tbl_empleados,id_cat_formato_pago
+                                    id_cat_banco,id_tbl_empleados_hraes,id_cat_formato_pago
                              FROM ctrl_cuenta_clabe_hraes
                              WHERE id_ctrl_cuenta_clabe_hraes = $id_object");
         return $listado;

@@ -1,25 +1,36 @@
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
 
-function iniciarEmergencia(){
-    iniciarTablaEmergencia(id_tbl_empleados_hraes);
+function buscarEmergencia(){ //BUSQUEDA
+    let buscarNew = clearElement(buscar_e);
+    let buscarlenth = lengthValue(buscarNew);
+    
+    if (buscarlenth == 0){
+        iniciarTablaEmergencia(null, iniciarBusqueda_e(),id_tbl_empleados_hraes);
+    } else {
+        iniciarTablaEmergencia(buscarNew, iniciarBusqueda_e(),id_tbl_empleados_hraes);
+    }
 }
 
-function iniciarTablaEmergencia(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/ContactoEmergencia/tabla.php',
-        data: { id_tbl_empleados_hraes: id_tbl_empleados_hraes },
-        success: function (data) {
-            $('#modulo_contacto_emergencia').html(data);
+function iniciarTablaEmergencia(busqueda, paginador, id_tbl_empleados_hraes) { 
+    $.post('../../../../App/View/Hraes/Modulo/ContactoEmergencia/tabla.php', {
+        busqueda: busqueda, 
+        paginador: paginador, 
+        id_tbl_empleados_hraes:id_tbl_empleados_hraes
+    },
+        function (data) {
+            $("#modulo_contacto_emergencia").html(data); 
         }
-    });
+    );
 }
 
 function agregarEditarEmergencia(id_object){
-
     $("#id_object").val(id_object);
+    let titulo = document.getElementById("titulo_emergencia");
+    titulo.textContent = 'Modificar';
+
     if (id_object == null){
         $("#agregar_editar_contacto_emergencia").find("input,textarea,select").val("");
+        titulo.textContent = 'Agregar';
     }
 
     $.post("../../../../App/Controllers/Hrae/ContactoEmergenciaC/DetallesC.php", {
@@ -28,10 +39,6 @@ function agregarEditarEmergencia(id_object){
         function (data) {
             var jsonData = JSON.parse(data);//se obtiene el json
             var entity = jsonData.response; //Se agrega a emtidad 
-            var estatus = jsonData.estatus; //Se agrega a emtidad 
-
-            $('#id_cat_estatus_emergencia').empty();
-            $('#id_cat_estatus_emergencia').html(estatus); 
 
             $("#nombre").val(entity.nombre);
             $("#primer_apellido").val(entity.primer_apellido);
@@ -54,7 +61,6 @@ function agregarEditarByDbByEmergencia() {
     var primer_apellido = $("#primer_apellido").val();
     var segundo_apellido = $("#segundo_apellido").val();
     var parentesco = $("#parentesco").val();
-    var id_cat_estatus_emergencia = $("#id_cat_estatus_emergencia").val();
     var id_object = $("#id_object").val();
 
     $.post("../../../../App/Controllers/Hrae/ContactoEmergenciaC/AgregarEditarC.php", {
@@ -63,20 +69,19 @@ function agregarEditarByDbByEmergencia() {
         primer_apellido: primer_apellido,
         segundo_apellido: segundo_apellido,
         parentesco: parentesco,
-        id_cat_estatus_emergencia: id_cat_estatus_emergencia,
         id_object:id_object,
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
     },
         function (data) {
             if (data == 'edit'){
-                mensajeExito('Contacto emergencia modificado');
+                mensajeExito('Contacto emergencia modificado con éxito');
             } else if (data == 'add') {
-                mensajeExito('Contacto emergencia agregado');  
+                mensajeExito('Contacto emergencia agregado con éxito');  
             } else {
                 mensajeError(data);
             }
             $("#agregar_editar_contacto_emergencia").modal("hide");
-            iniciarEmergencia();
+            buscarEmergencia();
         }
     );
 }
@@ -98,41 +103,13 @@ function eliminarEmergencia(id_object) {//ELIMINAR USUARIO
             },
             function (data, status) {
                 if (data == 'delete'){
-                    mensajeExito('Contacto emergencia eliminado')
+                    mensajeExito('Contacto emergencia eliminado con éxito')
                 } else {
                     mensajeError(data);
                 }
-                iniciarEmergencia();
+                buscarEmergencia();
             }
         );
     }
-    });
-}
-
-function buscarEmergencia(){ //BUSQUEDA
-    let buscar = document.getElementById("buscarEmergencia").value.trim();
-    buscar = buscar.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
-    buscarlenth = buscar.length;
-    
-    if (buscarlenth == 0){
-        iniciarEmergencia();
-    } else {
-        iniciarTablaEmergenciaByBusqueda(buscar,id_tbl_empleados_hraes);
-    }
-}
-
-
-function iniciarTablaEmergenciaByBusqueda(buscar, id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/ContactoEmergencia/tabla.php',
-        data: { 
-            buscar: buscar,
-            id_tbl_empleados_hraes: id_tbl_empleados_hraes,
-         },
-        success: function (data) {
-            console.log(data);
-            $('#modulo_contacto_emergencia').html(data);
-        }
     });
 }

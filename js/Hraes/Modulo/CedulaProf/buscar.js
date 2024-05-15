@@ -1,26 +1,24 @@
-var valorInicial = 1;
-var textValor = document.getElementById('idtable_c');
+var valorInicial_c = 1;
+var textValor_c = document.getElementById('idtable_c');
 var buscar_c = document.getElementById("buscar_c");
-//var buscar = document.getElementById("buscarUsuario").value.trim();
-
 
 function siguienteValor_c(){
-    valorInicial++;
-    textValor.textContent = valorInicial;
+    valorInicial_c++;
+    textValor_c.textContent = valorInicial_c;
     buscarCedula();
 }
 
 function anteriorValor_c(){
-    valorInicial--;
-    if(valorInicial < 1){
-        valorInicial = 1;
+    valorInicial_c--;
+    if(valorInicial_c < 1){
+        valorInicial_c = 1;
     }
-    textValor.textContent = valorInicial;
+    textValor_c.textContent = valorInicial_c;
     buscarCedula();
 }
 
 function iniciarBusqueda_c(){
-    let valorInicialAux = valorInicial;
+    let valorInicialAux = valorInicial_c;
     valorInicialAux --;
     let valoroff = valorInicialAux * 5;
     return valoroff;

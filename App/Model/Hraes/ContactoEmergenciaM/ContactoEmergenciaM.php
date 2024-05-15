@@ -2,22 +2,18 @@
 
 class ModelEmergenciaM
 {
-    function listarById($id_object)
+    function listarById($id_object,$paginator)
     {
         $listado = pg_query("SELECT ctrl_contacto_emergencia_hraes.id_ctrl_contacto_emergencia_hraes,
                                     CONCAT(ctrl_contacto_emergencia_hraes.nombre, ' ', 
                                     ctrl_contacto_emergencia_hraes.primer_apellido, ' ', 
                                     ctrl_contacto_emergencia_hraes.segundo_apellido), 
                                     ctrl_contacto_emergencia_hraes.parentesco,
-                                    ctrl_contacto_emergencia_hraes.movil, 
-                                    cat_estatus.estatus
+                                    ctrl_contacto_emergencia_hraes.movil
                             FROM ctrl_contacto_emergencia_hraes
-                            INNER JOIN cat_estatus
-                            ON ctrl_contacto_emergencia_hraes.id_cat_estatus = 
-                            cat_estatus.id_cat_estatus
-                            WHERE id_tbl_empleados = $id_object
+                            WHERE id_tbl_empleados_hraes = $id_object
                             ORDER BY ctrl_contacto_emergencia_hraes.id_ctrl_contacto_emergencia_hraes DESC
-                            LIMIT 5");
+                            LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
 
@@ -30,8 +26,7 @@ class ModelEmergenciaM
             'segundo_apellido' => null,
             'parentesco' => null,
             'movil' => null,
-            'id_cat_estatus' => null,
-            'id_tbl_empleados' => null,
+            'id_tbl_empleados_hraes' => null,
         ];
     }
 
@@ -39,7 +34,7 @@ class ModelEmergenciaM
     {
         $listado = pg_query("SELECT id_ctrl_contacto_emergencia_hraes,nombre,
                                     primer_apellido,segundo_apellido,parentesco,
-                                    movil,id_cat_estatus,id_tbl_empleados
+                                    movil,id_tbl_empleados_hraes
                              FROM ctrl_contacto_emergencia_hraes
                              WHERE id_ctrl_contacto_emergencia_hraes = $id_object");
         return $listado;
@@ -63,20 +58,16 @@ class ModelEmergenciaM
         return $pgs_delete;
     }
 
-    function listarByBusqueda($id_object, $busqueda)
+    function listarByBusqueda($id_object, $busqueda,$paginator)
     {
         $listado = pg_query("SELECT ctrl_contacto_emergencia_hraes.id_ctrl_contacto_emergencia_hraes,
                                     CONCAT(ctrl_contacto_emergencia_hraes.nombre, ' ', 
                                     ctrl_contacto_emergencia_hraes.primer_apellido, ' ', 
                                     ctrl_contacto_emergencia_hraes.segundo_apellido), 
                                     ctrl_contacto_emergencia_hraes.parentesco,
-                                    ctrl_contacto_emergencia_hraes.movil, 
-                                    cat_estatus.estatus
+                                    ctrl_contacto_emergencia_hraes.movil
                             FROM ctrl_contacto_emergencia_hraes
-                            INNER JOIN cat_estatus
-                            ON ctrl_contacto_emergencia_hraes.id_cat_estatus = 
-                            cat_estatus.id_cat_estatus
-                            WHERE id_tbl_empleados = $id_object
+                            WHERE id_tbl_empleados_hraes = $id_object
                             AND (TRIM(UPPER(UNACCENT(ctrl_contacto_emergencia_hraes.nombre))) 
                                     LIKE '%$busqueda%' OR
                                 TRIM(UPPER(UNACCENT(ctrl_contacto_emergencia_hraes.primer_apellido))) 
@@ -85,11 +76,10 @@ class ModelEmergenciaM
                                     LIKE '%$busqueda%' OR
                                 TRIM(UPPER(UNACCENT(ctrl_contacto_emergencia_hraes.parentesco))) 
                                     LIKE '%$busqueda%' OR
-                                TRIM(UPPER(UNACCENT(ctrl_contacto_emergencia_hraes.movil))) 
-                                    LIKE '%$busqueda%' OR
-                                TRIM(UPPER(UNACCENT(cat_estatus.estatus))) LIKE '%$busqueda%')
+                                TRIM(UPPER(UNACCENT(ctrl_contacto_emergencia_hraes.movil::TEXT))) 
+                                    LIKE '%$busqueda%')
                             ORDER BY ctrl_contacto_emergencia_hraes.id_ctrl_contacto_emergencia_hraes DESC
-                            LIMIT 5");
+                            LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
 

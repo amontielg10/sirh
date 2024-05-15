@@ -2,10 +2,10 @@
     aria-hidden="true" id="agregar_editar_contacto_emergencia">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" style="font-weight: bold;color:#235B4E"><label id="titulo"
-                        style="font-weight: bold;color:#235B4E"></label> contacto de emergencia</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            <div class="modal-header" style="background:#235B4E">
+                <h5 class="modal-title" style="font-weight: bold;color:white"><label id="titulo_emergencia"
+                        style="font-weight: bold;color:white"></label> contacto de emergencia.</h5>
+                <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close"
                     onclick="salirAgregarEditarEmergencia();">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -42,12 +42,6 @@
                         <label>Apellido materno</label><label style="color:red"></label>
                         <input type="text" class="form-control" id="segundo_apellido" placeholder="Apellido materno"
                             maxlength="20">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Estatus</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example" id="id_cat_estatus_emergencia" required>
-                        </select>
                     </div>
 
                 </div>

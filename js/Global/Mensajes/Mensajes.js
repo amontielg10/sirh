@@ -6,3 +6,12 @@ function campoInvalido(data, text){
     } 
     return bool;
 }
+
+function caracteresCount(text, number,value){
+    let bool = true;
+    if(value.length >= number){
+        bool = false
+        mensajeError(text + ' debe tener hasta un máximo de ' + number + ' caracteres')
+    } 
+    return bool;
+}

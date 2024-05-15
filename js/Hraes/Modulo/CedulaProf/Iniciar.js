@@ -22,23 +22,6 @@ function iniciarTabla_c(busqueda, paginador, id_tbl_empleados_hraes) {
         }
     );
 }
-/*
-
-function iniciarCedulaProf(){
-    iniciarTablaCedula(id_tbl_empleados_hraes);
-}
-
-function iniciarTablaCedula(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/CedulaProf/tabla.php',
-        data: { id_tbl_empleados_hraes: id_tbl_empleados_hraes },
-        success: function (data) {
-            $('#tabla_cedula').html(data);
-        }
-    });
-}
-
 
 function agregarEditarCedula(id_object){
     $("#id_object").val(id_object);
@@ -87,7 +70,7 @@ function agregarEditarByDbByCedula() {
                 mensajeError(data);
             }
             $("#agregar_editar_cedula").modal("hide");
-            iniciarCedulaProf();
+            buscarCedula();
         }
     );
 }
@@ -109,41 +92,13 @@ function eliminarCedula(id_object) {//ELIMINAR USUARIO
             },
             function (data, status) {
                 if (data == 'delete'){
-                    mensajeExito('Cédula profesional eliminada')
+                    mensajeExito('Cédula profesional eliminada con éxito')
                 } else {
                     mensajeError(data);
                 }
-                iniciarCedulaProf();
+                buscarCedula();
             }
         );
     }
     });
 }
-
-function buscarCedula(){ //BUSQUEDA
-    let buscar = document.getElementById("buscarCedulaText").value.trim();
-    buscar = buscar.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
-    buscarlenth = buscar.length;
-    
-    if (buscarlenth == 0){
-        iniciarCedulaProf();
-    } else {
-        iniciarTablaCedulaByBusqueda(buscar,id_tbl_empleados_hraes);
-    }
-}
-
-
-function iniciarTablaCedulaByBusqueda(buscar, id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/CedulaProf/tabla.php',
-        data: { 
-            buscar: buscar,
-            id_tbl_empleados_hraes: id_tbl_empleados_hraes,
-         },
-        success: function (data) {
-            $('#tabla_cedula').html(data);
-        }
-    });
-}
-*/

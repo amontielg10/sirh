@@ -6,16 +6,11 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
 $paginador = $_POST['paginador'];
 
 $modelCedulaM = new ModelCedulaM();
+
 $listado = $modelCedulaM -> listarById($id_tbl_empleados_hraes,$paginador);
-if($_POST['buscar'] != ''){
-    $listado = $modelCedulaM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['buscar'],$paginador);
-    echo 'busqueda';
-} else {
-    echo 'vacio';
-}
-
-
-/*
+if(isset($_POST['busqueda'])){
+    $listado = $modelCedulaM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['busqueda'],$paginador);
+} 
 $data =
     '<table class="table table-striped" id="tabla_cedula" style="width:100%">
     <thead>
@@ -51,4 +46,3 @@ if (pg_num_rows($listado) > 0) {
 }
 
 echo $data;
-*/
