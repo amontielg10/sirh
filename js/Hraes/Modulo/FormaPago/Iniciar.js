@@ -1,20 +1,27 @@
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
 
-function iniciarFormaPago(){
-    iniciarTablaFormatoPago(id_tbl_empleados_hraes);
+function buscarFormaPago(){ //BUSQUEDA
+    let buscarNew = clearElement(buscar_f);
+    let buscarlenth = lengthValue(buscarNew);
+    
+    if (buscarlenth == 0){
+        iniciarTabla_f(null, iniciarBusqueda_f(),id_tbl_empleados_hraes);
+    } else {
+        iniciarTabla_f(buscarNew, iniciarBusqueda_f(),id_tbl_empleados_hraes);
+    }
 }
 
-function iniciarTablaFormatoPago(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/FormaPago/tabla.php',
-        data: { id_tbl_empleados_hraes: id_tbl_empleados_hraes },
-        success: function (data) {
-            $('#tabla_forma_pago').html(data);
+function iniciarTabla_f(busqueda, paginador, id_tbl_empleados_hraes) { 
+    $.post('../../../../App/View/Hraes/Modulo/FormaPago/tabla.php', {
+        busqueda: busqueda, 
+        paginador: paginador, 
+        id_tbl_empleados_hraes:id_tbl_empleados_hraes
+    },
+        function (data) {
+            $("#tabla_forma_pago").html(data); 
         }
-    });
+    );
 }
-
 
 function agregarEditarFormaPago(id_object){
     $("#id_object").val(id_object);
@@ -71,14 +78,14 @@ function agregarEditarByDbByFormatoPago() {
     },
         function (data, status) {
             if (data == 'edit'){
-                mensajeExito('Forma de pago modificada');
+                mensajeExito('Forma de pago modificada con éxito');
             } else if (data == 'add') {
-                mensajeExito('Forma de pago agregada');  
+                mensajeExito('Forma de pago agregada con éxito');  
             } else {
                 mensajeError(data);
             }
             $("#agregar_editar_forma_pago").modal("hide");
-            iniciarFormaPago();
+            buscarFormaPago();
         }
     );
 }
@@ -101,40 +108,13 @@ function eliminarFormaPago(id_object) {//ELIMINAR USUARIO
             },
             function (data, status) {
                 if (data == 'delete'){
-                    mensajeExito('Forma de pago eliminada')
+                    mensajeExito('Forma de pago eliminada con éxito')
                 } else {
                     mensajeError(data);
                 }
-                iniciarFormaPago();
+                buscarFormaPago();
             }
         );
     }
-    });
-}
-
-function buscarFormaPago(){ //BUSQUEDA
-    let buscar = document.getElementById("buscarFormaPagoText").value.trim();
-    buscar = buscar.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
-    buscarlenth = buscar.length;
-    
-    if (buscarlenth == 0){
-        iniciarFormaPago();
-    } else {
-        iniciarTablaFormaPagByBusqueda(buscar,id_tbl_empleados_hraes);
-    }
-}
-
-
-function iniciarTablaFormaPagByBusqueda(buscar, id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/FormaPago/tabla.php',
-        data: { 
-            buscar: buscar,
-            id_tbl_empleados_hraes: id_tbl_empleados_hraes,
-         },
-        success: function (data) {
-            $('#tabla_forma_pago').html(data);
-        }
     });
 }

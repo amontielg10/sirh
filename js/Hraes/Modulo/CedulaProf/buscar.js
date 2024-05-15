@@ -20,7 +20,7 @@ function anteriorValor_c(){
 function iniciarBusqueda_c(){
     let valorInicialAux = valorInicial_c;
     valorInicialAux --;
-    let valoroff = valorInicialAux * 5;
+    let valoroff = valorInicialAux * 3;
     return valoroff;
 }
 

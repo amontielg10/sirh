@@ -2,7 +2,18 @@
 
 class ModelFormaPagoM
 {
-    function listarById($id_object)
+    public function validarEstatus($value,$id_object,$id_tbl_empleados_hraes){
+        $result ="";
+        if($id_object != ''){
+            $result = "AND id_ctrl_cuenta_clabe_hraes != $id_object;";
+        }
+        $listado = pg_query("SELECT COUNT(id_ctrl_cuenta_clabe_hraes)
+                             FROM ctrl_cuenta_clabe_hraes
+                             WHERE id_tbl_empleados_hraes = $id_tbl_empleados_hraes
+                             AND id_cat_estatus = $value " . $result);
+        return $listado;
+    }
+    function listarById($id_object,$paginator)
     {
         $listado = pg_query("SELECT ctrl_cuenta_clabe_hraes.id_ctrl_cuenta_clabe_hraes,
                                     ctrl_cuenta_clabe_hraes.clabe,
@@ -20,12 +31,12 @@ class ModelFormaPagoM
                             ON ctrl_cuenta_clabe_hraes.id_cat_estatus =
                                 cat_estatus.id_cat_estatus
                             WHERE ctrl_cuenta_clabe_hraes.id_tbl_empleados_hraes = $id_object
-                            ORDER BY ctrl_cuenta_clabe_hraes.id_ctrl_cuenta_clabe_hraes DESC
-                            LIMIT 5");
+                            ORDER BY cat_estatus.estatus ASC
+                            LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
 
-    function listarByBusqueda($id_object, $busqueda)
+    function listarByBusqueda($id_object, $busqueda,$paginator)
     {
         $listado = pg_query("SELECT ctrl_cuenta_clabe_hraes.id_ctrl_cuenta_clabe_hraes,
                                     ctrl_cuenta_clabe_hraes.clabe,
@@ -49,8 +60,8 @@ class ModelFormaPagoM
                              OR TRIM(UPPER(UNACCENT(cat_formato_pago.forma_pago))) LIKE  '%$busqueda%'
                              OR TRIM(UPPER(UNACCENT(cat_estatus.estatus))) LIKE '%$busqueda%'
                             )
-                            ORDER BY ctrl_cuenta_clabe_hraes.id_ctrl_cuenta_clabe_hraes DESC
-                            LIMIT 5");
+                            ORDER BY cat_estatus.estatus ASC
+                            LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
 

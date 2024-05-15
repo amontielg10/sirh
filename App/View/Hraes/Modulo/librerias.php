@@ -15,6 +15,7 @@
 
 <script src="../../../../js/Hraes/Modulo/FormaPago/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/FormaPago/Validar.js"></script>
+<script src="../../../../js/Hraes/Modulo/FormaPago/buscar.js"></script>
 
 <script src="../../../../js/Hraes/Modulo/ContactoEmergencia/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/ContactoEmergencia/Validar.js"></script>

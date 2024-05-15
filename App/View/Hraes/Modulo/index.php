@@ -54,7 +54,7 @@ if ($id_tbl_empleados_hraes == null) {
                             onclick="buscarCedula();"><i class="fas fa-book"></i> C&eacutedula prof.</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-clabe"
                             type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
-                            onclick="iniciarFormaPago();"><i class="fas fa-money-check"></i> Forma pago</button>
+                            onclick="buscarFormaPago();"><i class="fas fa-money-check"></i> Forma pago</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
                             data-bs-target="#nav-emergencia" type="button" role="tab" aria-controls="nav-clabe"
                             aria-selected="false" onclick="buscarEmergencia();"><i class="fas fa-ambulance"></i>
