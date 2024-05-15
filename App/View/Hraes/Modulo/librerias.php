@@ -13,6 +13,10 @@
 <script src="../../../../js/Hraes/Modulo/CedulaProf/Validar.js"></script>
 <script src="../../../../js/Hraes/Modulo/CedulaProf/buscar.js"></script>
 
+<script src="../../../../js/Hraes/Modulo/Especialidad/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Especialidad/Validar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Especialidad/buscar.js"></script>
+
 <script src="../../../../js/Hraes/Modulo/FormaPago/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/FormaPago/Validar.js"></script>
 <script src="../../../../js/Hraes/Modulo/FormaPago/buscar.js"></script>

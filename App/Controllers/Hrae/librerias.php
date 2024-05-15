@@ -24,6 +24,7 @@ include '../../../Model/Catalogos/CatFechaJuguetesM/CatFechaJuguetesM.php';
 include '../../../Model/Catalogos/CatEstatusJuguetesM/CatEstatusJuguetesM.php';
 include '../../../Model/Hraes/RetardoM/RetardoM.php';
 include '../../../Model/Hraes/DomicilioM/DomicilioM.php';
+include '../../../Model/Hraes/EspecialidadM/EspecialidadM.php';
 include '../../../Model/Catalogos/CatSepomexM/CatSepomexM.php';
 include '../../../Model/Catalogos/CatMovimientoM/CatMovimientoM.php';
 include '../../../Model/Hraes/MovimientosM/MovimientosM.php';
@@ -31,6 +32,7 @@ include '../../../Model/Hraes/PlazasM/PlazasM.php';
 include '../../../Model/Hraes/BitacoraM/BitacoraM.php';
 include '../../../Model/Hraes/EmpleadosM/EmpleadosM.php';
 include '../../../Model/Hraes/AdicionalM/AdicionalM.php';
+include '../../../Model/Hraes/Catalogos/CatEspecialidadM/CatEspecialidadM.php';
 
 ///CONTROLLERS
 include '../../../Controllers/Hrae/GlobalC/ArrayC.php';
@@ -45,3 +47,4 @@ include '../../../Controllers/Catalogos/CatFechaJuguetesC/CatFechaJuguetesC.php'
 include '../../../Controllers/Catalogos/CatEstatusJuguetesC/CatEstatusJuguetesC.php';
 include '../../../Controllers/Catalogos/CatSepomexC/CatSepomexC.php';
 include '../../../Controllers/Catalogos/CatSelectC/CatSelectC.php';
+include '../../../Controllers/Hrae/Catalogos/CatEspecialidadC/CatEspecialidadC.php';

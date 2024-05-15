@@ -83,6 +83,10 @@ if ($id_tbl_empleados_hraes == null) {
                             data-bs-target="#nav-movimientos_f" type="button" role="tab" aria-controls="nav-clabe"
                             aria-selected="false" onclick="iniciarMovimientos();"><i class="fa fa-list"></i>
                             Movimientos</button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-especialidad" type="button" role="tab" aria-controls="nav-clabe"
+                            aria-selected="false" onclick="buscarEspecialidad();"><i class="fa fa-plus-square"></i>
+                            Especialidad</button>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -122,6 +126,10 @@ if ($id_tbl_empleados_hraes == null) {
                     <div class="tab-pane fade" id="nav-movimientos_f" role="tabpanel" aria-labelledby="nav-movimientos"
                         tabindex="0">
                         <?php include 'Movimientos/index.php' ?>
+                    </div>
+                    <div class="tab-pane fade" id="nav-especialidad" role="tabpanel" aria-labelledby="nav-movimientos"
+                        tabindex="0">
+                        <?php include 'Especialidad/index.php' ?>
                     </div>
                 </div>
             </div>
