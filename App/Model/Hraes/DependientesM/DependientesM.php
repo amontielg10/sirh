@@ -2,7 +2,7 @@
 
 class ModelDependientesM
 {
-    public function listarById($id_object)
+    public function listarById($id_object,$paginator)
     {
         $listado = pg_query("SELECT ctrl_dependientes_economicos_hraes.id_ctrl_dependientes_economicos_hraes,
                                     CONCAT(ctrl_dependientes_economicos_hraes.nombre, ' ',
@@ -16,7 +16,7 @@ class ModelDependientesM
                                 cat_dependientes_economicos.id_cat_dependientes_economicos
                             WHERE ctrl_dependientes_economicos_hraes.id_tbl_empleados_hraes = $id_object
                             ORDER BY ctrl_dependientes_economicos_hraes.id_ctrl_dependientes_economicos_hraes
-                            DESC LIMIT 5;");
+                            DESC LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
 
@@ -61,7 +61,7 @@ class ModelDependientesM
         return $pgs_delete;
     }
 
-    function listarByBusqueda($id_object, $busqueda)
+    function listarByBusqueda($id_object, $busqueda,$paginator)
     {
         $listado = pg_query("SELECT ctrl_dependientes_economicos_hraes.id_ctrl_dependientes_economicos_hraes,
                                     CONCAT(ctrl_dependientes_economicos_hraes.nombre, ' ',
@@ -85,7 +85,7 @@ class ModelDependientesM
                                 TRIM(UPPER(UNACCENT(cat_dependientes_economicos.nombre))) LIKE '%$busqueda%'
                             )
                             ORDER BY ctrl_dependientes_economicos_hraes.id_ctrl_dependientes_economicos_hraes
-                            DESC LIMIT 5;");
+                            DESC LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
 }

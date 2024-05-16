@@ -61,15 +61,15 @@ if ($id_tbl_empleados_hraes == null) {
                             Contacto emergencia</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
                             data-bs-target="#nav-dependiente" type="button" role="tab" aria-controls="nav-clabe"
-                            aria-selected="false" onclick="iniciarDependiente();"><i class="fa fa-child"></i>
+                            aria-selected="false" onclick="buscarDependiente();"><i class="fa fa-child"></i>
                             Dependientes econ&oacutemicos</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
                             data-bs-target="#nav-juguetes" type="button" role="tab" aria-controls="nav-clabe"
-                            aria-selected="false" onclick="iniciarJueguetes();"><i class="fa fa-paper-plane"></i>
+                            aria-selected="false" onclick="buscarJuguete();"><i class="fa fa-paper-plane"></i>
                             Juguetes</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-retardo"
                             type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
-                            onclick="iniciarRetardo();"><i class="fa fa-hourglass"></i>
+                            onclick="buscarRetardo();"><i class="fa fa-hourglass"></i>
                             Retardos</button>
                         <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-campos"
                             type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
@@ -176,5 +176,6 @@ if ($id_tbl_empleados_hraes == null) {
 <script>
     $(document).ready(function () {
         detallesAdicional(id_tbl_empleados_hraes);
+        buscarInfoEmpleado(id_tbl_empleados_hraes);
     });
 </script>

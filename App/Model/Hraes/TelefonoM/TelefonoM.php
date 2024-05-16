@@ -2,6 +2,17 @@
 
 class ModelTelefonoM
 {
+    public function validarEstatus($value,$id_object,$id_tbl_empleados_hraes){
+        $result ="";
+        if($id_object != ''){
+            $result = "AND id_ctrl_telefono_hraes != $id_object;";
+        }
+        $listado = pg_query("SELECT COUNT(id_ctrl_telefono_hraes)
+                             FROM ctrl_telefono_hraes
+                             WHERE id_tbl_empleados_hraes = $id_tbl_empleados_hraes
+                             AND id_cat_estatus = $value " . $result);
+        return $listado;
+    }
     function listarById($id_object, $paginator)
     {
         $listado = pg_query("SELECT ctrl_telefono_hraes.id_ctrl_telefono_hraes, 
@@ -13,7 +24,7 @@ class ModelTelefonoM
                             INNER JOIN cat_estatus
                             ON ctrl_telefono_hraes.id_cat_estatus = cat_estatus.id_cat_estatus
                             WHERE ctrl_telefono_hraes.id_tbl_empleados_hraes = $id_object
-                            ORDER BY ctrl_telefono_hraes.id_ctrl_telefono_hraes DESC 
+                            ORDER BY cat_estatus.estatus ASC 
                             LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
@@ -32,7 +43,7 @@ class ModelTelefonoM
                              AND ((ctrl_telefono_hraes.movil::TEXT) LIKE '%$busqueda%' 
                              OR (ctrl_telefono_hraes.telefono::TEXT) LIKE '%$busqueda%'
                              OR cat_estatus.estatus LIKE '%$busqueda%')
-                             ORDER BY ctrl_telefono_hraes.id_ctrl_telefono_hraes DESC 
+                             ORDER BY cat_estatus.estatus ASC 
                              LIMIT 3 OFFSET $paginator;");
         return $listado;
     }

@@ -47,7 +47,7 @@ function agregarEditarCedula(id_object){
     $("#agregar_editar_cedula").modal("show");
 }
 
-function salirAgregarEditarCedula(){
+function salirAgregarEditarCedula_x(){
     $("#agregar_editar_cedula").modal("hide");
 }
 

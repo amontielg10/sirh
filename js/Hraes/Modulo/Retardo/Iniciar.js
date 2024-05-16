@@ -1,21 +1,34 @@
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
-var campoFecha = document.getElementById("campoFecha");
 
-function iniciarRetardo(){
-    iniciarTablaRetardo(id_tbl_empleados_hraes);
+
+/*
+campoFecha.addEventListener("change", function() {
+    let fecha = campoFecha.value;
+    iniciarTabla_re(fecha, iniciarBusqueda_re(),id_tbl_empleados_hraes);
+});
+*/
+
+function buscarRetardo(){ //BUSQUEDA
+    let buscarNew = clearElement(buscar_re);
+    let buscarlenth = lengthValue(buscarNew);
+    if (buscarlenth == 0){
+        iniciarTabla_re(null, iniciarBusqueda_re(),id_tbl_empleados_hraes);
+    } else {
+        iniciarTabla_re(buscarNew, iniciarBusqueda_re(),id_tbl_empleados_hraes);
+    }
 }
 
-function iniciarTablaRetardo(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/Retardo/tabla.php',
-        data: { id_tbl_empleados_hraes: id_tbl_empleados_hraes },
-        success: function (data) {
-            $('#tabla_retardo').html(data);
+function iniciarTabla_re(busqueda, paginador, id_tbl_empleados_hraes) { 
+    $.post('../../../../App/View/Hraes/Modulo/Retardo/tabla.php', {
+        busqueda: busqueda, 
+        paginador: paginador, 
+        id_tbl_empleados_hraes:id_tbl_empleados_hraes
+    },
+        function (data) {
+            $("#tabla_retardo").html(data); 
         }
-    });
+    );
 }
-
 
 function agregarEditarRetardo(id_object){
     $("#id_object").val(id_object);
@@ -63,7 +76,6 @@ function guardarRetardo() {
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
     },
         function (data) {
-            console.log(data);
             if (data == 'edit'){
                 mensajeExito('Retardo modificado con éxito');
             } else if (data == 'add') {
@@ -72,7 +84,7 @@ function guardarRetardo() {
                 mensajeError(data);
             }
             $("#agregar_editar_retardo").modal("hide");
-            iniciarRetardo();
+            buscarRetardo();
         }
     );
 }
@@ -92,18 +104,50 @@ function eliminarRetardo(id_object) {//ELIMINAR USUARIO
         $.post("../../../../App/Controllers/Hrae/RetardoC/EliminarC.php", {
                 id_object: id_object
             },
-            function (data, status) {
+            function (data) {
                 if (data == 'delete'){
                     mensajeExito('Retardo eliminado con éxito')
                 } else {
                     mensajeError(data);
                 }
-                iniciarRetardo();
+                buscarRetardo();
             }
         );
     }
     });
 }
+
+function concatHora(hora,minuto){
+    let horaFinal = "";
+    if (hora != null){
+        horaFinal = addCero(hora) + ':' + addCero(minuto);
+    }
+    return horaFinal;
+}
+
+function addCero(time){
+    if (time < 10){
+        time = '0' + time;
+    }
+    return time;
+}
+/*
+function iniciarRetardo(){
+    iniciarTablaRetardo(id_tbl_empleados_hraes);
+}
+
+function iniciarTablaRetardo(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
+    $.ajax({
+        type: 'POST',
+        url: '../../../../App/View/Hraes/Modulo/Retardo/tabla.php',
+        data: { id_tbl_empleados_hraes: id_tbl_empleados_hraes },
+        success: function (data) {
+            $('#tabla_retardo').html(data);
+        }
+    });
+}
+
+
 
 
 campoFecha.addEventListener("change", function() {
@@ -127,17 +171,5 @@ function iniciarTabla(buscar, id_tbl_empleados_hraes) { ///INGRESA LA TABLA
 }
 
 
-function concatHora(hora,minuto){
-    let horaFinal = "";
-    if (hora != null){
-        horaFinal = addCero(hora) + ':' + addCero(minuto);
-    }
-    return horaFinal;
-}
 
-function addCero(time){
-    if (time < 10){
-        time = '0' + time;
-    }
-    return time;
-}
+*/

@@ -2,10 +2,10 @@
     aria-hidden="true" id="agregar_editar_juguete">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" style="font-weight: bold;color:#235B4E"><label id="titulo_juguete"
-                        style="font-weight: bold;color:#235B4E"></label> menor del programa</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="salirAgregarEditarJuguete();">
+            <div class="modal-header" style="background:#235B4E">
+                <h5 class="modal-title" style="font-weight: bold;color:white"><label id="titulo_juguete"
+                        style="font-weight: bold;color:white"></label> menor del programa</h5>
+                <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="salirAgregarEditarJuguete();">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>

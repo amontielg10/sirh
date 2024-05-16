@@ -3,10 +3,12 @@ include '../../../../../conexion.php';
 include '../../../../Model/Hraes/JuguetesM/JuguetesM.php';
 
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
+$paginador = $_POST['paginador'];
+
 $modelJuguetesM = new ModelJuguetesM();
-$listado = $modelJuguetesM ->listarById($id_tbl_empleados_hraes);
-if(isset($_POST['buscar'])){
-    $listado = $modelJuguetesM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['buscar']);
+$listado = $modelJuguetesM ->listarById($id_tbl_empleados_hraes,$paginador);
+if(isset($_POST['busqueda'])){
+    $listado = $modelJuguetesM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['busqueda'],$paginador);
 }
 
 $data =
@@ -47,6 +49,8 @@ if (pg_num_rows($listado) > 0) {
                     </tbody>
                 </table>';
     }
-} 
+} else {
+    $data .= '<h6>Sin resultados</h6>';
+}
 
 echo $data;

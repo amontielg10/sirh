@@ -5,7 +5,7 @@
             <div class="modal-header" style="background:#235B4E">
                 <h5 class="modal-title" style="font-weight: bold;color:white"><label id="tituloCedula"
                         style="font-weight: bold;color:white"></label> c&eacutedula profesional</h5>
-                <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="salirAgregarEditarCedula();">
+                <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="salirAgregarEditarCedula_x();">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -21,7 +21,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="salirAgregarEditarCedula();">Cancelar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="salirAgregarEditarCedula_x();">Cancelar</button>
                 <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
                     onclick="return validarCedula();">Guardar</button>
                 <input type="hidden" id="id_object">

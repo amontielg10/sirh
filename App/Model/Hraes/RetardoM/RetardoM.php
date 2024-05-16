@@ -2,14 +2,14 @@
 
 class ModelRetardoM
 {
-    function listarById($id_object)
+    function listarById($id_object,$paginator)
     {
         $listado = pg_query("SELECT id_ctrl_retardo_hraes, fecha, hora_entrada, minuto_entrada,
                                     hora_salida, minuto_salida, id_tbl_empleados_hraes
                              FROM ctrl_retardo_hraes
                              WHERE id_tbl_empleados_hraes = $id_object
                              ORDER BY id_ctrl_retardo_hraes DESC
-                             LIMIT 5;");
+                             LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
 
@@ -37,7 +37,7 @@ class ModelRetardoM
         ];
     }
 
-    function listarByBusqueda($id_object, $busqueda)
+    function listarByBusqueda($id_object, $busqueda,$paginator)
     {
         $listado = pg_query("SELECT id_ctrl_retardo_hraes, fecha, hora_entrada, minuto_entrada,
                                     hora_salida, minuto_salida, id_tbl_empleados_hraes
@@ -45,7 +45,7 @@ class ModelRetardoM
                              WHERE id_tbl_empleados_hraes = $id_object
                              AND fecha::TEXT LIKE '%$busqueda%'
                              ORDER BY id_ctrl_retardo_hraes DESC
-                             LIMIT 5;");
+                             LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
 

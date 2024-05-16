@@ -9,6 +9,7 @@ function domicilioDetalles(id_object){
         id_object: id_object
     },
         function (data) {
+            console.log(data);
             var jsonData = JSON.parse(data);
             var entity = jsonData.response;
             

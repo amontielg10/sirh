@@ -1,19 +1,28 @@
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
 
-function iniciarDependiente(){
-    iniciarTablaDependiente(id_tbl_empleados_hraes);
+function buscarDependiente(){ //BUSQUEDA
+    let buscarNew = clearElement(buscar_de);
+    let buscarlenth = lengthValue(buscarNew);
+    
+    if (buscarlenth == 0){
+        iniciarTabla_de(null, iniciarBusqueda_de(),id_tbl_empleados_hraes);
+    } else {
+        iniciarTabla_de(buscarNew, iniciarBusqueda_de(),id_tbl_empleados_hraes);
+    }
 }
 
-function iniciarTablaDependiente(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/Dependientes/tabla.php',
-        data: { id_tbl_empleados_hraes: id_tbl_empleados_hraes },
-        success: function (data) {
-            $('#modulo_dependientes_economicos').html(data);
+function iniciarTabla_de(busqueda, paginador, id_tbl_empleados_hraes) { 
+    $.post('../../../../App/View/Hraes/Modulo/Dependientes/tabla.php', {
+        busqueda: busqueda, 
+        paginador: paginador, 
+        id_tbl_empleados_hraes:id_tbl_empleados_hraes
+    },
+        function (data) {
+            $("#modulo_dependientes_economicos").html(data); 
         }
-    });
+    );
 }
+
 
 function agregarEditarDependiente(id_object){
     $("#id_object").val(id_object);
@@ -70,14 +79,14 @@ function agregarEditarByDbByDependiente() {
     },
         function (data) {
             if (data == 'edit'){
-                mensajeExito('Dependiente modificado con éxito');
+                mensajeExito('Dependiente económico modificado con éxito');
             } else if (data == 'add') {
-                mensajeExito('Dependiente agregado con éxito');  
+                mensajeExito('Dependiente económico agregado con éxito');  
             } else {
                 mensajeError(data);
             }
             $("#agregar_editar_dependiente").modal("hide");
-            iniciarDependiente();
+            buscarDependiente();
         }
     );
 }
@@ -99,16 +108,33 @@ function eliminarDependiente(id_object) {//ELIMINAR USUARIO
             },
             function (data, status) {
                 if (data == 'delete'){
-                    mensajeExito('Dependiente económico eliminado')
+                    mensajeExito('Dependiente económico eliminado con éxito')
                 } else {
                     mensajeError(data);
                 }
-                iniciarDependiente();
+                buscarDependiente();
             }
         );
     }
     });
 }
+
+/*
+function iniciarDependiente(){
+    iniciarTablaDependiente(id_tbl_empleados_hraes);
+}
+
+function iniciarTablaDependiente(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
+    $.ajax({
+        type: 'POST',
+        url: '../../../../App/View/Hraes/Modulo/Dependientes/tabla.php',
+        data: { id_tbl_empleados_hraes: id_tbl_empleados_hraes },
+        success: function (data) {
+            $('#modulo_dependientes_economicos').html(data);
+        }
+    });
+}
+
 
 
 function buscarDependiente(){ //BUSQUEDA
@@ -137,3 +163,4 @@ function iniciarTablaCedulaByDependiente(buscar, id_tbl_empleados_hraes) { ///IN
         }
     });
 }
+*/

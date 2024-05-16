@@ -3,22 +3,22 @@
 class ModelDomicilioM{
 
     public function selectCountById($id_object){
-        $listado = pg_query("SELECT COUNT (id_tbl_domicilios)
+        $listado = pg_query("SELECT COUNT (id_tbl_domicilios_hraes)
                              FROM tbl_domicilios_hraes
-                             WHERE id_tbl_datos_empleado_hraes =  $id_object");
+                             WHERE id_tbl_empleados_hraes =  $id_object");
         return $listado;
     }
 
     public function listarByIdEdit($id_object){
         $listado = pg_query("SELECT *
                             FROM tbl_domicilios_hraes
-                            WHERE id_tbl_datos_empleado_hraes = $id_object");
+                            WHERE id_tbl_empleados_hraes = $id_object");
         return $listado;
     }
 
     public function listarByNull(){
         return $array = [
-            'id_tbl_domicilios' => null,
+            'id_tbl_domicilios_hraes' => null,
             'id_tbl_datos_empleado_hraes' => null,
             'entidad1' => null,
             'municipio1' => null,

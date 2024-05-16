@@ -1,6 +1,6 @@
 
 <!-- LIBRERIAS JS -->
-<script src="../../../../js/Hraes/Modulo/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Inicio/Iniciar.js"></script>
 
 <script src="../../../../js/Global/FormaPago/Validar.js"></script>
 <script src="../../../../js/Global/Curp/ValidarCurpMenor.js"></script>
@@ -40,12 +40,15 @@
 
 <script src="../../../../js/Hraes/Modulo/Dependientes/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Dependientes/Validar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Dependientes/buscar.js"></script>
 
 <script src="../../../../js/Hraes/Modulo/Juguetes/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Juguetes/Validar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Juguetes/buscar.js"></script>
 
 <script src="../../../../js/Hraes/Modulo/Retardo/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Retardo/Validar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Retardo/buscar.js"></script>
 
 <script src="../../../../js/Hraes/Modulo/CamposPer/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/CamposPer/Validar.js"></script>

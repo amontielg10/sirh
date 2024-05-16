@@ -3,14 +3,25 @@ include '../../../../../conexion.php';
 include '../../../../Model/Hraes/RetardoM/RetardoM.php';
 
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
+$paginador = $_POST['paginador'];
+
 $modelRetardoM = new ModelRetardoM();
-$listado = $modelRetardoM ->listarById($id_tbl_empleados_hraes);
-if(isset($_POST['buscar'])){
-    $listado = $modelRetardoM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['buscar']);
+$listado = $modelRetardoM ->listarById($id_tbl_empleados_hraes,$paginador);
+
+if(isset($_POST['busqueda'])){
+    $listado = $modelRetardoM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['busqueda'],$paginador);
+}
+
+function concatFecha($fecha1, $fecha2){
+    $fecha = "";
+    if (isset($fecha1)){
+        $fecha = $fecha1 . ':' .$fecha2;
+    }
+    return $fecha;
 }
 
 $data =
-    '<table class="table table-striped" id="modulo_dependientes_economicos" style="width:100%">
+    '<table class="table table-striped" id="tabla_retardo" style="width:100%">
     <thead>
         <tr style="background-color:#235B4E;">
             <th style="color: white; width: 50px">Acciones</th>
@@ -47,14 +58,8 @@ if (pg_num_rows($listado) > 0) {
                     </tbody>
                 </table>';
     }
-} 
+} else {
+    $data .= '<h6>Sin resultados</h6>';
+}
 
 echo $data;
-
-function concatFecha($fecha1, $fecha2){
-    $fecha = "";
-    if (isset($fecha1)){
-        $fecha = $fecha1 . ':' .$fecha2;
-    }
-    return $fecha;
-}

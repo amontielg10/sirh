@@ -5,7 +5,7 @@
             <div class="modal-header" style="background: #235B4E">
                 <h5 class="modal-title" style="font-weight: bold;color:white"><label id="titulo_fijo"
                         style="font-weight: bold;color:white"></label> n&uacutemero telef&oacutenico</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="salirAgregarEditarTelefono();">
+                <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="salirAgregarEditarTelefono();">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>

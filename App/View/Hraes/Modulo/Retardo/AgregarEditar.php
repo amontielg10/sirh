@@ -2,10 +2,10 @@
     aria-hidden="true" id="agregar_editar_retardo">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" style="font-weight: bold;color:#235B4E"><label id="titulo_retardo"
-                        style="font-weight: bold;color:#235B4E"></label> retardo</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            <div class="modal-header" style="background:#235B4E">
+                <h5 class="modal-title" style="font-weight: bold;color:white"><label id="titulo_retardo"
+                        style="font-weight: bold;color:white"></label> retardo</h5>
+                <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close"
                     onclick="salirAgregarEditarRetardo();">
                     <span aria-hidden="true">&times;</span>
                 </button>

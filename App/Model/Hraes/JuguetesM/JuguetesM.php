@@ -2,7 +2,7 @@
 
 class ModelJuguetesM
 {
-    public function listarById($id_object)
+    public function listarById($id_object,$paginator)
     {
         $listado = pg_query("SELECT ctrl_juguetes_hraes.id_ctrl_juguetes_hraes,
                                     CONCAT(ctrl_dependientes_economicos_hraes.nombre, ' ',
@@ -22,7 +22,7 @@ class ModelJuguetesM
                                 ctrl_dependientes_economicos_hraes.id_ctrl_dependientes_economicos_hraes
                             WHERE ctrl_juguetes_hraes.id_tbl_empleados_hraes = $id_object
                             ORDER BY ctrl_juguetes_hraes.id_ctrl_juguetes_hraes DESC
-                            LIMIT 5;");
+                            LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
 
@@ -65,7 +65,7 @@ class ModelJuguetesM
         return $pgs_delete;
     }
 
-    public function listarByBusqueda($id_object, $busqueda)
+    public function listarByBusqueda($id_object, $busqueda,$paginator)
     {
         $listado = pg_query("SELECT ctrl_juguetes_hraes.id_ctrl_juguetes_hraes,
                                     CONCAT(ctrl_dependientes_economicos_hraes.nombre, ' ',
@@ -96,7 +96,7 @@ class ModelJuguetesM
                                     LIKE '%$busqueda%'
                             )
                             ORDER BY ctrl_juguetes_hraes.id_ctrl_juguetes_hraes DESC
-                            LIMIT 5;");
+                            LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
 
