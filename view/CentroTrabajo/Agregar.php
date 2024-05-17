@@ -10,8 +10,8 @@
 
 <body>
     <?php include('../nav-menu.php') ?>
-    <?php include("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region?> 
-    <?php include("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus?> 
+    <?php include("../../php/CatRegionC/listar.php") //Se incluye la libreria para generar las sql para el catalogo de region?> 
+    <?php include("../../php/CatEstatusC/listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus?> 
     <?php include("../../php/CatEntidadC/listar.php");?>
     <div id="main-wrapper">
 

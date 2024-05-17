@@ -24,7 +24,7 @@ $rowe = catEmpleadosId($id_tbl_empleados);
 <body onload="messageInfo();">
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
-    <?php include('../../php/ControlTurnoc/Listar.php'); ?>
+    <?php include('../../php/ControlTurnoC/Listar.php'); ?>
     <?php include('../../php/CatEstatusC/listar.php'); ?>
     <?php include('../../php/CatTurnoC/listar.php'); ?>
     <?php include('../../php/CatHorarioC/listar.php'); ?>

@@ -25,7 +25,7 @@
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
     <?php include ('../../php/CatEstatusC/listar.php');?>
-    <?php include ('../../php/ControlContactoEmergenciaC/listar.php');?>
+    <?php include ('../../php/ControlContactoEmergenciaC/Listar.php');?>
     <?php include("../../php/CentroTrabajoC/Listar.php");?>
 
     <div id="main-wrapper">

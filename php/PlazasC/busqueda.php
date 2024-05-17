@@ -2,7 +2,7 @@
 include("Listar.php");
 include("../CatTipoContratacionC/listar.php");
 include("../CatSituacionPlazaC/listar.php");
-include("../CatPuestoC/Listar.php");
+include("../CatPuestoC/listar.php");
 
 $idSearchPlaza = $_POST['idSearchPlaza'];
 $listado = listarLikePlaza($idSearchPlaza);

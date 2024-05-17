@@ -3,84 +3,56 @@
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-    <title>SIHR</title>
-    <!-- Custom CSS -->
-    <link href="./dist/css/style.min.css" rel="stylesheet">
-    <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link href="./assets/extra-libs/c3/c3.min.css" rel="stylesheet">
-    <link href="./assets/libs/morris.js/morris.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="./dist/css/style.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/extra-libs/css/css.css">
-    <style>
-        body{
-            background-color: #DBF9FC;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <!--<title> Login and Registration Form in HTML & CSS | CodingLab </title>-->
+    <link rel="stylesheet" href="dist/css/login/login.css">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
 
-</head>
-
-<body style="B">
-    <div class="main-wrapper">
-        <!-- ============================================================== -->
-        <!-- Preloader - style you can find in spinners.css -->
-        <!-- ============================================================== -->
-        <div class="preloader">
-            <div class="lds-ripple">
-                <div class="lds-pos"></div>
-                <div class="lds-pos"></div>
-            </div>
+<body>
+<div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+        <img src="dist/css/login/frontImg3.png" alt="">
+        <div class="text">
         </div>
-        <!-- ============================================================== -->
-        <!-- Preloader - style you can find in spinners.css -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Login box.scss -->
-        <!-- ============================================================== -->
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:#fbf4e8;">
-            <div class="auth-box">
-                <div id="loginform">
-                    <div class="logo">
-                        <span class="db"><img src="assets/logo/imssLogo.png" alt="logo" width="80%" /></span>
-                        <h5 style="color: #cb9f52;">Sistema Integral de Recursos Humanos</h5>
-                    </div>
-                    <!-- Form -->
-                    <div class="row">
-                        <div class="col-12">
-                            <form id="loginform" method="" class="form-horizontal m-t-20">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
-                                    </div>
-                                    <input id="nick" name="nick" class="form-control form-control-lg" placeholder="Usuario" aria-label="Nick" aria-describedby="basic-addon1" required>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon2"><i class="ti-pencil"></i></span>
-                                    </div>
-                                    <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
-                                </div>
-                                <div class="form-group text-center">
-                                    <div class="col-xs-12 p-b-20">
-                                        <button class="btn btn-block btn-lg" style="background-color: #cb9f52; color: white;" type="submit" id="inicio-sesion">Ingresar</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="back">
+        <img class="backImg" src="dist/css/login/backImg3.jpg" alt="">
+        <div class="text">
+          <span class="text-1">Complete miles of journey <br> with one step</span>
+          <span class="text-2">Let's get started</span>
         </div>
-
-        
+      </div>
     </div>
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Iniciar sesi&oacuten</div>
+          <form id="loginform" method="">
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Usuario" id="nick" name="nick" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Contraseña" id="password" name="password" required>
+              </div>
+              <div class="text"><a href="#">¿Olvidaste tu contraseña?</a></div>
+              <div class="button input-box">
+                <input type="submit" value="Ingresar" id="inicio-sesion">
+              </div>
+            </div>
+        </form>
+      </div>
+       
+    </div>
+    </div>
+  </div>
     <!-- ============================================================== -->
     <!-- All Required js -->
     <!-- ============================================================== -->
@@ -109,8 +81,9 @@
                 password: $('#password').val()
             };
             $.post('inicio_sesion.php', data, function(response) {
+              console.log(data);
                 if (response == 'acceso') {
-                    window.location.href = 'index.php';
+                    window.location.href = 'App/View/System/home/index.php';
                 } else {
                     ventanaMensaje("Usuario o contraseña incorrectos");
                 }

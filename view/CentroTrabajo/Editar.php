@@ -15,8 +15,8 @@ $rowe = catcentroTrabajo($id_tbl_centro_trabajo); //Se obtiene el array con la i
 
 <body>
     <?php include ("../../conexion.php") ?>
-    <?php include ("../../php/CatRegionC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de region ?>
-    <?php include ("../../php/CatEstatusC/Listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus ?>
+    <?php include ("../../php/CatRegionC/listar.php") //Se incluye la libreria para generar las sql para el catalogo de region ?>
+    <?php include ("../../php/CatEstatusC/listar.php") //Se incluye la libreria para generar las sql para el catalogo de estatus ?>
     <?php include ("../../php/CatEntidadC/listar.php"); ?>
     <?php include ('../nav-menu.php') ?>
 

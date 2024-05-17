@@ -95,6 +95,7 @@ $rowe = catEmpleadosId($id_tbl_empleados);
                             <th style="color: white;">Estatus</th>
                             <th style="color: white;">Nombre</th>
                             <th style="color: white;">Curp</th>
+                            <th style="color: white;">Monto</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -160,6 +161,9 @@ $rowe = catEmpleadosId($id_tbl_empleados);
                                         </td>
                                         <td>
                                             <?php echo listarParaJuguetesCurp($obj->id_tbl_dependientes_economicos) ?>
+                                        </td>
+                                        <td>
+                                            <?php echo "$ $obj->monto"?>
                                         </td>
 
                                     </tr>
