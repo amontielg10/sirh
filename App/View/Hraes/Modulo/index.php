@@ -23,9 +23,9 @@ if ($id_tbl_empleados_hraes == null) {
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../../../../index.php" style="color:#cb9f52;">Home</a>
+                                        <a href="../../Hraes/Empleados/index.php" style="color:#cb9f52;">Empleados</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Empleados</li>
+                                    <li <a class="breadcrumb-item active" aria-current="page">M&oacutedulo</li>
                                 </ol>
                             </nav>
                         </div>
@@ -60,60 +60,60 @@ if ($id_tbl_empleados_hraes == null) {
 
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                        <button class="nav-link active" id="button_adicional" data-bs-toggle="tab"
                             data-bs-target="#nav-empleado" type="button" role="tab" aria-controls="nav-home"
                             onclick="iniciarAdicional();" aria-selected="true"><i class="fas fa-list-alt"></i>
                             Informaci&oacuten adicional</button>
-                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                        <button class="nav-link" id="button_telefono" data-bs-toggle="tab" data-bs-target="#nav-profile"
                             type="button" role="tab" aria-controls="nav-profile" aria-selected="false"
                             onclick="buscarNumTelefonico();"><i class="fas fa-phone"></i> N&uacutem.
                             telefonico</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                        <button class="nav-link" id="button_cedula" data-bs-toggle="tab" data-bs-target="#nav-contact"
                             type="button" role="tab" aria-controls="nav-contact" aria-selected="false"
                             onclick="buscarCedula();"><i class="fas fa-book"></i> C&eacutedula prof.</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-clabe"
+                        <button class="nav-link" id="button_forma_pago" data-bs-toggle="tab" data-bs-target="#nav-clabe"
                             type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
                             onclick="buscarFormaPago();"><i class="fas fa-money-check"></i> Forma pago</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                        <button class="nav-link" id="button_contacto_emergencia" data-bs-toggle="tab"
                             data-bs-target="#nav-emergencia" type="button" role="tab" aria-controls="nav-clabe"
                             aria-selected="false" onclick="buscarEmergencia();"><i class="fas fa-ambulance"></i>
                             Contacto emergencia</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                        <button class="nav-link" id="button_dependientes" data-bs-toggle="tab"
                             data-bs-target="#nav-dependiente" type="button" role="tab" aria-controls="nav-clabe"
                             aria-selected="false" onclick="buscarDependiente();"><i class="fa fa-child"></i>
                             Dependientes econ&oacutemicos</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                        <button class="nav-link" id="button_juguetes" data-bs-toggle="tab"
                             data-bs-target="#nav-juguetes" type="button" role="tab" aria-controls="nav-clabe"
                             aria-selected="false" onclick="buscarJuguete();"><i class="fa fa-paper-plane"></i>
                             Juguetes</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-retardo"
+                        <button class="nav-link" id="button_retardos" data-bs-toggle="tab" data-bs-target="#nav-retardo"
                             type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
                             onclick="buscarRetardo();"><i class="fa fa-hourglass"></i>
                             Retardos</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-campos"
+                        <button class="nav-link" id="button_campos_personalizados" data-bs-toggle="tab" data-bs-target="#nav-campos"
                             type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
                             onclick="iniciarCampos();"><i class="fa fa-cubes"></i>
                             Campos personalizados</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                        <button class="nav-link" id="button_domicilio" data-bs-toggle="tab"
                             data-bs-target="#nav-domicilio" type="button" role="tab" aria-controls="nav-clabe"
                             aria-selected="false" onclick="iniciarDomicilio();"><i class="fa fa-home"></i>
                             Domicilio</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                        <button class="nav-link" id="button_movimientos" data-bs-toggle="tab"
                             data-bs-target="#nav-movimientos_f" type="button" role="tab" aria-controls="nav-clabe"
                             aria-selected="false" onclick="iniciarMovimientos();"><i class="fa fa-list"></i>
                             Movimientos</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                        <button class="nav-link" id="button_especialidad" data-bs-toggle="tab"
                             data-bs-target="#nav-especialidad" type="button" role="tab" aria-controls="nav-clabe"
                             aria-selected="false" onclick="buscarEspecialidad();"><i class="fa fa-plus-square"></i>
                             Especialidad</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                        <button class="nav-link" id="button_nivel_estudio" data-bs-toggle="tab"
                             data-bs-target="#nav-nivel_estudio" type="button" role="tab" aria-controls="nav-clabe"
                             aria-selected="false" onclick="buscarEstudio();"><i class="fa fa-graduation-cap"></i> Nivel
                             estudio</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-jefe"
+                        <button class="nav-link" id="butto_jefe_inmediato" data-bs-toggle="tab" data-bs-target="#nav-jefe"
                             type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
                             onclick="buscarJefe();"><i class="fa fa-user-circle"></i> Jefe inmediato</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-correo"
+                        <button class="nav-link" id="button_correo" data-bs-toggle="tab" data-bs-target="#nav-correo"
                             type="button" role="tab" aria-controls="nav-correo" aria-selected="false"
                             onclick="buscarCorreo();"><i class="fa fa-at"></i> Correo</button>
                     </div>
@@ -202,3 +202,4 @@ if ($id_tbl_empleados_hraes == null) {
         buscarInfoEmpleado(id_tbl_empleados_hraes);
     });
 </script>
+

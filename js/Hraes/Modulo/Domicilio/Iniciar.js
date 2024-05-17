@@ -20,7 +20,7 @@ function domicilioDetalles(id_object){
             $('#municipio1').empty();
             $('#municipio1').html(municipio); 
             
-            $("#id_tbl_domicilios").val(entity.id_tbl_domicilios);
+            $("#id_tbl_domicilios").val(entity.id_tbl_domicilios_hraes);
             $("#codigo_postal1").val(entity.codigo_postal1);  
             $("#entidad1").val(entity.entidad1);
             $("#calle1").val(entity.calle1);

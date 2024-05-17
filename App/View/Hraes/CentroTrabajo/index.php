@@ -17,7 +17,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../../System/home/index.php" style="color:#cb9f52;">Home</a>
+                                        <a href="../../System/home/index.php" style="color:#cb9f52;">Inicio</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Centros de trabajo</li>
                                 </ol>

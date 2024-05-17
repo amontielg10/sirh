@@ -1,4 +1,3 @@
-
 <body>
     <?php include '../../nav-menu.php' ?>
     <div id="main-wrapper">
@@ -17,7 +16,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="../../../../index.php" style="color:#cb9f52;">Home</a>
+                                        <a href="../../System/home/index.php" style="color:#cb9f52;">Inicio</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">Empleados</li>
                                 </ol>
@@ -38,18 +37,18 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar"
                     onkeyup="buscarEmpleado();" aria-label="Search">
                 <p></p>
-                
+
 
                 <table class="table table-striped" id="tabla_empleados" style="width:100%">
                 </table>
                 <div class="position-absolute top-50 start-50">
-                <button onclick="anteriorValor()" class="btn btn-light"><i class="fa fa-angle-double-left"></i>
+                    <button onclick="anteriorValor()" class="btn btn-light"><i class="fa fa-angle-double-left"></i>
                         <span class="hide-menu" style="font-weight: bold;"></span>
-                </button>
-                <label id="idEmpleadotable">1</label>
-                <button onclick="siguienteValor()" class="btn btn-light"><i class="fa fa-angle-double-right"></i>
+                    </button>
+                    <label id="idEmpleadotable">1</label>
+                    <button onclick="siguienteValor()" class="btn btn-light"><i class="fa fa-angle-double-right"></i>
                         <span class="hide-menu" style="font-weight: bold;"></span>
-                </button>
+                    </button>
                 </div>
                 <br>
 
