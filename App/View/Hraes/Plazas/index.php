@@ -48,11 +48,11 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
                             <div class="col-md-12">
                                 <h6 style="font-weight: bold;color:#235B4E;">Nombre: <label id="nombreResult"></label></h6>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <h6 style="font-weight: bold;color:#235B4E;">Clave de centro de trabajo: <label
                                         id="clvResult"></label></h6>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-7">
                                 <h6 style="font-weight: bold;color:#235B4E;">C&oacutedigo postal: <label
                                         id="cpResult"></label></h6>
                             </div>
