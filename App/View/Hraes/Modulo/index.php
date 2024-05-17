@@ -36,25 +36,29 @@ if ($id_tbl_empleados_hraes == null) {
                 <a type="button" href="../Empleados/index.php" class="btn btn-light" style="color:#235B4E"
                     aria-haspopup="true" aria-expanded="false"><i class="fas fa-arrow-alt-circle-left"></i></a>
 -->
-                </div>
+            </div>
 
             <input type="hidden" id="id_tbl_empleados_hraes" value="<?php echo $id_tbl_empleados_hraes ?>" />
 
             <div class="card-body">
-                <p>Informaci&oacuten de empleado seleccionado</p>
 
-                <div class="form-row">
-                    <div class="col-md-4">
-                        <h6 style="font-weight: bold;color:#235B4E;">Nombre: <label id="nombreResult"></label></h6>
-                    </div>
-                    <div class="col-md-8">
-                        <h6 style="font-weight: bold;color:#235B4E;">Núm. de Empleado: <label id="numEmpleadoResult"></label></h6>
-                    </div>
-                    <div class="col-md-4">
-                        <h6 style="font-weight: bold;color:#235B4E;">Curp: <label id="curpResult"></label></h6>
-                    </div>
-                    <div class="col-md-8">
-                        <h6 style="font-weight: bold;color:#235B4E;">Rfc: <label id="rfcResult"></label></h6>
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Informaci&oacuten de empleado seleccionado.</h4>
+                    <hr>
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <h6 style="font-weight: bold;color:#235B4E;">Nombre: <label id="nombreResult"></label></h6>
+                        </div>
+                        <div class="col-md-8">
+                            <h6 style="font-weight: bold;color:#235B4E;">Núm. de Empleado: <label
+                                    id="numEmpleadoResult"></label></h6>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 style="font-weight: bold;color:#235B4E;">Curp: <label id="curpResult"></label></h6>
+                        </div>
+                        <div class="col-md-8">
+                            <h6 style="font-weight: bold;color:#235B4E;">Rfc: <label id="rfcResult"></label></h6>
+                        </div>
                     </div>
                 </div>
 
@@ -90,9 +94,9 @@ if ($id_tbl_empleados_hraes == null) {
                             type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
                             onclick="buscarRetardo();"><i class="fa fa-hourglass"></i>
                             Retardos</button>
-                        <button class="nav-link" id="button_campos_personalizados" data-bs-toggle="tab" data-bs-target="#nav-campos"
-                            type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
-                            onclick="iniciarCampos();"><i class="fa fa-cubes"></i>
+                        <button class="nav-link" id="button_campos_personalizados" data-bs-toggle="tab"
+                            data-bs-target="#nav-campos" type="button" role="tab" aria-controls="nav-clabe"
+                            aria-selected="false" onclick="iniciarCampos();"><i class="fa fa-cubes"></i>
                             Campos personalizados</button>
                         <button class="nav-link" id="button_domicilio" data-bs-toggle="tab"
                             data-bs-target="#nav-domicilio" type="button" role="tab" aria-controls="nav-clabe"
@@ -110,9 +114,10 @@ if ($id_tbl_empleados_hraes == null) {
                             data-bs-target="#nav-nivel_estudio" type="button" role="tab" aria-controls="nav-clabe"
                             aria-selected="false" onclick="buscarEstudio();"><i class="fa fa-graduation-cap"></i> Nivel
                             estudio</button>
-                        <button class="nav-link" id="butto_jefe_inmediato" data-bs-toggle="tab" data-bs-target="#nav-jefe"
-                            type="button" role="tab" aria-controls="nav-clabe" aria-selected="false"
-                            onclick="buscarJefe();"><i class="fa fa-user-circle"></i> Jefe inmediato</button>
+                        <button class="nav-link" id="butto_jefe_inmediato" data-bs-toggle="tab"
+                            data-bs-target="#nav-jefe" type="button" role="tab" aria-controls="nav-clabe"
+                            aria-selected="false" onclick="buscarJefe();"><i class="fa fa-user-circle"></i> Jefe
+                            inmediato</button>
                         <button class="nav-link" id="button_correo" data-bs-toggle="tab" data-bs-target="#nav-correo"
                             type="button" role="tab" aria-controls="nav-correo" aria-selected="false"
                             onclick="buscarCorreo();"><i class="fa fa-at"></i> Correo</button>
@@ -202,4 +207,3 @@ if ($id_tbl_empleados_hraes == null) {
         buscarInfoEmpleado(id_tbl_empleados_hraes);
     });
 </script>
-

@@ -40,7 +40,7 @@ if (pg_num_rows($result) > 0) {
                                 <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar</button>
                                     <form action="../Plazas/index.php" method="POST">
                                         <input type="hidden" id="postId" name="id_tbl_centro_trabajo_hraes" value="' . $row[0] . '" />
-                                        <button class="dropdown-item btn btn-light"><i class="fas fa-bookmark"></i> Plazas</button>
+                                        <button id="centro_trabajo_plazas" class="dropdown-item btn btn-light"><i class="fas fa-bookmark"></i> Plazas</button>
                                     </form>
                                 
                                 <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>  

@@ -263,7 +263,7 @@ $id_rol = $_SESSION['id_rol'];
                             <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
                                 aria-expanded="false">
                                 <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Administraci&acuteon</span>
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Administraci&oacuten</span>
                             </a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item">

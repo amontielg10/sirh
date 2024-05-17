@@ -2,6 +2,7 @@ var id_tbl_centro_trabajo_hraes = document.getElementById("id_tbl_centro_trabajo
 
 $(document).ready(function () {
     buscarPlaza();
+    buscarInfoCentroTrabajo();
 });
 
 function buscarPlaza(){ //BUSQUEDA
@@ -164,100 +165,23 @@ function eliminarEntity(id_object) {
     });
 }
 }
-/*
-function iniciarTabla() { ///INGRESA LA TABLA
-    $.get("../../../../App/View/Hraes/Plazas/tabla.php", {}, function (data, status) {
-        $("#t-table").html(data);
-    });
-}
 
-function iniciarTablaByIdCentroTrabajo(id_object) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Plazas/tabla.php',
-        data: { id_object: id_object },
-        success: function (data) {
-            $('#t-table').html(data);
-        }
-    });
-}
+function buscarInfoCentroTrabajo(){
+    if(id_tbl_centro_trabajo_hraes != null){
+        let clvResult = document.getElementById("clvResult");
+        let nombreResult = document.getElementById("nombreResult");
+        let cpResult = document.getElementById("cpResult");
 
-function iniciarBusqueda(busqueda,id_object) { //BUSQUEDA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Plazas/tabla.php',
-        data: { 
-            busqueda: busqueda,
-            id_object:id_object 
+        $.post("../../../../App/Controllers/Hrae/PlazasC/InfoCentroC.php", {
+            id_tbl_centro_trabajo_hraes: id_tbl_centro_trabajo_hraes,
         },
-        success: function (data) {
-            $('#t-table').html(data);
-        }
-    });
-}
+            function (data) {
+                let jsonData = JSON.parse(data);//se obtiene el json
 
-function buscarInBd(){ //BUSQUEDA
-    let buscar = document.getElementById("buscar").value.trim();
-    let id_tbl_centro_trabajo_hraes = document.getElementById("id_tbl_centro_trabajo_hraes").value;
-    buscar = buscar.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
-    buscarlenth = buscar.length;
-    
-    if (buscarlenth == 0){
-        iniciarPlazas();
-    } else {
-        iniciarBusqueda(buscar,id_tbl_centro_trabajo_hraes);
+                clvResult.textContent = jsonData.clave;
+                nombreResult.textContent = jsonData.nombre;
+                cpResult.textContent = jsonData.codigo_postal;
+            }
+        );
     }
 }
-
-function iniciarTablaHistoria(id_object) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Plazas/tablaHistoria.php',
-        data: { id_object: id_object },
-        success: function (data) {
-            $('#t-table-historia').html(data);
-        }
-    });
-}
-
-
-function detallesEntity(id_object){
-
-    iniciarTablaHistoria(id_object);
-
-    let num_plaza = document.getElementById("num_plaza");
-    let cve_centro_trabajo = document.getElementById("cve_centro_trabajo");
-    let tipo_plaza = document.getElementById("tipo_plaza");
-    let nombre_centro_trabajo = document.getElementById("nombre_centro_trabajo");
-    let tipo_contratacion = document.getElementById("tipo_contratacion");
-    let entidad = document.getElementById("entidad");
-    let unidad_respo = document.getElementById("unidad_respo");
-    let codigo_postal = document.getElementById("codigo_postal");
-
-    $("#id_object").val(id_object);
-
-    $.post("../../../../App/Controllers/Hrae/PlazasC/DetallesEntityC.php", {
-        id_object: id_object
-    },
-        function (data, status) {
-            var jsonData = JSON.parse(data);//se obtiene el json
-            var entity = jsonData.response; //Se agrega a emtidad 
-
-            num_plaza.textContent = entity[1];
-            cve_centro_trabajo.textContent = entity[6];
-            tipo_plaza.textContent = entity[2];
-            nombre_centro_trabajo.textContent = entity[7];
-            tipo_contratacion.textContent = entity[3];
-            entidad.textContent = entity[8];
-            unidad_respo.textContent = entity[4];
-            codigo_postal.textContent = entity[9];
-        }
-    );
-
-    $("#mostar_detalles_modal").modal("show");
-
-}
-*/
-///DETALLES DE LA Entidad u hiustoria
-
-

@@ -30,7 +30,7 @@
             <div class="container-fluid">
                 <p>Informaci&oacuten de los &uacuteltimos movimientos de centro de trabajo.</p>
                 <div class="form-inline">
-                    <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i class="fas fa-plus"></i>
+                    <button id="button_agregar_centro_trabajo" onclick="agregarEditarDetalles(null)" class="btn btn-light"><i class="fas fa-plus"></i>
                         <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar centro de trabajo</span>
                     </button>
                 </div>

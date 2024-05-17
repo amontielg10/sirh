@@ -144,3 +144,10 @@ function eliminarEntity(id_object) {
     });
 }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    tippy('#centro_trabajo_plazas', {
+      content: 'Consultas las plazas asignadas al centro de trabajo.',
+      theme: 'green',
+    });
+  });
