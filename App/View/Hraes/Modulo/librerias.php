@@ -1,6 +1,6 @@
 
 <!-- LIBRERIAS JS -->
-<script src="../../../../js/Hraes/Modulo/Inicio/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Inicio/iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Inicio/Popup.js"></script>
 
 <script src="../../../../js/Global/FormaPago/Validar.js"></script>
