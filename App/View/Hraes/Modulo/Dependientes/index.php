@@ -28,4 +28,4 @@
 <br>
 <br>
 
-<?php include 'agregarEditar.php' ?>
+<?php include 'AgregarEditar.php' ?>
