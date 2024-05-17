@@ -36,7 +36,7 @@ if ($id_tbl_empleados_hraes == null) {
                 <a type="button" href="../Empleados/index.php" class="btn btn-light" style="color:#235B4E"
                     aria-haspopup="true" aria-expanded="false"><i class="fas fa-arrow-alt-circle-left"></i></a>
 -->
-            </div>
+                </div>
 
             <input type="hidden" id="id_tbl_empleados_hraes" value="<?php echo $id_tbl_empleados_hraes ?>" />
 
@@ -48,8 +48,7 @@ if ($id_tbl_empleados_hraes == null) {
                         <h6 style="font-weight: bold;color:#235B4E;">Nombre: <label id="nombreResult"></label></h6>
                     </div>
                     <div class="col-md-8">
-                        <h6 style="font-weight: bold;color:#235B4E;">Núm. de Empleado: <label
-                                id="numEmpleadoResult"></label></h6>
+                        <h6 style="font-weight: bold;color:#235B4E;">Núm. de Empleado: <label id="numEmpleadoResult"></label></h6>
                     </div>
                     <div class="col-md-4">
                         <h6 style="font-weight: bold;color:#235B4E;">Curp: <label id="curpResult"></label></h6>

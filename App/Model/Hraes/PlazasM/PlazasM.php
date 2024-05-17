@@ -195,7 +195,7 @@ class modelPlazasHraes
                                     id_cat_tipo_contratacion_hraes,id_cat_unidad_responsable,
                                     id_tbl_centro_trabajo_hraes,id_cat_puesto_hraes,
                                     id_cat_zonas_tabuladores_hraes,id_cat_niveles_hraes,
-                                    id_tbl_zonas_pago,fecha_ingreso_inst,fecha_inicio_movimiento,
+                                    id_tbl_zonas_pago_hraes,fecha_ingreso_inst,fecha_inicio_movimiento,
                                     fecha_termino_movimiento,fecha_modificacion
                             FROM tbl_control_plazas_hraes
                             WHERE id_tbl_control_plazas_hraes = $id_object");
@@ -236,7 +236,7 @@ class modelPlazasHraes
             'id_cat_puesto_hraes' => null,
             'id_cat_zonas_tabuladores_hraes' => null,
             'id_cat_niveles_hraes' => null,
-            'id_tbl_zonas_pago' => null,
+            'id_tbl_zonas_pago_hraes' => null,
             'fecha_ingreso_inst' => null,
             'fecha_inicio_movimiento' => null,
             'fecha_termino_movimiento' => null,
