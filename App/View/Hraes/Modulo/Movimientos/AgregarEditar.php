@@ -2,10 +2,10 @@
     aria-hidden="true" id="agregar_editar_movimiento">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" style="font-weight: bold;color:#235B4E"><label id="tituloMovimiento"
-                        style="font-weight: bold;color:#235B4E"></label> movimiento</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            <div class="modal-header" style="background:#235B4E">
+                <h5 class="modal-title" style="font-weight: bold;color:white"><label id="tituloMovimiento"
+                        style="font-weight: bold;color:white"></label> movimiento.</h5>
+                <button atyle="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close"
                     onclick="salirAgregarEditarMovimiento();">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -81,7 +81,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
                     onclick="salirAgregarEditarMovimiento();">Cancelar</button>
                 <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
-                    onclick="return validarMovimiento();">Guardar</button>
+                    onclick="return validarPw();">Guardar</button>
                 <input type="hidden" id="id_object">
                 <input type="hidden" id="id_tipo_plaza">
                 <input type="hidden" id="id_plaza">
