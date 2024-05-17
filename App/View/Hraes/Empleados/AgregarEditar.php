@@ -30,7 +30,7 @@
 
                     <div class="form-group col-md-6">
                         <label>N&uacutem. de empleado</label><label style="color:red">*</label>
-                        <input type="number" class="form-control" id="num_empleado" placeholder="Núm de empleado">
+                        <input type="text" class="form-control" id="num_empleado" placeholder="Núm de empleado">
                     </div>
 
                     <div class="form-group col-md-6">

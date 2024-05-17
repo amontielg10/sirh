@@ -1,11 +1,22 @@
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
-var id_baja = 2;
-var id_movimiento = 3;
-var id_alta = 1;
-var id_movimiento_vacante = 5;
+var id_baja = 3; ///CATALOGO
+var id_movimiento = 2;///CATALOGO
+var id_alta = 1;///CATALOGO
+var id_movimiento_vacante = 5;///CATALOGO
+
+function validarPw(){
+    let id_object = document.getElementById('id_object').value;
+    if (id_object){
+        if (validarAccion()){
+            validarMovimiento();
+        }
+    } else {
+        validarMovimiento();
+    }
+}
+
 
 function validarMovimiento(){
-    
     let num_plaza_m = document.getElementById('num_plaza_m').value;
     let movimiento_general = document.getElementById('movimiento_general').value;
     let id_tbl_movimientos = document.getElementById('id_tbl_movimientos').value;
@@ -36,6 +47,7 @@ function validarMovimiento(){
         } else {
             if (num_plaza_validate == num_plaza_m && id_tbl_movimientos_validate == id_tbl_movimientos){
                 guardarMovimiento(null);
+
             } else {
                 validarUltimoMovimiento(movimiento_general,id_tipo_plaza,movimiento_general);
             }
@@ -95,7 +107,6 @@ function validarUltimoMovimiento(id_movimiento,id_tipo_plaza,movimiento_general)
             id_movimiento:id_movimiento
          },
         success: function (data) {
-            console.log(data);
             jsonData = JSON.parse(data);
             let bool = jsonData.bool;
             let mensaje = jsonData.mensaje;

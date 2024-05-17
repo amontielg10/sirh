@@ -4,7 +4,7 @@ include '../librerias.php';
 $id_object = $_POST['id_object'];
 $id_cat_estatus = $_POST['id_cat_estatus'];
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
-$inactivo = 2; ///catalogo id
+$inactivo = 0; ///catalogo id
 $activo = 1; ///catalogo id
 $modelTelefonoM = new ModelTelefonoM();
 $row = new Row();

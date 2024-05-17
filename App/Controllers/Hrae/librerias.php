@@ -37,6 +37,7 @@ include '../../../Model/Hraes/EstudioM/EstudioM.php';
 include '../../../Model/Hraes/JefeM/JefeM.php';
 include '../../../Model/Hraes/CorreoM/CorreoM.php';
 include '../../../Model/Catalogos/CatEstudioM/CatEstudioM.php';
+include '../../../Model/Hraes/Catalogos/CatGeneroM/CatGeneroM.php';
 
 ///CONTROLLERS
 include '../../../Controllers/Hrae/GlobalC/ArrayC.php';
@@ -53,3 +54,4 @@ include '../../../Controllers/Catalogos/CatSepomexC/CatSepomexC.php';
 include '../../../Controllers/Catalogos/CatSelectC/CatSelectC.php';
 include '../../../Controllers/Hrae/Catalogos/CatEspecialidadC/CatEspecialidadC.php';
 include '../../../Controllers/Catalogos/CatEstudioC/CatEstudioC.php';
+include '../../../Controllers/Hrae/Catalogos/CatGeneroC/CatGeneroC.php';

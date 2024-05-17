@@ -228,6 +228,7 @@ $id_rol = $_SESSION['id_rol'];
                     <!-- HOME -->
 
                     <!-- MY PROFILE -->
+                    <!--
                     <li class="sidebar-item">
                         <a href="../../Admin/MiPerfil/index.php" class="sidebar-link" href="javascript:void(0)"
                             aria-expanded="false">
@@ -235,6 +236,7 @@ $id_rol = $_SESSION['id_rol'];
                             <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Mi perfil </span>
                         </a>
                     </li>
+                    -->
                     <!-- MY PROFILE -->
 
                     <!-- ADMIN INICIO -->
@@ -243,7 +245,7 @@ $id_rol = $_SESSION['id_rol'];
                         <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
                             aria-expanded="false">
                             <i class="far fa-folder" style="font-size: 1.1rem;"></i>
-                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;ADMINISTRACI&OacuteN</span>
+                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Administraci&acuteon</span>
                         </a>
                         <ul aria-expanded="false" class="collapse  first-level">
                             <li class="sidebar-item">

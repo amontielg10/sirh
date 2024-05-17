@@ -63,7 +63,7 @@ class modelEmpleadosHraes{
     public function listarByIdEdit($id_object){
         $listado = pg_query("SELECT id_tbl_empleados_hraes, rfc, curp, nombre, primer_apellido,
                                     segundo_apellido, nss,num_empleado,pais_nacimiento,
-                                    id_cat_estado_civil,id_cat_genero
+                                    id_cat_estado_civil,id_cat_genero_hraes
                             FROM tbl_empleados_hraes
                             WHERE id_tbl_empleados_hraes = $id_object
                             ORDER BY id_tbl_empleados_hraes DESC

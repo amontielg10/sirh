@@ -4,7 +4,7 @@ include '../librerias.php';
 $id_object = $_POST['id_object'];
 $id_cat_estatus_formato_pago = $_POST['id_cat_estatus_formato_pago'];
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
-$inactivo = 2; ///catalogo id
+$inactivo = 0; ///catalogo id
 $activo = 1; ///catalogo id
 $modelFormaPagoM = new ModelFormaPagoM();
 $row = new Row();

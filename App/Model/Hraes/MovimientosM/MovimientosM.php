@@ -28,8 +28,8 @@ class ModelMovimientosM
     }
 
     public function listarByEdit($idMovimiento){
-        $listado = pg_query("SELECT id_tbl_plazas_empleados_hraes,codigo_trabajador,fecha_inicio,
-                                    fecha_termino,id_tbl_movimientos,tipo_movimiento,fecha_movimiento,
+        $listado = pg_query("SELECT id_tbl_plazas_empleados_hraes,fecha_inicio,
+                                    fecha_termino,id_tbl_movimientos,fecha_movimiento,
                                     id_tbl_control_plazas_hraes,id_tbl_empleados_hraes
                              FROM tbl_plazas_empleados_hraes
                              WHERE id_tbl_plazas_empleados_hraes = $idMovimiento;");
@@ -40,11 +40,9 @@ class ModelMovimientosM
     {
         return $array = [
             'id_tbl_plazas_empleados_hraes' => null,
-            'codigo_trabajador' => null,
             'fecha_inicio' => null,
             'fecha_termino' => null,
             'id_tbl_movimientos' => null,
-            'tipo_movimiento' => null,
             'fecha_movimiento' => null,
             'id_tbl_control_plazas_hraes' => null,
             'id_tbl_empleados_hraes' => null,

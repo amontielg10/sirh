@@ -4,9 +4,9 @@ include '../librerias.php';
 $modelMovimientosM = new ModelMovimientosM();
 $row = new Row();
 
-$movimiento = 3; ///OBTENIDO DEL CATALOGO TBL_MOVIMIENTOS
+$movimiento = 2; ///OBTENIDO DEL CATALOGO TBL_MOVIMIENTOS
 $alta = 1; ///OBTENIDO DEL CATALOGO TBL_MOVIMIENTOS
-$baja = 2; ///OBTENIDO DEL CATALOGO TBL_MOVIMIENTOS
+$baja = 3; ///OBTENIDO DEL CATALOGO TBL_MOVIMIENTOS
 
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
 $id_movimiento = $_POST['id_movimiento'];

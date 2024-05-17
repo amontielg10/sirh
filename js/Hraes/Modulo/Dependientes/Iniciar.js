@@ -106,11 +106,11 @@ function eliminarDependiente(id_object) {//ELIMINAR USUARIO
         $.post("../../../../App/Controllers/Hrae/DependientesC/EliminarC.php", {
                 id_object: id_object
             },
-            function (data, status) {
+            function (data) {
                 if (data == 'delete'){
                     mensajeExito('Dependiente económico eliminado con éxito')
                 } else {
-                    mensajeError(data);
+                    mensajeError('El dependiente se encuentra en módulo de juguetes');
                 }
                 buscarDependiente();
             }

@@ -9,7 +9,6 @@ function domicilioDetalles(id_object){
         id_object: id_object
     },
         function (data) {
-            console.log(data);
             var jsonData = JSON.parse(data);
             var entity = jsonData.response;
             
@@ -57,7 +56,6 @@ function guardarDomicilio() {
         num_interior1: num_interior1,
     },
         function (data) {
-            console.log(data);
             if (data == 'edit'){
                 mensajeExito('Domicilio modificado con éxito');
             } else if (data == 'add') {

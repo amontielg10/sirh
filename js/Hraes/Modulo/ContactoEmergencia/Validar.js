@@ -7,7 +7,8 @@ function validarEmergencia(){
     if (validarData(nombre,'Nombre') &&
         validarData(parentesco,'Parentesco') &&
         validarData(primer_apellido,'Apellido paterno') &&
-        validarData(movil_emergencia,'Número telefónico')
+        validarData(movil_emergencia,'Número telefónico') &&
+        caracteresCount('Núm. Telefonico',10,movil_emergencia)
     ){
         agregarEditarByDbByEmergencia();
     }

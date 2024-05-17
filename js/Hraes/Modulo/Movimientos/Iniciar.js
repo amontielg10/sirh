@@ -29,7 +29,6 @@ function agregarEditarMovimiento(id_object){
         id_object: id_object
     },
         function (data) {
-            console.log(data);
             let jsonData = JSON.parse(data);
             let entity = jsonData.response;
             let general = jsonData.general;
@@ -87,7 +86,7 @@ function guardarMovimiento(id_plaza) {
         id_tbl_control_plazas_hraes:id_tbl_control_plazas_hraes,
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
     },
-        function (data, status) {
+        function (data) {
             if (data == 'edit'){
                 mensajeExito('Movimiento modificado con éxito');
             } else if (data == 'add') {
@@ -102,6 +101,7 @@ function guardarMovimiento(id_plaza) {
 }
 
 function eliminarMovimiento(id_object) {//ELIMINAR USUARIO
+    if(validarAccion()){
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -116,7 +116,7 @@ function eliminarMovimiento(id_object) {//ELIMINAR USUARIO
         $.post("../../../../App/Controllers/Hrae/MovimientosC/EliminarC.php", {
                 id_object: id_object
             },
-            function (data, status) {
+            function (data) {
                 if (data == 'delete'){
                     mensajeExito('Movimiento eliminado con éxito')
                 } else {
@@ -127,6 +127,7 @@ function eliminarMovimiento(id_object) {//ELIMINAR USUARIO
         );
     }
     });
+}
 }
 /*
 

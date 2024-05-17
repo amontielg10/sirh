@@ -89,7 +89,6 @@ function agregarEditarByDb() {
         pais_nacimiento:$("#pais_nacimiento").val(),
     },
         function (data) {
-            console.log(data);
             if (data == 'edit'){
                 mensajeExito('Empleado modificado con éxito');
             } else if (data == 'add') {
@@ -119,7 +118,7 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
         $.post("../../../../App/Controllers/Hrae/EmpleadoC/EliminarC.php", {
                 id_object: id_object
             },
-            function (data, status) {
+            function (data) {
                 if (data == 'delete'){
                     mensajeExito('Empleado eliminado con éxito')
                 } else {

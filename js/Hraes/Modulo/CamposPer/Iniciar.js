@@ -89,7 +89,6 @@ function agregarEditarByDbCamposPersonalizados() {
 
     },
         function (data) {
-            console.log(data);
             if (data == 'edit'){
                 mensajeExito('Información modificada con éxito');
             } else if (data == 'add') {

@@ -43,7 +43,6 @@ function validarEstatusCuentaC(id_object, id_cat_estatus_formato_pago) {
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
     },
         function (data) {
-            console.log(data); 
             jsonData = JSON.parse(data);
             let bool = jsonData.bool;
             let message = jsonData.message;

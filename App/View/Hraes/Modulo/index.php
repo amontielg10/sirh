@@ -31,14 +31,34 @@ if ($id_tbl_empleados_hraes == null) {
                         </div>
                     </div>
                 </div>
+
+                <!--
                 <a type="button" href="../Empleados/index.php" class="btn btn-light" style="color:#235B4E"
                     aria-haspopup="true" aria-expanded="false"><i class="fas fa-arrow-alt-circle-left"></i></a>
+-->
             </div>
 
             <input type="hidden" id="id_tbl_empleados_hraes" value="<?php echo $id_tbl_empleados_hraes ?>" />
 
             <div class="card-body">
                 <p>Informaci&oacuten de empleado seleccionado</p>
+
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <h6 style="font-weight: bold;color:#235B4E;">Nombre: <label id="nombreResult"></label></h6>
+                    </div>
+                    <div class="col-md-8">
+                        <h6 style="font-weight: bold;color:#235B4E;">Núm. de Empleado: <label
+                                id="numEmpleadoResult"></label></h6>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 style="font-weight: bold;color:#235B4E;">Curp: <label id="curpResult"></label></h6>
+                    </div>
+                    <div class="col-md-8">
+                        <h6 style="font-weight: bold;color:#235B4E;">Rfc: <label id="rfcResult"></label></h6>
+                    </div>
+                </div>
+
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
@@ -103,9 +123,13 @@ if ($id_tbl_empleados_hraes == null) {
                     <div class="tab-pane fade show active" id="nav-empleado" role="tabpanel"
                         aria-labelledby="nav-home-tab" tabindex="0"><?php include 'Adicional/index.php' ?></div>
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
-                        tabindex="0"><?php include 'NumeroTelefonico/index.php' ?></div>
+                        tabindex="0">
+                        <?php include 'NumeroTelefonico/index.php' ?>
+                    </div>
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"
-                        tabindex="0"><?php include 'CedulaProf/index.php' ?></div>
+                        tabindex="0">
+                        <?php include 'CedulaProf/index.php' ?>
+                    </div>
                     <div class="tab-pane fade" id="nav-clabe" role="tabpanel" aria-labelledby="nav-clabe" tabindex="0">
                         <?php include 'FormaPago/index.php' ?>
                     </div>

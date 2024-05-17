@@ -1,8 +1,8 @@
 <br>
 <div class="card">
-    <div class="card-header">
+    <div class="card-header" style="background:#235B4E">
         <h5 class="modal-title" style="font-weight: bold;color:"><label id="titulo"
-                style="font-weight: bold;color:#235B4E">Domicilios</label></h5>
+                style="font-weight: bold;color:white">Domicilios</label></h5>
     </div>
     <div class="card-body">
         <div id="accordion">
@@ -12,7 +12,7 @@
                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
                             aria-expanded="true" aria-controls="collapseOne">
                             <h6 class="modal-title" style="font-weight: bold;color:"><label id="titulo"
-                                    style="font-weight: bold;color:#000000">Domicilio particular</label></h6>
+                                    style="font-weight: bold;color:	#6c757d">Domicilio particular</label></h6>
                         </button>
                     </h5>
                 </div>
@@ -24,12 +24,12 @@
                 </div>
             </div>
             <div class="card">
-                <div class="card-header" id="headingTwo">
+                <div class="card-header" id="headingTwo" >
                     <h5 class="mb-0">
                         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
                             aria-expanded="false" aria-controls="collapseTwo">
                             <h6 class="modal-title" style="font-weight: bold;color:"><label id="titulo"
-                                    style="font-weight: bold;color:#000000">Domicilio f&iacutescal</label></h6>
+                                    style="font-weight: bold;color:	#6c757d">Domicilio f&iacutescal</label></h6>
                         </button>
                     </h5>
                 </div>

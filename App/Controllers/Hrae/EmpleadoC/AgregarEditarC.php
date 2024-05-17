@@ -20,7 +20,7 @@ $datos = [
     'segundo_apellido' => $_POST['segundo_apellido'],
     'nss' => $_POST['nss'],
     'id_cat_estado_civil' => $_POST['id_cat_estado_civil'],
-    'id_cat_genero' => $_POST['id_cat_genero'],
+    'id_cat_genero_hraes' => $_POST['id_cat_genero'],
     'num_empleado' => $_POST['num_empleado'],
     'pais_nacimiento' => $_POST['pais_nacimiento'],
 ];
