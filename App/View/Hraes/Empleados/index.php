@@ -56,6 +56,6 @@
         </div>
     </div>
 
-    <?php include ('librerias.php') ?>
+    <?php include ('Librerias.php') ?>
     <?php include ('../../footer-librerias.php') ?>
 </body>

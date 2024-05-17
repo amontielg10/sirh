@@ -1,6 +1,6 @@
 /*
 * @Author: Aldair Trejo
-* @ProyectName: Infotec-project
+* @ProyectName: system-sirh
 * @Date: February 12, 2024
 *
 */

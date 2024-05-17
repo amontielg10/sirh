@@ -43,7 +43,6 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
         id_object: id_object,
     },
         function (data) {
-            console.log(data);
             let jsonData = JSON.parse(data);//se obtiene el json
             let entity = jsonData.entity; //Se agrega a emtidad 
             let plazas = jsonData.plazas;
@@ -123,7 +122,6 @@ function agregarEditarByDb() {
         id_tbl_zonas_pago:id_tbl_zonas_pago
     },
         function (data) {
-            console.log(data);
             if (data == 'edit'){
                 mensajeExito('Plaza modificada con éxito');
             } else if (data == 'add') {

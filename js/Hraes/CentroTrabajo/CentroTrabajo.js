@@ -102,7 +102,6 @@ function agregarEditarByDb() {
 
     },
         function (data, status) {
-            console.log(data);
             if (data == 'edit'){
                 mensajeExito('Centro de trabajo modificado con éxito');
             } else if (data == 'add') {
