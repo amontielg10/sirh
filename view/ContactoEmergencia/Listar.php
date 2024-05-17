@@ -10,6 +10,7 @@
 <html lang="es">
 
 <head>
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
     <style>
         a.dropdown-item:hover {
             background-color: #fbf4e8;
@@ -20,11 +21,11 @@
 
 </head>
 
-<body >
+<body onload="messageInfo();">
     <?php include("../../conexion.php") ?>
     <?php include('../nav-menu.php') ?>
     <?php include ('../../php/CatEstatusC/listar.php');?>
-    <?php include ('../../php/ControlContactoEmergenciaC/listar.php');?>
+    <?php include ('../../php/ControlContactoEmergenciaC/Listar.php');?>
     <?php include("../../php/CentroTrabajoC/Listar.php");?>
 
     <div id="main-wrapper">
@@ -177,9 +178,17 @@
 
             </div>
         </div>
+        <input type="hidden" id="messageInfo" value="<?php echo base64_decode($_GET['MS3']);?>">
 </body>
 
-
+<script>
+    function messageInfo(){
+        let messageInfo = document.getElementById("messageInfo").value;
+        if (messageInfo == 1){
+            messajeError('No fue posible eliminar el elemento.');
+        }
+    }
+</script>
 
 <script>
     $(document).ready(function () {

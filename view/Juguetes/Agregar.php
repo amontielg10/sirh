@@ -22,7 +22,7 @@ $id_tbl_centro_trabajo = ($_GET['RP']);
     <?php include ('../../php/CatTurnoNewC/listar.php'); ?>
     <?php include ("../../php/CatFechaJuguetesC/listar.php") ?>
     <?php include ("../../php/ControlJuguetesC/Listar.php") ?>
-    <?php include ('../../php/CatEstatusJuguetesC/Listar.php'); ?>
+    <?php include ('../../php/CatEstatusJuguetesC/listar.php'); ?>
     <?php include ("../../php/DependientesEconomicosC/Listar.php") ?>
 
     <div id="main-wrapper">

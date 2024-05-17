@@ -1,8 +1,8 @@
 <?php
 include ('Listar.php');
-include ("../CatRegionC/Listar.php");
-include ("../CatEstatusC/Listar.php");
-include ("../CatEntidadC/Listar.php") ;
+include ("../CatRegionC/listar.php");
+include ("../CatEstatusC/listar.php");
+include ("../CatEntidadC/listar.php") ;
 
 $idCentroTrabajo = $_POST['idCentroTrabajo'];
 if ($idCentroTrabajo == 0){

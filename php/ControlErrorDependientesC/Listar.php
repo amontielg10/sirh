@@ -3,7 +3,6 @@ include ('../../validar_sesion.php');    //Se incluye validar_sesion
 include ('../../conexion.php'); //Se incluye la conexion
 
 function insertarErrorDependieteEco(
-    $connectionDBsPro,
     $rfc_empleado,
     $curp_empleado,
     $curp_menor,
@@ -15,6 +14,7 @@ function insertarErrorDependieteEco(
     $linea_exel,
     $id_carga_masiva
 ) {
+    include ('../../conexion.php');
     $pgs_QRY = pg_insert(
         $connectionDBsPro,
         'ctrl_error_dependientes_economicos',
