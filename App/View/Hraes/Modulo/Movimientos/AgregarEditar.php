@@ -5,7 +5,7 @@
             <div class="modal-header" style="background:#235B4E">
                 <h5 class="modal-title" style="font-weight: bold;color:white"><label id="tituloMovimiento"
                         style="font-weight: bold;color:white"></label> movimiento.</h5>
-                <button atyle="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close"
+                <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close"
                     onclick="salirAgregarEditarMovimiento();">
                     <span aria-hidden="true">&times;</span>
                 </button>

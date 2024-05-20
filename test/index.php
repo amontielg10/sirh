@@ -1,4 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    console.log(esEntero('',122));
+
+    function esEntero(text,num) {
+    let bool = true;
+    if (!Number.isInteger(num)){
+        bool = false;
+        //mensajeError(text + ' debe tener números enteros')
+    }
+    return bool;
+}
+</script>
+
+</html>
+
+
+
+
+
+
 <?php
+
+/*
 function encrypt($data, $key) {
     $method = 'aes-256-cbc';
     // Generar un IV (vector de inicialización)
@@ -33,3 +67,4 @@ function decrypt($data, $key) {
 }
 
 //$encryptedData = 'aquí_va_el_dato_cifrado_en_base64'; // reemplaza con el dato cifrado
+*/

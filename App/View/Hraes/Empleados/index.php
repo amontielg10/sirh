@@ -29,7 +29,7 @@
             <div class="container-fluid">
                 <p>Informaci&oacuten de los &uacuteltimos movimientos de empleados.</p>
                 <div class="form-inline">
-                    <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i class="fas fa-plus"></i>
+                    <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i class="fa fa-user-plus"></i>
                         <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar un empleado</span>
                     </button>
                 </div>

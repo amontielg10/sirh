@@ -15,3 +15,12 @@ function caracteresCount(text, number,value){
     } 
     return bool;
 }
+
+function esEntero(text,num) {
+    let bool = true;
+    if (num.includes('.')){
+        bool = false;
+        mensajeError(text + ' debe tener números enteros')
+    }
+    return bool;
+}

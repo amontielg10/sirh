@@ -1,7 +1,7 @@
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true" id="agregar_editar_forma_pago">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content" >
+        <div class="modal-content">
             <div class="modal-header" style="background:#235B4E">
                 <h5 class="modal-title" style="font-weight: bold;color:white"><label id="tituloFormaPago"
                         style="font-weight: bold;color:white"></label> forma de pago.</h5>
@@ -11,19 +11,24 @@
                 </button>
             </div>
 
+            <div class="alert alert-warning" role="alert">
+                <i class="fas fa-exclamation-circle"></i> Solo una forma de pago puede estar activa.
+            </div>
+
             <div class="card-body">
                 <div class="form-row">
 
                     <div class="form-group col-md-6">
                         <label>Cuenta clabe</label><label style="color:red">*</label>
-                        <input onkeyup="validarCuenta();" type="number" class="form-control" id="clabe" placeholder="Cuenta clabe" maxlength="18">
+                        <input onkeyup="validarCuenta();" type="number" class="form-control" id="clabe"
+                            placeholder="Cuenta clabe" maxlength="18">
                     </div>
 
                     <div class="form-group col-md-6">
                         <label>Banco</label><label style="color:red">*</label>
                         <fieldset disabled>
-                            <input type="text" class="form-control" id="nombre_banco" placeholder="Banco"
-                                maxlength="18" disable>
+                            <input type="text" class="form-control" id="nombre_banco" placeholder="Banco" maxlength="18"
+                                disable>
                         </fieldset>
                     </div>
 
@@ -36,8 +41,8 @@
 
                     <div class="form-group col-md-6">
                         <label>Forma de pago</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example"
-                            id="id_cat_formato_pago" required>
+                        <select class="form-control" aria-label="Default select example" id="id_cat_formato_pago"
+                            required>
                         </select>
                     </div>
 
