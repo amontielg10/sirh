@@ -7,21 +7,21 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     tippy('#butto_jefe_inmediato', {
-      content: 'Agrega, actualiza y elimina informaci\u00f3n del jefe inmediato del empleado.',
+      content: 'Agrega, actualiza y elimina informaci\u00f3n sobre el jefe inmediato del empleado.',
       theme: 'green',
     });
   });
 
   document.addEventListener('DOMContentLoaded', function () {
     tippy('#button_nivel_estudio', {
-      content: 'Agrega, actualiza y elimina el nivel de estudio del empleado.',
+      content: 'Agrega, actualiza y elimina el nivel de estudio asignado al empleado.',
       theme: 'green',
     });
   });
 
   document.addEventListener('DOMContentLoaded', function () {
     tippy('#button_especialidad', {
-      content: 'Agrega, actualiza y elimina la especialidad del empleado.',
+      content: 'Agrega, actualiza y elimina la especialidad asignada al empleado.',
       theme: 'green',
     });
   });
@@ -42,7 +42,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     tippy('#button_campos_personalizados', {
-      content: 'Asigna informaci\u00f3n adicional del empleado.',
+      content: 'Asigna informaci\u00f3n adicional sobre empleado.',
       theme: 'green',
     });
   });
