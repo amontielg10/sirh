@@ -5,7 +5,7 @@
         <div class="page-wrapper">
 
             <div class="page-breadcrumb">
-                <h2 class="page-title">Mi perfil</h2>
+                <h2 class="page-title">Sitema Integral de Recursos Humanos</h2>
                 <div class="row">
                     <div class="col-5 align-self-center">
 
@@ -28,14 +28,24 @@
             </div>
 
             <div class="container-fluid">
-                <p>Informaci&oacuten de los &uacuteltimos movimientos de roles.</p>
-                <p></p>
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscarRol"
-                    onkeyup="buscarRol();" aria-label="Search">
-                <p></p>
-
-                <table class="table table-striped" id="t-table" style="width:100%">
-                </table>
+            <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Mi perfil</h4>
+                        <p>Informaci&oacuten correspondiente al centro de trabajo seleccionado.</p>
+                        <hr>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <h6 style="font-weight: bold;color:#235B4E;">Usuario: <label id="nombreResult"></label></h6>
+                            </div>
+                            <div class="col-md-5">
+                                <h6 style="font-weight: bold;color:#235B4E;">Nombre: <label
+                                        id="clvResult"></label></h6>
+                            </div>
+                            <div class="col-md-7">
+                                <h6 style="font-weight: bold;color:#235B4E;">Estatus: Activo<label
+                                        id="cpResult"></label></h6>
+                            </div>
+                        </div>
+                    </div>
 
 
             </div>

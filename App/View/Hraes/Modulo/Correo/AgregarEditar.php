@@ -1,6 +1,6 @@
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true" id="agregar_editar_correo">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background:#235B4E">
                 <h5 class="modal-title" style="font-weight: bold;color:white"><label id="titulo_correo"
@@ -21,9 +21,9 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="salirAgregarEditarCorreo();">Cancelar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="salirAgregarEditarCorreo();"><i class="fa fa-times"></i> Cancelar</button>
                 <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
-                    onclick="return validarCorreo();">Guardar</button>
+                    onclick="return validarCorreo();"><i class="fa fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
             </div>
 

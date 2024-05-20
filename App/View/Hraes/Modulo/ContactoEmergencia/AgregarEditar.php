@@ -49,9 +49,9 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                    onclick="salirAgregarEditarEmergencia();">Cancelar</button>
+                    onclick="salirAgregarEditarEmergencia();"><i class="fa fa-times"></i> Cancelar</button>
                 <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
-                    onclick="return validarEmergencia();">Guardar</button>
+                    onclick="return validarEmergencia();"><i class="fa fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
             </div>
 

@@ -5,7 +5,7 @@
             <div class="modal-header" style="background:#235B4E">
                 <h5 class="modal-title" style="font-weight: bold;color:white"><label id="tituloFormaPago"
                         style="font-weight: bold;color:white"></label> forma de pago.</h5>
-                <button style="clor:white" type="button" class="close" data-dismiss="modal" aria-label="Close"
+                <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close"
                     onclick="salirAgregarEditarFormaPago();">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -46,9 +46,9 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                    onclick="salirAgregarEditarFormaPago();">Cancelar</button>
+                    onclick="salirAgregarEditarFormaPago();"><i class="fa fa-times"></i> Cancelar</button>
                 <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
-                    onclick="return validarFormaPago();">Guardar</button>
+                    onclick="return validarFormaPago();"><i class="fa fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
                 <input type="hidden" id="id_cat_banco">
             </div>

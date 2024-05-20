@@ -34,9 +34,9 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="salirAgregarEditarTelefono();">Cancelar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="salirAgregarEditarTelefono();"><i class="fa fa-times"></i> Cancelar</button>
                 <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
-                    onclick="return validarTelefono();">Guardar</button>
+                    onclick="return validarTelefono();"><i class="fa fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
             </div>
 

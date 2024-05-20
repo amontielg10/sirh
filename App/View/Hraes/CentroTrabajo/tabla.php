@@ -37,13 +37,13 @@ if (pg_num_rows($result) > 0) {
                             <div class="btn-group">
                                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i></button>
                             <div class="dropdown-menu">
-                                <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar</button>
+                                <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar centro de trabajo</button>
                                     <form action="../Plazas/index.php" method="POST">
                                         <input type="hidden" id="postId" name="id_tbl_centro_trabajo_hraes" value="' . $row[0] . '" />
-                                        <button id="centro_trabajo_plazas" class="dropdown-item btn btn-light"><i class="fas fa-bookmark"></i> Plazas</button>
+                                        <button id="centro_trabajo_plazas" class="dropdown-item btn btn-light"><i class="fas fa-bookmark"></i> Plazas asignadas al centro de trabajo</button>
                                     </form>
                                 
-                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>  
+                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar centro de trabajo</button>  
                             </div>
                           </div>
                                 </td>

@@ -246,15 +246,15 @@ $id_rol = $_SESSION['id_rol'];
                     <!-- HOME -->
 
                     <!-- MY PROFILE -->
-                    <!--
+                    <?php if(false){?>
                     <li class="sidebar-item">
                         <a href="../../Admin/MiPerfil/index.php" class="sidebar-link" href="javascript:void(0)"
                             aria-expanded="false">
                             <i class="far fa-folder" style="font-size: 1.2rem;"></i>
-                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Mi perfil </span>
+                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp; Mi perfil</span>
                         </a>
                     </li>
-                    -->
+                    <?php }?>
                     <!-- MY PROFILE -->
 
                     <!-- ADMIN INICIO -->
@@ -374,6 +374,7 @@ $id_rol = $_SESSION['id_rol'];
                             <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Salir</span>
                         </a>
                     </li>
+                    <br>
                 </ul>
             </nav>
             <!-- End Sidebar navigation -->
@@ -394,15 +395,15 @@ $id_rol = $_SESSION['id_rol'];
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLongTitle">Confirmar cierre de ses&oacuten</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div class="modal-header" style="background:#235B4E">
+                    <h4 style="color:white" class="modal-title" id="exampleModalLongTitle">Confirmar cierre de ses&oacuten</h4>
+                    <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-footer">
                     <a href="../../salir.php" style="color:  #235B4E;" class="btn btn-light"><i class=""></i>
-                        <span class="hide-menu" style="font-weight: bold;">&nbsp;Cerrar sesi&oacuten</span>
+                        <span class="hide-menu" style="font-weight: bold;">&nbsp;Salir</span>
                     </a>
                 </div>
             </div>

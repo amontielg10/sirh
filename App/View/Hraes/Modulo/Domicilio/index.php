@@ -43,7 +43,7 @@
 
         <div class="modal-footer">
             <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
-                onclick="return validarDomicilio();">Guardar</button>
+                onclick="return validarDomicilio();"><i class="fa fa-save"></i> Guardar</button>
             <input type="hidden" id="id_tbl_domicilios">
         </div>
 

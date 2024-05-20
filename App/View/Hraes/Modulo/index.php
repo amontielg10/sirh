@@ -11,7 +11,7 @@ if ($id_tbl_empleados_hraes == null) {
         <div class="page-wrapper">
 
             <div class="page-breadcrumb">
-                <h4 class="page-title">M&oacutedulo Hospital Regional de Alta Especialidad</h4>
+                <h4 class="page-title">M&oacutedulo Hospital Regional de Alta Especialidad - M&oacutedulos de empleado</h4>
                 <div class="row">
                     <div class="col-5 align-self-center">
 

@@ -14,19 +14,19 @@
             <div class="card-body">
                 <div class="form-row">
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>Fecha</label><label style="color:red">*</label>
                         <input type="date" class="form-control" id="fecha_retardo" placeholder="Nombre"
                             maxlength="20">
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>Hora entrada</label><label style="color:red">*</label>
                         <input type="time" class="form-control" id="hora_entrada" placeholder="Curp"
                             maxlength="20">
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>Hora salida</label><label style="color:red"></label>
                         <input type="time" class="form-control" id="hora_salida" placeholder="Apellido paterno"
                             maxlength="20">
@@ -37,9 +37,9 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                    onclick="salirAgregarEditarRetardo();">Cancelar</button>
+                    onclick="salirAgregarEditarRetardo();"><i class="fa fa-times"></i> Cancelar</button>
                 <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
-                    onclick="return validarDependiente();">Guardar</button>
+                    onclick="return validarDependiente();"><i class="fa fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
             </div>
 
