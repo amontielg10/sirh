@@ -185,3 +185,66 @@ function buscarInfoCentroTrabajo(){
         );
     }
 }
+
+function detallesEntity(id_tbl_control_plazas_hraes){
+
+    let num_plaza_dt = document.getElementById("num_plaza_dt");
+    let cve_centro_trabajo_dt = document.getElementById("cve_centro_trabajo_dt");
+    let tipo_plaza_dt = document.getElementById("tipo_plaza_dt");
+    let codigo_postal_dt = document.getElementById("codigo_postal_dt");
+    let entidad_dt = document.getElementById("entidad_dt");
+    let unidad_respo_dt = document.getElementById("unidad_respo_dt");
+    let nombre_centro_trabajo_dt = document.getElementById("nombre_centro_trabajo_dt");
+
+    let curp_dt = document.getElementById("curp_dt");
+    let rfc_dt = document.getElementById("rfc_dt");
+    let nombre_dt = document.getElementById("nombre_dt");
+
+
+    $.post("../../../../App/Controllers/Hrae/PlazasC/DetallesEntityC.php", {
+        id_tbl_control_plazas_hraes: id_tbl_control_plazas_hraes,
+    },
+        function (data) {
+            let jsonData = JSON.parse(data);//se obtiene el json
+            let entity = jsonData.entity;
+            let empleado = jsonData.empleado;
+
+            num_plaza_dt.textContent = entity[1];
+            cve_centro_trabajo_dt.textContent = entity[6];
+            tipo_plaza_dt.textContent = entity[2];
+            entidad_dt.textContent = entity[8];
+            codigo_postal_dt.textContent = entity[9];
+            unidad_respo_dt.textContent = entity[4];
+            nombre_centro_trabajo_dt.textContent = entity[7];
+
+            curp_dt.textContent = concatNombre(empleado['curp'],'','');
+            rfc_dt.textContent = concatNombre(empleado['rfc'],'','');
+            nombre_dt.textContent = concatNombre(empleado['nombre'],empleado['primer_apellido'],empleado['segundo_apellido']);
+
+            $("#mostar_detalles_modal").modal("show");
+            listarTablaHistori(id_tbl_control_plazas_hraes);
+        }
+    );
+}
+
+
+function listarTablaHistori(id_tbl_control_plazas_hraes){
+    $.ajax({
+        type: 'POST',
+        url: '../../../../App/View/Hraes/Plazas/tablaHistoria.php',
+        data: { 
+            id_tbl_control_plazas_hraes: id_tbl_control_plazas_hraes,
+        },
+        success: function (data) {
+            $('#tabla_historia_plaza_empleado').html(data);
+        }
+    });
+}
+
+function concatNombre(nombre, primerApellido, segundoApellido){
+    if (nombre != null){
+        return  nombre + ' ' + primerApellido + ' ' + segundoApellido;
+    } else {
+        return 'Sin registro.';
+    }
+}

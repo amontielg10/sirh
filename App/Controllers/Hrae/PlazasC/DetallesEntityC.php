@@ -1,27 +1,31 @@
 <?php
-include '../../../../conexion.php';
-include '../../../Model/Hraes/PlazasM/PlazasM.php';
+include '../librerias.php';
 
-$model = new modelPlazasHraes();
 
-$id_object = $_POST['id_object'];
+///VARIABLES DE CATALOGO tbl_movimientos
+$baja = 3;
+$alta = 1;
+$movimiento = 2;
 
-if ($id_object != null) {
-    $response = returnArrayById($model->detallesPlazas($id_object));
-    $var = [
-        'response' => $response,
-    ];
-    echo json_encode($var);
+$modelEmpleadosHraes = new modelEmpleadosHraes();
+$modelPlazasHraes = new modelPlazasHraes();
+$modelMovimientosM = new ModelMovimientosM();
+$row = new Row();
+$id_tbl_control_plazas_hraes = $_POST['id_tbl_control_plazas_hraes'];
 
-} 
+$countPlaza = $row->returnArrayById($modelMovimientosM->listarCountPlaza($id_tbl_control_plazas_hraes));
 
-function returnArrayById($result)
-{
-    if (pg_num_rows($result) > 0) {
-        while ($row = pg_fetch_row($result)) {
-            $response = $row;
-        }
-    }
-    return $response;
+$empleado = $modelEmpleadosHraes->listarByNull();
+$entity = $row->returnArrayById($modelPlazasHraes->detallesPlazas($id_tbl_control_plazas_hraes));
+if ($countPlaza[0] != 0) {
+    $reponse = $row->returnArrayById($modelPlazasHraes->ultimoMovimientoPlaza($id_tbl_control_plazas_hraes));
+    if ($reponse[0] != $baja) { ///MOSTRAR INFO DE EMPLEADO
+        $empleado = $row->returnArray($modelEmpleadosHraes->listarByIdEdit($reponse[2]));
+    } 
 }
 
+$var = [
+    'entity' => $entity,
+    'empleado' => $empleado,
+];
+echo json_encode($var);

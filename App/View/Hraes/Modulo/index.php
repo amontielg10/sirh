@@ -63,7 +63,7 @@ if ($id_tbl_empleados_hraes == null) {
                 </div>
 
                 <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <div class="nav nav-tabs" id="nav-tab" role="">
                         <button class="nav-link active" id="button_adicional" data-bs-toggle="tab"
                             data-bs-target="#nav-empleado" type="button" role="tab" aria-controls="nav-home"
                             onclick="iniciarAdicional();" aria-selected="true"><i class="fas fa-list-alt"></i>

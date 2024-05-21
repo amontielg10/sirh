@@ -58,6 +58,13 @@ class ModelMovimientosM
         return $listado;
     }
 
+    public function listarCountPlaza($id){
+        $listado = pg_query("SELECT COUNT(tbl_plazas_empleados_hraes)
+                             FROM tbl_plazas_empleados_hraes
+                             WHERE id_tbl_control_plazas_hraes = $id");
+        return $listado;
+    }
+
 
     public function listadoUltimoMovimiento($idEmpleado)
     {
