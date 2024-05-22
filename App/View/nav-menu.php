@@ -135,6 +135,20 @@ $id_rol = $_SESSION['id_rol'];
             height: auto;
             /* mantiene la proporción original */
         }
+
+
+        .bg-image {
+            background-image: url('../../../../assets/sirh/fondo.png');
+            /* Ruta de tu imagen de fondo */
+            background-size: cover;
+            /* Ajusta la imagen al tamaño del contenedor */
+            background-position: center;
+            /* Centra la imagen */
+            height: 100vh;
+            /* Tamaño completo de la ventana */
+            color: white;
+            /* Color del texto para que sea legible en la imagen de fondo */
+        }
     </style>
 
     </style>
