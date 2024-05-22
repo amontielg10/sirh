@@ -138,7 +138,7 @@ $id_rol = $_SESSION['id_rol'];
 
 
         .bg-image {
-            background-image: url('../../../../assets/sirh/fondo.png');
+            background-image: url('../../../../assets/sirh/fondo.jpg');
             /* Ruta de tu imagen de fondo */
             background-size: cover;
             /* Ajusta la imagen al tamaño del contenedor */
