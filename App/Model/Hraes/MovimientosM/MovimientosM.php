@@ -2,7 +2,7 @@
 
 class ModelMovimientosM
 {
-    public function listarByIdEmpleado($idEmpleado)
+    public function listarByIdEmpleado($idEmpleado,$paginator)
     {
         $listado = pg_query("SELECT tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes, 
                                     tbl_plazas_empleados_hraes.fecha_inicio, 
@@ -22,8 +22,37 @@ class ModelMovimientosM
                                 tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
                             WHERE tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
                             ORDER BY tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes DESC
-                            LIMIT 3;");
+                            LIMIT 3 OFFSET $paginator;");
 
+        return $listado;
+    }
+    
+    public function listarByBusqueda($idEmpleado,$paginator,$busqueda){
+        $listado = pg_query("SELECT tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes, 
+                                    tbl_plazas_empleados_hraes.fecha_inicio, 
+                                    tbl_plazas_empleados_hraes.fecha_movimiento,
+                                    tbl_plazas_empleados_hraes.id_tbl_movimientos, 
+                                    tbl_plazas_empleados_hraes.fecha_movimiento, 
+                                    tbl_plazas_empleados_hraes.id_tbl_empleados_hraes,
+                                    CONCAT(tbl_movimientos.codigo,' - ',tbl_movimientos.nombre_movimiento),
+                                    tbl_movimientos.tipo_movimiento,
+                                    tbl_control_plazas_hraes.num_plaza
+                            FROM tbl_plazas_empleados_hraes
+                            INNER JOIN tbl_movimientos
+                            ON tbl_plazas_empleados_hraes.id_tbl_movimientos = 
+                                tbl_movimientos.id_tbl_movimientos
+                            INNER JOIN tbl_control_plazas_hraes
+                            ON tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                                tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+                            WHERE tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
+                            AND (TRIM(UPPER(UNACCENT(tbl_plazas_empleados_hraes.fecha_movimiento::TEXT))) 
+                                    LIKE '%$busqueda%' OR
+                                    TRIM(UPPER(UNACCENT(tbl_movimientos.nombre_movimiento::TEXT)))
+                                    LIKE '%$busqueda%' OR
+                                tbl_control_plazas_hraes.num_plaza LIKE '%$busqueda%'
+                            )
+                            ORDER BY tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes DESC
+                            LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
 

@@ -1,12 +1,12 @@
 function validarFormaPago(){
     let clabe = document.getElementById('clabe').value;
     let id_cat_estatus_formato_pago = document.getElementById('id_cat_estatus_formato_pago').value;
-    let id_cat_formato_pago = document.getElementById('id_cat_formato_pago').value;
+    //let id_cat_formato_pago = document.getElementById('id_cat_formato_pago').value;
     let id_object = document.getElementById('id_object').value;
 
     if (validarData(clabe,'Cuenta clabe') &&
-        validarData(id_cat_estatus_formato_pago,'Estatus') &&
-        validarData(id_cat_formato_pago,'Forma de pago') 
+        validarData(id_cat_estatus_formato_pago,'Estatus')// &&
+       // validarData(id_cat_formato_pago,'Forma de pago') 
     ){
         if(validarCLABE(clabe)){
             //agregarEditarByDbByFormatoPago();

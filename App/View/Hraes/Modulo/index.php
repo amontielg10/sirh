@@ -68,49 +68,49 @@ if ($id_tbl_empleados_hraes == null) {
                     <div class="nav nav-tabs" id="nav-tab" role="">
 
                         <!-- MOVIMIENTOS -->
-                        <button class="nav-link active" id="button_adicional" data-bs-toggle="tab"
+                        <button class="nav-link active" id="button_escolaridad_ix" data-bs-toggle="tab"
                             data-bs-target="#nav_escolaridad" type="button" role="tab" aria-controls="nav-home"
-                            onclick="iniciarEscolaridad();" aria-selected="true"><i class="fas fa-list-alt"></i>
+                            onclick="iniciarEscolaridad();" aria-selected="true"><i class="fa fa-graduation-cap"></i>
                             Escolaridad</button>
                         <!-- MOVIMIENTOS -->
 
                         <!-- MEDIOS DE CONTACTO -->
-                        <button class="nav-link" id="button_contacto_emergencia" data-bs-toggle="tab"
+                        <button class="nav-link" id="button_medios_contacto" data-bs-toggle="tab"
                             data-bs-target="#nav_medios_contacto" type="button" role="tab" aria-controls="nav-clabe"
-                            onclick="iniciarMediosContacto();" aria-selected="false" onclick="buscarEmergencia();"><i
-                                class="fas fa-ambulance"></i>
+                            onclick="iniciarMediosContacto();" aria-selected="false""><i
+                                class="fa fa-address-card"></i>
                             Medios de contacto</button>
                         <!-- MEDIOS DE CONTACTO -->
 
                         <!-- MOVIMIENTO -->
-                        <button class="nav-link" id="button_contacto_emergencia" data-bs-toggle="tab"
+                        <button class="nav-link" id="button_movimientos" data-bs-toggle="tab"
                             data-bs-target="#nav_movimientos" type="button" role="tab" aria-controls="nav-clabe"
-                            onclick="iniciarMovimiento();" aria-selected="false" onclick="buscarEmergencia();"><i
-                                class="fas fa-ambulance"></i>
+                            onclick="iniciarMovimiento();" aria-selected="false""><i
+                                class="fa fa-random"></i>
                             Movimientos</button>
                         <!-- MOVIMIENTO -->
 
                         <!-- INFORMACION PERSONAL Y BANCARIA -->
-                        <button class="nav-link" id="button_contacto_emergencia" data-bs-toggle="tab"
+                        <button class="nav-link" id="button_personal_bancario" data-bs-toggle="tab"
                             data-bs-target="#nav_personal_bancario" type="button" role="tab" aria-controls="nav-clabe"
-                            onclick="iniciarPersonalBancario();" aria-selected="false" onclick="buscarEmergencia();"><i
-                                class="fas fa-ambulance"></i>
+                            onclick="iniciarPersonalBancario();" aria-selected="false""><i
+                                class="fa fa-users"></i>
                             Informaci&oacuten personal y bancaria</button>
                         <!-- INFORMACION PERSONAL Y BANCARIA -->
 
                         <!-- PROGRAMAS PARA EL EMPLEADO -->
                         <button class="nav-link" id="button_contacto_emergencia" data-bs-toggle="tab"
                             data-bs-target="#nav_programas" type="button" role="tab" aria-controls="nav-clabe"
-                            onclick="iniciarProgramas();" aria-selected="false" onclick="buscarEmergencia();"><i
-                                class="fas fa-ambulance"></i>
+                            onclick="iniciarProgramas();" aria-selected="false""><i
+                                class="fa fa-cubes"></i>
                             Programas</button>
                         <!-- PROGRAMAS PARA EL EMPLEADO -->
 
                         <!-- INCIDENCIAS -->
                         <button class="nav-link" id="button_contacto_emergencia" data-bs-toggle="tab"
                             data-bs-target="#nav_incidencias" type="button" role="tab" aria-controls="nav-clabe"
-                            onclick="iniciarIncidencias();" aria-selected="false" onclick="buscarEmergencia();"><i
-                                class="fas fa-ambulance"></i>
+                            onclick="iniciarIncidencias();" aria-selected="false""><i
+                                class="fa fa-bars"></i>
                             Incidencias</button>
                         <!-- INCIDENCIAS -->
 

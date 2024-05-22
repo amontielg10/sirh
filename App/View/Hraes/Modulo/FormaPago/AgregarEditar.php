@@ -41,10 +41,19 @@
 
                     <div class="form-group col-md-6">
                         <label>Forma de pago</label><label style="color:red">*</label>
+                        <fieldset disabled>
+                            <input type="text" class="form-control" id="nombre_banco_not" placeholder="Transferencia" maxlength="18"
+                                disable value="Transferencia">
+                        </fieldset>
+                    </div>
+
+                    <!--
+                    <div class="form-group col-md-6">
+                        <label>Forma de pago</label><label style="color:red">*</label>
                         <select class="form-control" aria-label="Default select example" id="id_cat_formato_pago"
                             required>
                         </select>
-                    </div>
+                    </div>-->
 
                 </div>
             </div>

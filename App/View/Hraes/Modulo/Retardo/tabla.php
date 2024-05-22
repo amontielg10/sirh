@@ -21,13 +21,13 @@ function concatFecha($fecha1, $fecha2){
 }
 
 $data =
-    '<table class="table table-striped" id="tabla_retardo" style="width:100%">
+    '<table class="table table-sm" id="tabla_retardo" style="width:100%">
     <thead>
-        <tr style="background-color:#235B4E;">
-            <th style="color: white; width: 50px">Acciones</th>
-            <th style="color: white;">Fecha</th>
-            <th style="color: white;">Hora entrada</th>
-            <th style="color: white;">Hora salida</th>
+        <tr>
+            <th style="background:#e5e7e8">Acciones</th>
+            <th style="background:#e5e7e8">Fecha</th>
+            <th style="background:#e5e7e8">Hora entrada</th>
+            <th style="background:#e5e7e8">Hora salida</th>
         </tr>
     </thead>';
 

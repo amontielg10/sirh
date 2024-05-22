@@ -36,7 +36,7 @@ function iniciarMediosContacto(){
 }
 
 function iniciarMovimiento(){
-    iniciarMovimientos();
+    buscarMovimiento();
    // buscarJefe();
     iniciarAdicional();
 }

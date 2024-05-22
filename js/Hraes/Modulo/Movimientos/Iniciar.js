@@ -1,20 +1,27 @@
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
 
-function iniciarMovimientos(){
-    iniciarTablaMovimiento(id_tbl_empleados_hraes);
+function buscarMovimiento(){ //BUSQUEDA
+    let buscarNew = clearElement(buscar_mv);
+    let buscarlenth = lengthValue(buscarNew);
+    
+    if (buscarlenth == 0){
+        iniciarTabla_mv(null, iniciarBusqueda_mv(),id_tbl_empleados_hraes);
+    } else {
+        iniciarTabla_mv(buscarNew, iniciarBusqueda_mv(),id_tbl_empleados_hraes);
+    }
 }
 
-function iniciarTablaMovimiento(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/Movimientos/tabla.php',
-        data: { id_tbl_empleados_hraes: id_tbl_empleados_hraes },
-        success: function (data) {
-            $('#tabla_movimientos').html(data);
+function iniciarTabla_mv(busqueda, paginador, id_tbl_empleados_hraes) { 
+    $.post('../../../../App/View/Hraes/Modulo/Movimientos/tabla.php', {
+        busqueda: busqueda, 
+        paginador: paginador, 
+        id_tbl_empleados_hraes:id_tbl_empleados_hraes
+    },
+        function (data) {
+            $("#tabla_movimientos").html(data); 
         }
-    });
+    );
 }
-
 
 function agregarEditarMovimiento(id_object){
     $("#id_object").val(id_object);
@@ -129,6 +136,25 @@ function eliminarMovimiento(id_object) {//ELIMINAR USUARIO
     });
 }
 }
+
+/*
+function iniciarMovimientos(){
+    iniciarTablaMovimiento(id_tbl_empleados_hraes);
+}
+
+function iniciarTablaMovimiento(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
+    $.ajax({
+        type: 'POST',
+        url: '../../../../App/View/Hraes/Modulo/Movimientos/tabla.php',
+        data: { id_tbl_empleados_hraes: id_tbl_empleados_hraes },
+        success: function (data) {
+            $('#tabla_movimientos').html(data);
+        }
+    });
+}
+
+
+
 /*
 
 

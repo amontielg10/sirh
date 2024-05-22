@@ -59,6 +59,7 @@
 
 <script src="../../../../js/Hraes/Modulo/Movimientos/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Movimientos/Validar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Movimientos/buscar.js"></script>
 
 <script src="../../../../js/Hraes/Modulo/Adicional/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Adicional/Validar.js"></script>

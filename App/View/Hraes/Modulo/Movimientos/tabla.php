@@ -3,12 +3,13 @@ include '../../../../../conexion.php';
 include '../../../../Model/Hraes/MovimientosM/MovimientosM.php';
 
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
+$paginador = $_POST['paginador'];
 $modelMovimientosM = new ModelMovimientosM();
-$listado = $modelMovimientosM -> listarByIdEmpleado($id_tbl_empleados_hraes);
-/*
-if(isset($_POST['buscar'])){
-    $listado = $modelFormaPagoM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['buscar']);
-}*/
+$listado = $modelMovimientosM -> listarByIdEmpleado($id_tbl_empleados_hraes,$paginador);
+
+if(isset($_POST['busqueda'])){
+    $listado = $modelMovimientosM->listarByBusqueda($id_tbl_empleados_hraes,$paginador,$_POST['busqueda']);
+}
 
 $data =
     '<table class="table table-sm" id="tabla_movimientos" style="width:100%">

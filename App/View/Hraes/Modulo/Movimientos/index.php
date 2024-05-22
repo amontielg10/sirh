@@ -8,7 +8,7 @@
     </div>
     <div class="col-10">
         <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar_mv_text"
-            onkeyup="buscarFormaPago();" aria-label="Search">
+            onkeyup="buscarMovimiento();" aria-label="Search">
     </div>
 </div>
 <p></p>

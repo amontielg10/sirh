@@ -13,7 +13,7 @@ $datos = [
     'id_tbl_empleados_hraes' => $_POST['id_tbl_empleados_hraes'],
     'id_cat_banco' => $_POST['id_cat_banco'],
     'id_cat_estatus' => $_POST['id_cat_estatus_formato_pago'],
-    'id_cat_formato_pago' => $_POST['id_cat_formato_pago'],
+    'id_cat_formato_pago' => 1,
 ];
 
 $var = [
