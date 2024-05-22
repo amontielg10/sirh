@@ -12,14 +12,16 @@ if(isset($_POST['busqueda'])){
 }
 
 $data =
-    '<table class="table table-striped" id="tabla_forma_pago" style="width:100%">
+    '<table class="table table-sm" id="tabla_forma_pago" style="width:100%">
     <thead>
-        <tr style="background-color:#235B4E;">
-            <th style="color: white; width: 50px">Acciones</th>
-            <th style="color: white;">Clabe</th>
-            <th style="color: white;">Banco</th>
-            <th style="color: white;">Forma de pago</th>
-            <th style="color: white;">Estatus</th>
+        <tr>
+            <th style="background:#e5e7e8">Acciones</th>
+            <th style="background:#e5e7e8">Clabe</th>
+            <th style="background:#e5e7e8">Banco</th>
+            <!--
+            <th style="background:#e5e7e8">Forma de pago</th>
+            -->
+            <th style="background:#e5e7e8">Estatus</th>
         </tr>
     </thead>';
 
@@ -43,9 +45,11 @@ if (pg_num_rows($listado) > 0) {
                             <td>
                                 ' . $row[2] . '
                             </td>
+                            <!--
                             <td>
                                 ' . $row[3] . '
                             </td>
+                            --> 
                             <td>
                                 ' . $row[4] . '
                             </td>

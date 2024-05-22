@@ -21,3 +21,37 @@ function buscarInfoEmpleado(id_tbl_empleados_hraes){
         }
     );
 }
+
+function iniciarEscolaridad(){
+    buscarEstudio();
+    buscarCedula();
+    buscarEspecialidad();
+}
+
+function iniciarMediosContacto(){
+    buscarNumTelefonico();
+    buscarCorreo();
+    buscarDependiente();
+    buscarEmergencia();
+}
+
+function iniciarMovimiento(){
+    iniciarMovimientos();
+   // buscarJefe();
+    iniciarAdicional();
+}
+
+function iniciarPersonalBancario(){
+    buscarFormaPago();
+    buscarJefe();
+    iniciarDomicilio();
+}
+
+function iniciarProgramas(){
+    buscarJuguete();
+    iniciarCampos();
+}
+
+function iniciarIncidencias(){
+    buscarRetardo();
+}

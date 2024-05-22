@@ -12,11 +12,11 @@ if(isset($_POST['busqueda'])){
     $listado = $modelJefeM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['busqueda'],$paginador);
 } 
 $data =
-    '<table class="table table-striped" id="tabla_jefe" style="width:100%">
+    '<table class="table table-sm" id="tabla_jefe" style="width:100%">
     <thead>
-        <tr style="background-color:#235B4E;">
-            <th style="color: white; width: 50px">Acciones</th>
-            <th style="color: white;">Nombre</th>
+        <tr>
+            <th style="background:#e5e7e8">Acciones</th>
+            <th style="background:#e5e7e8">Nombre</th>
         </tr>
     </thead>';
 

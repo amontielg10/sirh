@@ -1,9 +1,4 @@
-<br>
-<div class="card" >
-    <div class="card-header" style="background:#235B4E">
-        <h5 class="modal-title" style="font-weight: bold;color:white"><label id="titulo_x"
-                style="font-weight: bold;color:white">Informaci&oacuten adicional.</label></h5>
-    </div>
+
     <div class="card-body">
         <div class="form-row">
 
@@ -47,4 +42,3 @@
 
 
     </div>
-</div>

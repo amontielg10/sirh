@@ -8,7 +8,7 @@ function validar(){
     let num_plaza = document.getElementById('num_plaza').value.trim();
     let id_tbl_zonas_pago = document.getElementById('id_tbl_zonas_pago').value.trim();
     let fecha_ingreso_inst = document.getElementById('fecha_ingreso_inst').value.trim();
-
+    let id_object = document.getElementById('id_object').value.trim();
 
     if (validarData(id_cat_plazas,'Tipo de plaza') &&
         validarData(id_cat_tipo_contratacion_hraes,'Tipo de contratación') &&
@@ -22,4 +22,16 @@ function validar(){
     ){
         agregarEditarByDb();
     } 
+}
+
+
+function validarEstatusPlaza(id_cat_plazas,id_object){
+    $.post("../../../../App/Controllers/Hrae/PlazasC/ValidarEstatusC.php", {
+        id_cat_plazas: id_cat_plazas,
+        id_object:id_object
+    },
+        function (data) {
+            console.log(data);
+        }
+    );
 }

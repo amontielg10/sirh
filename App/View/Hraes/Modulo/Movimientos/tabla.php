@@ -5,19 +5,22 @@ include '../../../../Model/Hraes/MovimientosM/MovimientosM.php';
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
 $modelMovimientosM = new ModelMovimientosM();
 $listado = $modelMovimientosM -> listarByIdEmpleado($id_tbl_empleados_hraes);
+/*
 if(isset($_POST['buscar'])){
     $listado = $modelFormaPagoM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['buscar']);
-}
+}*/
 
 $data =
-    '<table class="table table-striped" id="tabla_movimientos" style="width:100%">
+    '<table class="table table-sm" id="tabla_movimientos" style="width:100%">
     <thead>
-        <tr style="background-color:#235B4E;">
-            <th style="color: white; width: 50px">Acciones</th>
-            <th style="color: white;">N&uacutemero de plaza</th>
-            <th style="color: white;">Movimiento general</th>
-            <th style="color: white;">Movimiento especifico</th>
-            <th style="color: white;">Fecha movimiento</th>
+        <tr>
+            <th style="background:#e5e7e8">Acciones</th>
+            <th style="background:#e5e7e8">N&uacutem. Plaza</th>
+            <!--
+            <th style="background:#e5e7e8">Movimiento general</th>
+            -->
+            <th style="background:#e5e7e8">Movimiento especifico</th>
+            <th style="background:#e5e7e8">Fecha movimiento</th>
         </tr>
     </thead>';
 
@@ -38,9 +41,11 @@ if (pg_num_rows($listado) > 0) {
                             <td>
                                 ' . $row[8] . '
                             </td>
+                            <!--
                             <td>
                                 ' . $row[7] . '
                             </td>
+                            -->
                             <td>
                                 ' . $row[6] . '
                             </td>

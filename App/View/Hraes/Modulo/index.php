@@ -11,7 +11,8 @@ if ($id_tbl_empleados_hraes == null) {
         <div class="page-wrapper">
 
             <div class="page-breadcrumb">
-                <h4 class="page-title">M&oacutedulo Hospital Regional de Alta Especialidad - M&oacutedulos de empleado</h4>
+                <h3 class="page-title">Hospital Regional de Alta Especialidad - Detalles de informaci&oacuten de
+                    empleado</h3>
                 <div class="row">
                     <div class="col-5 align-self-center">
 
@@ -25,7 +26,8 @@ if ($id_tbl_empleados_hraes == null) {
                                     <li class="breadcrumb-item">
                                         <a href="../../Hraes/Empleados/index.php" style="color:#cb9f52;">Empleados</a>
                                     </li>
-                                    <li <a class="breadcrumb-item active" aria-current="page">M&oacutedulo</li>
+                                    <li <a class="breadcrumb-item active" aria-current="page">Detalles de
+                                        informaci&oacuten</li>
                                 </ol>
                             </nav>
                         </div>
@@ -64,6 +66,55 @@ if ($id_tbl_empleados_hraes == null) {
 
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="">
+
+                        <!-- MOVIMIENTOS -->
+                        <button class="nav-link active" id="button_adicional" data-bs-toggle="tab"
+                            data-bs-target="#nav_escolaridad" type="button" role="tab" aria-controls="nav-home"
+                            onclick="iniciarEscolaridad();" aria-selected="true"><i class="fas fa-list-alt"></i>
+                            Escolaridad</button>
+                        <!-- MOVIMIENTOS -->
+
+                        <!-- MEDIOS DE CONTACTO -->
+                        <button class="nav-link" id="button_contacto_emergencia" data-bs-toggle="tab"
+                            data-bs-target="#nav_medios_contacto" type="button" role="tab" aria-controls="nav-clabe"
+                            onclick="iniciarMediosContacto();" aria-selected="false" onclick="buscarEmergencia();"><i
+                                class="fas fa-ambulance"></i>
+                            Medios de contacto</button>
+                        <!-- MEDIOS DE CONTACTO -->
+
+                        <!-- MOVIMIENTO -->
+                        <button class="nav-link" id="button_contacto_emergencia" data-bs-toggle="tab"
+                            data-bs-target="#nav_movimientos" type="button" role="tab" aria-controls="nav-clabe"
+                            onclick="iniciarMovimiento();" aria-selected="false" onclick="buscarEmergencia();"><i
+                                class="fas fa-ambulance"></i>
+                            Movimientos</button>
+                        <!-- MOVIMIENTO -->
+
+                        <!-- INFORMACION PERSONAL Y BANCARIA -->
+                        <button class="nav-link" id="button_contacto_emergencia" data-bs-toggle="tab"
+                            data-bs-target="#nav_personal_bancario" type="button" role="tab" aria-controls="nav-clabe"
+                            onclick="iniciarPersonalBancario();" aria-selected="false" onclick="buscarEmergencia();"><i
+                                class="fas fa-ambulance"></i>
+                            Informaci&oacuten personal y bancaria</button>
+                        <!-- INFORMACION PERSONAL Y BANCARIA -->
+
+                        <!-- PROGRAMAS PARA EL EMPLEADO -->
+                        <button class="nav-link" id="button_contacto_emergencia" data-bs-toggle="tab"
+                            data-bs-target="#nav_programas" type="button" role="tab" aria-controls="nav-clabe"
+                            onclick="iniciarProgramas();" aria-selected="false" onclick="buscarEmergencia();"><i
+                                class="fas fa-ambulance"></i>
+                            Programas</button>
+                        <!-- PROGRAMAS PARA EL EMPLEADO -->
+
+                        <!-- INCIDENCIAS -->
+                        <button class="nav-link" id="button_contacto_emergencia" data-bs-toggle="tab"
+                            data-bs-target="#nav_incidencias" type="button" role="tab" aria-controls="nav-clabe"
+                            onclick="iniciarIncidencias();" aria-selected="false" onclick="buscarEmergencia();"><i
+                                class="fas fa-ambulance"></i>
+                            Incidencias</button>
+                        <!-- INCIDENCIAS -->
+
+                        <!-- 
                         <button class="nav-link active" id="button_adicional" data-bs-toggle="tab"
                             data-bs-target="#nav-empleado" type="button" role="tab" aria-controls="nav-home"
                             onclick="iniciarAdicional();" aria-selected="true"><i class="fas fa-list-alt"></i>
@@ -121,66 +172,112 @@ if ($id_tbl_empleados_hraes == null) {
                         <button class="nav-link" id="button_correo" data-bs-toggle="tab" data-bs-target="#nav-correo"
                             type="button" role="tab" aria-controls="nav-correo" aria-selected="false"
                             onclick="buscarCorreo();"><i class="fa fa-at"></i> Correo</button>
+-->
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
+
+                    <!-- MOVIMIENTOS -->
+                    <div class="tab-pane fade show active" id="nav_escolaridad" role="tabpanel"
+                        aria-labelledby="nav-home-tab" tabindex="0">
+                        <?php include 'EscolaridadM/index.php' ?>
+                    </div>
+                    <!-- MOVIMIENTOS -->
+
+                    <!-- MEDIOS DE CONTACTO -->
+                    <div class="tab-pane fade" id="nav_medios_contacto" role="tabpanel"
+                        aria-labelledby="nav-contact-tab" tabindex="0">
+                        <?php include 'MediosContactoM/index.php' ?>
+                    </div>
+                    <!-- MEDIOS DE CONTACTO -->
+
+                    <!-- MOVIMIENTOS -->
+                    <div class="tab-pane fade" id="nav_movimientos" role="tabpanel" aria-labelledby="nav-contact-tab"
+                        tabindex="0">
+                        <?php include 'MovimientosM/index.php' ?>
+                    </div>
+                    <!-- MOVIMIENTOS -->
+
+                    <!-- INFORMACION PERSONAL Y BANCARIA -->
+                    <div class="tab-pane fade" id="nav_personal_bancario" role="tabpanel"
+                        aria-labelledby="nav-contact-tab" tabindex="0">
+                        <?php include 'PersonalBancarioM/index.php' ?>
+                    </div>
+                    <!-- INFORMACION PERSONAL Y BANCARIA -->
+
+                    <!-- PROGRAMAS PARA EL EMPLEADO -->
+                    <div class="tab-pane fade" id="nav_programas" role="tabpanel"
+                        aria-labelledby="nav-contact-tab" tabindex="0">
+                        <?php include 'ProgramasM/index.php' ?>
+                    </div>
+                    <!-- PROGRAMAS PARA EL EMPLEADO -->
+
+                    <!-- INCIDENCIAS -->
+                    <div class="tab-pane fade" id="nav_incidencias" role="tabpanel"
+                        aria-labelledby="nav-contact-tab" tabindex="0">
+                        <?php include 'IncidenciasM/index.php' ?>
+                    </div>
+                    <!-- INCIDENCIAS -->
+
+                    <!--
                     <div class="tab-pane fade show active" id="nav-empleado" role="tabpanel"
-                        aria-labelledby="nav-home-tab" tabindex="0"><?php include 'Adicional/index.php' ?></div>
+                        aria-labelledby="nav-home-tab" tabindex="0"><?php //include 'Adicional/index.php' ?></div>
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
                         tabindex="0">
-                        <?php include 'NumeroTelefonico/index.php' ?>
+                        <?php //include 'NumeroTelefonico/index.php' ?>
                     </div>
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"
                         tabindex="0">
-                        <?php include 'CedulaProf/index.php' ?>
+                        <?php //include 'CedulaProf/index.php' ?>
                     </div>
                     <div class="tab-pane fade" id="nav-clabe" role="tabpanel" aria-labelledby="nav-clabe" tabindex="0">
-                        <?php include 'FormaPago/index.php' ?>
+                        <?php //include 'FormaPago/index.php' ?>
                     </div>
                     <div class="tab-pane fade" id="nav-emergencia" role="tabpanel" aria-labelledby="nav-clabe"
                         tabindex="0">
-                        <?php include 'ContactoEmergencia/index.php' ?>
+                        <?php //include 'ContactoEmergencia/index.php' ?>
                     </div>
                     <div class="tab-pane fade" id="nav-dependiente" role="tabpanel" aria-labelledby="nav-dependiente"
                         tabindex="0">
-                        <?php include 'Dependientes/index.php' ?>
+                        <?php //include 'Dependientes/index.php' ?>
                     </div>
                     <div class="tab-pane fade" id="nav-juguetes" role="tabpanel" aria-labelledby="nav-dependiente"
                         tabindex="0">
-                        <?php include 'Juguetes/index.php' ?>
+                        <?php //include 'Juguetes/index.php' ?>
                     </div>
                     <div class="tab-pane fade" id="nav-retardo" role="tabpanel" aria-labelledby="nav-dependiente"
                         tabindex="0">
-                        <?php include 'Retardo/index.php' ?>
+                        <?php //include 'Retardo/index.php' ?>
                     </div>
                     <div class="tab-pane fade" id="nav-campos" role="tabpanel" aria-labelledby="nav-dependiente"
                         tabindex="0">
-                        <?php include 'CamposPer/index.php' ?>
+                        <?php //include 'CamposPer/index.php' ?>
                     </div>
                     <div class="tab-pane fade" id="nav-domicilio" role="tabpanel" aria-labelledby="nav-domicilio"
                         tabindex="0">
-                        <?php include 'Domicilio/index.php' ?>
+                        <?php //include 'Domicilio/index.php' ?>
                     </div>
                     <div class="tab-pane fade" id="nav-movimientos_f" role="tabpanel" aria-labelledby="nav-movimientos"
                         tabindex="0">
-                        <?php include 'Movimientos/index.php' ?>
+                        <?php //include 'Movimientos/index.php' ?>
                     </div>
                     <div class="tab-pane fade" id="nav-especialidad" role="tabpanel" aria-labelledby="nav-movimientos"
                         tabindex="0">
-                        <?php include 'Especialidad/index.php' ?>
+                        <?php //include 'Especialidad/index.php' ?>
                     </div>
                     <div class="tab-pane fade" id="nav-nivel_estudio" role="tabpanel" aria-labelledby="nav-movimientos"
                         tabindex="0">
-                        <?php include 'Estudio/index.php' ?>
+                        <?php //include 'Estudio/index.php' ?>
                     </div>
                     <div class="tab-pane fade" id="nav-jefe" role="tabpanel" aria-labelledby="nav-movimientos"
                         tabindex="0">
-                        <?php include 'Jefe/index.php' ?>
+                        <?php //include 'Jefe/index.php' ?>
                     </div>
                     <div class="tab-pane fade" id="nav-correo" role="tabpanel" aria-labelledby="nav-movimientos"
                         tabindex="0">
-                        <?php include 'Correo/index.php' ?>
+                        <?php //include 'Correo/index.php' ?>
                     </div>
+-->
                 </div>
             </div>
 
@@ -203,7 +300,14 @@ if ($id_tbl_empleados_hraes == null) {
 
 <script>
     $(document).ready(function () {
+        //buscarCedula();
+        buscarInfoEmpleado(id_tbl_empleados_hraes);
+        iniciarEscolaridad();
+    });
+    /*
+    $(document).ready(function () {
         detallesAdicional(id_tbl_empleados_hraes);
         buscarInfoEmpleado(id_tbl_empleados_hraes);
     });
+    */
 </script>

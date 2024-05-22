@@ -1,15 +1,22 @@
-<br>
-<div class="form-inline">
-    <button onclick="agregarEditarJefe(null)" class="btn btn-light"><i class="fas fa-plus"></i>
-        <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar jefe inmediato</span>
-    </button>
+<div class="row">
+    <div class="col-3">
+        <div class="form-inline">
+            <button onclick="agregarEditarJefe(null)" class="btn btn-light"><i class="fas fa-plus"></i>
+                <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar</span>
+            </button>
+        </div>
+    </div>
+    <div class="col-9">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar_j" onkeyup="buscarJefe();"
+            aria-label="Search">
+    </div>
 </div>
-<p></p>
-<input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar_j"
-    onkeyup="buscarJefe();" aria-label="Search">
+
 <p></p>
 
-<table class="table table-striped" id="tabla_jefe" style="width:100%">
+<p></p>
+
+<table class="table table-sm" id="tabla_jefe" style="width:100%">
 </table>
 
 <div class="position-absolute top-50 start-50">
@@ -21,8 +28,6 @@
         <span class="hide-menu" style="font-weight: bold;"></span>
     </button>
 </div>
-<br>
-<br>
 <br>
 
 <?php include 'AgregarEditar.php' ?>

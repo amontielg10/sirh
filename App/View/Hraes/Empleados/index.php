@@ -4,7 +4,7 @@
         <div class="page-wrapper">
 
             <div class="page-breadcrumb">
-                <h2 class="page-title">M&oacutedulo Hospital Regional de Alta Especialidad</h2>
+                <h2 class="page-title">Hospital Regional de Alta Especialidad</h2>
                 <div class="row">
                     <div class="col-5 align-self-center">
 

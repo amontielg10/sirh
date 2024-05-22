@@ -14,11 +14,13 @@ if(isset($_POST['busqueda'])){
 $data =
     '<table class="table table-striped" id="modulo_dependientes_economicos" style="width:100%">
     <thead>
-        <tr style="background-color:#235B4E;">
-            <th style="color: white; width: 50px">Acciones</th>
-            <th style="color: white;">Nombre</th>
-            <th style="color: white;">Curp</th>
-            <th style="color: white;">Tipo dependiente</th>
+        <tr>
+            <th style="background:#e5e7e8">Acciones</th>
+            <th style="background:#e5e7e8">Nombre</th>
+            <th style="background:#e5e7e8">Curp</th>
+            <!--
+            <th style="background:#e5e7e8">Tipo dependiente</th>
+            -->  
         </tr>
     </thead>';
 
@@ -42,9 +44,11 @@ if (pg_num_rows($listado) > 0) {
                             <td>
                                 ' . $row[2] . '
                             </td>
+                            <!--
                             <td>
                                 ' . $row[3] . '
                             </td>
+                            -->
                         </tr>
                     </tbody>
                 </table>';

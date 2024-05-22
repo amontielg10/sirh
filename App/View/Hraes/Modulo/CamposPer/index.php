@@ -1,9 +1,10 @@
-<br>
+<!--
 <div class="card">
     <div class="card-header" style="background:#235B4E">
         <h5 class="modal-title" style="font-weight: bold;color:"><label id="titulo"
                 style="font-weight: bold;color:white">Campos personalizados</label></h5>
     </div>
+-->
     <div class="card-body">
         <div class="form-row">
 
@@ -200,4 +201,6 @@
 
 
     </div>
+    <!--
 </div>
+-->

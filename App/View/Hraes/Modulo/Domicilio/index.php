@@ -1,3 +1,11 @@
+<?php include 'DomicilioP.php' ?>
+<div class="modal-footer">
+    <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
+        onclick="return validarDomicilio();"><i class="fa fa-save"></i> Guardar</button>
+    <input type="hidden" id="id_tbl_domicilios">
+</div>
+
+<!--
 <br>
 <div class="card">
     <div class="card-header" style="background:#235B4E">
@@ -50,3 +58,5 @@
 
     </div>
 </div>
+
+-->

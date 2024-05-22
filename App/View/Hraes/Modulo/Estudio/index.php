@@ -1,15 +1,22 @@
-<br>
-<div class="form-inline">
-    <button onclick="agregarEditarEstudio(null)" class="btn btn-light"><i class="fas fa-plus"></i>
-        <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar nivel de estudio</span>
-    </button>
-</div>
-<p></p>
-<input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar_ne"
-    onkeyup="buscarEstudio();" aria-label="Search">
+<diw class="row">
+    <div class="col-3">
+        <div class="form-inline">
+            <button onclick="agregarEditarEstudio(null)" class="btn btn-light"><i class="fas fa-plus"></i>
+                <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar</span>
+            </button>
+        </div>
+    </div>
+    <div class="col-9">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar_ne"
+            onkeyup="buscarEstudio();" aria-label="Search">
+    </div>
+</diw>
+
 <p></p>
 
-<table class="table table-striped" id="tabla_estudio" style="width:100%">
+<p></p>
+
+<table class="table table-sm" id="tabla_estudio" style="width:100%">
 </table>
 
 <div class="position-absolute top-50 start-50">
@@ -22,7 +29,4 @@
     </button>
 </div>
 <br>
-<br>
-<br>
-
 <?php include 'AgregarEditar.php' ?>

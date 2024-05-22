@@ -22,7 +22,7 @@ class ModelMovimientosM
                                 tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
                             WHERE tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
                             ORDER BY tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes DESC
-                            LIMIT 5;");
+                            LIMIT 3;");
 
         return $listado;
     }
