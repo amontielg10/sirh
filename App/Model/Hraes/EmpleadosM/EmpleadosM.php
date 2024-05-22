@@ -40,7 +40,7 @@ class modelEmpleadosHraes{
                            segundo_apellido, num_empleado
                     FROM tbl_empleados_hraes
                     ORDER BY id_tbl_empleados_hraes DESC
-                    LIMIT 5 OFFSET $paginador;";
+                    LIMIT 10 OFFSET $paginador;";
 
         return $listado;
     }
@@ -56,7 +56,7 @@ class modelEmpleadosHraes{
                     OR TRIM(UPPER(UNACCENT(segundo_apellido))) LIKE '%$busqueda%'
                     OR TRIM(UPPER(UNACCENT(CAST(num_empleado AS TEXT)))) LIKE '%$busqueda%'
                     ORDER BY id_tbl_empleados_hraes DESC
-                    LIMIT 5 OFFSET $paginador;";
+                    LIMIT 10 OFFSET $paginador;";
         return $listado;
     }
 

@@ -114,9 +114,15 @@ $id_rol = $_SESSION['id_rol'];
             background-color: #fbf4e8;
             ;
         }
+
+        .search-input {
+            width: 100%;
+            padding: padding: 10px 40px 10px 10px;
+            box-sizing: border-box;
+        }
     </style>
 
-
+    <link rel="stylesheet" type="text/css" href="../../../../assets/styles/Styles.css">
 </head>
 
 <!-- ============================================================== -->
@@ -246,15 +252,15 @@ $id_rol = $_SESSION['id_rol'];
                     <!-- HOME -->
 
                     <!-- MY PROFILE -->
-                    <?php if(false){?>
-                    <li class="sidebar-item">
-                        <a href="../../Admin/MiPerfil/index.php" class="sidebar-link" href="javascript:void(0)"
-                            aria-expanded="false">
-                            <i class="far fa-folder" style="font-size: 1.2rem;"></i>
-                            <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp; Mi perfil</span>
-                        </a>
-                    </li>
-                    <?php }?>
+                    <?php if (false) { ?>
+                        <li class="sidebar-item">
+                            <a href="../../Admin/MiPerfil/index.php" class="sidebar-link" href="javascript:void(0)"
+                                aria-expanded="false">
+                                <i class="far fa-folder" style="font-size: 1.2rem;"></i>
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp; Mi perfil</span>
+                            </a>
+                        </li>
+                    <?php } ?>
                     <!-- MY PROFILE -->
 
                     <!-- ADMIN INICIO -->
@@ -396,7 +402,8 @@ $id_rol = $_SESSION['id_rol'];
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header" style="background:#235B4E">
-                    <h4 style="color:white" class="modal-title" id="exampleModalLongTitle">Confirmar cierre de ses&oacuten</h4>
+                    <h4 style="color:white" class="modal-title" id="exampleModalLongTitle">Confirmar cierre de
+                        ses&oacuten</h4>
                     <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

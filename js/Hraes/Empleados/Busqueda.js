@@ -20,7 +20,7 @@ function anteriorValor(){
 function iniciarBusqueda(){
     let valorInicialAux = valorInicial;
     valorInicialAux --;
-    let valoroff = valorInicialAux * 5;
+    let valoroff = valorInicialAux * 10;//cambiar por el numero de filas
     return valoroff;
 }
 

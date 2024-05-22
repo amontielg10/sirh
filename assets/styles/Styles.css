@@ -1,0 +1,72 @@
+
+  /*
+    CAMBIAR EL COLOR DE BORDE DE INPUT
+  */
+    .form-control:focus {
+    border-color: #BC955C;
+            /* Cambia el color del borde */
+    background-color: white;
+            /* Cambia el color de fondo */
+    box-shadow: none;
+            /* Remueve la sombra de enfoque predeterminada */
+        }
+
+    
+    .search-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    /*
+    ICONO DE BUSQUEDA
+    */
+    .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      /*color:#BC955C*/
+    }
+
+    /*
+    ANIMACION DE BUSQUEDA
+    */
+    .custom-input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: border-color 0.3s, background-color 0.3s; /* Animación suave */
+    }
+
+    /*ESTILOS DE TITULO DE TABLA*/
+    .custom-text-table-tittle {
+      font-size: 1rem; /* Ajusta este valor según tus necesidades */
+      color: white;    /* Cambia este valor para ajustar el color del texto */
+    }
+    
+    /*
+    TAMAÑO DE FILAS DE TABLA
+    */
+    .table-small-rows tbody tr td {
+      padding: 0.50rem; /* Ajusta este valor según tus necesidades */
+    }
+
+    /*
+      COLOR DE BOTONES DE TABLA
+    */
+    .table-button-style{
+      border:#BC955C;
+      color:white; 
+      background:#BC955C
+    }
+
+    /*COLOR BOTON ELIMINAR*/
+    .button-table-on-delete{
+      color: #9F2241;
+    }
+
+    /*COLOR DE OTROS BOTONES DE LA TABLA*/
+    .button-table-other{
+      /*color: #063940;*/
+    }

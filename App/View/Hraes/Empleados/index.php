@@ -2,16 +2,14 @@
     <?php include '../../nav-menu.php' ?>
     <div id="main-wrapper">
         <div class="page-wrapper">
-
             <div class="page-breadcrumb">
-                <h2 class="page-title">Hospital Regional de Alta Especialidad</h2>
                 <div class="row">
-                    <div class="col-5 align-self-center">
-
+                    <div class="col-10 align-self-center">
+                    <h2 style="color:#235B4E" class="page-title fs-4">Hospital Regional de Alta Especialidad</h2>
                         <div class="d-flex align-items-center">
                         </div>
                     </div>
-                    <div class="col-7 align-self-center">
+                    <div class="col-2 align-self-center">
                         <div class="d-flex no-block justify-content-end align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -27,19 +25,30 @@
             </div>
 
             <div class="container-fluid">
-                <p>Informaci&oacuten de los &uacuteltimos movimientos de empleados.</p>
-                <div class="form-inline">
-                    <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i class="fa fa-user-plus"></i>
-                        <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar un empleado</span>
-                    </button>
+                <div class="row">
+                    <div class="col-9">
+                        <div class="form-inline">
+                            <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i
+                                    class="fa fa-user-plus"></i>
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar empleado</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                        <!--
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar"
+                        onkeyup="buscarEmpleado();" aria-label="Search">
+                    -->
+                        <div class="col-3 search-container">
+                            <input onkeyup="buscarEmpleado();" id="buscar" type="text" placeholder="Buscar..." class="form-control mr-sm-2 search-input">
+                            <span class="search-icon"><i class="fas fa-search"></i></span>
+                        </div>
+                    
                 </div>
-                <p></p>
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar"
-                    onkeyup="buscarEmpleado();" aria-label="Search">
-                <p></p>
+                <br>
 
 
-                <table class="table table-striped" id="tabla_empleados" style="width:100%">
+                <table class="table table-striped table-small-rows" id="tabla_empleados" style="width:100%">
                 </table>
                 <div class="position-absolute top-50 start-50">
                     <button onclick="anteriorValor()" class="btn btn-light"><i class="fa fa-angle-double-left"></i>
