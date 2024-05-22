@@ -11,15 +11,13 @@ if ($id_tbl_empleados_hraes == null) {
         <div class="page-wrapper">
 
             <div class="page-breadcrumb">
-                <h3 class="page-title">Hospital Regional de Alta Especialidad - Detalles de informaci&oacuten de
-                    empleado</h3>
                 <div class="row">
-                    <div class="col-5 align-self-center">
-
+                    <div class="col-10 align-self-center">
+                        <h2 style="color:#235B4E" class="page-title fs-4">Datos complementarios de empleados</h2>
                         <div class="d-flex align-items-center">
                         </div>
                     </div>
-                    <div class="col-7 align-self-center">
+                    <div class="col-2 align-self-center">
                         <div class="d-flex no-block justify-content-end align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -44,22 +42,23 @@ if ($id_tbl_empleados_hraes == null) {
 
             <div class="card-body">
 
-                <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Informaci&oacuten de empleado seleccionado.</h4>
-                    <hr>
+                <div class="alert color-background-amarrillo" role="alert">
                     <div class="form-row">
                         <div class="col-md-4">
-                            <h6 style="font-weight: bold;color:#235B4E;">Nombre: <label id="nombreResult"></label></h6>
+                            <h6 class="color-text-white" style="font-weight: bold;">Nombre: <label
+                                    id="nombreResult"></label></h6>
                         </div>
                         <div class="col-md-8">
-                            <h6 style="font-weight: bold;color:#235B4E;">Núm. de Empleado: <label
+                            <h6 class="color-text-white" style="font-weight: bold;">Número de Empleado: <label
                                     id="numEmpleadoResult"></label></h6>
                         </div>
                         <div class="col-md-4">
-                            <h6 style="font-weight: bold;color:#235B4E;">Curp: <label id="curpResult"></label></h6>
+                            <h6 class="color-text-white" style="font-weight: bold;">Curp: <label
+                                    id="curpResult"></label></h6>
                         </div>
                         <div class="col-md-8">
-                            <h6 style="font-weight: bold;color:#235B4E;">Rfc: <label id="rfcResult"></label></h6>
+                            <h6 class="color-text-white" style="font-weight: bold;">Rfc: <label id="rfcResult"></label>
+                            </h6>
                         </div>
                     </div>
                 </div>
@@ -67,52 +66,72 @@ if ($id_tbl_empleados_hraes == null) {
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="">
 
+                        <!-- INFORMACION PERSONAL Y BANCARIA -->
+                        <button class="nav-link active" id="button_escolaridad_ix" data-bs-toggle="tab"
+                            data-bs-target="#nav_personal_bancario" type="button" role="tab" aria-controls="nav-home"
+                            onclick="iniciarPersonalBancario();" aria-selected="true"><i
+                                class="fa fa-graduation-cap"></i>
+                            Datos personales</button>
+
+                        <!--
+                        <button class="nav-link" id="button_personal_bancario" data-bs-toggle="tab"
+                            data-bs-target="#nav_personal_bancario" type="button" role="tab" aria-controls="nav-clabe"
+                            onclick="iniciarPersonalBancario();" aria-selected="false""><i
+                                class=" fa fa-users"></i>
+                            Informaci&oacuten personal y bancaria</button>
+-->
+                        <!-- INFORMACION PERSONAL Y BANCARIA -->
+
                         <!-- MOVIMIENTOS -->
+                        <!--
                         <button class="nav-link active" id="button_escolaridad_ix" data-bs-toggle="tab"
                             data-bs-target="#nav_escolaridad" type="button" role="tab" aria-controls="nav-home"
                             onclick="iniciarEscolaridad();" aria-selected="true"><i class="fa fa-graduation-cap"></i>
-                            Escolaridad</button>
-                        <!-- MOVIMIENTOS -->
+                            Escolaridad</button>-->
 
                         <!-- MEDIOS DE CONTACTO -->
                         <button class="nav-link" id="button_medios_contacto" data-bs-toggle="tab"
                             data-bs-target="#nav_medios_contacto" type="button" role="tab" aria-controls="nav-clabe"
                             onclick="iniciarMediosContacto();" aria-selected="false""><i
-                                class="fa fa-address-card"></i>
+                                class=" fa fa-address-card"></i>
                             Medios de contacto</button>
                         <!-- MEDIOS DE CONTACTO -->
+
+                        <button class="nav-link" id="button_personal_bancario" data-bs-toggle="tab"
+                            data-bs-target="#nav_escolaridad" type="button" role="tab" aria-controls="nav-clabe"
+                            onclick="iniciarEscolaridad();" aria-selected="false""><i
+                                class=" fa fa-users"></i>
+                            Escolaridad</button>
+
+                        <!-- MOVIMIENTOS -->
+
+
 
                         <!-- MOVIMIENTO -->
                         <button class="nav-link" id="button_movimientos" data-bs-toggle="tab"
                             data-bs-target="#nav_movimientos" type="button" role="tab" aria-controls="nav-clabe"
                             onclick="iniciarMovimiento();" aria-selected="false""><i
-                                class="fa fa-random"></i>
+                                class=" fa fa-random"></i>
                             Movimientos</button>
                         <!-- MOVIMIENTO -->
-
-                        <!-- INFORMACION PERSONAL Y BANCARIA -->
-                        <button class="nav-link" id="button_personal_bancario" data-bs-toggle="tab"
-                            data-bs-target="#nav_personal_bancario" type="button" role="tab" aria-controls="nav-clabe"
-                            onclick="iniciarPersonalBancario();" aria-selected="false""><i
-                                class="fa fa-users"></i>
-                            Informaci&oacuten personal y bancaria</button>
-                        <!-- INFORMACION PERSONAL Y BANCARIA -->
-
-                        <!-- PROGRAMAS PARA EL EMPLEADO -->
-                        <button class="nav-link" id="button_contacto_emergencia" data-bs-toggle="tab"
-                            data-bs-target="#nav_programas" type="button" role="tab" aria-controls="nav-clabe"
-                            onclick="iniciarProgramas();" aria-selected="false""><i
-                                class="fa fa-cubes"></i>
-                            Programas</button>
-                        <!-- PROGRAMAS PARA EL EMPLEADO -->
 
                         <!-- INCIDENCIAS -->
                         <button class="nav-link" id="button_contacto_emergencia" data-bs-toggle="tab"
                             data-bs-target="#nav_incidencias" type="button" role="tab" aria-controls="nav-clabe"
                             onclick="iniciarIncidencias();" aria-selected="false""><i
-                                class="fa fa-bars"></i>
+                                class=" fa fa-bars"></i>
                             Incidencias</button>
                         <!-- INCIDENCIAS -->
+
+                        <!-- PROGRAMAS PARA EL EMPLEADO -->
+                        <button class="nav-link" id="button_contacto_emergencia" data-bs-toggle="tab"
+                            data-bs-target="#nav_programas" type="button" role="tab" aria-controls="nav-clabe"
+                            onclick="iniciarProgramas();" aria-selected="false""><i
+                                class=" fa fa-cubes"></i>
+                            Programas</button>
+                        <!-- PROGRAMAS PARA EL EMPLEADO -->
+
+
 
                         <!-- 
                         <button class="nav-link active" id="button_adicional" data-bs-toggle="tab"
@@ -178,11 +197,34 @@ if ($id_tbl_empleados_hraes == null) {
                 <div class="tab-content" id="nav-tabContent">
 
                     <!-- MOVIMIENTOS -->
-                    <div class="tab-pane fade show active" id="nav_escolaridad" role="tabpanel"
+                    <div class="tab-pane fade show active" id="nav_personal_bancario" role="tabpanel"
                         aria-labelledby="nav-home-tab" tabindex="0">
+                        <?php include 'PersonalBancarioM/index.php' ?>
+                    </div>
+
+                    <!--
+                    <div class="tab-pane fade" id="nav_personal_bancario" role="tabpanel"
+                        aria-labelledby="nav-contact-tab" tabindex="0">
+                        <?php //include //'PersonalBancarioM/index.php' ?>
+                    </div>
+-->
+
+                    <!-- MOVIMIENTOS -->
+
+                    <!-- INFORMACION PERSONAL Y BANCARIA -->
+                    <div class="tab-pane fade" id="nav_escolaridad" role="tabpanel" aria-labelledby="nav-contact-tab"
+                        tabindex="0">
                         <?php include 'EscolaridadM/index.php' ?>
                     </div>
-                    <!-- MOVIMIENTOS -->
+
+                    <!--
+                    <div class="tab-pane fade show active" id="nav_escolaridad" role="tabpanel"
+                        aria-labelledby="nav-home-tab" tabindex="0">
+                        <?php //include 'EscolaridadM/index.php' ?>
+                    </div>
+-->
+                    <!-- INFORMACION PERSONAL Y BANCARIA -->
+
 
                     <!-- MEDIOS DE CONTACTO -->
                     <div class="tab-pane fade" id="nav_medios_contacto" role="tabpanel"
@@ -198,23 +240,17 @@ if ($id_tbl_empleados_hraes == null) {
                     </div>
                     <!-- MOVIMIENTOS -->
 
-                    <!-- INFORMACION PERSONAL Y BANCARIA -->
-                    <div class="tab-pane fade" id="nav_personal_bancario" role="tabpanel"
-                        aria-labelledby="nav-contact-tab" tabindex="0">
-                        <?php include 'PersonalBancarioM/index.php' ?>
-                    </div>
-                    <!-- INFORMACION PERSONAL Y BANCARIA -->
 
                     <!-- PROGRAMAS PARA EL EMPLEADO -->
-                    <div class="tab-pane fade" id="nav_programas" role="tabpanel"
-                        aria-labelledby="nav-contact-tab" tabindex="0">
+                    <div class="tab-pane fade" id="nav_programas" role="tabpanel" aria-labelledby="nav-contact-tab"
+                        tabindex="0">
                         <?php include 'ProgramasM/index.php' ?>
                     </div>
                     <!-- PROGRAMAS PARA EL EMPLEADO -->
 
                     <!-- INCIDENCIAS -->
-                    <div class="tab-pane fade" id="nav_incidencias" role="tabpanel"
-                        aria-labelledby="nav-contact-tab" tabindex="0">
+                    <div class="tab-pane fade" id="nav_incidencias" role="tabpanel" aria-labelledby="nav-contact-tab"
+                        tabindex="0">
                         <?php include 'IncidenciasM/index.php' ?>
                     </div>
                     <!-- INCIDENCIAS -->
@@ -302,12 +338,6 @@ if ($id_tbl_empleados_hraes == null) {
     $(document).ready(function () {
         //buscarCedula();
         buscarInfoEmpleado(id_tbl_empleados_hraes);
-        iniciarEscolaridad();
+        iniciarPersonalBancario();
     });
-    /*
-    $(document).ready(function () {
-        detallesAdicional(id_tbl_empleados_hraes);
-        buscarInfoEmpleado(id_tbl_empleados_hraes);
-    });
-    */
 </script>

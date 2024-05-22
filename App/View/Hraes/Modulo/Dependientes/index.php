@@ -1,13 +1,20 @@
 <div class="row">
-    <div class="col-3">
+    <div class="col-7">
         <div class="form-inline">
             <button onclick="agregarEditarDependiente(null)" class="btn btn-light"><i class="fas fa-plus"></i>
                 <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar</span>
             </button>
         </div>
     </div>
+    <div class="col-5 search-container">
+        <input onkeyup="buscarDependiente();" id="buscar_de" type="text" placeholder="Buscar..."
+            class="form-control mr-sm-2 search-input">
+        <span class="search-icon"><i class="fas fa-search"></i></span>
+    </div>
+    <!--
     <div class="col-9"><input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar_de"
             onkeyup="buscarDependiente();" aria-label="Search"></div>
+-->
 </div>
 
 <p></p>

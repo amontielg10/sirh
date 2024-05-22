@@ -1,14 +1,21 @@
 <div class="row">
-    <div class="col-2">
+    <div class="col-7">
         <div class="form-inline">
             <button onclick="agregarEditarCedula(null)" class="btn btn-light"><i class="fas fa-plus"></i>
                 <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar</span>
             </button>
         </div>
     </div>
+    <!--
     <div class="col-10">
         <input class="form-control mr-sm-2" type="search" placeholder="Buscar ..." id="buscar_c"
             onkeyup="buscarCedula();" aria-label="Search">
+    </div>
+-->
+    <div class="col-5 search-container">
+        <input onkeyup="buscarCedula();" id="buscar_c" type="text" placeholder="Buscar..."
+            class="form-control mr-sm-2 search-input">
+        <span class="search-icon"><i class="fas fa-search"></i></span>
     </div>
 </div>
 

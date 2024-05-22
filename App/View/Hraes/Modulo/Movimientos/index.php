@@ -1,14 +1,21 @@
 <div class="row">
-    <div class="col-2">
+    <div class="col-7">
         <div class="form-inline">
             <button onclick="agregarEditarMovimiento(null)" class="btn btn-light"><i class="fas fa-plus"></i>
                 <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar</span>
             </button>
         </div>
     </div>
+    <!--
     <div class="col-10">
         <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar_mv_text"
             onkeyup="buscarMovimiento();" aria-label="Search">
+    </div>
+-->
+    <div class="col-5 search-container">
+        <input onkeyup="buscarMovimiento();" id="buscar_mv_text" type="text" placeholder="Buscar..."
+            class="form-control mr-sm-2 search-input">
+        <span class="search-icon"><i class="fas fa-search"></i></span>
     </div>
 </div>
 <p></p>

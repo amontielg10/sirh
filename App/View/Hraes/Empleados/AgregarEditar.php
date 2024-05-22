@@ -18,48 +18,49 @@
                         <input maxlength="40" type="text" class="form-control" id="nombre" placeholder="Nombre" required>
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label>Apellido paterno</label><label style="color:red">*</label>
                         <input maxlength="40" type="text" class="form-control" id="primer_apellido" placeholder="Apellido paterno">
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label>Apelldio materno</label><label style="color:red"></label>
                         <input maxlength="40" type="text" class="form-control" id="segundo_apellido" placeholder="Apellido materno">
                     </div>
 
-                    <div class="form-group col-md-6">
-                        <label>N&uacutem. de empleado</label><label style="color:red">*</label>
-                        <input type="text" class="form-control" id="num_empleado" placeholder="Núm de empleado">
-                    </div>
-
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>Rfc</label><label style="color:red">*</label>
                         <input maxlength="13" type="text" class="form-control" id="rfc" placeholder="Rfc">
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>Curp</label><label style="color:red">*</label>
                         <input maxlength="18" type="text" class="form-control" id="curp" placeholder="Curp">
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
+                        <label>N&uacutem. de empleado</label><label style="color:red">*</label>
+                        <input type="text" class="form-control" id="num_empleado" placeholder="Núm de empleado">
+                    </div>
+
+                    
+                    <div class="form-group col-md-4">
                         <label>N&uacutemero de seguro social</label><label style="color:red"></label>
                         <input type="number" class="form-control" id="nss" placeholder="Número de seguro social">
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>Pa&iacutes de nacimiento</label><label style="color:red">*</label>
                         <input maxlength="20" type="text" class="form-control" id="pais_nacimiento" placeholder="País de nacimiento">
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>G&eacutenero</label><label style="color:red">*</label>
                         <select class="form-control" aria-label="Default select example" id="id_cat_genero" required>
                         </select>
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label>Estado civil</label><label style="color:red">*</label>
                         <select class="form-control" aria-label="Default select example" id="id_cat_estado_civil" required>
                         </select>

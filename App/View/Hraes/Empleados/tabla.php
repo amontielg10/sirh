@@ -15,8 +15,8 @@ if (isset($_POST['busqueda'])) {
 $data =
     '<table class="table table-striped table-small-rows" id="t-table" style="width:100%">
     <thead>
-        <tr style="background-color:#235B4E;">
-            <th class="custom-text-table-tittle">Acciones</th>
+        <tr class="table-tittle-color">
+            <th class="custom-text-table-tittle col-md-1">Acciones</th>
             <th class="custom-text-table-tittle">Nombre</th>
             <th class="custom-text-table-tittle">Curp</th>
             <th class="custom-text-table-tittle">Rfc</th>

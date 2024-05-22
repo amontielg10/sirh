@@ -3,37 +3,38 @@
 
         <div class="form-group col-md-2">
             <label>C&oacutedigo postal</label><label style="color:red">*</label>
-            <input onkeyup="buscarInfor();" type="number" class="form-control" id="codigo_postal1" placeholder="Código postal" maxlength="25">
-        </div>
-
-        <div class="form-group col-md-5">
-            <label>Entidad</label><label style="color:red">*</label>
-            <fieldset disabled>
-                <input type="text" class="form-control" id="entidad1" placeholder="Entidad" maxlength="25">
-            </fieldset>
-        </div>
-
-        <div class="form-group col-md-5">
-            <label>Pa&iacutes</label><label style="color:red">*</label>
-            <fieldset disabled>
-                <input type="text" class="form-control" id="pais_f" placeholder="País" maxlength="25">
-            </fieldset>
+            <input onkeyup="buscarInfor();" type="number" class="form-control" id="codigo_postal1"
+                placeholder="Código postal" maxlength="25">
         </div>
 
         <div class="form-group col-md-3">
             <label>Municipio</label><label style="color:red">*</label>
-            <select class="form-control" aria-label="Default select example" id="municipio1"
-                required>
+            <select class="form-control" aria-label="Default select example" id="municipio1" required>
             </select>
         </div>
 
 
         <div class="form-group col-md-3">
             <label>Colonia</label><label style="color:red">*</label>
-            <select class="form-control" aria-label="Default select example" id="colonia1"
-                required>
+            <select class="form-control" aria-label="Default select example" id="colonia1" required>
             </select>
         </div>
+
+        <div class="form-group col-md-2">
+            <label>Entidad</label><label style="color:red">*</label>
+            <fieldset disabled>
+                <input type="text" class="form-control" id="entidad1" placeholder="Entidad" maxlength="25">
+            </fieldset>
+        </div>
+
+        <div class="form-group col-md-2">
+            <label>Pa&iacutes</label><label style="color:red">*</label>
+            <fieldset disabled>
+                <input type="text" class="form-control" id="pais_f" placeholder="País" maxlength="25">
+            </fieldset>
+        </div>
+
+
 
         <div class="form-group col-md-6">
             <label>Calle</label><label style="color:red">*</label>

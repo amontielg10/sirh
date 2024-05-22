@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-3">
+    <div class="col-7">
         <div class="form-inline">
             <button onclick="agregarEditarRetardo(null)" class="btn btn-light"><i class="fas fa-plus"></i>
                 <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar</span>
@@ -10,9 +10,16 @@
 -->
         </div>
     </div>
+    <!--
     <div class="col-9">
         <input class="form-control mr-sm-2" type="text" placeholder="Buscar..." id="campoFecha"
             onkeyup="buscarRetardo();" aria-label="Search">
+    </div>
+-->
+    <div class="col-5 search-container">
+        <input onkeyup="buscarRetardo();" id="campoFecha" type="text" placeholder="Buscar..."
+            class="form-control mr-sm-2 search-input">
+        <span class="search-icon"><i class="fas fa-search"></i></span>
     </div>
 </div>
 
