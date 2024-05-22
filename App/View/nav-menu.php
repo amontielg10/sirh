@@ -120,6 +120,23 @@ $id_rol = $_SESSION['id_rol'];
             padding: padding: 10px 40px 10px 10px;
             box-sizing: border-box;
         }
+
+
+
+        <style>.boton-con-imagen {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .boton-con-imagen img {
+            width: 40px;
+            /* ajusta el tamaño según lo necesites */
+            height: auto;
+            /* mantiene la proporción original */
+        }
+    </style>
+
     </style>
 
     <link rel="stylesheet" type="text/css" href="../../../../assets/styles/Styles.css">

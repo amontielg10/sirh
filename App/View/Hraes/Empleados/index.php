@@ -5,7 +5,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-10 align-self-center">
-                    <h2 style="color:#235B4E" class="page-title fs-4">Hospital Regional de Alta Especialidad</h2>
+                        <h2 style="color:#235B4E" class="page-title fs-4">Hospital Regional de Alta Especialidad</h2>
                         <div class="d-flex align-items-center">
                         </div>
                     </div>
@@ -26,7 +26,7 @@
 
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-9">
+                    <div class="col-3">
                         <div class="form-inline">
                             <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i
                                     class="fa fa-user-plus"></i>
@@ -34,16 +34,26 @@
                             </button>
                         </div>
                     </div>
-                    
-                        <!--
+
+                    <div class="col-3">
+                        <div class="form-inline">
+                            <button class=" btn btn-light boton-con-imagen">
+                                <img src="../../../../assets/icons/seleccionar.gif" alt="Imagen del botón">
+                                <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar empleado</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!--
                     <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar"
                         onkeyup="buscarEmpleado();" aria-label="Search">
                     -->
-                        <div class="col-3 search-container">
-                            <input onkeyup="buscarEmpleado();" id="buscar" type="text" placeholder="Buscar..." class="form-control mr-sm-2 search-input">
-                            <span class="search-icon"><i class="fas fa-search"></i></span>
-                        </div>
-                    
+                    <div class="col-6 search-container">
+                        <input onkeyup="buscarEmpleado();" id="buscar" type="text" placeholder="Buscar..."
+                            class="form-control mr-sm-2 search-input">
+                        <span class="search-icon"><i class="fas fa-search"></i></span>
+                    </div>
+
                 </div>
                 <br>
 

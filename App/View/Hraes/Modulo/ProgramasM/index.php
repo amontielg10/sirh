@@ -12,7 +12,7 @@
 
     <div class="col-6">
         <div class="card">
-            <h5 class="card-header text-center color-text-tittle">Campos personalizados</h5>
+            <h5 class="card-header text-center color-text-tittle">Conceptos</h5>
             <div class="card-body">
                 <?php include 'CamposPer/index.php' ?>
             </div>
