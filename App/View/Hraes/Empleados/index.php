@@ -75,7 +75,7 @@
                         <button onclick="anteriorValor()" class="btn btn-light"><i class="fa fa-angle-double-left"></i>
                             <span class="hide-menu" style="font-weight: bold;"></span>
                         </button>
-                        <label id="idEmpleadotable">1</label>
+                        <label id="idEmpleadotable"></label>
                         <button onclick="siguienteValor()" class="btn btn-light"><i
                                 class="fa fa-angle-double-right"></i>
                             <span class="hide-menu" style="font-weight: bold;"></span>
