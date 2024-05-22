@@ -1,8 +1,8 @@
 <body>
-        <?php include '../../nav-menu.php' ?>
-        
-        <div id="main-wrapper">
-            <div class="page-wrapper">
+    <?php include '../../nav-menu.php' ?>
+
+    <div id="main-wrapper">
+        <div class="page-wrapper">
             <div class="container-fluid bg-image">
                 <div class="page-breadcrumb">
                     <div class="row">
@@ -27,8 +27,21 @@
                     </div>
                 </div>
 
+                <br>
+
                 <div class="container-fluid">
                     <div class="row">
+
+                        <div class="col-3">
+                            <div class="form-inline">
+                                <button class=" btn btn-light boton-con-imagen">
+                                    <img src="../../../../assets/icons/seleccionar.gif" alt="Imagen del botón">
+                                    <span style="font-size: 14px;" class="hide-menu" style="font-weight: bold;">&nbsp;Agregar empleado</span>
+                                </button>
+                            </div>
+                        </div>
+
+
                         <div class="col-3">
                             <div class="form-inline">
                                 <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i
@@ -38,14 +51,7 @@
                             </div>
                         </div>
 
-                        <div class="col-3">
-                            <div class="form-inline">
-                                <button class=" btn btn-light boton-con-imagen">
-                                    <img src="../../../../assets/icons/seleccionar.gif" alt="Imagen del botón">
-                                    <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar empleado</span>
-                                </button>
-                            </div>
-                        </div>
+
 
                         <div class="col-3">
                             <div class="form-inline">
