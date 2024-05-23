@@ -1,41 +1,41 @@
   document.addEventListener('DOMContentLoaded', function () {
-    tippy('#button_escolaridad_ix', {
-      content: 'Información sobre nivel de estudio, especialidad y cedúla profesional.',
+    tippy('#button_datos_personales', {
+      content: 'Datos personales (Domicilio, forma de pago)',
       theme: 'green',
     });
   });
 
   document.addEventListener('DOMContentLoaded', function () {
     tippy('#button_medios_contacto', {
-      content: 'Información sobre núm. Telefónicos, correos electrónicos, dependientes económicos y contactos de emergencia.',
+      content: 'Medios de contato (Correos, números).',
+      theme: 'green',
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    tippy('#button_escolaridad', {
+      content: 'Escolaridad (Nivele de estuio, especialidad).',
       theme: 'green',
     });
   });
 
   document.addEventListener('DOMContentLoaded', function () {
     tippy('#button_movimientos', {
-      content: 'Información sobre fechas y movimientos de empleado.',
+      content: 'Movimientos (Movimientos de empleado, fechas)',
       theme: 'green',
     });
   });
 
   document.addEventListener('DOMContentLoaded', function () {
-    tippy('#button_personal_bancario', {
-      content: 'Agrega, actualiza y elimina la especialidad asignada al empleado.',
+    tippy('#button_retardos', {
+      content: 'Incidencias (Retardos).',
       theme: 'green',
     });
   });
 
   document.addEventListener('DOMContentLoaded', function () {
-    tippy('#button_movimientosa', {
-      content: 'Agrega los ultimos movimientos del empleado.',
-      theme: 'green',
-    });
-  });
-
-  document.addEventListener('DOMContentLoaded', function () {
-    tippy('#button_domicilio', {
-      content: 'Actualiza el domicilio al que pertenece el empleado.',
+    tippy('#button_programas', {
+      content: 'Programas (Juguetes, conceptos).',
       theme: 'green',
     });
   });

@@ -133,6 +133,7 @@ $id_rol = $_SESSION['id_rol'];
             /*color: white;*/
             /* Color del texto para que sea legible en la imagen de fondo */
         }
+
     </style>
 
     </style>

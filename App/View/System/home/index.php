@@ -6,6 +6,7 @@
     <?php include '../../nav-menu.php' ?>
     <div id="main-wrapper">
         <div class="page-wrapper">
+            <div class="container-fluid bg-image">
                 <div class="container-fluid">
                     <div class="row ">
                         <div class="container">
@@ -23,9 +24,10 @@
                         </div>
                     </div>
                 </div>
-                
-            <?php include ('../../footer.php') ?>
-        </div>
+
+
+                <?php //include ('../../footer.php') ?>
+            </div>
         </div>
 
         <?php include ('../../footer-librerias.php') ?>
