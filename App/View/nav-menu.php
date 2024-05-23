@@ -268,7 +268,7 @@ $id_rol = $_SESSION['id_rol'];
                     <!-- HOME -->
 
                     <!-- MY PROFILE -->
-                    <?php if (false) { ?>
+                    <?php if (true) { ?>
                         <li class="sidebar-item">
                             <a href="../../Admin/MiPerfil/index.php" class="sidebar-link" href="javascript:void(0)"
                                 aria-expanded="false">
