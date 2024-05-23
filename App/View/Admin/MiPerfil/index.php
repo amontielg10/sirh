@@ -99,13 +99,13 @@
 
                             <div class="form-group col-md-12">
                                 <label>Nueva contraseña</label><label style="color:red">*</label>
-                                <input minlength="15" type="password" class="form-control" id="pw_nueva"
+                                <input maxlength="15" type="password" class="form-control" id="pw_nueva"
                                     placeholder="Nueva contraseña">
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label>Confirmar contraseña</label><label style="color:red">*</label>
-                                <input minlength="15" type="password" class="form-control" id="pw_confirmar"
+                                <input maxlength="15" type="password" class="form-control" id="pw_confirmar"
                                     placeholder="Confirmar contraseña">
                             </div>
                         </div>
