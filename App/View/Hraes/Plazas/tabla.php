@@ -23,14 +23,14 @@ if ($id_tbl_centro_trabajo_hraes != null){///LISTAR CON ID DE CENTRO DE TRABAJO
 }
 
 $data =
-    '<table class="table table-striped" id="tabla_plazas" style="width:100%">
+    '<table class="table table-striped table-small-rows" id="tabla_plazas" style="width:100%">
     <thead>
-        <tr style="background-color:#235B4E;">
-            <th style="color: white; width: 50px">Acciones</th>
-            <th style="color: white;">N&uacutem. de plaza</th>
-            <th style="color: white;">Tipo de plaza</th>
-            <th style="color: white;">Tipo de contrataci&oacuten</th>
-            <th style="color: white;">Unidad responsable</th>
+        <tr class="table-tittle-color">
+            <th class="custom-text-table-tittle col-md-1">Acciones</th>
+            <th class="custom-text-table-tittle">N&uacutem. de plaza</th>
+            <th class="custom-text-table-tittle">Tipo de plaza</th>
+            <th class="custom-text-table-tittle">Tipo de contrataci&oacuten</th>
+            <th class="custom-text-table-tittle">Unidad responsable</th>
         </tr>
     </thead>';
 
@@ -40,15 +40,15 @@ if (!$result = pg_query($connectionDBsPro, $query)) {
 if (pg_num_rows($result) > 0) {
     while ($row = pg_fetch_row($result)) {
         $data .=
-            '<tbody>
+            '<tbody style="background-color: white;">
                         <tr>
                             <td>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-sucess dropdown-toggle table-button-style" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i></button>
                             <div class="dropdown-menu">
                                 <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar</button>
                                 <button onclick="detallesEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-align-left"></i> Detalles</button>
-                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>   
+                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt button-table-on-delete"></i> Eliminar</button>   
                             </div>
                           </div>
                                 </td>

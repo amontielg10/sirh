@@ -13,14 +13,14 @@ if (isset($_POST['busqueda'])) {
 }
 
 $data =
-    '<table class="table table-striped" id="t-table" style="width:100%">
+    '<table class="table table-striped table-small-rows" id="t-table" style="width:100%">
     <thead>
-        <tr style="background-color:#235B4E;">
-            <th style="color: white; width: 50px">Acciones</th>
-            <th style="color: white;">Centro de trabajo</th>
-            <th style="color: white;">Nombre</th>
-            <th style="color: white;">Entidad</th>
-            <th style="color: white;">C&oacutedigo postal</th>
+        <tr class="table-tittle-color">
+            <th class="custom-text-table-tittle col-md-1">Acciones</th>
+            <th class="custom-text-table-tittle">Centro de trabajo</th>
+            <th class="custom-text-table-tittle">Nombre</th>
+            <th class="custom-text-table-tittle">Entidad</th>
+            <th class="custom-text-table-tittle">C&oacutedigo postal</th>
         </tr>
     </thead>';
 
@@ -31,11 +31,11 @@ if (pg_num_rows($result) > 0) {
     while ($row = pg_fetch_row($result)) {
         $id_tbl_centro_trabajo_hraes = base64_encode($row[0]);
         $data .=
-            '<tbody>
+            '<tbody style="background-color: white;">
                         <tr>
                             <td>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-sucess dropdown-toggle table-button-style" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i></button>
                             <div class="dropdown-menu">
                                 <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar centro de trabajo</button>
                                     <form action="../Plazas/index.php" method="POST">
@@ -43,7 +43,7 @@ if (pg_num_rows($result) > 0) {
                                         <button id="centro_trabajo_plazas" class="dropdown-item btn btn-light"><i class="fas fa-bookmark"></i> Plazas asignadas al centro de trabajo</button>
                                     </form>
                                 
-                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar centro de trabajo</button>  
+                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt button-table-on-delete"></i> Eliminar centro de trabajo</button>  
                             </div>
                           </div>
                                 </td>

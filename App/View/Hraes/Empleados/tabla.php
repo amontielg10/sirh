@@ -30,7 +30,7 @@ if (!$result = pg_query($connectionDBsPro, $query)) {
 if (pg_num_rows($result) > 0) {
     while ($row = pg_fetch_assoc($result)) {
         $data .=
-            '<tbody>
+            '<tbody style="background-color: white;">
                         <tr>
                             <td>
                             <div class="btn-group">

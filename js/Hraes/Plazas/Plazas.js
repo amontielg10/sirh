@@ -248,3 +248,10 @@ function concatNombre(nombre, primerApellido, segundoApellido){
         return 'Sin registro.';
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    tippy('#agregar_plaza', {
+        content: 'Agregar plaza.',
+        theme: 'green',
+    });
+});

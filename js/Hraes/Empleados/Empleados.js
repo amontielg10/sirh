@@ -131,3 +131,10 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
     });
 }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    tippy('#agregar_empleado', {
+        content: 'Agregar empleado.',
+        theme: 'green',
+    });
+});

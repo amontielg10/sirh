@@ -7,7 +7,7 @@
                 <div class="page-breadcrumb">
                     <div class="row">
                         <div class="col-10 align-self-center">
-                            <h2 style="color:#235B4E" class="page-title fs-4">Hospital Regional de Alta Especialidad
+                            <h2 style="color:#235B4E" class="page-title fs-4">Hospital Regional de Alta Especialidad - Empleados
                             </h2>
                             <div class="d-flex align-items-center">
                             </div>
@@ -32,16 +32,17 @@
                 <div class="container-fluid">
                     <div class="row">
 
-                        <div class="col-3">
+                        <div class="col-9">
                             <div class="form-inline">
-                                <button class=" btn btn-light boton-con-imagen">
-                                    <img src="../../../../assets/icons/seleccionar.gif" alt="Imagen del botón">
-                                    <span style="font-size: 14px;" class="hide-menu" style="font-weight: bold;">&nbsp;Agregar empleado</span>
+                                <button onclick="agregarEditarDetalles(null)" class=" btn btn-light boton-con-imagen" id="agregar_empleado">
+                                    <img src="../../../../assets/icons/empleado_agregar.jpeg" alt="Imagen del botón">
+                                    <span class="hide-menu" style="font-weight: bold;">&nbsp;</span>
                                 </button>
                             </div>
                         </div>
 
 
+                        <!--
                         <div class="col-3">
                             <div class="form-inline">
                                 <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i
@@ -55,11 +56,12 @@
 
                         <div class="col-3">
                             <div class="form-inline">
-                                <button class=" btn btn-light boton-con-imagen" id="agregar12">
+                                <button class=" btn btn-light boton-con-imagen" id="a1gregar12">
                                     <img src="../../../../assets/icons/hospital.gif" alt="Imagen del botón">
                                 </button>
                             </div>
                         </div>
+-->
 
                         <!--
                     <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar"
@@ -81,7 +83,7 @@
                         <button onclick="anteriorValor()" class="btn btn-light"><i class="fa fa-angle-double-left"></i>
                             <span class="hide-menu" style="font-weight: bold;"></span>
                         </button>
-                        <label id="idEmpleadotable"></label>
+                        <label id="idEmpleadotable">1</label>
                         <button onclick="siguienteValor()" class="btn btn-light"><i
                                 class="fa fa-angle-double-right"></i>
                             <span class="hide-menu" style="font-weight: bold;"></span>
@@ -99,11 +101,6 @@
 </body>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        tippy('#agregar12', {
-            content: 'Información sobre nivel de estudio, especialidad y cedúla profesional.',
-            theme: 'green',
-        });
-    });
+
 
 </script>

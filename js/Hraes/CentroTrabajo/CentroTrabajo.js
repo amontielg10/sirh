@@ -151,3 +151,11 @@ document.addEventListener('DOMContentLoaded', function () {
       theme: 'green',
     });
   });
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    tippy('#agregar_clue', {
+        content: 'Agregar centro de trabajo.',
+        theme: 'green',
+    });
+});

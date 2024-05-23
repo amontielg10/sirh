@@ -9,7 +9,7 @@ if ($id_tbl_empleados_hraes == null) {
     <?php include '../../nav-menu.php' ?>
     <div id="main-wrapper">
         <div class="page-wrapper">
-
+        <div class="container-fluid bg-image">
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-10 align-self-center">
@@ -42,22 +42,22 @@ if ($id_tbl_empleados_hraes == null) {
 
             <div class="card-body">
 
-                <div class="alert color-background-amarrillo" role="alert">
+                <div class="alert alert-success" role="alert">
                     <div class="form-row">
-                        <div class="col-md-4">
-                            <h6 class="color-text-white" style="font-weight: bold;">Nombre: <label
+                        <div class="col-md-3">
+                            <h6  style="font-weight: bold;">Nombre: <label
                                     id="nombreResult"></label></h6>
                         </div>
-                        <div class="col-md-8">
-                            <h6 class="color-text-white" style="font-weight: bold;">Número de Empleado: <label
+                        <div class="col-md-9">
+                            <h6 style="font-weight: bold;">Número de Empleado: <label
                                     id="numEmpleadoResult"></label></h6>
                         </div>
-                        <div class="col-md-4">
-                            <h6 class="color-text-white" style="font-weight: bold;">Curp: <label
+                        <div class="col-md-3">
+                            <h6 style="font-weight: bold;">Curp: <label
                                     id="curpResult"></label></h6>
                         </div>
-                        <div class="col-md-8">
-                            <h6 class="color-text-white" style="font-weight: bold;">Rfc: <label id="rfcResult"></label>
+                        <div class="col-md-9">
+                            <h6 style="font-weight: bold;">Rfc: <label id="rfcResult"></label>
                             </h6>
                         </div>
                     </div>

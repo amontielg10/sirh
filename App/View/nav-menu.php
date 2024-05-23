@@ -121,22 +121,6 @@ $id_rol = $_SESSION['id_rol'];
             box-sizing: border-box;
         }
 
-
-
-        <style>.boton-con-imagen {
-            background-color: transparent;
-            border: none;
-            padding: 0;
-        }
-
-        .boton-con-imagen img {
-            width: 40px;
-            /* ajusta el tamaño según lo necesites */
-            height: auto;
-            /* mantiene la proporción original */
-        }
-
-
         .bg-image {
             background-image: url('../../../../assets/sirh/fondo.png');
             /* Ruta de tu imagen de fondo */
@@ -146,7 +130,7 @@ $id_rol = $_SESSION['id_rol'];
             /* Centra la imagen */
             height: 100vh;
             /* Tamaño completo de la ventana */
-            color: white;
+            /*color: white;*/
             /* Color del texto para que sea legible en la imagen de fondo */
         }
     </style>
