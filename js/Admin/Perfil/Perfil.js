@@ -42,6 +42,7 @@ function guardarPw(pw_nueva) {
 }
 
 function modalEditPw(){
+    $("#modificar_pw").find("input,textarea,select").val("");
     $("#modificar_pw").modal("show");
 }
 
