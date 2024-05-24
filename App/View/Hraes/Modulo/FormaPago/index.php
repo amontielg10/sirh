@@ -1,18 +1,26 @@
 <div class="row">
-    <div class="col-7">
+    <div class="col-1">
+
+        <button onclick="agregarEditarFormaPago(null)" class=" btn btn-light boton-con-imagen" id="agregar_forma_pago">
+            <img src="../../../../assets/icons/agregar.png" alt="Imagen del botón">
+            <span class="hide-menu" style="font-weight: bold;">&nbsp;</span>
+        </button>
+
+        <!--
         <div class="form-inline">
             <button onclick="agregarEditarFormaPago(null)" class="btn btn-light"><i class="fas fa-plus"></i>
                 <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar</span>
             </button>
         </div>
+-->
     </div>
-        <div class="col-5 search-container">
-            <input onkeyup="buscarFormaPago();" id="buscar_f" type="text" placeholder="Buscar..."
-                class="form-control mr-sm-2 search-input">
-            <span class="search-icon"><i class="fas fa-search"></i></span>
-        </div>
+    <div class="col-5 search-container">
+        <input onkeyup="buscarFormaPago();" id="buscar_f" type="text" placeholder="Buscar..."
+            class="form-control mr-sm-2 search-input">
+        <span class="search-icon"><i class="fas fa-search"></i></span>
+    </div>
 
-        <!--
+    <!--
         <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar_f"
             onkeyup="buscarFormaPago();" aria-label="Search">
 -->

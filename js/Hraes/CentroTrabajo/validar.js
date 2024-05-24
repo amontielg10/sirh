@@ -18,7 +18,8 @@ function validar(){
         validarData(id_cat_entidad,'Entidad')&&
         validarData(latitud,'Latitud')&&
         validarData(longitud,'Longitud')&&
-        validarData(codigo_postal,'Código postal') 
+        validarData(codigo_postal,'Código postal') &&
+        caracteresCount('Código postal',5,codigo_postal)
     ){
         agregarEditarByDb();
     } 

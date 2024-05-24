@@ -6,9 +6,9 @@ $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
 $paginador = $_POST['paginador'];
 
 $modelFormaPagoM = new ModelFormaPagoM();
-$listado = $modelFormaPagoM -> listarById($id_tbl_empleados_hraes,$paginador);
-if(isset($_POST['busqueda'])){
-    $listado = $modelFormaPagoM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['busqueda'],$paginador);
+$listado = $modelFormaPagoM->listarById($id_tbl_empleados_hraes, $paginador);
+if (isset($_POST['busqueda'])) {
+    $listado = $modelFormaPagoM->listarByBusqueda($id_tbl_empleados_hraes, $_POST['busqueda'], $paginador);
 }
 
 $data =
@@ -32,10 +32,12 @@ if (pg_num_rows($listado) > 0) {
                         <tr>
                             <td>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sucess dropdown-toggle table-button-style" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-sucess dropdown-toggle table-button-style btn btn-light boton-con-imagen_table" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="../../../../assets/icons/editar.png" alt="Imagen del botón"></button>
                             <div class="dropdown-menu">
-                                <button onclick="agregarEditarFormaPago(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar</button>
-                                <button onclick="eliminarFormaPago(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt button-table-on-delete"></i> Eliminar</button>   
+                                <button onclick="agregarEditarFormaPago(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/editar.png" alt="Imagen del botón">Modificar</button>
+                                <hr>
+                                <button onclick="eliminarFormaPago(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/eliminar.png" alt="Imagen del botón">Eliminar</button>   
                             </div>
                           </div>
                                 </td>

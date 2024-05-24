@@ -18,7 +18,8 @@ function validar(){
         validarData(id_cat_niveles_hraes,'Niveles')&&
         validarData(num_plaza,'Número de plaza') &&
         validarData(id_tbl_zonas_pago,'Zona pagadora') &&
-        validarData(fecha_ingreso_inst,'Fecha de ingreso')
+        validarData(fecha_ingreso_inst,'Fecha de ingreso') &&
+        caracteresCount('Número de plaza',8,num_plaza)
     ){
         agregarEditarByDb();
     } 

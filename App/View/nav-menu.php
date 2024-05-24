@@ -21,7 +21,7 @@ $id_rol = $_SESSION['id_rol'];
     <!-- Favicon icon -->
     <!-- <link rel="icon" type="image/png" href=""> -->
     <title>Sistema Integral de Recursos Humanos</title>
-    <link rel="icon" type="image/png" href="assets/images/imss.svg">
+    
     <!-- Custom CSS -->
     <link href="../../../../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link href="../../../.././assets/extra-libs/c3/c3.min.css" rel="stylesheet">
@@ -138,6 +138,7 @@ $id_rol = $_SESSION['id_rol'];
 
     </style>
 
+    <link rel="icon" type="image/png" href="../../../../logo.png">
     <link rel="stylesheet" type="text/css" href="../../../../assets/styles/Styles.css">
 </head>
 

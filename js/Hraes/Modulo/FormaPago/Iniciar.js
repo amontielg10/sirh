@@ -118,3 +118,11 @@ function eliminarFormaPago(id_object) {//ELIMINAR USUARIO
     }
     });
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    tippy('#agregar_forma_pago', {
+        content: 'Agregar forma de pago.',
+        theme: 'green',
+    });
+});

@@ -1,8 +1,9 @@
 <div class="row">
-    <div class="col-7">
+    <div class="col-1">
         <div class="form-inline">
-            <button onclick="agregarEditarDependiente(null)" class="btn btn-light"><i class="fas fa-plus"></i>
-                <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar</span>
+            <button onclick="agregarEditarDependiente(null)" class=" btn btn-light boton-con-imagen"
+                id="agregar_forma_pago">
+                <img src="../../../../assets/icons/agregar.png" alt="Imagen del botón">
             </button>
         </div>
     </div>

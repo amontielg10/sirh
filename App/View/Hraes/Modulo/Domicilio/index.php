@@ -1,7 +1,7 @@
 <?php include 'DomicilioP.php' ?>
 <div class="modal-footer">
-    <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
-        onclick="return validarDomicilio();"><i class="fa fa-save"></i> Guardar</button>
+    <button type="button"
+        onclick="return validarDomicilio();" class="btn btn-light boton-con-imagen_table color-butto-modulo"><img src="../../../../assets/icons/guardar.png" alt="Imagen del botón">Guardar</button>   
     <input type="hidden" id="id_tbl_domicilios">
 </div>
 

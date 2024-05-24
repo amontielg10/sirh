@@ -21,9 +21,9 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="salirAgregarEditarCedula();"><i class="fa fa-times"></i> Cancelar</button>
-                <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
-                    onclick="return validarJefe();"><i class="fa fa-save"></i> Guardar</button>
+                <button type="button" data-dismiss="modal" onclick="salirAgregarEditarCedula();" class="btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/cancelar.png" alt="Imagen del botón">Cancelar</button>   
+                <button type="button" 
+                    onclick="return validarJefe();" class="btn btn-light boton-con-imagen_table color-butto-modulo"><img src="../../../../assets/icons/guardar.png" alt="Imagen del botón">Guardar</button>  
                 <input type="hidden" id="id_object">
             </div>
 

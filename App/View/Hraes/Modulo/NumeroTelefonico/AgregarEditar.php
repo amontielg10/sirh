@@ -40,10 +40,10 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                    onclick="salirAgregarEditarTelefono();"><i class="fa fa-times"></i> Cancelar</button>
-                <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
-                    onclick="return validarTelefono();"><i class="fa fa-save"></i> Guardar</button>
+                <button type="button" data-dismiss="modal"
+                    onclick="salirAgregarEditarTelefono();" class="btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/cancelar.png" alt="Imagen del botón">Cancelar</button> 
+                <button type="button"
+                    onclick="return validarTelefono();" class="btn btn-light boton-con-imagen_table color-butto-modulo"><img src="../../../../assets/icons/guardar.png" alt="Imagen del botón">Guardar</button>   
                 <input type="hidden" id="id_object">
             </div>
 
