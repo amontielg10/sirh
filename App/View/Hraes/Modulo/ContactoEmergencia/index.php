@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-7">
+    <div class="col-1">
         <div class="form-inline">
-            <button onclick="agregarEditarEmergencia(null)" class="btn btn-light"><i class="fas fa-plus"></i>
-                <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar</span>
+            <button onclick="agregarEditarEmergencia(null)" class=" btn btn-light boton-con-imagen" id="agregar_forma_pago">
+            <img src="../../../../assets/icons/agregar.png" alt="Imagen del botón">
             </button>
             <!--
     <a type="button" href="../Empleados/index.php" class="btn btn-light" style="color:#235B4E"

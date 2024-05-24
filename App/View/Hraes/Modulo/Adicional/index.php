@@ -35,8 +35,8 @@
         </div>
 
         <div class="modal-footer">
-            <button type="button" style="background-color:  #235B4E; color: white" class="btn btn-primary"
-                onclick="return validarAdicional();"><i class="fa fa-save"></i> Guardar</button>
+            <button type="button" 
+                onclick="return validarAdicional();" class="btn btn-light boton-con-imagen_table color-butto-modulo"><img src="../../../../assets/icons/guardar.png" alt="Imagen del botón">Guardar</button>  
             <input type="hidden" id="id_ctrl_adic_emp_hraes">
         </div>
 
