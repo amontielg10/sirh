@@ -103,12 +103,22 @@ if ($id_tbl_empleados_hraes == null) {
                             </button>
                             <!-- INCIDENCIAS -->
 
+                            <!-- PERCEPCIONES -->
+                            <button class="nav-link btn btn-light boton-con-imagen" id="button_percepciones"
+                                data-bs-toggle="tab" data-bs-target="#nav_percepciones" type="button" role="tab"
+                                aria-controls="nav-clabe" onclick="iniciarPercepciones();" aria-selected="false"">
+                                <img src=" ../../../../assets/icons/programas.png">
+                            </button>
+                            <!-- PERCEPCIONES -->
+
                             <!-- PROGRAMAS PARA EL EMPLEADO -->
+                            <!--
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_programas"
                                 data-bs-toggle="tab" data-bs-target="#nav_programas" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarProgramas();" aria-selected="false"">
                                 <img src=" ../../../../assets/icons/programas.png">
                             </button>
+-->
                             <!-- PROGRAMAS PARA EL EMPLEADO -->
 
                         </div>
@@ -171,6 +181,13 @@ if ($id_tbl_empleados_hraes == null) {
                         <div class="tab-pane fade" id="nav_incidencias" role="tabpanel"
                             aria-labelledby="nav-contact-tab" tabindex="0">
                             <?php include 'IncidenciasM/index.php' ?>
+                        </div>
+                        <!-- INCIDENCIAS -->
+
+                        <!-- INCIDENCIAS -->
+                        <div class="tab-pane fade" id="nav_percepciones" role="tabpanel"
+                            aria-labelledby="nav-contact-tab" tabindex="0">
+                            <?php include 'PercepcionesM/index.php' ?>
                         </div>
                         <!-- INCIDENCIAS -->
 

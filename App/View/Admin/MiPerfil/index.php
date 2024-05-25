@@ -16,16 +16,19 @@
                             <div class="d-flex no-block justify-content-end align-items-center">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
+                                        <!--
                                         <li class="breadcrumb-item">
                                             <a href="" style="color:#cb9f52;">Home</a>
                                         </li>
                                         <li class="breadcrumb-item active" aria-current="page">Mi perfil</li>
+-->
                                     </ol>
                                 </nav>
                             </div>
                         </div>
                     </div>
                 </div>
+                <br>
 
                 <input type="hidden" id="id_user" value="<?php echo $id_user; ?>" />
 
@@ -63,11 +66,20 @@
 
                                     </div>
 
+                                    <input type="hidden" id="pw" />
+
                                     <div class="modal-footer">
+                                        <!--
                                         <button type="button" style="background-color:  #235B4E; color: white"
                                             class="btn btn-success" onclick="modalEditPw();"><i class="fa fa-edit"
                                                 style=""></i> Modificar contraseña</button>
                                         <input type="hidden" id="pw" />
+-->
+
+                                        <button onclick="modalEditPw();" class="btn btn-light boton-con-imagen_table">
+                                            <img src="../../../../assets/icons/editar.png" alt="Imagen del botón">
+                                            Modificar contraseña
+                                        </button>
                                     </div>
                                 </div>
                             </div>

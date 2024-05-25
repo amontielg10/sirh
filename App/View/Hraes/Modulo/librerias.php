@@ -51,6 +51,10 @@
 <script src="../../../../js/Hraes/Modulo/Retardo/Validar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Retardo/buscar.js"></script>
 
+<script src="../../../../js/Hraes/Modulo/Percepciones/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Percepciones/Validar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Percepciones/buscar.js"></script>
+
 <script src="../../../../js/Hraes/Modulo/CamposPer/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/CamposPer/Validar.js"></script>
 

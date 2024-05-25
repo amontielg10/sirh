@@ -34,8 +34,8 @@
   });
 
   document.addEventListener('DOMContentLoaded', function () {
-    tippy('#button_programas', {
-      content: 'Programas (Juguetes, conceptos).',
+    tippy('#button_percepciones', {
+      content: 'Percepciones.',
       theme: 'green',
     });
   });

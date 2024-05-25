@@ -17,7 +17,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="../../System/home/index.php" style="color:#cb9f52;">Inicio</a>
+                                            <a href="../../Admin/MiPerfil/index.php" style="color:#cb9f52;">Inicio</a>
                                         </li>
                                         <li class="breadcrumb-item active" aria-current="page">Centros de trabajo</li>
                                     </ol>
@@ -31,14 +31,29 @@
                 <div class="container-fluid">
                     <div class="row">
 
-                        <div class="col-9">
-                            <div class="form-inline">
-                                <button onclick="agregarEditarDetalles(null)" class=" btn btn-light boton-con-imagen"
-                                    id="agregar_clue">
-                                    <img src="../../../../assets/icons/clues_agregar.png" alt="Imagen del botón">
-                                    <span class="hide-menu" style="font-weight: bold;">&nbsp;</span>
-                                </button>
+                        <div class="col-6">
+
+                            <div class="row">
+                                <div class="col-1">
+                                    <div class="form-inline">
+                                        <button onclick="agregarEditarDetalles(null)"
+                                            class=" btn btn-light boton-con-imagen" id="agregar_clue">
+                                            <img src="../../../../assets/icons/clues_agregar.png"
+                                                alt="Imagen del botón">
+                                            <span class="hide-menu" style="font-weight: bold;">&nbsp;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-6 search-container">
+                                    <input onkeyup="buscarCentro();" id="buscar" type="text" placeholder="Buscar..."
+                                        class="form-control mr-sm-2 search-input">
+                                    <span class="search-icon"><i class="fas fa-search"></i></span>
+                                </div>
                             </div>
+
+
+
                         </div>
 
                         <!--
@@ -53,11 +68,7 @@
                         </div>
 -->
 
-                        <div class="col-3 search-container">
-                            <input onkeyup="buscarCentro();" id="buscar" type="text" placeholder="Buscar..."
-                                class="form-control mr-sm-2 search-input">
-                            <span class="search-icon"><i class="fas fa-search"></i></span>
-                        </div>
+
                         <!--
                         <div class="col-3">
                             <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar"

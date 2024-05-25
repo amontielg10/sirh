@@ -14,7 +14,8 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
                 <div class="page-breadcrumb">
                     <div class="row">
                         <div class="col-10 align-self-center">
-                            <h2 style="color:#235B4E" class="page-title">Hospital Regional de Alta Especialidad - Plazas</h2>
+                            <h2 style="color:#235B4E" class="page-title">Hospital Regional de Alta Especialidad - Plazas
+                            </h2>
                             <div class="d-flex align-items-center">
                             </div>
                         </div>
@@ -23,7 +24,7 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="../../System/home/index.php" style="color:#cb9f52;">Home</a>
+                                            <a href="../../Admin/MiPerfil/index.php" style="color:#cb9f52;">Inicio</a>
                                         </li>
                                         <li class="breadcrumb-item active" aria-current="page">Plaza</li>
                                     </ol>
@@ -62,16 +63,17 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
 
                         <div class="row">
 
-                        <div class="col-9">
-                            <div class="form-inline">
-                                <button onclick="agregarEditarDetalles(null)" class=" btn btn-light boton-con-imagen" id="agregar_plaza">
-                                    <img src="../../../../assets/icons/plaza_agregar.png" alt="Imagen del botón">
-                                    <span class="hide-menu" style="font-weight: bold;">&nbsp;</span>
-                                </button>
+                            <div class="col-9">
+                                <div class="form-inline">
+                                    <button onclick="agregarEditarDetalles(null)" class=" btn btn-light boton-con-imagen"
+                                        id="agregar_plaza">
+                                        <img src="../../../../assets/icons/plaza_agregar.png" alt="Imagen del botón">
+                                        <span class="hide-menu" style="font-weight: bold;">&nbsp;</span>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
 
-                        <!--
+                            <!--
                             <div class="col-9">
                                 <div class="form-inline">
                                     <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i

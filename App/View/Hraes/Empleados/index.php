@@ -7,7 +7,8 @@
                 <div class="page-breadcrumb">
                     <div class="row">
                         <div class="col-10 align-self-center">
-                            <h2 style="color:#235B4E" class="page-title fs-4">Hospital Regional de Alta Especialidad - Empleados
+                            <h2 style="color:#235B4E" class="page-title fs-4">Hospital Regional de Alta Especialidad -
+                                Empleados
                             </h2>
                             <div class="d-flex align-items-center">
                             </div>
@@ -17,7 +18,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="../../System/home/index.php" style="color:#cb9f52;">Inicio</a>
+                                            <a href="../../Admin/MiPerfil/index.php" style="color:#cb9f52;">Inicio</a>
                                         </li>
                                         <li class="breadcrumb-item active" aria-current="page">Empleados</li>
                                     </ol>
@@ -32,12 +33,23 @@
                 <div class="container-fluid">
                     <div class="row">
 
-                        <div class="col-9">
-                            <div class="form-inline">
-                                <button onclick="agregarEditarDetalles(null)" class=" btn btn-light boton-con-imagen" id="agregar_empleado">
-                                    <img src="../../../../assets/icons/empleado_agregar.jpeg" alt="Imagen del botón">
-                                    <span class="hide-menu" style="font-weight: bold;">&nbsp;</span>
-                                </button>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-1">
+                                    <div class="form-inline">
+                                        <button onclick="agregarEditarDetalles(null)"
+                                            class=" btn btn-light boton-con-imagen" id="agregar_empleado">
+                                            <img src="../../../../assets/icons/empleado_agregar.jpeg"
+                                                alt="Imagen del botón">
+                                            <span class="hide-menu" style="font-weight: bold;">&nbsp;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-6 search-container">
+                                    <input onkeyup="buscarEmpleado();" id="buscar" type="text" placeholder="Buscar..."
+                                        class="form-control mr-sm-2 search-input">
+                                    <span class="search-icon"><i class="fas fa-search"></i></span>
+                                </div>
                             </div>
                         </div>
 
@@ -67,11 +79,7 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar"
                         onkeyup="buscarEmpleado();" aria-label="Search">
                     -->
-                        <div class="col-3 search-container">
-                            <input onkeyup="buscarEmpleado();" id="buscar" type="text" placeholder="Buscar..."
-                                class="form-control mr-sm-2 search-input">
-                            <span class="search-icon"><i class="fas fa-search"></i></span>
-                        </div>
+
 
                     </div>
                     <br>

@@ -32,16 +32,17 @@ if (pg_num_rows($result) > 0) {
         $data .=
             '<tbody style="background-color: white;">
                         <tr>
-                            <td>
+                            <td class="text-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sucess dropdown-toggle table-button-style" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-sucess dropdown-toggle table-button-style btn btn-light boton-con-imagen_table" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="../../../../assets/icons/editar.png" alt="Imagen del botón"></button>
                             <div class="dropdown-menu">
-                                <button onclick="agregarEditarDetalles(' . $row['id_tbl_empleados_hraes'] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit button-table-other"></i> Editar</button>
+                                <button onclick="agregarEditarDetalles(' . $row['id_tbl_empleados_hraes'] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/editar.png" alt="Imagen del botón">Modificar</button>
                                 <form action="../Modulo/index.php" method="POST">
                                         <input type="hidden" id="postId" name="id_tbl_empleados_hraes" value="' . $row['id_tbl_empleados_hraes'] . '" />
                                         <button onclick="datosEmpleadosGetDetails(' . $row['id_tbl_empleados_hraes'] . ')" class="dropdown-item btn btn-light"><i class="fa fa-folder-open button-table-other"></i> Datos complementarios</button>
                                 </form>
-                                <button onclick="eliminarEntity(' . $row['id_tbl_empleados_hraes'] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt button-table-on-delete"></i> Eliminar</button>  
+                                <button onclick="eliminarEntity(' . $row['id_tbl_empleados_hraes'] . ')" class="dropdown-item btn btn-light boton-con-imagen"><img src="../../../../assets/icons/eliminar.png" alt="Imagen del botón">Eliminar</button> 
                             </div>
                           </div>
                                 </td>

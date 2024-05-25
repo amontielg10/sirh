@@ -33,17 +33,18 @@ if (pg_num_rows($result) > 0) {
         $data .=
             '<tbody style="background-color: white;">
                         <tr>
-                            <td>
+                            <td class="text-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sucess dropdown-toggle table-button-style" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-sucess dropdown-toggle table-button-style btn btn-light boton-con-imagen_table" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="../../../../assets/icons/editar.png" alt="Imagen del botón"></button>
                             <div class="dropdown-menu">
-                                <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar centro de trabajo</button>
+                                <button onclick="agregarEditarDetalles(' . $row[0] . ')"class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/editar.png" alt="Imagen del botón"> Modificar</button>
                                     <form action="../Plazas/index.php" method="POST">
                                         <input type="hidden" id="postId" name="id_tbl_centro_trabajo_hraes" value="' . $row[0] . '" />
                                         <button id="centro_trabajo_plazas" class="dropdown-item btn btn-light"><i class="fas fa-bookmark"></i> Plazas asignadas al centro de trabajo</button>
                                     </form>
                                 
-                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt button-table-on-delete"></i> Eliminar centro de trabajo</button>  
+                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen"><img src="../../../../assets/icons/eliminar.png" alt="Imagen del botón"> Eliminar</button>
                             </div>
                           </div>
                                 </td>

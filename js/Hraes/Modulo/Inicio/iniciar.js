@@ -55,3 +55,7 @@ function iniciarProgramas(){
 function iniciarIncidencias(){
     buscarRetardo();
 }
+
+function iniciarPercepciones(){
+    buscarPercepcion();
+}

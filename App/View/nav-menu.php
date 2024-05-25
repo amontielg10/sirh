@@ -260,7 +260,7 @@ $id_rol = $_SESSION['id_rol'];
                     </li>
                     <!-- HOME -->
                     <li class="sidebar-item">
-                        <a href="../../System/home/index.php" class="sidebar-link" href="javascript:void(0)"
+                        <a href="../../Admin/MiPerfil/index.php" class="sidebar-link" href="javascript:void(0)"
                             aria-expanded="false">
                             <i class="far fa-folder" style="font-size: 1.2rem;"></i>
                             <span class="hide-menu" style="font-weight: bold;">&nbsp;&nbsp;Inicio</span>
@@ -269,7 +269,7 @@ $id_rol = $_SESSION['id_rol'];
                     <!-- HOME -->
 
                     <!-- MY PROFILE -->
-                    <?php if (true) { ?>
+                    <?php if (false) { ?>
                         <li class="sidebar-item">
                             <a href="../../Admin/MiPerfil/index.php" class="sidebar-link" href="javascript:void(0)"
                                 aria-expanded="false">
