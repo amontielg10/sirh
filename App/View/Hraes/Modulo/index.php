@@ -69,14 +69,14 @@ if ($id_tbl_empleados_hraes == null) {
                             <button class="nav-link active btn btn-light boton-con-imagen" id="button_datos_personales"
                                 data-bs-toggle="tab" data-bs-target="#nav_personal_bancario" type="button" role="tab"
                                 aria-controls="nav-home" onclick="iniciarPersonalBancario();" aria-selected="true">
-                                <img src="../../../../assets/icons/empleado_1.png">
+                                <img src="../../../../assets/icons/Modulos/empleado.png">
                             </button>
 
                             <!-- MEDIOS DE CONTACTO -->
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_medios_contacto"
                                 data-bs-toggle="tab" data-bs-target="#nav_medios_contacto" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarMediosContacto();" aria-selected="false"">
-                                <img src=" ../../../../assets/icons/empleado_2.png">
+                                <img src="../../../../assets/icons/Modulos/empleado.png">
                             </button>
                             <!-- MEDIOS DE CONTACTO -->
 
@@ -84,14 +84,14 @@ if ($id_tbl_empleados_hraes == null) {
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_escolaridad"
                                 data-bs-toggle="tab" data-bs-target="#nav_escolaridad" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarEscolaridad();" aria-selected="false"">
-                                <img src=" ../../../../assets/icons/escolaridad_1.png">
+                                <img src="../../../../assets/icons/Modulos/empleado.png">
                             </button>
 
                             <!-- MOVIMIENTO -->
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_movimientos"
                                 data-bs-toggle="tab" data-bs-target="#nav_movimientos" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarMovimiento();" aria-selected="false"">
-                                <img src=" ../../../../assets/icons/movimientos_1.png">
+                                <img src=" ../../../../assets/icons/Modulos/movimientos.png">
                             </button>
                             <!-- MOVIMIENTO -->
 
@@ -99,7 +99,7 @@ if ($id_tbl_empleados_hraes == null) {
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_retardos"
                                 data-bs-toggle="tab" data-bs-target="#nav_incidencias" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarIncidencias();" aria-selected="false"">
-                                <img src=" ../../../../assets/icons/incidencias_1.png">
+                                <img src=" ../../../../assets/icons/Modulos/incidencias.png">
                             </button>
                             <!-- INCIDENCIAS -->
 
@@ -107,7 +107,7 @@ if ($id_tbl_empleados_hraes == null) {
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_percepciones"
                                 data-bs-toggle="tab" data-bs-target="#nav_percepciones" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarPercepciones();" aria-selected="false"">
-                                <img src=" ../../../../assets/icons/programas.png">
+                                <img src=" ../../../../assets/icons/Modulos/percepciones.png">
                             </button>
                             <!-- PERCEPCIONES -->
 
