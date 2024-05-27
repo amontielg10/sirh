@@ -1,87 +1,65 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
+// Incluir la librería PhpSpreadsheet
+require '../vendor/autoload.php';
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loader Animation</title>
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-  <style>
-    .loader-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 9999;
+// Conexión a la base de datos PostgreSQL
+$conexion = pg_connect("host=localhost dbname=sirh user=postgres password=pg2024");
+
+if (!$conexion) {
+    echo "Error: No se pudo conectar a la base de datos.\n";
+    exit;
+}
+
+// Query SQL para obtener los datos de la tabla
+$query = "SELECT * FROM tbl_control_plazas_hraes";
+$resultado = pg_query($conexion, $query);
+
+if (!$resultado) {
+    echo "Error en la consulta.\n";
+    exit;
+}
+
+// Crear una nueva instancia de PhpSpreadsheet
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
+
+// Agregar los encabezados de las columnas
+$columnas = pg_num_fields($resultado);
+for ($i = 0; $i < $columnas; $i++) {
+    $sheet->setCellValueByColumnAndRow($i + 1, 1, pg_field_name($resultado, $i));
+}
+
+// Iterar sobre los resultados y agregarlos al archivo Excel
+$filaActual = 2;
+while ($fila = pg_fetch_assoc($resultado)) {
+    for ($i = 0; $i < $columnas; $i++) {
+        $sheet->setCellValueByColumnAndRow($i + 1, $filaActual, $fila[pg_field_name($resultado, $i)]);
     }
+    $filaActual++;
+}
 
-    .loader {
-      border: 4px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      border-top: 4px solid #ffffff;
-      width: 50px;
-      height: 50px;
-      animation: spin 1s linear infinite;
-    }
+// Crear un objeto Writer para guardar el archivo Excel
+$writer = new Xlsx($spreadsheet);
 
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
+// Configurar el nombre del archivo
+$filename = 'datos_postgresql.xlsx';
 
-      100% {
-        transform: rotate(360deg);
-      }
-    }
+// Guardar el archivo Excel en el servidor
+$writer->save($filename);
 
-    .content {
-      display: none;
-      /* Oculta el contenido hasta que se haya cargado completamente */
-    }
-  </style>
-</head>
+// Descargar el archivo Excel
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment; filename="' . $filename . '"');
+header('Cache-Control: max-age=0');
 
-<body>
-  <!-- Loader -->
-  <div class="loader-wrapper">
-    <div class="loader"></div>
-  </div>
+readfile($filename);
 
-  <!-- Contenido de la página -->
-  <div class="content">
-    <?php
-    $password = "pg2024";
-    $username = "postgres";
-    $dbname = "sirh";
-    $host = "localhost";
-    $port = "5432";
-    $options = "--client_encoding=UTF8";
+// Eliminar el archivo Excel del servidor después de la descarga
+unlink($filename);
 
-    try {
-      $connectionDB = "host=$host port=$port dbname=$dbname user=$username password=$password options=$options";
-      $connectionDBsPro = pg_pconnect($connectionDB);
-      echo 'success';
-    } catch (\Throwable $e) {
-      echo "Error connecting to data base + " . $e;
-    } ?>
-
-    <!-- Aquí va el contenido de tu página -->
-  </div>
-
-
-</body>
-
-<script>
-  window.addEventListener('load', function () {
-    // Oculta el loader y muestra el contenido de la página una vez que todo haya cargado
-    document.querySelector('.loader-wrapper').style.display = 'none';
-    document.querySelector('.content').style.display = 'block';
-  });
-</script>
-
-</html>
+// Cerrar la conexión a la base de datos
+pg_close($conexion);
+?>
