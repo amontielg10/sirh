@@ -58,4 +58,5 @@ function iniciarIncidencias(){
 
 function iniciarPercepciones(){
     buscarPercepcion();
+    buscarQuinquenio();
 }

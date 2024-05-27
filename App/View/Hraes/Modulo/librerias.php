@@ -55,6 +55,9 @@
 <script src="../../../../js/Hraes/Modulo/Percepciones/Validar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Percepciones/buscar.js"></script>
 
+<script src="../../../../js/Hraes/Modulo/Quinquenio/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Quinquenio/Validar.js"></script>
+
 <script src="../../../../js/Hraes/Modulo/CamposPer/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/CamposPer/Validar.js"></script>
 

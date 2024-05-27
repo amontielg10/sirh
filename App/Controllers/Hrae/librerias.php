@@ -39,8 +39,10 @@ include '../../../Model/Hraes/CorreoM/CorreoM.php';
 include '../../../Model/Catalogos/CatEstudioM/CatEstudioM.php';
 include '../../../Model/Hraes/Catalogos/CatGeneroM/CatGeneroM.php';
 include '../../../Model/Hraes/PercepcionesM/PercepcionesM.php';
+include '../../../Model/Hraes/QuinquenioM/QuinquenioM.php';
 include '../../../Model/Catalogos/CatConceptoM/CatConceptoM.php';
 include '../../../Model/Catalogos/CatValoresM/CatValoresM.php';
+include '../../../Model/Catalogos/CatQuinquenioM/CatQuinquenioM.php';
 
 ///CONTROLLERS
 include '../../../Controllers/Hrae/GlobalC/ArrayC.php';
@@ -60,3 +62,4 @@ include '../../../Controllers/Catalogos/CatEstudioC/CatEstudioC.php';
 include '../../../Controllers/Hrae/Catalogos/CatGeneroC/CatGeneroC.php';
 include '../../../Controllers/Catalogos/CatConceptoC/CatConceptoC.php';
 include '../../../Controllers/Catalogos/CatValoresC/CatValoresC.php';
+include '../../../Controllers/Catalogos/CatQuinquenioC/CatQuinquenioC.php';
