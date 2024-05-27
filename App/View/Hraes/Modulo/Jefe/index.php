@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-1">
         <div class="form-inline">
-            <button onclick="agregarEditarJefe(null)" class=" btn btn-light boton-con-imagen" id="agregar_forma_pago">
+            <button onclick="agregarEditarJefe(null)" class=" btn btn-light boton-con-imagen" id="button_agregar_all">
             <img src="../../../../assets/icons/agregar.png" alt="Imagen del botón">
             </button>
         </div>

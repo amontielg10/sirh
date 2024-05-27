@@ -2,7 +2,7 @@
     <div class="col-1">
         <div class="form-inline">
             <button onclick="agregarEditarDependiente(null)" class=" btn btn-light boton-con-imagen"
-                id="agregar_forma_pago">
+                id="button_agregar_all">
                 <img src="../../../../assets/icons/agregar.png" alt="Imagen del botón">
             </button>
         </div>

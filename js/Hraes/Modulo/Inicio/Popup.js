@@ -41,3 +41,11 @@
   });
 
 
+  document.addEventListener('DOMContentLoaded', function () {
+    tippy('#button_agregar_all', {
+      content: 'Agregar',
+      theme: 'red',
+    });
+  });
+
+

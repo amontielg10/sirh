@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-1">
 
-        <button onclick="agregarEditarFormaPago(null)" class=" btn btn-light boton-con-imagen" id="agregar_forma_pago">
+        <button onclick="agregarEditarFormaPago(null)" class=" btn btn-light boton-con-imagen" id="button_agregar_all">
             <img src="../../../../assets/icons/agregar.png" alt="Imagen del botón">
             <span class="hide-menu" style="font-weight: bold;">&nbsp;</span>
         </button>
