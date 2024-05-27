@@ -76,7 +76,7 @@ if ($id_tbl_empleados_hraes == null) {
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_medios_contacto"
                                 data-bs-toggle="tab" data-bs-target="#nav_medios_contacto" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarMediosContacto();" aria-selected="false"">
-                                <img src="../../../../assets/icons/Modulos/empleado.png">
+                                <img src="../../../../assets/icons/Modulos/medios_contacto.png">
                             </button>
                             <!-- MEDIOS DE CONTACTO -->
 
@@ -110,6 +110,14 @@ if ($id_tbl_empleados_hraes == null) {
                                 <img src=" ../../../../assets/icons/Modulos/percepciones.png">
                             </button>
                             <!-- PERCEPCIONES -->
+
+                            <!-- DEDUCCIONES -->
+                            <button class="nav-link btn btn-light boton-con-imagen" id="button_deducciones"
+                                data-bs-toggle="tab" data-bs-target="#nav_percepciones" type="button" role="tab"
+                                aria-controls="nav-clabe" onclick="iniciarPercepciones();" aria-selected="false"">
+                                <img src=" ../../../../assets/icons/Modulos/deducciones.png">
+                            </button>
+                            <!-- DEDUCCIONES -->
 
                             <!-- PROGRAMAS PARA EL EMPLEADO -->
                             <!--

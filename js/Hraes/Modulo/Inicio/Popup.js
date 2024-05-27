@@ -40,6 +40,13 @@
     });
   });
 
+  document.addEventListener('DOMContentLoaded', function () {
+    tippy('#button_deducciones', {
+      content: 'Deducciones.',
+      theme: 'green',
+    });
+  });
+
 
   document.addEventListener('DOMContentLoaded', function () {
     tippy('#button_agregar_all', {
