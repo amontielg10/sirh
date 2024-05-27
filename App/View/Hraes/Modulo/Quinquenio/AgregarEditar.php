@@ -17,7 +17,7 @@
                     <div class="form-group col-md-6">
                         <label>Seleccione el importe</label><label style="color:red">*</label>
                         <select class="form-control" aria-label="Default select example"
-                            id="id_cat_quinquenio" required onchange="handleChange(event)">
+                            id="id_cat_quinquenio">
                         </select>
                     </div>
 

@@ -69,14 +69,14 @@ if ($id_tbl_empleados_hraes == null) {
                             <button class="nav-link active btn btn-light boton-con-imagen" id="button_datos_personales"
                                 data-bs-toggle="tab" data-bs-target="#nav_personal_bancario" type="button" role="tab"
                                 aria-controls="nav-home" onclick="iniciarPersonalBancario();" aria-selected="true">
-                                <img src="../../../../assets/icons/datos_personales_1.png">
+                                <img src="../../../../assets/icons/empleado_1.png">
                             </button>
 
                             <!-- MEDIOS DE CONTACTO -->
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_medios_contacto"
                                 data-bs-toggle="tab" data-bs-target="#nav_medios_contacto" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarMediosContacto();" aria-selected="false"">
-                                <img src=" ../../../../assets/icons/medioscontacto_1.png">
+                                <img src=" ../../../../assets/icons/empleado_2.png">
                             </button>
                             <!-- MEDIOS DE CONTACTO -->
 

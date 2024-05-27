@@ -7,15 +7,11 @@ function validarQuinquenio(){
     if (validarData(id_cat_quinquenio,'Importe') &&
         validarData(fecha_registro,'Fecha de registro') 
     ){
-        if(id_object != null){
-
-        }
-        validarConcepto(id_tbl_empleados_hraes,id_object);
+        validarQuinquenio_x(id_tbl_empleados_hraes,id_object);
     }
-    //agregarEditarByDbByQuinquenio();
 }
 
-function validarConcepto(id_tbl_empleados_hraes,id_object){
+function validarQuinquenio_x(id_tbl_empleados_hraes,id_object){
     $.post("../../../../App/Controllers/Hrae/QuinquenioC/ValidarC.php", {
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
         id_object:id_object
