@@ -6,8 +6,8 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 // Conexión a la base de datos PostgreSQL
-//$conexion = pg_connect("host=localhost dbname=sirh_test user=postgres password=sirh2024");
-$conexion = pg_connect("host=localhost dbname=sirh user=postgres password=pg2024");
+$conexion = pg_connect("host=localhost dbname=sirh_test user=postgres password=sirh2024");
+//$conexion = pg_connect("host=localhost dbname=sirh user=postgres password=pg2024");
 
 if (!$conexion) {
     echo "Error: No se pudo conectar a la base de datos.\n";
@@ -42,25 +42,15 @@ while ($fila = pg_fetch_assoc($resultado)) {
     $filaActual++;
 }
 
-// Crear un objeto Writer para guardar el archivo Excel
-$writer = new Xlsx($spreadsheet);
-
 // Configurar el nombre del archivo
 $filename = 'datos_postgresql.xlsx';
 
-// Guardar el archivo Excel en el servidor
-$writer->save($filename);
-
-// Descargar el archivo Excel
+// Crear un objeto Writer para guardar el archivo Excel en la salida directa
+$writer = new Xlsx($spreadsheet);
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment; filename="' . $filename . '"');
+header('Content-Disposition: attachment;filename="' . $filename . '"');
 header('Cache-Control: max-age=0');
-
-readfile($filename);
-
-// Eliminar el archivo Excel del servidor después de la descarga
-unlink($filename);
+$writer->save('php://output');
 
 // Cerrar la conexión a la base de datos
 pg_close($conexion);
-?>
