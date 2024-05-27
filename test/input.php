@@ -6,7 +6,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 // Conexión a la base de datos PostgreSQL
-$conexion = pg_connect("host=localhost dbname=sirh user=postgres password=pg2024");
+$conexion = pg_connect("host=localhost dbname=sirh_test user=postgres password=sirh2024");
 
 if (!$conexion) {
     echo "Error: No se pudo conectar a la base de datos.\n";
