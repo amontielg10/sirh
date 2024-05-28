@@ -172,3 +172,12 @@
   height: auto;
   /* mantiene la proporción original */
 }
+
+.alert-style{
+    background:none; 
+    overflow: hidden;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px solid #235B4E;
+}

@@ -41,9 +41,8 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
 
                     <?php if ($id_tbl_centro_trabajo_hraes != null) { ?>
 
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-style"  role="alert">
                             <h4 class="alert-heading">Control de plazas</h4>
-                            <hr>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <h6 style="font-weight: bold;color:#235B4E;">Nombre centro de trabajo: <label
@@ -67,7 +66,7 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
                                 <div class="form-inline">
                                     <button onclick="agregarEditarDetalles(null)" class=" btn btn-light boton-con-imagen"
                                         id="agregar_plaza">
-                                        <img src="../../../../assets/icons/plaza_agregar.png" alt="Imagen del botón">
+                                        <img src="../../../../assets/icons/plazas/agrega_plaza.png" alt="Imagen del botón">
                                         <span class="hide-menu" style="font-weight: bold;">&nbsp;</span>
                                     </button>
                                 </div>

@@ -43,7 +43,7 @@ if ($id_tbl_empleados_hraes == null) {
 
                 <div class="card-body">
 
-                    <div class="alert alert-success" role="alert">
+                    <div class="alert alert-style"  role="alert">
                         <div class="form-row">
                             <div class="col-md-3">
                                 <h6 style="font-weight: bold;">Nombre: <label id="nombreResult"></label></h6>
