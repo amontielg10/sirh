@@ -22,7 +22,6 @@
         </div>
       </div>
       <div class="back">
-        <img class="backImg" src="dist/css/login/backImg3.jpg" alt="">
         <div class="text">
           <span class="text-1">Complete miles of journey <br> with one step</span>
           <span class="text-2">Let's get started</span>
@@ -84,7 +83,7 @@
             $.post('inicio_sesion.php', data, function(response) {
               console.log(data);
                 if (response == 'acceso') {
-                    window.location.href = 'App/View/Admin/MiPerfil/index.php';
+                    window.location.href = 'App/View/System/home/index.php';
                 } else {
                     ventanaMensaje("Usuario o contraseña incorrectos");
                 }
