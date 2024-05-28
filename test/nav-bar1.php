@@ -7,6 +7,11 @@
     <title>SIRH</title>
     <link rel="stylesheet" href="../assets/dist/css/bootstrap.min.css">
 
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+        crossorigin="anonymous"></script>
+    </body>
+
     <style>
         .nav-color-green-dad {
             background: #10312B;
@@ -96,6 +101,22 @@
             background: linear-gradient(to right, #BC955C 33%, transparent 33%, transparent 100%);
         }
 
+        .search-input {
+            width: 100%;
+            padding: 10px 40px 10px 10px;
+            box-sizing: border-box;
+        }
+
+        .search-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .btn-button-add{
+            background:  #235B4E;
+            font-family: 'Montserrat Light';
+            color:white;
+        }
 
     </style>
 </head>
@@ -160,35 +181,55 @@
 
         <div class="card border-light">
             <div class="card-body">
-                <h3 class="card-title tittle-card-index">SISTEMA INTEGRAL DE RECURSOS HUMANOS</h3>
+                <h3 class="card-title tittle-card-index">Usuarios del sistema</h3>
                 <div class="linea-horizontal"></div>
+                <hr>
+                <div class="row">
+                    <div class="col-10">
+                        <button class="btn btn-success btn-button-add"><span><i class="fas fa-plus"></i></span> Agregar</button>
+                    </div>
+                    <div class="col-2 search-container">
+                        <input id="buscar" type="text" placeholder="Buscar..."
+                            class="form-control mr-sm-2 search-input">
+                        <span class="search-icon"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
                 <hr>
 
                 <div class="text-center">
-                    <img src="../assets/images/bnn_imssbienestar.jpg" width="30" height="24"
-                        class="d-inline-block align-text-top wider-image-index">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <hr>
-                <div class="text-center">
-                    <button type="button" class="btn btn-success btn-lg button-color-index">Accion 1</button>
-                    <button type="button" class="btn btn-success btn-lg button-color-index">Accion 2</button>
-                    <button type="button" class="btn btn-success btn-lg button-color-index">Accion 3</button>
-                </div>
-            </div>
-        </div>
-
-        <br>
-        <div class="card border-light">
-            <div class="card-body">
-                <h6 class="tittle-card-index">¿Qué es?</h6>
-                <div class="linea-horizontal"></div>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi distinctio accusantium asperiores
-                    error non, aut, beatae perspiciatis amet voluptatum voluptatibus autem, quia cumque fuga iste
-                    voluptate adipisci nisi quae aliquid.</p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam debitis esse nulla doloribus
-                    doloremque iusto error laboriosam laborum labore ipsa amet nostrum possimus alias perferendis
-                    numquam, consequuntur temporibus tempore culpa?</p>
             </div>
         </div>
 
