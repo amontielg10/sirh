@@ -38,7 +38,7 @@
                                     <div class="form-inline">
                                         <button onclick="agregarEditarDetalles(null)"
                                             class=" btn btn-light boton-con-imagen" id="agregar_clue">
-                                            <img src="../../../../assets/icons/clues_agregar.png"
+                                            <img src="../../../../assets/icons/Clue/clues_agregar.png"
                                                 alt="Imagen del botón">
                                             <span class="hide-menu" style="font-weight: bold;">&nbsp;</span>
                                         </button>

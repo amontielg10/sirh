@@ -39,7 +39,7 @@
                                     <div class="form-inline">
                                         <button onclick="agregarEditarDetalles(null)"
                                             class=" btn btn-light boton-con-imagen" id="agregar_empleado">
-                                            <img src="../../../../assets/icons/empleado_agregar.jpeg"
+                                            <img src="../../../../assets/icons/Empleado/agregar_empleado.png"
                                                 alt="Imagen del botón">
                                             <span class="hide-menu" style="font-weight: bold;">&nbsp;</span>
                                         </button>

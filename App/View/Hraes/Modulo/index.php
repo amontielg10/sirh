@@ -84,7 +84,7 @@ if ($id_tbl_empleados_hraes == null) {
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_escolaridad"
                                 data-bs-toggle="tab" data-bs-target="#nav_escolaridad" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarEscolaridad();" aria-selected="false"">
-                                <img src="../../../../assets/icons/Modulos/empleado.png">
+                                <img src="../../../../assets/icons/Modulos/escolaridad.png">
                             </button>
 
                             <!-- MOVIMIENTO -->

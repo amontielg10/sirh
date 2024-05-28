@@ -16,7 +16,7 @@ $data =
     '<table class="table table-striped table-small-rows" id="t-table" style="width:100%">
     <thead>
         <tr class="table-tittle-color">
-            <th class="custom-text-table-tittle col-md-1">Acciones</th>
+            <th class="custom-text-table-tittle col-md-1 text-center">Acciones</th>
             <th class="custom-text-table-tittle">Nombre</th>
             <th class="custom-text-table-tittle">Curp</th>
             <th class="custom-text-table-tittle">Rfc</th>
@@ -37,12 +37,14 @@ if (pg_num_rows($result) > 0) {
                             <button type="button" class="btn btn-sucess dropdown-toggle table-button-style btn btn-light boton-con-imagen_table" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="../../../../assets/icons/editar.png" alt="Imagen del botón"></button>
                             <div class="dropdown-menu">
-                                <button onclick="agregarEditarDetalles(' . $row['id_tbl_empleados_hraes'] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/editar.png" alt="Imagen del botón">Modificar</button>
+                                <button onclick="agregarEditarDetalles(' . $row['id_tbl_empleados_hraes'] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/editar.png" alt="Imagen del botón"> Modificar</button>
+                                <hr>
                                 <form action="../Modulo/index.php" method="POST">
                                         <input type="hidden" id="postId" name="id_tbl_empleados_hraes" value="' . $row['id_tbl_empleados_hraes'] . '" />
-                                        <button onclick="datosEmpleadosGetDetails(' . $row['id_tbl_empleados_hraes'] . ')" class="dropdown-item btn btn-light"><i class="fa fa-folder-open button-table-other"></i> Datos complementarios</button>
+                                        <button onclick="datosEmpleadosGetDetails(' . $row['id_tbl_empleados_hraes'] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/Empleado/datos_comple.png" alt="Imagen del botón"> Datos complementarios</button> 
                                 </form>
-                                <button onclick="eliminarEntity(' . $row['id_tbl_empleados_hraes'] . ')" class="dropdown-item btn btn-light boton-con-imagen"><img src="../../../../assets/icons/eliminar.png" alt="Imagen del botón">Eliminar</button> 
+                                <hr>
+                                <button onclick="eliminarEntity(' . $row['id_tbl_empleados_hraes'] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/eliminar.png" alt="Imagen del botón"> Eliminar</button> 
                             </div>
                           </div>
                                 </td>

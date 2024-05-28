@@ -26,7 +26,7 @@ $data =
     '<table class="table table-striped table-small-rows" id="tabla_plazas" style="width:100%">
     <thead>
         <tr class="table-tittle-color">
-            <th class="custom-text-table-tittle col-md-1">Acciones</th>
+            <th class="custom-text-table-tittle col-md-1 text-center">Acciones</th>
             <th class="custom-text-table-tittle">N&uacutem. de plaza</th>
             <th class="custom-text-table-tittle">Tipo de plaza</th>
             <th class="custom-text-table-tittle">Tipo de contrataci&oacuten</th>
@@ -48,8 +48,10 @@ if (pg_num_rows($result) > 0) {
                             <img src="../../../../assets/icons/editar.png" alt="Imagen del botón"></button>
                             <div class="dropdown-menu">
                                 <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/editar.png" alt="Imagen del botón"> Modificar</button>
-                                <button onclick="detallesEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-align-left"></i> Detalles</button>
-                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen"><img src="../../../../assets/icons/eliminar.png" alt="Imagen del botón"> Eliminar</button> 
+                                <hr>
+                                <button onclick="detallesEntity(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/plazas/detalles.png" alt="Imagen del botón"> Detalles</button> 
+                                <hr>
+                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/eliminar.png" alt="Imagen del botón"> Eliminar</button> 
                             </div>
                           </div>
                                 </td>

@@ -55,7 +55,6 @@ function agregarEditarUsuarios(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
         id_object: id_object
     },
         function (data) {
-            console.log(data);
             var jsonData = JSON.parse(data);//se obtiene el json
             var entity = jsonData.response; 
             var rol = jsonData.rol;

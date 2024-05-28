@@ -15,7 +15,7 @@ $data =
     '<table class="table table-sm" id="tabla_movimientos" style="width:100%">
     <thead>
         <tr>
-            <th style="background:#e5e7e8">Acciones</th>
+            <th style="background:#e5e7e8" class="text-center">Acciones</th>
             <th style="background:#e5e7e8">N&uacutem. Plaza</th>
             <!--
             <th style="background:#e5e7e8">Movimiento general</th>
@@ -30,13 +30,14 @@ if (pg_num_rows($listado) > 0) {
         $data .=
             '<tbody>
                         <tr>
-                            <td>
+                            <td class="text-center">
                             <div class="btn-group">
                             <button type="button" class="btn btn-sucess dropdown-toggle table-button-style btn btn-light boton-con-imagen_table" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="../../../../assets/icons/editar.png" alt="Imagen del botón"></button>
                             <div class="dropdown-menu">
-                                <button onclick="agregarEditarMovimiento(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/editar.png" alt="Imagen del botón">Modificar</button>
-                                <button onclick="eliminarMovimiento(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen"><img src="../../../../assets/icons/eliminar.png" alt="Imagen del botón">Eliminar</button>
+                                <button onclick="agregarEditarMovimiento(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/editar.png" alt="Imagen del botón"> Modificar</button>
+                                <hr>
+                                <button onclick="eliminarMovimiento(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/eliminar.png" alt="Imagen del botón"> Eliminar</button>
                             </div>
                           </div>
                                 </td>

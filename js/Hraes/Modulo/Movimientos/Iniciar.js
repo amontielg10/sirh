@@ -102,7 +102,7 @@ function guardarMovimiento(id_plaza) {
                 mensajeError(data);
             }
             $("#agregar_editar_movimiento").modal("hide");
-            iniciarMovimientos();
+            buscarMovimiento();
         }
     );
 }
@@ -129,7 +129,7 @@ function eliminarMovimiento(id_object) {//ELIMINAR USUARIO
                 } else {
                     mensajeError(data);
                 }
-                iniciarMovimientos();
+                buscarMovimiento();
             }
         );
     }
