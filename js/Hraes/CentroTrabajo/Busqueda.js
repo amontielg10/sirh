@@ -22,7 +22,7 @@ function anteriorValor(){
 function iniciarBusqueda(){
     let valorInicialAux = valorInicial;
     valorInicialAux --;
-    let valoroff = valorInicialAux * 10;
+    let valoroff = valorInicialAux * 7;
     return valoroff;
 }
 

@@ -13,14 +13,14 @@ if (isset($_POST['busqueda'])) {
 }
 
 $data =
-    '<table class="table table-striped table-small-rows" id="t-table" style="width:100%">
+    '<table class="table table-bordered" id="t-table" style="width:100%">
     <thead>
-        <tr class="table-tittle-color">
-            <th class="custom-text-table-tittle col-md-1 text-center">Acciones</th>
-            <th class="custom-text-table-tittle">Centro de trabajo</th>
-            <th class="custom-text-table-tittle">Nombre</th>
-            <th class="custom-text-table-tittle">Entidad</th>
-            <th class="custom-text-table-tittle">C&oacutedigo postal</th>
+        <tr>
+            <th>Acciones</th>
+            <th>Centro de trabajo</th>
+            <th>Nombre</th>
+            <th>Entidad</th>
+            <th>C&oacutedigo postal</th>
         </tr>
     </thead>';
 
@@ -31,21 +31,18 @@ if (pg_num_rows($result) > 0) {
     while ($row = pg_fetch_row($result)) {
         $id_tbl_centro_trabajo_hraes = base64_encode($row[0]);
         $data .=
-            '<tbody style="background-color: white;">
+            '<tbody>
                         <tr>
-                            <td class="text-center">
+                            <td>
                             <div class="btn-group">
-                            <button type="button" class="btn btn-sucess dropdown-toggle table-button-style btn btn-light boton-con-imagen_table" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="../../../../assets/icons/editar.png" alt="Imagen del botón"></button>
+                                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit icono-grande-tabla"></i></button>
                             <div class="dropdown-menu">
-                                <button onclick="agregarEditarDetalles(' . $row[0] . ')"class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/editar.png" alt="Imagen del botón"> Modificar</button>
-                                <hr>   
+                                <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
                                 <form action="../Plazas/index.php" method="POST">
                                         <input type="hidden" id="postId" name="id_tbl_centro_trabajo_hraes" value="' . $row[0] . '" />
-                                        <button id="centro_trabajo_plazas" class="dropdown-item btn btn-light boton-con-imagen_table text-center"><img src="../../../../assets/icons/plazas/plaza.png" alt="Imagen del botón"> Plazas asignadas al centro de trabajo</button>
-                                    </form>
-                                <hr>
-                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/eliminar.png" alt="Imagen del botón"> Eliminar</button>
+                                        <button class="dropdown-item btn btn-light"><i class="fa fa-bookmark icon-edit-table"></i> Plazas asignadas al centro de trabajo</button>  
+                                </form>
+                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
                             </div>
                           </div>
                                 </td>

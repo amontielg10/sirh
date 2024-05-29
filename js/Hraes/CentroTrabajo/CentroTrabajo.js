@@ -115,6 +115,10 @@ function agregarEditarByDb() {
     );
 }
 
+function ocultarModal(){
+    $("#agregar_editar_modal").modal("hide");
+}
+
 function eliminarEntity(id_object) {
     if(validarAccion()){
     Swal.fire({
@@ -144,7 +148,7 @@ function eliminarEntity(id_object) {
     });
 }
 }
-
+/*
 document.addEventListener('DOMContentLoaded', function () {
     tippy('#centro_trabajo_plazas', {
       content: 'Consultas las plazas asignadas al centro de trabajo.',
@@ -159,3 +163,4 @@ document.addEventListener('DOMContentLoaded', function () {
         theme: 'green',
     });
 });
+*/

@@ -24,9 +24,13 @@ $id_rol = $_SESSION['id_rol'];
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="../../../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>
+
 </head>
 
-<body>  
+<body>
 
     <nav class="navbar bg-light">
         <div class="container-fluid nav-color-green-dad mb-0 nav-padding">
@@ -69,6 +73,7 @@ $id_rol = $_SESSION['id_rol'];
                     <!-- PERFIL -->
 
                     <!-- ADMIN -->
+                    <?php if ($id_rol == 1) { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -78,37 +83,43 @@ $id_rol = $_SESSION['id_rol'];
                             <li><a class="dropdown-item" href="../../Admin/Usuarios/index.php">Usuarios</a></li>
                         </ul>
                     </li>
+                    <?php } ?>
                     <!-- ADMIN -->
 
                     <!-- CENTRAL -->
+                    <?php if ($id_rol == 1 || $id_rol == 2) { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Nom. Central
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Centros trabajo</a></li>
+                            <li><a class="dropdown-item" href="#">Centro de trabajo</a></li>
                             <li><a class="dropdown-item" href="#">Empleados</a></li>
                             <li><a class="dropdown-item" href="#">Plazas</a></li>
                         </ul>
                     </li>
+                    <?php } ?>
                     <!-- CENTRAL -->
 
                     <!-- HRAES -->
+                    <?php if ($id_rol == 1 || $id_rol == 3) { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Nom. Hraes
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Centros trabajo</a></li>
+                            <li><a class="dropdown-item" href="../../Hraes/CentroTrabajo/index.php">Centro de trabajo</a></li>
                             <li><a class="dropdown-item" href="#">Empleados</a></li>
-                            <li><a class="dropdown-item" href="#">Plazas</a></li>
+                            <li><a class="dropdown-item" href="../../Hraes/Plazas/index.php">Plazas</a></li>
                         </ul>
                     </li>
+                    <?php } ?>
                     <!-- HRAES -->
 
                     <!-- FEDERALIZADA -->
+                    <?php if ($id_rol == 1 || $id_rol == 4) { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -120,6 +131,7 @@ $id_rol = $_SESSION['id_rol'];
                             <li><a class="dropdown-item" href="#">Plazas</a></li>
                         </ul>
                     </li>
+                    <?php } ?>
                     <!-- FEDERALIZADA -->
 
                 </ul>

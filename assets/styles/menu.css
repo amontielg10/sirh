@@ -90,3 +90,82 @@ hr {
     font-size: 23px; 
     color:#9F2241;
 }
+
+.form-control:focus {
+    border-color: #BC955C;
+    background-color: white;
+    box-shadow: none;
+}
+
+.text-required{
+    color:#9F2241;
+}
+
+.text-input-form{
+    color:#2b2e32;
+    /*font-weight: bold;*/
+    font-family: 'Poppins', 'sans-serif';
+}
+
+.text-modal-tittle{
+    font-weight: bold;
+    color:white
+}
+
+.background-modal{
+    background:#235B4E;
+}
+
+.row-spacing {
+    margin-bottom: 20px; 
+}
+
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    box-sizing: border-box;
+}
+
+.search-icon {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    /*color:#BC955C*/
+  }
+
+  .div-spacing {
+    margin-bottom: 10px;
+  }
+
+  .text-button-add{
+    font-weight: bold;
+  }
+
+
+  .icon-size-add {
+    font-size: 16px; 
+    /*color:#235B4E;*/
+    }
+
+   .icon-edit-table{
+    color: #BC955C;
+   }
+
+   .icon-delete-table{
+    color: #9F2241;
+   }
+
+   .save-botton-modal{
+    background-color:  #235B4E; 
+    color: white
+   }
+
+   
+

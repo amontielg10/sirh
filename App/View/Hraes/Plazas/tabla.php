@@ -23,14 +23,14 @@ if ($id_tbl_centro_trabajo_hraes != null){///LISTAR CON ID DE CENTRO DE TRABAJO
 }
 
 $data =
-    '<table class="table table-striped table-small-rows" id="tabla_plazas" style="width:100%">
+    '<table class="table table-bordered" id="tabla_plazas" style="width:100%">
     <thead>
-        <tr class="table-tittle-color">
-            <th class="custom-text-table-tittle col-md-1 text-center">Acciones</th>
-            <th class="custom-text-table-tittle">N&uacutem. de plaza</th>
-            <th class="custom-text-table-tittle">Tipo de plaza</th>
-            <th class="custom-text-table-tittle">Tipo de contrataci&oacuten</th>
-            <th class="custom-text-table-tittle">Unidad responsable</th>
+        <tr>
+            <th>Acciones</th>
+            <th>N&uacutem. de plaza</th>
+            <th>Tipo de plaza</th>
+            <th>Tipo de contrataci&oacuten</th>
+            <th>Unidad responsable</th>
         </tr>
     </thead>';
 
@@ -42,18 +42,15 @@ if (pg_num_rows($result) > 0) {
         $data .=
             '<tbody style="background-color: white;">
                         <tr>
-                            <td class="text-center">
+                        <td>
                             <div class="btn-group">
-                            <button type="button" class="btn btn-sucess dropdown-toggle table-button-style btn btn-light boton-con-imagen_table" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="../../../../assets/icons/editar.png" alt="Imagen del botón"></button>
-                            <div class="dropdown-menu">
-                                <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/editar.png" alt="Imagen del botón"> Modificar</button>
-                                <hr>
-                                <button onclick="detallesEntity(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/plazas/detalles.png" alt="Imagen del botón"> Detalles</button> 
-                                <hr>
-                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/eliminar.png" alt="Imagen del botón"> Eliminar</button> 
-                            </div>
-                          </div>
+                            <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit icono-grande-tabla"></i></button>
+                        <div class="dropdown-menu">
+                            <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
+                            <button onclick="detallesEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fa fa-align-left icon-edit-table"></i> Detalles</button>
+                            <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
+                        </div>
+                    </div>
                                 </td>
                             <td>
                                 ' . $row[1] . '

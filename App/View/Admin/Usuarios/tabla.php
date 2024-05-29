@@ -14,7 +14,7 @@ if (isset($_POST['busqueda'])) {
 }
 
 $data =
-    '<table class="table" id="tabla_usuarios" style="width:100%">
+    '<table class="table table-bordered" id="tabla_usuarios" style="width:100%">
     <thead>
         <tr">
             <th>Acciones</th>
@@ -36,8 +36,8 @@ if (pg_num_rows($result) > 0) {
                             <div class="btn-group">
                                 <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit icono-grande-tabla"></i></button>
                             <div class="dropdown-menu">
-                                <button onclick="agregarEditarUsuarios(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar</button>
-                                <button onclick="eliminarUsuario(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>  
+                                <button onclick="agregarEditarUsuarios(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
+                                <button onclick="eliminarUsuario(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
                             </div>
                           </div>
                                 </td>

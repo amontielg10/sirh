@@ -136,6 +136,10 @@ function agregarEditarByDb() {
     );
 }
 
+function ocultarModal(){
+    $("#agregar_editar_modal").modal("hide");
+}
+
 function eliminarEntity(id_object) {
     if( validarAccion()){
     Swal.fire({

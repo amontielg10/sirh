@@ -6,13 +6,13 @@ class modelPlazasHraes
     {
         $result = "
             ORDER BY id_tbl_control_plazas_hraes DESC
-            LIMIT 10 OFFSET $paginator;";
+            LIMIT 7 OFFSET $paginator;";
 
         if ($id_tbl_centro_trabajo_hraes != null){
             $result = "
                 WHERE tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes = $id_tbl_centro_trabajo_hraes
                 ORDER BY tbl_control_plazas_hraes.id_tbl_control_plazas_hraes DESC
-                LIMIT 10 OFFSET $paginator;";
+                LIMIT 7 OFFSET $paginator;";
         }
 
         $listado = "SELECT tbl_control_plazas_hraes.id_tbl_control_plazas_hraes,
@@ -43,7 +43,7 @@ class modelPlazasHraes
                     OR TRIM(UPPER(UNACCENT(cat_unidad_responsable.nombre)))
                             LIKE '%$busqueda%')
                     ORDER BY id_tbl_control_plazas_hraes DESC
-                    LIMIT 10 OFFSET $paginator;";
+                    LIMIT 7 OFFSET $paginator;";
         $condition = "";
         if($id_tbl_centro_trabajo_hraes != null){
             $condition = "WHERE tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes = 
@@ -112,7 +112,7 @@ class modelPlazasHraes
                             ON tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
                                 tbl_empleados_hraes.id_tbl_empleados_hraes
                             WHERE tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes = $id_object
-                            LIMIT 5;";
+                            LIMIT 3;";
         return $listado;
     }
 

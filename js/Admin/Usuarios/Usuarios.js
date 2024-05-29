@@ -105,6 +105,9 @@ function guardarUsuario() {
     );
 }
 
+function ocultarModal(){
+    $("#agregar_editar_usuario").modal("hide");
+}
 
 function eliminarUsuario(id_object) {//ELIMINAR USUARIO
     if(validarAccion()){

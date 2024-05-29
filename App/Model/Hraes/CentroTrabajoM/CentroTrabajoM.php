@@ -13,7 +13,7 @@ class modelCentroTrabajoHraes
                     ON tbl_centro_trabajo_hraes.id_cat_entidad = 
                         cat_entidad.id_cat_entidad
                     ORDER BY tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes DESC
-                    LIMIT 10 OFFSET $paginator;";
+                    LIMIT 7 OFFSET $paginator;";
 
         return $listado;
     }
@@ -37,7 +37,7 @@ class modelCentroTrabajoHraes
                     OR TRIM(UPPER(UNACCENT(tbl_centro_trabajo_hraes.codigo_postal)))
                           LIKE '%$busqueda%'
                     ORDER BY tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes DESC
-                    LIMIT 10 OFFSET $paginator;";
+                    LIMIT 7 OFFSET $paginator;";
 
         return $listado;
     }

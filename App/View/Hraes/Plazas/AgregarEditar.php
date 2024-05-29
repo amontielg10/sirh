@@ -2,100 +2,117 @@
     aria-hidden="true" id="agregar_editar_modal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header" style="background:#235B4E">
-                <h5 class="modal-title" style="font-weight: bold;color:white"><label id="titulo_plazas"
-                        style="font-weight: bold;color:white"></label> Plaza.</h5>
-                <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <div class="modal-header background-modal">
+                <h5 class="modal-title text-modal-tittle"><label id="titulo_plazas" claa="text-modal-tittle"></label>
+                    Plaza.</h5>
             </div>
 
+            <div class="div-spacing"></div>
             <div class="card-body">
-                <div class="form-row">
+                <div class="container">
 
-                    <div class="form-group col-md-6">
-                        <label>Tipo de plaza</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example" id="id_cat_plazas" required>
-                        </select>
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="text-input-form div-spacing">Tipo de plaza</label><label
+                                class="text-required">*</label>
+                            <select class="form-control" aria-label="Default select example" id="id_cat_plazas"
+                                required>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label class="text-input-form div-spacing">Tipo de contrataci&oacuten</label><label
+                                class="text-required">*</label>
+                            <select class="form-control" aria-label="Default select example"
+                                id="id_cat_tipo_contratacion_hraes" required>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="form-group col-md-6">
-                        <label>Tipo de contrataci&oacuten</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example"
-                            id="id_cat_tipo_contratacion_hraes" required>
-                        </select>
+                    <div class="div-spacing"></div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="text-input-form div-spacing">Unidad responsable</label><label
+                                class="text-required">*</label>
+                            <select class="form-control" aria-label="Default select example"
+                                id="id_cat_unidad_responsable" required>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label class="text-input-form div-spacing">Puesto</label><label
+                                class="text-required">*</label>
+                            <select class="form-control" aria-label="Default select example" id="id_cat_puesto_hraes"
+                                required>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="form-group col-md-6">
-                        <label>Unidad responsable</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example" id="id_cat_unidad_responsable"
-                            required>
-                        </select>
+                    <div class="div-spacing"></div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="text-input-form div-spacing">Zonas tabuladores</label><label
+                                class="text-required">*</label>
+                            <select class="form-control" aria-label="Default select example"
+                                id="id_cat_zonas_tabuladores_hraes" required>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label class="text-input-form div-spacing">Niveles</label><label
+                                class="text-required">*</label>
+                            <select class="form-control" aria-label="Default select example" id="id_cat_niveles_hraes"
+                                required>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="form-group col-md-6">
-                        <label>Puesto</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example" id="id_cat_puesto_hraes"
-                            required>
-                        </select>
+                    <div class="div-spacing"></div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label class="text-input-form div-spacing">N&uacutemero de plaza</label><label
+                                class="text-required">*</label>
+                            <input minlength="7" type="number" class="form-control" id="num_plaza"
+                                placeholder="Número de plaza">
+                        </div>
+                        <div class="col-4">
+                            <label class="text-input-form div-spacing">Zona pagadora</label><label
+                                class="text-required">*</label>
+                            <select class="form-control" aria-label="Default select example" id="id_tbl_zonas_pago"
+                                required>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label class="text-input-form div-spacing">Fecha de ingreso</label><label
+                                class="text-required">*</label>
+                            <input type="date" class="form-control" id="fecha_ingreso_inst">
+                        </div>
                     </div>
 
-                    <div class="form-group col-md-6">
-                        <label>Zonas tabuladores</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example"
-                            id="id_cat_zonas_tabuladores_hraes" required>
-                        </select>
+                    <div class="div-spacing"></div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label class="text-input-form div-spacing">Fecha termino de movimiento</label><label
+                                class="text-required"></label>
+                            <input type="date" class="form-control" id="fecha_termino_movimiento">
+                        </div>
+                        <div class="col-4">
+                            <label class="text-input-form div-spacing">Fecha de modificaci&oacuten</label><label
+                                class="text-required"></label>
+                            <input type="date" class="form-control" id="fecha_modificacion">
+                        </div>
+                        <div class="col-4">
+                            <label class="text-input-form div-spacing">Fecha inicio de movimiento</label><label
+                                class="text-required"></label>
+                            <input type="date" class="form-control" id="fecha_inicio_movimiento">
+                        </div>
                     </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Niveles</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example" id="id_cat_niveles_hraes"
-                            required>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>N&uacutemero de plaza</label><label style="color:red">*</label>
-                        <input minlength="7" type="number" class="form-control" id="num_plaza"
-                            placeholder="Número de plaza">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Zona pagadora</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example" id="id_tbl_zonas_pago"
-                            required>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Fecha de ingreso</label><label style="color:red">*</label>
-                        <input type="date" class="form-control" id="fecha_ingreso_inst">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Fecha inicio de movimiento</label><label style="color:red"></label>
-                        <input type="date" class="form-control" id="fecha_inicio_movimiento">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Fecha termino de movimiento</label><label style="color:red"></label>
-                        <input type="date" class="form-control" id="fecha_termino_movimiento">
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Fecha de modificaci&oacuten</label><label style="color:red"></label>
-                        <input type="date" class="form-control" id="fecha_modificacion">
-                    </div>
-
                 </div>
             </div>
 
+            <div class="div-spacing"></div>
             <div class="modal-footer">
-                <button type="button" data-dismiss="modal" class="btn btn-light boton-con-imagen_table"><img
-                        src="../../../../assets/icons/cancelar.png" alt="Imagen del botón">Cancelar</button>
-                <button type="button" onclick="return validar();"
-                    class="btn btn-light boton-con-imagen_table color-butto-modulo"><img
-                        src="../../../../assets/icons/guardar.png" alt="Imagen del botón">Guardar</button>
+                <button onclick="ocultarModal();" type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                        class="fas fa-times"></i> Cancelar</button>
+                <button type="button" class="btn btn-success save-botton-modal" onclick="return validar();"><i
+                        class="fas fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
                 <input type="hidden" id="id_tbl_centro_trabajo_hraes_aux">
             </div>
