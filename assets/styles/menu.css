@@ -1,0 +1,92 @@
+.nav-color-green-dad {
+    background: #10312B;
+    height: 60px;
+}
+
+.nav-color-green-son {
+    background: #235B4E;
+    height: 50px;
+}
+
+.nav-text-tittle {
+    font-family: 'Montserrat Light';
+    height: 45px;
+    color: #ffffff;
+}
+
+.bg-image {
+    background-image: url('../sirh/fondo.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #BC955C;
+}
+
+.botton-active:active {
+    color: #BC955C; 
+}
+
+.nav-tittle {
+    margin-right: 1%;
+    color: white;
+    font-family: 'Montserrat Light';
+}
+
+.navbar-header {
+    flex-grow: 1;
+}
+
+.wider-image {
+    width: 170px;
+    height: auto;
+}
+
+.wider-image-index {
+    width: 75%;
+    height: auto;
+    margin: auto;
+}
+
+.nav-padding {
+    padding: .10rem 4rem;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: .5rem;
+    padding-bottom: .0rem;
+}
+
+hr {
+    background-color: transparent !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.button-color-index {
+    background: #386B5F;
+    font-family: 'Montserrat Light';
+}
+
+.tittle-card-index {
+    font-weight: bold;
+    font-family: "Arial";
+
+}
+
+.linea-horizontal {
+    width: 10%;
+    height: 8px;
+    background: linear-gradient(to right, #BC955C 33%, transparent 33%, transparent 100%);
+}
+
+.icono-grande-tabla {
+    font-size: 23px; 
+    color:#9F2241;
+}

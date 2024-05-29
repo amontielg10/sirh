@@ -1,3 +1,13 @@
+<?php include '../../../../conexion.php'; ?>
+<?php include 'validar_sesion.php'; ?>
+
+<?php
+$id_user = $_SESSION['id_user'];
+$nick = $_SESSION['nick'];
+$nombre = $_SESSION['nombre'];
+$id_rol = $_SESSION['id_rol'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,98 +15,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIRH</title>
-    <link rel="stylesheet" href="../../../../assets/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../../assets/styles/menu.css">
+    <script src="../../../../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="../../../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
 
-    <style>
-        .nav-color-green-dad {
-            background: #10312B;
-            height: 60px;
-        }
-
-        .nav-color-green-son {
-            background: #235B4E;
-            height: 50px;
-        }
-
-        .nav-text-tittle {
-            font-family: 'Montserrat Light';
-            height: 45px;
-            color: #DDC9A3;
-        }
-
-        .bg-image {
-            background-image: url('../../../../assets/sirh/fondo.png');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-        }
-
-        .navbar-nav .nav-link:hover {
-            color: #BC955C;
-        }
-
-        .nav-tittle {
-            margin-right: 1%;
-            color: white;
-            font-family: 'Montserrat Light';
-        }
-
-        .navbar-header {
-            flex-grow: 1;
-        }
-
-        .wider-image {
-            width: 170px;
-            height: auto;
-        }
-
-        .wider-image-index {
-            width: 75%;
-            height: auto;
-            margin: auto;
-        }
-
-        .nav-padding {
-            padding: .10rem 4rem;
-        }
-
-        .navbar {
-            position: relative;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: .5rem;
-            padding-bottom: .0rem;
-        }
-
-        hr {
-            background-color: transparent !important;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .button-color-index {
-            background: #386B5F;
-            font-family: 'Montserrat Light';
-        }
-
-        .tittle-card-index {
-            font-weight: bold;
-            font-family: "Arial";
-
-        }
-
-        .linea-horizontal {
-            width: 10%;
-            height: 8px;
-            background: linear-gradient(to right, #BC955C 33%, transparent 33%, transparent 100%);
-        }
-    </style>
-
-    <script src="../../../../assets/dist/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body>  
 
     <nav class="navbar bg-light">
         <div class="container-fluid nav-color-green-dad mb-0 nav-padding">
@@ -111,7 +41,7 @@
 
     <nav class="navbar navbar-expand-lg nav-color-green-son mt-0">
         <div class="container-fluid nav-color-green-son mt-0 nav-padding">
-            <a class="navbar-brand nav-text-tittle" href="#">Inicio</a>
+            <a class="navbar-brand nav-text-tittle " href="../../System/home/index.php">Inicio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -119,78 +49,106 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll nav-text-tittle"
                     style="--bs-scroll-height: 100px;">
-                    <li class="nav-item">
-                        <a class="nav-link active nav-text-tittle" aria-current="page" href="#">Menu 1</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-text-tittle" href="#">Menu 2</a>
-                    </li>
+
+                    <!-- PERFIL -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Sub-menu
+                            Mi perfil
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Sub-menu 1</a></li>
-                            <li><a class="dropdown-item" href="#">Sub-menu 2</a></li>
+                            <li><a class="dropdown-item" href="#">Mi informaci&oacuten</a></li>
+                            <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Sub-menu 3</a></li>
+                            <li><a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Salir</a>
+                            </li>
                         </ul>
                     </li>
+                    <!-- PERFIL -->
+
+                    <!-- ADMIN -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Administraci&oacuten
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../../Admin/Usuarios/index.php">Usuarios</a></li>
+                        </ul>
+                    </li>
+                    <!-- ADMIN -->
+
+                    <!-- CENTRAL -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Nom. Central
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Centros trabajo</a></li>
+                            <li><a class="dropdown-item" href="#">Empleados</a></li>
+                            <li><a class="dropdown-item" href="#">Plazas</a></li>
+                        </ul>
+                    </li>
+                    <!-- CENTRAL -->
+
+                    <!-- HRAES -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Nom. Hraes
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Centros trabajo</a></li>
+                            <li><a class="dropdown-item" href="#">Empleados</a></li>
+                            <li><a class="dropdown-item" href="#">Plazas</a></li>
+                        </ul>
+                    </li>
+                    <!-- HRAES -->
+
+                    <!-- FEDERALIZADA -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Nom. Federalizada
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Centros trabajo</a></li>
+                            <li><a class="dropdown-item" href="#">Empleados</a></li>
+                            <li><a class="dropdown-item" href="#">Plazas</a></li>
+                        </ul>
+                    </li>
+                    <!-- FEDERALIZADA -->
+
                 </ul>
             </div>
         </div>
     </nav>
 
-
-    <div class="container-fluid bg-image nav-padding">
-        <br>
-        <div class="card border-light">
-            <div class="card-body">
-                <h6>Inicio > titulo 1 > subtitulo 2</h6>
-            </div>
-        </div>
-        <br>
-
-        <div class="card border-light">
-            <div class="card-body">
-                <h3 class="card-title tittle-card-index">SISTEMA INTEGRAL DE RECURSOS HUMANOS</h3>
-                <div class="linea-horizontal"></div>
-                <hr>
-
-                <div class="text-center">
-                    <img src="../../../../assets/images/bnn_imssbienestar.jpg" width="30" height="24"
-                        class="d-inline-block align-text-top wider-image-index">
+    <!-- MODAL SALIR-->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background:#235B4E">
+                    <h4 style="color:white" class="modal-title" id="exampleModalLongTitle">Confirmar cierre de
+                        ses&oacuten</h4>
+                    <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-
-                <hr>
-                <div class="text-center">
-                    <button type="button" class="btn btn-success btn-lg button-color-index">Accion 1</button>
-                    <button type="button" class="btn btn-success btn-lg button-color-index">Accion 2</button>
-                    <button type="button" class="btn btn-success btn-lg button-color-index">Accion 3</button>
+                <div class="modal-footer">
+                    <a href="../../salir.php" style="color:  #235B4E;" class="btn btn-light"><i class=""></i>
+                        <span class="hide-menu" style="font-weight: bold;">&nbsp;Salir</span>
+                    </a>
                 </div>
             </div>
         </div>
-
-        <br>
-        <div class="card border-light">
-            <div class="card-body">
-                <h6 class="tittle-card-index">¿Qué es?</h6>
-                <div class="linea-horizontal"></div>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi distinctio accusantium asperiores
-                    error non, aut, beatae perspiciatis amet voluptatum voluptatibus autem, quia cumque fuga iste
-                    voluptate adipisci nisi quae aliquid.</p>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam debitis esse nulla doloribus
-                    doloremque iusto error laboriosam laborum labore ipsa amet nostrum possimus alias perferendis
-                    numquam, consequuntur temporibus tempore culpa?</p>
-            </div>
-        </div>
-
     </div>
 
-
+    <!-- MODAL SALIR-->
 
 </body>
 

@@ -14,13 +14,13 @@ if (isset($_POST['busqueda'])) {
 }
 
 $data =
-    '<table class="table table-striped" id="tabla_usuarios" style="width:100%">
+    '<table class="table" id="tabla_usuarios" style="width:100%">
     <thead>
-        <tr style="background-color:#235B4E;">
-            <th style="color: white; width: 50px">Acciones</th>
-            <th style="color: white;">Nick</th>
-            <th style="color: white;">Nombre</th>
-            <th style="color: white;">Rol</th>
+        <tr">
+            <th>Acciones</th>
+            <th>Nick</th>
+            <th>Nombre</th>
+            <th>Rol</th>
         </tr>
     </thead>';
 
@@ -34,7 +34,7 @@ if (pg_num_rows($result) > 0) {
                         <tr>
                             <td>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit icono-grande-tabla"></i></button>
                             <div class="dropdown-menu">
                                 <button onclick="agregarEditarUsuarios(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit"></i> Modificar</button>
                                 <button onclick="eliminarUsuario(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt"></i> Eliminar</button>  
@@ -55,7 +55,7 @@ if (pg_num_rows($result) > 0) {
                 </table>';
     }
 } else {
-    $data .= '<h6>Sin resultados</h6>';
+    $data .= '<h6>Sin resultados.</h6>';
 }
 
 echo $data;

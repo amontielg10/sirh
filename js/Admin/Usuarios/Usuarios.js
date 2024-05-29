@@ -168,3 +168,5 @@ function clearElement(value){
 function lengthValue(value){
     return value.length;
 }
+
+
