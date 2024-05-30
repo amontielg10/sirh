@@ -132,9 +132,6 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
 }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    tippy('#agregar_empleado', {
-        content: 'Agregar empleado.',
-        theme: 'green',
-    });
-});
+function ocultarModal(){
+    $("#agregar_editar_modal").modal("hide");
+}

@@ -13,8 +13,7 @@
 
                     <div class="row">
                         <div class="col-8">
-                            <label class="text-input-form div-spacing">Nombre</label><label
-                                class="text-required">*</label>
+                            <label class="text-input-form div-spacing">Nombre</label><label class="text-required">*</label>
                             <input maxlength="30" type="text" class="form-control div-spacing" id="nombre" name="nombre"
                                 placeholder="Nombre" required>
                         </div>

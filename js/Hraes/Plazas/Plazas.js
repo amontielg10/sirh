@@ -140,6 +140,10 @@ function ocultarModal(){
     $("#agregar_editar_modal").modal("hide");
 }
 
+function ocultarModalDetalles(){
+    $("#mostar_detalles_modal").modal("hide");
+}
+
 function eliminarEntity(id_object) {
     if( validarAccion()){
     Swal.fire({
@@ -233,16 +237,13 @@ function detallesEntity(id_tbl_control_plazas_hraes){
 
 
 function listarTablaHistori(id_tbl_control_plazas_hraes){
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Plazas/tablaHistoria.php',
-        data: { 
-            id_tbl_control_plazas_hraes: id_tbl_control_plazas_hraes,
-        },
-        success: function (data) {
-            $('#tabla_historia_plaza_empleado').html(data);
+    $.post("../../../../App/View/Hraes/Plazas/tablaHistoria.php", {
+        id_tbl_control_plazas_hraes: id_tbl_control_plazas_hraes,
+    },
+        function (data) {
+            $('#tabla_historia_plaza_empleado_ix').html(data);
         }
-    });
+    );
 }
 
 function concatNombre(nombre, primerApellido, segundoApellido){
@@ -252,10 +253,3 @@ function concatNombre(nombre, primerApellido, segundoApellido){
         return 'Sin registro.';
     }
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    tippy('#agregar_plaza', {
-        content: 'Agregar plaza.',
-        theme: 'green',
-    });
-});

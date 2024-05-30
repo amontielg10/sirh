@@ -45,7 +45,7 @@
 
             <div class="row">
                 <div class="col">
-                    <div class="" style=" float: right;">
+                    <div class="table-right">
                         <button onclick="anteriorValor()" class="btn btn-light"><i class="fa fa-angle-double-left"></i>
                             <span class="hide-menu" style="font-weight: bold;"></span>
                         </button>

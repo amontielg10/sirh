@@ -1,5 +1,86 @@
+<?php include '../../nav-menu.php' ?>
+<div class="container-fluid bg-image nav-padding">
+    <br>
+    <div class="card border-light">
+        <div class="card-body">
+            <h4><span><i class="fa fa-chevron-right"></i></span> Hospital Regional de Alta Especialidad</h4>
+        </div>
+    </div>
+    <br>
+
+    <div class="card border-light">
+        <div class="card-body">
+            <div class="row div-spacing">
+                <div class="col-9">
+                    <h3 class="card-title tittle-card-index">Empleados</h3>
+                    <div class="linea-horizontal"></div>
+                </div>
+                <div class="col-3 search-container">
+                    <input onkeyup="buscarEmpleado();" id="buscar" type="text" placeholder="Buscar..."
+                        class="form-control mr-sm-2 search-input">
+                    <span class="search-icon"><i class="fas fa-search"></i></span>
+                </div>
+            </div>
+
+            <div class="row div-spacing">
+                <div class="col-9">
+                    <div class="form-inline">
+                        <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i
+                                class="fa fa-plus icon-size-add"></i>
+                            <span class="hide-menu text-button-add">&nbsp;Agregar empleado</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <div class="text-center">
+                        <table class="table table-bordered" id="tabla_empleados" style="width:100%">
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="table-right">
+                        <button onclick="anteriorValor()" class="btn btn-light"><i class="fa fa-angle-double-left"></i>
+                            <span class="hide-menu" style="font-weight: bold;"></span>
+                        </button>
+                        <label id="idEmpleadotable">1</label>
+                        <button onclick="siguienteValor()" class="btn btn-light"><i
+                                class="fa fa-angle-double-right"></i>
+                            <span class="hide-menu" style="font-weight: bold;"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="../../../../js/Hraes/Empleados/Empleados.js"></script>
+<script src="../../../../js/Hraes/Empleados/validar.js"></script>
+<script src="../../../../js/Hraes/Empleados/Busqueda.js"></script>
+<?php include '../../Librerias.php' ?>
+<?php include 'AgregarEditar.php' ?>
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <body>
-    <?php include '../../nav-menu.php' ?>
+    <?php //include '../../nav-menu.php' ?>
 
     <div id="main-wrapper">
         <div class="page-wrapper">
@@ -54,31 +135,7 @@
                         </div>
 
 
-                        <!--
-                        <div class="col-3">
-                            <div class="form-inline">
-                                <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i
-                                        class="fa fa-user-plus"></i>
-                                    <span class="hide-menu" style="font-weight: bold;">&nbsp;Agregar empleado</span>
-                                </button>
-                            </div>
-                        </div>
 
-
-
-                        <div class="col-3">
-                            <div class="form-inline">
-                                <button class=" btn btn-light boton-con-imagen" id="a1gregar12">
-                                    <img src="../../../../assets/icons/hospital.gif" alt="Imagen del botón">
-                                </button>
-                            </div>
-                        </div>
--->
-
-                        <!--
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." id="buscar"
-                        onkeyup="buscarEmpleado();" aria-label="Search">
-                    -->
 
 
                     </div>
@@ -103,12 +160,8 @@
             </div>
         </div>
 
-        <?php include ('Librerias.php') ?>
-        <?php include ('../../footer-librerias.php') ?>
+        <?php // include ('Librerias.php') ?>
+        <?php // include ('../../footer-librerias.php') ?>
     </div>
 </body>
-
-<script>
-
-
-</script>
+-->

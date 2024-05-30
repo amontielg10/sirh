@@ -5,8 +5,103 @@ if ($id_tbl_empleados_hraes == null) {
 }
 ?>
 
+<?php include '../../nav-menu.php' ?>
+<div class="container-fluid bg-image nav-padding">
+    <br>
+    <input type="hidden" id="id_tbl_empleados_hraes" value="<?php echo $id_tbl_empleados_hraes ?>" />
+    <div class="card border-light">
+        <div class="card-body">
+            <h4><span><i class="fa fa-chevron-right"></i></span> Hospital Regional de Alta Especialidad</h4>
+            <div class="linea-horizontal"></div>
+            <div class="div-spacing"></div>
+            <h6 class="icon-detail"><i class="fa fa-info-circle"></i>
+                Datos de empleado seleccionado.
+            </h6>
+
+            <div class="row">
+                <div class="col-6">
+                    <h6 class="text-input-form-bold  div-spacing">Nombre de empleado: <label id="nombreResult"></label>
+                    </h6>
+                </div>
+                <div class="col-6">
+                    <h6 class="text-input-form-bold  div-spacing">N&uacutem. Empleado: <label
+                            id="numEmpleadoResult"></label>
+                    </h6>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-6">
+                    <h6 class="text-input-form-bold  div-spacing">Rfc: <label id="rfcResult"></label>
+                    </h6>
+                </div>
+
+                <div class="col-6">
+                    <h6 class="text-input-form-bold  div-spacing">Curp: <label id="curpResult"></label>
+                    </h6>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="card border-light">
+
+        <div class="card-body">
+            <div class="row div-spacing">
+                <div class="col-12">
+                    <h3 class="card-title tittle-card-index">Datos complementarios</h3>
+
+                    <nav>
+                        <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                                role="tab" aria-controls="nav-home" aria-selected="true">Titulo 1</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                                role="tab" aria-controls="nav-profile" aria-selected="false">Titulo 2</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
+                                role="tab" aria-controls="nav-contact" aria-selected="false">titulo 3</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                            aria-labelledby="nav-home-tab">
+                            <hr>
+                            <h5 class="card-title tittle-card-index">TITULO 1</h5>
+                            <div class="linea-horizontal"></div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <hr>
+                            <h5 class="card-title tittle-card-index">TITULO 2</h5>
+                            <div class="linea-horizontal"></div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <hr>
+                            <h5 class="card-title tittle-card-index">TITULO 3</h5>
+                            <div class="linea-horizontal"></div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php include 'librerias.php' ?>
+    <script src="../../../../assets/js/bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            buscarInfoEmpleado(id_tbl_empleados_hraes);
+            iniciarPersonalBancario();
+        });
+    </script>
+
+    <!--
 <body>
-    <?php include '../../nav-menu.php' ?>
+    <?php //include '../../nav-menu.php' ?>
     <div id="main-wrapper">
         <div class="page-wrapper">
             <div class="container-fluid bg-image">
@@ -33,13 +128,9 @@ if ($id_tbl_empleados_hraes == null) {
                         </div>
                     </div>
 
-                    <!--
-                <a type="button" href="../Empleados/index.php" class="btn btn-light" style="color:#235B4E"
-                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-arrow-alt-circle-left"></i></a>
--->
                 </div>
 
-                <input type="hidden" id="id_tbl_empleados_hraes" value="<?php echo $id_tbl_empleados_hraes ?>" />
+                <input type="hidden" id="id_tbl_empleados_hraes" value="<?php //echo $id_tbl_empleados_hraes ?>" />
 
                 <div class="card-body">
 
@@ -65,141 +156,114 @@ if ($id_tbl_empleados_hraes == null) {
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="">
 
-                            <!-- DATOS PERSONALES -->
+                            
                             <button class="nav-link active btn btn-light boton-con-imagen" id="button_datos_personales"
                                 data-bs-toggle="tab" data-bs-target="#nav_personal_bancario" type="button" role="tab"
                                 aria-controls="nav-home" onclick="iniciarPersonalBancario();" aria-selected="true">
                                 <img src="../../../../assets/icons/Modulos/empleado.png">
                             </button>
 
-                            <!-- MEDIOS DE CONTACTO -->
+                            
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_medios_contacto"
                                 data-bs-toggle="tab" data-bs-target="#nav_medios_contacto" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarMediosContacto();" aria-selected="false"">
                                 <img src="../../../../assets/icons/Modulos/medios_contacto.png">
                             </button>
-                            <!-- MEDIOS DE CONTACTO -->
-
-                            <!-- ESCOLARIDAD -->
+                            
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_escolaridad"
                                 data-bs-toggle="tab" data-bs-target="#nav_escolaridad" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarEscolaridad();" aria-selected="false"">
                                 <img src="../../../../assets/icons/Modulos/escolaridad.png">
                             </button>
 
-                            <!-- MOVIMIENTO -->
+                            
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_movimientos"
                                 data-bs-toggle="tab" data-bs-target="#nav_movimientos" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarMovimiento();" aria-selected="false"">
                                 <img src=" ../../../../assets/icons/Modulos/movimientos.png">
                             </button>
-                            <!-- MOVIMIENTO -->
+                            
 
-                            <!-- INCIDENCIAS -->
+                            
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_retardos"
                                 data-bs-toggle="tab" data-bs-target="#nav_incidencias" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarIncidencias();" aria-selected="false"">
                                 <img src=" ../../../../assets/icons/Modulos/incidencias.png">
                             </button>
-                            <!-- INCIDENCIAS -->
-
-                            <!-- PERCEPCIONES -->
+                            
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_percepciones"
                                 data-bs-toggle="tab" data-bs-target="#nav_percepciones" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarPercepciones();" aria-selected="false"">
                                 <img src=" ../../../../assets/icons/Modulos/percepciones.png">
                             </button>
-                            <!-- PERCEPCIONES -->
-
-                            <!-- DEDUCCIONES -->
+                            
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_deducciones"
                                 data-bs-toggle="tab" data-bs-target="#nav_percepciones" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarPercepciones();" aria-selected="false"">
                                 <img src=" ../../../../assets/icons/Modulos/deducciones.png">
                             </button>
-                            <!-- DEDUCCIONES -->
-
-                            <!-- PROGRAMAS PARA EL EMPLEADO -->
-                            <!--
+                            
                             <button class="nav-link btn btn-light boton-con-imagen" id="button_programas"
                                 data-bs-toggle="tab" data-bs-target="#nav_programas" type="button" role="tab"
                                 aria-controls="nav-clabe" onclick="iniciarProgramas();" aria-selected="false"">
                                 <img src=" ../../../../assets/icons/programas.png">
                             </button>
--->
-                            <!-- PROGRAMAS PARA EL EMPLEADO -->
+
 
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
 
-                        <!-- MOVIMIENTOS -->
+                        
                         <div class="tab-pane fade show active" id="nav_personal_bancario" role="tabpanel"
                             aria-labelledby="nav-home-tab" tabindex="0">
-                            <?php include 'PersonalBancarioM/index.php' ?>
+                            <?php //include 'PersonalBancarioM/index.php' ?>
                         </div>
 
-                        <!--
+                       
                     <div class="tab-pane fade" id="nav_personal_bancario" role="tabpanel"
                         aria-labelledby="nav-contact-tab" tabindex="0">
                         <?php //include //'PersonalBancarioM/index.php' ?>
                     </div>
--->
 
-                        <!-- MOVIMIENTOS -->
-
-                        <!-- INFORMACION PERSONAL Y BANCARIA -->
                         <div class="tab-pane fade" id="nav_escolaridad" role="tabpanel"
                             aria-labelledby="nav-contact-tab" tabindex="0">
-                            <?php include 'EscolaridadM/index.php' ?>
+                            <?php //include 'EscolaridadM/index.php' ?>
                         </div>
 
-                        <!--
+                        
                     <div class="tab-pane fade show active" id="nav_escolaridad" role="tabpanel"
                         aria-labelledby="nav-home-tab" tabindex="0">
                         <?php //include 'EscolaridadM/index.php' ?>
                     </div>
--->
-                        <!-- INFORMACION PERSONAL Y BANCARIA -->
 
-
-                        <!-- MEDIOS DE CONTACTO -->
                         <div class="tab-pane fade" id="nav_medios_contacto" role="tabpanel"
                             aria-labelledby="nav-contact-tab" tabindex="0">
-                            <?php include 'MediosContactoM/index.php' ?>
+                            <?php //include 'MediosContactoM/index.php' ?>
                         </div>
-                        <!-- MEDIOS DE CONTACTO -->
-
-                        <!-- MOVIMIENTOS -->
+                        
                         <div class="tab-pane fade" id="nav_movimientos" role="tabpanel"
                             aria-labelledby="nav-contact-tab" tabindex="0">
-                            <?php include 'MovimientosM/index.php' ?>
+                            <?php //include 'MovimientosM/index.php' ?>
                         </div>
-                        <!-- MOVIMIENTOS -->
-
-
-                        <!-- PROGRAMAS PARA EL EMPLEADO -->
+                        
                         <div class="tab-pane fade" id="nav_programas" role="tabpanel" aria-labelledby="nav-contact-tab"
                             tabindex="0">
-                            <?php include 'ProgramasM/index.php' ?>
+                            <?php //include 'ProgramasM/index.php' ?>
                         </div>
-                        <!-- PROGRAMAS PARA EL EMPLEADO -->
-
-                        <!-- INCIDENCIAS -->
+                        
                         <div class="tab-pane fade" id="nav_incidencias" role="tabpanel"
                             aria-labelledby="nav-contact-tab" tabindex="0">
-                            <?php include 'IncidenciasM/index.php' ?>
+                            <?php //include 'IncidenciasM/index.php' ?>
                         </div>
-                        <!-- INCIDENCIAS -->
-
-                        <!-- INCIDENCIAS -->
+                       
                         <div class="tab-pane fade" id="nav_percepciones" role="tabpanel"
                             aria-labelledby="nav-contact-tab" tabindex="0">
-                            <?php include 'PercepcionesM/index.php' ?>
+                            <?php //include 'PercepcionesM/index.php' ?>
                         </div>
-                        <!-- INCIDENCIAS -->
+                        
 
-                        <!--
+                       
                     <div class="tab-pane fade show active" id="nav-empleado" role="tabpanel"
                         aria-labelledby="nav-home-tab" tabindex="0"><?php //include 'Adicional/index.php' ?></div>
                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
@@ -257,7 +321,7 @@ if ($id_tbl_empleados_hraes == null) {
                         tabindex="0">
                         <?php //include 'Correo/index.php' ?>
                     </div>
--->
+
                     </div>
                 </div>
 
@@ -273,8 +337,8 @@ if ($id_tbl_empleados_hraes == null) {
             integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
             crossorigin="anonymous"></script>
 
-        <?php include 'librerias.php' ?>
-        <?php include ('../../footer-librerias.php') ?>
+        <?php //include 'librerias.php' ?>
+        <?php //include ('../../footer-librerias.php') ?>
 
 </body>
 
@@ -285,3 +349,5 @@ if ($id_tbl_empleados_hraes == null) {
         iniciarPersonalBancario();
     });
 </script>
+
+-->

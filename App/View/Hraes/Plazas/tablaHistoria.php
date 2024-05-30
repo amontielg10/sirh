@@ -8,14 +8,12 @@ $id_tbl_plazas_empleados_hraes = $_POST['id_tbl_control_plazas_hraes'];
 $query = $listado->listarHistoria($id_tbl_plazas_empleados_hraes); //INICIO DE LA TABLA CON LA INFORMACION
 
 $data =
-    '<table class="table table-striped" id="tabla_historia_plaza_empleado" style="width:100%">
+    '<table class="table table-bordered" id="tabla_historia_plaza_empleado_ix" style="width:100%">
     <thead>
-        <tr style="background-color:#BC955C;">
-            <th style="color: white;font-size: 14px">Rfc de empleado</th>
-            <th style="color: white;font-size: 14px">Movimiento</th>
-            <th style="color: white;font-size: 14px">Fecha inicio</th>
-            <th style="color: white;font-size: 14px">Fecha termino</th>
-            <th style="color: white;font-size: 14px">Fecha movimiento</th>
+        <tr>
+            <th>Rfc de empleado</th>
+            <th>Movimiento</th>
+            <th>Fecha movimiento</th>
         </tr>
     </thead>';
 
@@ -34,18 +32,14 @@ if (pg_num_rows($result) > 0) {
                                 ' . $row[1] . '
                             </td>
                             <td style="font-size: 14px">
-                                ' . $row[2] . '
-                            </td>
-                            <td style="font-size: 14px">
-                                ' . $row[3] . '
-                            </td>
-                            <td style="font-size: 14px">
                                 ' . $row[4] . '
                             </td>
                         </tr>
                     </tbody>
                 </table>';
     }
+} else {
+    $data .= '<h6>Sin resultados</h6>';
 }
 
 echo $data;

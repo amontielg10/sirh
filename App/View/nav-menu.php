@@ -34,7 +34,7 @@ $id_rol = $_SESSION['id_rol'];
 
     <nav class="navbar bg-light">
         <div class="container-fluid nav-color-green-dad mb-0 nav-padding">
-            <a class="navbar-brand navbar-header" href="#">
+            <a class="navbar-brand navbar-header" href="../../System/home/index.php">
                 <img src="../../../../assets/images/imss_bienestar.png" width="30" height="24"
                     class="d-inline-block align-text-top wider-image">
             </a>
@@ -45,7 +45,7 @@ $id_rol = $_SESSION['id_rol'];
 
     <nav class="navbar navbar-expand-lg nav-color-green-son mt-0">
         <div class="container-fluid nav-color-green-son mt-0 nav-padding">
-            <a class="navbar-brand nav-text-tittle " href="../../System/home/index.php">Inicio</a>
+            <a class="navbar-brand nav-text-tittle custom-link" href="../../System/home/index.php">Inicio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -62,11 +62,10 @@ $id_rol = $_SESSION['id_rol'];
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Mi informaci&oacuten</a></li>
-                            <li><a class="dropdown-item" href="#">Cambiar contraseña</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Salir</a>
+                            <li><button  class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Salir</button >
                             </li>
                         </ul>
                     </li>
@@ -74,63 +73,64 @@ $id_rol = $_SESSION['id_rol'];
 
                     <!-- ADMIN -->
                     <?php if ($id_rol == 1) { ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Administraci&oacuten
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../../Admin/Usuarios/index.php">Usuarios</a></li>
-                        </ul>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Administraci&oacuten
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../../Admin/Usuarios/index.php">Usuarios</a></li>
+                            </ul>
+                        </li>
                     <?php } ?>
                     <!-- ADMIN -->
 
                     <!-- CENTRAL -->
                     <?php if ($id_rol == 1 || $id_rol == 2) { ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Nom. Central
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Centro de trabajo</a></li>
-                            <li><a class="dropdown-item" href="#">Empleados</a></li>
-                            <li><a class="dropdown-item" href="#">Plazas</a></li>
-                        </ul>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Nom. Central
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Centro de trabajo</a></li>
+                                <li><a class="dropdown-item" href="#">Empleados</a></li>
+                                <li><a class="dropdown-item" href="#">Plazas</a></li>
+                            </ul>
+                        </li>
                     <?php } ?>
                     <!-- CENTRAL -->
 
                     <!-- HRAES -->
                     <?php if ($id_rol == 1 || $id_rol == 3) { ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Nom. Hraes
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../../Hraes/CentroTrabajo/index.php">Centro de trabajo</a></li>
-                            <li><a class="dropdown-item" href="#">Empleados</a></li>
-                            <li><a class="dropdown-item" href="../../Hraes/Plazas/index.php">Plazas</a></li>
-                        </ul>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Nom. Hraes
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../../Hraes/CentroTrabajo/index.php">Centro de
+                                        trabajo</a></li>
+                                <li><a class="dropdown-item" href="../../Hraes/Empleados/index.php">Empleados</a></li>
+                                <li><a class="dropdown-item" href="../../Hraes/Plazas/index.php">Plazas</a></li>
+                            </ul>
+                        </li>
                     <?php } ?>
                     <!-- HRAES -->
 
                     <!-- FEDERALIZADA -->
                     <?php if ($id_rol == 1 || $id_rol == 4) { ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Nom. Federalizada
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Centros trabajo</a></li>
-                            <li><a class="dropdown-item" href="#">Empleados</a></li>
-                            <li><a class="dropdown-item" href="#">Plazas</a></li>
-                        </ul>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Nom. Federalizada
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Centros trabajo</a></li>
+                                <li><a class="dropdown-item" href="#">Empleados</a></li>
+                                <li><a class="dropdown-item" href="#">Plazas</a></li>
+                            </ul>
+                        </li>
                     <?php } ?>
                     <!-- FEDERALIZADA -->
 
@@ -147,9 +147,6 @@ $id_rol = $_SESSION['id_rol'];
                 <div class="modal-header" style="background:#235B4E">
                     <h4 style="color:white" class="modal-title" id="exampleModalLongTitle">Confirmar cierre de
                         ses&oacuten</h4>
-                    <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
                 <div class="modal-footer">
                     <a href="../../salir.php" style="color:  #235B4E;" class="btn btn-light"><i class=""></i>

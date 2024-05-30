@@ -1,6 +1,6 @@
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true" id="agregar_editar_modal">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header background-modal">
                 <h5 class="modal-title text-modal-tittle"><label id="titulo_plazas" claa="text-modal-tittle"></label>
