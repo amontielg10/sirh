@@ -3,7 +3,16 @@
     <br>
     <div class="card border-light shadow-lg">
         <div class="card-body">
-            <h4><span><i class="fa fa-chevron-right"></i></span> Hospital Regional de Alta Especialidad</h4>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-auto">
+                        <div class="vertical-line"></div>
+                    </div>
+                    <div class="col">
+                        <h4>Hospital Regional de Alta Especialidad</h4>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <br>

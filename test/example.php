@@ -1,21 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Montserrat con Merriweather</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <title>Línea Vertical con Bootstrap</title>
+  <!-- Enlace a Bootstrap CSS desde CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Merriweather', serif;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Montserrat', sans-serif;
+    .vertical-line {
+      border-left: 2px solid black; /* Anchura y color de la línea */
+      height: 200px; /* Altura de la línea */
     }
   </style>
 </head>
 <body>
-  <h1>Encabezado con Montserrat</h1>
-  <p>Texto de párrafo con Merriweather</p>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-auto">
+        <div class="vertical-line"></div>
+      </div>
+      <div class="col">
+        <h1>Ejemplo de Bootstrap</h1>
+        <p>Este es un ejemplo de una línea vertical ajustada en tamaño y ubicada a la izquierda.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Incluir los scripts de Bootstrap al final del cuerpo del documento -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
