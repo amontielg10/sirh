@@ -1,52 +1,51 @@
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true" id="agregar_editar_telefono">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header" style="background: #235B4E">
-                <h5 class="modal-title" style="font-weight: bold;color:white"><label id="titulo_fijo"
-                        style="font-weight: bold;color:white"></label> n&uacutemero telef&oacutenico</h5>
-                <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close"
-                    onclick="salirAgregarEditarTelefono();">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <div class="modal-header background-modal">
+                <h5 class="modal-title text-modal-tittle"><label id="titulo_fijo" class="text-modal-tittle"></label>
+                    n&uacutemero telef&oacutenico</h5>
             </div>
 
-            <div class="alert alert-warning" role="alert">
-            <i class="fas fa-exclamation-circle"></i> Solo un n&uacutemero telef&oacutenico puede estar activo
+            <div class="alert alert-warning text-input-rem" role="alert">
+                <i class="fas fa-exclamation-circle"></i> Solo un n&uacutemero telef&oacutenico puede estar activo
             </div>
-
 
             <div class="card-body">
-                <div class="form-row">
-
-                    <div class="form-group col-md-6">
-                        <label>N&uacutemero telef&oacutenico</label><label style="color:red">*</label>
-                        <input type="number" class="form-control" id="movil" placeholder="Número telefónico"
-                            maxlength="10">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="text-input-form text-input-rem">N&uacutemero telef&oacutenico</label><label class="text-required">*</label>
+                            <input type="number" class="form-control" id="movil" placeholder="Número telefónico"
+                                maxlength="10">
+                        </div>
+                        <div class="col-6">
+                            <label class="text-input-form text-input-rem">Estatus</label><label class="text-required">*</label>
+                            <select class="form-control" aria-label="Default select example" id="id_cat_estatus"
+                                required>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="form-group col-md-6">
-                        <label>Estatus</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example" id="id_cat_estatus" required>
-                        </select>
+                    <div class="div-spacing"></div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="text-input-form text-input-rem">Telefono fijo</label><label class="text-required"></label>
+                            <input type="number" class="form-control" id="telefono" placeholder="Telefono"
+                                maxlength="10">
+                        </div>
                     </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Telefono fijo</label><label style="color:red"></label>
-                        <input type="number" class="form-control" id="telefono" placeholder="Telefono" maxlength="10">
-                    </div>
-
                 </div>
             </div>
 
+            <div class="div-spacing"></div>
             <div class="modal-footer">
-                <button type="button" data-dismiss="modal"
-                    onclick="salirAgregarEditarTelefono();" class="btn btn-light boton-con-imagen_table"><img src="../../../../assets/icons/cancelar.png" alt="Imagen del botón">Cancelar</button> 
-                <button type="button"
-                    onclick="return validarTelefono();" class="btn btn-light boton-con-imagen_table color-butto-modulo"><img src="../../../../assets/icons/guardar.png" alt="Imagen del botón">Guardar</button>   
+                <button onclick="salirAgregarEditarTelefono();" type="button" class="btn btn-secondary"
+                    data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
+                <button type="button" class="btn btn-success save-botton-modal" onclick="return validarTelefono();"><i
+                        class="fas fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
             </div>
-
         </div>
     </div>
 </div>
