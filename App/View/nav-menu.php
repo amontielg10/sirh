@@ -23,6 +23,8 @@ $id_rol = $_SESSION['id_rol'];
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="../../../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../../../js/Mensajes/mensajes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -32,7 +34,7 @@ $id_rol = $_SESSION['id_rol'];
 
 <body>
 
-    <nav class="navbar bg-light">
+    <nav class="navbar bg-light nav-all-not-size">
         <div class="container-fluid nav-color-green-dad mb-0 nav-padding">
             <a class="navbar-brand navbar-header" href="../../System/home/index.php">
                 <img src="../../../../assets/images/imss_bienestar.png" width="30" height="24"
@@ -65,7 +67,8 @@ $id_rol = $_SESSION['id_rol'];
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><button  class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Salir</button >
+                            <li><button class="dropdown-item" data-toggle="modal"
+                                    data-target="#exampleModalCenter">Salir</button>
                             </li>
                         </ul>
                     </li>

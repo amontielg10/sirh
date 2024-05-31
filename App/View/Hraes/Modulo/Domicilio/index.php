@@ -1,10 +1,10 @@
 <?php include 'DomicilioP.php' ?>
+<!--
 <div class="modal-footer">
-    <button type="button"
-        onclick="return validarDomicilio();" class="btn btn-light boton-con-imagen_table color-butto-modulo"><img src="../../../../assets/icons/guardar.png" alt="Imagen del botón">Guardar</button>   
-    <input type="hidden" id="id_tbl_domicilios">
+    <button type="button" class="btn btn-success save-botton-modal" onclick="return validarDomicilio();"><i
+            class="fas fa-save"></i> Guardar</button>
 </div>
-
+-->
 <!--
 <br>
 <div class="card">
@@ -27,7 +27,7 @@
 
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
-                        <?php include 'DomicilioP.php' ?>
+                        <?php //include 'DomicilioP.php' ?>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                     <div class="card-body">
-                        <?php include 'DomicilioF.php' ?>
+                        <?php //include 'DomicilioF.php' ?>
                     </div>
                 </div>
             </div>

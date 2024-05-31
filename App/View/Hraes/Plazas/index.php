@@ -8,7 +8,7 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
 <div class="container-fluid bg-image nav-padding">
     <input type="hidden" id="id_tbl_centro_trabajo_hraes" value="<?php echo $id_tbl_centro_trabajo_hraes ?>" />
     <br>
-    <div class="card border-light">
+    <div class="card border-light shadow-lg">
         <div class="card-body">
             <h4><span><i class="fa fa-chevron-right"></i></span> Hospital Regional de Alta Especialidad</h4>
             <?php if ($id_tbl_centro_trabajo_hraes != null) { ?>

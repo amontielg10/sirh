@@ -6,58 +6,88 @@ if ($id_tbl_empleados_hraes == null) {
 ?>
 
 <?php include '../../nav-menu.php' ?>
-<div class="container-fluid bg-image nav-padding">
+<div class="container-fluid bg-image-module nav-padding">
     <br>
     <input type="hidden" id="id_tbl_empleados_hraes" value="<?php echo $id_tbl_empleados_hraes ?>" />
     <div class="card border-light">
         <div class="card-body">
-            <h4><span><i class="fa fa-chevron-right"></i></span> Hospital Regional de Alta Especialidad</h4>
+            <h4>DATOS COMPLEMENTARIOS</h4>
             <div class="linea-horizontal"></div>
             <div class="div-spacing"></div>
-            <h6 class="icon-detail"><i class="fa fa-info-circle"></i>
-                Datos de empleado seleccionado.
-            </h6>
 
             <div class="row">
-                <div class="col-6">
-                    <h6 class="text-input-form-bold  div-spacing">Nombre de empleado: <label id="nombreResult"></label>
+                <div class="col-4">
+                    <h6 class="text-input-form-bold  div-spacing">NOMBRE: <label class="text-result"
+                            id="nombreResult"></label>
                     </h6>
                 </div>
-                <div class="col-6">
-                    <h6 class="text-input-form-bold  div-spacing">N&uacutem. Empleado: <label
-                            id="numEmpleadoResult"></label>
+                <div class="col-4">
+                    <h6 class="text-input-form-bold  div-spacing">N&UacuteMERO DE EMPLEADO: <label
+                            id="numEmpleadoResult" class="text-result"></label>
                     </h6>
                 </div>
             </div>
 
             <div class="row">
 
-                <div class="col-6">
-                    <h6 class="text-input-form-bold  div-spacing">Rfc: <label id="rfcResult"></label>
+                <div class="col-4">
+                    <h6 class="text-input-form-bold  div-spacing">RFC: <label class="text-result"
+                            id="rfcResult"></label>
                     </h6>
                 </div>
 
-                <div class="col-6">
-                    <h6 class="text-input-form-bold  div-spacing">Curp: <label id="curpResult"></label>
+                <div class="col-4">
+                    <h6 class="text-input-form-bold  div-spacing">CURP: <label class="text-result"
+                            id="curpResult"></label>
                     </h6>
                 </div>
+            </div>
 
+
+
+
+            <div class="container mt-5">
+        <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                    aria-selected="true">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="services-tab" data-toggle="tab" href="#services" role="tab"
+                    aria-controls="services" aria-selected="false">Servicios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about"
+                    aria-selected="false">Acerca de</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                    aria-controls="contact" aria-selected="false">Contacto</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Contenido de
+                Inicio</div>
+            <div class="tab-pane fade" id="services" role="tabpanel" aria-labelledby="services-tab">Contenido de
+                Servicios</div>
+            <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">Contenido de Acerca de
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Contenido de Contacto
             </div>
         </div>
     </div>
-    <br>
 
-    <div class="card border-light">
+    
 
-        <div class="card-body">
+            <div class="div-spacing"></div>
             <div class="row div-spacing">
                 <div class="col-12">
-                    <h3 class="card-title tittle-card-index">Datos complementarios</h3>
 
                     <nav>
-                        <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+                        <div class="nav nav-tabs nav-justified justify-content-center" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
-                                role="tab" aria-controls="nav-home" aria-selected="true">Titulo 1</a>
+                                onclick="iniciarPersonalBancario();" role="tab" aria-controls="nav-home"
+                                aria-selected="true">Datos personales</a>
                             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
                                 role="tab" aria-controls="nav-profile" aria-selected="false">Titulo 2</a>
                             <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
@@ -68,8 +98,9 @@ if ($id_tbl_empleados_hraes == null) {
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                             aria-labelledby="nav-home-tab">
                             <hr>
-                            <h5 class="card-title tittle-card-index">TITULO 1</h5>
+                            <h5 class="card-title tittle-card-index">Informaci&oacuten personal</h5>
                             <div class="linea-horizontal"></div>
+                            <?php include 'PersonalBancarioM/index.php' ?>
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <hr>
@@ -82,24 +113,23 @@ if ($id_tbl_empleados_hraes == null) {
                             <div class="linea-horizontal"></div>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
         </div>
     </div>
+</div>
+<br>
 
-    <?php include 'librerias.php' ?>
-    <script src="../../../../assets/js/bootstrap.js"></script>
-    <script>
-        $(document).ready(function () {
-            buscarInfoEmpleado(id_tbl_empleados_hraes);
-            iniciarPersonalBancario();
-        });
-    </script>
+<?php include 'librerias.php' ?>
+<script src="../../../../assets/js/bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        buscarInfoEmpleado(id_tbl_empleados_hraes);
+        iniciarPersonalBancario();
+    });
+</script>
 
-    <!--
+<!--
 <body>
     <?php //include '../../nav-menu.php' ?>
     <div id="main-wrapper">

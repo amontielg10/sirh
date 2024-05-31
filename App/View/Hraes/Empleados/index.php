@@ -1,7 +1,7 @@
 <?php include '../../nav-menu.php' ?>
 <div class="container-fluid bg-image nav-padding">
     <br>
-    <div class="card border-light">
+    <div class="card border-light shadow-lg">
         <div class="card-body">
             <h4><span><i class="fa fa-chevron-right"></i></span> Hospital Regional de Alta Especialidad</h4>
         </div>
