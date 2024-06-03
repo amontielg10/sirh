@@ -1,3 +1,6 @@
+  
+  
+  /*
   document.addEventListener('DOMContentLoaded', function () {
     tippy('#button_datos_personales', {
       content: 'Datos personales (Domicilio, forma de pago)',
@@ -56,3 +59,4 @@
   });
 
 
+*/

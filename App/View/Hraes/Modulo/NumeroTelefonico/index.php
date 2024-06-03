@@ -3,7 +3,7 @@
         <div class="form-inline">
             <button onclick="agregarEditarTelefono(null)" class="btn btn-light"><i
                     class="fa fa-plus icon-size-add"></i>
-                <span class="hide-menu text-button-add font-size-modulo">&nbsp;Agregar forma de pago</span>
+                <span class="hide-menu text-button-add font-size-modulo">&nbsp;Agregar n&uacutem. Telef&oacutenico</span>
             </button>
         </div>
     </div>

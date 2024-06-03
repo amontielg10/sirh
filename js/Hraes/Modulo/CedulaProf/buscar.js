@@ -25,8 +25,8 @@ function iniciarBusqueda_c(){
 }
 
 ///LA FUNCION RETORNA EL VALOR SIN ACENTOS, ESPACIOS EN BLANCA O CARACTERES ESPECIALES
-function clearElement(value){
-    return value.value.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
+function clearElement(valuex){
+    return valuex.value.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
 }
 
 ///LA FUNCION RETORNA EL TOTAL DE CARACTERES DEL VALOR

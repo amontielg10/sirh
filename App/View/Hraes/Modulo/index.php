@@ -57,18 +57,21 @@ if ($id_tbl_empleados_hraes == null) {
                             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
                                 onclick="iniciarMediosContacto();" role="tab" aria-controls="nav-profile"
                                 aria-selected="false"><i class="fa fa-address-book"></i> Medios de contacto</a>
-                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
-                                role="tab" aria-controls="nav-contact" aria-selected="false"><i
-                                    class="fa fa-graduation-cap"></i> Escolaridad</a>
-                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
-                                role="tab" aria-controls="nav-contact" aria-selected="false"><i
-                                    class="fa fa-random"></i> Movimientos</a>
-                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
-                                role="tab" aria-controls="nav-contact" aria-selected="false"><i
-                                    class="fa fa-anchor"></i> Incidencias</a>
-                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
-                                role="tab" aria-controls="nav-contact" aria-selected="false"><i
-                                    class="fa fa-th-list"></i> Percepciones</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-escolaridad"
+                                onclick="iniciarEscolaridad();" role="tab" aria-controls="nav-contact"
+                                aria-selected="false"><i class="fa fa-graduation-cap"></i> Escolaridad</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-programas"
+                                onclick="iniciarProgramas();" role="tab" aria-controls="nav-contact"
+                                aria-selected="false"><i class="fa fa-cubes"></i> Programas</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-movimientos"
+                                onclick="iniciarMovimiento();" role="tab" aria-controls="nav-contact"
+                                aria-selected="false"><i class="fa fa-random"></i> Movimientos</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-incidencias"
+                                onclick="iniciarIncidencias();" role="tab" aria-controls="nav-contact"
+                                aria-selected="false"><i class="fa fa-anchor"></i> Incidencias</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-percepciones"
+                                onclick="iniciarPercepciones();" role="tab" aria-controls="nav-contact"
+                                aria-selected="false"><i class="fa fa-th-list"></i> Percepciones</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
@@ -85,10 +88,40 @@ if ($id_tbl_empleados_hraes == null) {
                             <div class="linea-horizontal"></div>
                             <?php include 'MediosContactoM/index.php' ?>
                         </div>
-                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <div class="tab-pane fade" id="nav-escolaridad" role="tabpanel"
+                            aria-labelledby="nav-contact-tab">
                             <div class="div-spacing"></div>
-                            <h5 class="card-title tittle-card-index">TITULO 3</h5>
+                            <h5 class="card-title tittle-card-index">Escolaridad</h5>
                             <div class="linea-horizontal"></div>
+                            <?php include 'EscolaridadM/index.php' ?>
+                        </div>
+                        <div class="tab-pane fade" id="nav-movimientos" role="tabpanel"
+                            aria-labelledby="nav-contact-tab">
+                            <div class="div-spacing"></div>
+                            <h5 class="card-title tittle-card-index">Movimientos</h5>
+                            <div class="linea-horizontal"></div>
+                            <?php include 'MovimientosM/index.php' ?>
+                        </div>
+                        <div class="tab-pane fade" id="nav-incidencias" role="tabpanel"
+                            aria-labelledby="nav-contact-tab">
+                            <div class="div-spacing"></div>
+                            <h5 class="card-title tittle-card-index">Incidencias</h5>
+                            <div class="linea-horizontal"></div>
+                            <?php include 'IncidenciasM/index.php' ?>
+                        </div>
+                        <div class="tab-pane fade" id="nav-percepciones" role="tabpanel"
+                            aria-labelledby="nav-contact-tab">
+                            <div class="div-spacing"></div>
+                            <h5 class="card-title tittle-card-index">Percepciones</h5>
+                            <div class="linea-horizontal"></div>
+                            <?php include 'PercepcionesM/index.php' ?>
+                        </div>
+                        <div class="tab-pane fade" id="nav-programas" role="tabpanel" 
+                            aria-labelledby="nav-contact-tab">
+                            <div class="div-spacing"></div>
+                            <h5 class="card-title tittle-card-index">Programas</h5>
+                            <div class="linea-horizontal"></div>
+                            <?php include 'ProgramasM/index.php' ?>
                         </div>
                     </div>
                 </div>

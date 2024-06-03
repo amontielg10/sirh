@@ -1,11 +1,10 @@
 
 function validarQuinquenio(){
     let id_cat_quinquenio = document.getElementById('id_cat_quinquenio').value;
-    let fecha_registro = document.getElementById('fecha_registro').value;
+    //let fecha_registro = document.getElementById('fecha_registro').value;
     let id_object = document.getElementById('id_object').value;
 
-    if (validarData(id_cat_quinquenio,'Importe') &&
-        validarData(fecha_registro,'Fecha de registro') 
+    if (validarData(id_cat_quinquenio,'Importe') 
     ){
         validarQuinquenio_x(id_tbl_empleados_hraes,id_object);
     }

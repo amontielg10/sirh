@@ -49,7 +49,7 @@ function iniciarPersonalBancario(){
 
 function iniciarProgramas(){
     buscarJuguete();
-    iniciarCampos();
+    //iniciarCampos();
 }
 
 function iniciarIncidencias(){

@@ -12,7 +12,7 @@ $condicion = [
 $datos = [
     'id_cat_quinquenio' => $_POST['id_cat_quinquenio'],
     'id_tbl_empleados_hraes' => $_POST['id_tbl_empleados_hraes'],
-    'fecha_registro' => $_POST['fecha_registro'],
+    'fecha_registro' => $timestamp,
 ];
 
 $var = [

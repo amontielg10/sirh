@@ -18,7 +18,22 @@ function validarJuguete(){/// LA FUNCION
 }
 
 ///FUNCION PARA CAMBIAR EL ESTADO DE CURP
+document.getElementById("id_ctrl_dependientes_economicos_j").addEventListener("change", function() {
+    let id_ctrl_dependientes_economicos_hraes = this.value;
+    $.post("../../../../App/Controllers/Hrae/JuguetesC/CurpC.php", {
+        id_ctrl_dependientes_economicos_hraes: id_ctrl_dependientes_economicos_hraes,
+    },
+        function (data) {
+            var jsonData = JSON.parse(data);
+            var value = jsonData.value; 
+            $('#curp_j').val(value.curp);
+        }
+    );
+  });
+
+  /*
 function handleChange(event){
+    console.log('success');
     let selectedOption = event.target.options[event.target.selectedIndex];
     let id_ctrl_dependientes_economicos_hraes = selectedOption.value;
 
@@ -32,6 +47,7 @@ function handleChange(event){
         }
     );
 }
+*/
 
 ///LA FUNCION PERMITE VALIDAR QUE LA CURP NO EXISTA EN EL SISTEMA DE JUEGOS
 function existeMenor(id_object,curp_j,id_cat_fecha_juguetes_j){

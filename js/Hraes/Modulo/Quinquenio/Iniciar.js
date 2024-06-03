@@ -51,7 +51,7 @@ function agregarEditarByDbByQuinquenio() {
     $.post("../../../../App/Controllers/Hrae/QuinquenioC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
         id_cat_quinquenio: $("#id_cat_quinquenio").val(),
-        fecha_registro: $("#fecha_registro").val(),
+        //fecha_registro: $("#fecha_registro").val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
     },
         function (data) {

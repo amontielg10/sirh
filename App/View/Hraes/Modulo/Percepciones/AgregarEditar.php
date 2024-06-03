@@ -1,30 +1,55 @@
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true" id="agregar_editar_percepcion">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header" style="background:#235B4E">
-                <h5 class="modal-title" style="font-weight: bold;color:white"><label id="titulo_percepcion"
-                        style="font-weight: bold;color:white"></label> percepci&oacuten</h5>
-                <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close"
-                    onclick="salirAgregarEditarPercepciones();">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <div class="modal-header background-modal">
+                <h5 class="modal-title text-modal-tittle"><label id="titulo_percepcion"
+                        class="text-modal-tittle"></label> percepci&oacuten</h5>
             </div>
 
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="text-input-form div-spacing text-input-rem">Seleccione un
+                                concepto</label><label class="text-required">*</label>
+                            <select class="form-control" aria-label="Default select example" id="id_cat_concepto"
+                                required onchange="handleChange(event)">
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label class="text-input-form div-spacing text-input-rem">Seleccione un valor</label><label
+                                class="text-required">*</label>
+                            <select class="form-control" aria-label="Default select example" id="id_cat_valores">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="div-spacing"></div>
+            <div class="modal-footer">
+                <button onclick="salirAgregarEditarPercepciones();" type="button" class="btn btn-secondary"
+                    data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
+                <button type="button" class="btn btn-success save-botton-modal" onclick="return validarPercepcion();"><i
+                        class="fas fa-save"></i> Guardar</button>
+                <input type="hidden" id="id_object">
+            </div>
+
+            <!--
             <div class="card-body">
                 <div class="form-row">
 
                     <div class="form-group col-md-6">
                         <label>Seleccione un concepto</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example"
-                            id="id_cat_concepto" required onchange="handleChange(event)">
+                        <select class="form-control" aria-label="Default select example" id="id_cat_concepto" required
+                            onchange="handleChange(event)">
                         </select>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label>Seleccione un valor</label><label style="color:red">*</label>
-                        <select class="form-control" aria-label="Default select example"
-                            id="id_cat_valores">
+                        <select class="form-control" aria-label="Default select example" id="id_cat_valores">
                         </select>
                     </div>
 
@@ -40,6 +65,7 @@
                         src="../../../../assets/icons/guardar.png" alt="Imagen del botón">Guardar</button>
                 <input type="hidden" id="id_object">
             </div>
+-->
 
         </div>
     </div>
