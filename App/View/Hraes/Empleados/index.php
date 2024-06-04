@@ -73,7 +73,7 @@
 <script src="../../../../js/Hraes/Empleados/Empleados.js"></script>
 <script src="../../../../js/Hraes/Empleados/validar.js"></script>
 <script src="../../../../js/Hraes/Empleados/Busqueda.js"></script>
-<?php include '../../Librerias.php' ?>
+<?php include '../../librerias.php' ?>
 <?php include 'AgregarEditar.php' ?>
 
 
