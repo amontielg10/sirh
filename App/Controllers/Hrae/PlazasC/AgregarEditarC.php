@@ -14,7 +14,7 @@ $condicion = [
 
 $datos = [
     'id_cat_plazas' => $_POST['id_cat_plazas'],
-    'id_cat_tipo_contratacion_hraes' => $_POST['id_cat_tipo_contratacion_hraes'],
+    'id_cat_tipo_subtipo_contratacion_hraes' => $_POST['id_cat_tipo_contratacion_hraes'],
     'id_cat_unidad_responsable' => $_POST['id_cat_unidad_responsable'],
     'id_cat_puesto_hraes' => $_POST['id_cat_puesto_hraes'],
     'id_cat_zonas_tabuladores_hraes' => $_POST['id_cat_zonas_tabuladores_hraes'],

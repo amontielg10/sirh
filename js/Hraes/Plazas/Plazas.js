@@ -218,12 +218,12 @@ function detallesEntity(id_tbl_control_plazas_hraes){
             let empleado = jsonData.empleado;
 
             num_plaza_dt.textContent = entity[1];
-            cve_centro_trabajo_dt.textContent = entity[6];
+            cve_centro_trabajo_dt.textContent = entity[5];
             tipo_plaza_dt.textContent = entity[2];
-            entidad_dt.textContent = entity[8];
-            codigo_postal_dt.textContent = entity[9];
-            unidad_respo_dt.textContent = entity[4];
-            nombre_centro_trabajo_dt.textContent = entity[7];
+            entidad_dt.textContent = entity[7];
+            codigo_postal_dt.textContent = entity[8];
+            unidad_respo_dt.textContent = entity[3];
+            nombre_centro_trabajo_dt.textContent = entity[6];
 
             curp_dt.textContent = concatNombre(empleado['curp'],'','');
             rfc_dt.textContent = concatNombre(empleado['rfc'],'','');

@@ -35,14 +35,14 @@
                             <div class="row">
 
                                 <div class="col-6">
-                                    <label class="text-input-form-bold div-spacing" style="color:black">N&uacutemero de
-                                        plaza:&nbsp;&nbsp;</label><label id="num_plaza_dt">
+                                    <label class="text-input-form-bold-label div-spacing">N&uacutemero de
+                                        plaza:&nbsp;&nbsp;</label><label class="text-result-normal" id="num_plaza_dt">
                                     </label>
                                 </div>
 
                                 <div class="col-6">
-                                    <label class="text-input-form-bold  div-spacing">Tipo de plaza:&nbsp;&nbsp;</label><label
-                                        id="tipo_plaza_dt">
+                                    <label class="text-input-form-bold-label div-spacing">Tipo de
+                                        plaza:&nbsp;&nbsp;</label><label class="text-result-normal" id="tipo_plaza_dt">
                                     </label>
                                 </div>
                             </div>
@@ -56,14 +56,16 @@
 
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label class="text-input-form-bold  div-spacing">Clave:&nbsp;&nbsp;</label><label
-                                        id="cve_centro_trabajo_dt">
+                                    <label
+                                        class="text-input-form-bold-label div-spacing">Clave:&nbsp;&nbsp;</label><label
+                                        class="text-result-normal" id="cve_centro_trabajo_dt">
                                     </label>
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label class="text-input-form-bold  div-spacing">Entidad:&nbsp;&nbsp;</label><label
-                                        id="entidad_dt">
+                                    <label
+                                        class="text-input-form-bold-label div-spacing">Entidad:&nbsp;&nbsp;</label><label
+                                        class="text-result-normal" id="entidad_dt">
                                     </label>
                                 </div>
                             </div>
@@ -71,20 +73,23 @@
                             <div class="form-row">
 
                                 <div class="form-group col-md-6">
-                                    <label class="text-input-form-bold  div-spacing">C&oacutedigo
-                                        p&oacutestal:&nbsp;&nbsp;</label><label id="codigo_postal_dt">
+                                    <label class="text-input-form-bold-label div-spacing">C&oacutedigo
+                                        p&oacutestal:&nbsp;&nbsp;</label><label class="text-result-normal"
+                                        id="codigo_postal_dt">
                                     </label>
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <label class="text-input-form-bold  div-spacing">Unidad
-                                        responsable:&nbsp;&nbsp;</label><label id="unidad_respo_dt">
+                                    <label class="text-input-form-bold-label div-spacing">Unidad
+                                        responsable:&nbsp;&nbsp;</label><label class="text-result-normal"
+                                        id="unidad_respo_dt">
                                     </label>
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <label class="text-input-form-bold  div-spacing">Nombre:&nbsp;&nbsp;</label><label
-                                        id="nombre_centro_trabajo_dt">
+                                    <label
+                                        class="text-input-form-bold-label div-spacing">Nombre:&nbsp;&nbsp;</label><label
+                                        class="text-result-normal" id="nombre_centro_trabajo_dt">
                                     </label>
                                 </div>
                             </div>
@@ -98,14 +103,15 @@
 
                             <div class="row">
                                 <div class="col-6">
-                                    <label class="text-input-form-bold  div-spacing">Curp:&nbsp;&nbsp;</label><label
-                                        id="curp_dt">
+                                    <label
+                                        class="text-input-form-bold-label div-spacing">Curp:&nbsp;&nbsp;</label><label
+                                        class="text-result-normal" id="curp_dt">
                                     </label>
                                 </div>
 
                                 <div class="col-6">
-                                    <label class="text-input-form-bold  div-spacing">Rfc:&nbsp;&nbsp;</label><label
-                                        id="rfc_dt">
+                                    <label class="text-input-form-bold-label div-spacing">Rfc:&nbsp;&nbsp;</label><label
+                                        class="text-result-normal" id="rfc_dt">
                                     </label>
                                 </div>
                             </div>
@@ -113,8 +119,9 @@
                             <div class="form-row">
 
                                 <div class="form-group col-md-12">
-                                    <label class="text-input-form-bold  div-spacing">Nombre:&nbsp;&nbsp;</label><label
-                                        id="nombre_dt">
+                                    <label
+                                        class="text-input-form-bold-label div-spacing">Nombre:&nbsp;&nbsp;</label><label
+                                        class="text-result-normal" id="nombre_dt">
                                     </label>
                                 </div>
 
@@ -129,7 +136,8 @@
                                 &Uacuteltimos movimientos de la plaza
                             </div>
 
-                            <table class="table table-bordered" id="tabla_historia_plaza_empleado_ix" style="width:100%">
+                            <table class="table table-bordered" id="tabla_historia_plaza_empleado_ix"
+                                style="width:100%">
                             </table>
 
                         </div>
@@ -141,8 +149,7 @@
 
             <div class="modal-footer">
                 <button type="button" onclick="ocultarModalDetalles();" class="btn btn-success save-botton-modal"
-                    data-dismiss="modal"><i
-                        class="fas fa-times"></i> Cerrar</button>
+                    data-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
             </div>
 
         </div>

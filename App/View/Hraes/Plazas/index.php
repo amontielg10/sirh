@@ -38,7 +38,7 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
                 <div class="row">
 
                     <div class="col-3">
-                        <h6 class="text-input-form-bold-label   div-spacing">Clave de centro de trabajo: <label
+                        <h6 class="text-input-form-bold-label div-spacing">Clave de centro de trabajo: <label
                                 id="clvResult" class="text-result-normal"></label>
                         </h6>
                     </div>
