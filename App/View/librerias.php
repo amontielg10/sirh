@@ -1,7 +1,5 @@
 
 
-
-
 <script src="../../../../js/Mensajes/mensajes.js"></script>
 <script src="../../../../js/Global/Curp/ValidarCurp.js"></script>
 <script src="../../../../js/Global/Mensajes/Mensajes.js"></script>
