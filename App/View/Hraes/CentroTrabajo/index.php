@@ -3,7 +3,16 @@
     <br>
     <div class="card border-light shadow-lg">
         <div class="card-body">
-            <h4><span><i class="fa fa-chevron-right"></i></span> Hospital Regional de Alta Especialidad</h4>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-auto">
+                        <div class="vertical-line"></div>
+                    </div>
+                    <div class="col padding-left-0">
+                        <h4>Hospital Regional de Alta Especialidad</h4>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <br>
@@ -12,8 +21,7 @@
         <div class="card-body">
             <div class="row div-spacing">
                 <div class="col-9">
-                    <h3 class="card-title tittle-card-index">Centro de trabajo</h3>
-                    <div class="linea-horizontal"></div>
+                    <h2 class="card-title tittle-card-index">Centro de trabajo</h2>
                 </div>
                 <div class="col-3 search-container">
                     <input onkeyup="buscarCentro();" id="buscar" type="text" placeholder="Buscar..."

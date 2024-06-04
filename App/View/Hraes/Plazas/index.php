@@ -10,9 +10,17 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
     <br>
     <div class="card border-light shadow-lg">
         <div class="card-body">
-            <h4><span><i class="fa fa-chevron-right"></i></span> Hospital Regional de Alta Especialidad</h4>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-auto">
+                        <div class="vertical-line"></div>
+                    </div>
+                    <div class="col padding-left-0">
+                        <h4>Hospital Regional de Alta Especialidad</h4>
+                    </div>
+                </div>
+            </div>
             <?php if ($id_tbl_centro_trabajo_hraes != null) { ?>
-                <div class="linea-horizontal"></div>
                 <div class="div-spacing"></div>
                 <h6 class="icon-detail"><i class="fa fa-info-circle"></i>
                     Datos
@@ -21,8 +29,8 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
 
                 <div class="row">
                     <div class="col-12">
-                        <h6 class="text-input-form-bold  div-spacing">Nombre centro de trabajo: <label
-                                id="nombreResult"></label>
+                        <h6 class="text-input-form-bold-label   div-spacing">Nombre centro de trabajo: <label
+                                id="nombreResult" class="text-result-normal"></label>
                         </h6>
                     </div>
                 </div>
@@ -30,13 +38,13 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
                 <div class="row">
 
                     <div class="col-3">
-                        <h6 class="text-input-form-bold  div-spacing">Clave de centro de trabajo: <label
-                                id="clvResult"></label>
+                        <h6 class="text-input-form-bold-label   div-spacing">Clave de centro de trabajo: <label
+                                id="clvResult" class="text-result-normal"></label>
                         </h6>
                     </div>
 
                     <div class="col-2">
-                        <h6 class="text-input-form-bold  div-spacing">C&oacutedigo postal: <label id="cpResult"></label>
+                        <h6 class="text-input-form-bold-label   div-spacing">C&oacutedigo postal: <label id="cpResult" class="text-result-normal"></label>
                         </h6>
                     </div>
 
@@ -50,8 +58,7 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
         <div class="card-body">
             <div class="row div-spacing">
                 <div class="col-9">
-                    <h3 class="card-title tittle-card-index">Plazas</h3>
-                    <div class="linea-horizontal"></div>
+                    <h2 class="card-title tittle-card-index">Plazas</h2>
                 </div>
                 <div class="col-3 search-container">
                     <input onkeyup="buscarPlaza();" id="buscar" type="text" placeholder="Buscar..."
@@ -107,4 +114,3 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
 <?php include 'AgregarEditar.php' ?>
 <?php include 'Detalles.php' ?>
 <?php include '../../Librerias.php' ?>
-

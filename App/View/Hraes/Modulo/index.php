@@ -13,8 +13,16 @@ if ($id_tbl_empleados_hraes == null) {
     <input type="hidden" id="id_tbl_empleados_hraes" value="<?php echo $id_tbl_empleados_hraes ?>" />
     <div class="card border-light">
         <div class="card-body">
-            <h4>DATOS COMPLEMENTARIOS</h4>
-            <div class="linea-horizontal"></div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-auto">
+                        <div class="vertical-line"></div>
+                    </div>
+                    <div class="col padding-left-0">
+                        <h3>Datos complementarios</h3>
+                    </div>
+                </div>
+            </div>
             <div class="div-spacing"></div>
 
             <div class="row">
@@ -79,48 +87,40 @@ if ($id_tbl_empleados_hraes == null) {
                             aria-labelledby="nav-home-tab">
                             <div class="div-spacing"></div>
                             <h5>Informaci&oacuten personal</h5>
-                            <div class="linea-horizontal"></div>
                             <?php include 'PersonalBancarioM/index.php' ?>
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <div class="div-spacing"></div>
                             <h5>Medios de contacto</h5>
-                            <div class="linea-horizontal"></div>
                             <?php include 'MediosContactoM/index.php' ?>
                         </div>
                         <div class="tab-pane fade" id="nav-escolaridad" role="tabpanel"
                             aria-labelledby="nav-contact-tab">
                             <div class="div-spacing"></div>
                             <h5 class="card-title tittle-card-index">Escolaridad</h5>
-                            <div class="linea-horizontal"></div>
                             <?php include 'EscolaridadM/index.php' ?>
                         </div>
                         <div class="tab-pane fade" id="nav-movimientos" role="tabpanel"
                             aria-labelledby="nav-contact-tab">
                             <div class="div-spacing"></div>
                             <h5 class="card-title tittle-card-index">Movimientos</h5>
-                            <div class="linea-horizontal"></div>
                             <?php include 'MovimientosM/index.php' ?>
                         </div>
                         <div class="tab-pane fade" id="nav-incidencias" role="tabpanel"
                             aria-labelledby="nav-contact-tab">
                             <div class="div-spacing"></div>
                             <h5 class="card-title tittle-card-index">Incidencias</h5>
-                            <div class="linea-horizontal"></div>
                             <?php include 'IncidenciasM/index.php' ?>
                         </div>
                         <div class="tab-pane fade" id="nav-percepciones" role="tabpanel"
                             aria-labelledby="nav-contact-tab">
                             <div class="div-spacing"></div>
                             <h5 class="card-title tittle-card-index">Percepciones</h5>
-                            <div class="linea-horizontal"></div>
                             <?php include 'PercepcionesM/index.php' ?>
                         </div>
-                        <div class="tab-pane fade" id="nav-programas" role="tabpanel" 
-                            aria-labelledby="nav-contact-tab">
+                        <div class="tab-pane fade" id="nav-programas" role="tabpanel" aria-labelledby="nav-contact-tab">
                             <div class="div-spacing"></div>
                             <h5 class="card-title tittle-card-index">Programas</h5>
-                            <div class="linea-horizontal"></div>
                             <?php include 'ProgramasM/index.php' ?>
                         </div>
                     </div>

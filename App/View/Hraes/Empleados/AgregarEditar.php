@@ -60,17 +60,21 @@
                         <div class="col-4">
                             <label class="text-input-form div-spacing">G&eacutenero</label><label
                                 class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example" id="id_cat_genero"
-                                required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example" id="id_cat_genero"
+                                    required>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="col-4">
                             <label class="text-input-form div-spacing">Estado civil</label><label
                                 class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example" id="id_cat_estado_civil"
-                                required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example"
+                                    id="id_cat_estado_civil" required>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="col-4">

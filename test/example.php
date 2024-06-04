@@ -1,33 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Línea Vertical con Bootstrap</title>
-  <!-- Enlace a Bootstrap CSS desde CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    .vertical-line {
-      border-left: 2px solid black; /* Anchura y color de la línea */
-      height: 200px; /* Altura de la línea */
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select2 Example</title>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet">
 </head>
 <body>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-auto">
-        <div class="vertical-line"></div>
-      </div>
-      <div class="col">
-        <h1>Ejemplo de Bootstrap</h1>
-        <p>Este es un ejemplo de una línea vertical ajustada en tamaño y ubicada a la izquierda.</p>
-      </div>
-    </div>
-  </div>
+<select id="mySelect">
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3">Option 3</option>
+  <option value="4">Option 4</option>
+</select>
 
-  <!-- Incluir los scripts de Bootstrap al final del cuerpo del documento -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#mySelect').select2();
+  });
+</script>
 </body>
 </html>

@@ -15,16 +15,20 @@
                         <div class="col-6">
                             <label class="text-input-form div-spacing">Tipo de plaza</label><label
                                 class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example" id="id_cat_plazas"
-                                required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example" id="id_cat_plazas"
+                                    required>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-6">
                             <label class="text-input-form div-spacing">Tipo de contrataci&oacuten</label><label
                                 class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example"
-                                id="id_cat_tipo_contratacion_hraes" required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example"
+                                    id="id_cat_tipo_contratacion_hraes" required>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
@@ -33,16 +37,20 @@
                         <div class="col-6">
                             <label class="text-input-form div-spacing">Unidad responsable</label><label
                                 class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example"
-                                id="id_cat_unidad_responsable" required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example"
+                                    id="id_cat_unidad_responsable" required>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-6">
                             <label class="text-input-form div-spacing">Puesto</label><label
                                 class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example" id="id_cat_puesto_hraes"
-                                required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example"
+                                    id="id_cat_puesto_hraes" required>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
@@ -51,16 +59,20 @@
                         <div class="col-6">
                             <label class="text-input-form div-spacing">Zonas tabuladores</label><label
                                 class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example"
-                                id="id_cat_zonas_tabuladores_hraes" required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example"
+                                    id="id_cat_zonas_tabuladores_hraes" required>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-6">
                             <label class="text-input-form div-spacing">Niveles</label><label
                                 class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example" id="id_cat_niveles_hraes"
-                                required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example"
+                                    id="id_cat_niveles_hraes" required>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
@@ -75,9 +87,11 @@
                         <div class="col-4">
                             <label class="text-input-form div-spacing">Zona pagadora</label><label
                                 class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example" id="id_tbl_zonas_pago"
-                                required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example" id="id_tbl_zonas_pago"
+                                    required>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-4">
                             <label class="text-input-form div-spacing">Fecha de ingreso</label><label

@@ -8,7 +8,7 @@
                     <div class="col-auto">
                         <div class="vertical-line"></div>
                     </div>
-                    <div class="col">
+                    <div class="col padding-left-0">
                         <h4>Hospital Regional de Alta Especialidad</h4>
                     </div>
                 </div>
@@ -21,8 +21,7 @@
         <div class="card-body">
             <div class="row div-spacing">
                 <div class="col-9">
-                    <h3 class="card-title tittle-card-index">Empleados</h3>
-                    <div class="linea-horizontal"></div>
+                    <h2 class="card-title tittle-card-index">Empleados</h2>
                 </div>
                 <div class="col-3 search-container">
                     <input onkeyup="buscarEmpleado();" id="buscar" type="text" placeholder="Buscar..."

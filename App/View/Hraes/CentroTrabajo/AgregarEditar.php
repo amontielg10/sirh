@@ -13,7 +13,8 @@
 
                     <div class="row">
                         <div class="col-8">
-                            <label class="text-input-form div-spacing">Nombre</label><label class="text-required">*</label>
+                            <label class="text-input-form div-spacing">Nombre</label><label
+                                class="text-required">*</label>
                             <input maxlength="30" type="text" class="form-control div-spacing" id="nombre" name="nombre"
                                 placeholder="Nombre" required>
                         </div>
@@ -35,16 +36,20 @@
                         <div class="col-4">
                             <label class="text-input-form div-spacing">Regi&oacuten</label><label
                                 class="text-required">*</label>
-                            <select class="form-control div-spacing" aria-label="Default select example"
-                                id="id_cat_region" required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control div-spacing" aria-label="Default select example"
+                                    id="id_cat_region" required>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-4">
                             <label class="text-input-form div-spacing">Estatus</label><label
                                 class="text-required">*</label>
-                            <select class="form-control div-spacing" aria-label="Default select example"
-                                id="id_estatus_centro" required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control div-spacing" aria-label="Default select example"
+                                    id="id_estatus_centro" required>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
@@ -52,9 +57,11 @@
                         <div class="col-4">
                             <label class="text-input-form div-spacing">Entidad</label><label
                                 class="text-required">*</label>
-                            <select class="form-control div-spacing" aria-label="Default select example"
-                                id="id_cat_entidad" required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control div-spacing" aria-label="Default select example"
+                                    id="id_cat_entidad" required>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-4">
                             <label class="text-input-form div-spacing">N&uacutem. exterior</label><label
