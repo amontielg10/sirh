@@ -73,5 +73,5 @@
 <script src="../../../../js/Hraes/CentroTrabajo/CentroTrabajo.js"></script>
 <script src="../../../../js/Hraes/CentroTrabajo/validar.js"></script>
 <script src="../../../../js/Hraes/CentroTrabajo/Busqueda.js"></script>
-<?php include '../../Librerias.php' ?>
+<?php include '../../librerias.php' ?>
 <?php include 'AgregarEditar.php' ?>
