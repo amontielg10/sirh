@@ -62,7 +62,7 @@
                                 <label>Total de plazas:&nbsp;</label><label id="allPlazasR"> </label>
                             </div>
                             <div class="d-flex align-items-center mb-2">
-                                <div class="color-square" style="background-color: #9fd8a3;"></div>
+                                <div class="color-square" style="background-color: #e2e2e2;"></div>
                                 <label>P. Bloqueda:&nbsp;</label><label id="bloqueadaR"> </label>
                             </div>
                             <div class="d-flex align-items-center mb-2">
@@ -78,7 +78,7 @@
                                 <label>P. Reservada:&nbsp;</label><label id="reservadaR"> </label>
                             </div>
                             <div class="d-flex align-items-center mb-2">
-                                <div class="color-square" style="background-color: #e2e2e2;"></div>
+                                <div class="color-square" style="background-color: #9fd8a3;"></div>
                                 <label>P. Vacante:&nbsp;</label><label id="vacanteR"> </label>
                             </div>
                             <div class="d-flex align-items-center mb-2">

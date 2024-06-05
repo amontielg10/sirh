@@ -85,7 +85,7 @@ function plazasHraes(){
             datasets: [{
                 label: "Colores",
                 data: [bloqueada,cancelada,ocupada,reservada,vacante,congelada,indefinida],
-                backgroundColor: ["#9fd8a3", "#dbe5ab", "#747874","#062107","#e2e2e2","#5f6c62", "#89b399"]
+                backgroundColor: ["#e2e2e2", "#dbe5ab", "#747874","#062107","#9fd8a3","#5f6c62", "#89b399"]
             }]
         };
 
