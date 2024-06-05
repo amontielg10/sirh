@@ -23,26 +23,45 @@ include '../../nav-menu.php';
     <div class="card border-light">
         <div class="card-body">
             <h3 class="card-title tittle-card-index">SISTEMA INTEGRAL DE RECURSOS HUMANOS</h3>
-            <?php include 'CardHraes.php' ?>
-        </div>
-    </div>
-    <!--
-    <div class="card border-light">
-        <div class="card-body">
-            <h3 class="card-title tittle-card-index">SISTEMA INTEGRAL DE RECURSOS HUMANOS</h3>
--->
-    <?php // include 'card.php' ?>
 
-    <!-- 
-            <div class="text-center">
-                <img src="../../../../assets/images/bnn_imssbienestar.jpg" width="30" height="24"
-                    class="d-inline-block align-text-top wider-image-index" style=" box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);">
-            </div>
--->
-    <!--
+            <?php if ($id_rol == 1 || $id_rol == 3) { ?>
+                <div class="row">
+                    <div class="col">
+                        <?php include 'CardHraes.php' ?>
+                    </div>
+                </div>
+            <?php } ?>
+
         </div>
     </div>
--->
+    <br>
+
+    <div class="card border-light shadow-lg">
+        <div class="card-body">
+            <div class="btn-container">
+                <div class="row">
+                    <div class="col-12">
+                        <button id="button_cat" style="background:white" type="button"
+                            class="btn btn-light btn-block btn-with-shadow">
+                            <i class="fa fa-building"></i><br>
+                            Banco
+                        </button>
+                        <button id="button_cat" style="background:white" type="button"
+                            class="btn btn-light btn-block btn-with-shadow">
+                            <i class="fa fa-id-badge"></i><br>
+                            Puesto
+                        </button>
+                        <button id="button_cat" style="background:white" type="button"
+                            class="btn btn-light btn-block btn-with-shadow">
+                            <i class="fa fa-align-left"></i><br>
+                            Conceptos
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </div>
 

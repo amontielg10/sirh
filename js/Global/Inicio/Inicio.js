@@ -174,3 +174,11 @@ function centroTrabajoHraes(){
         }
     );
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    tippy('#button_cat', {
+      content: 'Cat\u00e1logo.',
+      theme: 'green',
+    });
+  });
