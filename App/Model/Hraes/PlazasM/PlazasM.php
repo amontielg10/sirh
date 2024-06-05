@@ -228,4 +228,17 @@ class modelPlazasHraes
         return $listado;
     }
 
+    public function allCountPlazas(){
+        $listado = pg_query("SELECT COUNT (id_tbl_control_plazas_hraes)
+                             FROM tbl_control_plazas_hraes;");
+        return $listado;
+    }
+
+    public function tipoPlazaAll($idCatPlaza){
+        $listado = pg_query("SELECT COUNT (id_tbl_control_plazas_hraes)
+                             FROM tbl_control_plazas_hraes
+                             WHERE id_cat_plazas = $idCatPlaza;");
+        return $listado;
+    }
+
 }

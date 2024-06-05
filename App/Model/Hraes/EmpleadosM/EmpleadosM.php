@@ -114,4 +114,10 @@ class modelEmpleadosHraes
         $pgs_delete = pg_delete($conexion, 'tbl_empleados_hraes', $condicion);
         return $pgs_delete;
     }
+
+    function empleadosCountAll(){
+        $listado = pg_query("SELECT COUNT (id_tbl_empleados_hraes)
+                             FROM tbl_empleados_hraes;");
+        return $listado;
+    }
 }
