@@ -51,7 +51,7 @@ function centroTrabajoHraes(){
                         }
                     }
                 },
-                cutout: '5s0%' // Tamaño del agujero en el gráfico circular (70% del radio)
+                cutout: '50%' // Tamaño del agujero en el gráfico circular (70% del radio)
             };
     
             // Crear el gráfico
