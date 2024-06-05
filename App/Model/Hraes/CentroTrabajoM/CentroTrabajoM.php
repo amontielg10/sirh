@@ -18,7 +18,7 @@ class modelCentroTrabajoHraes
         return $listado;
     }
 
-    public function listarByLike($busqueda,$paginator)
+    public function listarByLike($busqueda, $paginator)
     {
         $listado = "SELECT tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes,
                             tbl_centro_trabajo_hraes.clave_centro_trabajo,
@@ -42,7 +42,8 @@ class modelCentroTrabajoHraes
         return $listado;
     }
 
-    public function listarByIdEdit($id_object){
+    public function listarByIdEdit($id_object)
+    {
         $listado = pg_query("SELECT id_tbl_centro_trabajo_hraes, clave_centro_trabajo, nombre,
                                     colonia, codigo_postal, num_exterior, num_interior, latitud, longitud,
                                     id_cat_region, id_estatus_centro, id_cat_entidad, pais
@@ -53,22 +54,26 @@ class modelCentroTrabajoHraes
         return $listado;
     }
 
-    function editarByArray($conexion, $datos, $condicion,$tablaCentroTrabajo){
+    function editarByArray($conexion, $datos, $condicion, $tablaCentroTrabajo)
+    {
         $pg_update = pg_update($conexion, $tablaCentroTrabajo, $datos, $condicion);
         return $pg_update;
     }
 
-    function agregarByArray($conexion, $datos,$tablaCentroTrabajo){
+    function agregarByArray($conexion, $datos, $tablaCentroTrabajo)
+    {
         $pg_add = pg_insert($conexion, $tablaCentroTrabajo, $datos);
         return $pg_add;
     }
 
-    function eliminarByArray($conexion, $condicion,$tablaCentroTrabajo){
-        $pgs_delete = pg_delete($conexion,$tablaCentroTrabajo,$condicion);
+    function eliminarByArray($conexion, $condicion, $tablaCentroTrabajo)
+    {
+        $pgs_delete = pg_delete($conexion, $tablaCentroTrabajo, $condicion);
         return $pgs_delete;
     }
 
-    public function listarByNull(){
+    public function listarByNull()
+    {
         return $array = [
             'id_tbl_centro_trabajo_hraes' => null,
             'nombre' => null,
@@ -85,4 +90,22 @@ class modelCentroTrabajoHraes
             'pais' => null
         ];
     }
+
+
+
+    ///COUNT 
+    function listarAllCount()
+    {
+        $listado = pg_query("SELECT COUNT (id_tbl_centro_trabajo_hraes)
+                             FROM tbl_centro_trabajo_hraes;");
+        return $listado;
+    }
+
+    function listarByRegion($idRegion){
+        $listado = pg_query("SELECT COUNT (id_tbl_centro_trabajo_hraes)
+                             FROM tbl_centro_trabajo_hraes
+                             WHERE id_cat_region = $idRegion;");
+        return $listado;
+    }
+
 }

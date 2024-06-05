@@ -4,9 +4,18 @@ include '../../nav-menu.php';
 
 <div class="container-fluid bg-image nav-padding">
     <br>
-    <div class="card border-light">
+    <div class="card border-light shadow-lg">
         <div class="card-body">
-            <h6><span><i class="fas fa-home"></i></span> Inicio > Usuarios</h6>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-auto">
+                        <div class="vertical-line"></div>
+                    </div>
+                    <div class="col padding-left-0">
+                        <h4>Sistema Integral de Resursos Humanos</h4>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <br>
@@ -15,8 +24,7 @@ include '../../nav-menu.php';
         <div class="card-body">
             <div class="row div-spacing">
                 <div class="col-9">
-                    <h3 class="card-title tittle-card-index">Usuarios del sistema</h3>
-                    <div class="linea-horizontal"></div>
+                    <h2 class="card-title tittle-card-index">Usuarios del sistema</h2>
                 </div>
                 <div class="col-3 search-container">
                     <input onkeyup="buscarUsuario();" id="buscarUsuario" type="text" placeholder="Buscar..."
@@ -66,6 +74,6 @@ include '../../nav-menu.php';
 </div>
 
 <?php include 'AgregarEditar.php' ?>
-<?php include '../../Librerias.php' ?>
+<?php include '../../librerias.php' ?>
 <script src="../../../../js/Admin/Usuarios/Usuarios.js"></script>
 <script src="../../../../js/Admin/Usuarios/validar.js"></script>

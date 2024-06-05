@@ -29,7 +29,7 @@ $id_rol = $_SESSION['id_rol'];
     <script src="../../../../js/Global/Curp/ValidarCurp.js"></script>
     <script src="../../../../js/Global/Mensajes/Mensajes.js"></script>
     <script src="../../../../js/Global/Seguridad/Confirmacion.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
     </style>
@@ -59,24 +59,6 @@ $id_rol = $_SESSION['id_rol'];
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll nav-text-tittle"
                     style="--bs-scroll-height: 100px;">
-
-                    <!-- PERFIL -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Mi perfil
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Mi informaci&oacuten</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><button class="dropdown-item" data-toggle="modal"
-                                    data-target="#exampleModalCenter">Salir</button>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- PERFIL -->
 
                     <!-- ADMIN -->
                     <?php if ($id_rol == 1) { ?>
@@ -140,15 +122,30 @@ $id_rol = $_SESSION['id_rol'];
                         </li>
                     <?php } ?>
                     <!-- FEDERALIZADA -->
-
                 </ul>
+
+                <!-- CONFIG -->
+                <ul class="navbar-nav ml-custom">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-ix" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-cog icon-config"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-result">
+                            <button onclick="activarModal();" class="dropdown-item">Modificar contraseña</button>
+                            <div class="dropdown-divider"></div>
+                            <button onclick="activarModal();" class="dropdown-item">Salir</button>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- CONFIG -->
+
             </div>
         </div>
     </nav>
 
     <!-- MODAL SALIR-->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="modal_exit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header" style="background:#235B4E">
@@ -163,9 +160,13 @@ $id_rol = $_SESSION['id_rol'];
             </div>
         </div>
     </div>
-
     <!-- MODAL SALIR-->
-
 </body>
+
+<script>
+    function activarModal() {
+        $("#modal_exit").modal("show");
+    }
+</script>
 
 </html>

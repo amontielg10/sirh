@@ -322,3 +322,40 @@ hr {
         border-top: 5px solid #000; /* Color del triángulo */
         transform: translateY(-50%);
       }
+
+      .dropdown-toggle-ix::after {
+        display: none;
+    }
+
+    .dropdown-result{
+        margin-left: -9em;
+    }
+
+    .icon-config{
+        color:white; 
+        font-size: 1.7em;
+    }
+
+    .icon-config:hover {
+        color: #BC955C; 
+    }
+
+    .color-square {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    .oval-label-hraes {
+        display: inline-block;
+        background-color: yellow;
+        padding: 5px 15px;
+        border-radius: 25px; 
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
