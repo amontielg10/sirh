@@ -112,6 +112,14 @@
                                 <div class="color-square" style="background-color: #235B4E;"></div>
                                 <label>Total empleados:&nbsp;</label><label id="empleadosR"> </label>
                             </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="color-square" style="background-color: #9fd8a3;"></div>
+                                <label>Total masculino:&nbsp;</label><label id="masculinoR"> </label>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="color-square" style="background-color: #e2e2e2;"></div>
+                                <label>Total femenino:&nbsp;</label><label id="femeninoR"> </label>
+                            </div>
                         </div>
                     </div>
                     <div class="col-6">

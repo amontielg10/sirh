@@ -120,4 +120,11 @@ class modelEmpleadosHraes
                              FROM tbl_empleados_hraes;");
         return $listado;
     }
+
+    function generoEmpleados($condition){
+        $listado = pg_query("SELECT COUNT(id_tbl_empleados_hraes)
+                             FROM tbl_empleados_hraes
+                             WHERE SUBSTRING(curp,11,1) = '$condition';");
+        return $listado;
+    }
 }

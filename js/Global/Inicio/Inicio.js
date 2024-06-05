@@ -6,20 +6,26 @@ $(document).ready(function () {
 
 function empleadosHraes(){
     let empleadosR = document.getElementById("empleadosR");
+    let masculinoR = document.getElementById("masculinoR");
+    let femeninoR = document.getElementById("femeninoR");
 
     $.post("../../../../App/Controllers/Hrae/EmpleadoC/InicioC.php", {},
         function (data) {
             let jsonData = JSON.parse(data);
             let empleados = jsonData.empleados;
+            let masculino = jsonData.masculino;
+            let femenino = jsonData.femenino;
 
             empleadosR.textContent = empleados;
+            masculinoR.textContent = masculino;
+            femeninoR.textContent = femenino;
 
         var data = {
-            labels: ["Empleados"],
+            labels: ["Masculino", "Femenino"],
             datasets: [{
                 label: "Colores",
-                data: [empleados],
-                backgroundColor: ["#235B4E"]
+                data: [masculino,femenino],
+                backgroundColor: ["#9fd8a3","#e2e2e2"]
             }]
         };
 
@@ -30,7 +36,7 @@ function empleadosHraes(){
                 },
                 title: {
                     display: true,
-                    text: 'Empleados totales',
+                    text: 'Distribución por género',
                     font: {
                         size: 15 
                     }
