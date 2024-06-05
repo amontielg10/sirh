@@ -20,7 +20,7 @@ include '../../nav-menu.php';
     </div>
     <br>
 
-    <div class="card">
+    <div class="card border-light">
         <div class="card-body">
             <h3 class="card-title tittle-card-index">SISTEMA INTEGRAL DE RECURSOS HUMANOS</h3>
             <?php include 'CardHraes.php' ?>
