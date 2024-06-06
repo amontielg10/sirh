@@ -24,3 +24,18 @@ function validarCurp(curp) {
 
     return true; //Validado
 }
+
+function validarRFC(rfc) {
+    // Expresión regular para validar el RFC
+    var regex = /^[A-Z]{4}\d{6}[A-Z0-9]{3}$/;
+
+    // Eliminar espacios en blanco y convertir a mayúsculas
+    rfc = rfc.trim().toUpperCase();
+
+    // Verificar si el RFC cumple con el formato
+    if (rfc.match(regex)) {
+        return true;
+    } else {
+        return false;
+    }
+}

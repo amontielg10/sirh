@@ -48,9 +48,10 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             //Empleado
             $('#id_cat_estado_civil').empty();
             $('#id_cat_estado_civil').html(estadoCivil); 
-            $('#id_cat_genero').empty();
-            $('#id_cat_genero').html(genero); 
+            //$('#id_cat_genero').empty();
+            //$('#id_cat_genero').html(genero); 
 
+            $("#genero_x").val(generoCurp(entity.curp));
             $("#nombre").val(entity.nombre);
             $("#rfc").val(entity.rfc);
             $("#primer_apellido").val(entity.primer_apellido);
@@ -58,7 +59,7 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             $("#segundo_apellido").val(entity.segundo_apellido);
             $("#nss").val(entity.nss);
             $("#num_empleado").val(entity.num_empleado);
-            $("#pais_nacimiento").val(entity.pais_nacimiento);
+            //$("#pais_nacimiento").val(entity.pais_nacimiento);
         }
     );
 
@@ -84,9 +85,9 @@ function agregarEditarByDb() {
         segundo_apellido:segundo_apellido,
         nss:nss,
         id_cat_estado_civil:$("#id_cat_estado_civil").val(),
-        id_cat_genero:$("#id_cat_genero").val(),
+        //id_cat_genero:$("#id_cat_genero").val(),
         num_empleado:$("#num_empleado").val(),
-        pais_nacimiento:$("#pais_nacimiento").val(),
+        //pais_nacimiento:$("#pais_nacimiento").val(),
     },
         function (data) {
             if (data == 'edit'){
@@ -135,3 +136,4 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
 function ocultarModal(){
     $("#agregar_editar_modal").modal("hide");
 }
+

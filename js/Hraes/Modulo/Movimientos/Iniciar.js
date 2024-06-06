@@ -103,6 +103,7 @@ function guardarMovimiento(id_plaza) {
             }
             $("#agregar_editar_movimiento").modal("hide");
             buscarMovimiento();
+            buscarInfoEmpleado(id_tbl_empleados_hraes);
         }
     );
 }

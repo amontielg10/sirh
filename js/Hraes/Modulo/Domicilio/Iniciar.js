@@ -14,6 +14,7 @@ function domicilioDetalles(id_object){
             
             var municipio = jsonData.municipio;
             var colonia = jsonData.colonia; 
+            var pais = jsonData.pais;
 
             $('#colonia1').empty();
             $('#colonia1').html(colonia); 
@@ -27,6 +28,7 @@ function domicilioDetalles(id_object){
             $("#num_exterior1").val(entity.num_exterior1);
             $("#num_interior1").val(entity.num_interior1);
             $("#codigo_postal2").val(entity.codigo_postal2);
+            $("#pais_f").val(entity.pais);
         }
     );
 }

@@ -3,11 +3,15 @@ function validarDomicilio(){
     let municipio1 = document.getElementById('municipio1').value;
     let colonia1 = document.getElementById('colonia1').value;
     let calle1 = document.getElementById('calle1').value;
+    let codigo_postal2 = document.getElementById('codigo_postal2').value;
+    let num_exterior1 = document.getElementById('num_exterior1').value;
 
     if(validarData(codigo_postal,'Código postal particular') &&
        validarData(municipio1,'Municipio') &&
        validarData(colonia1,'Colonia') &&
-       validarData(calle1,'Calle')){
+       validarData(calle1,'Calle') &&
+       validarData(num_exterior1,'Núm. exterior') &&
+       caracteresCount('Código postal fiscal',6,codigo_postal2)){
             guardarDomicilio();
     } 
 }

@@ -241,4 +241,14 @@ class modelPlazasHraes
         return $listado;
     }
 
+    public function claveCentroTrabajo($idPlaza){
+        $listado = pg_query("SELECT tbl_centro_trabajo_hraes.clave_centro_trabajo
+                             FROM tbl_control_plazas_hraes
+                             INNER JOIN tbl_centro_trabajo_hraes
+                             ON  tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes =
+                                 tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes
+                             WHERE tbl_control_plazas_hraes.id_tbl_control_plazas_hraes = $idPlaza;");
+        return $listado;
+    }
+
 }

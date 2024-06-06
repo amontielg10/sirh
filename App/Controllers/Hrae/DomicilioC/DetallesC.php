@@ -17,6 +17,7 @@ if ($domicilioCount[0] != 0) {
         'response' => $response,
         'municipio' => $municipio,
         'colonia' => $colonia,
+        'pais' => 'México',
     ];
     echo json_encode($var);
 
@@ -25,6 +26,7 @@ if ($domicilioCount[0] != 0) {
         'response' => $response = $modelDomicilioM->listarByNull(),
         'municipio' => $municipio = $catSepomexC->selecByNull(),
         'colonia' => $colonia = $catSepomexC->selecByNull(),
+        'pais' => 'No encontrado',
     ];
     echo json_encode($var);
 }

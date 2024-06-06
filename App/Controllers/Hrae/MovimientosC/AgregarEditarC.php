@@ -4,9 +4,25 @@ include '../librerias.php';
 $row = new Row();
 $bitacoraM = new BitacoraM();
 $catMovimientoM = new CatMovimientoM();
+$modelEmpleadosHraes = new modelEmpleadosHraes();
 $modelMovimientosM = new ModelMovimientosM();
+$modelPlazasHraes = new modelPlazasHraes();
 $nombreTabla = 'tbl_plazas_empleados_hraes';
 $idMovimiento = $row->returnArrayById($catMovimientoM->listadoIdMovimiento($_POST['id_tbl_movimientos']));
+
+if($idMovimiento[0] != 3){///MODIFICAR EL NUMERO DE EMPLEADO (Donde 3 = baja)
+    $claveCentro = $row->returnArrayById($modelPlazasHraes->claveCentroTrabajo($_POST['id_tbl_control_plazas_hraes']));
+    $numEmpleado = $row->returnArrayById($modelEmpleadosHraes->numEmpleado($_POST['id_tbl_empleados_hraes']));
+
+    $condicion = [
+        'id_tbl_empleados_hraes' => $_POST['id_tbl_empleados_hraes']
+    ];
+
+    $datos = [
+        'num_empleado' => trim($numEmpleado[0]) . '-' . trim($claveCentro[0]),
+    ];
+    $modelEmpleadosHraes->editarByArray($connectionDBsPro, $datos, $condicion);
+}
 
 $condicion = [
     'id_tbl_plazas_empleados_hraes' => $_POST['id_object']

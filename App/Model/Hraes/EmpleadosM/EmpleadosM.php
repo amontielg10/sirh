@@ -127,4 +127,12 @@ class modelEmpleadosHraes
                              WHERE SUBSTRING(curp,11,1) = '$condition';");
         return $listado;
     }
+
+    public function numEmpleado($idEmpleado){
+        $listado = pg_query("SELECT split_part(num_empleado, '-', 1)
+                             FROM tbl_empleados_hraes
+                             WHERE id_tbl_empleados_hraes = $idEmpleado");
+
+        return $listado;
+    }
 }
