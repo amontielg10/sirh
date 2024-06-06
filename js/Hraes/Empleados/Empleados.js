@@ -42,7 +42,7 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
         function (data) {
             let jsonData = JSON.parse(data);//se obtiene el json
             let entity = jsonData.response; //Se agrega a emtidad 
-            let genero = jsonData.genero;
+            //let genero = jsonData.genero;
             let estadoCivil = jsonData.estadoCivil;
 
             //Empleado
@@ -51,7 +51,10 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             //$('#id_cat_genero').empty();
             //$('#id_cat_genero').html(genero); 
 
-            $("#genero_x").val(generoCurp(entity.curp));
+            if (entity.curp != null){
+                $("#genero_x").val(generoCurp(entity.curp));
+            }
+            
             $("#nombre").val(entity.nombre);
             $("#rfc").val(entity.rfc);
             $("#primer_apellido").val(entity.primer_apellido);
@@ -137,3 +140,9 @@ function ocultarModal(){
     $("#agregar_editar_modal").modal("hide");
 }
 
+function convertirAMayusculas(event, inputId) {
+    let inputElement = document.getElementById(inputId);
+    let texto = event.target.value;
+    let textoEnMayusculas = texto.toUpperCase();
+    inputElement.value = textoEnMayusculas;
+  }

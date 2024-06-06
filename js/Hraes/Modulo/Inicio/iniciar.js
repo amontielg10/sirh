@@ -60,3 +60,10 @@ function iniciarPercepciones(){
     buscarPercepcion();
     buscarQuinquenio();
 }
+
+function convertirAMayusculas(event, inputId) {
+    let inputElement = document.getElementById(inputId);
+    let texto = event.target.value;
+    let textoEnMayusculas = texto.toUpperCase();
+    inputElement.value = textoEnMayusculas;
+  }

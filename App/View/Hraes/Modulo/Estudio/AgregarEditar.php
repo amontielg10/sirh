@@ -11,10 +11,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <label class="text-input-form div-spacing text-input-rem">Seleccione el nivel de estudio</label><label class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example" id="id_cat_nivel_estudios"
-                                required>
-                            </select>
+                            <label class="text-input-form div-spacing text-input-rem">Seleccione el nivel de
+                                estudio</label><label class="text-required">*</label>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example"
+                                    id="id_cat_nivel_estudios" required>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -22,8 +25,8 @@
 
             <div class="div-spacing"></div>
             <div class="modal-footer">
-                <button onclick="salirAgregarEstudio();" type="button" class="btn btn-secondary"
-                    data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
+                <button onclick="salirAgregarEstudio();" type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                        class="fas fa-times"></i> Cancelar</button>
                 <button type="button" class="btn btn-success save-botton-modal" onclick="return validarEstudio();"><i
                         class="fas fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">

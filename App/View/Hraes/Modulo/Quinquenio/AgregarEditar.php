@@ -13,8 +13,10 @@
                         <div class="col-12">
                             <label class="text-input-form div-spacing text-input-rem">Seleccione el
                                 importe</label><label class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example" id="id_cat_quinquenio">
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example" id="id_cat_quinquenio">
+                                </select>
+                            </div>
                         </div>
                         <!--
                         <div class="col-6">
@@ -35,7 +37,7 @@
                         class="fas fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
             </div>
-            
+
         </div>
     </div>
 </div>

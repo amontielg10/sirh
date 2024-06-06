@@ -13,9 +13,11 @@
                         <div class="col-12">
                             <label class="text-input-form div-spacing text-input-rem">Seleccione la
                                 especialidad</label><label class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example"
-                                id="id_cat_especialidad_hraes" required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example"
+                                    id="id_cat_especialidad_hraes" required>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -25,8 +27,8 @@
             <div class="modal-footer">
                 <button onclick="salirAgregarEditarEspecialidad();" type="button" class="btn btn-secondary"
                     data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-success save-botton-modal" onclick="return validarEspecialidad();"><i
-                        class="fas fa-save"></i> Guardar</button>
+                <button type="button" class="btn btn-success save-botton-modal"
+                    onclick="return validarEspecialidad();"><i class="fas fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
             </div>
         </div>

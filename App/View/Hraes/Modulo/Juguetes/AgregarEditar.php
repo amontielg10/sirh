@@ -13,9 +13,11 @@
                         <div class="col-6">
                             <label class="text-input-form div-spacing text-input-rem">Seleccion dependiente
                                 econ&oacutemico</label><label class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example"
-                                id="id_ctrl_dependientes_economicos_j" required onchange="handleChange(event)">
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example"
+                                    id="id_ctrl_dependientes_economicos_j" required onchange="handleChange(event)">
+                                </select>
+                            </div>
                         </div>
                         <div class="col-6">
                             <label class="text-input-form div-spacing text-input-rem">Curp</label><label
@@ -30,16 +32,20 @@
                         <div class="col-6">
                             <label class="text-input-form div-spacing text-input-rem">Seleccione la fecha</label><label
                                 class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example"
-                                id="id_cat_fecha_juguetes_j" required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example"
+                                    id="id_cat_fecha_juguetes_j" required>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-6">
                             <label class="text-input-form div-spacing text-input-rem">Seleccione un
                                 estatus</label><label class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example"
-                                id="id_cat_estatus_juguetes_j" required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example"
+                                    id="id_cat_estatus_juguetes_j" required>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>

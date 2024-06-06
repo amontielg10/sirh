@@ -13,15 +13,19 @@
                         <div class="col-6">
                             <label class="text-input-form div-spacing text-input-rem">Seleccione un
                                 concepto</label><label class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example" id="id_cat_concepto"
-                                required onchange="handleChange(event)">
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example" id="id_cat_concepto"
+                                    required onchange="handleChange(event)">
+                                </select>
+                            </div>
                         </div>
                         <div class="col-6">
                             <label class="text-input-form div-spacing text-input-rem">Seleccione un valor</label><label
                                 class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example" id="id_cat_valores">
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example" id="id_cat_valores">
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>

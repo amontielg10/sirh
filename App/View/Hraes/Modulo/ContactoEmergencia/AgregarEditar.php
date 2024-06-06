@@ -12,11 +12,11 @@
                     <div class="row">
                         <div class="col-6">
                             <label class="text-input-form text-input-rem">Nombre (s)</label><label class="text-required">*</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Nombre" maxlength="20">
+                            <input type="text" class="form-control" onkeyup="convertirAMayusculas(event,'nombre')" id="nombre" placeholder="Nombre" maxlength="20">
                         </div>
                         <div class="col-6">
                             <label class="text-input-form text-input-rem">Parentesco</label><label class="text-required">*</label>
-                            <input type="text" class="form-control" id="parentesco" placeholder="Parentesco"
+                            <input type="text" class="form-control" onkeyup="convertirAMayusculas(event,'parentesco')" id="parentesco" placeholder="Parentesco"
                                 maxlength="20">
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                     <div class="row">
                         <div class="col-6">
                             <label class="text-input-form text-input-rem">Apellido paterno</label><label class="text-required">*</label>
-                            <input type="text" class="form-control" id="primer_apellido" placeholder="Apellido paterno"
+                            <input type="text" class="form-control" onkeyup="convertirAMayusculas(event,'primer_apellido')" id="primer_apellido" placeholder="Apellido paterno"
                                 maxlength="20">
                         </div>
                         <div class="col-6">
@@ -39,7 +39,7 @@
                     <div class="row">
                         <div class="col-6">
                             <label class="text-input-form text-input-rem">Apellido materno</label><label class="text-required"></label>
-                            <input type="text" class="form-control" id="segundo_apellido" placeholder="Apellido materno"
+                            <input type="text" class="form-control" onkeyup="convertirAMayusculas(event,'segundo_apellido')" id="segundo_apellido" placeholder="Apellido materno"
                                 maxlength="20">
                         </div>
                     </div>

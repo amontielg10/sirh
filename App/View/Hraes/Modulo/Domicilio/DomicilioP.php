@@ -6,7 +6,7 @@
             <input onkeyup="buscarInfor();" type="number" class="form-control" id="codigo_postal1"
                 placeholder="Código postal" maxlength="25">
         </div>
-        <div class="col-3">
+        <div class="col-4">
             <label class="text-input-rem div-spacing">Municipio</label><label class="text-required">*</label>
             <div class="custom-select-wrapper">
                 <select class="form-control" aria-label="Default select example" id="municipio1" required>
@@ -21,7 +21,7 @@
             </fieldset>
         </div>
 
-        <div class="col-3">
+        <div class="col-2">
             <label class="text-input-rem div-spacing">Pa&iacutes</label><label class="text-required">*</label>
             <fieldset disabled>
                 <input type="text" class="form-control" id="pais_f" placeholder="México" maxlength="25">
@@ -41,7 +41,7 @@
 
         <div class="col-6">
             <label class="text-input-rem div-spacing">Calle</label><label class="text-required"></label>
-            <input type="text" class="form-control" id="calle1" placeholder="Calle" maxlength="35">
+            <input onkeyup="convertirAMayusculas(event,'calle1')" type="text" class="form-control" id="calle1" placeholder="Calle" maxlength="35">
         </div>
     </div>
 
@@ -49,11 +49,11 @@
     <div class="row">
         <div class="col-3">
             <label class="text-input-rem div-spacing">N&uacutem. exterior</label><label class="text-required">*</label>
-            <input type="text" class="form-control" id="num_exterior1" placeholder="Núm. exterior" maxlength="10">
+            <input type="text" class="form-control" onkeyup="convertirAMayusculas(event,'num_exterior1')" id="num_exterior1" placeholder="Núm. exterior" maxlength="10">
         </div>
         <div class="col-3">
             <label class="text-input-rem div-spacing">N&uacutem. interior</label><label class="text-required"></label>
-            <input type="text" class="form-control" id="num_interior1" placeholder="Núm. interior" maxlength="10">
+            <input type="text" class="form-control" onkeyup="convertirAMayusculas(event,'num_interior1')" id="num_interior1" placeholder="Núm. interior" maxlength="10">
         </div>
         <div class="col-3">
             <label class="text-input-rem div-spacing">C&oacutedigo postal f&iacutescal</label><label

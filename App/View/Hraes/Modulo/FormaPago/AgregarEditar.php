@@ -33,9 +33,12 @@
                         <div class="col-6">
                             <label class="text-input-form text-input-rem">Estatus</label><label
                                 class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example"
-                                id="id_cat_estatus_formato_pago" required>
-                            </select>
+
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example"
+                                    id="id_cat_estatus_formato_pago" required>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-6">
                             <label class="text-input-rem">Forma de pago</label><label style="color:red">*</label>

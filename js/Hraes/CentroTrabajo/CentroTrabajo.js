@@ -148,6 +148,14 @@ function eliminarEntity(id_object) {
     });
 }
 }
+
+function convertirAMayusculas(event, inputId) {
+    let inputElement = document.getElementById(inputId);
+    let texto = event.target.value;
+    let textoEnMayusculas = texto.toUpperCase();
+    inputElement.value = textoEnMayusculas;
+  }
+
 /*
 document.addEventListener('DOMContentLoaded', function () {
     tippy('#centro_trabajo_plazas', {

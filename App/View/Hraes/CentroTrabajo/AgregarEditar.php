@@ -15,13 +15,13 @@
                         <div class="col-8">
                             <label class="text-input-form div-spacing">Nombre</label><label
                                 class="text-required">*</label>
-                            <input maxlength="30" type="text" class="form-control div-spacing" id="nombre" name="nombre"
+                            <input onkeyup="convertirAMayusculas(event,'nombre')" maxlength="30" type="text" class="form-control div-spacing" id="nombre" name="nombre"
                                 placeholder="Nombre" required>
                         </div>
                         <div class="col-4">
                             <label class="text-input-form div-spacing">Clave centro de trabajo</label><label
                                 class="text-required">*</label>
-                            <input maxlength="10" type="text" class="form-control div-spacing" id="clave_centro_trabajo"
+                            <input maxlength="10" type="text" class="form-control div-spacing" id="clave_centro_trabajo" onkeyup="convertirAMayusculas(event, 'clave_centro_trabajo')"
                                 name="clave_centro_trabajo" placeholder="Clave centro de trabajo">
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                         <div class="col-4">
                             <label class="text-input-form div-spacing">Colonia</label><label
                                 class="text-required"></label>
-                            <input maxlength="30" type="text" class="form-control div-spacing" id="colonia"
+                            <input maxlength="30" type="text" class="form-control div-spacing" id="colonia" onkeyup="convertirAMayusculas(event,'colonia')"
                                 name="colonia" placeholder="Colonia">
                         </div>
                         <div class="col-4">
@@ -67,13 +67,13 @@
                             <label class="text-input-form div-spacing">N&uacutem. exterior</label><label
                                 class="text-required"></label>
                             <input type="text" class="form-control div-spacing" id="num_exterior" name="num_exterior"
-                                placeholder="Núm. exterior" maxlength="10">
+                                placeholder="Núm. exterior" maxlength="10" onkeyup="convertirAMayusculas(event,'num_exterior')">
                         </div>
                         <div class="col-4">
                             <label class="text-input-form div-spacing">N&uacutem. interior</label><label
                                 class="text-required"></label>
                             <input type="text" class="form-control div-spacing" id="num_interior" name="num_interior"
-                                placeholder="Núm. interior" maxlength="10">
+                                placeholder="Núm. interior" maxlength="10" onkeyup="convertirAMayusculas(event,'num_interior')">
                         </div>
                     </div>
 
@@ -82,13 +82,13 @@
                             <label class="text-input-form div-spacing">Latitud</label><label
                                 class="text-required">*</label>
                             <input maxlength="10" type="text" class="form-control div-spacing" id="latitud"
-                                name="latitud" placeholder="Latitud">
+                                name="latitud" placeholder="Latitud" onkeyup="convertirAMayusculas(event,'latitud')">
                         </div>
                         <div class="col-4">
                             <label class="text-input-form div-spacing">Longitud</label><label
                                 class="text-required">*</label>
                             <input maxlength="10" type="text" class="form-control div-spacing" id="longitud"
-                                name="longitud" placeholder="Longitud">
+                                name="longitud" placeholder="Longitud" onkeyup="convertirAMayusculas(event,'longitud')">
                         </div>
                         <div class="col-4">
                             <label class="text-input-form div-spacing">C&oacutedigo postal</label><label
@@ -103,7 +103,7 @@
                             <label class="text-input-form div-spacing">Pa&iacutes</label><label
                                 class="text-required"></label>
                             <input maxlength="10" type="text" class="form-control div-spacing" id="pais" name="País"
-                                placeholder="País">
+                                placeholder="País" onkeyup="convertirAMayusculas(event,'pais')">
                         </div>
                     </div>
 

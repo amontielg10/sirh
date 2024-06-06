@@ -15,13 +15,13 @@
                         <div class="col-6">
                             <label class="text-input-form div-spacing">Nombre</label><label
                                 class="text-required">*</label>
-                            <input maxlength="45" type="text" class="form-control" id="nombre" placeholder="Nombre"
+                            <input  onkeyup="convertirAMayusculas(event,'nombre')" maxlength="45" type="text" class="form-control" id="nombre" placeholder="Nombre"
                                 required>
                         </div>
                         <div class="col-6">
                             <label class="text-input-form div-spacing">Apellido paterno</label><label
                                 class="text-required">*</label>
-                            <input maxlength="25" type="text" class="form-control" id="primer_apellido"
+                            <input  onkeyup="convertirAMayusculas(event,'primer_apellido')" maxlength="25" type="text" class="form-control" id="primer_apellido"
                                 placeholder="Apellido paterno">
                         </div>
                     </div>
@@ -31,12 +31,12 @@
                         <div class="col-6">
                             <label class="text-input-form div-spacing">Apelldio materno</label><label
                                 class="text-required">*</label>
-                            <input maxlength="25" type="text" class="form-control" id="segundo_apellido"
+                            <input  onkeyup="convertirAMayusculas(event,'segundo_apellido')" maxlength="25" type="text" class="form-control" id="segundo_apellido"
                                 placeholder="Apellido materno">
                         </div>
                         <div class="col-6">
                             <label class="text-input-form div-spacing">Rfc</label><label class="text-required">*</label>
-                            <input maxlength="13" type="text" class="form-control" id="rfc" placeholder="Rfc">
+                            <input  onkeyup="convertirAMayusculas(event,'rfc')" maxlength="13" type="text" class="form-control" id="rfc" placeholder="Rfc">
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@
                         <div class="col-6">
                             <label class="text-input-form div-spacing">N&uacutem. de empleado</label><label
                                 class="text-required">*</label>
-                            <input maxlength="30" type="text" class="form-control" id="num_empleado"
+                            <input  onkeyup="convertirAMayusculas(event,'num_empleado')" maxlength="30" type="text" class="form-control" id="num_empleado"
                                 placeholder="Núm de empleado">
                         </div>
                     </div>

@@ -35,8 +35,7 @@ function validarMovimiento(){
     ){
         if (movimiento_general != id_baja){
             if (validarData(num_plaza_m,'Núm. de plaza') &&
-            validarData(fecha_inicio,'Fecha inicio') &&
-            validarData(fecha_termino,'Fecha termino') 
+            validarData(fecha_inicio,'Fecha inicio')
         ){
             if (num_plaza_validate == num_plaza_m && id_tbl_movimientos_validate == id_tbl_movimientos){
                 guardarMovimiento(null);

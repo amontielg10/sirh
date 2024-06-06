@@ -24,7 +24,7 @@
         </div>
         <div class="col-8">
             <label class="text-input-rem div-spacing">Antiguedad</label><label class="text-required"></label>
-            <input maxlength="80" type="text" class="form-control" id="antiguedad" placeholder="Antiguedad">
+            <input maxlength="60" type="text" class="form-control" onkeyup="convertirAMayusculas(event,'antiguedad')" id="antiguedad" placeholder="Antiguedad">
         </div>
     </div>
 
@@ -32,7 +32,7 @@
     <div class="row">
         <div class="col-12">
             <label class="text-input-rem div-spacing">Funciones</label><label class="text-required"></label>
-            <input maxlength="300" type="text" class="form-control" id="funciones" placeholder="Funciones">
+            <input maxlength="120" type="text" class="form-control" onkeyup="convertirAMayusculas(event,'funciones')" id="funciones" placeholder="Funciones">
         </div>
     </div>
 

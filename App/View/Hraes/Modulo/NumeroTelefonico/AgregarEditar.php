@@ -15,22 +15,27 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-6">
-                            <label class="text-input-form text-input-rem">N&uacutemero telef&oacutenico</label><label class="text-required">*</label>
+                            <label class="text-input-form text-input-rem">N&uacutemero telef&oacutenico</label><label
+                                class="text-required">*</label>
                             <input type="number" class="form-control" id="movil" placeholder="Número telefónico"
                                 maxlength="10">
                         </div>
                         <div class="col-6">
-                            <label class="text-input-form text-input-rem">Estatus</label><label class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example" id="id_cat_estatus"
-                                required>
-                            </select>
+                            <label class="text-input-form text-input-rem">Estatus</label><label
+                                class="text-required">*</label>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example" id="id_cat_estatus"
+                                    required>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
                     <div class="div-spacing"></div>
                     <div class="row">
                         <div class="col-6">
-                            <label class="text-input-form text-input-rem">Telefono fijo</label><label class="text-required"></label>
+                            <label class="text-input-form text-input-rem">Telefono fijo</label><label
+                                class="text-required"></label>
                             <input type="number" class="form-control" id="telefono" placeholder="Telefono"
                                 maxlength="10">
                         </div>

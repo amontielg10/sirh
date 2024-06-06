@@ -6,3 +6,11 @@ function obtenerValorSelect(selectElement) {
     let textoSeleccionado = selectElement.options[indiceSeleccionado].textContent;
     return textoSeleccionado;
 }
+
+///convierte el texto en mayuscula
+function convertirAMayusculas(event, inputId) {
+    let inputElement = document.getElementById(inputId);
+    let texto = event.target.value;
+    let textoEnMayusculas = texto.toUpperCase();
+    inputElement.value = textoEnMayusculas;
+  }

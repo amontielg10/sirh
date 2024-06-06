@@ -13,16 +13,20 @@
                         <div class="col-4">
                             <label class="text-input-form div-spacing text-input-rem">Movimiento general</label><label
                                 class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example" id="movimiento_general"
-                                required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example" id="movimiento_general"
+                                    required>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-4">
                             <label class="text-input-form div-spacing text-input-rem">Movimiento
                                 espec&iacutefico</label><label class="text-required">*</label>
-                            <select class="form-control" aria-label="Default select example" id="id_tbl_movimientos"
-                                required>
-                            </select>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control" aria-label="Default select example" id="id_tbl_movimientos"
+                                    required>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-4">
                             <label class="text-input-form div-spacing text-input-rem">Fecha de movimiento</label><label
@@ -64,6 +68,7 @@
                             </div>
                         </div>
 
+                        <div class="div-spacing"></div>
                         <div class="row">
                             <div class="col-4">
                                 <label class="text-input-form div-spacing text-input-rem">Fecha de inicio</label><label

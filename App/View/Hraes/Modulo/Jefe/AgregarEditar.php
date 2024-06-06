@@ -13,7 +13,7 @@
                         <div class="col-12">
                             <label class="text-input-form div-spacing text-input-rem">Nombre de jefe inmediato</label><label
                                 class="text-required">*</label>
-                            <input type="text" class="form-control" id="jefe_inmediato" placeholder="Jefe inmediato"
+                            <input onkeyup="convertirAMayusculas(event,'jefe_inmediato')" type="text" class="form-control" id="jefe_inmediato" placeholder="Jefe inmediato"
                                 maxlength="60">
                         </div>
                     </div>

@@ -5,7 +5,7 @@ function validar(){
     let curp = document.getElementById('curp').value.trim();
     let num_empleado = document.getElementById('num_empleado').value.trim();
     //let pais_nacimiento = document.getElementById('pais_nacimiento').value.trim();
-    let id_cat_genero = document.getElementById('id_cat_genero').value.trim();
+    //let id_cat_genero = document.getElementById('id_cat_genero').value.trim();
     let id_cat_estado_civil = document.getElementById('id_cat_estado_civil').value.trim();
     let id_object = document.getElementById('id_object').value;
     let nss = document.getElementById('nss').value;
@@ -15,7 +15,6 @@ function validar(){
         validarData(primer_apellido,'Apellido paterno') &&
         validarData(curp,'Curp') &&
         validarData(num_empleado,'Num. empleado') &&
-        validarData(id_cat_genero,'Genero') &&
         validarData(id_cat_estado_civil,'Estado civil') &&
         campoInvalido(validarCurp(curp),'Curp') &&
         campoInvalido(validarRFC(rfc),'Rfc') &&
@@ -49,17 +48,22 @@ function validarUnique(rfc,curp,numEmpleado,id_object){
 
 function obtenerGenero(){
     let curp = document.getElementById('curp').value.trim();
+    let textoEnMayusculas = curp.toUpperCase();
+    document.getElementById("curp").value = textoEnMayusculas;
+
     $("#genero_x").val(generoCurp(curp));
 }
 
 function generoCurp(curp){
-    let result = curp.substring(11, 12);
-    let message = 'No encontrado';
+    let result = curp.substring(10, 11);
+    let message = 'NO ENCONTRADO';
 
     if(result.toUpperCase() == 'M'){
         message = 'FEMENINO';
     } else if (result.toUpperCase() == 'H'){
         message = 'MASCULINO';
-    } 
+    } else if (result.toUpperCase() == 'X'){
+        message = 'OTRO';
+    }
     return message;
 }
