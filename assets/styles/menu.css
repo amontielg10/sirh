@@ -359,3 +359,7 @@ hr {
         margin-right: 10px;
         vertical-align: middle;
     }
+
+    input[type="date"]:focus {
+        color: #BC955C;
+    }

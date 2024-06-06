@@ -1,7 +1,7 @@
 <hr>
 <div class="row">
     <div class="col-4">
-        <div class="card border-light shadow-lg" style="width: 31rem;">
+        <div class="card border-light shadow-lg" style="">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <h3 class="card-title">Centro de trabajo&nbsp;&nbsp;</h3>
@@ -48,7 +48,7 @@
     </div>
 
     <div class="col-4">
-        <div class="card border-light shadow-lg" style="width: 31rem;">
+        <div class="card border-light shadow-lg" style="">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <h3 class="card-title">Plazas&nbsp;&nbsp;</h3>
@@ -99,7 +99,7 @@
     </div>
 
     <div class="col-4">
-        <div class="card border-light shadow-lg" style="width: 31rem;">
+        <div class="card border-light shadow-lg" style="">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <h3 class="card-title">Empleados&nbsp;&nbsp;</h3>
