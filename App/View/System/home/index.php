@@ -23,7 +23,6 @@ include '../../nav-menu.php';
     <div class="card border-light">
         <div class="card-body">
             <h3 class="card-title tittle-card-index">SISTEMA INTEGRAL DE RECURSOS HUMANOS</h3>
-
             <?php if ($id_rol == 1 || $id_rol == 3) { ?>
                 <div class="row">
                     <div class="col">
@@ -31,7 +30,6 @@ include '../../nav-menu.php';
                     </div>
                 </div>
             <?php } ?>
-
         </div>
     </div>
     <br>
