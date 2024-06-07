@@ -14,7 +14,7 @@
                             <label class="text-input-form div-spacing text-input-rem">Movimiento general</label><label
                                 class="text-required">*</label>
                             <div class="custom-select-wrapper">
-                                <select class="form-control" aria-label="Default select example" 
+                                <select class="form-control" aria-label="Default select example" id="movimiento_general"  
                                     required>
                                 </select>
                             </div>
@@ -82,25 +82,15 @@
                                 <input type="date" type="number" class="form-control" id="fecha_termino"
                                     placeholder="Cuenta clabe" maxlength="18">
                             </div>
+                            <!--
                             <div class="col-4">
                                 <label class="text-input-form div-spacing text-input-rem">Fecha de termino</label><label
                                     class="text-required">*</label>
-                                <select style="background:white" class="selectpicker form-control" aria-label="Default select example"
-                                    data-live-search="true" id="movimiento_general">
-                                    <?php
-                                    /*
-                                    $listado = pg_query("SELECT * FROM cat_entidad");
-                                    if ($listado) {
-                                        if (pg_num_rows($listado) > 0) {
-                                            while ($row = pg_fetch_object($listado)) {
-                                                echo '<option value="' . $row->cat_entidad . '">' . $row->entidad . '</option>';
-                                            }
-                                        }
-                                    }*/
-                                    ?>
-
+                                <select data-style="input-select-selectpicker form-control" class="selectpicker" aria-label="Default select example"
+                                    data-live-search="true" id="movimiento_general" data-none-results-text="Sin resultados">
                                 </select>
                             </div>
+-->
                         </div>
                     </div>
                 </div>

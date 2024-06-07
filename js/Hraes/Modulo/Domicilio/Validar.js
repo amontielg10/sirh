@@ -6,7 +6,7 @@ function validarDomicilio(){
     let codigo_postal2 = document.getElementById('codigo_postal2').value;
     let num_exterior1 = document.getElementById('num_exterior1').value;
 
-    if(validarData(codigo_postal,'Código postal particular') &&
+    if(validarData(codigo_postal,'Código postal') &&
        validarData(municipio1,'Municipio') &&
        validarData(colonia1,'Colonia') &&
        validarData(calle1,'Calle') &&

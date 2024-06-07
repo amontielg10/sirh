@@ -359,3 +359,9 @@ hr {
         margin-right: 10px;
         vertical-align: middle;
     }
+
+    .input-select-selectpicker{
+        background: #ffffff;
+        color:#000000;
+        border-color: #aeaeae;
+      }

@@ -2,6 +2,20 @@
 
 class CatSepomexC
 {
+    function selecByNull()
+    {
+        $options = '<option value="' . '' . '">' . 'Seleccione' . '</option>';
+        return $options;
+    }
+
+    function selectByAll($resultados)
+    {
+        $options = '<option value="">Seleccione</option>';
+        while ($row = pg_fetch_array($resultados)) {
+            $options .= '<option value="' . $row [0] . '">' . $row [0] . '</option>';
+        }
+        return $options;
+    }
 
     function selectMunicipioByCp($resultados, $text)
     {
@@ -17,21 +31,6 @@ class CatSepomexC
     function selecStaticText($text)
     {
         $options = '<option value="' . $text . '">' . $text . '</option>';
-        return $options;
-    }
-
-    function selectByAll($resultados)
-    {
-        $options = '<option value="">Seleccione</option>';
-        while ($row = pg_fetch_array($resultados)) {
-            $options .= '<option value="' . $row [0] . '">' . $row [0] . '</option>';
-        }
-        return $options;
-    }
-
-    function selecByNull()
-    {
-        $options = '<option value="' . '' . '">' . 'Seleccione' . '</option>';
         return $options;
     }
 }

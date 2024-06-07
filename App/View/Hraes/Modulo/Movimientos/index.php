@@ -2,6 +2,14 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" rel="stylesheet">
 
+<style>
+    .bootstrap-select:hover .dropdown-toggle {
+      background-color: #f8f9fa; /* Cambia aquí el color cuando el cursor está encima */
+      /*border-color: red; /* Cambia aquí el color del borde cuando el cursor está encima */
+    }
+
+  </style>
+
 <div class="row font-size-modulo">
     <div class="col-9">
         <div class="form-inline">

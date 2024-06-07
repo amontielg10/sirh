@@ -46,8 +46,8 @@ function agregarEditarMovimiento(id_object){
 
             $('#movimiento_general').empty();
             $('#movimiento_general').html(general); 
-            $('#movimiento_general').selectpicker('refresh');
-            console.log(general);
+            //$('#movimiento_general').selectpicker('refresh');
+            
             $('#id_tbl_movimientos').empty();
             $('#id_tbl_movimientos').html(especifico); 
 
@@ -63,7 +63,7 @@ function agregarEditarMovimiento(id_object){
             $('#num_plaza_validate').val(num_plaza_m);
             $('#id_tbl_movimientos_validate').val(entity.id_tbl_movimientos);
 
-            $('.selectpicker').selectpicker();
+            //$('.selectpicker').selectpicker();
         }
     );
 
