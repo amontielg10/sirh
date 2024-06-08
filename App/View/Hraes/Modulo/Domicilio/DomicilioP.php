@@ -24,7 +24,7 @@
         <div class="col-2">
             <label class="text-input-rem div-spacing">Pa&iacutes</label><label class="text-required">*</label>
             <fieldset disabled>
-                <input type="text" class="form-control" id="pais_f" placeholder="México" maxlength="25">
+                <input type="text" class="form-control" id="pais_f" placeholder="MÉXICO" maxlength="25">
             </fieldset>
         </div>
     </div>

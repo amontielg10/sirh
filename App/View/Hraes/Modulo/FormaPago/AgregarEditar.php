@@ -44,7 +44,7 @@
                             <label class="text-input-rem">Forma de pago</label><label style="color:red">*</label>
                             <fieldset disabled>
                                 <input type="text" class="form-control" id="nombre_banco_not"
-                                    placeholder="Transferencia" maxlength="18" disable value="Transferencia">
+                                    placeholder="TRANSFERENCIA" maxlength="18" disable value="TRANSFERENCIA">
                             </fieldset>
                         </div>
                     </div>

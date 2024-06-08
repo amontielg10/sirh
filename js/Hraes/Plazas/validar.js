@@ -21,7 +21,11 @@ function validar(){
         validarData(fecha_ingreso_inst,'Fecha de ingreso') &&
         caracteresCount('Número de plaza',8,num_plaza)
     ){
-        agregarEditarByDb();
+        if (id_object.length === 0){
+            agregarEditarByDb();
+        } else {
+            validarEstatusPlaza(id_cat_plazas,id_object);
+        }
     } 
 }
 
@@ -32,7 +36,15 @@ function validarEstatusPlaza(id_cat_plazas,id_object){
         id_object:id_object
     },
         function (data) {
-            console.log(data);
+            let jsonData = JSON.parse(data);
+            let message = jsonData.message; 
+            let bool = jsonData.bool;
+        
+            if (bool){
+                mensajeError(message);
+            } else {
+                agregarEditarByDb();
+            }
         }
     );
 }

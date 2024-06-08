@@ -116,7 +116,8 @@ class modelPlazasHraes
                                     tbl_movimientos.nombre_movimiento,
                                     tbl_plazas_empleados_hraes.fecha_inicio,	
                                     tbl_plazas_empleados_hraes.fecha_termino,
-                                    tbl_plazas_empleados_hraes.fecha_movimiento
+                                    tbl_plazas_empleados_hraes.fecha_movimiento,
+                                    tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes
                             FROM tbl_plazas_empleados_hraes
                             INNER JOIN tbl_movimientos
                             ON tbl_plazas_empleados_hraes.id_tbl_movimientos = 
@@ -125,6 +126,7 @@ class modelPlazasHraes
                             ON tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
                                 tbl_empleados_hraes.id_tbl_empleados_hraes
                             WHERE tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes = $id_object
+                            ORDER BY tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes DESC
                             LIMIT 3;";
         return $listado;
     }
