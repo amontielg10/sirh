@@ -10,7 +10,7 @@ $id_object = $_POST['id_object'];
 $idMovimiento = 3; //id_movimiento = baja;
 $idPlaza = 3; ///id_cat_plazas = ocupada in table cat_plazas
 
-$message = 'No es posible cambiar el tipo de plaza a una plaza asignada a un empleado';
+$message = 'No es posible modificar el tipo de plaza asignada a un empleado.';
 $bool = false;
 $countPlazas = $row->returnArrayById($modelMovimientosM->countPlazasById($id_object));
 
