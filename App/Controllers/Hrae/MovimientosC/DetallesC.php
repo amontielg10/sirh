@@ -7,34 +7,43 @@ $catMovimientoM = new CatMovimientoM();
 $catSelectC = new CatSelectC();
 $modelPlazasHraes = new modelPlazasHraes();
 $row = new row();
+$catNombramientoM = new CatNombramientoM();
+$catNombramientoC = new CatNombramientoC();
+$modelPlazasHraes = new modelPlazasHraes();
 
-if ($id_object != null) {
-    $response = $row-> returnArray($modelMovimientosM->listarByEdit($id_object));
+if ($id_object != null) {///MODIFICAR
+    $response = $row->returnArray($modelMovimientosM->listarByEdit($id_object));
     $idMovimiento = $row->returnArrayById($catMovimientoM->listadoIdMovimiento($response['id_tbl_movimientos']));
-    $general = $catSelectC->selectByEdit($catMovimientoM->listarByAllGeneral(),$row->returnArrayById($catMovimientoM->listarByIdGeneral($response['id_tbl_movimientos'])));
-    $especifico = $catSelectC->selectByEditIX($catMovimientoM->obtenerByAllEspecifico($idMovimiento[0]),$row->returnArrayById($catMovimientoM->obtenerByIdEspecifico($response['id_tbl_movimientos'])));
-    $plazas = $row->returnArrayById($modelPlazasHraes->listarByEditMovimiento($response['id_tbl_control_plazas_hraes']));
+    $general = $catSelectC->selectByEdit($catMovimientoM->listarByAllGeneral(), $row->returnArrayById($catMovimientoM->listarByIdGeneral($response['id_tbl_movimientos'])));
+    $especifico = $catSelectC->selectByEditIX($catMovimientoM->obtenerByAllEspecifico($idMovimiento[0]), $row->returnArrayById($catMovimientoM->obtenerByIdEspecifico($response['id_tbl_movimientos'])));
+    $caracter = $catNombramientoC->selectById($catNombramientoM->listarByAll(), $row->returnArrayById($catNombramientoM->listarByIdEdit($response['id_cat_caracter_nom_hraes'])));
+    $plaza = $catSelectC->selectByEditCatalogo($modelPlazasHraes->plazaVacante(), $row->returnArrayById($modelPlazasHraes->plazaVacanteEdit($response['id_tbl_control_plazas_hraes'])));
+    $detallesPlaza = $row->returnArrayById($modelPlazasHraes->infoPlazaCentro($response['id_tbl_control_plazas_hraes']));
     $var = [
         'response' => $response,
         'general' => $general,
         'especifico' => $especifico,
-        'num_plaza_m' => $plazas[0],
-        'tipo_plaza_m' => $plazas[1],
-        'unidad_responsable_m' => $plazas[2],
+        'caracter' => $caracter,
+        'plaza' => $plaza,
+        'contratacion' => $detallesPlaza[1],
+        'centroTrabajo' => $detallesPlaza[2],
     ];
     echo json_encode($var);
 
-} else {
+} else {///AGREGAR
     $response = $modelMovimientosM->listarByNull();
-    $general = $catSelectC->selectByAllById($catMovimientoM->listarByAllGeneral(),2,0);
+    $general = $catSelectC->selectByAllById($catMovimientoM->listarByAllGeneral(), 2, 0);
     $especifico = $catSelectC->selecStaticByNull();
+    $caracter = $catNombramientoC->selectByAll($catNombramientoM->listarByAll());
+    $plaza = $catSelectC->selectByAllCatalogo($modelPlazasHraes->plazaVacante());
     $var = [
         'response' => $response,
         'general' => $general,
         'especifico' => $especifico,
-        'num_plaza_m' => null,
-        'tipo_plaza_m' => null,
-        'unidad_responsable_m' => null,
+        'caracter' => $caracter,
+        'plaza' => $plaza,
+        'contratacion' => null,
+        'centroTrabajo' => null,
     ];
     echo json_encode($var);
 }

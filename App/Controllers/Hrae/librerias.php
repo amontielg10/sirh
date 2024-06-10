@@ -43,6 +43,7 @@ include '../../../Model/Hraes/QuinquenioM/QuinquenioM.php';
 include '../../../Model/Catalogos/CatConceptoM/CatConceptoM.php';
 include '../../../Model/Catalogos/CatValoresM/CatValoresM.php';
 include '../../../Model/Catalogos/CatQuinquenioM/CatQuinquenioM.php';
+include '../../../Model/Catalogos/CatNombramientoM/CatNombramientoM.php';
 
 ///CONTROLLERS
 include '../../../Controllers/Hrae/GlobalC/ArrayC.php';
@@ -63,3 +64,4 @@ include '../../../Controllers/Hrae/Catalogos/CatGeneroC/CatGeneroC.php';
 include '../../../Controllers/Catalogos/CatConceptoC/CatConceptoC.php';
 include '../../../Controllers/Catalogos/CatValoresC/CatValoresC.php';
 include '../../../Controllers/Catalogos/CatQuinquenioC/CatQuinquenioC.php';
+include '../../../Controllers/Catalogos/CatNombramientoC/CatNombramientoC.php';

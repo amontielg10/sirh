@@ -2,13 +2,13 @@
 
 class modelPlazasHraes
 {
-    public function listarByAll($id_tbl_centro_trabajo_hraes,$paginator)
+    public function listarByAll($id_tbl_centro_trabajo_hraes, $paginator)
     {
         $result = "
             ORDER BY id_tbl_control_plazas_hraes DESC
             LIMIT 6 OFFSET $paginator;";
 
-        if ($id_tbl_centro_trabajo_hraes != null){
+        if ($id_tbl_centro_trabajo_hraes != null) {
             $result = "
                 WHERE tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes = $id_tbl_centro_trabajo_hraes
                 ORDER BY tbl_control_plazas_hraes.id_tbl_control_plazas_hraes DESC
@@ -40,7 +40,7 @@ class modelPlazasHraes
         return $listado;
     }
 
-    public function listarByLike($id_tbl_centro_trabajo_hraes,$busqueda,$paginator)
+    public function listarByLike($id_tbl_centro_trabajo_hraes, $busqueda, $paginator)
     {
         $result = "AND (TRIM(UPPER(UNACCENT(tbl_control_plazas_hraes.num_plaza))) 
                             LIKE '%$busqueda%'
@@ -54,7 +54,7 @@ class modelPlazasHraes
                     ORDER BY id_tbl_control_plazas_hraes DESC
                     LIMIT 6 OFFSET $paginator;";
         $condition = "";
-        if($id_tbl_centro_trabajo_hraes != null){
+        if ($id_tbl_centro_trabajo_hraes != null) {
             $condition = "WHERE tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes = 
                           $id_tbl_centro_trabajo_hraes ";
         }
@@ -80,7 +80,7 @@ class modelPlazasHraes
                             cat_tipo_contratacion_hraes.id_cat_tipo_contratacion_hraes
                     INNER JOIN cat_subtipo_contratacion_hraes
                         ON 	cat_tipo_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes =
-                            cat_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes " .  $condition;
+                            cat_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes " . $condition;
         return $listado;
     }
 
@@ -131,7 +131,8 @@ class modelPlazasHraes
         return $listado;
     }
 
-    function listarByIdEdit($id_object){
+    function listarByIdEdit($id_object)
+    {
         $listado = pg_query("SELECT id_tbl_control_plazas_hraes, num_plaza,
                                     id_cat_plazas,id_cat_tipo_subtipo_contratacion_hraes,
                                     id_cat_unidad_responsable,
@@ -144,14 +145,16 @@ class modelPlazasHraes
         return $listado;
     }
 
-    public function listarCountByNum($numPlaza){
+    public function listarCountByNum($numPlaza)
+    {
         $listado = pg_query("SELECT COUNT (id_tbl_control_plazas_hraes)
                              FROM tbl_control_plazas_hraes
                              WHERE num_plaza = '$numPlaza';");
         return $listado;
-    } 
+    }
 
-    public function listarNumPlazaUResp($numPlaza){
+    public function listarNumPlazaUResp($numPlaza)
+    {
         $listado = pg_query("SELECT tbl_control_plazas_hraes.id_tbl_control_plazas_hraes,
                                     tbl_control_plazas_hraes.id_cat_plazas,
                                     cat_plazas.tipo_plaza,
@@ -167,10 +170,11 @@ class modelPlazasHraes
         return $listado;
     }
 
-    function listarByNull(){
+    function listarByNull()
+    {
         return $raw = [
-            'id_tbl_control_plazas_hraes' => null, 
-            'num_plaza' => null, 
+            'id_tbl_control_plazas_hraes' => null,
+            'num_plaza' => null,
             'id_cat_plazas' => null,
             'id_cat_tipo_subtipo_contratacion_hraes' => null,
             'id_cat_unidad_responsable' => null,
@@ -182,11 +186,12 @@ class modelPlazasHraes
             'fecha_ingreso_inst' => null,
             'fecha_inicio_movimiento' => null,
             'fecha_termino_movimiento' => null,
-            'fecha_modificacion' => null   
+            'fecha_modificacion' => null
         ];
     }
 
-    public function listarByEditMovimiento($id){
+    public function listarByEditMovimiento($id)
+    {
         $listado = pg_query("SELECT tbl_control_plazas_hraes.num_plaza,
                                     cat_plazas.tipo_plaza,
                                     cat_unidad_responsable.nombre
@@ -201,22 +206,26 @@ class modelPlazasHraes
         return $listado;
     }
 
-    function editarByArray($conexion, $datos, $condicion){
+    function editarByArray($conexion, $datos, $condicion)
+    {
         $pg_update = pg_update($conexion, 'tbl_control_plazas_hraes', $datos, $condicion);
         return $pg_update;
     }
 
-    function agregarByArray($conexion, $datos){
+    function agregarByArray($conexion, $datos)
+    {
         $pg_add = pg_insert($conexion, 'tbl_control_plazas_hraes', $datos);
         return $pg_add;
     }
 
-    function eliminarByArray($conexion, $condicion){
-        $pgs_delete = pg_delete($conexion,'tbl_control_plazas_hraes',$condicion);
+    function eliminarByArray($conexion, $condicion)
+    {
+        $pgs_delete = pg_delete($conexion, 'tbl_control_plazas_hraes', $condicion);
         return $pgs_delete;
     }
 
-    public function ultimoMovimientoPlaza($id){
+    public function ultimoMovimientoPlaza($id)
+    {
         $listado = pg_query("SELECT tbl_movimientos.id_tipo_movimiento,
                                     tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes,
                                     tbl_plazas_empleados_hraes.id_tbl_empleados_hraes
@@ -230,20 +239,23 @@ class modelPlazasHraes
         return $listado;
     }
 
-    public function allCountPlazas(){
+    public function allCountPlazas()
+    {
         $listado = pg_query("SELECT COUNT (id_tbl_control_plazas_hraes)
                              FROM tbl_control_plazas_hraes;");
         return $listado;
     }
 
-    public function tipoPlazaAll($idCatPlaza){
+    public function tipoPlazaAll($idCatPlaza)
+    {
         $listado = pg_query("SELECT COUNT (id_tbl_control_plazas_hraes)
                              FROM tbl_control_plazas_hraes
                              WHERE id_cat_plazas = $idCatPlaza;");
         return $listado;
     }
 
-    public function claveCentroTrabajo($idPlaza){
+    public function claveCentroTrabajo($idPlaza)
+    {
         $listado = pg_query("SELECT tbl_centro_trabajo_hraes.clave_centro_trabajo
                              FROM tbl_control_plazas_hraes
                              INNER JOIN tbl_centro_trabajo_hraes
@@ -253,4 +265,45 @@ class modelPlazasHraes
         return $listado;
     }
 
+    public function plazaVacante()
+    {
+        ////EL NUMERO 5 REPRESENTA LAS PLAZAS
+        $listado = pg_query("SELECT id_tbl_control_plazas_hraes,num_plaza
+                             FROM tbl_control_plazas_hraes
+                             WHERE id_cat_plazas = 5
+                             ORDER BY num_plaza ASC;");
+        return $listado;
+    }
+
+    public function plazaVacanteEdit($idPlaza)
+    {
+        ////EL NUMERO 5 REPRESENTA LAS PLAZAS
+        $listado = pg_query("SELECT id_tbl_control_plazas_hraes,num_plaza
+                             FROM tbl_control_plazas_hraes
+                             WHERE id_tbl_control_plazas_hraes = $idPlaza");
+        return $listado;
+    }
+
+    public function infoPlazaCentro($idPlaza)
+    {
+        $listado = pg_query("SELECT tbl_control_plazas_hraes.id_tbl_control_plazas_hraes,
+                                    CONCAT(cat_tipo_contratacion_hraes.tipo_contratacion, '-',
+                                        cat_subtipo_contratacion_hraes.subtipo),
+                                    tbl_centro_trabajo_hraes.clave_centro_trabajo
+                            FROM tbl_control_plazas_hraes
+                            INNER JOIN cat_tipo_subtipo_contratacion_hraes
+                            ON tbl_control_plazas_hraes.id_cat_tipo_subtipo_contratacion_hraes =
+                                cat_tipo_subtipo_contratacion_hraes.id_cat_tipo_subtipo_contratacion_hraes
+                            INNER JOIN cat_tipo_contratacion_hraes
+                            ON cat_tipo_subtipo_contratacion_hraes.id_cat_tipo_contratacion_hraes =
+                                cat_tipo_contratacion_hraes.id_cat_tipo_contratacion_hraes
+                            INNER JOIN cat_subtipo_contratacion_hraes
+                            ON	cat_tipo_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes =
+                                cat_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes
+                            INNER JOIN tbl_centro_trabajo_hraes
+                            ON tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes =
+                                tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes
+                            WHERE tbl_control_plazas_hraes.id_tbl_control_plazas_hraes = $idPlaza;");
+        return $listado;
+    }
 }

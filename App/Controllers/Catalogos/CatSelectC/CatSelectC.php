@@ -66,4 +66,24 @@ class CatSelectC
         return $options;
     }
 
+    function selectByAllCatalogo($resultados)
+    {
+        $options = '<option value="">Seleccione</option>';
+        while ($row = pg_fetch_array($resultados)) {
+            $options .= '<option value="' . $row [0] . '">' . $row [1] . '</option>';
+        }
+        return $options;
+    }
+
+    function selectByEditCatalogo($all, $edit)
+    {
+        $options = '<option value="' . $edit[0] . '">' . $edit[1] . '</option>';
+        while ($row = pg_fetch_array($all)) {
+            if ($row[0] != $edit[0]) {
+                $options .= '<option value="' . $row[0] . '">' . $row[1]. '</option>';
+            }
+        }
+        return $options;
+    }
+
 }

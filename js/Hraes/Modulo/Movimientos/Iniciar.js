@@ -36,34 +36,40 @@ function agregarEditarMovimiento(id_object){
         id_object: id_object
     },
         function (data) {
+            console.log(data);
             let jsonData = JSON.parse(data);
             let entity = jsonData.response;
+            let caracter = jsonData.caracter;
             let general = jsonData.general;
-            let num_plaza_m = jsonData.num_plaza_m;
             let especifico = jsonData.especifico;
-            let tipo_plaza_m = jsonData.tipo_plaza_m;
-            let unidad_responsable_m = jsonData.unidad_responsable_m;
+            let plaza = jsonData.plaza;
+            let contratacion = jsonData.contratacion;
+            let centroTrabajo = jsonData.centroTrabajo;
 
             $('#movimiento_general').empty();
             $('#movimiento_general').html(general); 
-            //$('#movimiento_general').selectpicker('refresh');
+
+            $('#id_cat_caracter_nom_hraes').empty();
+            $('#id_cat_caracter_nom_hraes').html(caracter); 
             
+            $('#id_tbl_control_plazas_hraes').empty();
+            $('#id_tbl_control_plazas_hraes').html(plaza); 
+            $('#id_tbl_control_plazas_hraes').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
+
             $('#id_tbl_movimientos').empty();
             $('#id_tbl_movimientos').html(especifico); 
 
             $('#fecha_movimiento').val(entity.fecha_movimiento); 
             $('#fecha_inicio').val(entity.fecha_inicio); 
             $('#fecha_termino').val(entity.fecha_termino);
-            $('#id_plaza').val(entity.id_tbl_control_plazas_hraes);  
+            $('#id_plaza').val(entity.id_tbl_control_plazas_hraes); 
+            $('#motivo_estatus').val(entity.motivo_estatus);
+            $('#observaciones').val(entity.observaciones); 
 
-            $('#num_plaza_m').val(num_plaza_m); 
-            $('#tipo_plaza_m').val(tipo_plaza_m); 
-            $('#unidad_responsable_m').val(unidad_responsable_m);
+            $('#tipo_contratacion_mx').val(contratacion); 
+            $('#centro_trabajo_mx').val(centroTrabajo);
 
-            $('#num_plaza_validate').val(num_plaza_m);
-            $('#id_tbl_movimientos_validate').val(entity.id_tbl_movimientos);
-
-            //$('.selectpicker').selectpicker();
         }
     );
 
@@ -76,28 +82,21 @@ function salirAgregarEditarMovimiento(){
 }
 
 
-function guardarMovimiento(id_plaza) {
-    let fecha_inicio = $("#fecha_inicio").val();
-    let id_object = $("#id_object").val();
-    let fecha_termino = $("#fecha_termino").val();
-    let id_tbl_movimientos = $("#id_tbl_movimientos").val();
-    let fecha_movimiento = $("#fecha_movimiento").val();
-    let id_tbl_control_plazas_hraes = $("#id_plaza").val();
-
-    if(id_plaza != null){
-        id_tbl_control_plazas_hraes = id_plaza;
-    }
-
+function guardarMovimiento() {
     $.post("../../../../App/Controllers/Hrae/MovimientosC/AgregarEditarC.php", {
-        fecha_inicio: fecha_inicio,
-        id_object:id_object,
-        fecha_termino: fecha_termino,
-        id_tbl_movimientos:id_tbl_movimientos,
-        fecha_movimiento:fecha_movimiento,
-        id_tbl_control_plazas_hraes:id_tbl_control_plazas_hraes,
+        id_tbl_movimientos: $("#id_tbl_movimientos").val(),
+        fecha_movimiento: $("#fecha_movimiento").val(),
+        id_tbl_control_plazas_hraes: $("#id_tbl_control_plazas_hraes").val(),
+        fecha_inicio: $("#fecha_inicio").val(),
+        fecha_termino: $("#fecha_termino").val(),
+        id_cat_caracter_nom_hraes: $("#id_cat_caracter_nom_hraes").val(),
+        motivo_estatus: $("#motivo_estatus").val(),
+        observaciones: $("#observaciones").val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
+        id_object: $("#id_object").val(),
     },
         function (data) {
+            console.log(data);
             if (data == 'edit'){
                 mensajeExito('Movimiento modificado con éxito');
             } else if (data == 'add') {
@@ -142,87 +141,3 @@ function eliminarMovimiento(id_object) {//ELIMINAR USUARIO
 }
 }
 
-/*
-function iniciarMovimientos(){
-    iniciarTablaMovimiento(id_tbl_empleados_hraes);
-}
-
-function iniciarTablaMovimiento(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/Movimientos/tabla.php',
-        data: { id_tbl_empleados_hraes: id_tbl_empleados_hraes },
-        success: function (data) {
-            $('#tabla_movimientos').html(data);
-        }
-    });
-}
-
-
-
-/*
-
-
-
-
-
-
-function agregarEditarByDbByFormatoPago() {
-    let clabe = $("#clabe").val();
-    let id_object = $("#id_object").val();
-    let id_cat_banco = $("#id_cat_banco").val();
-    let id_cat_estatus_formato_pago = $("#id_cat_estatus_formato_pago").val();
-    let id_cat_formato_pago = $("#id_cat_formato_pago").val();
-
-    $.post("../../../../App/Controllers/Hrae/FormaPagoC/AgregarEditarC.php", {
-        id_object: id_object,
-        clabe: clabe,
-        id_tbl_empleados_hraes:id_tbl_empleados_hraes,
-        id_cat_banco:id_cat_banco,
-        id_cat_estatus_formato_pago:id_cat_estatus_formato_pago,
-        id_cat_formato_pago:id_cat_formato_pago,
-    },
-        function (data, status) {
-            if (data == 'edit'){
-                mensajeExito('Forma de pago modificada');
-            } else if (data == 'add') {
-                mensajeExito('Forma de pago agregada');  
-            } else {
-                mensajeError(data);
-            }
-            $("#agregar_editar_forma_pago").modal("hide");
-            iniciarFormaPago();
-        }
-    );
-}
-
-
-
-
-function buscarFormaPago(){ //BUSQUEDA
-    let buscar = document.getElementById("buscarFormaPagoText").value.trim();
-    buscar = buscar.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
-    buscarlenth = buscar.length;
-    
-    if (buscarlenth == 0){
-        iniciarFormaPago();
-    } else {
-        iniciarTablaFormaPagByBusqueda(buscar,id_tbl_empleados_hraes);
-    }
-}
-
-
-function iniciarTablaFormaPagByBusqueda(buscar, id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/FormaPago/tabla.php',
-        data: { 
-            buscar: buscar,
-            id_tbl_empleados_hraes: id_tbl_empleados_hraes,
-         },
-        success: function (data) {
-            $('#tabla_forma_pago').html(data);
-        }
-    });
-}
-*/
