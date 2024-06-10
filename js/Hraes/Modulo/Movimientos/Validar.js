@@ -1,6 +1,8 @@
-
+///modificar en caso de cambie id
 ///VARIABLES DE CATALOGO TBL MOVIMIENTOS
 var movimientoBaja = 3;
+var movimientoAlta = 1;
+var movimientoMov = 2;
 
 function validarMovimiento(){
     let movimiento_general = document.getElementById('movimiento_general').value;
@@ -18,15 +20,40 @@ function validarMovimiento(){
                 validarData(id_tbl_control_plazas_hraes,'Núm. Plaza') &&
                 validarData(fecha_inicio,'Fecha de inicio') &&
                 validarData(id_cat_caracter_nom_hraes,'Caracter nombramiento')){ 
-                    guardarMovimiento(); ///ACCCION DE GUARDAR INFO
+                    validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento);///FUNCION PARA VALIDAR EL ULTIMO MOVIMIENTO
             }
         } else { ///EL MOVIMIENTO ES UN BAJA
             if(validarData(id_tbl_movimientos,'Movimiento especifico') && ///VALIDACION DE CAMPOS REQUERIDOS PARA BAJA
                validarData(fecha_movimiento,'Fecha de movimiento')){ 
-                guardarMovimiento();///ACCCION DE GUARDAR INFO
+                validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento);///FUNCION PARA VALIDAR EL ULTIMO MOVIMIENTO
             }
         }
     }
+}
+
+///LA FUNCION VALIDA EL ULTIMO MOVIMIENTO, FECHAS Y CAMPOS PARA ASIGNAR EL MOVIMIENTO
+function validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento){
+    $.post("../../../../App/Controllers/Hrae/MovimientosC/UltimoMovimientoC.php", {
+        movimiento_general:movimiento_general,
+        fecha_movimiento:fecha_movimiento,
+        movimientoBaja:movimientoBaja,
+        id_object:id_object,
+        id_tbl_empleados_hraes:id_tbl_empleados_hraes,
+        movimientoAlta:movimientoAlta,
+        movimientoMov:movimientoMov,
+    },
+        function (data) {
+            let jsonData = JSON.parse(data);
+            let bool = jsonData.bool;
+            let mensaje = jsonData.mensaje;
+
+            if(bool){
+                guardarMovimiento();///ACCCION DE GUARDAR INFO
+            } else {
+                messageLarge(mensaje);
+            }
+        }
+    );
 }
 
 ///LA FUNCION OBTIENE EL TIPO DE CONTRATACION  Y CENTRO DE TRABAJO CUANDO SE CAMBIA EL EVENTO DE  NUM_PLAZA
@@ -36,7 +63,6 @@ document.getElementById("id_tbl_control_plazas_hraes").addEventListener("change"
         id_tbl_control_plazas_hraes: id_tbl_control_plazas_hraes,
     },
         function (data) {
-            console.log(data);
             let jsonData = JSON.parse(data);
             let contratacion = jsonData.contratacion;
             let centroTrabajo = jsonData.centroTrabajo;
@@ -81,7 +107,14 @@ function mostrarContenido() {
     x.style.display = "block";
 }
 
-
+///FUNCION DE MENSAJE EXTENDIDO
+function messageLarge(text){
+    Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: text,
+      });
+}
 /*
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
 var id_baja = 3; ///CATALOGO

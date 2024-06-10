@@ -1,9 +1,56 @@
 <?php
 include '../librerias.php';
 
+//CLASS
 $modelMovimientosM = new ModelMovimientosM();
 $row = new Row();
 
+///MESSAGES
+$bool = true;
+$mensaje = 'ok';
+
+///variables
+$fecha_movimiento = $_POST['fecha_movimiento'];
+$movimiento_general = $_POST['movimiento_general'];
+$movimientoBaja = $_POST['movimientoBaja'];
+$movimientoMov = $_POST['movimientoMov'];
+$movimientoAlta = $_POST['movimientoAlta'];
+$id_object = $_POST['id_object'];
+$id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
+
+///INFO DATABASE 
+$existUltimoM = $row->returnArrayById($modelMovimientosM->countUltimoMovimiento($id_tbl_empleados_hraes));
+
+///VALIDACIONES
+if ($existUltimoM[0] != 0) {///EXISTEN REGISTRO DE MOVIMIENTOS
+    $ultimoMovimiento = $row->returnArrayById($modelMovimientosM->listadoUltimoMovimiento($id_tbl_empleados_hraes));
+    if ($movimiento_general == $movimientoBaja && $ultimoMovimiento[0] == $movimientoBaja) {///EL USUARIO INTENTA HACER UNA BAJA POR LO TANTO EL ULTIMO MOVIMIENTO TUVO QUE SER ALTA O MOVIMIENTO
+        $bool = false; ///CAMBIAR ESTATUS DE VALORES Y MENSAJE DE ERROR
+        $mensaje = 'Para asignar una baja, el empleado debe estar asociado a una plaza.';
+    } else if($movimiento_general == $movimientoAlta && $ultimoMovimiento[0] != $movimientoBaja){//EL USUARIO INTENTA HACER UNA ALTA, POR LO TANTO EL ULTIMO MOVIMIENTO TUVO QUE SER UNA BAJA
+        $bool = false; ///CAMBIAR ESTATUS DE VALORES Y MENSAJE DE ERROR
+        $mensaje = 'Para que un empleado pueda recibir una alta, debe haber tenido una baja previa.';
+    } else if ($movimiento_general == $movimientoMov && $ultimoMovimiento[0] == $movimientoBaja){ ///PARA ASIGNAR UN MOVIMIENTO EL ULTIMO MOVIMIENTO TUBO QUE SER UNA ALTA O MOVIMIENTO
+        $bool = false; ///CAMBIAR ESTATUS DE VALORES Y MENSAJE DE ERROR
+        $mensaje = 'Para que un empleado reciba un movimiento, es necesario que tenga una alta previa.';
+    } else if($ultimoMovimiento[1] >= $fecha_movimiento){///COMPARA QUE LA FECHA INGRESADA SEA MAYOR A LA FECHA ANTERIOR
+        $bool = false; ///CAMBIAR ESTATUS DE VALORES Y MENSAJE DE ERROR
+        $mensaje = 'La fecha ingresada debe ser posterior a la fecha registrada del último movimiento.';
+    }
+} else { ///NO EXISTEN REGISTRO DEL USUARIOS
+    if ($movimiento_general != $movimientoAlta) { ///EL USUARIO INTENTA HACER BAJA O MOVIMIENTO, COMO EL USUARIO NO TIENE INFO SOLO PODRA HACER ALTAS
+        $bool = false; ///CAMBIAR ESTATUS DE VALORES Y MENSAJE DE ERROR
+        $mensaje = 'Para asignar una baja o movimiento, el empleado debe estar asociado a una plaza.';
+    }
+}
+
+$row = [
+    'bool' => $bool,
+    'mensaje' => $mensaje,
+];
+
+echo json_encode($row);
+/*
 $movimiento = 2; ///OBTENIDO DEL CATALOGO TBL_MOVIMIENTOS
 $alta = 1; ///OBTENIDO DEL CATALOGO TBL_MOVIMIENTOS
 $baja = 3; ///OBTENIDO DEL CATALOGO TBL_MOVIMIENTOS
@@ -61,3 +108,5 @@ $row = [
 ];
 
 echo json_encode($row);
+
+*/

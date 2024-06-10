@@ -83,13 +83,7 @@ class ModelMovimientosM
     }
 
 
-    public function countUltimoMovimiento($idEmpleado)
-    {
-        $listado = pg_query("SELECT COUNT(id_tbl_plazas_empleados_hraes)
-                             FROM tbl_plazas_empleados_hraes 
-                             WHERE id_tbl_empleados_hraes = $idEmpleado");
-        return $listado;
-    }
+
 
     public function listarCountPlaza($id){
         $listado = pg_query("SELECT COUNT(tbl_plazas_empleados_hraes)
@@ -99,20 +93,7 @@ class ModelMovimientosM
     }
 
 
-    public function listadoUltimoMovimiento($idEmpleado)
-    {
-        $listado = pg_query("SELECT tbl_movimientos.id_tipo_movimiento
-                             FROM tbl_plazas_empleados_hraes 
-                             INNER JOIN tbl_movimientos
-                             ON tbl_plazas_empleados_hraes.id_tbl_movimientos =
-                                tbl_movimientos.id_tbl_movimientos
-                             WHERE tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
-                             GROUP BY tbl_plazas_empleados_hraes.fecha_movimiento,
-                                    tbl_movimientos.id_tipo_movimiento
-                             ORDER BY tbl_plazas_empleados_hraes.fecha_movimiento DESC
-                             LIMIT 1;");
-        return $listado;
-    }
+
 
     public function listadoByIdPlaza($idEmpleado)
     {
@@ -159,4 +140,40 @@ class ModelMovimientosM
                              WHERE id_tbl_control_plazas_hraes = $idPlaza;");
         return $listado;
     }
+
+
+        ///LA FUNCION PERMITE SABER SI EXISTE INFORMACION EN LA BASE DEL EMPLEADO
+        public function countUltimoMovimiento($idEmpleado)
+        {
+            $listado = pg_query("SELECT COUNT(id_tbl_plazas_empleados_hraes)
+                                 FROM tbl_plazas_empleados_hraes 
+                                 WHERE id_tbl_empleados_hraes = $idEmpleado");
+            return $listado;
+        }
+
+        ///LA FUNCION TRAE EL ULTIMO MOVIMIENTO (ALTA, BAJA, MOVIMIENTO DEL EMPLEADO)
+        public function listadoUltimoMovimiento($idEmpleado)
+        {
+            $listado = pg_query("SELECT tbl_movimientos.id_tipo_movimiento,
+                                        tbl_plazas_empleados_hraes.fecha_movimiento
+                                 FROM tbl_plazas_empleados_hraes 
+                                 INNER JOIN tbl_movimientos
+                                 ON tbl_plazas_empleados_hraes.id_tbl_movimientos =
+                                    tbl_movimientos.id_tbl_movimientos
+                                 WHERE tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
+                                 GROUP BY tbl_plazas_empleados_hraes.fecha_movimiento,
+                                        tbl_movimientos.id_tipo_movimiento
+                                 ORDER BY tbl_plazas_empleados_hraes.fecha_movimiento DESC
+                                 LIMIT 1;");
+            return $listado;
+        }
+
+        public function idPlazaMovimiento($idEmpleado){
+            $listado = pg_query("SELECT id_tbl_control_plazas_hraes
+                                 FROM tbl_plazas_empleados_hraes
+                                 WHERE id_tbl_empleados_hraes = $idEmpleado
+                                 ORDER BY id_tbl_plazas_empleados_hraes DESC
+                                 LIMIT 1;");
+            return $listado;
+        }
 }

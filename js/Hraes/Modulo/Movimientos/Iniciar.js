@@ -36,7 +36,6 @@ function agregarEditarMovimiento(id_object){
         id_object: id_object
     },
         function (data) {
-            console.log(data);
             let jsonData = JSON.parse(data);
             let entity = jsonData.response;
             let caracter = jsonData.caracter;
@@ -94,9 +93,12 @@ function guardarMovimiento() {
         observaciones: $("#observaciones").val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
         id_object: $("#id_object").val(),
+        movimiento_general: $("#movimiento_general").val(),
+        movimientoBaja:movimientoBaja,
+        movimientoAlta:movimientoAlta,
+        movimientoMov:movimientoMov,
     },
         function (data) {
-            console.log(data);
             if (data == 'edit'){
                 mensajeExito('Movimiento modificado con éxito');
             } else if (data == 'add') {
