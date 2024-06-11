@@ -40,8 +40,13 @@ function agregarEditarEstudio(id_object){
             var jsonData = JSON.parse(data);
             var estudio = jsonData.estudio; 
 
+            var carrera = jsonData.carrera;
+
             $('#id_cat_nivel_estudios').empty();
-            $('#id_cat_nivel_estudios').html(estudio); 
+            $('#id_cat_nivel_estudios').html(estudio);
+            
+            $('#id_cat_carrera_hraes').empty();
+            $('#id_cat_carrera_hraes').html(carrera); 
         }
     );
 
@@ -56,6 +61,7 @@ function salirAgregarEstudio(){
 function guardarEstudio() {
     $.post("../../../../App/Controllers/Hrae/EstudioC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
+        id_cat_carrera_hraes: $("#id_cat_carrera_hraes").val(),
         id_cat_nivel_estudios: $("#id_cat_nivel_estudios").val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
     },

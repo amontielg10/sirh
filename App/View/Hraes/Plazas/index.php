@@ -23,10 +23,6 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
             </div>
             <?php if ($id_tbl_centro_trabajo_hraes != null) { ?>
                 <div class="div-spacing"></div>
-                <h6 class="icon-detail"><i class="fa fa-info-circle"></i>
-                    Datos
-                    de centro de trabajo seleccionado.
-                </h6>
 
                 <div class="row">
                     <div class="col-12">

@@ -65,13 +65,6 @@
                             <fieldset disabled>
                                 <input type="text" class="form-control" id="genero_x" placeholder="Género" maxlength="25">
                             </fieldset>
-                            <!--
-                            <div class="custom-select-wrapper">
-                                <select class="form-control" aria-label="Default select example" id="id_cat_genero"
-                                    required>
-                                </select>
-                            </div>
--->
                         </div>
 
                         <div class="col-4">
@@ -87,30 +80,9 @@
                         <div class="col-4">
                             <label class="text-input-form div-spacing">N&uacutemero de seguro social</label><label
                                 class="text-required"></label>
-                            <input type="number" class="form-control" id="nss" placeholder="Número de seguro social">
-                        </div>
-
-                        <!--
-                        <div class="col-4">
-                            <label class="text-input-form div-spacing">Pa&iacutes de nacimiento</label><label
-                                class="text-required">*</label>
-                            <input maxlength="20" type="text" class="form-control" id="pais_nacimiento"
-                                placeholder="País de nacimiento">
-                        </div>
--->
-                    </div>
-
-                    <!--
-                    <div class="div-spacing"></div>
-                    <div class="row">
-                        <div class="col-6">
-                            <label class="text-input-form div-spacing">N&uacutemero de seguro social</label><label
-                                class="text-required"></label>
-                            <input type="number" class="form-control" id="nss" placeholder="Número de seguro social">
+                            <input type="number" oninput="validarNumero(this)" class="form-control" id="nss" placeholder="Número de seguro social">
                         </div>
                     </div>
--->
-
                 </div>
             </div>
 

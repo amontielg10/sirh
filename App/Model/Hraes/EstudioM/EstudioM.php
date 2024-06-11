@@ -5,11 +5,15 @@ class ModelEstudioM
     function listarById($id_object, $paginator)
     {
         $listado = pg_query("SELECT ctrl_estudios_hraes.id_ctrl_estudios_hraes,
-                                    cat_nivel_estudios.nivel_estudios
+                                    cat_nivel_estudios.nivel_estudios,
+                                    cat_carrera_hraes.carrera
                             FROM ctrl_estudios_hraes
                             INNER JOIN cat_nivel_estudios
                             ON ctrl_estudios_hraes.id_cat_nivel_estudios = 
                                 cat_nivel_estudios.id_cat_nivel_estudios
+                            LEFT JOIN cat_carrera_hraes
+							ON ctrl_estudios_hraes.id_cat_carrera_hraes =
+								cat_carrera_hraes.id_cat_carrera_hraes
                             WHERE ctrl_estudios_hraes.id_tbl_empleados_hraes = $id_object
                             ORDER BY ctrl_estudios_hraes.id_ctrl_estudios_hraes DESC
                             LIMIT 3 OFFSET $paginator;");
@@ -19,14 +23,20 @@ class ModelEstudioM
     function listarByBusqueda($id_object, $busqueda, $paginator)
     {
         $listado = pg_query("SELECT ctrl_estudios_hraes.id_ctrl_estudios_hraes,
-                                    cat_nivel_estudios.nivel_estudios
+                                    cat_nivel_estudios.nivel_estudios,
+                                    cat_carrera_hraes.carrera
                             FROM ctrl_estudios_hraes
                             INNER JOIN cat_nivel_estudios
                             ON ctrl_estudios_hraes.id_cat_nivel_estudios = 
                                 cat_nivel_estudios.id_cat_nivel_estudios
+                            LEFT JOIN cat_carrera_hraes
+							ON ctrl_estudios_hraes.id_cat_carrera_hraes =
+								cat_carrera_hraes.id_cat_carrera_hraes
                             WHERE ctrl_estudios_hraes.id_tbl_empleados_hraes = $id_object
-                            AND TRIM(UPPER(UNACCENT(cat_nivel_estudios.nivel_estudios)))
-                                LIKE '%$busqueda%'
+                            AND (TRIM(UPPER(UNACCENT(cat_nivel_estudios.nivel_estudios)))
+                                LIKE '%$busqueda%' 
+                            OR TRIM(UPPER(UNACCENT(cat_carrera_hraes.carrera)))
+                                LIKE '%$busqueda%')
                             ORDER BY ctrl_estudios_hraes.id_ctrl_estudios_hraes DESC
                             LIMIT 3 OFFSET $paginator;");
         return $listado;
@@ -35,7 +45,7 @@ class ModelEstudioM
     function listarByIdEdit($id_object)
     {
         $listado = pg_query("SELECT id_ctrl_estudios_hraes, id_tbl_empleados_hraes,
-                                    id_cat_nivel_estudios
+                                    id_cat_nivel_estudios,id_cat_carrera_hraes
                              FROM ctrl_estudios_hraes
                              WHERE id_ctrl_estudios_hraes = $id_object");
         return $listado;

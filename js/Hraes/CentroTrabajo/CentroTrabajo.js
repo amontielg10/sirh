@@ -156,6 +156,21 @@ function convertirAMayusculas(event, inputId) {
     inputElement.value = textoEnMayusculas;
   }
 
+
+  function validarNumero(input) {
+    input.value = input.value.replace(/[^\d]/g, '');
+  }
+
+
+
+  function ocultarModalCarga(){
+    $("#modal_carga_masiva").modal("hide");
+}
+
+function mostrarModalCarga(){
+    $("#modal_carga_masiva").modal("show");
+}
+
 /*
 document.addEventListener('DOMContentLoaded', function () {
     tippy('#centro_trabajo_plazas', {

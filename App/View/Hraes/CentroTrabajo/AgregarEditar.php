@@ -94,7 +94,7 @@
                             <label class="text-input-form div-spacing">C&oacutedigo postal</label><label
                                 class="text-required">*</label>
                             <input type="number" class="form-control div-spacing" id="codigo_postal"
-                                name="codigo_postal" placeholder="Código postal">
+                                name="codigo_postal" placeholder="Código postal" oninput="validarNumero(this)">
                         </div>
                     </div>
 

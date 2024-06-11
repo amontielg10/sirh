@@ -13,7 +13,7 @@
                         <div class="col-12">
                             <label class="text-input-form div-spacing text-input-rem">C&eacutedula
                                 profesional</label><label class="text-required">*</label>
-                            <input type="number" class="form-control" id="cedula_profesional"
+                            <input oninput="validarNumero(this)" type="number" class="form-control" id="cedula_profesional"
                                 placeholder="Cédula profesional" maxlength="25">
                         </div>
                     </div>

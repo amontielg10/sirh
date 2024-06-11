@@ -40,7 +40,7 @@ function iniciarTabla(busqueda, paginador) { ///INGRESA LA TABLA USUARIOS PARAME
             $("#tabla_usuarios").html(data); ///RESULTADO PARA TABLA
         }
     );
-}
+} 
 
 function agregarEditarUsuarios(id_object) { //SE OBTIENEN INFO DE ID SELECCIONADO
     let titulo = document.getElementById("titulo_usuario");

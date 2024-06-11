@@ -17,7 +17,7 @@
                         <div class="col-6">
                             <label class="text-input-form text-input-rem">N&uacutemero telef&oacutenico</label><label
                                 class="text-required">*</label>
-                            <input type="number" class="form-control" id="movil" placeholder="Número telefónico"
+                            <input oninput="validarNumero(this)" type="number" class="form-control" id="movil" placeholder="Número telefónico"
                                 maxlength="10">
                         </div>
                         <div class="col-6">
@@ -36,7 +36,7 @@
                         <div class="col-6">
                             <label class="text-input-form text-input-rem">Telefono fijo</label><label
                                 class="text-required"></label>
-                            <input type="number" class="form-control" id="telefono" placeholder="Telefono"
+                            <input oninput="validarNumero(this)" type="number" class="form-control" id="telefono" placeholder="Telefono"
                                 maxlength="10">
                         </div>
                     </div>

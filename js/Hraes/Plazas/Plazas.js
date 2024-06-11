@@ -253,3 +253,8 @@ function concatNombre(nombre, primerApellido, segundoApellido){
         return 'Sin registro.';
     }
 }
+
+
+function validarNumero(input) {
+    input.value = input.value.replace(/[^\d]/g, '');
+  }

@@ -82,7 +82,7 @@
                             <label class="text-input-form div-spacing">N&uacutemero de plaza</label><label
                                 class="text-required">*</label>
                             <input minlength="7" type="number" class="form-control" id="num_plaza"
-                                placeholder="Número de plaza">
+                                placeholder="Número de plaza" oninput="validarNumero(this)">
                         </div>
                         <div class="col-4">
                             <label class="text-input-form div-spacing">Zona pagadora</label><label

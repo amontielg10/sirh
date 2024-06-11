@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-6">
                             <label class="text-input-form text-input-rem">N&uacutem. Telef&oacutenico</label><label class="text-required">*</label>
-                            <input type="number" class="form-control" id="movil_emergencia"
+                            <input oninput="validarNumero(this)" type="number" class="form-control" id="movil_emergencia"
                                 placeholder="Número telefónico" maxlength="10">
                         </div>
                     </div>

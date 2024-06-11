@@ -146,3 +146,7 @@ function convertirAMayusculas(event, inputId) {
     let textoEnMayusculas = texto.toUpperCase();
     inputElement.value = textoEnMayusculas;
   }
+
+  function validarNumero(input) {
+    input.value = input.value.replace(/[^\d]/g, '');
+  }

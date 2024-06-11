@@ -58,7 +58,7 @@
         <div class="col-3">
             <label class="text-input-rem div-spacing">C&oacutedigo postal f&iacutescal</label><label
                 class="text-required"></label>
-            <input type="number" class="form-control" id="codigo_postal2" placeholder="Código postal" maxlength="25">
+            <input  oninput="validarNumero(this)" type="number" class="form-control" id="codigo_postal2" placeholder="Código postal" maxlength="25">
         </div>
 
         <div class="modal-footer">
