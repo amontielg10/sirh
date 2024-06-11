@@ -23,7 +23,7 @@
                     <div class="div-spacing"></div>
                     <div class="row">
                         <div class="col-12">
-                            <label class="text-input-form div-spacing text-input-rem">Carrera</label><label
+                            <label class="text-input-form div-spacing text-input-rem">Trayectoria laboral</label><label
                                 class="text-required">*</label>
                             <div class="custom-select-wrapper">
                                 <select class="form-control" aria-label="Default select example"
