@@ -40,14 +40,27 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
         id_object: id_object
     },
         function (data) {
+            console.log(data);
             let jsonData = JSON.parse(data);//se obtiene el json
             let entity = jsonData.response; //Se agrega a emtidad 
             //let genero = jsonData.genero;
             let estadoCivil = jsonData.estadoCivil;
+            let pais = jsonData.pais;
+            let estado = jsonData.estado;
 
             //Empleado
             $('#id_cat_estado_civil').empty();
             $('#id_cat_estado_civil').html(estadoCivil); 
+
+            $('#id_cat_pais_nacimiento').empty();
+            $('#id_cat_pais_nacimiento').html(pais); 
+            //$('#id_cat_pais_nacimiento').selectpicker('refresh');
+            //$('.selectpicker').selectpicker();
+
+            $('#id_cat_estado_nacimiento').empty();
+            $('#id_cat_estado_nacimiento').html(estado); 
+            //$('#id_cat_estado_nacimiento').selectpicker('refresh');
+            //$('.selectpicker').selectpicker();
             //$('#id_cat_genero').empty();
             //$('#id_cat_genero').html(genero); 
 
@@ -90,6 +103,8 @@ function agregarEditarByDb() {
         id_cat_estado_civil:$("#id_cat_estado_civil").val(),
         //id_cat_genero:$("#id_cat_genero").val(),
         num_empleado:$("#num_empleado").val(),
+        id_cat_pais_nacimiento:$("#id_cat_pais_nacimiento").val(),
+        id_cat_estado_nacimiento:$("#id_cat_estado_nacimiento").val(),
         //pais_nacimiento:$("#pais_nacimiento").val(),
     },
         function (data) {

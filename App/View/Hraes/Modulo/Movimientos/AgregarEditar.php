@@ -95,24 +95,30 @@
                             </div>
                         </div>
 
-                        <div class="div-spacing"></div>
-                        <div class="row">
-                            <div class="col-4">
-                                <label class="text-input-form div-spacing text-input-rem">Motivo</label><label
-                                    class="text-required"></label>
-                                <input type="text" class="form-control" id="motivo_estatus" placeholder="Motivo"
-                                    maxlength="20" disable>
-                            </div>
-                            <div class="col-8">
-                                <label class="text-input-form div-spacing text-input-rem">Observaciones</label><label
-                                    class="text-required"></label>
-                                <input type="text" class="form-control" id="observaciones" placeholder="Observaciones"
-                                    maxlength="50" disable>
-                            </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <label class="text-input-form div-spacing text-input-rem">Motivo</label><label
+                                class="text-required"></label>
+                            <input type="text" class="form-control" id="motivo_estatus" placeholder="Motivo"
+                                maxlength="20" disable>
+                        </div>
+                        <div class="col-8">
+                            <label class="text-input-form div-spacing text-input-rem">Observaciones</label><label
+                                class="text-required"></label>
+                            <input type="text" class="form-control" id="observaciones" placeholder="Observaciones"
+                                maxlength="50" disable>
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <div class="div-spacing"></div>
             <div class="modal-footer">

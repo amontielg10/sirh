@@ -4,6 +4,7 @@ function validar(){
     let primer_apellido = document.getElementById('primer_apellido').value.trim();
     let curp = document.getElementById('curp').value.trim();
     let num_empleado = document.getElementById('num_empleado').value.trim();
+    let id_cat_pais_nacimiento = document.getElementById('id_cat_pais_nacimiento').value.trim();
     //let pais_nacimiento = document.getElementById('pais_nacimiento').value.trim();
     //let id_cat_genero = document.getElementById('id_cat_genero').value.trim();
     let id_cat_estado_civil = document.getElementById('id_cat_estado_civil').value.trim();
@@ -16,6 +17,7 @@ function validar(){
         validarData(curp,'Curp') &&
         validarData(num_empleado,'Num. empleado') &&
         validarData(id_cat_estado_civil,'Estado civil') &&
+        validarData(id_cat_pais_nacimiento,'País de nacimiento') &&
         campoInvalido(validarCurp(curp),'Curp') &&
         campoInvalido(validarRFC(rfc),'Rfc') &&
         caracteresCount('Núm. de seguro social',12,nss)
@@ -67,3 +69,43 @@ function generoCurp(curp){
     }
     return message;
 }
+/*
+document.getElementById("id_cat_pais_nacimiento").addEventListener("change", function() {
+    let id_cat_pais_nacimiento = this.value;
+    $.post("../../../../App/Controllers/Hrae/EmpleadoC/EstadoC.php", {
+        id_cat_pais_nacimiento: id_cat_pais_nacimiento,
+    },
+        function (data) {
+            console.log(data);
+            let jsonData = JSON.parse(data);
+            let estado = jsonData.estado; 
+
+            $('#id_cat_estado_nacimiento').empty();
+            $('#id_cat_estado_nacimiento').html(estado); 
+            $('#id_cat_estado_nacimiento').selectpicker('refresh');
+            $('.selectpicker').selectpicker 
+        }
+    );
+  });
+  */
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+
+    var select = document.getElementById("id_cat_pais_nacimiento");
+    select.addEventListener("change", function() {
+        $.post("../../../../App/Controllers/Hrae/EmpleadoC/EstadoC.php", {
+            id_cat_pais_nacimiento: select.value,
+        },
+            function (data) {
+                let jsonData = JSON.parse(data);
+                let estado = jsonData.estado; 
+    
+                $('#id_cat_estado_nacimiento').empty();
+                $('#id_cat_estado_nacimiento').html(estado); 
+                //$('#id_cat_estado_nacimiento').selectpicker('refresh');
+                //$('.selectpicker').selectpicker 
+            }
+        );
+    });
+  });

@@ -124,13 +124,20 @@ class ModelMovimientosM
     }
 
     public function ultimoMovimientoByVal($idPlaza){
-        $listado = pg_query("SELECT tbl_movimientos.id_tipo_movimiento
-                             FROM tbl_plazas_empleados_hraes
-                             INNER JOIN tbl_movimientos
-                                ON tbl_plazas_empleados_hraes.id_tbl_movimientos = tbl_movimientos.id_tbl_movimientos
-                             WHERE id_tbl_control_plazas_hraes = $idPlaza
-                             ORDER BY tbl_plazas_empleados_hraes.fecha_movimiento DESC
-                             LIMIT 1");
+        $listado = pg_query("SELECT tbl_movimientos.id_tipo_movimiento,
+                                    tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes
+                            FROM tbl_plazas_empleados_hraes
+                            INNER JOIN tbl_movimientos
+                                ON tbl_plazas_empleados_hraes.id_tbl_movimientos =
+                                    tbl_movimientos.id_tbl_movimientos
+                            WHERE id_tbl_empleados_hraes = (
+                                SELECT id_tbl_empleados_hraes
+                                FROM tbl_plazas_empleados_hraes
+                                WHERE id_tbl_control_plazas_hraes = $idPlaza 
+                                ORDER BY id_tbl_plazas_empleados_hraes DESC
+                                LIMIT 1)
+                            ORDER BY id_tbl_plazas_empleados_hraes DESC
+                            LIMIT 1");
         return $listado;
     }
 

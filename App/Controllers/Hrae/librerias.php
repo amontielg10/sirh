@@ -45,6 +45,8 @@ include '../../../Model/Catalogos/CatValoresM/CatValoresM.php';
 include '../../../Model/Catalogos/CatQuinquenioM/CatQuinquenioM.php';
 include '../../../Model/Catalogos/CatNombramientoM/CatNombramientoM.php';
 include '../../../Model/Hraes/Catalogos/CatCarrerasM/CatCarrerasM.php';
+include '../../../Model/Catalogos/CatPaisM/CatPaisM.php';
+include '../../../Model/Catalogos/CatEstadoM/CatEstadoM.php';
 
 ///CONTROLLERS
 include '../../../Controllers/Hrae/GlobalC/ArrayC.php';
@@ -67,3 +69,5 @@ include '../../../Controllers/Catalogos/CatValoresC/CatValoresC.php';
 include '../../../Controllers/Catalogos/CatQuinquenioC/CatQuinquenioC.php';
 include '../../../Controllers/Catalogos/CatNombramientoC/CatNombramientoC.php';
 include '../../../Controllers/Hrae/Catalogos/CatCarrerasC/CatCarrerasC.php';
+include '../../../Controllers/Catalogos/CatPaisC/CatPaisC.php';
+include '../../../Controllers/Catalogos/CatEstadoC/CatEstadoC.php';

@@ -20,8 +20,15 @@
     <div class="card border-light">
         <div class="card-body">
             <div class="row div-spacing">
-                <div class="col-9">
+                <div class="col-6">
                     <h2 class="card-title tittle-card-index">Centro de trabajo</h2>
+                </div>
+                <div class="col-3">
+
+                    <button onclick="mostrarModalCarga();" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Launch demo modal
+                    </button>
+
                 </div>
                 <div class="col-3 search-container">
                     <input onkeyup="buscarCentro();" id="buscar" type="text" placeholder="Buscar..."
@@ -38,12 +45,6 @@
                             <span class="hide-menu text-button-add">&nbsp;Agregar centro de trabajo</span>
                         </button>
                     </div>
-                </div>
-                <div class="col-4">
-
-                    <button onclick="mostrarModalCarga();" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Launch demo modal
-                    </button>
                 </div>
             </div>
 

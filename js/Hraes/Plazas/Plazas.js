@@ -225,10 +225,11 @@ function detallesEntity(id_tbl_control_plazas_hraes){
             unidad_respo_dt.textContent = entity[3];
             nombre_centro_trabajo_dt.textContent = entity[6];
 
+            /*
             curp_dt.textContent = concatNombre(empleado['curp'],'','');
             rfc_dt.textContent = concatNombre(empleado['rfc'],'','');
             nombre_dt.textContent = concatNombre(empleado['nombre'],empleado['primer_apellido'],empleado['segundo_apellido']);
-
+*/
             $("#mostar_detalles_modal").modal("show");
             listarTablaHistori(id_tbl_control_plazas_hraes);
         }

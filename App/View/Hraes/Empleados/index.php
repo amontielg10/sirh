@@ -1,4 +1,14 @@
 <?php include '../../nav-menu.php' ?>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" rel="stylesheet">
+
+<style>
+    .bootstrap-select:hover .dropdown-toggle {
+      background-color: #f8f9fa; /* Cambia aquí el color cuando el cursor está encima */
+      /*border-color: red; /* Cambia aquí el color del borde cuando el cursor está encima */
+    }
+
+  </style>
+
 <div class="container-fluid bg-image nav-padding">
     <br>
     <div class="card border-light shadow-lg">
@@ -75,6 +85,7 @@
 <script src="../../../../js/Hraes/Empleados/Busqueda.js"></script>
 <?php include '../../librerias.php' ?>
 <?php include 'AgregarEditar.php' ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
 
 
 

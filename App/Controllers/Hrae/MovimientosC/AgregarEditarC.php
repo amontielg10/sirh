@@ -98,15 +98,16 @@ function modificarPlaza($connectionDBsPro, $movimientoBaja, $movimientoAlta, $mo
     ///VARIABLES DE CATALOGO CAT_PLAZAS -> CAMBIAR EN CASO DE CAMBIAR ID
     $vacante = 5;///CATALOGO
     $ocupada = 3;///CATALOGO
+    $congelada = 6;
     $idMovimientoVal = null;
     if ($movimiento_general == $movimientoBaja) { ///MOVIMIENTO BAJA, SE PONE EN BACANTE LA PLAZA A LA QUE ESTABA ASIGNADO
-        $idMovimientoVal = $vacante;
+        $idMovimientoVal = $congelada;
         $idPlaza = $idPlazaAnte;
     } else if ($movimiento_general == $movimientoAlta) { ///MOVIMIENTO ALTA, PONE EN OCUPADA LA NUEVA PLAZA
         $idMovimientoVal = $ocupada;
     } else if ($movimiento_general == $movimientoMov) {
-        $idMovimientoVal = $vacante;
-        agregarMovimiento($connectionDBsPro,20,$idPlazaAnte,$idEmpleados,$fecha);
+        $idMovimientoVal = $congelada;
+        //agregarMovimiento($connectionDBsPro,20,$idPlazaAnte,$idEmpleados,$fecha);
         actualizarPlaza($connectionDBsPro, $idMovimientoVal, $idPlazaAnte);
         $idMovimientoVal = $ocupada;
     }

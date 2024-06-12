@@ -15,14 +15,14 @@
                         <div class="col-6">
                             <label class="text-input-form div-spacing">Nombre</label><label
                                 class="text-required">*</label>
-                            <input  onkeyup="convertirAMayusculas(event,'nombre')" maxlength="45" type="text" class="form-control" id="nombre" placeholder="Nombre"
-                                required>
+                            <input onkeyup="convertirAMayusculas(event,'nombre')" maxlength="45" type="text"
+                                class="form-control" id="nombre" placeholder="Nombre" required>
                         </div>
                         <div class="col-6">
                             <label class="text-input-form div-spacing">Apellido paterno</label><label
                                 class="text-required">*</label>
-                            <input  onkeyup="convertirAMayusculas(event,'primer_apellido')" maxlength="25" type="text" class="form-control" id="primer_apellido"
-                                placeholder="Apellido paterno">
+                            <input onkeyup="convertirAMayusculas(event,'primer_apellido')" maxlength="25" type="text"
+                                class="form-control" id="primer_apellido" placeholder="Apellido paterno">
                         </div>
                     </div>
 
@@ -31,12 +31,13 @@
                         <div class="col-6">
                             <label class="text-input-form div-spacing">Apelldio materno</label><label
                                 class="text-required">*</label>
-                            <input  onkeyup="convertirAMayusculas(event,'segundo_apellido')" maxlength="25" type="text" class="form-control" id="segundo_apellido"
-                                placeholder="Apellido materno">
+                            <input onkeyup="convertirAMayusculas(event,'segundo_apellido')" maxlength="25" type="text"
+                                class="form-control" id="segundo_apellido" placeholder="Apellido materno">
                         </div>
                         <div class="col-6">
                             <label class="text-input-form div-spacing">Rfc</label><label class="text-required">*</label>
-                            <input  onkeyup="convertirAMayusculas(event,'rfc')" maxlength="13" type="text" class="form-control" id="rfc" placeholder="Rfc">
+                            <input onkeyup="convertirAMayusculas(event,'rfc')" maxlength="13" type="text"
+                                class="form-control" id="rfc" placeholder="Rfc">
                         </div>
                     </div>
 
@@ -52,8 +53,45 @@
                         <div class="col-6">
                             <label class="text-input-form div-spacing">N&uacutem. de empleado</label><label
                                 class="text-required">*</label>
-                            <input  onkeyup="convertirAMayusculas(event,'num_empleado')" maxlength="30" type="text" class="form-control" id="num_empleado"
-                                placeholder="Núm de empleado">
+                            <input onkeyup="convertirAMayusculas(event,'num_empleado')" maxlength="30" type="text"
+                                class="form-control" id="num_empleado" placeholder="Núm de empleado">
+                        </div>
+                    </div>
+
+                    <div class="div-spacing"></div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label class="text-input-form div-spacing text-input-rem">Pa&iacutes de
+                                nacimiento</label><label class="text-required">*</label>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control div-spacing" aria-label="Default select example"
+                                    id="id_cat_pais_nacimiento" required>
+                                </select>
+                            </div>
+                            <!--
+                            <select data-style="input-select-selectpicker form-control" class="selectpicker"
+                                aria-label="Default select example" data-live-search="true" id="id_cat_pais_nacimiento"
+                                data-none-results-text="Sin resultados">
+                            </select>
+-->
+                        </div>
+                        <div class="col-4">
+                            <label class="text-input-form div-spacing text-input-rem">Estado de nacimiento</label><label
+                                class="text-required"></label>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control div-spacing" aria-label="Default select example"
+                                    id="id_cat_estado_nacimiento" required>
+                                </select>
+                            </div>
+                            <!--
+                            <select data-style="input-select-selectpicker form-control" class="selectpicker"
+                                aria-label="Default select example" data-live-search="true" id="id_cat_estado_nacimiento"
+                                data-none-results-text="Sin resultados">
+                            </select>
+-->
+                        </div>
+                        <div class="col-4">
+
                         </div>
                     </div>
 
@@ -63,7 +101,8 @@
                             <label class="text-input-form div-spacing">G&eacutenero</label><label
                                 class="text-required">*</label>
                             <fieldset disabled>
-                                <input type="text" class="form-control" id="genero_x" placeholder="Género" maxlength="25">
+                                <input type="text" class="form-control" id="genero_x" placeholder="Género"
+                                    maxlength="25">
                             </fieldset>
                         </div>
 
@@ -80,7 +119,8 @@
                         <div class="col-4">
                             <label class="text-input-form div-spacing">N&uacutemero de seguro social</label><label
                                 class="text-required"></label>
-                            <input type="number" oninput="validarNumero(this)" class="form-control" id="nss" placeholder="Número de seguro social">
+                            <input type="number" oninput="validarNumero(this)" class="form-control" id="nss"
+                                placeholder="Número de seguro social">
                         </div>
                     </div>
                 </div>

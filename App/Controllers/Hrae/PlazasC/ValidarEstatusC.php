@@ -16,13 +16,20 @@ $countPlazas = $row->returnArrayById($modelMovimientosM->countPlazasById($id_obj
 
 if ($countPlazas[0] != 0) {
     $countEstatus = $row->returnArrayById($modelMovimientosM->ultimoMovimientoByVal($id_object));
+    if ($countEstatus[1] == $id_object) {
+        if ($countEstatus[0] != $idMovimiento && $id_cat_plazas != $idPlaza) {
+            $bool = true;
+        }
+    }
+
+    /*
     if ($countEstatus[0] != $idMovimiento && $id_cat_plazas != $idPlaza) { ///Condicion distinto de baja, entra error
         $bool = true; ///Error al actualizar el estatus
-    }
+    }*/
 }
 
 $var = [
     'message' => $message,
-    'bool' => $bool
+    'bool' => $bool,
 ];
 echo json_encode($var);
