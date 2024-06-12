@@ -10,14 +10,16 @@ function validar(){
     let id_cat_estado_civil = document.getElementById('id_cat_estado_civil').value.trim();
     let id_object = document.getElementById('id_object').value;
     let nss = document.getElementById('nss').value;
+    let nacionalidad = document.getElementById('nacionalidad').value;
     
     if (validarData(nombre,'Nombre') &&
         validarData(rfc,'Rfc') &&
         validarData(primer_apellido,'Apellido paterno') &&
         validarData(curp,'Curp') &&
         validarData(num_empleado,'Num. empleado') &&
-        validarData(id_cat_estado_civil,'Estado civil') &&
         validarData(id_cat_pais_nacimiento,'País de nacimiento') &&
+        validarData(nacionalidad,'Nacionalidad') &&
+        validarData(id_cat_estado_civil,'Estado civil') &&
         campoInvalido(validarCurp(curp),'Curp') &&
         campoInvalido(validarRFC(rfc),'Rfc') &&
         caracteresCount('Núm. de seguro social',12,nss)

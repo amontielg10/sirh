@@ -91,7 +91,13 @@
 -->
                         </div>
                         <div class="col-4">
-
+                            <label class="text-input-form div-spacing text-input-rem">Nacionalidad</label><label
+                                class="text-required"></label>
+                            <div class="custom-select-wrapper">
+                                <select class="form-control div-spacing" aria-label="Default select example"
+                                    id="nacionalidad" required>
+                                </select>
+                            </div>
                         </div>
                     </div>
 

@@ -71,3 +71,4 @@ include '../../../Controllers/Catalogos/CatNombramientoC/CatNombramientoC.php';
 include '../../../Controllers/Hrae/Catalogos/CatCarrerasC/CatCarrerasC.php';
 include '../../../Controllers/Catalogos/CatPaisC/CatPaisC.php';
 include '../../../Controllers/Catalogos/CatEstadoC/CatEstadoC.php';
+include '../../../Controllers/Catalogos/CatNacionalidadC/CatNacionalidadC.php';
