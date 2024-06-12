@@ -4,6 +4,17 @@ var movimientoBaja = 3;
 var movimientoAlta = 1;
 var movimientoMov = 2;
 
+function validarAgregar(){
+    let id_object = document.getElementById('id_object').value;
+    if (id_object){
+        if (validarAccion()){
+            validarMovimiento();
+        }
+    } else {
+        validarMovimiento();
+    }
+}
+
 function validarMovimiento(){
     let movimiento_general = document.getElementById('movimiento_general').value;
     let id_tbl_movimientos = document.getElementById('id_tbl_movimientos').value;

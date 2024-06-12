@@ -47,6 +47,8 @@ include '../../../Model/Catalogos/CatNombramientoM/CatNombramientoM.php';
 include '../../../Model/Hraes/Catalogos/CatCarrerasM/CatCarrerasM.php';
 include '../../../Model/Catalogos/CatPaisM/CatPaisM.php';
 include '../../../Model/Catalogos/CatEstadoM/CatEstadoM.php';
+include '../../../Model/Hraes/Catalogos/CatCapacidadM/CatCapacidadM.php';
+include '../../../Model/Hraes/CapacidadesDifM/CapacidadesDifM.php';
 
 ///CONTROLLERS
 include '../../../Controllers/Hrae/GlobalC/ArrayC.php';
@@ -72,3 +74,4 @@ include '../../../Controllers/Hrae/Catalogos/CatCarrerasC/CatCarrerasC.php';
 include '../../../Controllers/Catalogos/CatPaisC/CatPaisC.php';
 include '../../../Controllers/Catalogos/CatEstadoC/CatEstadoC.php';
 include '../../../Controllers/Catalogos/CatNacionalidadC/CatNacionalidadC.php';
+include '../../../Controllers/Hrae/Catalogos/CatCapacidadC/CatCapacidadC.php';

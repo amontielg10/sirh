@@ -124,7 +124,7 @@
             <div class="modal-footer">
                 <button onclick="salirAgregarEditarMovimiento();" type="button" class="btn btn-secondary"
                     data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-success save-botton-modal" onclick="return validarMovimiento();"><i
+                <button type="button" class="btn btn-success save-botton-modal" onclick="return validarAgregar();"><i
                         class="fas fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
             </div>

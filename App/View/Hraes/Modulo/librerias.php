@@ -31,6 +31,10 @@
 <script src="../../../../js/Hraes/Modulo/Estudio/Validar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Estudio/buscar.js"></script>
 
+<script src="../../../../js/Hraes/Modulo/CapacidadesDif/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/CapacidadesDif/Validar.js"></script>
+<script src="../../../../js/Hraes/Modulo/CapacidadesDif/buscar.js"></script>
+
 <script src="../../../../js/Hraes/Modulo/FormaPago/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/FormaPago/Validar.js"></script>
 <script src="../../../../js/Hraes/Modulo/FormaPago/buscar.js"></script>

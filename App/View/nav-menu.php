@@ -136,7 +136,7 @@ $id_rol = $_SESSION['id_rol'];
                             data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-cog icon-config"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-result">
-                            <button onclick="activarModal();" class="dropdown-item">Modificar contraseña</button>
+                            <button onclick="modalEditPw();" class="dropdown-item">Modificar contraseña</button>
                             <div class="dropdown-divider"></div>
                             <button onclick="activarModal();" class="dropdown-item">Salir</button>
                         </ul>
@@ -166,6 +166,104 @@ $id_rol = $_SESSION['id_rol'];
         </div>
     </div>
     <!-- MODAL SALIR-->
+
+    <!-- FIN MODAL MODIFICAR PW -->
+     <input type="hidden" id="id_user" value="<?php echo $id_user ?>">
+     <input type="hidden" id="pw">
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true" id="modificar_pw">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header background-modal">
+                    <h5 class="modal-title  text-modal-tittle">
+                        Actualizar contraseña</h5>
+                </div>
+
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="div-spacing"></div>
+                            <div class="col-12">
+                                <label class="text-input-form div-spacing text-input-rem">Contraseña
+                                    anterior</label><label class="text-required">*</label>
+                                <input type="password" class="form-control" id="pw_anterior"
+                                    placeholder="Contraseña anterior">
+                            </div>
+                            <div class="div-spacing"></div>
+                            <div class="col-12">
+                                <label class="text-input-form div-spacing text-input-rem">Nueva contraseña</label><label
+                                    class="text-required">*</label>
+                                <input type="password" class="form-control" id="pw_nueva" placeholder="Nueva contraseña">
+                            </div>
+                            <div class="div-spacing"></div>
+                            <div class="col-12">
+                                <label class="text-input-form div-spacing text-input-rem">Confirmar
+                                    contraseña</label><label class="text-required">*</label>
+                                <input type="password" class="form-control" id="pw_confirmar"
+                                    placeholder="Confirmar contraseña">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="div-spacing"></div>
+                <div class="modal-footer">
+                    <button onclick="modalEditPwExit();" type="button" class="btn btn-secondary"
+                        data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
+                    <button type="button" class="btn btn-success save-botton-modal" onclick="return validarPW();"><i
+                            class="fas fa-save"></i> Guardar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true" id="modificar_pw3">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background:#235B4E">
+                    <h5 class="modal-title" style="font-weight: bold;color:white"><label id="titulo_plazas"
+                            style="font-weight: bold;color:white"></label> Modificar contraseña.</h5>
+                    <button style="color:white" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label>Contraseña anterior</label><label style="color:red">*</label>
+                            <input minlength="" type="password" class="form-control" id="pw_anterior"
+                                placeholder="Contraseña anterior">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label>Nueva contraseña</label><label style="color:red">*</label>
+                            <input maxlength="15" type="password" class="form-control" id="pw_nueva"
+                                placeholder="Nueva contraseña">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label>Confirmar contraseña</label><label style="color:red">*</label>
+                            <input maxlength="15" type="password" class="form-control" id="pw_confirmar"
+                                placeholder="Confirmar contraseña">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-light boton-con-imagen_table"><img
+                            src="../../../../assets/icons/cancelar.png" alt="Imagen del botón">Cancelar</button>
+                    <button type="button" onclick="return validar();"
+                        class="btn btn-light boton-con-imagen_table color-butto-modulo"><img
+                            src="../../../../assets/icons/guardar.png" alt="Imagen del botón">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+                    -->
+    <!-- FIN MODAL MODIFICAR PW -->
+    <script src="../../../../js/Admin/Perfil/Perfil.js"></script>
 </body>
 
 <script>

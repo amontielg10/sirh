@@ -62,7 +62,7 @@ function plazasHraes(){
     let reservadaR = document.getElementById("reservadaR");
     let vacanteR = document.getElementById("vacanteR");
     let congeladaR = document.getElementById("congeladaR");
-    //let totalCTR = document.getElementById("totalCTR");
+    let vacanteIndef = document.getElementById("vacanteIndef");
 
     $.post("../../../../App/Controllers/Hrae/PlazasC/InicioC.php", {},
         function (data) {
@@ -84,7 +84,7 @@ function plazasHraes(){
             reservadaR.textContent = reservada;
             vacanteR.textContent = vacante;
             congeladaR.textContent = congelada;
-            //totalCTR.textContent = indefinida;
+            vacanteIndef.textContent = indefinida;
 
         var data = {
             labels: ["Bloqueada", "Cancelada", "Ocupada", "Reservada", "Vacante", "Congelada", "Vacante no definida" ],

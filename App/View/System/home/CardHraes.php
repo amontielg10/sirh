@@ -85,6 +85,10 @@
                                 <div class="color-square" style="background-color: #5f6c62;"></div>
                                 <label>P. Congelada:&nbsp;</label><label id="congeladaR"> </label>
                             </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="color-square" style="background-color: #dbe5ab;"></div>
+                                <label>P. Vacante Indef:&nbsp;</label><label id="vacanteIndef"> </label>
+                            </div>
                         </div>
                     </div>
                     <div class="col-6">

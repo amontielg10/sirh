@@ -28,6 +28,14 @@
             </div>
         </div>
     </div>
+    <div class="col-6">
+        <div class="card font-size-modulo shadow-lg">
+            <h5 class="card-header text-center background-modal color-text-tittle">Capacidades diferentes</h5>
+            <div class="card-body">
+                <?php include 'CapacidadesDif/index.php' ?>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--

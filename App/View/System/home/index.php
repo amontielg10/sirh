@@ -12,7 +12,7 @@ include '../../nav-menu.php';
                         <div class="vertical-line"></div>
                     </div>
                     <div class="col padding-left-0">
-                        <h4>IMSS - BIENESTAR</h4>
+                        <h4>¡Hola <?php echo $nombre ?>! ¡Bienvenido al sistema!</h4>
                     </div>
                 </div>
             </div>

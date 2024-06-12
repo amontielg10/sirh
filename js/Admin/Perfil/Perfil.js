@@ -6,8 +6,8 @@ $(document).ready(function () {
 });
 
 function iniciarPerfil() { 
-    let usuario_usuario = document.getElementById("usuario_usuario");
-    let usario_nombre = document.getElementById("usario_nombre");
+    //let usuario_usuario = document.getElementById("usuario_usuario");
+    //let usario_nombre = document.getElementById("usario_nombre");
 
     $.post("../../../../App/Controllers/Admin/UsuariosC/DetallesC.php", {
         id_object: id_user.value
@@ -16,8 +16,8 @@ function iniciarPerfil() {
             let jsonData = JSON.parse(data);
             let entity = jsonData.response;
             
-            usuario_usuario.textContent = entity['nick'];
-            usario_nombre.textContent = entity['nombre'];
+           // usuario_usuario.textContent = entity['nick'];
+           // usario_nombre.textContent = entity['nombre'];
             $("#pw").val(entity['password']);
 
         }
@@ -46,7 +46,11 @@ function modalEditPw(){
     $("#modificar_pw").modal("show");
 }
 
-function validar(){
+function modalEditPwExit(){
+    $("#modificar_pw").modal("hide");
+}
+
+function validarPW(){
     let pw = document.getElementById('pw').value;
     let pw_anterior = document.getElementById('pw_anterior').value;
     let pw_nueva = document.getElementById('pw_nueva').value;

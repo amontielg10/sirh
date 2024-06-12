@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        <!-- MODAL ELIMINAR-->
+        <!-- FIN MODAL MODIFICAR PW -->
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
             aria-hidden="true" id="modificar_pw">
             <div class="modal-dialog">
@@ -132,7 +132,7 @@
                 </div>
             </div>
         </div>
-        <!-- FIN MODAL ELIMINAR -->
+        <!-- FIN MODAL MODIFICAR PW -->
 
         <?php include ('../../footer-librerias.php') ?>
 
