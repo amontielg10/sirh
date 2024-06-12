@@ -17,6 +17,7 @@ $countPlaza = $row->returnArrayById($modelMovimientosM->listarCountPlaza($id_tbl
 
 $empleado = $modelEmpleadosHraes->listarByNull();
 $entity = $row->returnArrayById($modelPlazasHraes->detallesPlazas($id_tbl_control_plazas_hraes));
+
 if ($countPlaza[0] != 0) {
     $reponse = $row->returnArrayById($modelPlazasHraes->ultimoMovimientoPlaza($id_tbl_control_plazas_hraes));
     if ($reponse[0] != $baja) { ///MOSTRAR INFO DE EMPLEADO

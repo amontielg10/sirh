@@ -95,6 +95,7 @@
                             </div>
 
 
+                            <!--
                             <div class="div-spacing"></div>
                             <h6 class="icon-detail"><i class="fa fa-info-circle"></i>
                                 Datos
@@ -126,6 +127,7 @@
                                 </div>
 
                             </div>
+-->
 
 
                         </div>

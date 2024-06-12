@@ -16,7 +16,7 @@ $data =
     <thead>
         <tr>
             <th>Acciones</th>
-            <th>N&uacutem. telefonico</th>
+            <th>N&uacutem. Telefonico</th>
             <!--
             <th>Tel&eacutefono fijo</th>
             -->
