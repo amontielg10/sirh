@@ -22,6 +22,8 @@ $datos = [
     'id_cat_estado_civil' => $_POST['id_cat_estado_civil'],
     //'id_cat_genero_hraes' => $_POST['id_cat_genero'],
     'num_empleado' => $_POST['num_empleado'],
+    'id_cat_pais_nacimiento' => $_POST['id_cat_pais_nacimiento'],
+    'id_cat_estado_nacimiento' => $_POST['id_cat_estado_nacimiento'],
 ];
 
 $var = [
