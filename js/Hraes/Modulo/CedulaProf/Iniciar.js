@@ -67,7 +67,7 @@ function agregarEditarByDbByCedula() {
             } else if (data == 'add') {
                 mensajeExito('Cédula profesional agregada con éxito');  
             } else {
-                mensajeError(data);
+                mensajeError(mensajeSalida);
             }
             $("#agregar_editar_cedula").modal("hide");
             buscarCedula();
@@ -94,7 +94,7 @@ function eliminarCedula(id_object) {//ELIMINAR USUARIO
                 if (data == 'delete'){
                     mensajeExito('Cédula profesional eliminada con éxito')
                 } else {
-                    mensajeError(data);
+                    mensajeError(mensajeSalida);
                 }
                 buscarCedula();
             }

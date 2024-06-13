@@ -48,6 +48,7 @@ if (pg_num_rows($result) > 0) {
                         <div class="dropdown-menu">
                             <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
                             <button onclick="detallesEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fa fa-align-left icon-edit-table"></i> Detalles</button>
+                            <button onclick="detallesPlazaModal(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fa fa-align-left icon-edit-table"></i> Detalles-1</button>
                             <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
                         </div>
                     </div>

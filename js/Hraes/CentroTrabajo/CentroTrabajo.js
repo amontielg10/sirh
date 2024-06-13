@@ -1,3 +1,6 @@
+
+var mensajeSalida = 'Se produjo un error al ejecutar la acción';
+
 $(document).ready(function () {
     buscarCentro();
 });
@@ -107,7 +110,7 @@ function agregarEditarByDb() {
             } else if (data == 'add') {
                 mensajeExito('Centro de trabajo agregado con éxito');  
             } else {
-                mensajeError(data);
+                mensajeError(mensajeSalida);
             }
             $("#agregar_editar_modal").modal("hide");
             buscarCentro();
@@ -139,7 +142,7 @@ function eliminarEntity(id_object) {
                 if (data == 'delete'){
                     mensajeExito('Centro de trabajo eliminado con éxito')
                 } else {
-                    mensajeError('No fue posible eliminar el elemento');
+                    mensajeError(mensajeSalida);
                 }
                 buscarCentro();
             }

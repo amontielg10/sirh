@@ -64,7 +64,7 @@ function agregarEditarByDbByCapacidad() {
             } else if (data == 'add') {
                 mensajeExito('Elemento agregado con éxito');  
             } else {
-                mensajeError(data);
+                mensajeError(mensajeSalida);
             }
             $("#agregar_editar_capacidad").modal("hide");
             buscarCapacidadesDif();
@@ -92,7 +92,7 @@ function eliminarCapacidad(id_object) {//ELIMINAR USUARIO
                 if (data == 'delete'){
                     mensajeExito('Elemento eliminado con éxito')
                 } else {
-                    mensajeError(data);
+                    mensajeError(mensajeSalida);
                 }
                 buscarCapacidadesDif();
             }

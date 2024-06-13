@@ -1,4 +1,5 @@
 var id_tbl_centro_trabajo_hraes = document.getElementById("id_tbl_centro_trabajo_hraes").value;
+var mensajeSalida = 'Se produjo un error al ejecutar la acción';
 
 $(document).ready(function () {
     buscarPlaza();
@@ -128,7 +129,7 @@ function agregarEditarByDb() {
             } else if (data == 'add') {
                 mensajeExito('Plaza agregada con éxito');  
             } else {
-                mensajeError(data);
+                mensajeError(mensajeSalida);
             }
             $("#agregar_editar_modal").modal("hide");
             buscarPlaza();
@@ -164,7 +165,7 @@ function eliminarEntity(id_object) {
                 if (data == 'delete'){
                     mensajeExito('Plaza eliminada con éxito');
                 } else {
-                    mensajeError(data);
+                    mensajeError(mensajeSalida);
                 }
                 buscarPlaza();
             }
@@ -234,6 +235,10 @@ function detallesEntity(id_tbl_control_plazas_hraes){
             listarTablaHistori(id_tbl_control_plazas_hraes);
         }
     );
+}
+
+function detallesPlazaModal(value){
+    $("#modal_detallas_plazas").modal("show");
 }
 
 

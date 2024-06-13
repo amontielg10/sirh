@@ -1,3 +1,5 @@
+var mensajeSalida = 'Se produjo un error al ejecutar la acción';
+
 $(document).ready(function () {
     buscarEmpleado();
 });
@@ -117,7 +119,7 @@ function agregarEditarByDb() {
             } else if (data == 'add') {
                 mensajeExito('Empleado agregado con éxito');  
             } else {
-                mensajeError(data);
+                mensajeError(mensajeSalida);
             }
             $("#agregar_editar_modal").modal("hide");
             buscarEmpleado();
@@ -145,7 +147,7 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
                 if (data == 'delete'){
                     mensajeExito('Empleado eliminado con éxito')
                 } else {
-                    mensajeError(data);
+                    mensajeError(mensajeSalida);
                 }
                 buscarEmpleado();
             }

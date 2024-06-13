@@ -1,4 +1,5 @@
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
+var mensajeSalida = 'Se produjo un error al ejecutar la acción';
 
 function iniciarAdicional(){
     detallesAdicional(id_tbl_empleados_hraes);
@@ -41,7 +42,7 @@ function gurdarAdicionals() {
             } else if (data == 'add') {
                 mensajeExito('Información adicional agregada con éxito');  
             } else {
-                mensajeError(data);
+                mensajeError(mensajeSalida);
             }
             iniciarAdicional();
         }
