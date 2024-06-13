@@ -73,7 +73,7 @@
                         <div class="col-4">
                             <fieldset disabled>
                                 <label for="campo" class="form-label input-text-form">Nombre (Empleado)</label>
-                                <input type="text" class="form-control custom-input" id="espe_nombre">
+                                <input type="text" class="form-control custom-input" id="espe_nombre_emp">
                                 <div class="line"></div>
                             </fieldset>
                         </div>

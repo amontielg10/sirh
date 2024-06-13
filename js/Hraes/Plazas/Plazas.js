@@ -146,7 +146,6 @@ function ocultarModalDetalles(){
 }
 
 function eliminarEntity(id_object) {
-    if( validarAccion()){
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -165,7 +164,7 @@ function eliminarEntity(id_object) {
                 if (data == 'delete'){
                     mensajeExito('Plaza eliminada con éxito');
                 } else {
-                    mensajeError(mensajeSalida);
+                    messageErrorLarge('La eliminación de una plaza no debe estar sujeta a dependencias de empleados, o datos complementarios');
                 }
                 buscarPlaza();
             }
@@ -173,7 +172,7 @@ function eliminarEntity(id_object) {
     }
     });
 }
-}
+
 
 function buscarInfoCentroTrabajo(){
     if(id_tbl_centro_trabajo_hraes != null){
