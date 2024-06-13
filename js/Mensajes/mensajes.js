@@ -76,3 +76,11 @@ function validarData(data, text){
   } 
   return bool;
 }
+
+function messageErrorLarge(text){
+  Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: text,
+    });
+}

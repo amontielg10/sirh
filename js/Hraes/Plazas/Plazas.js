@@ -195,6 +195,7 @@ function buscarInfoCentroTrabajo(){
     }
 }
 
+/*
 function detallesEntity(id_tbl_control_plazas_hraes){
 
     let num_plaza_dt = document.getElementById("num_plaza_dt");
@@ -226,20 +227,43 @@ function detallesEntity(id_tbl_control_plazas_hraes){
             unidad_respo_dt.textContent = entity[3];
             nombre_centro_trabajo_dt.textContent = entity[6];
 
-            /*
+          
             curp_dt.textContent = concatNombre(empleado['curp'],'','');
             rfc_dt.textContent = concatNombre(empleado['rfc'],'','');
             nombre_dt.textContent = concatNombre(empleado['nombre'],empleado['primer_apellido'],empleado['segundo_apellido']);
-*/
+
             $("#mostar_detalles_modal").modal("show");
             listarTablaHistori(id_tbl_control_plazas_hraes);
         }
     );
 }
+*/
+function detallesPlazaModal(id_tbl_control_plazas_hraes){
+    $.post("../../../../App/Controllers/Hrae/PlazasC/DetallesEntityC.php", {
+        id_tbl_control_plazas_hraes: id_tbl_control_plazas_hraes,
+    },
+        function (data) {
+            let jsonData = JSON.parse(data);//se obtiene el json
+            let entity = jsonData.entity;
+            let empleado = jsonData.empleado;
 
-function detallesPlazaModal(value){
-    $("#modal_detallas_plazas").modal("show");
+            $("#espe_clabe").val(entity[5]);
+            $("#espe_entidad").val(entity[7]);
+            $("#espe_codigo_postal").val(entity[8]);
+            $("#espe_unidad_rep").val(entity[3]);
+            $("#espe_codigo_postal").val(entity[8]);
+            $("#espe_nombre").val(entity[6]);
+
+            listarTablaHistori(id_tbl_control_plazas_hraes);
+            $("#modal_detallas_plazas").modal("show");
+        }
+    );
 }
+
+function detallesPlazaModalOcultar(){
+    $("#modal_detallas_plazas").modal("hide");
+}
+
 
 
 function listarTablaHistori(id_tbl_control_plazas_hraes){

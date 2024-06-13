@@ -157,5 +157,4 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
 <script src="../../../../js/Hraes/Plazas/validar.js"></script>
 <?php include 'AgregarEditar.php' ?>
 <?php include 'Detalles.php' ?>
-<?php include 'Detalles1.php' ?>
 <?php include '../../librerias.php' ?>

@@ -104,7 +104,7 @@ function agregarEditarByDb() {
         pais:pais
 
     },
-        function (data, status) {
+        function (data) {
             if (data == 'edit'){
                 mensajeExito('Centro de trabajo modificado con éxito');
             } else if (data == 'add') {
@@ -123,7 +123,6 @@ function ocultarModal(){
 }
 
 function eliminarEntity(id_object) {
-    if(validarAccion()){
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -142,14 +141,13 @@ function eliminarEntity(id_object) {
                 if (data == 'delete'){
                     mensajeExito('Centro de trabajo eliminado con éxito')
                 } else {
-                    mensajeError(mensajeSalida);
+                    messageErrorLarge('La eliminación de un centro de trabajo no debe estar sujeta a dependencias como plazas, empleados, o datos complementarios');
                 }
                 buscarCentro();
             }
         );
     }
     });
-}
 }
 
 function convertirAMayusculas(event, inputId) {
@@ -173,6 +171,8 @@ function convertirAMayusculas(event, inputId) {
 function mostrarModalCarga(){
     $("#modal_carga_masiva").modal("show");
 }
+
+
 
 /*
 document.addEventListener('DOMContentLoaded', function () {

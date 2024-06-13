@@ -17,6 +17,7 @@ $id_rol = $_SESSION['id_rol'];
     <title>SIRH</title>
     <link rel="stylesheet" href="../../../../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../../assets/styles/menu.css">
+    <link rel="stylesheet" href="../../../../assets/styles/NewMenu.css">
     <script src="../../../../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
         integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"

@@ -11,9 +11,9 @@ $data =
     '<table class="table table-bordered" id="tabla_historia_plaza_empleado_ix" style="width:100%">
     <thead>
         <tr>
-            <th>Rfc de empleado</th>
-            <th>Movimiento</th>
-            <th>Fecha movimiento</th>
+            <th class="input-text-form">Rfc de empleado</th>
+            <th class="input-text-form">Movimiento</th>
+            <th class="input-text-form">Fecha movimiento</th>
         </tr>
     </thead>';
 
