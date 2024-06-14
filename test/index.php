@@ -3,70 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Select personalizado con Bootstrap y CSS</title>
+  <title>Alerta con línea vertical</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
   <style>
-    /* Estilo personalizado para el select */
-    .custom-select-wrapper {
-      position: relative;
-      width: 200px; /* Ancho personalizado */
-      margin-bottom: 15px; /* Espacio entre select y otros elementos */
+    .custom-alert {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-left: 3px solid #007bff; /* Cambia el color de la línea vertical */
+      border-radius: 5px;
+      padding: 15px;
+      margin: 20px;
     }
-    
-    /* Estilo para la línea verde */
-    .custom-select-wrapper::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -1px; /* Posición de la línea debajo del select */
-      width: 100%;
-      height: 2px; /* Grosor de la línea */
-      background-color: green; /* Color de la línea */
-    }
-    
-    /* Estilo para el select */
-    .custom-select {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      border: none; /* Eliminar el borde */
-      background-color: transparent; /* Fondo transparente */
-      width: 100%;
-      cursor: pointer;
-      padding-right: 20px; /* Espacio para el icono */
-    }
-    
-    /* Estilo para el icono de triángulo */
-    .custom-select-icon {
-      position: absolute;
-      top: calc(50% - 5px); /* Centrar verticalmente */
-      right: 5px; /* Posición a la derecha */
-      pointer-events: none; /* Ignorar eventos del mouse */
+
+    .custom-alert p {
+      margin-bottom: 0;
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="custom-select-wrapper">
-        <select class="custom-select">
-          <option value="1">Opción 1</option>
-          <option value="2">Opción 2</option>
-          <option value="3">Opción 3</option>
-          <option value="4">Opción 4</option>
-        </select>
-        <!-- Icono de triángulo -->
-        <div class="custom-select-icon">
-          <i class="fas fa-caret-down"></i>
-        </div>
-      </div>
+<div class="container mt-4">
+  <div class="custom-alert">
+    <div class="d-flex align-items-center">
+      <div class="mr-3" style="border-right: 2px solid #007bff;"></div> <!-- Línea vertical -->
+      <p>Haz clic en el icono para cargar archivos.</p>
     </div>
   </div>
 </div>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

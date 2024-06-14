@@ -164,13 +164,7 @@ function convertirAMayusculas(event, inputId) {
 
 
 
-  function ocultarModalCarga(){
-    $("#modal_carga_masiva").modal("hide");
-}
 
-function mostrarModalCarga(){
-    $("#modal_carga_masiva").modal("show");
-}
 
 
 

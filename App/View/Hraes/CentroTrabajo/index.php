@@ -24,11 +24,11 @@
                     <h2 class="card-title tittle-card-index">Centro de trabajo</h2>
                 </div>
                 <div class="col-3">
-<!--
+
                     <button onclick="mostrarModalCarga();" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Launch demo modal
                     </button>
--->
+
                 </div>
                 <div class="col-3 search-container">
                     <input onkeyup="buscarCentro();" id="buscar" type="text" placeholder="Buscar..."
@@ -80,6 +80,7 @@
 <script src="../../../../js/Hraes/CentroTrabajo/CentroTrabajo.js"></script>
 <script src="../../../../js/Hraes/CentroTrabajo/validar.js"></script>
 <script src="../../../../js/Hraes/CentroTrabajo/Busqueda.js"></script>
+<script src="../../../../js/Hraes/CentroTrabajo/Carga.js"></script>
 <?php include '../../librerias.php' ?>
 <?php include 'AgregarEditar.php' ?>
 <?php include 'Carga.php' ?>
