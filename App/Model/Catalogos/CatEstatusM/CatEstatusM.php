@@ -16,4 +16,12 @@ class catalogoEstatus
                              WHERE id_cat_estatus = $idObject");
         return $listado;
     }
+
+    public function idEstatusText($estatus){
+        $listado = pg_query("SELECT id_cat_estatus
+                             FROM cat_estatus
+                             WHERE TRIM(UPPER(UNACCENT(estatus)))
+                                LIKE TRIM(UPPER(UNACCENT('$estatus')));");
+        return $listado;
+    }
 }

@@ -16,4 +16,12 @@ class catalogoEntidad
                              WHERE id_cat_entidad = $idObject");
         return $listado;
     }
+
+    public function idEntidadText($text){
+        $listado = pg_query("SELECT id_cat_entidad
+                             FROM cat_entidad
+                             WHERE TRIM(UPPER(UNACCENT(entidad)))
+                                LIKE TRIM(UPPER(UNACCENT('%$text%')));");
+        return $listado;
+    }
 }

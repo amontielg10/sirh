@@ -16,4 +16,12 @@ class catalogoRegion
                              WHERE id_cat_region = $idObject");
         return $listado;
     }
+
+    public function idRegionByText($region){
+        $listado = pg_query("SELECT id_cat_region
+                             FROM cat_region
+                             WHERE TRIM(UPPER(UNACCENT(region))) 
+                                LIKE TRIM(UPPER(UNACCENT('%$region%')));");
+        return $listado;
+    }
 }

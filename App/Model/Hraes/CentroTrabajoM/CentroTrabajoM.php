@@ -101,11 +101,45 @@ class modelCentroTrabajoHraes
         return $listado;
     }
 
-    function listarByRegion($idRegion){
+    function listarByRegion($idRegion)
+    {
         $listado = pg_query("SELECT COUNT (id_tbl_centro_trabajo_hraes)
                              FROM tbl_centro_trabajo_hraes
                              WHERE id_cat_region = $idRegion;");
         return $listado;
     }
 
+
+
+    ///FUNCIONES PARA CARGA MASIVA
+    function countClave($clave)
+    {
+        $listado = pg_query("SELECT COUNT (id_tbl_centro_trabajo_hraes)
+                             FROM tbl_centro_trabajo_hraes
+                             WHERE TRIM(UPPER(UNACCENT(clave_centro_trabajo))) = 
+                                TRIM(UPPER(UNACCENT('$clave')));");
+        return $listado;
+    }
+
+    function agregarCentroSQL($clave_centro_trabajo,$nombre,$pais,$colonia,$codigo_postal,$num_exterior,$num_interior,
+                              $latitud,$longitud,$id_cat_region,$id_estatus_centro,$id_cat_entidad){
+        $agregar = pg_query("INSERT INTO tbl_centro_trabajo_hraes (clave_centro_trabajo,nombre,
+                                    pais,colonia,codigo_postal,num_exterior,num_interior,latitud,
+                                    longitud,id_cat_region,id_estatus_centro,id_cat_entidad)
+                            VALUES (UPPER('$clave_centro_trabajo'), UPPER('$nombre'), UPPER('$pais'),
+                                     UPPER('$colonia'),'$codigo_postal',UPPER('$num_exterior'),
+                                     UPPER('$num_interior'), UPPER('$latitud'), UPPER('$longitud'), 
+                                     $id_cat_region, $id_estatus_centro, $id_cat_entidad);");
+        return $agregar;
+    }
+
+    function modificarCentroSQL($clave_centro_trabajo,$nombre,$pais,$colonia,$codigo_postal,$num_exterior,$num_interior,
+                              $latitud,$longitud,$id_cat_region,$id_estatus_centro,$id_cat_entidad){
+        $agregar = pg_query("UPDATE tbl_centro_trabajo_hraes
+                             SET
+                                nombre = CASE WHEN UPPER('$nombre') != 'X' THEN UPPER('$nombre') ELSE nombre END,
+                             WHERE
+                                clave_centro_trabajo = '$clave_centro_trabajo';");
+        return $agregar;
+    }
 }

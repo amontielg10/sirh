@@ -15,6 +15,7 @@ function mostrarModalCarga(){
 }
 
 function validarCarga(){
+    let bool = false;
     let maxMB = 5;
     let fileInput = document.getElementById('customFile');
     let file = fileInput.files[0];
@@ -29,13 +30,16 @@ function validarCarga(){
       } else if (fileExtension != 'xlsx') {
         mensajeError('La extensión del archivo debe terminar .xlsx');
       } else {
-        processData(file); ///DATA SUCCESS
+        bool = true;
       }
     } else {
         mensajeError('Campo seleccione un archivo no puede estar vacio');
     }
-}
+    ocultarModalCarga();
+    return bool;
+  }
 
+  /*
 function processData(file){
 
         let data = new FormData();
@@ -53,3 +57,4 @@ function processData(file){
         }
     });
 }
+    */
