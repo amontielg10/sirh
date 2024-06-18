@@ -38,7 +38,7 @@ $id_object = $_POST['id_object'];
 
 if ($id_object != null){
     $entity = returnArray($modelPlazasHraes -> listarByIdEdit($id_object));
-    $plazas = $catalogoPlazasC ->returnCatPLazasByIdObject($catalogoPlazasM ->listarByAll(), returnArrayById($catalogoPlazasM ->obtenerElemetoById($entity['id_cat_plazas'])));
+    $plazas = $catalogoPlazasC ->returnCatPLazasByIdObject($catalogoPlazasM ->listarByAll(), returnArrayById($catalogoPlazasM ->obtenerElemetoById($entity['id_cat_tipo_plazas'])));
     $contratacion = $catalogoTipoContratcionHraesC ->returnCatContratacionByIdObject($catalogoTipoContratacionM ->listarByAll(),returnArrayById($catalogoTipoContratacionM ->obtenerElemetoById($entity['id_cat_tipo_subtipo_contratacion_hraes'])));
     $unidadResp = $catalogoUnidadResponsableC ->returnCatUnidadByIdObject($cataloUnidadResposableM->listarByAll(), returnArrayById($cataloUnidadResposableM->obtenerElemetoById($entity['id_cat_unidad_responsable'])));
     $puesto = $catalogoPuestosC ->returnCatPuestosByIdObject($catalogoPuestoM->listarByAll(),returnArrayById($catalogoPuestoM->obtenerElemetoById($entity['id_cat_puesto_hraes'])));
