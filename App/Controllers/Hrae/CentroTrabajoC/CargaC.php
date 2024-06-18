@@ -8,6 +8,7 @@ $modelCentro = new modelCentroTrabajoHraes();
 $catalogoRegion = new catalogoRegion();
 $catalogoEstatus = new catalogoEstatus();
 $catalogoEntidad = new catalogoEntidad();
+$conditionX = 'X'; ///CAMBIAR CUALQUIER VALOR QUE NO QUIERA REALIZAR ACCION
 
 ///VARIABLES AUXILIARES
 $fileExel = 'exel_centro_trabajo'; ///NOMBRE DE ARCHIVO
@@ -46,24 +47,43 @@ if (isset($_FILES[$fileExel]) && $_FILES[$fileExel]['error'] === UPLOAD_ERR_OK) 
                     validateDateX($col_K) && validateDateX($col_L)
                 ) { ////VALIDACION QUE EXISTA CAMPOS REQUERIDOS
                     ///OBTENCION DE ID DE CATALOGOS
-                    $idRegion = $catalogoRegion->idRegionByText($col_J);
-                    $idEstatus = $catalogoEstatus->idEstatusText($col_K);
-                    $idEntidad = $catalogoEntidad->idEntidadText($col_L);
+                    /*
+                    DONDE $BREGION... ES LA VARIABLE VERDADERA O FALSA, %IDREGION... ES EL VALOR DE ESA VARIABLE
+                    */
+                    list ($bRegion, $idRegion) = validarCatalogo($col_J,$catalogoRegion->idRegionByText($col_J),$conditionX);
+                    list ($bEstatus, $idEstatus) = validarCatalogo($col_K,$catalogoEstatus->idEstatusText($col_K),$conditionX);
+                    list ($bEntidad, $idEntidad) = validarCatalogo($col_L,$catalogoEntidad->idEntidadText($col_L),$conditionX);
 
-                    if (validarExiste($idRegion) && validarExiste($idEstatus) && validarExiste($idEntidad)) { ///VALIDA QUE LOS CATALOGOS SEAN LOS CORRECTOS
+                    if ($bRegion && $bEstatus && $bEntidad) { ///VALIDA QUE LOS CATALOGOS SEAN LOS CORRECTOS
                         ////VALIDACION DE NUMERO DE CARACTERES
                         if ( ///VALIDA QUE LOS DATOS INGRESADOS NO TENGAN CARACTERES EXTRA
                             numCaracteres($col_A, 15) && numCaracteres($col_B, 90) && numCaracteres($col_C, 20) &&
                             numCaracteres($col_D, 40) && numCaracteres($col_E, 5) && numCaracteres($col_F, 15) &&
                             numCaracteres($col_G, 15) && numCaracteres($col_H, 15) && numCaracteres($col_I, 15)
                         ) {
-                            $idRegion = $rowx->returnArrayById($idRegion);
-                            $idEstatus = $rowx->returnArrayById($idEstatus);
-                            $idEntidad = $rowx->returnArrayById($idEntidad);
 
                             $existClave = $rowx->returnArrayById($modelCentro->countClave($col_A)); ///VALIDA QUE EXISTA LA CLAVE DEL CENTRO
                             if ($existClave[0] != 0) { ///MODIFICA EL EL CAMPO --> VALIDACION DE PARA VERIFICAR ACCION
-                                echo 'MODIFICA - ';
+                                $modificar = $modelCentro->modificarCentroSQL(
+                                    $col_A,
+                                    $col_B,
+                                    $col_C,
+                                    $col_D,
+                                    $col_E,
+                                    $col_F,
+                                    $col_G,
+                                    $col_H,
+                                    $col_I,
+                                    $idRegion,
+                                    $idEstatus,
+                                    $idEntidad,
+                                    $conditionX
+                                );
+                                if($modificar){
+                                    echo 'Modificar con exito - ';
+                                } else {
+                                    echo 'Error al modificar - ';
+                                }
                             } else { ///AGREGA EL CAMPO
                                 $guardar = $modelCentro->agregarCentroSQL(
                                     $col_A,
@@ -75,9 +95,9 @@ if (isset($_FILES[$fileExel]) && $_FILES[$fileExel]['error'] === UPLOAD_ERR_OK) 
                                     $col_G,
                                     $col_H,
                                     $col_I,
-                                    $idRegion[0],
-                                    $idEstatus[0],
-                                    $idEntidad[0]
+                                    $idRegion,
+                                    $idEstatus,
+                                    $idEntidad,
                                 );
                                 if($guardar){
                                     echo 'Agregado con exito - ';
@@ -89,7 +109,7 @@ if (isset($_FILES[$fileExel]) && $_FILES[$fileExel]['error'] === UPLOAD_ERR_OK) 
                             echo 'Es mayor al numero de caracteres - ';
                         }
                     } else { ///CATALOGOS INCORRECTOS
-                        echo 'ID NO EXISTPE - ';
+                        echo 'ID NO EXISTPE - de catalogos';
                     }
                     echo "$totalFilas / $col_A / $col_B / $col_C / $col_D / $col_E / $col_F / $col_G / $col_H / $col_I / $col_J / $col_K / $col_L";
                 } else { /// EXISTEN CAMPOS VACIOS
@@ -107,8 +127,18 @@ if (isset($_FILES[$fileExel]) && $_FILES[$fileExel]['error'] === UPLOAD_ERR_OK) 
     echo "Error al subir el archivo.";
 }
 
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
+$filename = 'datos_postgresql.xlsx';
 
+// Crear un objeto Writer para guardar el archivo Excel en la salida directa
+$writer = new Xlsx($spreadsheet);
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename="' . $filename . '"');
+header('Cache-Control: max-age=0');
+$writer->save('php://output');
+
+header("Location: ../../../View/Hraes/CentroTrabajo/index.php");
 
 function validateDateX($data) ////LA FUNCION VALIDA QUE NO VAYAN ELEMENTOS VACIOS
 {
@@ -137,6 +167,29 @@ function numCaracteres($text, $number)
         return true;//Es menor al numero max
     }
 }
+
+///LA FUNCION RETORNA VERDADERO O FALSO SI EL TEXTO DE ID QUE SE INGRESO ES EL CORRECTO O SI SE INGREO UNA X
+function validarCatalogo($text,$object,$condition){
+    $rowx = new row();
+    $bool = false;
+    $value = '';
+
+    if (strtoupper($text) != strtoupper($condition)){ // LA CONDICION VALIDA QUE SEA DISTINTO DE VALOR X
+        if (validarExiste($object)){ ///VALIDA QUE EXISTA EL TEXT EN EL CATALOGO
+            $id = $rowx->returnArrayById($object); ///OBTIENE EL ID DE CATALOGO
+            $value = $id[0];
+            $bool = true;
+        }
+    } else { //ES CORRECTO AL VALOR X, ES DECIR ES IGUAL
+            $bool = true;
+            $value = $text;
+    }
+
+    return [$bool,$value];
+} 
+
+
+
 /*
 
 require '../vendor/autoload.php';

@@ -121,8 +121,20 @@ class modelCentroTrabajoHraes
         return $listado;
     }
 
-    function agregarCentroSQL($clave_centro_trabajo,$nombre,$pais,$colonia,$codigo_postal,$num_exterior,$num_interior,
-                              $latitud,$longitud,$id_cat_region,$id_estatus_centro,$id_cat_entidad){
+    function agregarCentroSQL(
+        $clave_centro_trabajo,
+        $nombre,
+        $pais,
+        $colonia,
+        $codigo_postal,
+        $num_exterior,
+        $num_interior,
+        $latitud,
+        $longitud,
+        $id_cat_region,
+        $id_estatus_centro,
+        $id_cat_entidad
+    ) {
         $agregar = pg_query("INSERT INTO tbl_centro_trabajo_hraes (clave_centro_trabajo,nombre,
                                     pais,colonia,codigo_postal,num_exterior,num_interior,latitud,
                                     longitud,id_cat_region,id_estatus_centro,id_cat_entidad)
@@ -133,13 +145,61 @@ class modelCentroTrabajoHraes
         return $agregar;
     }
 
-    function modificarCentroSQL($clave_centro_trabajo,$nombre,$pais,$colonia,$codigo_postal,$num_exterior,$num_interior,
-                              $latitud,$longitud,$id_cat_region,$id_estatus_centro,$id_cat_entidad){
+    function modificarCentroSQL(
+        $clave_centro_trabajo,
+        $nombre,
+        $pais,
+        $colonia,
+        $codigo_postal,
+        $num_exterior,
+        $num_interior,
+        $latitud,
+        $longitud,
+        $id_cat_region,
+        $id_estatus_centro,
+        $id_cat_entidad,
+        $condition
+    ) {
+        $idRegioN = strtoupper($id_cat_region) != strtoupper($condition) ? $id_cat_region : 1;
+        $idEstatusN = strtoupper($id_estatus_centro) != strtoupper($id_estatus_centro) ? $id_estatus_centro : 1;
+        $idEntidadN = strtoupper($id_cat_entidad) != strtoupper($id_cat_entidad) ? $id_cat_entidad : 1;
+
         $agregar = pg_query("UPDATE tbl_centro_trabajo_hraes
                              SET
-                                nombre = CASE WHEN UPPER('$nombre') != 'X' THEN UPPER('$nombre') ELSE nombre END,
+                                nombre = CASE WHEN UPPER('$nombre') != UPPER('$condition') THEN UPPER('$nombre') ELSE nombre END,
+                                pais = CASE WHEN UPPER('$pais') != UPPER('$condition') THEN UPPER('$pais') ELSE pais END,
+                                colonia = CASE WHEN UPPER('$colonia') != UPPER('$condition') THEN UPPER('$colonia') ELSE colonia END,
+                                codigo_postal = CASE WHEN UPPER('$codigo_postal') != UPPER('$condition') THEN UPPER('$codigo_postal') ELSE codigo_postal END,
+                                num_exterior = CASE WHEN UPPER('$num_exterior') != UPPER('$condition') THEN UPPER('$num_exterior') ELSE num_exterior END,
+                                num_interior = CASE WHEN UPPER('$num_interior') != UPPER('$condition') THEN UPPER('$num_interior') ELSE num_interior END,
+                                latitud = CASE WHEN UPPER('$latitud') != UPPER('$condition') THEN UPPER('$latitud') ELSE latitud END,
+                                longitud = CASE WHEN UPPER('$longitud') != UPPER('$condition') THEN UPPER('$longitud') ELSE longitud END,
+                                id_cat_region = CASE WHEN UPPER('$id_cat_region') != UPPER('$condition') THEN $idRegioN ELSE id_cat_region END,
+                                id_estatus_centro = CASE WHEN UPPER('$id_estatus_centro') != UPPER('$condition') THEN $idEstatusN ELSE id_estatus_centro END,
+                                id_cat_entidad = CASE WHEN UPPER('$id_cat_entidad') != UPPER('$condition') THEN $idEntidadN ELSE id_cat_entidad END
                              WHERE
                                 clave_centro_trabajo = '$clave_centro_trabajo';");
         return $agregar;
     }
+    /*
+    function modificarCentroSQL($clave_centro_trabajo,$nombre,$pais,$colonia,$codigo_postal,$num_exterior,$num_interior,
+                              $latitud,$longitud,$id_cat_region,$id_estatus_centro,$id_cat_entidad, $condition){
+        $agregar = pg_query("UPDATE tbl_centro_trabajo_hraes
+                             SET
+                                nombre = CASE WHEN UPPER('$nombre') != UPPER('$condition') THEN UPPER('$nombre') ELSE nombre END,
+                                pais = CASE WHEN UPPER('$pais') != UPPER('$condition') THEN UPPER('$pais') ELSE pais END,
+                                colonia = CASE WHEN UPPER('$colonia') != UPPER('$condition') THEN UPPER('$colonia') ELSE colonia END,
+                                codigo_postal = CASE WHEN UPPER('$codigo_postal') != UPPER('$condition') THEN UPPER('$codigo_postal') ELSE codigo_postal END,
+                                num_exterior = CASE WHEN UPPER('$num_exterior') != UPPER('$condition') THEN UPPER('$num_exterior') ELSE num_exterior END,
+                                num_interior = CASE WHEN UPPER('$num_interior') != UPPER('$condition') THEN UPPER('$num_interior') ELSE num_interior END,
+                                latitud = CASE WHEN UPPER('$latitud') != UPPER('$condition') THEN UPPER('$latitud') ELSE latitud END,
+                                longitud = CASE WHEN UPPER('$longitud') != UPPER('$condition') THEN UPPER('$longitud') ELSE longitud END,
+                                id_cat_region = CASE WHEN UPPER('$id_cat_region') != UPPER('$condition') THEN $id_cat_region ELSE id_cat_region END,
+                                id_estatus_centro = CASE WHEN UPPER('$id_estatus_centro') != UPPER('$condition') THEN $id_estatus_centro ELSE id_estatus_centro END,
+                                id_cat_entidad = CASE WHEN UPPER('$id_cat_entidad') != UPPER('$condition') THEN $id_cat_entidad ELSE id_cat_entidad END
+                             WHERE
+                                clave_centro_trabajo = '$clave_centro_trabajo';");
+        return $agregar;
+    }
+        */
 }
