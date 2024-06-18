@@ -23,15 +23,25 @@ function validarMovimiento(){
     let fecha_inicio = document.getElementById('fecha_inicio').value;
     let id_cat_caracter_nom_hraes = document.getElementById('id_cat_caracter_nom_hraes').value;
     let id_object = document.getElementById('id_object').value;
+    let situacionPlaza = document.getElementById('situacionPlaza').value;
+    let num_plaza_new = document.getElementById('num_plaza_new').value;
+
+    console.log('m: ' + situacionPlaza);
 
     if (validarData(movimiento_general,'Movimiento general')){///CONDICION DE INICIAL PARA MOVIMIENTO GENERAL
         if(movimiento_general != movimientoBaja){ ///EL MOVIMIENTO ES UNA ALTA O MOVIMIENTO
             if(validarData(id_tbl_movimientos,'Movimiento especifico') && ///VALIDACION DE CAMPOS REQUERIDOS PARA ALTA O MOVIMIENTO
                 validarData(fecha_movimiento,'Fecha de movimiento') &&
                 validarData(id_tbl_control_plazas_hraes,'Núm. Plaza') &&
-                validarData(fecha_inicio,'Fecha de inicio') &&
-                validarData(id_cat_caracter_nom_hraes,'Caracter nombramiento')){ 
-                    validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento);///FUNCION PARA VALIDAR EL ULTIMO MOVIMIENTO
+                validarData(fecha_inicio,'Fecha de inicio')){
+                if (situacionPlaza == 0){ ///VALIDAR QUE EL NUEVO NUMERO DE PLAZA SEA VALIDO
+                    if(validarData(num_plaza_new,'Núm. Plaza') &&
+                       caracteresCount('Número de plaza',8,num_plaza_new)){
+                        validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento,num_plaza_new,situacionPlaza);///FUNCION PARA VALIDAR EL ULTIMO MOVIMIENTO
+                    }
+                } else {
+                    validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento,num_plaza_new,situacionPlaza);///FUNCION PARA VALIDAR EL ULTIMO MOVIMIENTO
+                }
             }
         } else { ///EL MOVIMIENTO ES UN BAJA
             if(validarData(id_tbl_movimientos,'Movimiento especifico') && ///VALIDACION DE CAMPOS REQUERIDOS PARA BAJA
@@ -43,7 +53,7 @@ function validarMovimiento(){
 }
 
 ///LA FUNCION VALIDA EL ULTIMO MOVIMIENTO, FECHAS Y CAMPOS PARA ASIGNAR EL MOVIMIENTO
-function validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento){
+function validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento,num_plaza_new,situacionPlaza){
     $.post("../../../../App/Controllers/Hrae/MovimientosC/UltimoMovimientoC.php", {
         movimiento_general:movimiento_general,
         fecha_movimiento:fecha_movimiento,
@@ -52,14 +62,17 @@ function validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento){
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
         movimientoAlta:movimientoAlta,
         movimientoMov:movimientoMov,
-    },
+        num_plaza_new:num_plaza_new,
+        situacionPlaza:situacionPlaza,
+    },  
         function (data) {
             let jsonData = JSON.parse(data);
             let bool = jsonData.bool;
             let mensaje = jsonData.mensaje;
 
             if(bool){
-                guardarMovimiento();///ACCCION DE GUARDAR INFO
+                console.log('success');
+                //guardarMovimiento();///ACCCION DE GUARDAR INFO
             } else {
                 messageLarge(mensaje);
             }
@@ -77,7 +90,15 @@ document.getElementById("id_tbl_control_plazas_hraes").addEventListener("change"
             let jsonData = JSON.parse(data);
             let contratacion = jsonData.contratacion;
             let centroTrabajo = jsonData.centroTrabajo;
+            let situacionPlaza = jsonData.situacionPlaza;
 
+            if(situacionPlaza == 0){
+                mostrarContenido('ocultar_model_plaza');
+            } else {
+                ocultarContenido('ocultar_model_plaza');
+            }
+
+            $('#situacionPlaza').val(situacionPlaza);
             $('#tipo_contratacion_mx').val(contratacion); 
             $('#centro_trabajo_mx').val(centroTrabajo);
         }
@@ -90,9 +111,11 @@ document.getElementById("id_tbl_control_plazas_hraes").addEventListener("change"
 document.getElementById("movimiento_general").addEventListener("change", function() {
     let movimiento_general = this.value;
     if (movimiento_general == movimientoBaja){
-        ocultarContenido();
+        $('#situacionPlaza').val(null);
+        ocultarContenido('ocultar_model');
+        ocultarContenido('ocultar_model_plaza');
     } else {
-        mostrarContenido();
+        mostrarContenido('ocultar_model');
     }
     $.post("../../../../App/Controllers/Hrae/MovimientosC/MEspecificoC.php", {
         movimiento_general: movimiento_general,
@@ -107,14 +130,14 @@ document.getElementById("movimiento_general").addEventListener("change", functio
     );
   });
 
-function ocultarContenido() {
-    let x = document.getElementById("ocultar_model");
+function ocultarContenido(text) {
+    let x = document.getElementById(text);
     x.style.display = "none";
     
 }
 
-function mostrarContenido() {
-    let x = document.getElementById("ocultar_model");
+function mostrarContenido(text) {
+    let x = document.getElementById(text);
     x.style.display = "block";
 }
 
@@ -126,6 +149,9 @@ function messageLarge(text){
         text: text,
       });
 }
+
+
+
 /*
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
 var id_baja = 3; ///CATALOGO

@@ -33,6 +33,9 @@ function iniciarPlazas(id_tbl_centro_trabajo_hraes,busqueda, paginador){
 }
 
 function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONADO
+    let checkbox = document.getElementById("id_cat_situacion_plaza_hraes");
+    let checkbox_disabled = document.getElementById("checkbox_disabled");
+
     $("#id_object").val(id_object);
     let titulo = document.getElementById("titulo_plazas");
     titulo.textContent = 'Modificar';    
@@ -76,6 +79,10 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             $("#fecha_termino_movimiento").val(entity.fecha_termino_movimiento);
             $("#fecha_modificacion").val(entity.fecha_modificacion);
             $("#id_tbl_centro_trabajo_hraes_aux").val(entity.id_tbl_centro_trabajo_hraes);
+
+            let bool = entity.id_cat_situacion_plaza_hraes != 1 ? true : false;
+            checkbox.checked = bool;
+            checkbox_disabled.disabled  = !bool;
         }
     );
 
@@ -83,6 +90,9 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
 }
 
 function agregarEditarByDb() {
+    let id_cat_situacion_plaza_hraes = document.getElementById("id_cat_situacion_plaza_hraes");
+    let id_cat_situacion_plaza_hraes_x = id_cat_situacion_plaza_hraes.checked ? 0 : 1;
+
     let id_tbl_centro_trabajo_hraes_aux = $("#id_tbl_centro_trabajo_hraes_aux").val();
     let id_object = $("#id_object").val();
 
@@ -121,7 +131,8 @@ function agregarEditarByDb() {
         fecha_modificacion:fecha_modificacion,
         id_object:id_object,
         id_tbl_centro_trabajo_hraes:id_tbl_centro_trabajo_hraes_aux,
-        id_tbl_zonas_pago:id_tbl_zonas_pago
+        id_tbl_zonas_pago:id_tbl_zonas_pago,
+        id_cat_situacion_plaza_hraes: id_cat_situacion_plaza_hraes_x
     },
         function (data) {
             if (data == 'edit'){

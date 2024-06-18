@@ -10,6 +10,7 @@ $detallesPlaza = $row->returnArrayById($modelPlazasHraes->infoPlazaCentro($id_tb
 $var = [
     'contratacion' => $detallesPlaza[1],
     'centroTrabajo' => $detallesPlaza[2],
+    'situacionPlaza' => $detallesPlaza[3],
 ];
 
 echo json_encode($var);

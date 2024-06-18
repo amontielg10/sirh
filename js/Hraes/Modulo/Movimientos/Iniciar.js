@@ -69,6 +69,9 @@ function agregarEditarMovimiento(id_object){
             $('#tipo_contratacion_mx').val(contratacion); 
             $('#centro_trabajo_mx').val(centroTrabajo);
 
+            mostrarContenido('ocultar_model');
+            ocultarContenido('ocultar_model_plaza');
+            $('#situacionPlaza').val(null);
         }
     );
 
@@ -114,7 +117,7 @@ function guardarMovimiento() {
 }
 
 function eliminarMovimiento(id_object) {//ELIMINAR USUARIO
-    if(validarAccion()){
+    //if(validarAccion()){
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -140,6 +143,6 @@ function eliminarMovimiento(id_object) {//ELIMINAR USUARIO
         );
     }
     });
-}
+//}
 }
 

@@ -138,7 +138,8 @@ class modelPlazasHraes
                                     id_tbl_centro_trabajo_hraes,id_cat_puesto_hraes,
                                     id_cat_zonas_tabuladores_hraes,id_cat_niveles_hraes,
                                     id_tbl_zonas_pago_hraes,fecha_ingreso_inst,fecha_inicio_movimiento,
-                                    fecha_termino_movimiento,fecha_modificacion
+                                    fecha_termino_movimiento,fecha_modificacion,
+                                    id_cat_situacion_plaza_hraes
                             FROM tbl_control_plazas_hraes
                             WHERE id_tbl_control_plazas_hraes = $id_object");
         return $listado;
@@ -185,7 +186,8 @@ class modelPlazasHraes
             'fecha_ingreso_inst' => null,
             'fecha_inicio_movimiento' => null,
             'fecha_termino_movimiento' => null,
-            'fecha_modificacion' => null
+            'fecha_modificacion' => null,
+            'id_cat_situacion_plaza_hraes' => null
         ];
     }
 
@@ -288,7 +290,8 @@ class modelPlazasHraes
         $listado = pg_query("SELECT tbl_control_plazas_hraes.id_tbl_control_plazas_hraes,
                                     CONCAT(cat_tipo_contratacion_hraes.tipo_contratacion, '-',
                                         cat_subtipo_contratacion_hraes.subtipo),
-                                    tbl_centro_trabajo_hraes.clave_centro_trabajo
+                                    tbl_centro_trabajo_hraes.clave_centro_trabajo,
+                                    tbl_control_plazas_hraes.id_cat_situacion_plaza_hraes
                             FROM tbl_control_plazas_hraes
                             INNER JOIN cat_tipo_subtipo_contratacion_hraes
                             ON tbl_control_plazas_hraes.id_cat_tipo_subtipo_contratacion_hraes =

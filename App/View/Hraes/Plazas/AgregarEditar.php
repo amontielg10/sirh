@@ -116,6 +116,19 @@
                             <input type="date" class="form-control custom-input" id="fecha_inicio_movimiento">
                             <div class="line"></div>
                         </div>
+                        <div class="col-3">
+                            <fieldset disabled id="checkbox_disabled" data-toggle="tooltip" data-placement="top" title="Una plaza plantilla es aquella cuyo número aún no está definido.">
+                                <label for="campo" class="form-label input-text-form">¿Es plantilla?</label><label
+                                    class="text-required">*</label>
+                                <div class="form-check div-spacing">
+                                    <input class="form-check-input" type="checkbox" value="0"
+                                        id="id_cat_situacion_plaza_hraes">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Si
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
                     </div>
                 </div>
             </div>

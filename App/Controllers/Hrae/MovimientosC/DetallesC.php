@@ -16,9 +16,12 @@ if ($id_object != null) {///MODIFICAR
     $idMovimiento = $row->returnArrayById($catMovimientoM->listadoIdMovimiento($response['id_tbl_movimientos']));
     $general = $catSelectC->selectByEdit($catMovimientoM->listarByAllGeneral(), $row->returnArrayById($catMovimientoM->listarByIdGeneral($response['id_tbl_movimientos'])));
     $especifico = $catSelectC->selectByEditIX($catMovimientoM->obtenerByAllEspecifico($idMovimiento[0]), $row->returnArrayById($catMovimientoM->obtenerByIdEspecifico($response['id_tbl_movimientos'])));
-    $caracter = $catNombramientoC->selectById($catNombramientoM->listarByAll(), $row->returnArrayById($catNombramientoM->listarByIdEdit($response['id_cat_caracter_nom_hraes'])));
+    $caracter = $catNombramientoC->selectByAll($catNombramientoM->listarByAll());
     $plaza = $catSelectC->selectByEditCatalogo($modelPlazasHraes->plazaVacante(), $row->returnArrayById($modelPlazasHraes->plazaVacanteEdit($response['id_tbl_control_plazas_hraes'])));
     $detallesPlaza = $row->returnArrayById($modelPlazasHraes->infoPlazaCentro($response['id_tbl_control_plazas_hraes']));
+    if($response['id_cat_caracter_nom_hraes'] != null){
+        $caracter = $catNombramientoC->selectById($catNombramientoM->listarByAll(), $row->returnArrayById($catNombramientoM->listarByIdEdit($response['id_cat_caracter_nom_hraes'])));
+    }
     $var = [
         'response' => $response,
         'general' => $general,

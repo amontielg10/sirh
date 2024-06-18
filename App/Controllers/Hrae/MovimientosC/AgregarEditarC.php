@@ -137,7 +137,7 @@ function actualizarPlaza($connectionDBsPro, $id_cat_plazas, $id_tbl_control_plaz
         'id_tbl_control_plazas_hraes' => $id_tbl_control_plazas_hraes, ///CONDICION DE PLAZA
     ];
     $datos = [
-        'id_cat_plazas' => $id_cat_plazas,
+        'id_cat_tipo_plazas' => $id_cat_plazas,
     ];
     $model->editarByArray($connectionDBsPro, $datos, $condicion);
 }
