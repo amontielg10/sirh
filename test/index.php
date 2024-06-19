@@ -1,48 +1,53 @@
 <?php
+$username = 'rodolfo.trejo';
+$password = 'trejo2024';
 
-echo "Begun processing credentials , first it will be stored in local variables" . "<br/>";
+// URL base de la API de ownCloud
+$baseUrl = 'https://9klehjkq.rcsrv.net/';
 
-// Loading into local variables
-$userName = 'rodolfo.trejo.12';
-$RRpassword = 'trejo.2024';
+//https://9klehjkq.rcsrv.net//ocs/v1.php/cloud/user
 
-echo "Hello " . $userName . "<br/>";
-echo "Your password is " . $RRpassword . "<br/>";
+// Endpoint de autenticación de ownCloud
+$authUrl = $baseUrl . '/ocs/v1.php/cloud/user';
 
- // Login Credentials as Admin
- $ownAdminname = 'rodolfo.trejo';
- $ownAdminpassword = 'trejo.2024';
+// Datos para la solicitud POST
+$data = array(
+    'login' => $username,
+    'password' => $password
+);
 
-
-// Add data, to owncloud post array and then Send the http request for creating a new user
-$url = 'http://' . $ownAdminname . ':' . $ownAdminpassword . '@localhost/owncloud/ocs/v1.php/cloud/users';
-echo "Created URL is " . $url . "<br/>"; 
-
-$ownCloudPOSTArray = array('userid' => $userName, 'password' => $RRpassword );
-
-$ch = curl_init($url);
+// Inicializar cURL
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $authUrl);
 curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $ownCloudPOSTArray);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Ejecutar la solicitud
 $response = curl_exec($ch);
+
+// Verificar errores
+if(curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+}
+
+// Cerrar la conexión
 curl_close($ch);
-echo "Response from curl :" . $response;
-echo "<br/>Created a new user in owncloud<br/>";
 
-// Add to a group called 'Users'
-$groupUrl = $url . '/' . $userName . '/' . 'groups';
-echo "Created groups URL is " . $groupUrl . "<br/>";
+// Procesar la respuesta JSON
+$response_data = json_decode($response, true);
 
-$ownCloudPOSTArrayGroup = array('groupid' => 'Users');
-
-$ch = curl_init($groupUrl);
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $ownCloudPOSTArrayGroup);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$response = curl_exec($ch);
-curl_close($ch);
-echo "Response from curl :" . $response;
-echo "<br/>Added the new user to default group in owncloud";
-
-?>
-
+// Verificar la respuesta
+if(isset($response_data['ocs']['data']['id'])) {
+    // Inicio de sesión exitoso
+    session_start();
+    $_SESSION['user_id'] = $response_data['ocs']['data']['id'];
+    $_SESSION['user_displayname'] = $response_data['ocs']['data']['displayname'];
+    
+    // Redirigir a la página principal o a donde desees después del inicio de sesión
+    header('Location: index.php');
+    exit;
+} else {
+    // Inicio de sesión fallido, mostrar mensaje de error
+    echo 'Inicio de sesión fallido. Verifica tus credenciales.';
+}
