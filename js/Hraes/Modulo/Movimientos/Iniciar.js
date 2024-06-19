@@ -97,6 +97,8 @@ function guardarMovimiento() {
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
         id_object: $("#id_object").val(),
         movimiento_general: $("#movimiento_general").val(),
+        num_plaza: $("#num_plaza_new").val(),
+        id_cat_situacion_plaza_hraes: $("#situacionPlaza").val(),
         movimientoBaja:movimientoBaja,
         movimientoAlta:movimientoAlta,
         movimientoMov:movimientoMov,
@@ -117,7 +119,7 @@ function guardarMovimiento() {
 }
 
 function eliminarMovimiento(id_object) {//ELIMINAR USUARIO
-    //if(validarAccion()){
+    if(validarAccion()){
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -143,6 +145,6 @@ function eliminarMovimiento(id_object) {//ELIMINAR USUARIO
         );
     }
     });
-//}
+}
 }
 

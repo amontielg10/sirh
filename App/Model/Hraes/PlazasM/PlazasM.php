@@ -308,4 +308,11 @@ class modelPlazasHraes
                             WHERE tbl_control_plazas_hraes.id_tbl_control_plazas_hraes = $idPlaza;");
         return $listado;
     }
+
+    public function countNumPlaza($numPlaza){
+        $listado = pg_query("SELECT COUNT(id_tbl_control_plazas_hraes)
+                             FROM tbl_control_plazas_hraes
+                             WHERE TRIM(UPPER(num_plaza)) = TRIM(UPPER('$numPlaza'));");
+        return $listado;
+    }
 }

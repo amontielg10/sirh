@@ -4,6 +4,7 @@ include '../librerias.php';
 //CLASS
 $modelMovimientosM = new ModelMovimientosM();
 $row = new Row();
+$modelPlazasHraes = new modelPlazasHraes();
 
 ///MESSAGES
 $bool = true;
@@ -17,6 +18,8 @@ $movimientoMov = $_POST['movimientoMov'];
 $movimientoAlta = $_POST['movimientoAlta'];
 $id_object = $_POST['id_object'];
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
+$num_plaza = $_POST['num_plaza_new'];
+$id_cat_situacion_plaza_hraes = $_POST['situacionPlaza'];
 
 ///INFO DATABASE 
 $existUltimoM = $row->returnArrayById($modelMovimientosM->countUltimoMovimiento($id_tbl_empleados_hraes));
@@ -27,13 +30,13 @@ if ($existUltimoM[0] != 0) {///EXISTEN REGISTRO DE MOVIMIENTOS
     if ($movimiento_general == $movimientoBaja && $ultimoMovimiento[0] == $movimientoBaja) {///EL USUARIO INTENTA HACER UNA BAJA POR LO TANTO EL ULTIMO MOVIMIENTO TUVO QUE SER ALTA O MOVIMIENTO
         $bool = false; ///CAMBIAR ESTATUS DE VALORES Y MENSAJE DE ERROR
         $mensaje = 'Para asignar una baja, el empleado debe estar asociado a una plaza.';
-    } else if($movimiento_general == $movimientoAlta && $ultimoMovimiento[0] != $movimientoBaja){//EL USUARIO INTENTA HACER UNA ALTA, POR LO TANTO EL ULTIMO MOVIMIENTO TUVO QUE SER UNA BAJA
+    } else if ($movimiento_general == $movimientoAlta && $ultimoMovimiento[0] != $movimientoBaja) {//EL USUARIO INTENTA HACER UNA ALTA, POR LO TANTO EL ULTIMO MOVIMIENTO TUVO QUE SER UNA BAJA
         $bool = false; ///CAMBIAR ESTATUS DE VALORES Y MENSAJE DE ERROR
         $mensaje = 'Para que un empleado pueda recibir una alta, debe haber tenido una baja previa.';
-    } else if ($movimiento_general == $movimientoMov && $ultimoMovimiento[0] == $movimientoBaja){ ///PARA ASIGNAR UN MOVIMIENTO EL ULTIMO MOVIMIENTO TUBO QUE SER UNA ALTA O MOVIMIENTO
+    } else if ($movimiento_general == $movimientoMov && $ultimoMovimiento[0] == $movimientoBaja) { ///PARA ASIGNAR UN MOVIMIENTO EL ULTIMO MOVIMIENTO TUBO QUE SER UNA ALTA O MOVIMIENTO
         $bool = false; ///CAMBIAR ESTATUS DE VALORES Y MENSAJE DE ERROR
         $mensaje = 'Para que un empleado reciba un movimiento, es necesario que tenga una alta previa.';
-    } else if($ultimoMovimiento[1] >= $fecha_movimiento){///COMPARA QUE LA FECHA INGRESADA SEA MAYOR A LA FECHA ANTERIOR
+    } else if ($ultimoMovimiento[1] >= $fecha_movimiento) {///COMPARA QUE LA FECHA INGRESADA SEA MAYOR A LA FECHA ANTERIOR
         $bool = false; ///CAMBIAR ESTATUS DE VALORES Y MENSAJE DE ERROR
         $mensaje = 'La fecha ingresada debe ser posterior a la fecha registrada del último movimiento.';
     }
@@ -44,9 +47,18 @@ if ($existUltimoM[0] != 0) {///EXISTEN REGISTRO DE MOVIMIENTOS
     }
 }
 
+if ($id_cat_situacion_plaza_hraes == 0) { //VALIDA QUE EL NUMERO DE PLAZA NO EXISTA
+    $result = $row->returnArrayById($modelPlazasHraes->countNumPlaza($num_plaza));
+    if ($result[0] != 0) {
+        $bool = false; ///CAMBIAR ESTATUS DE VALORES Y MENSAJE DE ERROR
+        $mensaje = 'Existe un registro con el número de plaza ingresado';
+    }
+}
+
 $row = [
     'bool' => $bool,
     'mensaje' => $mensaje,
+    'id_cat_situacion_plaza_hraes' => $id_cat_situacion_plaza_hraes,
 ];
 
 echo json_encode($row);

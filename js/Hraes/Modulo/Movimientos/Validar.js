@@ -26,8 +26,6 @@ function validarMovimiento(){
     let situacionPlaza = document.getElementById('situacionPlaza').value;
     let num_plaza_new = document.getElementById('num_plaza_new').value;
 
-    console.log('m: ' + situacionPlaza);
-
     if (validarData(movimiento_general,'Movimiento general')){///CONDICION DE INICIAL PARA MOVIMIENTO GENERAL
         if(movimiento_general != movimientoBaja){ ///EL MOVIMIENTO ES UNA ALTA O MOVIMIENTO
             if(validarData(id_tbl_movimientos,'Movimiento especifico') && ///VALIDACION DE CAMPOS REQUERIDOS PARA ALTA O MOVIMIENTO
@@ -40,13 +38,15 @@ function validarMovimiento(){
                         validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento,num_plaza_new,situacionPlaza);///FUNCION PARA VALIDAR EL ULTIMO MOVIMIENTO
                     }
                 } else {
-                    validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento,num_plaza_new,situacionPlaza);///FUNCION PARA VALIDAR EL ULTIMO MOVIMIENTO
+                    limpiarNumPlaza();
+                    validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento,num_plaza_new,1);///FUNCION PARA VALIDAR EL ULTIMO MOVIMIENTO
                 }
             }
         } else { ///EL MOVIMIENTO ES UN BAJA
             if(validarData(id_tbl_movimientos,'Movimiento especifico') && ///VALIDACION DE CAMPOS REQUERIDOS PARA BAJA
-               validarData(fecha_movimiento,'Fecha de movimiento')){ 
-                validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento);///FUNCION PARA VALIDAR EL ULTIMO MOVIMIENTO
+               validarData(fecha_movimiento,'Fecha de movimiento')){
+                limpiarBaja(); 
+                validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento,num_plaza_new,1);///FUNCION PARA VALIDAR EL ULTIMO MOVIMIENTO
             }
         }
     }
@@ -71,8 +71,7 @@ function validarUltimoMovimiento(movimiento_general,id_object,fecha_movimiento,n
             let mensaje = jsonData.mensaje;
 
             if(bool){
-                console.log('success');
-                //guardarMovimiento();///ACCCION DE GUARDAR INFO
+                guardarMovimiento();///ACCCION DE GUARDAR INFO
             } else {
                 messageLarge(mensaje);
             }
@@ -150,7 +149,18 @@ function messageLarge(text){
       });
 }
 
+function limpiarBaja(){ ////LA FUNCION LIMPIA LOS COMPOS EXCEPTO LOS DE BAJA
+    $('#id_tbl_control_plazas_hraes').val(''); 
+    $('#tipo_contratacion_mx').val(''); 
+    $('#centro_trabajo_mx').val(''); 
+    $('#fecha_inicio').val(''); 
+    $('#fecha_termino').val(''); 
+    $('#id_cat_caracter_nom_hraes').val(''); 
+}
 
+function limpiarNumPlaza(){ ////LA FUNCION LIMPIA LOS CAMPO DE NUMERO DE PLAZA
+    $('#num_plaza_new').val(''); 
+}
 
 /*
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;

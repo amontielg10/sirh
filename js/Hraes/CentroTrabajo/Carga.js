@@ -7,6 +7,7 @@ function updateFileName(input) {
   }
 
   function ocultarModalCarga(){
+    updateFileName(null);
     $("#modal_carga_masiva").modal("hide");
 }
 
@@ -35,7 +36,6 @@ function validarCarga(){
     } else {
         mensajeError('Campo seleccione un archivo no puede estar vacio');
     }
-    ocultarModalCarga();
     return bool;
   }
 
