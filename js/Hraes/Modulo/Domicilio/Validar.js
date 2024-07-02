@@ -12,7 +12,11 @@ function validarDomicilio(){
        validarData(calle1,'Calle') &&
        validarData(num_exterior1,'Núm. exterior') &&
        caracteresCount('Código postal fiscal',6,codigo_postal2)){
+        if(codigo_postal2.length == 5){
             guardarDomicilio();
+        } else {
+            mensajeError('Código postal fiscal debe tener 5 caracteres');
+        }
     } 
 }
 

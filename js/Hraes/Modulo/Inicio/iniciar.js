@@ -29,6 +29,7 @@ function iniciarEscolaridad(){
 }
 
 function iniciarMediosContacto(){
+    mensajetextLar('El usuario debe verificar que todos los campos estén completos, incluyendo el domiclio (código postal fiscal) y la forma de pago (cuenta clabe).');
     buscarNumTelefonico();
     buscarCorreo();
     buscarDependiente();
@@ -72,3 +73,11 @@ function convertirAMayusculas(event, inputId) {
   function validarNumero(input) {
     input.value = input.value.replace(/[^\d]/g, '');
   }
+
+  function mensajetextLar(text){
+    Swal.fire({
+        title: "USUARIO",
+        text: text,
+        icon: "warning"
+      });
+}
