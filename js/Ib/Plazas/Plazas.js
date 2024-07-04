@@ -186,7 +186,7 @@ function eliminarEntity(id_object) {
 
 
 function buscarInfoCentroTrabajo(){
-    if(id_tbl_centro_trabajo_hraes != null){
+    if(id_tbl_centro_trabajo_hraes != ''){
         let clvResult = document.getElementById("clvResult");
         let nombreResult = document.getElementById("nombreResult");
         let cpResult = document.getElementById("cpResult");
@@ -249,7 +249,7 @@ function detallesEntity(id_tbl_control_plazas_hraes){
 }
 */
 function detallesPlazaModal(id_tbl_control_plazas_hraes){
-    $.post("../../../../App/Controllers/Hrae/PlazasC/DetallesEntityC.php", {
+    $.post("../../../../App/Controllers/Central/PlazasC/DetallesEntityC.php", {
         id_tbl_control_plazas_hraes: id_tbl_control_plazas_hraes,
     },
         function (data) {
@@ -277,7 +277,7 @@ function detallesPlazaModalOcultar(){
 
 
 function listarTablaHistori(id_tbl_control_plazas_hraes){
-    $.post("../../../../App/View/Hraes/Plazas/tablaHistoria.php", {
+    $.post("../../../../App/View/Central/Plazas/tablaHistoria.php", {
         id_tbl_control_plazas_hraes: id_tbl_control_plazas_hraes,
     },
         function (data) {

@@ -18,7 +18,7 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
                         <div class="vertical-line"></div>
                     </div>
                     <div class="col padding-left-0">
-                        <h4>Hospital Regional de Alta Especialidad</h4>
+                        <h4>IMSS-BIENESTAR CENTRAL</h4>
                     </div>
                 </div>
             </div>

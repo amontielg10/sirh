@@ -1,6 +1,6 @@
 <?php
 include '../../../../conexion.php';
-include '../../../Model/Hraes/EmpleadosM/EmpleadosM.php';
+include '../../../Model/Central/EmpleadosM/EmpleadosM.php';
 
 $listado = new modelEmpleadosHraes();
 $paginador = $_POST['paginador'];

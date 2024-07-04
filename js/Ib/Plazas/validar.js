@@ -31,7 +31,7 @@ function validar(){
 
 
 function validarEstatusPlaza(id_cat_plazas,id_object){
-    $.post("../../../../App/Controllers/Hrae/PlazasC/ValidarEstatusC.php", {
+    $.post("../../../../App/Controllers/Central/PlazasC/ValidarEstatusC.php", {
         id_cat_plazas: id_cat_plazas,
         id_object:id_object
     },

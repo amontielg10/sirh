@@ -18,7 +18,7 @@ function buscarEmpleado(){ //BUSQUEDA
 function iniciarTablaEmpleados(busqueda, paginador) { ///INGRESA LA TABLA
     $.ajax({
         type: 'POST',
-        url: '../../../../App/View/Hraes/Empleados/tabla.php',
+        url: '../../../../App/View/Central/Empleados/tabla.php',
         data: { 
             busqueda: busqueda,
             paginador:paginador 
@@ -38,7 +38,7 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
         titulo.textContent = 'Agregar';
     }
 
-    $.post("../../../../App/Controllers/Hrae/EmpleadoC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/EmpleadoC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -97,7 +97,7 @@ function agregarEditarByDb() {
     let nss = $("#nss").val();
     let id_object = $("#id_object").val();
 
-    $.post("../../../../App/Controllers/Hrae/EmpleadoC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/EmpleadoC/AgregarEditarC.php", {
         id_object: id_object,
         nombre: nombre,
         rfc:rfc,
@@ -128,7 +128,6 @@ function agregarEditarByDb() {
 }
 
 function eliminarEntity(id_object) {//ELIMINAR USUARIO
-    if(validarAccion()){
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -140,7 +139,7 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/EmpleadoC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/EmpleadoC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {
@@ -155,7 +154,7 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
     }
     });
 }
-}
+
 
 function ocultarModal(){
     $("#agregar_editar_modal").modal("hide");

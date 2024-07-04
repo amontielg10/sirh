@@ -91,7 +91,6 @@ function guardarUsuario() {
         password:password
     },
         function (data) {
-            console.log(data);
             if (data == 'edit'){
                 mensajeExito('Usuario modificado con éxito');
             } else if (data == 'add') {

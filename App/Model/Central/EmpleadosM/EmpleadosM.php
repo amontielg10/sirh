@@ -43,7 +43,7 @@ class modelEmpleadosHraes
     {
         $listado = "SELECT id_tbl_empleados_hraes, rfc, curp, nombre, primer_apellido,
                            segundo_apellido, num_empleado
-                    FROM tbl_empleados_hraes
+                    FROM central.tbl_empleados_hraes
                     ORDER BY id_tbl_empleados_hraes DESC
                     LIMIT 6 OFFSET $paginador;";
 
@@ -54,7 +54,7 @@ class modelEmpleadosHraes
     {
         $listado = "SELECT id_tbl_empleados_hraes, rfc, curp, nombre, primer_apellido,
                            segundo_apellido,num_empleado
-                    FROM tbl_empleados_hraes
+                    FROM central.tbl_empleados_hraes
                     WHERE TRIM(UPPER(UNACCENT(rfc))) LIKE '%$busqueda%'
                     OR TRIM(UPPER(UNACCENT(curp))) LIKE '%$busqueda%'
                     OR TRIM(UPPER(UNACCENT(nombre))) LIKE '%$busqueda%'
@@ -74,7 +74,7 @@ class modelEmpleadosHraes
                                     segundo_apellido, nss,num_empleado,nacionalidad,
                                     id_cat_estado_civil,id_cat_genero_hraes,id_cat_pais_nacimiento,
                                     id_cat_estado_nacimiento
-                            FROM tbl_empleados_hraes
+                            FROM central.tbl_empleados_hraes
                             WHERE id_tbl_empleados_hraes = $id_object
                             ORDER BY id_tbl_empleados_hraes DESC
                             LIMIT 6");
@@ -102,19 +102,19 @@ class modelEmpleadosHraes
 
     function editarByArray($conexion, $datos, $condicion)
     {
-        $pg_update = pg_update($conexion, 'tbl_empleados_hraes', $datos, $condicion);
+        $pg_update = pg_update($conexion, 'central.tbl_empleados_hraes', $datos, $condicion);
         return $pg_update;
     }
 
     function agregarByArray($conexion, $datos)
     {
-        $pg_add = pg_insert($conexion, 'tbl_empleados_hraes', $datos);
+        $pg_add = pg_insert($conexion, 'central.tbl_empleados_hraes', $datos);
         return $pg_add;
     }
 
     function eliminarByArray($conexion, $condicion)
     {
-        $pgs_delete = pg_delete($conexion, 'tbl_empleados_hraes', $condicion);
+        $pgs_delete = pg_delete($conexion, 'central.tbl_empleados_hraes', $condicion);
         return $pgs_delete;
     }
 

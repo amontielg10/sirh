@@ -1,13 +1,12 @@
 <?php include '../../nav-menu.php' ?>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" rel="stylesheet">
 
 <style>
     .bootstrap-select:hover .dropdown-toggle {
-      background-color: #f8f9fa; /* Cambia aquí el color cuando el cursor está encima */
-      /*border-color: red; /* Cambia aquí el color del borde cuando el cursor está encima */
+        background-color: #f8f9fa;
+        /* Cambia aquí el color cuando el cursor está encima */
+        /*border-color: red; /* Cambia aquí el color del borde cuando el cursor está encima */
     }
-
-  </style>
+</style>
 
 <div class="container-fluid bg-image nav-padding">
     <br>
@@ -19,7 +18,7 @@
                         <div class="vertical-line"></div>
                     </div>
                     <div class="col padding-left-0">
-                        <h4>Hospital Regional de Alta Especialidad</h4>
+                        <h4>IMSS-BIENESTAR CENTRAL</h4>
                     </div>
                 </div>
             </div>
@@ -80,13 +79,11 @@
     </div>
 </div>
 
-<script src="../../../../js/Hraes/Empleados/Empleados.js"></script>
-<script src="../../../../js/Hraes/Empleados/validar.js"></script>
-<script src="../../../../js/Hraes/Empleados/Busqueda.js"></script>
+<script src="../../../../js/Ib/Empleados/Empleados.js"></script>
+<script src="../../../../js/Ib/Empleados/validar.js"></script>
+<script src="../../../../js/Ib/Empleados/Busqueda.js"></script>
 <?php include '../../librerias.php' ?>
 <?php include 'AgregarEditar.php' ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
-
 
 
 

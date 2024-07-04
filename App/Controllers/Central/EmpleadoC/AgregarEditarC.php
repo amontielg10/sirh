@@ -1,12 +1,12 @@
 <?php
 include '../../../../conexion.php';
-include '../../../Model/Hraes/EmpleadosM/EmpleadosM.php';
-include '../../../Model/Hraes/BitacoraM/BitacoraM.php';
+include '../../../Model/Central/EmpleadosM/EmpleadosM.php';
+include '../../../Model/Central/BitacoraM/BitacoraM.php';
 include '../../../View/validar_sesion.php';
 
 $model = new modelEmpleadosHraes();
 $bitacoraM = new BitacoraM();
-$tablaEmpleados = 'tbl_empleados_hraes';
+$tablaEmpleados = 'central.tbl_empleados_hraes';
 
 $condicion = [
     'id_tbl_empleados_hraes' => $_POST['id_object']
@@ -41,7 +41,7 @@ if ($_POST['id_object'] != null) { //Modificar
             'fecha' => $timestamp,
             'id_users' => $_SESSION['id_user']
         ];
-        $bitacoraM->agregarByArray($connectionDBsPro,$dataBitacora,'bitacora_hraes');
+        $bitacoraM->agregarByArray($connectionDBsPro,$dataBitacora,'central.bitacora_hraes');
         echo 'edit';
     }
 
@@ -54,7 +54,7 @@ if ($_POST['id_object'] != null) { //Modificar
             'fecha' => $timestamp,
             'id_users' => $_SESSION['id_user']
         ];
-        $bitacoraM->agregarByArray($connectionDBsPro,$dataBitacora,'bitacora_hraes');
+        $bitacoraM->agregarByArray($connectionDBsPro,$dataBitacora,'central.bitacora_hraes');
         echo 'add';
     }
 }

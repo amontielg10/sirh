@@ -94,13 +94,13 @@ class modelPlazasHraes
                                     tbl_centro_trabajo_hraes.nombre,
                                     cat_entidad.entidad, 
                                     tbl_centro_trabajo_hraes.codigo_postal
-                            FROM tbl_control_plazas_hraes
+                            FROM central.tbl_control_plazas_hraes
                             INNER JOIN cat_tipo_plazas
                             ON tbl_control_plazas_hraes.id_cat_tipo_plazas = cat_tipo_plazas.id_cat_tipo_plazas
                             INNER JOIN cat_unidad_responsable
                             ON tbl_control_plazas_hraes.id_cat_unidad_responsable = 
                             cat_unidad_responsable.id_cat_unidad_responsable
-                            INNER JOIN tbl_centro_trabajo_hraes
+                            INNER JOIN central.tbl_centro_trabajo_hraes
                             ON tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes = 
                             tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes
                             INNER JOIN cat_entidad
@@ -117,11 +117,11 @@ class modelPlazasHraes
                                     tbl_plazas_empleados_hraes.fecha_termino,
                                     tbl_plazas_empleados_hraes.fecha_movimiento,
                                     tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes
-                            FROM tbl_plazas_empleados_hraes
+                            FROM central.tbl_plazas_empleados_hraes
                             INNER JOIN tbl_movimientos
                             ON tbl_plazas_empleados_hraes.id_tbl_movimientos = 
                                 tbl_movimientos.id_tbl_movimientos
-                            INNER JOIN tbl_empleados_hraes
+                            INNER JOIN central.tbl_empleados_hraes
                             ON tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
                                 tbl_empleados_hraes.id_tbl_empleados_hraes
                             WHERE tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes = $id_object
