@@ -1,5 +1,5 @@
 <?php
-$password = "sirh2024";
+$password = "pg2024";
 $username = "postgres";
 $dbname = "sirh";
 $host = "localhost";
@@ -15,9 +15,10 @@ try {
 
 /// Connection to server
 /*
-$password = "pgs2023";
+$password = "sirh2024";
 $username = "postgres";
-$dbname = "DSINFOTEC";
+$dbname = "sirh";
 $host = "localhost";
 $port = "5432";
+$options = "--client_encoding=UTF8";
 */
