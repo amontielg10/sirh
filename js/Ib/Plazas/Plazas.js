@@ -20,7 +20,7 @@ function buscarPlaza(){ //BUSQUEDA
 function iniciarPlazas(id_tbl_centro_trabajo_hraes,busqueda, paginador){
     $.ajax({
         type: 'POST',
-        url: '../../../../App/View/Hraes/Plazas/tabla.php',
+        url: '../../../../App/View/Central/Plazas/tabla.php',
         data: { 
             busqueda: busqueda,
             paginador:paginador, 
@@ -44,7 +44,7 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
         $("#agregar_editar_modal").find("input,textarea,select").val("");
         titulo.textContent = 'Agregar';  
     }
-    $.post("../../../../App/Controllers/Hrae/PlazasC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/PlazasC/DetallesC.php", {
         id_object: id_object,
     },
         function (data) {
@@ -117,7 +117,7 @@ function agregarEditarByDb() {
     let fecha_modificacion = $("#fecha_modificacion").val();
     let id_tbl_zonas_pago = $("#id_tbl_zonas_pago").val();
 
-    $.post("../../../../App/Controllers/Hrae/PlazasC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/PlazasC/AgregarEditarC.php", {
         id_cat_plazas: id_cat_plazas,
         id_cat_tipo_contratacion_hraes: id_cat_tipo_contratacion_hraes,
         id_cat_unidad_responsable:id_cat_unidad_responsable,
@@ -168,7 +168,7 @@ function eliminarEntity(id_object) {
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/PlazasC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/PlazasC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {
@@ -191,7 +191,7 @@ function buscarInfoCentroTrabajo(){
         let nombreResult = document.getElementById("nombreResult");
         let cpResult = document.getElementById("cpResult");
 
-        $.post("../../../../App/Controllers/Hrae/PlazasC/InfoCentroC.php", {
+        $.post("../../../../App/Controllers/Central/PlazasC/InfoCentroC.php", {
             id_tbl_centro_trabajo_hraes: id_tbl_centro_trabajo_hraes,
         },
             function (data) {

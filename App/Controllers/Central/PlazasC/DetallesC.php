@@ -1,7 +1,7 @@
 <?php
 include '../../../../conexion.php';
 
-include '../../../Model/Hraes/PlazasM/PlazasM.php';
+include '../../../Model/Central/PlazasM/PlazasM.php';
 include '../../../Model/Catalogos/CatPlazasM/CatPlazasM.php';
 include '../../../Controllers/Catalogos/CatPlazasC/CatPlazasC.php';
 include '../../../Model/Catalogos/CatUnidadResponsableM/CatUnidadResponsableM.php';

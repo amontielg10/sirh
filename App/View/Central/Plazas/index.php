@@ -152,9 +152,9 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
 
 
 
-<script src="../../../../js/Hraes/Plazas/Busqueda.js"></script>
-<script src="../../../../js/Hraes/Plazas/Plazas.js"></script>
-<script src="../../../../js/Hraes/Plazas/validar.js"></script>
+<script src="../../../../js/Ib/Plazas/Busqueda.js"></script>
+<script src="../../../../js/Ib/Plazas/Plazas.js"></script>
+<script src="../../../../js/Ib/Plazas/validar.js"></script>
 <?php include 'AgregarEditar.php' ?>
 <?php include 'Detalles.php' ?>
 <?php include '../../librerias.php' ?>

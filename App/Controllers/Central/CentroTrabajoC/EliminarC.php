@@ -6,7 +6,7 @@ include '../../../Model/Hraes/CentroTrabajoM/CentroTrabajoM.php';
 
 $model = new modelCentroTrabajoHraes();
 $bitacoraM = new BitacoraM();
-$tablaCentroTrabajo = 'tbl_centro_trabajo_hraes';
+$tablaCentroTrabajo = 'central.tbl_centro_trabajo_hraes';
 
 $condicion = [
     'id_tbl_centro_trabajo_hraes' => $_POST['id_object']
@@ -21,7 +21,7 @@ if (isset($_POST['id_object'])) {
             'fecha' => $timestamp,
             'id_users' => $_SESSION['id_user']
         ];
-        pg_insert($connectionDBsPro, 'bitacora_hraes', $dataBitacora);
+        pg_insert($connectionDBsPro, 'central.bitacora_hraes', $dataBitacora);
         echo 'delete';
     }
 }

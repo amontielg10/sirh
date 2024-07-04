@@ -32,6 +32,13 @@ $id_rol = $_SESSION['id_rol'];
     <script src="../../../../js/Global/Seguridad/Confirmacion.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+    integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+    crossorigin="anonymous"></script>
+    
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" rel="stylesheet">
+
     <!-- Development -->
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
@@ -90,7 +97,7 @@ $id_rol = $_SESSION['id_rol'];
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="../../Central/CentroTrabajo/index.php">Centro de trabajo</a></li>
                                 <li><a class="dropdown-item" href="#">Empleados</a></li>
-                                <li><a class="dropdown-item" href="#">Plazas</a></li>
+                                <li><a class="dropdown-item" href="../../Central/Plazas/index.php">Plazas</a></li>
                             </ul>
                         </li>
                     <?php } ?>
@@ -265,6 +272,7 @@ $id_rol = $_SESSION['id_rol'];
                     -->
     <!-- FIN MODAL MODIFICAR PW -->
     <script src="../../../../js/Admin/Perfil/Perfil.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
 </body>
 
 <script>

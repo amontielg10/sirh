@@ -21,7 +21,7 @@ class modelPlazasHraes
                             CONCAT(cat_tipo_contratacion_hraes.tipo_contratacion, ' ',
                                 cat_subtipo_contratacion_hraes.subtipo),
                             cat_unidad_responsable.nombre
-                    FROM tbl_control_plazas_hraes
+                    FROM central.tbl_control_plazas_hraes
                     INNER JOIN cat_tipo_plazas
                         ON tbl_control_plazas_hraes.id_cat_tipo_plazas = cat_tipo_plazas.id_cat_tipo_plazas
                     INNER JOIN cat_unidad_responsable
@@ -65,7 +65,7 @@ class modelPlazasHraes
                             CONCAT(cat_tipo_contratacion_hraes.tipo_contratacion, ' ',
                                 cat_subtipo_contratacion_hraes.subtipo),
                             cat_unidad_responsable.nombre
-                    FROM tbl_control_plazas_hraes
+                    FROM central.tbl_control_plazas_hraes
                     INNER JOIN cat_tipo_plazas
                         ON tbl_control_plazas_hraes.id_cat_tipo_plazas = cat_tipo_plazas.id_cat_tipo_plazas
                     INNER JOIN cat_unidad_responsable
@@ -140,7 +140,7 @@ class modelPlazasHraes
                                     id_tbl_zonas_pago_hraes,fecha_ingreso_inst,fecha_inicio_movimiento,
                                     fecha_termino_movimiento,fecha_modificacion,
                                     id_cat_situacion_plaza_hraes
-                            FROM tbl_control_plazas_hraes
+                            FROM central.tbl_control_plazas_hraes
                             WHERE id_tbl_control_plazas_hraes = $id_object");
         return $listado;
     }
@@ -209,19 +209,19 @@ class modelPlazasHraes
 
     function editarByArray($conexion, $datos, $condicion)
     {
-        $pg_update = pg_update($conexion, 'tbl_control_plazas_hraes', $datos, $condicion);
+        $pg_update = pg_update($conexion, 'central.tbl_control_plazas_hraes', $datos, $condicion);
         return $pg_update;
     }
 
     function agregarByArray($conexion, $datos)
     {
-        $pg_add = pg_insert($conexion, 'tbl_control_plazas_hraes', $datos);
+        $pg_add = pg_insert($conexion, 'central.tbl_control_plazas_hraes', $datos);
         return $pg_add;
     }
 
     function eliminarByArray($conexion, $condicion)
     {
-        $pgs_delete = pg_delete($conexion, 'tbl_control_plazas_hraes', $condicion);
+        $pgs_delete = pg_delete($conexion, 'central.tbl_control_plazas_hraes', $condicion);
         return $pgs_delete;
     }
 

@@ -1,6 +1,6 @@
 <?php
 include '../../../../conexion.php';
-include '../../../Model/Hraes/PlazasM/PlazasM.php';
+include '../../../Model/Central/PlazasM/PlazasM.php';
 
 $listado = new modelPlazasHraes();
 //$query = $listado->listarByAll(); //INICIO DE LA TABLA CON LA INFORMACION
