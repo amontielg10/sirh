@@ -29,11 +29,11 @@ function iniciarEscolaridad(){
 }
 
 function iniciarMediosContacto(){
-    mensajetextLar('El usuario debe verificar que todos los campos estén completos, incluyendo el domiclio (código postal fiscal) y la forma de pago (cuenta clabe).');
-    buscarNumTelefonico();
-    buscarCorreo();
-    buscarDependiente();
-    buscarEmergencia();
+    //mensajetextLar('El usuario debe verificar que todos los campos estén completos, incluyendo el domiclio (código postal fiscal) y la forma de pago (cuenta clabe).');
+    buscarNumTelefonico();//ok
+    buscarCorreo(); //ok
+    buscarDependiente();//ok
+    buscarEmergencia();//ok
 }
 
 function iniciarMovimiento(){
