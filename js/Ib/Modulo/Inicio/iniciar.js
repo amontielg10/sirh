@@ -46,7 +46,7 @@ function iniciarPersonalBancario(){
     buscarFormaPago(); // ok
     buscarJefe(); //ok
     iniciarDomicilio(); //ok
-    buscarCapacidadesDif();
+    buscarCapacidadesDif();//ok
 }
 
 function iniciarProgramas(){

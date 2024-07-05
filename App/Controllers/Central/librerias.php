@@ -48,7 +48,7 @@ include '../../../Model/Hraes/Catalogos/CatCarrerasM/CatCarrerasM.php';
 include '../../../Model/Catalogos/CatPaisM/CatPaisM.php';
 include '../../../Model/Catalogos/CatEstadoM/CatEstadoM.php';
 include '../../../Model/Hraes/Catalogos/CatCapacidadM/CatCapacidadM.php';
-include '../../../Model/Hraes/CapacidadesDifM/CapacidadesDifM.php';
+include '../../../Model/Central/CapacidadesDifM/CapacidadesDifM.php';
 include '../../../Model/Central/CentroTrabajoM/CentroTrabajoM.php';
 include '../../../Model/Catalogos/CatRegionM/CatRegionM.php';
 include '../../../Model/Catalogos/CatEntidadM/CatEntidadM.php';
