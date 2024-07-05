@@ -43,9 +43,9 @@ function iniciarMovimiento(){
 }
 
 function iniciarPersonalBancario(){
-    buscarFormaPago();
-    buscarJefe();
-    iniciarDomicilio();
+    buscarFormaPago(); // ok
+    buscarJefe(); //ok
+    iniciarDomicilio(); //ok
     buscarCapacidadesDif();
 }
 
