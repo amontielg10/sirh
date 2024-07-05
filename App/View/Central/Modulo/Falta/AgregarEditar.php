@@ -35,14 +35,14 @@
                         <div class="col-4">
                             <label class="text-input-form div-spacing text-input-rem">Código certificación</label><label
                                 class="text-required">*</label>
-                            <input onkeyup="convertirAMayusculas(event,'jefe_inmediato')" type="text" class="form-control" id="jefe_inmediato" placeholder="Código certificación"
+                            <input onkeyup="convertirAMayusculas(event,'jefe_inmediato')" type="text" class="form-control" id="jefe_inmediato_" placeholder="Código certificación"
                                 maxlength="60">
                         </div>
 
                         <div class="col-8">
                             <label class="text-input-form div-spacing text-input-rem">Observaciones</label><label
                                 class="text-required">*</label>
-                            <input onkeyup="convertirAMayusculas(event,'jefe_inmediato')" type="text" class="form-control" id="jefe_inmediato" placeholder="Observaciones"
+                            <input onkeyup="convertirAMayusculas(event,'jefe_inmediato')" type="text" class="form-control" id="jefe_inmediato_x" placeholder="Observaciones"
                                 maxlength="60">
                         </div>
                     </diw>

@@ -33,16 +33,26 @@ $id_rol = $_SESSION['id_rol'];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-    integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-    crossorigin="anonymous"></script>
-    
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css"
+        rel="stylesheet">
 
     <!-- Development -->
+
+
+
+
+
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+        
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
     </style>
@@ -95,7 +105,8 @@ $id_rol = $_SESSION['id_rol'];
                                 Nom. Central
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="../../Central/CentroTrabajo/index.php">Centro de trabajo</a></li>
+                                <li><a class="dropdown-item" href="../../Central/CentroTrabajo/index.php">Centro de
+                                        trabajo</a></li>
                                 <li><a class="dropdown-item" href="../../Central/Empleados/index.php">Empleados</a></li>
                                 <li><a class="dropdown-item" href="../../Central/Plazas/index.php">Plazas</a></li>
                             </ul>
@@ -176,8 +187,8 @@ $id_rol = $_SESSION['id_rol'];
     <!-- MODAL SALIR-->
 
     <!-- FIN MODAL MODIFICAR PW -->
-     <input type="hidden" id="id_user" value="<?php echo $id_user ?>">
-     <input type="hidden" id="pw">
+    <input type="hidden" id="id_user" value="<?php echo $id_user ?>">
+    <input type="hidden" id="pw">
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true" id="modificar_pw">
         <div class="modal-dialog modal-dialog-centered">
@@ -201,7 +212,8 @@ $id_rol = $_SESSION['id_rol'];
                             <div class="col-12">
                                 <label class="text-input-form div-spacing text-input-rem">Nueva contraseña</label><label
                                     class="text-required">*</label>
-                                <input type="password" class="form-control" id="pw_nueva" placeholder="Nueva contraseña">
+                                <input type="password" class="form-control" id="pw_nueva"
+                                    placeholder="Nueva contraseña">
                             </div>
                             <div class="div-spacing"></div>
                             <div class="col-12">
@@ -216,8 +228,8 @@ $id_rol = $_SESSION['id_rol'];
 
                 <div class="div-spacing"></div>
                 <div class="modal-footer">
-                    <button onclick="modalEditPwExit();" type="button" class="btn btn-secondary"
-                        data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
+                    <button onclick="modalEditPwExit();" type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                            class="fas fa-times"></i> Cancelar</button>
                     <button type="button" class="btn btn-success save-botton-modal" onclick="return validarPW();"><i
                             class="fas fa-save"></i> Guardar</button>
                 </div>
@@ -272,7 +284,8 @@ $id_rol = $_SESSION['id_rol'];
                     -->
     <!-- FIN MODAL MODIFICAR PW -->
     <script src="../../../../js/Admin/Perfil/Perfil.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
 </body>
 
 <script>
