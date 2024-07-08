@@ -133,3 +133,19 @@
     font-size: 17px;
 }
 
+.form-control.custom-select {
+  border: none;
+  /* Elimina todos los bordes */
+  border-bottom: 2px solid #6c757d;
+  /* Agrega solo el borde inferior */
+  border-radius: 0;
+  /* Ajuste opcional del radio de borde */
+  box-shadow: none;
+}
+
+.input-select-selectpicker {
+  background: #ffffff;
+  color: #000000;
+  border-color: white;
+}
+
