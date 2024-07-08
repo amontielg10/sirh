@@ -23,18 +23,20 @@ $id_rol = $_SESSION['id_rol'];
     <script src="../../../../assets/jquery/jquery-351.js"></script>
     <script src="../../../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="../../../../dist/js/sweetalert2.all.min.js"></script>
-
     <script src="../../../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="../../../../js/Mensajes/mensajes.js"></script>
-
     <script src="../../../../js/Mensajes/mensajes.js"></script>
     <script src="../../../../js/Global/Curp/ValidarCurp.js"></script>
     <script src="../../../../js/Global/Mensajes/Mensajes.js"></script>
     <script src="../../../../js/Global/Seguridad/Confirmacion.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script> 
+    <link rel="stylesheet" href="../../../../assets/bootstrap-select/dist/css/bootstrap-select.min.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
     <!--
-<script src="../../../../assets/jquery/chart.min.js"></script> 
+    <script src="../../../../assets/jquery/chart.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script> 
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css"
         rel="stylesheet">
@@ -48,20 +50,26 @@ $id_rol = $_SESSION['id_rol'];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
         integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
         crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 
- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
         integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
         crossorigin="anonymous"></script>
-        
 -->
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        .form-control.custom-select {
+            border: none;
+            border-bottom: 2px solid #6c757d;
+            border-radius: 0;
+            box-shadow: none;
+        }
     </style>
 
 </head>
@@ -252,7 +260,7 @@ $id_rol = $_SESSION['id_rol'];
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
                     -->
-    </body>
+</body>
 
 <script>
     function activarModal() {

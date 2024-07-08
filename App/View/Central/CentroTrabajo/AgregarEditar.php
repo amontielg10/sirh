@@ -71,24 +71,57 @@
                     <div class="div-spacing"></div>
                     <div class="row mx-1">
                         <div class="col-4">
-                            <label for="campo" class="form-label input-text-form">Entidad</label><label
-                                class="text-required">*</label>
-                            <select class="form-control div-spacing custom-input custom-select"
-                                aria-label="Default select example" id="id_cat_entidad" required>
-                            </select>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="campo" class="form-label input-text-form">Entidad</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_entidad"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="col-4">
-                            <label for="campo" class="form-label input-text-form">Regi&oacuten</label><label
-                                class="text-required">*</label>
-                            <select id="id_cat_region" class="form-control div-spacing custom-input custom-select">
-                            </select>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="campo" class="form-label input-text-form">Regi&oacuten</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_region"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="col-4">
-                            <label for="campo" class="form-label input-text-form">Estatus</label><label
-                                class="text-required">*</label>
-                            <select class="form-control div-spacing custom-input custom-select"
-                                aria-label="Default select example" id="id_estatus_centro" required>
-                            </select>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="campo" class="form-label input-text-form">Regi&oacuten</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_estatus_centro"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

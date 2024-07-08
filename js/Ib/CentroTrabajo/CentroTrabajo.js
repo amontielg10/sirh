@@ -58,6 +58,12 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             $('#id_cat_region').html(region); 
             $('#id_estatus_centro').html(estatus); 
 
+
+            $('#id_cat_entidad').selectpicker('refresh');
+            $('#id_cat_region').selectpicker('refresh');
+            $('#id_estatus_centro').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
+
             $("#nombre").val(entity.nombre);
             $("#clave_centro_trabajo").val(entity.clave_centro_trabajo);
             $("#colonia").val(entity.colonia);
