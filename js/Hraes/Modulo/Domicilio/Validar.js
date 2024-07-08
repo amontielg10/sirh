@@ -13,7 +13,7 @@ function validarDomicilio(){
        validarData(num_exterior1,'Núm. exterior') &&
        caracteresCount('Código postal fiscal',6,codigo_postal2)){
         if(codigo_postal2.length == 5){
-            guardarDomicilio();
+            validaCodigoFiscal();
         } else {
             mensajeError('Código postal fiscal debe tener 5 caracteres');
         }
@@ -57,3 +57,28 @@ document.getElementById("municipio1").addEventListener("change", function() {
         }
     );
   });
+
+
+
+  function validaCodigoFiscal(){
+    let codigo_postal = document.getElementById('codigo_postal2').value.trim();
+    $.post("../../../../App/Controllers/Hrae/DomicilioC/CodigoPostalC.php", {
+        codigo_postal: codigo_postal
+    },
+        function (data) {
+            let jsonData = JSON.parse(data);
+            let entidad = jsonData.entidad; 
+
+            if (entidad == 'No encontrado'){
+                Swal.fire({
+                    title: "Código postal fiscal erróneo",
+                    text: "El código postal fiscal no se encuentra registrado en nuestra base de datos. Para resolver este problema, te recomendamos comunicarte con tu administrador para actualizar la información correcta.",
+                    icon: "error"
+                  });
+            } else {
+                guardarDomicilio();
+            }
+        }
+    );
+}
+
