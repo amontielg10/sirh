@@ -97,14 +97,14 @@ class modelCentroTrabajoHraes
     function listarAllCount()
     {
         $listado = pg_query("SELECT COUNT (id_tbl_centro_trabajo_hraes)
-                             FROM tbl_centro_trabajo_hraes;");
+                             FROM central.tbl_centro_trabajo_hraes;");
         return $listado;
     }
 
     function listarByRegion($idRegion)
     {
         $listado = pg_query("SELECT COUNT (id_tbl_centro_trabajo_hraes)
-                             FROM tbl_centro_trabajo_hraes
+                             FROM central.tbl_centro_trabajo_hraes
                              WHERE id_cat_region = $idRegion;");
         return $listado;
     }

@@ -4,7 +4,7 @@ if ($id_tbl_empleados_hraes == null) {
     header('Location: ../Empleados/index.php');
 }
 ?>
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" rel="stylesheet">
 <?php include '../../nav-menu.php' ?>
 
 
@@ -140,3 +140,5 @@ if ($id_tbl_empleados_hraes == null) {
         iniciarPersonalBancario();
     });
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>

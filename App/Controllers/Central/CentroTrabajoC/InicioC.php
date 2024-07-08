@@ -1,6 +1,6 @@
 <?php
 
-include '../../../Model/Hraes/CentroTrabajoM/CentroTrabajoM.php';
+include '../../../Model/Central/CentroTrabajoM/CentroTrabajoM.php';
 include '../../../Controllers/Hrae/GlobalC/ArrayC.php';
 include '../../../../conexion.php';
 

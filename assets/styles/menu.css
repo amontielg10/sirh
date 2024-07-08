@@ -360,6 +360,18 @@ hr {
         vertical-align: middle;
     }
 
+    .oval-label-central {
+        display: inline-block;
+        background-color: #08C4E6;
+        padding: 5px 15px;
+        border-radius: 25px; 
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
     .input-select-selectpicker{
         background: #ffffff;
         color:#000000;

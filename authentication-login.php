@@ -1,19 +1,21 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <!--<title> Login and Registration Form in HTML & CSS | CodingLab </title>-->
-    <link rel="stylesheet" href="dist/css/login/login.css">
-    <!-- Fontawesome CDN Link -->
+  <meta charset="UTF-8">
+  <!--<title> Login and Registration Form in HTML & CSS | CodingLab </title>-->
+  <link rel="stylesheet" href="dist/css/login/login.css">
+  <!-- Fontawesome CDN Link -->
+  <!--
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-   </head>
+-->
+  <link rel="stylesheet" href="assets/font/fontawesome/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
 
 <body>
-<div class="container">
+  <div class="container">
     <input type="checkbox" id="flip">
     <div class="cover">
       <div class="front">
@@ -29,9 +31,9 @@
       </div>
     </div>
     <div class="forms">
-        <div class="form-content">
-          <div class="login-form">
-            <div class="title">Iniciar sesi&oacuten</div>
+      <div class="form-content">
+        <div class="login-form">
+          <div class="title">Iniciar sesi&oacuten</div>
           <form id="loginform" method="">
             <div class="input-boxes">
               <div class="input-box">
@@ -47,61 +49,68 @@
                 <input type="submit" value="Ingresar" id="inicio-sesion">
               </div>
             </div>
-        </form>
+          </form>
+        </div>
+
       </div>
-       
-    </div>
     </div>
   </div>
-    <!-- ============================================================== -->
-    <!-- All Required js -->
-    <!-- ============================================================== -->
-    <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="./assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="./assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- ============================================================== -->
-    <!-- This page plugin js -->
-    <!-- ============================================================== -->
-    <script>
-        $('[data-toggle="tooltip"]').tooltip();
-        $(".preloader").fadeOut();
-        // ============================================================== 
-        // Login and Recover Password 
-        // ============================================================== 
-        // $('#to-recover').on("click", function() {
-        //     $("#loginform").slideUp();
-        //     $("#recoverform").fadeIn();
-        // });
+  <!-- ============================================================== -->
+  <!-- All Required js -->
+  <!-- ============================================================== -->
+  <script src="assets/jquery/jquery.min.js"></script>
+  <!--
+  <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="./assets/libs/popper.js/dist/umd/popper.min.js"></script>
+  <script src="./assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+-->
+  <!-- Bootstrap tether Core JavaScript -->
+  <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+  <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="assets/dist/js/sweetalert2.all.min.js"></script>
 
-        $('#loginform').submit(function(e) {
-            const data = {
-                nick: $('#nick').val(),
-                password: $('#password').val()
-            };
-            $.post('inicio_sesion.php', data, function(response) {
-              console.log(data);
-                if (response == 'acceso') {
-                    window.location.href = 'App/View/System/home/index.php';
-                } else {
-                    ventanaMensaje("Usuario o contraseña incorrectos");
-                }
-            });
-            e.preventDefault();
-        });
+  
+  <!-- ============================================================== -->
+  <!-- This page plugin js -->
+  <!-- ============================================================== -->
+  <script>
+    $('[data-toggle="tooltip"]').tooltip();
+    $(".preloader").fadeOut();
+    // ============================================================== 
+    // Login and Recover Password 
+    // ============================================================== 
+    // $('#to-recover').on("click", function() {
+    //     $("#loginform").slideUp();
+    //     $("#recoverform").fadeIn();
+    // });
 
-        function ventanaMensaje(txt) {
-            $('#nick').val("");
-            $('#password').val("");
-            Swal.fire({
-                title: txt,
-                icon: 'error'
-            });
+    $('#loginform').submit(function (e) {
+      const data = {
+        nick: $('#nick').val(),
+        password: $('#password').val()
+      };
+      $.post('inicio_sesion.php', data, function (response) {
+        if (response == 'acceso') {
+          window.location.href = 'App/View/System/home/index.php';
+        } else {
+          ventanaMensaje("Usuario o contraseña incorrectos");
         }
-    </script>
+      });
+      e.preventDefault();
+    });
 
-    
+    function ventanaMensaje(txt) {
+      $('#nick').val("");
+      $('#password').val("");
+      Swal.fire({
+        title: txt,
+        icon: 'error'
+      });
+    }
+  </script>
+
+
 </body>
 
 

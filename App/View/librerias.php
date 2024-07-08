@@ -7,10 +7,11 @@
 <script src="../../../../js/Global/Mensajes/Mensajes.js"></script>
 <script src="../../../../js/Global/Seguridad/Confirmacion.js"></script>
 
+
+<!-- Bootstrap tether Core JavaScript 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../../../.././assets/libs/jquery/dist/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<!-- Bootstrap tether Core JavaScript 
 
 <script src="../../../../assets/js/bootstrap.js"></script>
 <script src="../../../../assets/js/bootstrap.min.js"></script>
@@ -56,8 +57,8 @@
 <script src="../../../.././assets/libs/sweetalert2/sweet-alert.init.js"></script>
 
 
+<!--
 <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
-
-<!-- include summernote css/js -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+-->
