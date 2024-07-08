@@ -13,14 +13,14 @@ class ModelMovimientosM
                                     CONCAT(tbl_movimientos.codigo,' - ',tbl_movimientos.nombre_movimiento),
                                     tbl_movimientos.tipo_movimiento,
                                     tbl_control_plazas_hraes.num_plaza
-                            FROM tbl_plazas_empleados_hraes
+                            FROM central.tbl_plazas_empleados_hraes
                             INNER JOIN tbl_movimientos
-                            ON tbl_plazas_empleados_hraes.id_tbl_movimientos = 
+                            ON central.tbl_plazas_empleados_hraes.id_tbl_movimientos = 
                                 tbl_movimientos.id_tbl_movimientos
-                            INNER JOIN tbl_control_plazas_hraes
-                            ON tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
-                                tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
-                            WHERE tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
+                            INNER JOIN central.tbl_control_plazas_hraes
+                            ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                                central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+                            WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
                             ORDER BY tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes DESC
                             LIMIT 3 OFFSET $paginator;");
 
@@ -37,19 +37,19 @@ class ModelMovimientosM
                                     CONCAT(tbl_movimientos.codigo,' - ',tbl_movimientos.nombre_movimiento),
                                     tbl_movimientos.tipo_movimiento,
                                     tbl_control_plazas_hraes.num_plaza
-                            FROM tbl_plazas_empleados_hraes
+                            FROM central.tbl_plazas_empleados_hraes
                             INNER JOIN tbl_movimientos
                             ON tbl_plazas_empleados_hraes.id_tbl_movimientos = 
                                 tbl_movimientos.id_tbl_movimientos
-                            INNER JOIN tbl_control_plazas_hraes
-                            ON tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
-                                tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
-                            WHERE tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
+                            INNER JOIN central.tbl_control_plazas_hraes
+                            ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                                central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+                            WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
                             AND (TRIM(UPPER(UNACCENT(tbl_plazas_empleados_hraes.fecha_movimiento::TEXT))) 
                                     LIKE '%$busqueda%' OR
                                     TRIM(UPPER(UNACCENT(tbl_movimientos.nombre_movimiento::TEXT)))
                                     LIKE '%$busqueda%' OR
-                                tbl_control_plazas_hraes.num_plaza LIKE '%$busqueda%'
+                                central.tbl_control_plazas_hraes.num_plaza LIKE '%$busqueda%'
                             )
                             ORDER BY tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes DESC
                             LIMIT 3 OFFSET $paginator;");
@@ -61,7 +61,7 @@ class ModelMovimientosM
                                     fecha_termino,id_tbl_movimientos,fecha_movimiento,
                                     id_tbl_control_plazas_hraes,id_tbl_empleados_hraes,
                                     observaciones, motivo_estatus,id_cat_caracter_nom_hraes
-                             FROM tbl_plazas_empleados_hraes
+                             FROM central.tbl_plazas_empleados_hraes
                              WHERE id_tbl_plazas_empleados_hraes = $idMovimiento;");
         return $listado;
     }
@@ -87,7 +87,7 @@ class ModelMovimientosM
 
     public function listarCountPlaza($id){
         $listado = pg_query("SELECT COUNT(tbl_plazas_empleados_hraes)
-                             FROM tbl_plazas_empleados_hraes
+                             FROM central.tbl_plazas_empleados_hraes
                              WHERE id_tbl_control_plazas_hraes = $id");
         return $listado;
     }
@@ -98,7 +98,7 @@ class ModelMovimientosM
     public function listadoByIdPlaza($idEmpleado)
     {
         $listado = pg_query("SELECT id_tbl_control_plazas_hraes
-                             FROM tbl_plazas_empleados_hraes
+                             FROM central.tbl_plazas_empleados_hraes
                              WHERE id_tbl_empleados_hraes = $idEmpleado
                              ORDER BY fecha_movimiento DESC
                              LIMIT 1");
@@ -128,7 +128,7 @@ class ModelMovimientosM
                                     tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes
                             FROM central.tbl_plazas_empleados_hraes
                             INNER JOIN tbl_movimientos
-                                ON tbl_plazas_empleados_hraes.id_tbl_movimientos =
+                                ON central.tbl_plazas_empleados_hraes.id_tbl_movimientos =
                                     tbl_movimientos.id_tbl_movimientos
                             WHERE id_tbl_empleados_hraes = (
                                 SELECT id_tbl_empleados_hraes
@@ -153,7 +153,7 @@ class ModelMovimientosM
         public function countUltimoMovimiento($idEmpleado)
         {
             $listado = pg_query("SELECT COUNT(id_tbl_plazas_empleados_hraes)
-                                 FROM tbl_plazas_empleados_hraes 
+                                 FROM central.tbl_plazas_empleados_hraes 
                                  WHERE id_tbl_empleados_hraes = $idEmpleado");
             return $listado;
         }
@@ -163,21 +163,21 @@ class ModelMovimientosM
         {
             $listado = pg_query("SELECT tbl_movimientos.id_tipo_movimiento,
                                         tbl_plazas_empleados_hraes.fecha_movimiento
-                                 FROM tbl_plazas_empleados_hraes 
+                                 FROM central.tbl_plazas_empleados_hraes 
                                  INNER JOIN tbl_movimientos
-                                 ON tbl_plazas_empleados_hraes.id_tbl_movimientos =
+                                 ON central.tbl_plazas_empleados_hraes.id_tbl_movimientos =
                                     tbl_movimientos.id_tbl_movimientos
-                                 WHERE tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
-                                 GROUP BY tbl_plazas_empleados_hraes.fecha_movimiento,
+                                 WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
+                                 GROUP BY central.tbl_plazas_empleados_hraes.fecha_movimiento,
                                         tbl_movimientos.id_tipo_movimiento
-                                 ORDER BY tbl_plazas_empleados_hraes.fecha_movimiento DESC
+                                 ORDER BY central.tbl_plazas_empleados_hraes.fecha_movimiento DESC
                                  LIMIT 1;");
             return $listado;
         }
 
         public function idPlazaMovimiento($idEmpleado){
             $listado = pg_query("SELECT id_tbl_control_plazas_hraes
-                                 FROM tbl_plazas_empleados_hraes
+                                 FROM central.tbl_plazas_empleados_hraes
                                  WHERE id_tbl_empleados_hraes = $idEmpleado
                                  ORDER BY id_tbl_plazas_empleados_hraes DESC
                                  LIMIT 1;");

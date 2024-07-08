@@ -1,6 +1,6 @@
 <?php
 include '../../../../../conexion.php';
-include '../../../../Model/Hraes/RetardoM/RetardoM.php';
+include '../../../../Model/Central/RetardoM/RetardoM.php';
 
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
 $paginador = $_POST['paginador'];
@@ -41,7 +41,7 @@ if (pg_num_rows($listado) > 0) {
                                 <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit icono-pequeno-tabla"></i></button>
                             <div class="dropdown-menu">
                                 <button onclick="agregarEditarRetardo(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
-                                <button onclick="eliminarRetardo(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
+                                <button onclick="eliminarRetardo_(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
                             </div>
                           </div>
                                 </td>

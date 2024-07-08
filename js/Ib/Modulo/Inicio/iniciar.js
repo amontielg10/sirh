@@ -23,9 +23,9 @@ function buscarInfoEmpleado(id_tbl_empleados_hraes){
 }
 
 function iniciarEscolaridad(){
-    buscarEstudio();
-    buscarCedula();
-    buscarEspecialidad();
+    buscarEstudio();//ok
+    buscarCedula();//ok
+    buscarEspecialidad();//ok
 }
 
 function iniciarMediosContacto(){
@@ -37,7 +37,7 @@ function iniciarMediosContacto(){
 }
 
 function iniciarMovimiento(){
-    buscarMovimiento();
+    buscarMovimiento();//ok
    // buscarJefe();
     iniciarAdicional();
 }
@@ -50,16 +50,16 @@ function iniciarPersonalBancario(){
 }
 
 function iniciarProgramas(){
-    buscarJuguete();
+    buscarJuguete(); // pendiente
     //iniciarCampos();
 }
 
 function iniciarIncidencias(){
-    buscarRetardo();
+    buscarRetardo();//ok
 }
 
 function iniciarPercepciones(){
-    buscarPercepcion();
+    buscarPercepcion();//ok
     buscarQuinquenio();
 }
 

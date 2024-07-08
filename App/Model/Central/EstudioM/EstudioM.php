@@ -7,7 +7,7 @@ class ModelEstudioM
         $listado = pg_query("SELECT ctrl_estudios_hraes.id_ctrl_estudios_hraes,
                                     cat_nivel_estudios.nivel_estudios,
                                     cat_carrera_hraes.carrera
-                            FROM ctrl_estudios_hraes
+                            FROM central.ctrl_estudios_hraes
                             INNER JOIN cat_nivel_estudios
                             ON ctrl_estudios_hraes.id_cat_nivel_estudios = 
                                 cat_nivel_estudios.id_cat_nivel_estudios
@@ -25,7 +25,7 @@ class ModelEstudioM
         $listado = pg_query("SELECT ctrl_estudios_hraes.id_ctrl_estudios_hraes,
                                     cat_nivel_estudios.nivel_estudios,
                                     cat_carrera_hraes.carrera
-                            FROM ctrl_estudios_hraes
+                            FROM central.ctrl_estudios_hraes
                             INNER JOIN cat_nivel_estudios
                             ON ctrl_estudios_hraes.id_cat_nivel_estudios = 
                                 cat_nivel_estudios.id_cat_nivel_estudios
@@ -46,26 +46,26 @@ class ModelEstudioM
     {
         $listado = pg_query("SELECT id_ctrl_estudios_hraes, id_tbl_empleados_hraes,
                                     id_cat_nivel_estudios,id_cat_carrera_hraes
-                             FROM ctrl_estudios_hraes
+                             FROM central.ctrl_estudios_hraes
                              WHERE id_ctrl_estudios_hraes = $id_object");
         return $listado;
     }
 
     function editarByArray($conexion, $datos, $condicion)
     {
-        $pg_update = pg_update($conexion, 'ctrl_estudios_hraes', $datos, $condicion);
+        $pg_update = pg_update($conexion, 'central.ctrl_estudios_hraes', $datos, $condicion);
         return $pg_update;
     }
 
     function agregarByArray($conexion, $datos)
     {
-        $pg_add = pg_insert($conexion, 'ctrl_estudios_hraes', $datos);
+        $pg_add = pg_insert($conexion, 'central.ctrl_estudios_hraes', $datos);
         return $pg_add;
     }
 
     function eliminarByArray($conexion, $condicion)
     {
-        $pgs_delete = pg_delete($conexion, 'ctrl_estudios_hraes', $condicion);
+        $pgs_delete = pg_delete($conexion, 'central.ctrl_estudios_hraes', $condicion);
         return $pgs_delete;
     }
 }

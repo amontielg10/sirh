@@ -33,9 +33,9 @@
 
             <div class="div-spacing"></div>
             <div class="modal-footer">
-                <button onclick="salirAgregarEditarRetardo();" type="button" class="btn btn-secondary"
+                <button onclick="salirAgregarEditarRetardo_();" type="button" class="btn btn-secondary"
                     data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-success save-botton-modal" onclick="return validarDependiente();"><i
+                <button type="button" class="btn btn-success save-botton-modal" onclick="return validarDependiente_();"><i
                         class="fas fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
             </div>

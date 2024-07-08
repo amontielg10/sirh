@@ -9,12 +9,14 @@
                     <a onclick="buscarRetardo();" class="nav-link-mod active" id="v-tabs-home-tab" data-toggle="pill" href="#v-tabs-home"
                         role="tab" aria-controls="v-tabs-home" aria-selected="true">
                         <i class="fa fa-folder-open mr-2"></i> Retardos</a>
-                    <a onclick="buscarFalta();" class="nav-link-mod" id="v-tabs-profile-tab" data-toggle="pill" href="#v-tabs-profile" role="tab"
+                   <!--
+                        <a onclick="buscarFalta();" class="nav-link-mod" id="v-tabs-profile-tab" data-toggle="pill" href="#v-tabs-profile" role="tab"
                         aria-controls="v-tabs-profile" aria-selected="false">
                         <i class="fa fa-folder-open mr-2"></i> Faltas</a>
                     <a class="nav-link-mod" id="v-tabs-messages-tab" data-toggle="pill" href="#v-tabs-messages"
                         role="tab" aria-controls="v-tabs-messages" aria-selected="false">
                         <i class="fa fa-folder-open mr-2"></i> Licencia médica</a>
+-->
                 </div>
             </div>
         </div>

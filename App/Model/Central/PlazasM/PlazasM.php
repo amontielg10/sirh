@@ -148,7 +148,7 @@ class modelPlazasHraes
     public function listarCountByNum($numPlaza)
     {
         $listado = pg_query("SELECT COUNT (id_tbl_control_plazas_hraes)
-                             FROM tbl_control_plazas_hraes
+                             FROM central.tbl_control_plazas_hraes
                              WHERE num_plaza = '$numPlaza';");
         return $listado;
     }
@@ -159,12 +159,12 @@ class modelPlazasHraes
                                     tbl_control_plazas_hraes.id_cat_tipo_plazas,
                                     cat_tipo_plazas.tipo_plaza,
                                     cat_unidad_responsable.nombre
-                            FROM tbl_control_plazas_hraes
+                            FROM central.tbl_control_plazas_hraes
                             INNER JOIN cat_tipo_plazas
-                            ON tbl_control_plazas_hraes.id_cat_tipo_plazas = 
+                            ON central.tbl_control_plazas_hraes.id_cat_tipo_plazas = 
                                 cat_tipo_plazas.id_cat_tipo_plazas
                             INNER JOIN cat_unidad_responsable
-                            ON tbl_control_plazas_hraes.id_cat_unidad_responsable = 
+                            ON central.tbl_control_plazas_hraes.id_cat_unidad_responsable = 
                                 cat_unidad_responsable.id_cat_unidad_responsable
                             WHERE tbl_control_plazas_hraes.num_plaza = '$numPlaza';");
         return $listado;
@@ -196,12 +196,12 @@ class modelPlazasHraes
         $listado = pg_query("SELECT tbl_control_plazas_hraes.num_plaza,
                                     cat_tipo_plazas.tipo_plaza,
                                     cat_unidad_responsable.nombre
-                            FROM tbl_control_plazas_hraes
+                            FROM central.tbl_control_plazas_hraes
                             INNER JOIN cat_tipo_plazas
-                            ON tbl_control_plazas_hraes.id_cat_tipo_plazas =
+                            ON central.tbl_control_plazas_hraes.id_cat_tipo_plazas =
                                 cat_tipo_plazas.id_cat_tipo_plazas
                             INNER JOIN cat_unidad_responsable
-                            ON tbl_control_plazas_hraes.id_cat_unidad_responsable =
+                            ON central.tbl_control_plazas_hraes.id_cat_unidad_responsable =
                                 cat_unidad_responsable.id_cat_unidad_responsable
                             WHERE tbl_control_plazas_hraes.id_tbl_control_plazas_hraes = $id");
         return $listado;
@@ -230,11 +230,11 @@ class modelPlazasHraes
         $listado = pg_query("SELECT tbl_movimientos.id_tipo_movimiento,
                                     tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes,
                                     tbl_plazas_empleados_hraes.id_tbl_empleados_hraes
-                            FROM tbl_plazas_empleados_hraes
+                            FROM central.tbl_plazas_empleados_hraes
                             INNER JOIN tbl_movimientos
-                            ON tbl_plazas_empleados_hraes.id_tbl_movimientos =
+                            ON central.tbl_plazas_empleados_hraes.id_tbl_movimientos =
                                 tbl_movimientos.id_tbl_movimientos
-                            WHERE tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes = $id
+                            WHERE central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes = $id
                             ORDER BY tbl_plazas_empleados_hraes.fecha_movimiento DESC
                             LIMIT 1;");
         return $listado;
@@ -243,14 +243,14 @@ class modelPlazasHraes
     public function allCountPlazas()
     {
         $listado = pg_query("SELECT COUNT (id_tbl_control_plazas_hraes)
-                             FROM tbl_control_plazas_hraes;");
+                             FROM central.tbl_control_plazas_hraes;");
         return $listado;
     }
 
     public function tipoPlazaAll($idCatPlaza)
     {
         $listado = pg_query("SELECT COUNT (id_tbl_control_plazas_hraes)
-                             FROM tbl_control_plazas_hraes
+                             FROM central.tbl_control_plazas_hraes
                              WHERE id_cat_tipo_plazas = $idCatPlaza;");
         return $listado;
     }
@@ -258,10 +258,10 @@ class modelPlazasHraes
     public function claveCentroTrabajo($idPlaza)
     {
         $listado = pg_query("SELECT tbl_centro_trabajo_hraes.clave_centro_trabajo
-                             FROM tbl_control_plazas_hraes
-                             INNER JOIN tbl_centro_trabajo_hraes
-                             ON  tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes =
-                                 tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes
+                             FROM central.tbl_control_plazas_hraes
+                             INNER JOIN central.tbl_centro_trabajo_hraes
+                             ON  central.tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes =
+                                 central.tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes
                              WHERE tbl_control_plazas_hraes.id_tbl_control_plazas_hraes = $idPlaza;");
         return $listado;
     }
@@ -270,7 +270,7 @@ class modelPlazasHraes
     {
         ////EL NUMERO 5 REPRESENTA LAS PLAZAS
         $listado = pg_query("SELECT id_tbl_control_plazas_hraes,num_plaza
-                             FROM tbl_control_plazas_hraes
+                             FROM central.tbl_control_plazas_hraes
                              WHERE id_cat_tipo_plazas = 5
                              ORDER BY num_plaza ASC;");
         return $listado;
@@ -280,7 +280,7 @@ class modelPlazasHraes
     {
         ////EL NUMERO 5 REPRESENTA LAS PLAZAS
         $listado = pg_query("SELECT id_tbl_control_plazas_hraes,num_plaza
-                             FROM tbl_control_plazas_hraes
+                             FROM central.tbl_control_plazas_hraes
                              WHERE id_tbl_control_plazas_hraes = $idPlaza");
         return $listado;
     }
@@ -292,9 +292,9 @@ class modelPlazasHraes
                                         cat_subtipo_contratacion_hraes.subtipo),
                                     tbl_centro_trabajo_hraes.clave_centro_trabajo,
                                     tbl_control_plazas_hraes.id_cat_situacion_plaza_hraes
-                            FROM tbl_control_plazas_hraes
+                            FROM central.tbl_control_plazas_hraes
                             INNER JOIN cat_tipo_subtipo_contratacion_hraes
-                            ON tbl_control_plazas_hraes.id_cat_tipo_subtipo_contratacion_hraes =
+                            ON central.tbl_control_plazas_hraes.id_cat_tipo_subtipo_contratacion_hraes =
                                 cat_tipo_subtipo_contratacion_hraes.id_cat_tipo_subtipo_contratacion_hraes
                             INNER JOIN cat_tipo_contratacion_hraes
                             ON cat_tipo_subtipo_contratacion_hraes.id_cat_tipo_contratacion_hraes =
@@ -302,16 +302,16 @@ class modelPlazasHraes
                             INNER JOIN cat_subtipo_contratacion_hraes
                             ON	cat_tipo_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes =
                                 cat_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes
-                            INNER JOIN tbl_centro_trabajo_hraes
-                            ON tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes =
-                                tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes
+                            INNER JOIN central.tbl_centro_trabajo_hraes
+                            ON central.tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes =
+                                central.tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes
                             WHERE tbl_control_plazas_hraes.id_tbl_control_plazas_hraes = $idPlaza;");
         return $listado;
     }
 
     public function countNumPlaza($numPlaza){
         $listado = pg_query("SELECT COUNT(id_tbl_control_plazas_hraes)
-                             FROM tbl_control_plazas_hraes
+                             FROM central.tbl_control_plazas_hraes
                              WHERE TRIM(UPPER(num_plaza)) = TRIM(UPPER('$numPlaza'));");
         return $listado;
     }

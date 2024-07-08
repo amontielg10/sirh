@@ -1,6 +1,6 @@
 <?php
 include '../../../../../conexion.php';
-include '../../../../Model/Hraes/EspecialidadM/EspecialidadM.php';
+include '../../../../Model/Central/EspecialidadM/EspecialidadM.php';
 
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
 $paginador = $_POST['paginador'];

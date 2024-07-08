@@ -19,7 +19,7 @@ function buscarRetardo(){ //BUSQUEDA
 }
 
 function iniciarTabla_re(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Retardo/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Retardo/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -40,7 +40,7 @@ function agregarEditarRetardo(id_object){
         $("#agregar_editar_retardo").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/RetardoC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/RetardoC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -56,19 +56,19 @@ function agregarEditarRetardo(id_object){
     $("#agregar_editar_retardo").modal("show");
 }
 
-function salirAgregarEditarRetardo(){
+function salirAgregarEditarRetardo_(){
     $("#agregar_editar_retardo").modal("hide");
 }
 
 
-function guardarRetardo() {
+function guardarRetardoX() {
     let fecha_retardo = $("#fecha_retardo").val();
     let hora_entrada = $("#hora_entrada").val();
     let hora_salida = $("#hora_salida").val();
     let id_object = $("#id_object").val();
     hora_salida = hora_salida  ? hora_salida  : '0:0';
 
-    $.post("../../../../App/Controllers/Hrae/RetardoC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/RetardoC/AgregarEditarC.php", {
         id_object: id_object,
         fecha_retardo: fecha_retardo,
         hora_entrada:hora_entrada,
@@ -89,7 +89,7 @@ function guardarRetardo() {
     );
 }
 
-function eliminarRetardo(id_object) {//ELIMINAR USUARIO
+function eliminarRetardo_(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -101,7 +101,7 @@ function eliminarRetardo(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/RetardoC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/RetardoC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {

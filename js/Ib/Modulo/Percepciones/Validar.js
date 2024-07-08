@@ -16,7 +16,7 @@ function handleChange(event){
     let selectedOption = event.target.options[event.target.selectedIndex];
     let id_cat_concepto = selectedOption.value;
 
-    $.post("../../../../App/Controllers/Hrae/PercepcionesC/ConceptoC.php", {
+    $.post("../../../../App/Controllers/Central/PercepcionesC/ConceptoC.php", {
         id_cat_concepto: id_cat_concepto,
     },
         function (data) {
@@ -31,7 +31,7 @@ function handleChange(event){
 }
 
 function validarConcepto(id_cat_concepto,id_tbl_empleados_hraes,id_object){
-    $.post("../../../../App/Controllers/Hrae/PercepcionesC/ValidarConceptoC.php", {
+    $.post("../../../../App/Controllers/Central/PercepcionesC/ValidarConceptoC.php", {
         id_cat_concepto: id_cat_concepto,
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
         id_object:id_object

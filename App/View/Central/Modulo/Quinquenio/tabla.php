@@ -1,6 +1,6 @@
 <?php
 include '../../../../../conexion.php';
-include '../../../../Model/Hraes/QuinquenioM/QuinquenioM.php';
+include '../../../../Model/Central/QuinquenioM/QuinquenioM.php';
 
 $id_tbl_empleados_hraes = $_POST['id_tbl_empleados_hraes'];
 
