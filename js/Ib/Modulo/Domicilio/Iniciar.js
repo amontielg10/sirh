@@ -20,6 +20,10 @@ function domicilioDetalles(id_object){
             $('#colonia1').html(colonia); 
             $('#municipio1').empty();
             $('#municipio1').html(municipio); 
+
+            $('#colonia1').selectpicker('refresh');
+            $('#municipio1').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
             
             $("#id_tbl_domicilios").val(entity.id_tbl_domicilios_hraes);
             $("#codigo_postal1").val(entity.codigo_postal1);  

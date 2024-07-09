@@ -22,7 +22,7 @@ function concatFecha($fecha1, $fecha2){
 
 $data =
     '<table class="table table-bordered" id="tabla_retardo" style="width:100%">
-    <thead>
+    <thead class="text-center">
         <tr>
             <th>Acciones</th>
             <th>Fecha</th>
@@ -34,7 +34,7 @@ $data =
 if (pg_num_rows($listado) > 0) {
     while ($row = pg_fetch_row($listado)) {
         $data .=
-            '<tbody>
+            '<tbody class="text-center">
                         <tr>
                         <td>
                         <div class="btn-group">

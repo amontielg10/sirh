@@ -377,3 +377,13 @@ hr {
         color:#000000;
         border-color: #aeaeae;
       }
+
+
+      .bootstrap-select:hover .dropdown-toggle {
+        background-color: #f8f9fa;
+    }
+
+    .dropdown-item.active, .dropdown-item:active {
+        background-color: #235B4E !important;
+        color: #fff !important;
+    }

@@ -56,7 +56,7 @@ function agregarEditarRetardo(id_object){
     $("#agregar_editar_retardo").modal("show");
 }
 
-function salirAgregarEditarRetardo(){
+function salirAgregarEditarRetardoH(){
     $("#agregar_editar_retardo").modal("hide");
 }
 

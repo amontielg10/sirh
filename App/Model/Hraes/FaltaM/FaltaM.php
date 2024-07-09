@@ -11,7 +11,7 @@ class FaltaModelM
                                     fecha_registro,
                                     codigo_certificacion,
                                     observaciones
-                                FROM ctrl_faltas_hraes
+                                FROM public.ctrl_faltas_hraes
                                 WHERE id_tbl_empleados_hraes = $id_object
                                 ORDER BY id_ctrl_faltas_hraes DESC
                                 LIMIT 3 OFFSET $paginator;");
@@ -20,25 +20,22 @@ class FaltaModelM
 
     function listarEditById($id_object)
     {
-        $listado = pg_query("SELECT id_ctrl_retardo_hraes, fecha, hora_entrada, minuto_entrada,
-                                    hora_salida, minuto_salida, id_tbl_empleados_hraes
-                            FROM ctrl_retardo_hraes
-                            WHERE id_ctrl_retardo_hraes = $id_object
-                            ORDER BY id_ctrl_retardo_hraes DESC
-                            LIMIT 5;");
+        $listado = pg_query("SELECT *
+                            FROM public.ctrl_faltas_hraes
+                            WHERE id_ctrl_faltas_hraes = $id_object");
         return $listado;
     }
 
     function listarByNull()
     {
         return $raw = [
-            'id_ctrl_retardo_hraes' => null,
-            'fecha' => null,
-            'hora_entrada' => null,
-            'minuto_entrada' => null,
-            'hora_salida' => null,
-            'minuto_salida' => null,
+            'id_ctrl_faltas_hraes' => null,
+            'fecha_desde' => null,
+            'fecha_hasta' => null,
+            'fecha_registro' => null,
+            'codigo_certificacion' => null,
             'id_tbl_empleados_hraes' => null,
+            'observaciones' => null,
         ];
     }
 
@@ -51,7 +48,7 @@ class FaltaModelM
                                     fecha_registro,
                                     codigo_certificacion,
                                     observaciones
-                                FROM ctrl_faltas_hraes
+                                FROM public.ctrl_faltas_hraes
                                 WHERE id_tbl_empleados_hraes = $id_object
                                 AND (
                                     fecha_desde::TEXT LIKE '%$busqueda%' OR
@@ -67,19 +64,19 @@ class FaltaModelM
 
     function editarByArray($conexion, $datos, $condicion)
     {
-        $pg_update = pg_update($conexion, 'ctrl_retardo_hraes', $datos, $condicion);
+        $pg_update = pg_update($conexion, 'public.ctrl_faltas_hraes', $datos, $condicion);
         return $pg_update;
     }
 
     function agregarByArray($conexion, $datos)
     {
-        $pg_add = pg_insert($conexion, 'ctrl_retardo_hraes', $datos);
+        $pg_add = pg_insert($conexion, 'public.ctrl_faltas_hraes', $datos);
         return $pg_add;
     }
 
     function eliminarByArray($conexion, $condicion)
     {
-        $pgs_delete = pg_delete($conexion, 'ctrl_retardo_hraes', $condicion);
+        $pgs_delete = pg_delete($conexion, 'public.ctrl_faltas_hraes', $condicion);
         return $pgs_delete;
     }
 }

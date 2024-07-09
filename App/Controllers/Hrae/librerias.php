@@ -78,3 +78,7 @@ include '../../../Controllers/Catalogos/CatPaisC/CatPaisC.php';
 include '../../../Controllers/Catalogos/CatEstadoC/CatEstadoC.php';
 include '../../../Controllers/Catalogos/CatNacionalidadC/CatNacionalidadC.php';
 include '../../../Controllers/Hrae/Catalogos/CatCapacidadC/CatCapacidadC.php';
+
+
+//MORE 
+include '../../../Model/Hraes/FaltaM/FaltaM.php';

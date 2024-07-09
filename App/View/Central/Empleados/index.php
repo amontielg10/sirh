@@ -1,15 +1,5 @@
 <?php include '../../nav-menu.php' ?>
 
-<style>
-    .bootstrap-select:hover .dropdown-toggle {
-        background-color: #f8f9fa;
-        /* Cambia aquí el color cuando el cursor está encima */
-        /*border-color: red; /* Cambia aquí el color del borde cuando el cursor está encima */
-    }
-</style>
-
-
-
 <div class="container-fluid bg-image nav-padding">
     <br>
     <div class="card border-light shadow-lg">
