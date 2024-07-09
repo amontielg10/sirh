@@ -78,3 +78,7 @@
 <script src="../../../../js/Hraes/Modulo/Falta/Iniciar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Falta/Validar.js"></script>
 <script src="../../../../js/Hraes/Modulo/Falta/buscar.js"></script>
+
+<script src="../../../../js/Hraes/Modulo/Licencia/Iniciar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Licencia/Validar.js"></script>
+<script src="../../../../js/Hraes/Modulo/Licencia/buscar.js"></script>
