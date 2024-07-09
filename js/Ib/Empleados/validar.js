@@ -109,8 +109,8 @@ document.getElementById("id_cat_pais_nacimiento").addEventListener("change", fun
     
                 $('#id_cat_estado_nacimiento').empty();
                 $('#id_cat_estado_nacimiento').html(estado); 
-                //$('#id_cat_estado_nacimiento').selectpicker('refresh');
-                //$('.selectpicker').selectpicker 
+                $('#id_cat_estado_nacimiento').selectpicker('refresh');
+                $('.selectpicker').selectpicker 
             }
         );
     });

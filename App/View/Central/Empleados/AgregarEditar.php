@@ -78,32 +78,73 @@
                     <div class="div-spacing"></div>
                     <div class="row mx-1">
                         <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Pa&iacutes de nacimiento</label><label
-                                class="text-required">*</label>
-                            <select class="form-control div-spacing custom-select" aria-label="Default select example"
-                                id="id_cat_pais_nacimiento" required>
-                            </select>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="campo" class="form-label input-text-form">Pa&iacutes de
+                                        nacimiento</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_pais_nacimiento"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Estado de nacimiento</label><label
-                                class="text-required">*</label>
-                            <select class="form-control div-spacing custom-select" aria-label="Default select example"
-                                id="id_cat_estado_nacimiento" required>
-                            </select>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="campo" class="form-label input-text-form">Estado de nacimiento</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_estado_nacimiento"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Nacionalidad</label><label
-                                class="text-required">*</label>
-                            <select class="form-control div-spacing custom-select" aria-label="Default select example"
-                                id="nacionalidad" required>
-                            </select>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="campo" class="form-label input-text-form">Nacionalidad</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="nacionalidad"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Estado civil</label><label
-                                class="text-required">*</label>
-                            <select class="form-control div-spacing custom-select" aria-label="Default select example"
-                                id="id_cat_estado_civil" required>
-                            </select>
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <label for="campo" class="form-label input-text-form">Estado civil</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_estado_civil"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -112,17 +153,15 @@
                         <div class="col-3">
                             <fieldset disabled>
                                 <label for="campo" class="form-label input-text-form">G&eacutenero</label>
-                                <input type="text" placeholder="Género" class="form-control custom-input" 
-                                    id="genero_x">
+                                <input type="text" placeholder="Género" class="form-control custom-input" id="genero_x">
                                 <div class="line"></div>
                             </fieldset>
                         </div>
                         <div class="col-3">
                             <label for="campo" class="form-label input-text-form">NSS</label><label
                                 class="text-required">*</label>
-                            <input type="number" oninput="validarNumero(this)"
-                                class="form-control custom-input" id="nss"
-                                placeholder="Número de seguro social">
+                            <input type="number" oninput="validarNumero(this)" class="form-control custom-input"
+                                id="nss" placeholder="Número de seguro social">
                             <div class="line"></div>
                         </div>
                     </div>

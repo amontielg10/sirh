@@ -25,57 +25,128 @@
                 <div class="container">
                     <div class="row mx-1">
                         <div class="col-4">
-                            <label for="campo" class="form-label input-text-form">Tipo de plaza</label><label
-                                class="text-required">*</label>
-                            <select class="form-control div-spacing custom-select" aria-label="Default select example"
-                                id="id_cat_plazas" required>
-                            </select>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="campo" class="form-label input-text-form">Tipo de plaza</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_plazas"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Tipo de
-                                contrataci&oacuten</label><label class="text-required">*</label>
-                            <select class="form-control div-spacing  custom-select" aria-label="Default select example"
-                                id="id_cat_tipo_contratacion_hraes" required>
-                            </select>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="campo" class="form-label input-text-form">Tipo de
+                                        contrataci&oacuten</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_tipo_contratacion_hraes"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-5">
-                            <label for="campo" class="form-label input-text-form">Unidad responsable</label><label
-                                class="text-required">*</label>
-                            <select class="form-control div-spacing  custom-select" aria-label="Default select example"
-                                id="id_cat_unidad_responsable" required>
-                            </select>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="campo" class="form-label input-text-form">Unidad responsable</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_unidad_responsable"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="div-spacing"></div>
                     <div class="row mx-1">
                         <div class="col-4">
-                            <label for="campo" class="form-label input-text-form">Puesto</label><label
-                                class="text-required">*</label>
-                            <select class="form-control div-spacing custom-select" aria-label="Default select example"
-                                id="id_cat_puesto_hraes" required>
-                            </select>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="campo" class="form-label input-text-form">Puesto</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_puesto_hraes"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Zonas tabuladores</label><label
-                                class="text-required">*</label>
-                            <select class="form-control div-spacing custom-select" aria-label="Default select example"
-                                id="id_cat_zonas_tabuladores_hraes" required>
-                            </select>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="campo" class="form-label input-text-form">Zonas tabuladores</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_zonas_tabuladores_hraes"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Zona pagadora</label><label
-                                class="text-required">*</label>
-                            <select class="form-control div-spacing custom-select" aria-label="Default select example"
-                                id="id_tbl_zonas_pago" required>
-                            </select>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="campo" class="form-label input-text-form">Zona pagadora</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_tbl_zonas_pago"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-2">
-                            <label for="campo" class="form-label input-text-form">Niveles</label><label
-                                class="text-required">*</label>
-                            <select class="form-control div-spacing custom-select" aria-label="Default select example"
-                                id="id_cat_niveles_hraes" required>
-                            </select>
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <label for="campo" class="form-label input-text-form">Niveles</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_niveles_hraes"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -117,7 +188,8 @@
                             <div class="line"></div>
                         </div>
                         <div class="col-3">
-                            <fieldset disabled id="checkbox_disabled" data-toggle="tooltip" data-placement="top" title="Una plaza plantilla es aquella cuyo número aún no está definido.">
+                            <fieldset disabled id="checkbox_disabled" data-toggle="tooltip" data-placement="top"
+                                title="Una plaza plantilla es aquella cuyo número aún no está definido.">
                                 <label for="campo" class="form-label input-text-form">¿Es plantilla?</label><label
                                     class="text-required">*</label>
                                 <div class="form-check div-spacing">

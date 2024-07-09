@@ -72,6 +72,15 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             $('#id_cat_zonas_tabuladores_hraes').html(tabulares);
             $('#id_cat_niveles_hraes').empty();
             $('#id_cat_niveles_hraes').html(niveles);
+
+            $('#id_cat_plazas').selectpicker('refresh');
+            $('#id_tbl_zonas_pago').selectpicker('refresh');
+            $('#id_cat_tipo_contratacion_hraes').selectpicker('refresh');
+            $('#id_cat_unidad_responsable').selectpicker('refresh');
+            $('#id_cat_puesto_hraes').selectpicker('refresh');
+            $('#id_cat_zonas_tabuladores_hraes').selectpicker('refresh');
+            $('#id_cat_niveles_hraes').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
             
             $("#num_plaza").val(entity.num_plaza);
             $("#fecha_ingreso_inst").val(entity.fecha_ingreso_inst);

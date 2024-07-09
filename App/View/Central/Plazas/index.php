@@ -125,12 +125,26 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header background-modal">
-                <h5 class="modal-title text-modal-tittle">Agregar Plaza</h5>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-1">
+                            <img src="../../../../assets/sirh/logo_plaza.png" style="max-width: 1000%;">
+                        </div>
+                        <div class="col-11">
+                            <h1 class="text-tittle-card"><label id="" claa="text-modal-tittle"></label>
+                               Agregar plaza.
+                            </h1>
+                            <p class="color-text-white">Este espacio está destinado a agregar o modificar información
+                                relacionada con plazas. Aquí puedes ingresar nuevos datos o actualizar los
+                                existentes según sea necesario.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-body">
                 <div class="alert alert-warning" role="alert">
                     <h6 class="alert-heading"><i class="fa fa-exclamation-circle"></i> ¿Cómo agregar una plaza?</h6>
-                    <p>Para agregar una plaza, sigue estos pasos:</p>
+                    <p>Para agregar una plaza:</p>
                     <p> - Desde el menú del centro de trabajo o accede pulsando el botón 'Ir'</p>
                     <p> - Selecciona el centro de trabajo al que deseas añadir la plaza y dirígete a la
                         sección de 'Plazas Asignadas al Centro de Trabajo'.</p>
@@ -142,7 +156,7 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i>
                     Cancelar</button>
                 <a href="../CentroTrabajo/index.php" type="button" class="btn btn-success save-botton-modal"><i
-                        class="fa fa-arrow-circle-right"></i> Ir</a>
+                        class="fa fa-arrow-right"></i> Ir</a>
             </div>
         </div>
     </div>
