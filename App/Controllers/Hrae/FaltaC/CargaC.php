@@ -20,7 +20,7 @@ if (!$resultado) {
 $datos = pg_fetch_all($resultado);
 
 // Cerrar la conexión
-
+    
 
 // Generar archivo Excel con PhpSpreadsheet
 require_once '../../../../vendor/autoload.php';
