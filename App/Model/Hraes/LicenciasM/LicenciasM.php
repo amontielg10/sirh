@@ -2,6 +2,19 @@
 
 class ModelLicenciasM
 {
+
+    public function validarEstatus($value,$id_object,$id_tbl_empleados_hraes){
+        $result ="";
+        if($id_object != ''){
+            $result = "AND id_ctrl_incidencias_licencias_hraes != $id_object;";
+        }
+        $listado = pg_query("SELECT COUNT(id_ctrl_incidencias_licencias_hraes)
+                             FROM public.ctrl_incidencias_licencias_hraes
+                             WHERE id_tbl_empleados_hraes = $id_tbl_empleados_hraes
+                             AND id_cat_estatus_incidencias = $value " . $result);
+        return $listado;
+    }
+
     function listarById($id_object, $paginator)
     {
         $listado = pg_query("SELECT 

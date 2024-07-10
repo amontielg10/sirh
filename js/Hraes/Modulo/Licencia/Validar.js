@@ -8,6 +8,7 @@ function validarLicencia(){
     let fecha_fin_nomina = document.getElementById('fecha_fin_nomina').value;
     let fecha_registro_ = document.getElementById('fecha_registro_').value;
     let id_cat_estatus_incidencias = document.getElementById('id_cat_estatus_incidencias').value;
+    let id_object = document.getElementById('id_object').value;
 
     if (validarData(id_cat_tipo_licencia,'Tipo de licencia') &&
     validarData(id_cat_tipo_dias,'Tipo de días') &&
@@ -19,7 +20,7 @@ function validarLicencia(){
     validarData(id_cat_estatus_incidencias,'Estatus') 
     ){
         if(horas_max_dia.length < 3){
-            guardarLicencia();
+            validateEstatus_(id_object,id_cat_estatus_incidencias); // ---> VALIDA QUE EL ESTATUS CORRESPONDA
         } else {
             mensajeError('Campo Hora debe tener un máximo de 2 caracteres');
         }
@@ -27,3 +28,23 @@ function validarLicencia(){
 }
                             
 
+function validateEstatus_(id_object,id_estatus){
+    $.post("../../../../App/Controllers/Hrae/LicenciaC/ValidarEstatusC.php", {
+        id_object:id_object,
+        id_estatus: id_estatus,
+        id_tbl_empleados_hraes:id_tbl_empleados_hraes
+    },
+        function (data) {
+
+            let jsonData = JSON.parse(data);
+            let bool = jsonData.bool; 
+            let message = jsonData.message;
+
+            if (bool){
+                guardarLicencia();
+            } else {
+                mensajeError(message);
+            }
+        }
+    );
+}

@@ -2,18 +2,10 @@
     <div class="col-9">
         <div class="form-inline">
             <div class="btn-group">
-                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"><i class="fa fa-plus icono-pequeno-tabla"></i>
-                    <span class="hide-menu text-button-add">&nbsp;Ver más</span>
+                <button onclick="agregarEditarFalta(null)" type="button" class="btn btn-light" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus icono-pequeno-tabla"></i>
+                    <span class="hide-menu text-button-add">&nbsp;Agregar</span>
                 </button>
-                <div class="dropdown-menu">
-                    <button onclick="agregarEditarFalta(null)" class="dropdown-item btn btn-light"><i
-                            class="fa fa-plus icon-edit-table"></i>&nbsp;
-                        Agregar falta</button>
-                    <button onclick="" class="dropdown-item btn btn-light"><i
-                            class="fa fa-upload icon-edit-table"></i>&nbsp;
-                        Carga masiva</button>
-                </div>
             </div>
         </div>
     </div>
