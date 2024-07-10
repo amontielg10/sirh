@@ -37,6 +37,61 @@ function validarCargaFalta(){
     return bool;
   }
 
+  function processDataFalta(file){
+    let data = new FormData();
+    data.append('archivo',file);
+
+    $.ajax({
+    url:"../../../../App/Controllers/Hrae/FaltaC/CargaC.php",
+    type:'POST',
+    contentType:false,
+    data:data,
+    processData:false,
+    cache:false, 
+    success: function (data) {
+        console.log(data);
+}
+});
+}
+    /*
+  function processDataFalta(file) {
+    let data = new FormData();
+    data.append('archivo', file);
+
+    $.ajax({
+        url: "../../../../App/Controllers/Hrae/FaltaC/CargaC.php",
+        type: 'POST',
+        data: data,
+        xhrFields: {
+            responseType: 'blob' // Configura la respuesta esperada como un blob (archivo binario)
+        },
+        success: function (data) {
+            console.log(data);
+            // Verifica que la respuesta no esté vacía
+            if (data.size > 0) {
+                var blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+                var url = window.URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = 'archivo_excel.xlsx'; // Nombre del archivo que se descargará
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            } else {
+                console.error('Error: El archivo recibido está vacío.');
+            }
+
+            ocultarModalFalta();
+        },
+        error: function (xhr, status, error) {
+            // Manejar errores si es necesario
+            console.error('Error al descargar el archivo: ' + error);
+        }
+    });
+}
+
+
 function processDataFalta(file){
         let data = new FormData();
         data.append('archivo',file);
@@ -66,7 +121,7 @@ function processDataFalta(file){
     }
     });
 }
-
+*/
 
 /*
 $.ajax({

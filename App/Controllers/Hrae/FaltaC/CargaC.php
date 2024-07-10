@@ -1,119 +1,142 @@
 <?php
 include '../librerias.php';
-header('Content-Type: text/html; charset=UTF-8');
 
-$response = 'ok';
-$nombre_campo = 'archivo';
-
-
-
-
-
-$query = "SELECT * FROM users";
-$resultado = pg_query($connectionDBsPro, $query);
-
-if (!$resultado) {
-    die("Error en la consulta: " . pg_last_error());
-}
-
-// Obtener los datos como un array asociativo
-$datos = pg_fetch_all($resultado);
-
-// Cerrar la conexión
-    
-
-// Generar archivo Excel con PhpSpreadsheet
 require_once '../../../../vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-$spreadsheet = new Spreadsheet();
-$sheet = $spreadsheet->getActiveSheet();
+$fileExel = 'archivo'; ///NOMBRE DE ARCHIVO
+$numColumnas = 12; ///COLUMNAS QUE TENDRA EL EXEL PARA CARGARLOS
 
-$columnas = array_keys($datos[0]);
-$sheet->fromArray([$columnas], null, 'A1');
-
-// Datos de la consulta
-$sheet->fromArray($datos, null, 'A2');
-
-// Nombre del archivo Excel
-$archivo = 'archivo.xlsx';
-
-// Guardar el archivo Excel en el servidor
-$writer = new Xlsx($spreadsheet);
-$writer->save($archivo);
-
-// Enviar respuesta al cliente con el nombre del archivo generado
-echo json_encode(['archivo' => $archivo]);
+if (isset($_FILES[$fileExel]) && $_FILES[$fileExel]['error'] === UPLOAD_ERR_OK) { ///VALIDACION DE ARCHIVO
+    $archivo = $_FILES[$fileExel]['tmp_name']; ///ARCHIVO TEMPORAL
 
 
+    $spreadsheet = IOFactory::load($archivo); ///MANIPULACION DE ARCHIVO
+    $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
 
 
-// Configurar las cabeceras para indicar que se devolverá un archivo Excel
+    $numero_filas = count($sheetData); ///NUMERO DE FILAS DEL ARCHIVO
+    $numero_columnas = count($sheetData[1]); ///NUMERO DE COLUMNAS DEL ARCHIVO
+    $totalFilas = 1; ///NUMERO TOTAL DE FILAS DE REGISTROS
 
+    $truncate = "TRUNCATE TABLE public.masivo_ctrl_faltas_hraes RESTART IDENTITY;";
+    $result = pg_query($connectionDBsPro, $truncate);
+
+    //if ($numero_columnas == $numColumnas) {///VALIDAR EL NUMERO DE EL NUMERO DE COLUMNAS COINCIDA
+    foreach ($sheetData as $row) {
+        if ($totalFilas != 1) {///VALIDACION PARA NO EJECUTAR ENCABEZADO Y TEXTO
+            $col_A = trim(pg_escape_string($row['A'])) ? trim(pg_escape_string($row['A'])) : null;//CLAVE DE CENTRO DE TRABAJO
+            $col_B = trim(pg_escape_string($row['B'])) ? trim(pg_escape_string($row['B'])) : null;//NOMBRE
+            $col_C = trim(pg_escape_string($row['C'])) ? trim(pg_escape_string($row['C'])) : null;//PAIS
+
+            $truncate = "INSERT INTO masivo_ctrl_faltas_hraes (fecha_desde, fecha_hasta,fecha_registro) VALUES ('$col_A','$col_B','$col_C')";
+            $result = pg_query($connectionDBsPro, $truncate);
+
+            $totalFilas++;
+            //    }
+        }
+    }
+}
+
+// Construir la consulta SQL para insertar datos en PostgreSQL
+//$truncate = "TRUNCATE TABLE public.masivo_ctrl_faltas_hraes RESTART IDENTITY;";
+//$query = "INSERT INTO public.masivo_ctrl_faltas_hraes (fecha_desde, fecha_hasta, fecha_registro) VALUES ('nombre', 'edad', 'email')";
+
+// Ejecutar la consulta
 
 /*
-if (isset($_FILES[$nombre_campo])) {
-    $archivo_nombre = $_FILES[$nombre_campo]['name'];
-    $response = $archivo_nombre;
+$fileExel = 'archivo';
+if (isset($_FILES[$fileExel]) && $_FILES[$fileExel]['error'] === UPLOAD_ERR_OK) { ///VALIDACION DE ARCHIVO
+    $archivo = $_FILES[$fileExel]['tmp_name']; ///ARCHIVO TEMPORAL
+
+/*
+    $spreadsheet = IOFactory::load($archivo); ///MANIPULACION DE ARCHIVO
+    $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
+
+    
+    $numero_filas = count($sheetData); ///NUMERO DE FILAS DEL ARCHIVO
+    $numero_columnas = count($sheetData[1]); ///NUMERO DE COLUMNAS DEL ARCHIVO
+    $totalFilas = 3; ///NUMERO TOTAL DE FILAS DE REGISTROS
+
+    $truncate = "TRUNCATE TABLE public.masivo_ctrl_faltas_hraes RESTART IDENTITY;";
+    $result = pg_query($connectionDBsPro, $truncate);
 */
-
 /*
-function consultarDatos($conexion)
-{
-    $consulta = "SELECT * FROM users";
-    $resultado = pg_query($conexion, $consulta);
+if ($numero_columnas == $numColumnas) {///VALIDAR EL NUMERO DE EL NUMERO DE COLUMNAS COINCIDA
+    foreach ($sheetData as $row) {
+        if ($totalFilas > 5) {///VALIDACION PARA NO EJECUTAR ENCABEZADO Y TEXTO
+            $col_A = trim(pg_escape_string($row['A'])) ? trim(pg_escape_string($row['A'])) : null;//CLAVE DE CENTRO DE TRABAJO
+            $col_B = trim(pg_escape_string($row['B'])) ? trim(pg_escape_string($row['B'])) : null;//NOMBRE
+            $col_C = trim(pg_escape_string($row['C'])) ? trim(pg_escape_string($row['C'])) : null;//PAIS
 
-    // Verificar si hay resultados
-    if (!$resultado) {
-        echo "Error en la consulta.\n";
+            $truncate = "INSERT INTO masivo_ctrl_faltas_hraes (fecha_desde, fecha_hasta,fecha_registro) VALUES ($col_A,$col_B,$col_C)";
+            $result = pg_query($connectionDBsPro, $truncate);
+        }
+    }
+    // Ejecutar la consulta
+
+
+    //$result = pg_query($connectionDBsPro, $query);
+
+    if (!$result) {
+        echo "Error al insertar datos en la base de datos.";
         exit;
     }
+}*/
 
-    // Obtener los datos como un array asociativo
-    $datos = pg_fetch_all($resultado);
 
-    return $datos;
+/*
+// Consulta SQL para obtener datos desde PostgreSQL
+$spreadsheet = new Spreadsheet();
+$sql = "SELECT 
+id_user, nick, nombre
+FROM users";
+
+// Ejecutar la consulta
+$result = pg_query($connectionDBsPro, $sql);
+
+// Verificar si hubo un error en la consulta
+if (!$result) {
+    echo json_encode(array('error' => 'Error al ejecutar la consulta.'));
+    exit;
 }
+
+// Incluir PhpSpreadsheet
+//require 'ruta/donde/esta/PhpSpreadsheet/src/Bootstrap.php';
 
 // Crear un nuevo objeto Spreadsheet
-$spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
-// Conectar a la base de datos PostgreSQL
-$conexion = $connectionDBsPro;
+// Encabezados de columna
+$sheet->setCellValue('A1', 'id_user');
+$sheet->setCellValue('B1', 'nick');
+$sheet->setCellValue('C1', 'nombre');
 
-// Obtener datos de la base de datos
-$datos = consultarDatos($conexion);
+// Contador para las filas
+$row = 2;
 
-// Escribir los datos en la hoja de cálculo
-$fila = 1;
-foreach ($datos as $dato) {
-    $columna = 'A'; // Comienza desde la columna A
-    foreach ($dato as $valor) {
-        $sheet->setCellValue($columna . $fila, $valor);
-        $columna++;
-    }
-    $fila++;
+// Iterar sobre los resultados de la consulta
+while ($row_data = pg_fetch_assoc($result)) {
+    $sheet->setCellValue('A' . $row, $row_data['id_user']);
+    $sheet->setCellValue('B' . $row, $row_data['nick']);
+    $sheet->setCellValue('C' . $row, $row_data['nombre']);
+    $row++;
 }
 
-// Salida del archivo Excel
-header('Content-Type: text/csv; charset=utf-8');
-header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment; filename="datos.xlsx"');
+// Configurar el nombre del archivo para descarga
+$filename = 'datos_excel_' . date('Ymd') . '.xlsx';
 
+// Crear el writer para el archivo Excel y guardarlo en la salida
 $writer = new Xlsx($spreadsheet);
-$writer->save('php://output');
-echo json_encode($writer);
-/*
-} else {
-    $response = "No se ha recibido ningún archivo.";
-}
-*/
-/*
-$var = [
-    'response' => $response,
-];
-echo json_encode($var);
 
+// Definir las cabeceras para descargar el archivo
+header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+header('Content-Disposition: attachment;filename="$filename"');
+header('Cache-Control: max-age=0');
+
+$writer->save('php://output');
+exit;
 */
