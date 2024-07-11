@@ -32,6 +32,7 @@ $id_rol = $_SESSION['id_rol'];
     <link rel="stylesheet" href="../../../../assets/bootstrap-select/dist/css/bootstrap-select.min.css">
 
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
     <!--

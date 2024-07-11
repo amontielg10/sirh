@@ -39,7 +39,7 @@ function validarCargaFalta(){
 
   function processDataFalta(file){
     let data = new FormData();
-    data.append('archivo',file);
+    data.append('file',file);
 
     $.ajax({
     url:"../../../../App/Controllers/Hrae/FaltaC/CargaC.php",
