@@ -44,6 +44,8 @@ if (isset($_FILES[$fileExel]) && $_FILES[$fileExel]['error'] === UPLOAD_ERR_OK) 
                 $bool = $masivoC->validateDateFaltas($tableName, 'fecha_registro', 'FECHA REGISTRO') ? true : false;
                 $bool = $masivoC->validateMaxFaltas($tableName,'codigo_certificacion', 'CODIGO CERTIFIACION',10) ? true: false;
                 $bool = $masivoC->validateMaxFaltas($tableName,'observaciones', 'OBSERVACIONES',50) ? true: false;
+                $bool = $masivoC->validateEmployeCurp($tableName) ? true : false;
+                $bool = $masivoC->updateEstatus($tableName) ? true: false;
 
                 $message = $bool ? 'ok' : 'Error al insertar en tabla temporal';
             }
