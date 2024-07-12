@@ -8,7 +8,10 @@
 <script src="../../../../js/Global/Seguridad/Confirmacion.js"></script>
 
 
+
 <!-- Bootstrap tether Core JavaScript 
+ <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../../../.././assets/libs/jquery/dist/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -57,6 +60,7 @@
 <script src="../../../.././assets/libs/sweetalert2/sweet-alert.init.js"></script>
 
 <script src="../../../../assets/bootstrap-select/dist/js/bootstrap-select.min.js" ></script>
+<script src="../../../../assets/notyf/notyf.min.js"></script>
 
 <!--
 <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>

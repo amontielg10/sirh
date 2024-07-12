@@ -36,20 +36,20 @@
                                 aria-orientation="vertical">
                                 <a onclick="" class="nav-link-mod active" id="v-tabs-home-tab" data-toggle="pill"
                                     href="#v-tabs-home" role="tab" aria-controls="v-tabs-home" aria-selected="true">
-                                    <i class="fa fa-upload mr-2"></i> Centrao de trabajo</a>
+                                    <i class="	fa fa-folder-open mr-2"></i> Centrao de trabajo</a>
 
                                 <a onclick="" class="nav-link-mod" id="v-tabs-profile-tab" data-toggle="pill"
                                     href="#v-tabs-profile" role="tab" aria-controls="v-tabs-profile"
                                     aria-selected="false">
-                                    <i class="fa fa-upload mr-2"></i> Plazas</a>
+                                    <i class="	fa fa-folder-open mr-2"></i> Plazas</a>
                                 <a onclick="" class="nav-link-mod" id="v-tabs-messages-tab" data-toggle="pill"
                                     href="#v-tabs-messages" role="tab" aria-controls="v-tabs-messages"
                                     aria-selected="false">
-                                    <i class="fa fa-upload mr-2"></i> Empleados</a>
+                                    <i class="	fa fa-folder-open mr-2"></i> Empleados</a>
                                 <a onclick="" class="nav-link-mod" id="v-tabs-messages-tab" data-toggle="pill"
                                     href="#faltas_hraes_" role="tab" aria-controls="v-tabs-messages"
                                     aria-selected="false">
-                                    <i class="fa fa-upload mr-2"></i> Faltas</a>
+                                    <i class="	fa fa-folder-open mr-2"></i> Faltas</a>
                             </div>
                         </div>
                     </div>
@@ -128,6 +128,7 @@
         </div>
     </div>
 
-    <script src="../../../../js/Hraes/Masivo/Faltas.js"></script>
+    
 
     <?php include '../../librerias.php' ?>
+    <script src="../../../../js/Hraes/Masivo/Faltas.js"></script>

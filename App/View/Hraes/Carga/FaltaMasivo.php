@@ -1,12 +1,58 @@
-<div class="alert alert-success" role="alert">
-    <h4 class="alert-heading">¿Cómo realizo el proceso?</h4>
-    <p>Por favor, continúa con los pasos siguientes.</p>
-    <hr>
-    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+<style>
+    .overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: linear-gradient(to bottom, #1e1e1e, #000000);
+        opacity: 0.9;
+        z-index: 9999;
+        display: none;
+    }
+
+    .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+    }
+</style>
+
+<div class="card  border-0">
+    <div class="card-body">
+        <h5 class="card-title">Proceso de Carga Masiva de Faltas</h5>
+        <p class="card-text">
+            <strong>¿Cómo se realiza el proceso de carga masiva?</strong><br>
+            Para realizar el proceso exitoso de carga masiva es necesario considerar los siguientes puntos:
+        </p>
+        <ul>
+            <li><strong>Carga masiva de faltas:</strong> Carga masiva de faltas solo esta disponible para agregar
+                información</span>.</li>
+            <li><strong>Formatos de fecha:</strong> Deben ser <span class="text-success">(AAAA-MM-DD)</span>.</li>
+            <li><strong>Campos con *:</strong> Son <span class="font-weight-bold">requeridos</span>.</li>
+            <li><strong>Límite de caracteres:</strong> La columna observaciones tiene un límite de <span
+                    class="font-italic">50 caracteres</span> y código certificación <span class="font-italic">10
+                    caracteres</span>.</li>
+            <li><strong>Validación de CURP:</strong> El sistema valida que el campo CURP esté asociado a un empleado.
+            </li>
+            <li><strong>Estatus:</strong> Si cumple con las condiciones se marca "AGREGADO"; de lo contrario,
+                "OMITIDO" con la observación correspondiente.</li>
+            <li><strong>Descarga de Excel:</strong> Al finalizar se descarga un archivo Excel con las observaciones.
+            </li>
+        </ul>
+        <p>
+            Para comenzar el proceso de carga masiva, asegúrate de tener el layout adecuado <a download  href="../../../../assets/Formato/FormatoFaltas.xlsx">descargalo aqui</a>. Este archivo
+            servirá como guía para preparar tus datos correctamente antes de cargarlos en el sistema.
+        </p>
+    </div>
 </div>
 
 <div class="col text-right">
-    <button onclick="mostrarModalCargaFalta();" type="button" class="btn btn-light custom-btn text-button-upload"><i class="fa fa-upload mr-2"></i>
+    <button onclick="mostrarModalCargaFalta();" type="button" class="btn btn-light custom-btn text-button-upload"><i
+            class="fa fa-upload mr-2"></i>
         Cargar</button>
 </div>
 
@@ -65,5 +111,15 @@
             </form>
 
         </div>
+    </div>
+</div>
+
+
+<div class="overlay" id="overlay">
+    <div class="spinner">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Cargando...</span>
+        </div>
+        <p class="mt-3" id="loaderMessage">Cargando...</p>
     </div>
 </div>

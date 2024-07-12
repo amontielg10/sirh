@@ -4,7 +4,7 @@ require_once '../../../../vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 /// Class
-$masivoC = new MasivoC();
+$masivoFaltasM = new MasivoFaltasM();
 
 ///Messages
 $bool = false;
@@ -12,11 +12,13 @@ $message = 'ok';
 
 ///VALUE
 $tableName = 'public.masivo_ctrl_faltas_hraes';
+$tableNameNovel = 'public.ctrl_faltas_hraes';
+$tableNameEmployee = 'public.tbl_empleados_hraes';
 $fileExel = 'file';
 
 //Actions
 //Truncate table
-$bool = $masivoC->truncateTable($tableName) ? true : false;
+$bool = $masivoFaltasM->truncateTable($tableName) ? true : false;
 $message = $bool ? 'ok' : 'Error al truncate table';
 
 if (isset($_FILES[$fileExel]) && $_FILES[$fileExel]['error'] === UPLOAD_ERR_OK) { ///VALIDACION DE ARCHIVO
@@ -38,22 +40,26 @@ if (isset($_FILES[$fileExel]) && $_FILES[$fileExel]['error'] === UPLOAD_ERR_OK) 
                 $codigo_certificacion = trim(pg_escape_string($row['E'])) ? trim(pg_escape_string($row['E'])) : null;//PAIS
                 $observaciones = trim(pg_escape_string($row['F'])) ? trim(pg_escape_string($row['F'])) : null;//PAIS
 
-                $bool = $masivoC->insertFaltas($tableName,$fecha_desde, $fecha_hasta, $fecha_registro, $codigo_certificacion, $curp, $observaciones) ? true : false;
-                $bool = $masivoC->validateDateFaltas($tableName, 'fecha_desde', 'FECHA INICIO') ? true : false;
-                $bool = $masivoC->validateDateFaltas($tableName, 'fecha_hasta', 'FECHA FIN') ? true : false;
-                $bool = $masivoC->validateDateFaltas($tableName, 'fecha_registro', 'FECHA REGISTRO') ? true : false;
-                $bool = $masivoC->validateMaxFaltas($tableName,'codigo_certificacion', 'CODIGO CERTIFIACION',10) ? true: false;
-                $bool = $masivoC->validateMaxFaltas($tableName,'observaciones', 'OBSERVACIONES',50) ? true: false;
-                $bool = $masivoC->validateEmployeCurp($tableName) ? true : false;
-                $bool = $masivoC->updateEstatus($tableName) ? true: false;
+                $bool = $masivoFaltasM->insertFaltas($tableName, $fecha_desde, $fecha_hasta, $fecha_registro, $codigo_certificacion, $curp, $observaciones) ? true : false;
 
                 $message = $bool ? 'ok' : 'Error al insertar en tabla temporal';
             }
             $totalFilas++;
         }
+
+        $bool = $masivoFaltasM->validateDateFaltas($tableName, 'fecha_desde', 'FECHA INICIO') ? true : false;
+        $bool = $masivoFaltasM->validateDateFaltas($tableName, 'fecha_hasta', 'FECHA FIN') ? true : false;
+        $bool = $masivoFaltasM->validateDateFaltas($tableName, 'fecha_registro', 'FECHA REGISTRO') ? true : false;
+        $bool = $masivoFaltasM->validateMaxFaltas($tableName, 'codigo_certificacion', 'CODIGO CERTIFIACION', 10) ? true : false;
+        $bool = $masivoFaltasM->validateMaxFaltas($tableName, 'observaciones', 'OBSERVACIONES', 50) ? true : false;
+        $bool = $masivoFaltasM->validateEmployeCurp($tableName) ? true : false;
+        $bool = $masivoFaltasM->updateEstatus($tableName) ? true : false;
+        $bool = $masivoFaltasM->insertFaltasInCtrl($tableNameNovel, $tableName, $tableNameEmployee) ? true : false;
+        $message = $bool ? 'ok' : 'Error al insertar en tabla temporal';
+
     } else {
         $bool = false;
-        $message = 'Error en numero de columnas';
+        $message = 'Las columnas del archivo cargado no corresponden con las columnas del formato requerido.';
     }
 
 }
