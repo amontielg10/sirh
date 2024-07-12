@@ -8,7 +8,7 @@ include '../../../Model/Catalogos/CatUnidadResponsableM/CatUnidadResponsableM.ph
 include '../../../Controllers/Catalogos/CatUnidadResponsableC/CatUnidadResponsableC.php';
 include '../../../Model/Hraes/Catalogos/CatTipoContratacionM/CatTipoContratacionM.php';
 include '../../../Controllers/Hrae/Catalogos/CatTipoContratacionC/CatTipoContratacionC.php';
-include '../../../Model/Hraes/Catalogos/CatPuestoM/CatPuestoM.php';
+include '../../../Model/Central/Catalogos/CatPuestoM/CatPuestoM.php';
 include '../../../Controllers/Hrae/Catalogos/CatPuestoC/CatPuestosC.php';
 include '../../../Model/Hraes/Catalogos/CatTabularesM/CatTabularesM.php';
 include '../../../Controllers/Hrae/Catalogos/CatTabularesC/CatTabularesC.php';
@@ -43,7 +43,8 @@ if ($id_object != null){
     $unidadResp = $catalogoUnidadResponsableC ->returnCatUnidadByIdObject($cataloUnidadResposableM->listarByAll(), returnArrayById($cataloUnidadResposableM->obtenerElemetoById($entity['id_cat_unidad_responsable'])));
     $puesto = $catalogoPuestosC ->returnCatPuestosByIdObject($catalogoPuestoM->listarByAll(),returnArrayById($catalogoPuestoM->obtenerElemetoById($entity['id_cat_puesto_hraes'])));
     $tabulares = $catalogoTabularesC->returnSelectByIdObject($catalogoTabularesM->listarByAll(),returnArrayById($catalogoTabularesM->obtenerElemetoById($entity['id_cat_zonas_tabuladores_hraes'])));
-    $niveles = $catalogoNivelesC ->returnSelectByIdObject($catalogoNivelesM->listarByAll(),returnArrayById($catalogoNivelesM->obtenerElemetoById($entity['id_cat_niveles_hraes'])));
+    //$niveles = $catalogoNivelesC ->returnSelectByIdObject($catalogoNivelesM->listarByAll(),returnArrayById($catalogoNivelesM->obtenerElemetoById($entity['id_cat_niveles_hraes'])));
+    $niveles = returnArrayById($catalogoPuestoM->nameOfPuesto($entity['id_cat_puesto_hraes']));
     $pago = $catZonaPagoC->returnSelectByIdObject($catZonasPagoM->listarByAll(),returnArrayById($catZonasPagoM->ListarElemetoById($entity['id_tbl_zonas_pago_hraes'])));
     $raw = [
         'entity' => $entity,
@@ -52,7 +53,7 @@ if ($id_object != null){
         'contratacion' => $contratacion,
         'puesto' => $puesto,
         'tabulares' => $tabulares,
-        'niveles' => $niveles,
+        'niveles' => $niveles[0],
         'pago' => $pago,
     ];
     echo json_encode($raw);
@@ -66,7 +67,7 @@ if ($id_object != null){
     $niveles = $catalogoNivelesC->returnSelect($catalogoNivelesM->listarByAll());
     $pago = $catZonaPagoC->returnSelect($catZonasPagoM->listarByAll());
     $raw = [
-        'niveles' => $niveles,
+        'niveles' => 'Nivel',
         'puesto' => $puesto,
         'plazas' => $plazas,
         'entity' => $entity,

@@ -71,8 +71,8 @@
                         </div>
                         <div class="col-10">
                             <h1 style="color:white; font-family: 'Montserrat';font-size: 40px;">Carga masiva</h1>
-                            <p style="color:white;">Espacio para realizar cargas masivas de centros de trabajo: Un área
-                                dedicada para facilitar la inserción eficiente de múltiples centros de trabajo en el
+                            <p style="color:white;">Espacio para realizar cargas masivas de faltas: Un área
+                                dedicada para facilitar la inserción eficiente en el
                                 sistema.</p>
                         </div>
                     </div>

@@ -109,7 +109,7 @@
                         <div class="col-4">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="campo" class="form-label input-text-form">Regi&oacuten</label>
+                                    <label for="campo" class="form-label input-text-form">Estatus</label>
                                     <label class="text-required">*</label>
                                 </div>
                             </div>

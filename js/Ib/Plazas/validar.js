@@ -48,3 +48,20 @@ function validarEstatusPlaza(id_cat_plazas,id_object){
         }
     );
 }
+
+$(document).ready(function() {
+    $('#id_cat_puesto_hraes').on('change', function() {
+        let id_cat_puesto_hraes = $(this).val();
+        $.post("../../../../App/Controllers/Central/PlazasC/GetNivel.php", {
+            id_cat_puesto_hraes: id_cat_puesto_hraes,
+        },
+            function (data) {
+                let jsonData = JSON.parse(data);
+                let message = jsonData.message;
+                $('#id_cat_niveles_hraes').val(message);
+
+                }
+        );
+    });
+});
+

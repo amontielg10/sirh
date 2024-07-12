@@ -80,27 +80,10 @@
 
                     <div class="div-spacing"></div>
                     <div class="row mx-1">
-                        <div class="col-4">
+                        <div class="col-2">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="campo" class="form-label input-text-form">Puesto</label>
-                                    <label class="text-required">*</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <select class="form-control custom-select selectpicker"
-                                        data-style="input-select-selectpicker" aria-label="Default select example"
-                                        data-live-search="true" id="id_cat_puesto_hraes"
-                                        data-none-results-text="Sin resultados">
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label for="campo" class="form-label input-text-form">Zonas tabuladores</label>
+                                    <label for="campo" class="form-label input-text-form">Tabuladores</label>
                                     <label class="text-required">*</label>
                                 </div>
                             </div>
@@ -131,10 +114,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-2">
-                        <div class="row">
+                        <div class="col-5">
+                            <div class="row">
                                 <div class="col-md-12">
-                                    <label for="campo" class="form-label input-text-form">Niveles</label>
+                                    <label for="campo" class="form-label input-text-form">Puesto</label>
                                     <label class="text-required">*</label>
                                 </div>
                             </div>
@@ -142,12 +125,21 @@
                                 <div class="col-md-12">
                                     <select class="form-control custom-select selectpicker"
                                         data-style="input-select-selectpicker" aria-label="Default select example"
-                                        data-live-search="true" id="id_cat_niveles_hraes"
+                                        data-live-search="true" id="id_cat_puesto_hraes"
                                         data-none-results-text="Sin resultados">
                                     </select>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-2">
+                            <fieldset disabled>
+                                <label for="campo" class="form-label input-text-form">Nivel</label>
+                                <input type="text" placeholder="Nivel" class="form-control custom-input"
+                                    id="id_cat_niveles_hraes">
+                                <div class="line"></div>
+                            </fieldset>
+                        </div>
+
                     </div>
 
                     <div class="div-spacing"></div>
