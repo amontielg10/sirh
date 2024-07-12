@@ -25,6 +25,7 @@ $datos = [
     'latitud' => $_POST['latitud'],
     'longitud' => $_POST['longitud'],
     'pais' => $_POST['pais'],
+    'nivel_atencion' => $_POST['nivel_atencion'],
 ];
 
 $var = [

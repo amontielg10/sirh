@@ -70,7 +70,7 @@
 
                     <div class="div-spacing"></div>
                     <div class="row mx-1">
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="campo" class="form-label input-text-form">Entidad</label>
@@ -88,7 +88,7 @@
                             </div>
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="campo" class="form-label input-text-form">Regi&oacuten</label>
@@ -106,10 +106,10 @@
                             </div>
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="campo" class="form-label input-text-form">Regi&oacuten</label>
+                                    <label for="campo" class="form-label input-text-form">Estatus</label>
                                     <label class="text-required">*</label>
                                 </div>
                             </div>
@@ -123,6 +123,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-3">
+                            <label for="campo" class="form-label input-text-form">Nivel atenci&oacuten</label><label
+                                class="text-required"></label>
+                            <input type="text" class="form-control div-spacing custom-input" id="nivel_atencion"
+                                name="num_interior" placeholder="Nivel de atención" maxlength="25"
+                                onkeyup="convertirAMayusculas(event,'nivel_atencion')">
+                            <div class="line"></div>
+                        </div>
+
                     </div>
 
                     <div class="div-spacing"></div>

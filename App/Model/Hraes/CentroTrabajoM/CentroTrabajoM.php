@@ -46,7 +46,7 @@ class modelCentroTrabajoHraes
     {
         $listado = pg_query("SELECT id_tbl_centro_trabajo_hraes, clave_centro_trabajo, nombre,
                                     colonia, codigo_postal, num_exterior, num_interior, latitud, longitud,
-                                    id_cat_region, id_estatus_centro, id_cat_entidad, pais
+                                    id_cat_region, id_estatus_centro, id_cat_entidad, pais, nivel_atencion
                             FROM tbl_centro_trabajo_hraes
                             WHERE id_tbl_centro_trabajo_hraes = $id_object
                             ORDER BY id_tbl_centro_trabajo_hraes DESC

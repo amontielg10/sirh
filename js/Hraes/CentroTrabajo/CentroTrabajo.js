@@ -64,6 +64,7 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             $('#id_estatus_centro').selectpicker('refresh');
             $('.selectpicker').selectpicker();
 
+            $("#nivel_atencion").val(entity.nivel_atencion);
             $("#nombre").val(entity.nombre);
             $("#clave_centro_trabajo").val(entity.clave_centro_trabajo);
             $("#colonia").val(entity.colonia);
@@ -107,7 +108,8 @@ function agregarEditarByDb() {
         num_interior:num_interior,
         latitud:latitud,
         longitud:longitud,
-        pais:pais
+        pais:pais,
+        nivel_atencion:$("#nivel_atencion").val()
 
     },
         function (data) {
