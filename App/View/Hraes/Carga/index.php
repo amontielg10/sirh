@@ -36,8 +36,9 @@
                                 aria-orientation="vertical">
                                 <a onclick="" class="nav-link-mod active" id="v-tabs-home-tab" data-toggle="pill"
                                     href="#v-tabs-home" role="tab" aria-controls="v-tabs-home" aria-selected="true">
-                                    <i class="	fa fa-folder-open mr-2"></i> Centrao de trabajo</a>
+                                    <i class="	fa fa-folder-open mr-2"></i> Faltas</a>
 
+                                    <!--
                                 <a onclick="" class="nav-link-mod" id="v-tabs-profile-tab" data-toggle="pill"
                                     href="#v-tabs-profile" role="tab" aria-controls="v-tabs-profile"
                                     aria-selected="false">
@@ -50,6 +51,7 @@
                                     href="#faltas_hraes_" role="tab" aria-controls="v-tabs-messages"
                                     aria-selected="false">
                                     <i class="	fa fa-folder-open mr-2"></i> Faltas</a>
+-->
                             </div>
                         </div>
                     </div>
@@ -63,9 +65,9 @@
                                         <div class="col-12">
                                             <div class="card font-size-modulo shadow-lg">
                                                 <h5 class="card-header text-center background-modal color-text-tittle">
-                                                    Centro de trabajo</h5>
+                                                    Faltas</h5>
                                                 <div class="card-body">
-                                                    <?php // include 'Retardo/index.php' ?>
+                                                    <?php include 'FaltaMasivo.php' ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -104,7 +106,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="faltas_hraes_" role="tabpanel"
+                            <div class="tab-pane fade" id="v-tabs-home_" role="tabpanel"
                                 aria-labelledby="v-tabs-messages-tab">
                                 <div class="card-body">
                                     <div class="row">
@@ -113,7 +115,7 @@
                                                 <h5 class="card-header text-center background-modal color-text-tittle">
                                                     Faltas</h5>
                                                 <div class="card-body">
-                                                    <?php include 'FaltaMasivo.php' ?>
+                                                    <?php //include 'FaltaMasivo.php' ?>
                                                 </div>
                                             </div>
                                         </div>

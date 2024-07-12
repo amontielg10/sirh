@@ -84,8 +84,6 @@ function validarCargaFalta(){
             fadeOut();
             notyf.error(message);
         }
-
-
 }
 });
 }
