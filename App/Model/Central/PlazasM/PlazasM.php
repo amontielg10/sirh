@@ -139,7 +139,8 @@ class modelPlazasHraes
                                     id_cat_zonas_tabuladores_hraes,id_cat_niveles_hraes,
                                     id_tbl_zonas_pago_hraes,fecha_ingreso_inst,fecha_inicio_movimiento,
                                     fecha_termino_movimiento,fecha_modificacion,
-                                    id_cat_situacion_plaza_hraes
+                                    id_cat_situacion_plaza_hraes,
+                                    id_cat_plaza_unidad_adm
                             FROM central.tbl_control_plazas_hraes
                             WHERE id_tbl_control_plazas_hraes = $id_object");
         return $listado;
@@ -314,5 +315,34 @@ class modelPlazasHraes
                              FROM central.tbl_control_plazas_hraes
                              WHERE TRIM(UPPER(num_plaza)) = TRIM(UPPER('$numPlaza'));");
         return $listado;
+    }
+
+
+    public function catUnidadAmninAll(){
+        $query = pg_query("SELECT cat_plaza_unidad_adm.id_cat_plaza_unidad_adm,
+                                    CONCAT(UPPER(cat_unidad.nombre), ' ', UPPER(cat_coordinacion.nombre))
+                            FROM cat_plaza_unidad_adm
+                            INNER JOIN cat_unidad
+                            ON cat_plaza_unidad_adm.id_cat_unidad =
+                                cat_unidad.id_cat_unidad
+                            INNER JOIN cat_coordinacion
+                            ON cat_plaza_unidad_adm.id_cat_coordinacion =
+                                cat_coordinacion.id_cat_coordinacion
+                            ORDER BY cat_unidad.nombre ASC;");
+        return $query;
+    }
+
+    public function CatUnidadAmninEdit($id){
+        $query = pg_query("SELECT cat_plaza_unidad_adm.id_cat_plaza_unidad_adm,
+                                    CONCAT(UPPER(cat_unidad.nombre), ' ', UPPER(cat_coordinacion.nombre))
+                            FROM cat_plaza_unidad_adm
+                            INNER JOIN cat_unidad
+                            ON cat_plaza_unidad_adm.id_cat_unidad =
+                                cat_unidad.id_cat_unidad
+                            INNER JOIN cat_coordinacion
+                            ON cat_plaza_unidad_adm.id_cat_coordinacion =
+                                cat_coordinacion.id_cat_coordinacion
+                            WHERE cat_plaza_unidad_adm.id_cat_plaza_unidad_adm = $id;");
+        return $query;
     }
 }

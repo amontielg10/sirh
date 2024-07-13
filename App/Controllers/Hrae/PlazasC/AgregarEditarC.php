@@ -27,6 +27,7 @@ $datos = [
     'fecha_modificacion' => $_POST['fecha_modificacion'],
     'id_tbl_centro_trabajo_hraes' => $_POST['id_tbl_centro_trabajo_hraes'],
     'id_cat_situacion_plaza_hraes' => $_POST['id_cat_situacion_plaza_hraes'],
+    'id_cat_plaza_unidad_adm' => $_POST['id_cat_plaza_unidad_adm'],
 ];
 
 $var = [

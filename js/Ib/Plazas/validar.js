@@ -9,6 +9,7 @@ function validar(){
     let id_tbl_zonas_pago = document.getElementById('id_tbl_zonas_pago').value.trim();
     let fecha_ingreso_inst = document.getElementById('fecha_ingreso_inst').value.trim();
     let id_object = document.getElementById('id_object').value.trim();
+    let id_cat_plaza_unidad_adm = document.getElementById('id_cat_plaza_unidad_adm').value.trim();
 
     if (validarData(id_cat_plazas,'Tipo de plaza') &&
         validarData(id_cat_tipo_contratacion_hraes,'Tipo de contratación') &&
@@ -19,6 +20,7 @@ function validar(){
         validarData(num_plaza,'Número de plaza') &&
         validarData(id_tbl_zonas_pago,'Zona pagadora') &&
         validarData(fecha_ingreso_inst,'Fecha de ingreso') &&
+        validarData(id_cat_plaza_unidad_adm,'Unidad administrativa') &&
         caracteresCount('Número de plaza',8,num_plaza)
     ){
         if (id_object.length === 0){

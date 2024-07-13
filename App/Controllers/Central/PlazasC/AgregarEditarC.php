@@ -18,7 +18,7 @@ $datos = [
     'id_cat_unidad_responsable' => $_POST['id_cat_unidad_responsable'],
     'id_cat_puesto_hraes' => $_POST['id_cat_puesto_hraes'],
     'id_cat_zonas_tabuladores_hraes' => $_POST['id_cat_zonas_tabuladores_hraes'],
-    'id_cat_niveles_hraes' => $_POST['id_cat_puesto_hraes'],
+    //'id_cat_niveles_hraes' => $_POST['id_cat_puesto_hraes'],
     'id_tbl_zonas_pago_hraes' => $_POST['id_tbl_zonas_pago'],
     'num_plaza' => $_POST['num_plaza'],
     'fecha_ingreso_inst' => $_POST['fecha_ingreso_inst'],
@@ -27,6 +27,7 @@ $datos = [
     'fecha_modificacion' => $_POST['fecha_modificacion'],
     'id_tbl_centro_trabajo_hraes' => $_POST['id_tbl_centro_trabajo_hraes'],
     'id_cat_situacion_plaza_hraes' => $_POST['id_cat_situacion_plaza_hraes'],
+    'id_cat_plaza_unidad_adm' => $_POST['id_cat_plaza_unidad_adm'],
 ];
 
 $var = [

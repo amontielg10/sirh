@@ -1,30 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="notyf/notyf.min.css">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <title>Gráfica de Burbujas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
+    <div style="width: 50%; margin: auto;">
+        <canvas id="myBubbleChart"></canvas>
+    </div>
 
-  <button onclick="inicio();">hola</button>
+    <script>
+        const data = {
+            datasets: [{
+                label: 'Grupo A',
+                data: [
+                    { x: 10, y: 20, r: 60 },
+                    { x: 15, y: 25, r: 10 },
+                    { x: 20, y: 10, r: 5 },
+                ],
+                backgroundColor: 'rgba(255, 99, 132, 0.6)',
+            }, {
+                label: 'Grupo B',
+                data: [
+                    { x: 25, y: 30, r: 20 },
+                    { x: 30, y: 15, r: 25 },
+                    { x: 35, y: 25, r: 30 },
+                ],
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+            }]
+        };
 
+        const config = {
+            type: 'bubble',
+            data: data,
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Eje X'
+                        },
+                        beginAtZero: true
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Eje Y'
+                        },
+                        beginAtZero: true
+                    }
+                }
+            },
+        };
+
+        const myBubbleChart = new Chart(
+            document.getElementById('myBubbleChart'),
+            config
+        );
+    </script>
 </body>
-<script src="notyf/notyf.min.js"></script>
-
-<script>
-  function inicio() {
-    console.log('success');
-    var notyf = new Notyf();
-
-    // Display an error notification
-    notyf.error('Message error');
-
-
-  }
-</script>
-
 </html>

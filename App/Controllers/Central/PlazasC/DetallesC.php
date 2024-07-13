@@ -16,7 +16,7 @@ include '../../../Model/Hraes/Catalogos/CatNivelesM/CatNivelesM.php';
 include '../../../Controllers/Hrae/Catalogos/CatNivelesC/CatNivelesC.php';
 include '../../../Controllers/Hrae/Catalogos/CatZonasPagoC/CatZonasPagoC.php';
 include '../../../Model/Hraes/Catalogos/CatZonasPagoM/CatZonasPagoM.php';
-
+include '../../../Controllers/Catalogos/CatSelectC/CatSelectC.php';
 
 $catalogoPlazasM = new catalogoPlazasM();
 $catalogoPlazasC = new catalogoPlazasC();
@@ -33,6 +33,7 @@ $catalogoNivelesC = new catalogoNivelesC();
 $catalogoNivelesM = new catalogoNivelesM();
 $catZonasPagoM = new CatZonasPagoM();
 $catZonaPagoC = new CatZonaPagoC();
+$catSelectC = new CatSelectC();
 
 $id_object = $_POST['id_object'];
 
@@ -46,6 +47,11 @@ if ($id_object != null){
     //$niveles = $catalogoNivelesC ->returnSelectByIdObject($catalogoNivelesM->listarByAll(),returnArrayById($catalogoNivelesM->obtenerElemetoById($entity['id_cat_niveles_hraes'])));
     $niveles = returnArrayById($catalogoPuestoM->nameOfPuesto($entity['id_cat_puesto_hraes']));
     $pago = $catZonaPagoC->returnSelectByIdObject($catZonasPagoM->listarByAll(),returnArrayById($catZonasPagoM->ListarElemetoById($entity['id_tbl_zonas_pago_hraes'])));
+    
+    $unidadAdmin = $catSelectC->selectByAllCatalogo($modelPlazasHraes->catUnidadAmninAll());
+    if (($entity['id_cat_plaza_unidad_adm'] != null)) {
+        $unidadAdmin = $catSelectC->selectByEditCatalogo($modelPlazasHraes->catUnidadAmninAll(), returnArrayById($modelPlazasHraes->CatUnidadAmninEdit($entity['id_cat_plaza_unidad_adm'])));
+    }
     $raw = [
         'entity' => $entity,
         'plazas' => $plazas,
@@ -55,6 +61,7 @@ if ($id_object != null){
         'tabulares' => $tabulares,
         'niveles' => $niveles[0],
         'pago' => $pago,
+        'unidadAdmin' => $unidadAdmin,
     ];
     echo json_encode($raw);
 } else { ///Agregar
@@ -66,6 +73,7 @@ if ($id_object != null){
     $tabulares = $catalogoTabularesC->returnSelect($catalogoTabularesM->listarByAll());
     $niveles = $catalogoNivelesC->returnSelect($catalogoNivelesM->listarByAll());
     $pago = $catZonaPagoC->returnSelect($catZonasPagoM->listarByAll());
+    $unidadAdmin = $catSelectC->selectByAllCatalogo($modelPlazasHraes->catUnidadAmninAll());
     $raw = [
         'niveles' => 'Nivel',
         'puesto' => $puesto,
@@ -75,6 +83,7 @@ if ($id_object != null){
         'unidadResp' => $unidadResp,
         'tabulares' => $tabulares,
         'pago' => $pago,
+        'unidadAdmin' => $unidadAdmin,
     ];
     echo json_encode($raw);
 }

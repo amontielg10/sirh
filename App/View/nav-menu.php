@@ -164,6 +164,23 @@ $id_rol = $_SESSION['id_rol'];
                         </li>
                     <?php } ?>
                     <!-- FEDERALIZADA -->
+
+                    <!-- FEDERALIZADA -->
+                    <?php if ($id_rol == 1) { ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle nav-text-tittle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Otras acciones
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../../Otros/Catalogos/index.php">Catalogos</a></li>
+                            </ul>
+                        </li>
+                    <?php } ?>
+                    <!-- FEDERALIZADA -->
+
+                    
+
                 </ul>
 
                 <!-- CONFIG -->

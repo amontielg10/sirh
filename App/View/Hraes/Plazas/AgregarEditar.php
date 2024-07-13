@@ -132,7 +132,7 @@
                             </div>
                         </div>
                         <div class="col-2">
-                        <div class="row">
+                            <div class="row">
                                 <div class="col-md-12">
                                     <label for="campo" class="form-label input-text-form">Niveles</label>
                                     <label class="text-required">*</label>
@@ -181,13 +181,30 @@
 
                     <div class="div-spacing"></div>
                     <div class="row mx-1">
+                        <div class="col-7">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="campo" class="form-label input-text-form">Unidad administrativa</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_plaza_unidad_adm"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-3">
                             <label for="campo" class="form-label input-text-form">Fecha de movimiento</label><label
                                 class="text-required">*</label>
                             <input type="date" class="form-control custom-input" id="fecha_inicio_movimiento">
                             <div class="line"></div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-2">
                             <fieldset disabled id="checkbox_disabled" data-toggle="tooltip" data-placement="top"
                                 title="Una plaza plantilla es aquella cuyo número aún no está definido.">
                                 <label for="campo" class="form-label input-text-form">¿Es plantilla?</label><label
