@@ -1,6 +1,8 @@
 var id_tbl_centro_trabajo_hraes = document.getElementById("id_tbl_centro_trabajo_hraes").value;
 var mensajeSalida = 'Se produjo un error al ejecutar la acción';
 
+
+
 $(document).ready(function () {
     buscarPlaza();
     buscarInfoCentroTrabajo();

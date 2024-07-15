@@ -10,7 +10,8 @@ $condicion = [
 
 $datos = [
     'id_cat_especialidad_hraes' => $_POST['id_cat_especialidad_hraes'],
-    'id_tbl_empleados_hraes' => $_POST['id_tbl_empleados_hraes']
+    'id_tbl_empleados_hraes' => $_POST['id_tbl_empleados_hraes'],
+    'cedula' => $_POST['cedula'],
 ];
 
 $var = [

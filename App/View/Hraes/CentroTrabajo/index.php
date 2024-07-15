@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-3">
 
-                <!--
+                    <!--
                     <button onclick="mostrarModalCarga();" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Launch demo modal
                     </button>
@@ -41,9 +41,10 @@
             <div class="row div-spacing">
                 <div class="col-3">
                     <div class="form-inline">
-                        <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i
-                                class="fa fa-plus icon-size-add"></i>
-                            <span class="hide-menu text-button-add">&nbsp;Agregar centro de trabajo</span>
+                        <button onclick="agregarEditarDetalles(null)" type="button" class="btn btn-light"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                class="fa fa-plus icono-pequeno-tabla"></i>
+                            <span class="hide-menu text-button-add">&nbsp;Agregar</span>
                         </button>
                     </div>
                 </div>
@@ -78,10 +79,11 @@
     </div>
 </div>
 
+<?php include '../../librerias.php' ?>
 <script src="../../../../js/Hraes/CentroTrabajo/CentroTrabajo.js"></script>
 <script src="../../../../js/Hraes/CentroTrabajo/validar.js"></script>
 <script src="../../../../js/Hraes/CentroTrabajo/Busqueda.js"></script>
 <script src="../../../../js/Hraes/CentroTrabajo/Carga.js"></script>
-<?php include '../../librerias.php' ?>
+
 <?php include 'AgregarEditar.php' ?>
 <?php include 'Carga.php' ?>

@@ -20,6 +20,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="div-spacing"></div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="text-input-form text-input-rem">Cédula</label><label
+                                class="text-required">*</label>
+                            <input type="text" class="form-control" id="cedula_espec_" placeholder="Cédula" maxlength="15">
+                        </div>
+                    </div>
                 </div>
             </div>
 

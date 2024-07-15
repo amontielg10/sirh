@@ -1,7 +1,7 @@
 
 
 
-
+<script src="../../../../assets/notyf/notyf.min.js"></script>
 <script src="../../../../js/Mensajes/mensajes.js"></script>
 <script src="../../../../js/Global/Curp/ValidarCurp.js"></script>
 <script src="../../../../js/Global/Mensajes/Mensajes.js"></script>
@@ -60,7 +60,7 @@
 <script src="../../../.././assets/libs/sweetalert2/sweet-alert.init.js"></script>
 
 <script src="../../../../assets/bootstrap-select/dist/js/bootstrap-select.min.js" ></script>
-<script src="../../../../assets/notyf/notyf.min.js"></script>
+
 
 <!--
 <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>

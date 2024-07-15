@@ -38,6 +38,10 @@ function buscarInfor(){
             $('#colonia1').html(colonia);  
             $("#entidad1").val(entidad);
             $("#pais_f").val(pais);
+
+            $('#colonia1').selectpicker('refresh');
+            $('#municipio1').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
             
         }
     );
@@ -53,7 +57,10 @@ document.getElementById("municipio1").addEventListener("change", function() {
             var colonia = jsonData.colonia; 
 
             $('#colonia1').empty();
-            $('#colonia1').html(colonia);   
+            $('#colonia1').html(colonia);
+            
+            $('#colonia1').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
         }
     );
   });

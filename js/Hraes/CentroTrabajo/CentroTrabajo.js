@@ -1,6 +1,8 @@
 
 var mensajeSalida = 'Se produjo un error al ejecutar la acción';
 
+
+
 $(document).ready(function () {
     buscarCentro();
 });

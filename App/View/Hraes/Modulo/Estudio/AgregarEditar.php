@@ -23,13 +23,21 @@
                     <div class="div-spacing"></div>
                     <div class="row">
                         <div class="col-12">
-                            <label class="text-input-form div-spacing text-input-rem">Trayectoria laboral</label><label
+                            <label class="text-input-form div-spacing text-input-rem">Carrera</label><label
                                 class="text-required">*</label>
                             <div class="custom-select-wrapper">
                                 <select class="form-control" aria-label="Default select example"
                                     id="id_cat_carrera_hraes" required>
                                 </select>
                             </div>
+                        </div>
+                    </div>
+                    <div class="div-spacing"></div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="text-input-form text-input-rem">Cédula</label><label
+                                class="text-required">*</label>
+                            <input type="text" class="form-control" id="cedula_es_" placeholder="Cédula" maxlength="15">
                         </div>
                     </div>
                 </div>

@@ -37,10 +37,12 @@ function agregarEditarEstudio(id_object){
         id_object: id_object
     },
         function (data) {
-            var jsonData = JSON.parse(data);
-            var estudio = jsonData.estudio; 
+            let jsonData = JSON.parse(data);
+            let estudio = jsonData.estudio; 
+            let carrera = jsonData.carrera;
+            let response = jsonData.response;
 
-            var carrera = jsonData.carrera;
+            $('#cedula_es_').val(response.cedula);
 
             $('#id_cat_nivel_estudios').empty();
             $('#id_cat_nivel_estudios').html(estudio);
@@ -63,6 +65,7 @@ function guardarEstudio() {
         id_object: $("#id_object").val(),
         id_cat_carrera_hraes: $("#id_cat_carrera_hraes").val(),
         id_cat_nivel_estudios: $("#id_cat_nivel_estudios").val(),
+        cedula: $('#cedula_es_').val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
     },
         function (data) {

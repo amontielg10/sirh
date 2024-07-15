@@ -11,6 +11,7 @@ if ($id_object != null){
     $response = $row->returnArray($modelEspecialidadM->listarByIdEdit($id_object));
     $especialidad = $catEspecialidadC->selectByIdObject($catEspecialidadM->listarByAll(),$row->returnArrayById($catEspecialidadM->obtenerElemetoById($response['id_cat_especialidad_hraes'])));
     $var = [
+        'response' => $response,
         'especialidad' => $especialidad,
     ];
     echo json_encode($var);
@@ -18,6 +19,8 @@ if ($id_object != null){
     $especialidad = $catEspecialidadC->selectByAll($catEspecialidadM->listarByAll());
     $var = [
         'especialidad' => $especialidad,
+        'response' => '',
+        
     ];
     echo json_encode($var);
 }
