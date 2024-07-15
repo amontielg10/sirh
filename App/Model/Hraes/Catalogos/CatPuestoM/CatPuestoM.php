@@ -17,4 +17,11 @@ class catalogoPuestoM
                              WHERE id_cat_puesto_hraes = $idObject");
         return $listado;
     }
+
+    public function nameOfPuesto($id){
+        $query = pg_query("SELECT nivel
+                             FROM cat_puesto_hraes
+                             WHERE id_cat_puesto_hraes = $id;");
+        return $query;
+    }
 }

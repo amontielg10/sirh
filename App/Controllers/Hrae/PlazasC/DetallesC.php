@@ -45,7 +45,8 @@ if ($id_object != null) {///modificar
     $unidadResp = $catalogoUnidadResponsableC->returnCatUnidadByIdObject($cataloUnidadResposableM->listarByAll(), returnArrayById($cataloUnidadResposableM->obtenerElemetoById($entity['id_cat_unidad_responsable'])));
     $puesto = $catalogoPuestosC->returnCatPuestosByIdObject($catalogoPuestoM->listarByAll(), returnArrayById($catalogoPuestoM->obtenerElemetoById($entity['id_cat_puesto_hraes'])));
     $tabulares = $catalogoTabularesC->returnSelectByIdObject($catalogoTabularesM->listarByAll(), returnArrayById($catalogoTabularesM->obtenerElemetoById($entity['id_cat_zonas_tabuladores_hraes'])));
-    $niveles = $catalogoNivelesC->returnSelectByIdObject($catalogoNivelesM->listarByAll(), returnArrayById($catalogoNivelesM->obtenerElemetoById($entity['id_cat_niveles_hraes'])));
+    //$niveles = $catalogoNivelesC->returnSelectByIdObject($catalogoNivelesM->listarByAll(), returnArrayById($catalogoNivelesM->obtenerElemetoById($entity['id_cat_niveles_hraes'])));
+    $niveles = returnArrayById($catalogoPuestoM->nameOfPuesto($entity['id_cat_puesto_hraes']));
     $pago = $catZonaPagoC->returnSelectByIdObject($catZonasPagoM->listarByAll(), returnArrayById($catZonasPagoM->ListarElemetoById($entity['id_tbl_zonas_pago_hraes'])));
 
     $unidadAdmin = $catSelectC->selectByAllCatalogo($modelPlazasHraes->catUnidadAmninAll());
@@ -60,7 +61,7 @@ if ($id_object != null) {///modificar
         'contratacion' => $contratacion,
         'puesto' => $puesto,
         'tabulares' => $tabulares,
-        'niveles' => $niveles,
+        'niveles' => $niveles[0],
         'pago' => $pago,
         'unidadAdmin' => $unidadAdmin,
     ];
@@ -76,7 +77,7 @@ if ($id_object != null) {///modificar
     $pago = $catZonaPagoC->returnSelect($catZonasPagoM->listarByAll());
     $unidadAdmin = $catSelectC->selectByAllCatalogo($modelPlazasHraes->catUnidadAmninAll());
     $raw = [
-        'niveles' => $niveles,
+        'niveles' => 'Nivel',
         'puesto' => $puesto,
         'plazas' => $plazas,
         'entity' => $entity,
