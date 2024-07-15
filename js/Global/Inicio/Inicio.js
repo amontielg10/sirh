@@ -3,6 +3,9 @@ $(document).ready(function () {
     let id_role_ = document.getElementById('id_role_').value;
 
     if (id_role_ == 1){ //ROLE_ALL
+        centroTrabajoHraes();
+        plazasHraes();
+        empleadosHraes();
 
     } else if (id_role_ == 2){ //ROLE_CENTRAL
         //NOMINA_CENTRAL

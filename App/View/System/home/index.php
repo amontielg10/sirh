@@ -47,7 +47,7 @@ include '../../nav-menu.php';
             <?php if ($id_rol == 1) { ?><!-- ROLE_ALL -->
                 <div class="row">
                     <div class="col">
-                        <?php //include 'CardHraes.php' ?>
+                        <?php include 'CardHraes.php' ?>
                     </div>
                 </div>
             <?php } ?>
