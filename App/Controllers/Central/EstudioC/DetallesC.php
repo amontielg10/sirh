@@ -21,6 +21,7 @@ if ($id_object != null){
     $var = [
         'estudio' => $estudio,
         'carrera' => $carrera,
+        'response' => $response,
     ];
     echo json_encode($var);
 } else {
@@ -29,6 +30,7 @@ if ($id_object != null){
     $var = [
         'estudio' => $estudio,
         'carrera' => $carrera,
+        'response' => '',
     ];
     echo json_encode($var);
 }

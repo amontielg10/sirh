@@ -39,9 +39,9 @@ function buscarInfor(){
             $("#entidad1").val(entidad);
             $("#pais_f").val(pais);
             
-            $('#municipio1').selectpicker('refresh');
-            $('#colonia1').selectpicker('refresh');
-            $('.selectpicker').selectpicker();
+            //$('#municipio1').selectpicker('refresh');
+            //$('#colonia1').selectpicker('refresh');
+            //$('.selectpicker').selectpicker();
         }
     );
 }

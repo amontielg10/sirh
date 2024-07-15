@@ -17,7 +17,8 @@ $data =
         <tr>
             <th>Acciones</th>
             <th>Especialidad</th>
-        </tr>
+            <th>Cédula</th>
+            </tr>
     </thead>';
 
 if (pg_num_rows($listado) > 0) {
@@ -36,6 +37,9 @@ if (pg_num_rows($listado) > 0) {
                                 </td>
                             <td>
                                 ' . $row[1] . '
+                            </td>
+                            <td>
+                                ' . $row[2] . '
                             </td>
                         </tr>
                     </tbody>

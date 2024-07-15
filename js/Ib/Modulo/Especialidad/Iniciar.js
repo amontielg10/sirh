@@ -37,8 +37,11 @@ function agregarEditarEspecialidad(id_object){
         id_object: id_object
     },
         function (data) {
-            var jsonData = JSON.parse(data);
-            var especialidad = jsonData.especialidad; 
+            let jsonData = JSON.parse(data);
+            let response = jsonData.response; 
+            let especialidad = jsonData.especialidad; 
+
+            $('#cedula_espec_').val(response.cedula);
 
             $('#id_cat_especialidad_hraes').empty();
             $('#id_cat_especialidad_hraes').html(especialidad); 
@@ -56,6 +59,7 @@ function salirAgregarEditarEspecialidad(){
 function guardarCedula() {
     $.post("../../../../App/Controllers/Central/EspecialidadC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
+        cedula: $("#cedula_espec_").val(),
         id_cat_especialidad_hraes: $("#id_cat_especialidad_hraes").val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
     },
