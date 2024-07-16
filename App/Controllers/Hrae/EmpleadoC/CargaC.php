@@ -26,6 +26,17 @@ if (isset($_FILES[$fileExel]) && $_FILES[$fileExel]['error'] === UPLOAD_ERR_OK) 
 }
 
 
+/*
+SELECT
+    curp,
+    CASE
+        WHEN curp ~ '^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9][0-9]$' THEN 'Válida'
+        ELSE 'Inválida'
+    END AS estado_curp
+FROM
+    masivo_tbl_empleados_all
+order by masivo_tbl_empleados_all asc
+    */
 
 $var = [
     'bool' => $bool,
