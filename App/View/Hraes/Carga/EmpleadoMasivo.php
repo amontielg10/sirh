@@ -1,29 +1,6 @@
-<style>
-    .overlay {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background: linear-gradient(to bottom, #1e1e1e, #000000);
-        opacity: 0.9;
-        z-index: 9999;
-        display: none;
-    }
-
-    .spinner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: white;
-    }
-</style>
-
 <div class="card  border-0">
     <div class="card-body">
-        <h5 class="card-title">Proceso de Carga Masiva de Faltas</h5>
+        <h5 class="card-title">Proceso de Carga Masiva de Empleados</h5>
         <p class="card-text">
             <strong>¿Cómo se realiza el proceso de carga masiva?</strong><br>
             Para realizar el proceso exitoso de carga masiva es necesario considerar los siguientes puntos:
@@ -44,15 +21,16 @@
             </li>
         </ul>
         <p>
-            Para comenzar el proceso de carga masiva, asegúrate de tener el layout adecuado <a download  href="../../../../assets/Formato/FormatoFaltas.xlsx">descargalo aqui</a>. Este archivo
+            Para comenzar el proceso de carga masiva, asegúrate de tener el layout adecuado <a download
+                href="../../../../assets/Formato/FormatoFaltas.xlsx">descargalo aqui</a>. Este archivo
             servirá como guía para preparar tus datos correctamente antes de cargarlos en el sistema.
         </p>
     </div>
 </div>
 
 <div class="col text-right">
-    <button onclick="mostrarModalCargaFalta();" type="button" class="btn btn-light custom-btn text-button-upload"><i
-            class="fa fa-upload mr-2"></i>
+    <button onclick="mostrarModalCargaFaltaEmpleados();" type="button"
+        class="btn btn-light custom-btn text-button-upload"><i class="fa fa-upload mr-2"></i>
         Cargar</button>
 </div>
 
@@ -60,7 +38,7 @@
 
 <!-- MODALE_UPLOAD_FALTA -->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true" id="modal_carga_masiva_falta">
+    aria-hidden="true" id="modal_carga_masiva_empleados">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header background-modal">
@@ -70,7 +48,8 @@
                             <img src="../../../../assets/sirh/logo_carga_masiva.png" style="max-width: 100%;">
                         </div>
                         <div class="col-10">
-                            <h1 style="color:white; font-family: 'Montserrat';font-size: 40px;">Carga masiva faltas</h1>
+                            <h1 style="color:white; font-family: 'Montserrat';font-size: 40px;">Carga masiva empleados
+                            </h1>
                             <p style="color:white;">Espacio para realizar cargas masivas de faltas: Un área
                                 dedicada para facilitar la inserción eficiente en el
                                 sistema.</p>
@@ -82,36 +61,32 @@
             <div class="div-spacing"></div>
             <div class="card-body">
 
-                <form action="../../../../App/Controllers/Hrae/CentroTrabajoC/CargaC.php" method="POST"
-                    enctype="multipart/form-data">
-                    <div class="container">
-                        <div class="container mt-4">
-                            <div class="custom-file-container">
-                                <div class="custom-file-caption">Haz clic en el icono para cargar archivos</div>
-                                <div class="custom-file-hint">Tamaño máximo: 5 MB</div>
-                                <label for="customFile" class="btn btn-ligth">
-                                    <i style="background:white" class="fas fa-upload custom-file-icon"></i>
-                                </label>
-                                <input type="file" class="custom-file-input d-none" id="customFile"
-                                    onchange="updateFileName(this)" name="exel_centro_trabajo">
-                                <div class="custom-file-name"></div>
-                            </div>
+
+                <div class="container">
+                    <div class="container mt-4">
+                        <div class="custom-file-container">
+                            <div class="custom-file-caption">Haz clic en el icono para cargar archivos</div>
+                            <div class="custom-file-hint">Tamaño máximo: 15 MB</div>
+                            <label for="customFileEmpleado" class="btn btn-ligth">
+                                <i style="background:white" class="fas fa-upload custom-file-icon"></i>
+                            </label>
+                            <input type="file" class="custom-file-input d-none" id="customFileEmpleado"
+                                onchange="updateFileNameEmp(this)">
+                            <div class="custom-file-name-empleados"></div>
                         </div>
                     </div>
+                </div>
             </div>
 
             <div class="div-spacing"></div>
             <div class="modal-footer">
-                <button onclick="ocultarModalFalta();" type="button" class="btn btn-secondary" data-dismiss="modal"><i
-                        class="fas fa-times"></i> Cancelar</button>
-                <button type="submit" onclick="return validarCargaFalta();" type="button"
+                <button onclick="ocultarModalEmpleados();" type="button" class="btn btn-secondary"
+                    data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
+                <button onclick="return validarCargaEmpleados();" type="button"
                     class="btn btn-success save-botton-modal"><i class="fa fa-upload"></i>
                     Procesar</button>
             </div>
-            </form>
 
         </div>
     </div>
 </div>
-
-

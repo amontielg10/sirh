@@ -38,11 +38,12 @@
                                     href="#v-tabs-home" role="tab" aria-controls="v-tabs-home" aria-selected="true">
                                     <i class="	fa fa-folder-open mr-2"></i> Faltas</a>
 
-                                    <!--
+                                    
                                 <a onclick="" class="nav-link-mod" id="v-tabs-profile-tab" data-toggle="pill"
                                     href="#v-tabs-profile" role="tab" aria-controls="v-tabs-profile"
                                     aria-selected="false">
-                                    <i class="	fa fa-folder-open mr-2"></i> Plazas</a>
+                                    <i class="	fa fa-folder-open mr-2"></i> Empleados</a>
+                                    <!--
                                 <a onclick="" class="nav-link-mod" id="v-tabs-messages-tab" data-toggle="pill"
                                     href="#v-tabs-messages" role="tab" aria-controls="v-tabs-messages"
                                     aria-selected="false">
@@ -81,9 +82,9 @@
                                         <div class="col-12">
                                             <div class="card font-size-modulo shadow-lg">
                                                 <h5 class="card-header text-center background-modal color-text-tittle">
-                                                    Plazas</h5>
+                                                    Empleados</h5>
                                                 <div class="card-body">
-                                                    <?php //include 'Falta/index.php' ?>
+                                                    <?php include 'EmpleadoMasivo.php' ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -130,7 +131,8 @@
         </div>
     </div>
 
-    
+    <?php include 'Loader.php' ?>
 
     <?php include '../../librerias.php' ?>
     <script src="../../../../js/Hraes/Masivo/Faltas.js"></script>
+    <script src="../../../../js/Hraes/Masivo/Empleados.js"></script>
