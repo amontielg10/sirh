@@ -46,7 +46,7 @@ function validarCargaEmpleados(){
 
   function processDataEmpleado(file){
     ocultarModalEmpleados(); 
-    //fadeIn(); 
+    fadeIn(); 
     let data = new FormData();
     data.append('file',file);
 
@@ -58,6 +58,7 @@ function validarCargaEmpleados(){
     processData:false,
     cache:false, 
     success: function (data) {
+      fadeOut();
         console.log(data);
         let jsonData = JSON.parse(data);
         let bool = jsonData.bool; 
