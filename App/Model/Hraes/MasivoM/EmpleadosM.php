@@ -29,6 +29,21 @@ class MasivoEmpleadosM
                             END;");
         return $query;
     }
+
+    public function validateDataIsRequired($tableName, $tableAuxName, $valueTable, $valueTableAux, $IsText){
+        $query_ = pg_query("UPDATE $tableName
+                            SET observaciones = observaciones ||
+                                CASE 
+                                    WHEN EXISTS (
+                                        SELECT 1
+                                        FROM $tableAuxName 
+                                        WHERE $valueTableAux = $valueTable
+                                    )
+                                    THEN ' { $IsText :YA EXISTE }, '
+                                    ELSE ''
+                                END;");
+        return $query_;
+    }
     public function validateCurp($tableName)
     {
         $query = pg_query("UPDATE $tableName

@@ -12,6 +12,7 @@ $tableName = $schema . '.masivo_tbl_empleados_all';
 $tableNameEmplo = $schema . '.tbl_empleados_hraes';
 
 
+
 $masivoEmpleadosM = new MasivoEmpleadosM();
 
 $bool = $masivoEmpleadosM->truncateTable($tableName);
@@ -25,10 +26,10 @@ if (isset($_FILES[$fileExel]) && $_FILES[$fileExel]['error'] === UPLOAD_ERR_OK) 
     $bool = insertTemporaryTable($sheetData, $tableName, $connectionDBsPro) ? true : false; //INSERT IN TEMPORARY TABLE
     if(!$bool) exit ($bool);
 
-    $bool = processOfCurp($tableName,$masivoEmpleadosM,$tableNameEmplo);
+    $bool = processOfCurp($tableName,$masivoEmpleadosM,$tableNameEmplo) ? true : false;
     if (!$bool) exit ($bool);
 
-    $bool = $masivoEmpleadosM ->validateRFC($tableName) ? true : false;
+    $bool = processValidateIsUnique($masivoEmpleadosM, $tableName, $tableNameEmplo) ? true : false;
     if(!$bool) exit ($bool);
     /*
     
@@ -63,8 +64,8 @@ function processOfCurp($tableName,$masivoEmpleadosM,$tableNameEmplo){
     $isFlag_ = false;
 
     try {
-        $isFlag_ = $masivoEmpleadosM->addStatusGeneral($tableName, $tableNameEmplo) ? true : false;
-        $isFlag_ = $masivoEmpleadosM ->validateCurp($tableName) ? true : false;
+        $isFlag_ = $masivoEmpleadosM -> addStatusGeneral($tableName, $tableNameEmplo) ? true : false;
+        $isFlag_ = $masivoEmpleadosM -> validateCurp($tableName) ? true : false;
     } catch (\Throwable $th) {
         exit ($isFlag_);
     }
@@ -72,13 +73,22 @@ function processOfCurp($tableName,$masivoEmpleadosM,$tableNameEmplo){
     return $isFlag_;
 }
 
-function processValidateDataIsNull(){
-    
+function processValidateIsUnique($masivoEmpleadosM, $tableName, $tableNameEmplo){
+    $isFlag_ = false;
+
+    try {
+        $isFlag_ = $masivoEmpleadosM -> validateDataIsRequired ($tableName,$tableNameEmplo,($tableName.'.rfc'),($tableNameEmplo . '.rfc'), 'RFC') ? true : false;
+        $isFlag_ = $masivoEmpleadosM -> validateDataIsRequired ($tableName,$tableNameEmplo,($tableName.'.num_empleado'),($tableNameEmplo . '.num_empleado'), 'N EMPLEADO') ? true : false;
+        $isFlag_ = $masivoEmpleadosM -> validateRFC($tableName) ? true : false;
+    } catch (\Throwable $th) {
+       exit ($isFlag_);
+    }
+    return $isFlag_;
 }
 
 
 
-function validateDataNull($tableName,$masivoEmpleadosM){
+function validateDataNull($tableName,$masivoEmpleadosM){ /// _IS_REQUIRED
     $bool = $masivoEmpleadosM->validateIsNull($tableName, 'apellido_paterno', 'A PATERNO') ? true : false; if (!$bool) exit ($bool);
     $bool = $masivoEmpleadosM->validateIsNull($tableName, 'nombre', 'NOMBRE') ? true : false; if (!$bool) exit ($bool);
     $bool = $masivoEmpleadosM->validateIsNull($tableName, 'num_empleado', 'N EMPLEADO') ? true : false; if (!$bool) exit ($bool);
