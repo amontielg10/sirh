@@ -73,18 +73,19 @@ class MasivoEmpleadosM
                             SET observaciones = observaciones || 
                                     CASE
                                         WHEN LENGTH($columnName) < $maxValue OR $columnName IS NULL THEN ''
+                                        WHEN $columnName = 'X' THEN ''
                                         ELSE ' { $text :MAX $maxValue CHAR}, '
                                     END;");
         return $query;
     }
 
-    public function validateIsNull($tableName, $columnName, $text)
+    public function validateIsNull($tableName, $columnName, $text) ///IS REQUIRED
     {
         $query = pg_query("UPDATE $tableName    
                            SET observaciones = observaciones ||
                                 CASE 
                                     WHEN TRIM($columnName) IS NOT NULL THEN ''
-                                    ELSE ' { $text :CAMPO REQUERIDO}'
+                                    ELSE ' { $text :CAMPO REQUERIDO},'
                                 END;");
         return $query;
     }
