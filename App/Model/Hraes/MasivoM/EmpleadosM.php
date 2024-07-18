@@ -72,13 +72,33 @@ class MasivoEmpleadosM
         $query = pg_query("UPDATE $tableName
                             SET observaciones = observaciones || 
                                     CASE
-                                        WHEN LENGTH($columnName) < $maxValue OR $columnName IS NULL THEN ''
+                                        WHEN LENGTH($columnName) <= $maxValue THEN ''
                                         WHEN $columnName = 'X' THEN ''
                                         ELSE ' { $text :MAX $maxValue CHAR}, '
                                     END;");
         return $query;
     }
 
+    public function validateIsNumber($tableName,$columnName, $text, $isEquals){
+        $query = pg_query ("UPDATE $tableName
+                            SET observaciones = observaciones ||  CASE 
+                                WHEN length($columnName) = $isEquals AND $columnName ~ '^[0-9]+$' THEN ''
+                                WHEN $columnName = 'X' THEN ''
+                                ELSE ' { $text :NO VALIDO},'
+                            END;");
+        return $query;
+    }
+
+    public function validateDate($tableName,$columnName,$text){
+        $query = pg_query("UPDATE $tableName
+                            SET observaciones = observaciones ||  CASE 
+                                WHEN $columnName ~ '^\d{4}-\d{2}-\d{2}$' THEN ''
+                                WHEN $columnName ~ '^\d{4}/\d{2}/\d{2}$' THEN ''
+                                WHEN $columnName = 'X' THEN ''
+                                ELSE ' { $text :FORMATO REQUERIDO(AAAA-MM-DD)},'
+                            END;");
+        return $query;
+    }
     public function validateIsNull($tableName, $columnName, $text) ///IS REQUIRED
     {
         $query = pg_query("UPDATE $tableName    
@@ -90,15 +110,6 @@ class MasivoEmpleadosM
         return $query;
     }
 
-    public function validateNumberEmployee($tableName, $tableName_emp)
-    {
-        $query = pg_query(" ");
-        return $query;
-    }
 
-    public function validateIsNumber($tableName, $columnName){
-        $query = pg_query ("");
-        return $query;
-    }
 
 }

@@ -39,21 +39,17 @@ if (isset($_FILES[$fileExel]) && $_FILES[$fileExel]['error'] === UPLOAD_ERR_OK) 
     if (!$bool)
         exit($bool);
 
-    /*
-    
+    $bool = validateCharMax($masivoEmpleadosM, $tableName) ? true : false;
+    if (!$bool)
+        exit ($bool);
 
-    $bool = $masivoEmpleadosM ->validateCurp($tableName) ? true : false;
-    if(!$bool) exit ($bool);
+    $bool = validateNumberIsEquals($masivoEmpleadosM,$tableName) ? true : false;
+    if (!$bool)
+        exit ($bool);
 
-    $bool = $masivoEmpleadosM ->validateRFC($tableName) ? true : false;
-    if(!$bool) exit ($bool);
-
-    validateCharMax($masivoEmpleadosM, $tableName);
-    validateDataNull($tableName,$masivoEmpleadosM);
-
-    $bool = $masivoEmpleadosM ->validateNumberEmployee($tableName,$tableNameEmplo) ? true : false;
-    if(!$bool) exit ($bool);
-    */
+    $bool = validdateDate($masivoEmpleadosM,$tableName) ? true : false;
+    if(!$bool)
+        exit ($bool);
 }
 
 $var = [
@@ -67,6 +63,32 @@ echo json_encode($var);
 
 //-------------
 ///ON FUNCTION 
+
+function validdateDate($masivoEmpleadosM,$tableName){
+    $isFlag_ = false;
+    try {
+        $isFlag_ = $masivoEmpleadosM->validateDate($tableName,'fecha_expedicion','FECHA EXPEDICION') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateDate($tableName,'fecha_ingreso_gob_federal', 'FECHA FEDERAL') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateDate($tableName,'fecha_ingreso_imss', 'FECHA IMSS') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateDate($tableName,'vigencia_del', 'VIGENCIA DEL') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateDate($tableName,'vigencia_al', 'VIGENCIA AL') ? true : false;
+    } catch (\Throwable $th) {
+        exit ($isFlag_);
+    }
+    return $isFlag_;
+}
+
+function validateNumberIsEquals($masivoEmpleadosM,$tableName){
+    $isFlag_ = false;
+    try {
+        $isFlag_ = $masivoEmpleadosM->validateIsNumber($tableName, 'num_seguro_social', 'NUM S SOCIAL',11) ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsNumber($tableName, 'num_telefono', 'NUM TELEFONO',10) ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsNumber($tableName, 'num_movil', 'NUM MOVIL',10) ? true : false;
+    } catch (\Throwable $th) {
+        exit ($isFlag_);
+    }
+    return $isFlag_;
+}
 
 function processOfCurp($tableName, $masivoEmpleadosM, $tableNameEmplo)
 {
@@ -88,7 +110,7 @@ function processValidateIsUnique($masivoEmpleadosM, $tableName, $tableNameEmplo)
 
     try {
         $isFlag_ = $masivoEmpleadosM->validateDataIsRequired($tableName, $tableNameEmplo, ($tableName . '.rfc'), ($tableNameEmplo . '.rfc'), 'RFC') ? true : false;
-        $isFlag_ = $masivoEmpleadosM->validateDataIsRequired($tableName, $tableNameEmplo, ($tableName . '.num_empleado'), ($tableNameEmplo . '.num_empleado'), 'N EMPLEADO') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateDataIsRequired($tableName, $tableNameEmplo, ($tableName . '.num_empleado'), ($tableNameEmplo . '.num_empleado'), 'NUM EMPLEADO') ? true : false;
         $isFlag_ = $masivoEmpleadosM->validateRFC($tableName) ? true : false;
     } catch (\Throwable $th) {
         exit($isFlag_);
@@ -135,7 +157,7 @@ function validateDataNull($tableName, $masivoEmpleadosM)
         $isFlag_ = $masivoEmpleadosM->validateIsNull($tableName, 'rama', 'RAMA') ? true : false;
         $isFlag_ = $masivoEmpleadosM->validateIsNull($tableName, 'nivel_estudio', 'NIVEL ESTUDIO') ? true : false;
         $isFlag_ = $masivoEmpleadosM->validateIsNull($tableName, 'carrera', 'CARRERA') ? true : false;
-        $isFlag_ = $masivoEmpleadosM->validateIsNull($tableName, 'cedula_carrrera', 'CED CARRERA') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsNull($tableName, 'cedula_carrera', 'CED CARRERA') ? true : false;
         $isFlag_ = $masivoEmpleadosM->validateIsNull($tableName, 'especialidad', 'ESPECIALIDAD') ? true : false;
         $isFlag_ = $masivoEmpleadosM->validateIsNull($tableName, 'cedula_especialidad', 'CED ESPECIALIDAD') ? true : false;
         $isFlag_ = $masivoEmpleadosM->validateIsNull($tableName, 'fecha_expedicion', 'FECHA EXPEDICION') ? true : false;
@@ -158,7 +180,16 @@ function validateCharMax($masivoEmpleadosM, $tableName)
     $isFlag_ = false;
 
     try {
-        $bool = $masivoEmpleadosM->validateChar($tableName, 'apellido_paterno', 40, 'A PATERNO') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateChar($tableName, 'apellido_paterno', 40, 'AP PATERNO') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateChar($tableName, 'apellido_materno', 40, 'AP MATERNO') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateChar($tableName, 'nombre', 40, 'NOMBRE') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateChar($tableName, 'num_empleado', 30, 'NUM EMPLEADO') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateChar($tableName, 'num_seguro_social', 11, 'NUM S SOCIAL') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateChar($tableName, 'calle', 100, 'CALLE') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateChar($tableName, 'num_exterior', 20, 'NUM EXTERIOR') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateChar($tableName, 'num_interior', 20, 'NUM INTERIOR') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateChar($tableName, 'cedula_carrera', 40, 'CED CARRERA') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateChar($tableName, 'cedula_especialidad', 40, 'CED ESPECIALIDAD') ? true : false;
     } catch (\Throwable $th) {
         exit($isFlag_);
     }
@@ -212,7 +243,7 @@ function insertTemporaryTable($file, $tableName, $connectionDBsPro)
                     'rama' => trim(pg_escape_string($row['AE'])) ? strtoupper(trim(pg_escape_string($row['AE']))) : null,
                     'nivel_estudio' => trim(pg_escape_string($row['AF'])) ? strtoupper(trim(pg_escape_string($row['AF']))) : null,
                     'carrera' => trim(pg_escape_string($row['AG'])) ? strtoupper(trim(pg_escape_string($row['AG']))) : null,
-                    'cedula_carrrera' => trim(pg_escape_string($row['AH'])) ? strtoupper(trim(pg_escape_string($row['AH']))) : null,
+                    'cedula_carrera' => trim(pg_escape_string($row['AH'])) ? strtoupper(trim(pg_escape_string($row['AH']))) : null,
                     'especialidad' => trim(pg_escape_string($row['AI'])) ? strtoupper(trim(pg_escape_string($row['AI']))) : null,
                     'cedula_especialidad' => trim(pg_escape_string($row['AJ'])) ? strtoupper(trim(pg_escape_string($row['AJ']))) : null,
                     'fecha_expedicion' => trim(pg_escape_string($row['AK'])) ? strtoupper(trim(pg_escape_string($row['AK']))) : null,
@@ -236,33 +267,3 @@ function insertTemporaryTable($file, $tableName, $connectionDBsPro)
     return $bool;
 }
 
-/*
-
---SELECT * FROM public.clues_central
---SELECT * FROM public.clues_all
-
-SELECT 
-	UPPER(TRIM(clues_all.clue)) AS clue,
-	UPPER(TRIM(clues_all.nombre)) AS nombre,
-	UPPER(TRIM(clues_all.pais)) AS pais,
-	UPPER(TRIM(clues_all.domicilio)) AS colonia,
-	UPPER(TRIM(clues_all.cp)) AS codigo_postal,
-	UPPER(TRIM(clues_all.num_exterior)) AS num_exterior,
-	UPPER(TRIM(clues_all.num_interior)) AS num_interior,
-	UPPER(TRIM(clues_all.latitud)) AS latitud,
-	UPPER(TRIM(clues_all.longitud)) AS longitud,
-	UPPER(TRIM(clues_all.id_region)) AS id_region,
-	UPPER(TRIM(clues_all.id_estatus)) AS id_esttaus,
-	UPPER(TRIM(clues_all.id_entidad)) AS id_entidad,
-	UPPER(TRIM(clues_all.atencion)) AS atencion,
-	UPPER(TRIM(clues_all.abreviaturas)) AS abreviaturas
-FROM clues_central
-INNER JOIN clues_all
-ON UNACCENT(UPPER(TRIM(clues_central.clue))) =
-	UNACCENT(UPPER(TRIM(clues_all.clue)))
-
-	--WHERE clues_all.clue is null
-
---WHERE clues_all.clue is null
-
-*/

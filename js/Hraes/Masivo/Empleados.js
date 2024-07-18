@@ -58,7 +58,7 @@ function validarCargaEmpleados(){
     processData:false,
     cache:false, 
     success: function (data) {
-      fadeOut();
+        fadeOut();
         console.log(data);
         let jsonData = JSON.parse(data);
         let bool = jsonData.bool; 
@@ -67,6 +67,7 @@ function validarCargaEmpleados(){
         if (bool){
            // getFileEmpleado();
            console.log('success');
+           notyf.success('El proceso se llevó a cabo con éxito');
         } else {
             fadeOut();
             notyf.error(message);
