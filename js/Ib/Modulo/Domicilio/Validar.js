@@ -39,9 +39,9 @@ function buscarInfor(){
             $("#entidad1").val(entidad);
             $("#pais_f").val(pais);
             
-            //$('#municipio1').selectpicker('refresh');
-            //$('#colonia1').selectpicker('refresh');
-            //$('.selectpicker').selectpicker();
+            $('#colonia1').selectpicker('refresh');
+            $('#municipio1').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
         }
     );
 }
@@ -56,7 +56,10 @@ document.getElementById("municipio1").addEventListener("change", function() {
             var colonia = jsonData.colonia; 
 
             $('#colonia1').empty();
-            $('#colonia1').html(colonia);   
+            $('#colonia1').html(colonia); 
+            
+            $('#colonia1').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
         }
     );
   });

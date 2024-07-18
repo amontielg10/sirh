@@ -49,7 +49,11 @@ function agregarEditarEstudio(id_object){
             $('#id_cat_nivel_estudios').html(estudio);
             
             $('#id_cat_carrera_hraes').empty();
-            $('#id_cat_carrera_hraes').html(carrera); 
+            $('#id_cat_carrera_hraes').html(carrera);
+            
+            $('#id_cat_nivel_estudios').selectpicker('refresh');
+            $('#id_cat_carrera_hraes').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
         }
     );
 

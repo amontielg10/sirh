@@ -1,6 +1,5 @@
 
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" rel="stylesheet">
 
 <style>
     .bootstrap-select:hover .dropdown-toggle {
@@ -51,4 +50,3 @@
 </div>
 
 <?php include 'AgregarEditar.php' ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>

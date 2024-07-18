@@ -236,6 +236,7 @@ function insertTemporaryTable($file, $tableName, $connectionDBsPro)
     return $bool;
 }
 
+/*
 
 --SELECT * FROM public.clues_central
 --SELECT * FROM public.clues_all
@@ -263,3 +264,5 @@ ON UNACCENT(UPPER(TRIM(clues_central.clue))) =
 	--WHERE clues_all.clue is null
 
 --WHERE clues_all.clue is null
+
+*/
