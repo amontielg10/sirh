@@ -2,6 +2,7 @@ var mensajeSalida = 'Se produjo un error al ejecutar la acción';
 
 $(document).ready(function () {
     buscarEmpleado();
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 function buscarEmpleado(){ //BUSQUEDA
@@ -169,4 +170,45 @@ function convertirAMayusculas(event, inputId) {
 
   function validarNumero(input) {
     input.value = input.value.replace(/[^\d]/g, '');
+  }
+
+
+  function powerBiRefresh(){
+    Swal.fire({
+        title: "Power BI Refresh",
+        text: "Power BI Refresh se utiliza para actualizar la información en el tablero de Power BI. Este proceso puede tomar unos minutos.",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, continuar",
+        cancelButtonText: "Cancelar",
+        confirmButtonColor: '#235B4E', 
+        cancelButtonColor:'#6c757d',
+      }).then((result) => {
+        if (result.isConfirmed) {
+            fadeIn();
+           
+        $.post("../../../../App/Controllers/Central/EmpleadoC/PowerBiC.php", {
+            },
+            function (data) {
+                if (data){
+                    mensajeExito('Proceso realizado con éxito')
+                } else {
+                    mensajeError(mensajeSalida);
+                }
+                fadeOut();
+            }
+        );
+    }
+    });
+  }
+
+
+  function fadeIn(){
+    $('#overlay').fadeIn();
+  }
+
+  function fadeOut(){
+    $('#overlay').fadeOut();
   }

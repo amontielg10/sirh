@@ -424,3 +424,44 @@ hr {
         text-align: center;
         color: white;
     }
+
+
+    .btn-circle-custom {
+        width: 30px;
+        /* Ancho del botón */
+        height: 30px;
+        /* Altura del botón */
+        border-radius: 50%;
+        /* Hace que el botón sea completamente circular */
+        border: 2px solid #007bff;
+        /* Borde con ancho y color */
+        background-color: transparent;
+        /* Fondo transparente */
+        display: inline-flex;
+        /* Para alinear el contenido al centro */
+        justify-content: center;
+        /* Para alinear el contenido al centro */
+        align-items: center;
+        /* Para alinear el contenido al centro */
+        padding: 0;
+        /* Sin espacio interno */
+    }
+
+    .btn-outline-custom {
+        border-color: #235B4E;
+        /* Color del borde */
+        color: #007bff;
+        /* Color del texto */
+    }
+
+    .btn-outline-custom:hover {
+        color: #a4aab0;
+        /* Color del texto al pasar el cursor */
+        background-color: #a4aab0;
+        /* Fondo al pasar el cursor */
+    }
+
+    .btn-outline-custom:focus {
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+        /* Sombra al enfocar */
+    }

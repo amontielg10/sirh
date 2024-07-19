@@ -1,63 +1,33 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Gráfica de Burbujas</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tooltip en Botón de Bootstrap</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- jQuery (necesario para Bootstrap tooltips) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  
+  <!-- Bootstrap JS (necesario para Bootstrap tooltips) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div style="width: 50%; margin: auto;">
-        <canvas id="myBubbleChart"></canvas>
-    </div>
+  <div class="container mt-5">
+    <!-- Botón con Tooltip -->
+    <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Este es un tooltip">
+      Botón con Tooltip
+    </button>
+  </div>
 
-    <script>
-        const data = {
-            datasets: [{
-                label: 'Grupo A',
-                data: [
-                    { x: 10, y: 20, r: 60 },
-                    { x: 15, y: 25, r: 10 },
-                    { x: 20, y: 10, r: 5 },
-                ],
-                backgroundColor: 'rgba(255, 99, 132, 0.6)',
-            }, {
-                label: 'Grupo B',
-                data: [
-                    { x: 25, y: 30, r: 20 },
-                    { x: 30, y: 15, r: 25 },
-                    { x: 35, y: 25, r: 30 },
-                ],
-                backgroundColor: 'rgba(54, 162, 235, 0.6)',
-            }]
-        };
-
-        const config = {
-            type: 'bubble',
-            data: data,
-            options: {
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Eje X'
-                        },
-                        beginAtZero: true
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'Eje Y'
-                        },
-                        beginAtZero: true
-                    }
-                }
-            },
-        };
-
-        const myBubbleChart = new Chart(
-            document.getElementById('myBubbleChart'),
-            config
-        );
-    </script>
+  <!-- Script para inicializar los tooltips -->
+  <script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
 </body>
 </html>

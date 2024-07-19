@@ -38,13 +38,13 @@
                                     href="#v-tabs-home" role="tab" aria-controls="v-tabs-home" aria-selected="true">
                                     <i class="	fa fa-folder-open mr-2"></i> Faltas</a>
 
-                                    
+                                    <!--
                                   
                                 <a onclick="" class="nav-link-mod" id="v-tabs-profile-tab" data-toggle="pill"
                                     href="#v-tabs-profile" role="tab" aria-controls="v-tabs-profile"
                                     aria-selected="false">
                                     <i class="	fa fa-folder-open mr-2"></i> Empleados</a>
-
+-->
                                     <!--
                                 <a onclick="" class="nav-link-mod" id="v-tabs-messages-tab" data-toggle="pill"
                                     href="#v-tabs-messages" role="tab" aria-controls="v-tabs-messages"

@@ -34,11 +34,18 @@
             <div class="row div-spacing">
                 <div class="col-9">
                     <div class="form-inline">
-                        <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i
-                                class="fa fa-plus icon-size-add"></i>
-                            <span class="hide-menu text-button-add">&nbsp;Agregar empleado</span>
+                        <button onclick="agregarEditarDetalles(null)" type="button" class="btn btn-light"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                class="fa fa-plus icono-pequeno-tabla"></i>
+                            <span class="hide-menu text-button-add">&nbsp;Agregar</span>
                         </button>
                     </div>
+                </div>
+                <div class="col text-right">
+                    <button onclick="powerBiRefresh();" class="btn btn-circle-custom btn-outline-custom" data-toggle="tooltip" data-placement="top"
+                        title="Power Bi Refresh">
+                        <i class="fa fa-line-chart" style="color: #235B4E;"></i> <!-- Icono de Font Awesome -->
+                    </button>
                 </div>
             </div>
 
@@ -68,6 +75,15 @@
             </div>
 
         </div>
+    </div>
+</div>
+
+<div class="overlay" id="overlay">
+    <div class="spinner">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Cargando...</span>
+        </div>
+        <p class="mt-3" id="loaderMessage">Cargando...</p>
     </div>
 </div>
 
