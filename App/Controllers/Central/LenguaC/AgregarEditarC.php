@@ -1,17 +1,16 @@
 <?php
 include '../librerias.php';
 
-$modelEspecialidadM = new ModelEspecialidadM();
+$lenguaM = new LenguaM();
 $bitacoraM = new BitacoraM();
 
 $condicion = [
-    'id_ctrl_especialidad_hraes' => $_POST['id_object']
+    'id_ctrl_lengua' => $_POST['id_object']
 ];
 
 $datos = [
-    'id_cat_especialidad_hraes' => $_POST['id_cat_especialidad_hraes'],
+    'id_cat_lengua' => $_POST['id_cat_lengua'],
     'id_tbl_empleados_hraes' => $_POST['id_tbl_empleados_hraes'],
-    'cedula' => $_POST['cedula']
 ];
 
 $var = [
@@ -20,9 +19,9 @@ $var = [
 ];
 
 if ($_POST['id_object'] != null) { //Modificar
-    if ($modelEspecialidadM->editarByArray($connectionDBsPro, $datos, $condicion)) {
+    if ($lenguaM->editarByArray($connectionDBsPro, $datos, $condicion)) {
         $dataBitacora = [
-            'nombre_tabla' => 'central.ctrl_especialidad_hraes',
+            'nombre_tabla' => 'central.ctrl_lengua',
             'accion' => 'MODIFICAR',
             'valores' => json_encode($var),
             'fecha' => $timestamp,
@@ -33,9 +32,9 @@ if ($_POST['id_object'] != null) { //Modificar
     }
 
 } else { //Agregar
-    if ($modelEspecialidadM->agregarByArray($connectionDBsPro, $datos)) {
+    if ($lenguaM->agregarByArray($connectionDBsPro, $datos)) {
         $dataBitacora = [
-            'nombre_tabla' => 'central.ctrl_especialidad_hraes',
+            'nombre_tabla' => 'central.ctrl_lengua',
             'accion' => 'AGREGAR',
             'valores' => json_encode($var),
             'fecha' => $timestamp,

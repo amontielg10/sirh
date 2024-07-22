@@ -16,7 +16,7 @@ $data =
     <thead class="text-center">
         <tr>
             <th>Acciones</th>
-            <th>Especialidad</th>
+            <th>Descripci&oacuten</th>
             </tr>
     </thead>';
 

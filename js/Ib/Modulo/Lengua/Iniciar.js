@@ -38,14 +38,11 @@ function agregarEditarLengua(id_object){
     },
         function (data) {
             let jsonData = JSON.parse(data);
-            let response = jsonData.response; 
-            let especialidad = jsonData.especialidad; 
+            let islengua = jsonData.lengua; 
 
-            $('#cedula_espec_').val(response.cedula);
-
-            $('#id_cat_especialidad_hraes').empty();
-            $('#id_cat_especialidad_hraes').html(especialidad); 
-            $('#id_cat_especialidad_hraes').selectpicker('refresh');
+            $('#id_cat_lengua').empty();
+            $('#id_cat_lengua').html(islengua); 
+            $('#id_cat_lengua').selectpicker('refresh');
             $('.selectpicker').selectpicker();
         }
     );
@@ -58,23 +55,22 @@ function salirAgregarEditarLengua(){
 }
 
 
-function guardarCedula() {
-    $.post("../../../../App/Controllers/Central/EspecialidadC/AgregarEditarC.php", {
+function guardarLengua() {
+    $.post("../../../../App/Controllers/Central/LenguaC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
-        cedula: $("#cedula_espec_").val(),
-        id_cat_especialidad_hraes: $("#id_cat_especialidad_hraes").val(),
+        id_cat_lengua: $("#id_cat_lengua").val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
     },
         function (data) {
             if (data == 'edit'){
-                mensajeExito('Especialidad modificada con éxito');
+                mensajeExito('Lengua modificada con éxito');
             } else if (data == 'add') {
-                mensajeExito('Especialidad agregada con éxito');  
+                mensajeExito('Lengua agregada con éxito');  
             } else {
                 mensajeError(data);
             }
-            $("#agregar_editar_especialidad").modal("hide");
-            buscarEspecialidad();
+            $("#agregar_editar_lengua").modal("hide");
+            buscarLengua();
         }
     );
 }
@@ -88,19 +84,21 @@ function eliminarLengua(id_object) {//ELIMINAR USUARIO
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Si, eliminar",
-        cancelButtonText: "Cancelar"
+        cancelButtonText: "Cancelar",
+        confirmButtonColor: '#235B4E', 
+        cancelButtonColor:'#6c757d',
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Central/EspecialidadC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/LenguaC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {
                 if (data == 'delete'){
-                    mensajeExito('Especialidad eliminada con éxito')
+                    mensajeExito('Lengua eliminada con éxito')
                 } else {
                     mensajeError(data);
                 }
-                buscarEspecialidad();
+                buscarLengua();
             }
         );
     }

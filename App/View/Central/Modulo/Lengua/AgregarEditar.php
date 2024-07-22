@@ -36,7 +36,7 @@
                                 <div class="col-md-12">
                                     <select class="form-control custom-select selectpicker"
                                         data-style="input-select-selectpicker" aria-label="Default select example"
-                                        data-live-search="true" id="id_cat_especialidad_hraes_"
+                                        data-live-search="true" id="id_cat_lengua"
                                         data-none-results-text="Sin resultados">
                                     </select>
                                 </div>
@@ -51,7 +51,7 @@
                 <button onclick="salirAgregarEditarLengua();" type="button" class="btn btn-secondary"
                     data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
                 <button type="button" class="btn btn-success save-botton-modal"
-                    onclick="return validarEspecialidad();"><i class="fas fa-save"></i> Guardar</button>
+                    onclick="return validarLEngua();"><i class="fas fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
             </div>
         </div>

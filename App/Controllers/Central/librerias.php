@@ -81,3 +81,4 @@ include '../../../Controllers/Hrae/Catalogos/CatCapacidadC/CatCapacidadC.php';
 
 
 include '../../../Model/Central/LenguaM/LenguaM.php';
+include '../../../Model/Catalogos/CatLenguaM/CatLenguaM.php';

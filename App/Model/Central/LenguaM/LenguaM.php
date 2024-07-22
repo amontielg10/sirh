@@ -10,7 +10,7 @@ class LenguaM
                             FROM central.ctrl_lengua
                             INNER JOIN public.cat_lengua
                                 ON public.cat_lengua.id_cat_lengua =
-                                    central.ctrl_lengua.id_ctrl_lengua
+                                    central.ctrl_lengua.id_cat_lengua
                             WHERE central.ctrl_lengua.id_tbl_empleados_hraes = $id_object
                             ORDER BY central.ctrl_lengua.id_ctrl_lengua DESC
                             LIMIT 3 OFFSET $paginator;");
@@ -25,7 +25,7 @@ class LenguaM
                             FROM central.ctrl_lengua
                             INNER JOIN public.cat_lengua
                                 ON public.cat_lengua.id_cat_lengua =
-                                    central.ctrl_lengua.id_ctrl_lengua
+                                    central.ctrl_lengua.id_cat_lengua
                             WHERE central.ctrl_lengua.id_tbl_empleados_hraes = $id_object
                             AND TRIM(UPPER(UNACCENT(CONCAT(public.cat_lengua.identificador,' ', 
                                 public.cat_lengua.descripcion)))) LIKE '%$busqueda%'
@@ -38,25 +38,25 @@ class LenguaM
     {
         $listado = pg_query("SELECT *
                              FROM central.ctrl_lengua
-                             WHERE central.ctrl_lengua.ctrl_lengua = $id_object");
+                             WHERE central.ctrl_lengua.id_ctrl_lengua = $id_object");
         return $listado;
     }
 
     function editarByArray($conexion, $datos, $condicion)
     {
-        $pg_update = pg_update($conexion, 'central.ctrl_especialidad_hraes', $datos, $condicion);
+        $pg_update = pg_update($conexion, 'central.ctrl_lengua', $datos, $condicion);
         return $pg_update;
     }
 
     function agregarByArray($conexion, $datos)
     {
-        $pg_add = pg_insert($conexion, 'central.ctrl_especialidad_hraes', $datos);
+        $pg_add = pg_insert($conexion, 'central.ctrl_lengua', $datos);
         return $pg_add;
     }
 
     function eliminarByArray($conexion, $condicion)
     {
-        $pgs_delete = pg_delete($conexion, 'central.ctrl_especialidad_hraes', $condicion);
+        $pgs_delete = pg_delete($conexion, 'central.ctrl_lengua', $condicion);
         return $pgs_delete;
     }
 
