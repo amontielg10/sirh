@@ -25,7 +25,12 @@ function validar(){
         caracteresCount('Núm. de seguro social',12,nss)
     ){
         if (nss.length == 11 || nss.length == 0){
-            validarUnique(rfc,curp,num_empleado,id_object);
+            if (nss > 0){
+                validarUnique(rfc,curp,num_empleado,id_object);
+            } else {
+                mensajeError('invalid field nss');
+            }
+            
         } else {
             mensajeError('El Núm. de seguro social debe tener 11 caracteres');
         }
