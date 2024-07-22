@@ -1,6 +1,6 @@
 <hr>
 <div class="row">
-    <div class="col-4">
+    <div class="col-8 col-md-8 col-lg-7 col-xl-6 col-xxl-4 mb-4">
         <div class="card border-light shadow-lg">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-8 col-md-8 col-lg-7 col-xl-6 col-xxl-4 mb-4">
         <div class="card border-light shadow-lg">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
@@ -102,7 +102,7 @@
         </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-8 col-md-8 col-lg-7 col-xl-6 col-xxl-4 mb-4">
         <div class="card border-light shadow-lg">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">

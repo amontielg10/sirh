@@ -78,3 +78,7 @@
 <script src="../../../../js/Ib/Modulo/Falta/Iniciar.js"></script>
 <script src="../../../../js/Ib/Modulo/Falta/Validar.js"></script>
 <script src="../../../../js/Ib/Modulo/Falta/buscar.js"></script>
+
+<script src="../../../../js/Ib/Modulo/Lengua/Iniciar.js"></script>
+<script src="../../../../js/Ib/Modulo/Lengua/Validar.js"></script>
+<script src="../../../../js/Ib/Modulo/Lengua/buscar.js"></script>

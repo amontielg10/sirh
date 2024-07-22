@@ -192,12 +192,12 @@ function convertirAMayusculas(event, inputId) {
         $.post("../../../../App/Controllers/Central/EmpleadoC/PowerBiC.php", {
             },
             function (data) {
+                fadeOut();
                 if (data){
                     mensajeExito('Proceso realizado con éxito')
                 } else {
                     mensajeError(mensajeSalida);
                 }
-                fadeOut();
             }
         );
     }
