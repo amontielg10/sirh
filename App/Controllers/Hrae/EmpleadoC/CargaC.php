@@ -8,7 +8,7 @@ $message = 'ok';
 $fileExel = 'file';
 
 $schema = 'public';
-$tableName = $schema . '.masivo_tbl_empleados_all';
+$tableName = $schema . '.masivo_tbl_empleados';
 $tableNameEmplo = $schema . '.tbl_empleados_hraes';
 
 
@@ -41,15 +41,19 @@ if (isset($_FILES[$fileExel]) && $_FILES[$fileExel]['error'] === UPLOAD_ERR_OK) 
 
     $bool = validateCharMax($masivoEmpleadosM, $tableName) ? true : false;
     if (!$bool)
-        exit ($bool);
+        exit($bool);
 
-    $bool = validateNumberIsEquals($masivoEmpleadosM,$tableName) ? true : false;
+    $bool = validateNumberIsEquals($masivoEmpleadosM, $tableName) ? true : false;
     if (!$bool)
-        exit ($bool);
+        exit($bool);
 
-    $bool = validdateDate($masivoEmpleadosM,$tableName) ? true : false;
-    if(!$bool)
-        exit ($bool);
+    $bool = validdateDate($masivoEmpleadosM, $tableName) ? true : false;
+    if (!$bool)
+        exit($bool);
+
+    $bool = validateIsCatalogue($masivoEmpleadosM, $tableName) ? true : false;
+    if (!$bool)
+        exit($bool);
 }
 
 $var = [
@@ -64,28 +68,60 @@ echo json_encode($var);
 //-------------
 ///ON FUNCTION 
 
-function validdateDate($masivoEmpleadosM,$tableName){
+function validateIsCatalogue($masivoEmpleadosM, $tableName)
+{
     $isFlag_ = false;
     try {
-        $isFlag_ = $masivoEmpleadosM->validateDate($tableName,'fecha_expedicion','FECHA EXPEDICION') ? true : false;
-        $isFlag_ = $masivoEmpleadosM->validateDate($tableName,'fecha_ingreso_gob_federal', 'FECHA FEDERAL') ? true : false;
-        $isFlag_ = $masivoEmpleadosM->validateDate($tableName,'fecha_ingreso_imss', 'FECHA IMSS') ? true : false;
-        $isFlag_ = $masivoEmpleadosM->validateDate($tableName,'vigencia_del', 'VIGENCIA DEL') ? true : false;
-        $isFlag_ = $masivoEmpleadosM->validateDate($tableName,'vigencia_al', 'VIGENCIA AL') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'pais_nacimiento', 'cat_pais_nacimiento', 'nombre', 'PAIS NACIMIENTO') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'estado_nacimiento', 'cat_estado_nacimiento', 'nombre', 'ESTADO NACIMIENTO') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'estado_civil', 'cat_estado_civil', 'estado_civil', 'E CIVIL') ? true : false;
+       
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'contratacion', 'cat_tipo_contratacion_hraes', 'tipo_contratacion', 'TIPO CONTRATACION') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'sub_contratacion', 'cat_subtipo_contratacion_hraes', 'subtipo', 'SUP CONTRATACION') ? true : false;
+
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'unidad', 'cat_unidad', 'nombre', 'UNIDAD') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'coordinacion', 'cat_coordinacion', 'nombre', 'COORDINACION') ? true : false;
+
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'codigo_puesto', 'cat_puesto_hraes', 'codigo_puesto', 'COD PUESTO') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'nivel', 'cat_puesto_hraes', 'nivel', 'NIVEL') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'puesto', 'cat_puesto_hraes', 'nombre_posicion', 'NOM PUESTO') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogueInteger($tableName, 'tabular', 'cat_zona_tabuladores_hraes', 'zona_tabuladores', 'TABULAR') ? true : false;
+
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'nivel_estudio', 'cat_nivel_estudios', 'nivel_estudios', 'NIVEL ESTUDIO') ? true : false;
+        //$isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'codigo_postal', 'cat_sepomex', 'codigo_postal', 'C POSTAL') ? true : false;
+        //$isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'codigo_postal_fiscal', 'cat_sepomex', 'codigo_postal', 'CP FISCAL') ? true : false;
+        //$isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'municipio', 'cat_sepomex', 'municipio', 'MUNICIPIO') ? true : false;
+        // $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'colonia', 'cat_sepomex', 'colonia', 'COLONIA') ? true : false;
     } catch (\Throwable $th) {
-        exit ($isFlag_);
+        exit($isFlag_);
     }
     return $isFlag_;
 }
 
-function validateNumberIsEquals($masivoEmpleadosM,$tableName){
+function validdateDate($masivoEmpleadosM, $tableName)
+{
     $isFlag_ = false;
     try {
-        $isFlag_ = $masivoEmpleadosM->validateIsNumber($tableName, 'num_seguro_social', 'NUM S SOCIAL',11) ? true : false;
-        $isFlag_ = $masivoEmpleadosM->validateIsNumber($tableName, 'num_telefono', 'NUM TELEFONO',10) ? true : false;
-        $isFlag_ = $masivoEmpleadosM->validateIsNumber($tableName, 'num_movil', 'NUM MOVIL',10) ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateDate($tableName, 'fecha_expedicion', 'FECHA EXPEDICION') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateDate($tableName, 'fecha_ingreso_gob_federal', 'FECHA FEDERAL') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateDate($tableName, 'fecha_ingreso_imss', 'FECHA IMSS') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateDate($tableName, 'vigencia_del', 'VIGENCIA DEL') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateDate($tableName, 'vigencia_al', 'VIGENCIA AL') ? true : false;
     } catch (\Throwable $th) {
-        exit ($isFlag_);
+        exit($isFlag_);
+    }
+    return $isFlag_;
+}
+
+function validateNumberIsEquals($masivoEmpleadosM, $tableName)
+{
+    $isFlag_ = false;
+    try {
+        $isFlag_ = $masivoEmpleadosM->validateIsNumber($tableName, 'num_seguro_social', 'NUM S SOCIAL', 11) ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsNumber($tableName, 'num_telefono', 'NUM TELEFONO', 10) ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsNumber($tableName, 'num_movil', 'NUM MOVIL', 10) ? true : false;
+    } catch (\Throwable $th) {
+        exit($isFlag_);
     }
     return $isFlag_;
 }

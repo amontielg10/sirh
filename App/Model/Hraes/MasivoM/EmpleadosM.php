@@ -15,7 +15,8 @@ class MasivoEmpleadosM
         return $query;
     }
 
-    public function addStatusGeneral($tableName, $tableNameEmployee){
+    public function addStatusGeneral($tableName, $tableNameEmployee)
+    {
         $query = pg_query("UPDATE $tableName
                             SET estatus  = CASE
                                 WHEN EXISTS (
@@ -30,7 +31,8 @@ class MasivoEmpleadosM
         return $query;
     }
 
-    public function validateDataIsRequired($tableName, $tableAuxName, $valueTable, $valueTableAux, $IsText){
+    public function validateDataIsRequired($tableName, $tableAuxName, $valueTable, $valueTableAux, $IsText)
+    {
         $query_ = pg_query("UPDATE $tableName
                             SET observaciones = observaciones ||
                                 CASE 
@@ -79,8 +81,9 @@ class MasivoEmpleadosM
         return $query;
     }
 
-    public function validateIsNumber($tableName,$columnName, $text, $isEquals){
-        $query = pg_query ("UPDATE $tableName
+    public function validateIsNumber($tableName, $columnName, $text, $isEquals)
+    {
+        $query = pg_query("UPDATE $tableName
                             SET observaciones = observaciones ||  CASE 
                                 WHEN length($columnName) = $isEquals AND $columnName ~ '^[0-9]+$' THEN ''
                                 WHEN $columnName = 'X' THEN ''
@@ -89,7 +92,8 @@ class MasivoEmpleadosM
         return $query;
     }
 
-    public function validateDate($tableName,$columnName,$text){
+    public function validateDate($tableName, $columnName, $text)
+    {
         $query = pg_query("UPDATE $tableName
                             SET observaciones = observaciones ||  CASE 
                                 WHEN $columnName ~ '^\d{4}-\d{2}-\d{2}$' THEN ''
@@ -110,6 +114,43 @@ class MasivoEmpleadosM
         return $query;
     }
 
+    public function validateIsCatalogue($tableName, $columnName, $tableCat, $isValue, $isText)
+    {
+        $isValueComparate = $tableName . '.' . $columnName;
 
+        $query = pg_query("UPDATE $tableName 
+                            SET observaciones = observaciones ||
+                                CASE 
+                                    WHEN EXISTS (
+                                        SELECT DISTINCT(1)
+                                        FROM $tableCat
+                                        WHERE UPPER(TRIM(UNACCENT($isValueComparate))) = UPPER(TRIM(UNACCENT($isValue))) 
+                                    ) OR $isValueComparate = 'X' THEN ''
+                                    ELSE ' { $isText : NO ENCONTRADO EN CATALOGO }, '
+                                END;");
+        return $query;
+    }
 
+    public function validateIsCatalogueInteger($tableName, $columnName, $tableCat, $isValue, $isText)
+    {
+        $isValueComparate = $tableName . '.' . $columnName;
+
+        $query = pg_query("UPDATE $tableName 
+                            SET observaciones = observaciones ||
+                            CASE
+                                WHEN length($isValueComparate) > 0 AND $isValueComparate != translate($isValueComparate, '0123456789', '') THEN (
+                                    CASE 
+                                    WHEN EXISTS (
+                                        SELECT DISTINCT(1)
+                                        FROM $tableCat
+                                        WHERE $isValueComparate::INTEGER = $isValue::INTEGER
+                                    ) OR $isValueComparate = 'X' THEN ''
+                                    ELSE ' { $isText : NO ENCONTRADO EN CATALOGO }, '
+                                END
+                                )  
+                                WHEN $isValueComparate = 'X' THEN '' 
+                                ELSE ' { $isText : NO ENCONTRADO EN CATALOGO }, '
+                            END;");
+        return $query;
+    }
 }
