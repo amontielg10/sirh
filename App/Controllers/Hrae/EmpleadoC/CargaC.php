@@ -88,6 +88,10 @@ function validateIsCatalogue($masivoEmpleadosM, $tableName)
         $isFlag_ = $masivoEmpleadosM->validateIsCatalogueInteger($tableName, 'tabular', 'cat_zona_tabuladores_hraes', 'zona_tabuladores', 'TABULAR') ? true : false;
 
         $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'nivel_estudio', 'cat_nivel_estudios', 'nivel_estudios', 'NIVEL ESTUDIO') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'carrera', 'cat_carrera_hraes', 'carrera', 'CARRERA') ? true : false;
+
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'especialidad', 'cat_especialidad_hraes', 'especialidad', 'ESPECIALIDAD') ? true : false;
+        
         //$isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'codigo_postal', 'cat_sepomex', 'codigo_postal', 'C POSTAL') ? true : false;
         //$isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'codigo_postal_fiscal', 'cat_sepomex', 'codigo_postal', 'CP FISCAL') ? true : false;
         //$isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'municipio', 'cat_sepomex', 'municipio', 'MUNICIPIO') ? true : false;
