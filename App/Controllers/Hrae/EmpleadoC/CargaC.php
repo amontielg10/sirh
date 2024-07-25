@@ -10,6 +10,7 @@ $fileExel = 'file';
 $schema = 'public';
 $tableName = $schema . '.masivo_tbl_empleados';
 $tableNameEmplo = $schema . '.tbl_empleados_hraes';
+$tablePlaza = $schema . '.tbl_control_plazas_hraes';
 
 
 
@@ -54,6 +55,15 @@ if (isset($_FILES[$fileExel]) && $_FILES[$fileExel]['error'] === UPLOAD_ERR_OK) 
     $bool = validateIsCatalogue($masivoEmpleadosM, $tableName) ? true : false;
     if (!$bool)
         exit($bool);
+
+    $bool = validateNumPlaza($masivoEmpleadosM, $tableName, $tablePlaza) ? true : false;
+    if(!$bool)
+        exit($bool);
+
+    $bool = validateData($masivoEmpleadosM, $tableName,$tableNameEmplo,$schema) ? true : false;
+    if(!$bool)
+        exit($bool);
+    
 }
 
 $var = [
@@ -68,6 +78,29 @@ echo json_encode($var);
 //-------------
 ///ON FUNCTION 
 
+function validateData($masivoEmpleadosM, $tableName,$tableNameEmplo,$schema){
+    $isflag_ = false;
+    try {
+        $isflag_ = $masivoEmpleadosM->validateStatusFinalPlaza($tableName,$tableNameEmplo) ? true : false;
+        $isflag_ = $masivoEmpleadosM->validateEstatusDomicilio($schema) ? true : false;
+    } catch (\Throwable $th) {
+        exit ($isflag_);
+    }
+    return $isflag_;
+}
+
+
+function validateNumPlaza($masivoEmpleadosM, $tableName, $tablePlaza)
+{
+    $isFlag_ = false;
+    try {
+        $isFlag_ = $masivoEmpleadosM->validateIsPlazaNumber($tableName, 'num_plaza', $tablePlaza) ? true : false;
+    } catch (\Throwable $th) {
+        exit($isFlag_);
+    }
+    return $isFlag_;
+}
+
 function validateIsCatalogue($masivoEmpleadosM, $tableName)
 {
     $isFlag_ = false;
@@ -75,7 +108,7 @@ function validateIsCatalogue($masivoEmpleadosM, $tableName)
         $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'pais_nacimiento', 'cat_pais_nacimiento', 'nombre', 'PAIS NACIMIENTO') ? true : false;
         $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'estado_nacimiento', 'cat_estado_nacimiento', 'nombre', 'ESTADO NACIMIENTO') ? true : false;
         $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'estado_civil', 'cat_estado_civil', 'estado_civil', 'E CIVIL') ? true : false;
-       
+
         $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'contratacion', 'cat_tipo_contratacion_hraes', 'tipo_contratacion', 'TIPO CONTRATACION') ? true : false;
         $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'sub_contratacion', 'cat_subtipo_contratacion_hraes', 'subtipo', 'SUP CONTRATACION') ? true : false;
 
@@ -91,16 +124,26 @@ function validateIsCatalogue($masivoEmpleadosM, $tableName)
         $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'carrera', 'cat_carrera_hraes', 'carrera', 'CARRERA') ? true : false;
 
         $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'especialidad', 'cat_especialidad_hraes', 'especialidad', 'ESPECIALIDAD') ? true : false;
-        
-        //$isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'codigo_postal', 'cat_sepomex', 'codigo_postal', 'C POSTAL') ? true : false;
-        //$isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'codigo_postal_fiscal', 'cat_sepomex', 'codigo_postal', 'CP FISCAL') ? true : false;
-        //$isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'municipio', 'cat_sepomex', 'municipio', 'MUNICIPIO') ? true : false;
-        // $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'colonia', 'cat_sepomex', 'colonia', 'COLONIA') ? true : false;
+
+
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogueInteger($tableName, 'quinquenio', 'cat_quinquenio', 'importe', 'QUINQUENIO') ? true : false;
+
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogueInteger($tableName, 'regimen_pensionario', 'cat_valores', 'valor', 'REG PENSIONARIO') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogueInteger($tableName, 'ahorro_solidario', 'cat_valores', 'valor', 'AHORRO SOL') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogueInteger($tableName, 'svi', 'cat_valores', 'valor', 'SVI') ? true : false;
+
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'codigo_postal', 'cat_aux_sepomex', 'codigo_postal', 'C POSTAL') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'codigo_postal_fiscal', 'cat_aux_sepomex', 'codigo_postal', 'CP FISCAL') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'municipio', 'cat_aux_sepomex', 'municipio', 'MUNICIPIO') ? true : false;
+        $isFlag_ = $masivoEmpleadosM->validateIsCatalogue($tableName, 'colonia', 'cat_aux_sepomex', 'colonia', 'COLONIA') ? true : false;
     } catch (\Throwable $th) {
         exit($isFlag_);
     }
     return $isFlag_;
 }
+
+
+
 
 function validdateDate($masivoEmpleadosM, $tableName)
 {

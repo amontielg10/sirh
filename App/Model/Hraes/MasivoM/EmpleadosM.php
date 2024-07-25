@@ -153,4 +153,120 @@ class MasivoEmpleadosM
                             END;");
         return $query;
     }
+
+    public function validateIsPlazaNumber($tableName, $columnName, $tableCat)
+    {
+        $isValueComparate = $tableName . '.' . $columnName;
+        $isValue = $tableCat . '.num_plaza';
+
+        $query = pg_query("UPDATE $tableName 
+                            SET observaciones = observaciones ||
+                                CASE 
+                                    WHEN EXISTS (
+                                        SELECT 1
+                                        FROM $tableCat
+                                        WHERE $isValueComparate = $isValue 
+                                        AND id_cat_tipo_plazas = 5
+                                    ) OR $isValueComparate = 'X' THEN ''
+                                    ELSE ' { NUM PLAZA: NO ESTA VACANTE O NO EXISTE}, '
+                                END;");
+        return $query;
+    }
+
+    public function validateStatusFinalPlaza($tableName, $tableEmployee){
+        $query = pg_query("UPDATE $tableName 
+                            SET estatus = -- ADD STATUS FINALLY
+                            CASE 
+                                WHEN (
+                                        $tableName.observaciones LIKE '%RFC%' OR 
+                                        $tableName.observaciones LIKE '%CURP%' OR 
+                                        $tableName.observaciones LIKE '%NOMBRE%' OR 
+                                        $tableName.observaciones LIKE '%AP PATERNO%' OR 
+                                        $tableName.observaciones LIKE '%AP MATERNO%' OR 
+                                        $tableName.observaciones LIKE '%NUM S SOCIAL%' OR 
+                                        $tableName.observaciones LIKE '%NUM EMPLEADO%' OR 
+                                        $tableName.observaciones LIKE '%E CIVIL%' OR 
+                                        $tableName.observaciones LIKE '%PAIS NACIMIENTO%' OR 
+                                        $tableName.observaciones LIKE '%ESTADO NACIMIENTO%'
+                                    ) THEN '{EMPLEADO:OMITIDO}'
+                                ELSE (
+                                --	--	--	IN SECON CONDITIO
+                                    CASE
+                                                            WHEN EXISTS (
+                                                                SELECT 1
+                                                                FROM $tableEmployee
+                                                                WHERE $tableName.curp = 
+                                                                    $tableEmployee.curp
+                                                            )
+                                                            THEN '{EMPLEADO:MODIFICADO}'
+                                                            ELSE (
+                                                            ---	---	--	INIT CONDITION
+                                                                CASE 
+                                                                    WHEN (
+                                                                        $tableName.curp = 'X' OR 
+                                                                        $tableName.rfc = 'X' OR 
+                                                                        $tableName.apellido_paterno = 'X' OR 
+                                                                        $tableName.apellido_materno = 'X' OR 
+                                                                        $tableName.nombre = 'X' OR
+                                                                        $tableName.num_empleado = 'X' OR
+                                                                        $tableName.estado_civil = 'X' OR 
+                                                                        $tableName.pais_nacimiento = 'X' OR 
+                                                                        $tableName.estado_nacimiento = 'X' 
+                                                                    ) THEN '{EMPLEADO:OMITIDO-X}'
+                                                                    ELSE '{EMPLEADO:AGREGADO}'
+                                                                END
+                                                            --- --- --  FINALLY CONDITION
+                                                            )
+                                                        END
+                                --	--	-- FINALLY 
+                                )
+                            END;");
+        return $query;
+    }
+
+    public function validateEstatusDomicilio($isSchema){
+        $query = pg_query("UPDATE $isSchema.masivo_tbl_empleados 
+                            SET estatus = estatus ||
+                                CASE 
+                                    WHEN (
+                                        $isSchema.masivo_tbl_empleados.observaciones LIKE '%C POSTAL%' OR 
+                                        $isSchema.masivo_tbl_empleados.observaciones LIKE '%CP FISCAL%' OR 
+                                        $isSchema.masivo_tbl_empleados.observaciones LIKE '%MUNICIPIO%' OR 
+                                        $isSchema.masivo_tbl_empleados.observaciones LIKE '%COLONIA%' OR 
+                                        $isSchema.masivo_tbl_empleados.observaciones LIKE '%CALLE%' OR 
+                                        $isSchema.masivo_tbl_empleados.observaciones LIKE '%NUM EXTERIOR%' OR 
+                                        $isSchema.masivo_tbl_empleados.observaciones LIKE '%NUM INTERIOR%' 
+                                    ) THEN ', {DOMICILIO:OMITIDO}'
+                                    ELSE (
+                                        CASE 
+                                            WHEN EXISTS (
+                                                SELECT 1
+                                                FROM $isSchema.tbl_domicilios_hraes
+                                                INNER JOIN $isSchema.tbl_empleados_hraes ON 
+                                                    $isSchema.tbl_domicilios_hraes.id_tbl_empleados_hraes = $isSchema.tbl_empleados_hraes.id_tbl_empleados_hraes
+                                                WHERE $isSchema.tbl_empleados_hraes.curp = $isSchema.masivo_tbl_empleados.curp
+                                            ) THEN ', {DOMICILIIO:MODIFICADO}'
+                                            ELSE (
+                                                CASE 
+                                                    WHEN (
+                                                        $isSchema.masivo_tbl_empleados.codigo_postal = 'X' OR 
+                                                        $isSchema.masivo_tbl_empleados.codigo_postal_fiscal = 'X' OR 
+                                                        $isSchema.masivo_tbl_empleados.municipio = 'X' OR 
+                                                        $isSchema.masivo_tbl_empleados.colonia = 'X' OR 
+                                                        $isSchema.masivo_tbl_empleados.calle = 'X' OR
+                                                        $isSchema.masivo_tbl_empleados.num_exterior = 'X' 
+                                                    ) THEN ', {DOMICILIO:OMITIDO-X}'
+                                                    ELSE (
+                                                        CASE 
+                                                            WHEN substring(estatus FROM 'EMPLEADO ([^\s]+)') = 'OMITIDO' THEN ', {DOMICILIO:OMITIDO-E}'
+                                                            ELSE ', {DOMICILIO:AGREGADO}'
+                                                        END
+                                                        )
+                                                    END
+                                                )
+                                            END
+                                        )
+                                    END;");
+        return $query;
+    }
 }
