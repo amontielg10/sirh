@@ -82,3 +82,18 @@ include '../../../Controllers/Hrae/Catalogos/CatCapacidadC/CatCapacidadC.php';
 
 include '../../../Model/Central/LenguaM/LenguaM.php';
 include '../../../Model/Catalogos/CatLenguaM/CatLenguaM.php';
+
+include '../../../Model/Catalogos/CatPlazasM/CatPlazasM.php';
+include '../../../Controllers/Catalogos/CatPlazasC/CatPlazasC.php';
+include '../../../Controllers/Hrae/Catalogos/CatTipoContratacionC/CatTipoContratacionC.php';
+include '../../../Model/Hraes/Catalogos/CatTipoContratacionM/CatTipoContratacionM.php';
+include '../../../Model/Catalogos/CatUnidadResponsableM/CatUnidadResponsableM.php';
+include '../../../Controllers/Catalogos/CatUnidadResponsableC/CatUnidadResponsableC.php';
+include '../../../Controllers/Hrae/Catalogos/CatPuestoC/CatPuestosC.php';
+include '../../../Controllers/Hrae/Catalogos/CatTabularesC/CatTabularesC.php';
+include '../../../Model/Hraes/Catalogos/CatTabularesM/CatTabularesM.php';
+include '../../../Controllers/Hrae/Catalogos/CatNivelesC/CatNivelesC.php';
+include '../../../Model/Hraes/Catalogos/CatNivelesM/CatNivelesM.php';
+include '../../../Controllers/Hrae/Catalogos/CatZonasPagoC/CatZonasPagoC.php';
+include '../../../Model/Hraes/Catalogos/CatZonasPagoM/CatZonasPagoM.php';
+include '../../../Model/Catalogos/CatUnidadAdM/CatUnidadAdM.php';

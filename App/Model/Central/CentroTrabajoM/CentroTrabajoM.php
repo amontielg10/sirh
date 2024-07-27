@@ -110,6 +110,17 @@ class modelCentroTrabajoHraes
         return $listado;
     }
 
+    function getEntityZona($idClue){
+        $query = pg_query("SELECT CONCAT(public.cat_entidad.clave_entidad, ' - ', 
+                                    public.cat_entidad.entidad)
+                            FROM central.tbl_centro_trabajo_hraes
+                            INNER JOIN public.cat_entidad
+                                ON public.cat_entidad.id_cat_entidad =
+                                    central.tbl_centro_trabajo_hraes.id_cat_entidad
+                            WHERE central.tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes = $idClue;");
+        return $query;
+    }
+
 
 
     ///FUNCIONES PARA CARGA MASIVA

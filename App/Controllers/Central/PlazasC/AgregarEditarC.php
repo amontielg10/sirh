@@ -1,12 +1,18 @@
 <?php
-include '../../../../conexion.php';
-include '../../../View/validar_sesion.php';
-include '../../../Model/Central/PlazasM/PlazasM.php';
-include '../../../Model/Central/BitacoraM/BitacoraM.php';
+include '../../../Model/Central/Catalogos/CatPuestoM/CatPuestoM.php';
+include '../librerias.php';
 
+$row = new Row();
+$catalogoPuestoM= new catalogoPuestoM();
 $model = new modelPlazasHraes();
 $bitacoraM = new BitacoraM();
 $tablaPlazas = 'central.tbl_control_plazas_hraes';
+
+$id_cat_puesto_hraes = $_POST['id_cat_puesto_hraes'];
+$id_cat_aux_puesto = $_POST['id_cat_aux_puesto'];
+$id_cat_categoria_puesto = $_POST['id_cat_categoria_puesto'];
+
+$isValue = $row ->returnArrayById($catalogoPuestoM->getIdOfTableAux($id_cat_puesto_hraes,$id_cat_aux_puesto,$id_cat_categoria_puesto));
 
 $condicion = [
     'id_tbl_control_plazas_hraes' => $_POST['id_object']
@@ -18,8 +24,7 @@ $datos = [
     'id_cat_unidad_responsable' => $_POST['id_cat_unidad_responsable'],
     'id_cat_puesto_hraes' => $_POST['id_cat_puesto_hraes'],
     'id_cat_zonas_tabuladores_hraes' => $_POST['id_cat_zonas_tabuladores_hraes'],
-    //'id_cat_niveles_hraes' => $_POST['id_cat_puesto_hraes'],
-    'id_tbl_zonas_pago_hraes' => $_POST['id_tbl_zonas_pago'],
+    'id_cat_aux_puesto' => $isValue[0],
     'num_plaza' => $_POST['num_plaza'],
     'fecha_ingreso_inst' => $_POST['fecha_ingreso_inst'],
     'fecha_inicio_movimiento' => $_POST['fecha_inicio_movimiento'],
@@ -27,7 +32,9 @@ $datos = [
     'fecha_modificacion' => $_POST['fecha_modificacion'],
     'id_tbl_centro_trabajo_hraes' => $_POST['id_tbl_centro_trabajo_hraes'],
     'id_cat_situacion_plaza_hraes' => $_POST['id_cat_situacion_plaza_hraes'],
-    'id_cat_plaza_unidad_adm' => $_POST['id_cat_plaza_unidad_adm'],
+
+    'id_cat_unidad' => $_POST['id_cat_unidad'],
+    'id_cat_coordinacion' => $_POST['id_cat_coordinacion'],
 ];
 
 $var = [

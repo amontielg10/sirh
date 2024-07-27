@@ -46,8 +46,10 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
     }
     $.post("../../../../App/Controllers/Central/PlazasC/DetallesC.php", {
         id_object: id_object,
+        id_tbl_centro_trabajo_hraes:id_tbl_centro_trabajo_hraes
     },
         function (data) {
+            console.log(data);
             let jsonData = JSON.parse(data);//se obtiene el json
             let entity = jsonData.entity; //Se agrega a emtidad 
             let plazas = jsonData.plazas;
@@ -57,8 +59,18 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             let tabulares = jsonData.tabulares;
             let niveles = jsonData.niveles;
             let pago = jsonData.pago;
-            let unidadAdmin_ = jsonData.unidadAdmin;
+            let is_unidadAdmin_ = jsonData.unidadAdmin;
+            let is_unidadCoor = jsonData.unidadCoor;
+            let is_nomEspecifico = jsonData.nomEspecifico;
+            let is_puestoCategoria = jsonData.puestoCategoria;
+            let is_zona = jsonData.zona;
             
+            $('#id_cat_unidad').empty();
+            $('#id_cat_unidad').html(is_unidadAdmin_); 
+            $('#id_cat_coordinacion').empty();
+            $('#id_cat_coordinacion').html(is_unidadCoor); 
+            $('#id_cat_aux_puesto').empty();
+            $('#id_cat_aux_puesto').html(is_nomEspecifico); 
             $('#id_cat_plazas').empty();
             $('#id_cat_plazas').html(plazas); 
             $('#id_tbl_zonas_pago').empty();
@@ -71,21 +83,22 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             $('#id_cat_puesto_hraes').html(puesto);
             $('#id_cat_zonas_tabuladores_hraes').empty();
             $('#id_cat_zonas_tabuladores_hraes').html(tabulares);
-            //$('#id_cat_niveles_hraes').empty();
-            //$('#id_cat_niveles_hraes').html(niveles);
-            $('#id_cat_plaza_unidad_adm').empty();
-            $('#id_cat_plaza_unidad_adm').html(unidadAdmin_);
+            $('#id_cat_categoria_puesto').empty();
+            $('#id_cat_categoria_puesto').html(is_puestoCategoria);
 
-            $('#id_cat_plaza_unidad_adm').selectpicker('refresh');
+            $('#id_cat_categoria_puesto').selectpicker('refresh');
+            $('#id_cat_unidad').selectpicker('refresh');
+            $('#id_cat_coordinacion').selectpicker('refresh');
+            $('#id_cat_aux_puesto').selectpicker('refresh');
             $('#id_cat_plazas').selectpicker('refresh');
             $('#id_tbl_zonas_pago').selectpicker('refresh');
             $('#id_cat_tipo_contratacion_hraes').selectpicker('refresh');
             $('#id_cat_unidad_responsable').selectpicker('refresh');
             $('#id_cat_puesto_hraes').selectpicker('refresh');
             $('#id_cat_zonas_tabuladores_hraes').selectpicker('refresh');
-           // $('#id_cat_niveles_hraes').selectpicker('refresh');
             $('.selectpicker').selectpicker();
             
+            $("#id_zona_pagadora_clue").val(is_zona);
             $("#id_cat_niveles_hraes").val(niveles);
             $("#num_plaza").val(entity.num_plaza);
             $("#fecha_ingreso_inst").val(entity.fecha_ingreso_inst);
@@ -97,6 +110,7 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             let bool = entity.id_cat_situacion_plaza_hraes != 1 ? true : false;
             checkbox.checked = bool;
             checkbox_disabled.disabled  = !bool;
+            checkbox_disabled_num_plaza.disabled  = !bool;
         }
     );
 
@@ -123,13 +137,12 @@ function agregarEditarByDb() {
     let id_cat_unidad_responsable = $("#id_cat_unidad_responsable").val();
     let id_cat_puesto_hraes = $("#id_cat_puesto_hraes").val();
     let id_cat_zonas_tabuladores_hraes = $("#id_cat_zonas_tabuladores_hraes").val();
-    let id_cat_niveles_hraes = $("#id_cat_niveles_hraes").val();
     let num_plaza = $("#num_plaza").val();
     let fecha_ingreso_inst = $("#fecha_ingreso_inst").val();
     let fecha_inicio_movimiento = $("#fecha_inicio_movimiento").val();
     let fecha_termino_movimiento = $("#fecha_termino_movimiento").val();
     let fecha_modificacion = $("#fecha_modificacion").val();
-    let id_tbl_zonas_pago = $("#id_tbl_zonas_pago").val();
+
 
     $.post("../../../../App/Controllers/Central/PlazasC/AgregarEditarC.php", {
         id_cat_plazas: id_cat_plazas,
@@ -137,7 +150,6 @@ function agregarEditarByDb() {
         id_cat_unidad_responsable:id_cat_unidad_responsable,
         id_cat_puesto_hraes:id_cat_puesto_hraes,
         id_cat_zonas_tabuladores_hraes:id_cat_zonas_tabuladores_hraes,
-        id_cat_niveles_hraes:id_cat_niveles_hraes,
         num_plaza:num_plaza,
         fecha_ingreso_inst:fecha_ingreso_inst,
         fecha_inicio_movimiento:fecha_inicio_movimiento,
@@ -145,9 +157,15 @@ function agregarEditarByDb() {
         fecha_modificacion:fecha_modificacion,
         id_object:id_object,
         id_tbl_centro_trabajo_hraes:id_tbl_centro_trabajo_hraes_aux,
-        id_tbl_zonas_pago:id_tbl_zonas_pago,
         id_cat_situacion_plaza_hraes: id_cat_situacion_plaza_hraes_x,
         id_cat_plaza_unidad_adm: $("#id_cat_plaza_unidad_adm").val(),
+
+        id_cat_puesto_hraes: $("#id_cat_puesto_hraes").val(),
+        id_cat_aux_puesto: $("#id_cat_aux_puesto").val(),
+        id_cat_categoria_puesto: $("#id_cat_categoria_puesto").val(),
+
+        id_cat_unidad: $("#id_cat_unidad").val(),
+        id_cat_coordinacion: $("#id_cat_coordinacion").val(),
     },
         function (data) {
             console.log(data);

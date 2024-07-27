@@ -132,15 +132,7 @@ class modelPlazasHraes
 
     function listarByIdEdit($id_object)
     {
-        $listado = pg_query("SELECT id_tbl_control_plazas_hraes, num_plaza,
-                                    id_cat_tipo_plazas,id_cat_tipo_subtipo_contratacion_hraes,
-                                    id_cat_unidad_responsable,
-                                    id_tbl_centro_trabajo_hraes,id_cat_puesto_hraes,
-                                    id_cat_zonas_tabuladores_hraes,id_cat_niveles_hraes,
-                                    id_tbl_zonas_pago_hraes,fecha_ingreso_inst,fecha_inicio_movimiento,
-                                    fecha_termino_movimiento,fecha_modificacion,
-                                    id_cat_situacion_plaza_hraes,
-                                    id_cat_plaza_unidad_adm
+        $listado = pg_query("SELECT *
                             FROM central.tbl_control_plazas_hraes
                             WHERE id_tbl_control_plazas_hraes = $id_object");
         return $listado;
