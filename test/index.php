@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootstrap Grid Example with Spacing</title>
-  <!-- Incluir Bootstrap CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Estilos personalizados -->
-  <style>
-    /* Estilos adicionales si es necesario */
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Desplazable</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-  <div class="container">
-    <div class="row">
-      <!-- Columna 1: más grande en dispositivos grandes (lg) -->
-      <div class="col-lg-8 col-sm-4 mb-4">
-        <div class="bg-primary text-white p-3">
-          Contenido de la columna 1
+    <div class="container mt-4">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+                        <th>Ciudad</th>
+                        <th>Estado</th>
+                        <th>Código Postal</th>
+                        <th>País</th>
+                        <th>Notas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Juan Pérez</td>
+                        <td>juan.perez@example.com</td>
+                        <td>(555) 123-4567</td>
+                        <td>Calle Falsa 123</td>
+                        <td>Ciudad Ejemplo</td>
+                        <td>Estado Ejemplo</td>
+                        <td>12345</td>
+                        <td>País Ejemplo</td>
+                        <td>Notas adicionales aquí</td>
+                    </tr>
+                    <!-- Añade más filas según sea necesario -->
+                </tbody>
+            </table>
         </div>
-      </div>
-      <!-- Columna 2: más grande en dispositivos pequeños (sm) -->
-      <div class="col-lg-4 col-sm-8 mb-4">
-        <div class="bg-secondary text-white p-3">
-          Contenido de la columna 2
-        </div>
-      </div>
     </div>
-  </div>
-
-  <!-- Incluir Bootstrap JS y dependencias opcionales al final del documento para mejorar la velocidad de carga -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

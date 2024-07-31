@@ -337,4 +337,30 @@ class modelPlazasHraes
                             WHERE cat_plaza_unidad_adm.id_cat_plaza_unidad_adm = $id;");
         return $query;
     }
+
+    public function getInfoPlaza($schema, $idPlaza){
+        $isQuery = pg_query("SELECT 
+                                $schema.tbl_control_plazas_hraes.num_plaza,
+                                CONCAT(public.cat_unidad_responsable.codigo, ' ', public.cat_unidad_responsable.nombre),
+                                $schema.cat_puesto_hraes.codigo_puesto,
+                                $schema.cat_puesto_hraes.nivel,
+                                $schema.cat_puesto_hraes.nombre_posicion,
+                                $schema.tbl_centro_trabajo_hraes.clave_centro_trabajo,
+                                CONCAT(public.cat_entidad.clave_entidad, ' ', public.cat_entidad.entidad)
+                            FROM $schema.tbl_control_plazas_hraes
+                            INNER JOIN public.cat_unidad_responsable
+                                ON $schema.tbl_control_plazas_hraes.id_cat_unidad_responsable =	
+                                    public.cat_unidad_responsable.id_cat_unidad_responsable
+                            INNER JOIN $schema.cat_puesto_hraes
+                                ON $schema.tbl_control_plazas_hraes.id_cat_puesto_hraes =
+                                    $schema.cat_puesto_hraes.id_cat_puesto_hraes
+                            INNER JOIN $schema.tbl_centro_trabajo_hraes
+                                ON $schema.tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes =
+                                    $schema.tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes
+                            INNER JOIN public.cat_entidad
+                                ON $schema.tbl_centro_trabajo_hraes.id_cat_entidad =
+                                    public.cat_entidad.id_cat_entidad
+                            WHERE $schema.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes = $idPlaza;");
+        return $isQuery;
+    }
 }

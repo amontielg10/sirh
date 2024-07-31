@@ -255,6 +255,7 @@ hr {
 
   .text-result-normal{
     font-weight: normal;
+    font-size: 105%;
   }
 
   .text-input-rem{
@@ -464,4 +465,12 @@ hr {
     .btn-outline-custom:focus {
         box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
         /* Sombra al enfocar */
+    }
+
+    .is-rem-text{
+        font-size: 90%;
+    }
+
+    .text-bold{
+        font-weight: bold;
     }

@@ -24,7 +24,7 @@
             <div class="card-body">
                 <div class="container">
                     <div class="row mx-1">
-                        <div class="col-4">
+                        <div class="col-8 col-md-6 col-lg-4 col-xl-2">
                             <label for="campo" class="form-label input-text-form">Nombre</label><label
                                 class="text-required">*</label>
                             <input onkeyup="convertirAMayusculas(event,'nombre')" maxlength="45" type="text"
