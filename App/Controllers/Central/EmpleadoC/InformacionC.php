@@ -18,13 +18,13 @@ $segundoA = $empleado['segundo_apellido'];
 $curp = $empleado['curp'];
 $rfc = $empleado['rfc'];
 $noEmpleado = $empleado['num_empleado'];
-$numPlaza = '';
-$unidadResp = '';
-$codPuesto = '';
-$isNivel = '';
-$nomPuesto = '';
-$isClue = '';
-$zonaPag = '';
+$numPlaza = '_';
+$unidadResp = '_';
+$codPuesto = '_';
+$isNivel = '_';
+$nomPuesto = '_';
+$isClue = '_';
+$zonaPag = '_';
 
 $result = $modelMovimientosM->getMaxIdPlaza($schema,$id_object );
 

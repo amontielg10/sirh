@@ -50,6 +50,9 @@ function agregarEditarFormaPago(id_object){
             $("#clabe").val(entity.clabe);
             $("#nombre_banco").val(banco);
             $("#id_cat_banco").val(entity.id_cat_banco);
+
+            $('#id_cat_estatus_formato_pago').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
         }
     );
 

@@ -1,11 +1,11 @@
 <div class="row font-size-modulo">
     <div class="col-9">
-        <div class="form-inline">
-            <button onclick="agregarEditarFormaPago(null)" class="btn btn-light"><i
-                    class="fa fa-plus icon-size-add"></i>
-                <span class="hide-menu text-button-add font-size-modulo">&nbsp;Agregar forma de pago</span>
+    <div class="form-inline">
+        <button onclick="agregarEditarFormaPago(null)" type="button" class="btn btn-light" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus icono-pequeno-tabla"></i>
+                <span class="hide-menu text-button-add">&nbsp;Agregar</span>
             </button>
-        </div>
+        </div>  
     </div>
     <div class="col-3 search-container">
         <input onkeyup="buscarFormaPago();" id="buscar_f" type="text" placeholder="Buscar..."
