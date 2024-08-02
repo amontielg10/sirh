@@ -13,14 +13,14 @@ if (isset($_POST['busqueda'])) {
 }
 
 $data =
-    '<table class="table table-bordered" id="t-table" style="width:100%">
+    '<table class="table table-bordered table-fixed" id="t-table">
     <thead>
         <tr>
-            <th>Acciones</th>
-            <th>Nombre</th>
-            <th>Curp</th>
-            <th>Rfc</th>
-            <th>N&uacutem. empleado</th>
+            <th class="col-wide-action">Acciones</th>
+            <th class="col-wide">Nombre</th>
+            <th class="col-wide">Curp</th>
+            <th class="col-wide">Rfc</th>
+            <th class="col-wide">N&uacutem. empleado</th>
         </tr>
     </thead>';
 
@@ -32,7 +32,7 @@ if (pg_num_rows($result) > 0) {
         $data .=
             '<tbody>
                         <tr>
-                            <td>
+                            <td class="col-wide-action">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit icono-grande-tabla"></i></button>
                             <div class="dropdown-menu">
@@ -45,16 +45,16 @@ if (pg_num_rows($result) > 0) {
                             </div>
                           </div>
                                 </td>
-                            <td>
+                            <td class="col-wide">
                                 ' . $row['nombre'] . ' ' . $row['primer_apellido'] . ' ' . $row['segundo_apellido'] . '
                             </td>
-                            <td>
+                            <td class="col-wide">
                                 ' . $row['curp'] . '
                             </td>
-                            <td>
+                            <td class="col-wide"> 
                                 ' . $row['rfc'] . '
                             </td>
-                            <td>
+                            <td class="col-wide">
                                 ' . $row['num_empleado'] . '
                             </td>
                         </tr>

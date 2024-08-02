@@ -67,29 +67,28 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
             </div>
 
             <?php if ($id_tbl_centro_trabajo_hraes != null) { ?>
-                <div class="row div-spacing">
-                    <div class="col-9">
-                        <div class="form-inline">
-                            <button onclick="agregarEditarDetalles(null)" class="btn btn-light"><i
-                                    class="fa fa-plus icon-size-add"></i>
-                                <span class="hide-menu text-button-add">&nbsp;Agregar plaza</span>
-                            </button>
-                        </div>
+                <div class="col-9">
+                    <div class="form-inline">
+                        <button onclick="agregarEditarDetalles(null)" type="button" class="btn btn-light"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                class="fa fa-plus icono-pequeno-tabla"></i>
+                            <span class="hide-menu text-button-add">&nbsp;Agregar</span>
+                        </button>
                     </div>
                 </div>
             <?php } else { ?>
-                <div class="row div-spacing">
-                    <div class="col-9">
-                        <div class="form-inline">
-                            <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal"><i
-                                    class="fa fa-plus icon-size-add"></i>
-                                <span class="hide-menu text-button-add">&nbsp;Agregar plaza</span>
-                            </button>
-                        </div>
+                <div class="col-9">
+                    <div class="form-inline">
+                        <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-light"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                class="fa fa-plus icono-pequeno-tabla"></i>
+                            <span class="hide-menu text-button-add">&nbsp;Agregar</span>
+                        </button>
                     </div>
                 </div>
             <?php } ?>
 
+            <div class="div-spacing"></div>
             <div class="row">
                 <div class="col">
                     <div class="text-center">

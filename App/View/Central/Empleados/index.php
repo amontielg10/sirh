@@ -42,20 +42,17 @@
                     </div>
                 </div>
                 <div class="col text-right">
-                    <button onclick="powerBiRefresh();" class="btn btn-circle-custom btn-outline-custom" data-toggle="tooltip" data-placement="top"
-                        title="Power Bi Refresh">
+                    <button onclick="powerBiRefresh();" class="btn btn-circle-custom btn-outline-custom"
+                        data-toggle="tooltip" data-placement="top" title="Power Bi Refresh">
                         <i class="fa fa-line-chart" style="color: #235B4E;"></i> <!-- Icono de Font Awesome -->
                     </button>
                 </div>
             </div>
 
-
-            <div class="row">
-                <div class="col">
-                    <div class="text-center">
-                        <table class="table table-bordered" id="tabla_empleados" style="width:100%">
-                        </table>
-                    </div>
+            <div class="col-12 table-responsive">
+                <div class="text-center">
+                    <table class="table table-bordered table-fixed" id="tabla_empleados">
+                    </table>
                 </div>
             </div>
 

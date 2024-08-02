@@ -191,7 +191,7 @@ class ModelMovimientosM
     }
 
     //La funcion retorna el id de la plaza a la que esta actualmente asociado
-    public function getMaxIdPlaza($schema, $idPlaza){
+    public function getMaxIdPlaza($schema, $idEmpleado){
         $isQuery = pg_query("SELECT 
                                 $schema.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes
                             FROM $schema.tbl_plazas_empleados_hraes
@@ -201,9 +201,56 @@ class ModelMovimientosM
                             WHERE $schema.tbl_plazas_empleados_hraes.fecha_movimiento = (
                                                         SELECT MAX($schema.tbl_plazas_empleados_hraes.fecha_movimiento) 
                                                         FROM $schema.tbl_plazas_empleados_hraes
-                                                        WHERE $schema.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idPlaza)
-                            AND $schema.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idPlaza
+                                                        WHERE $schema.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado)
+                            AND $schema.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
                             AND public.tbl_movimientos.id_tipo_movimiento <> 3; --> ES DISNTO DE BAJA");
         return $isQuery;
     }
+
+    /*
+    SELECT 
+		central.tbl_empleados_hraes.id_tbl_empleados_hraes, 
+		central.tbl_empleados_hraes.rfc, 
+		central.tbl_empleados_hraes.curp, 
+		central.tbl_empleados_hraes.nombre, 
+		central.tbl_empleados_hraes.primer_apellido,
+	    central.tbl_empleados_hraes.segundo_apellido, 
+		central.tbl_empleados_hraes.num_empleado,
+		central.tbl_plazas_empleados_hraes.fecha_movimiento,
+		CASE 
+WHEN (SELECT EXISTS (
+       SELECT TRUE
+       FROM central.tbl_plazas_empleados_hraes
+	   INNER JOIN central.tbl_control_plazas_hraes
+		ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+			central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+       INNER JOIN public.tbl_movimientos
+       ON public.tbl_movimientos.id_tbl_movimientos = 
+          central.tbl_plazas_empleados_hraes.id_tbl_movimientos
+          WHERE central.tbl_plazas_empleados_hraes.fecha_movimiento = (
+           SELECT MAX(central.tbl_plazas_empleados_hraes.fecha_movimiento) 
+           FROM central.tbl_plazas_empleados_hraes
+           WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+		  		 central.tbl_empleados_hraes.id_tbl_empleados_hraes)
+          AND central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+	   			central.tbl_empleados_hraes.id_tbl_empleados_hraes
+        AND public.tbl_movimientos.id_tipo_movimiento <> 3
+)) = TRUE THEN central.tbl_control_plazas_hraes.num_plaza
+ELSE '-'
+END 
+FROM central.tbl_empleados_hraes
+LEFT JOIN central.tbl_plazas_empleados_hraes
+	ON central.tbl_empleados_hraes.id_tbl_empleados_hraes =
+		central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes
+LEFT JOIN central.tbl_control_plazas_hraes
+		ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+			central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes		
+WHERE (central.tbl_plazas_empleados_hraes.fecha_movimiento = 
+	(SELECT MAX(central.tbl_plazas_empleados_hraes.fecha_movimiento) 
+	  FROM central.tbl_plazas_empleados_hraes
+	   WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes 
+					= central.tbl_empleados_hraes.id_tbl_empleados_hraes)
+		OR central.tbl_plazas_empleados_hraes.fecha_movimiento IS NULL)		
+		
+        */
 }
