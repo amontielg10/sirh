@@ -41,17 +41,280 @@ class modelEmpleadosHraes
 
     public function listarByAll($paginador)
     {
+        $query = "    SELECT 
+                        central.tbl_empleados_hraes.id_tbl_empleados_hraes, 
+                            CASE 
+                                WHEN (SELECT EXISTS (
+                                    SELECT TRUE
+                                    FROM central.tbl_plazas_empleados_hraes
+                                    INNER JOIN central.tbl_control_plazas_hraes
+                                        ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                                            central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+                                    INNER JOIN public.tbl_movimientos
+                                    ON public.tbl_movimientos.id_tbl_movimientos = 
+                                        central.tbl_plazas_empleados_hraes.id_tbl_movimientos
+                                        WHERE central.tbl_plazas_empleados_hraes.fecha_movimiento = (
+                                        SELECT MAX(central.tbl_plazas_empleados_hraes.fecha_movimiento) 
+                                        FROM central.tbl_plazas_empleados_hraes
+                                        WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                                central.tbl_empleados_hraes.id_tbl_empleados_hraes)
+                                        AND central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                                central.tbl_empleados_hraes.id_tbl_empleados_hraes
+                                        AND public.tbl_movimientos.id_tipo_movimiento <> 3
+                                )) = TRUE THEN central.tbl_control_plazas_hraes.num_plaza 
+                                ELSE '-'
+                                END AS num_plaza,
+                                CASE 
+                                WHEN (SELECT EXISTS (
+                                    SELECT TRUE
+                                    FROM central.tbl_plazas_empleados_hraes
+                                    INNER JOIN central.tbl_control_plazas_hraes
+                                        ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                                            central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+                                    INNER JOIN public.tbl_movimientos
+                                    ON public.tbl_movimientos.id_tbl_movimientos = 
+                                        central.tbl_plazas_empleados_hraes.id_tbl_movimientos
+                                        WHERE central.tbl_plazas_empleados_hraes.fecha_movimiento = (
+                                        SELECT MAX(central.tbl_plazas_empleados_hraes.fecha_movimiento) 
+                                        FROM central.tbl_plazas_empleados_hraes
+                                        WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                                central.tbl_empleados_hraes.id_tbl_empleados_hraes)
+                                        AND central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                                central.tbl_empleados_hraes.id_tbl_empleados_hraes
+                                        AND public.tbl_movimientos.id_tipo_movimiento <> 3
+                                )) = TRUE THEN public.cat_entidad.entidad 
+                                ELSE '-'
+                                END AS zona_pagadora,
+                            central.tbl_empleados_hraes.rfc, 
+                            central.tbl_empleados_hraes.curp, 
+                            central.tbl_empleados_hraes.nombre, 
+                            central.tbl_empleados_hraes.primer_apellido,
+                            central.tbl_empleados_hraes.segundo_apellido, 
+                            CASE 
+                                WHEN (SELECT EXISTS (
+                                    SELECT TRUE
+                                    FROM central.tbl_plazas_empleados_hraes
+                                    INNER JOIN central.tbl_control_plazas_hraes
+                                        ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                                            central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+                                    INNER JOIN public.tbl_movimientos
+                                    ON public.tbl_movimientos.id_tbl_movimientos = 
+                                        central.tbl_plazas_empleados_hraes.id_tbl_movimientos
+                                        WHERE central.tbl_plazas_empleados_hraes.fecha_movimiento = (
+                                        SELECT MAX(central.tbl_plazas_empleados_hraes.fecha_movimiento) 
+                                        FROM central.tbl_plazas_empleados_hraes
+                                        WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                                central.tbl_empleados_hraes.id_tbl_empleados_hraes)
+                                        AND central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                                central.tbl_empleados_hraes.id_tbl_empleados_hraes
+                                        AND public.tbl_movimientos.id_tipo_movimiento <> 3
+                                )) = TRUE THEN CONCAT(public.tbl_movimientos.codigo, ' - ',
+                                                    public.tbl_movimientos.nombre_movimiento) 
+                                ELSE '-'
+                                END AS movimiento,
+                            CASE 
+                                WHEN (SELECT EXISTS (
+                                    SELECT TRUE
+                                    FROM central.tbl_plazas_empleados_hraes
+                                    INNER JOIN central.tbl_control_plazas_hraes
+                                        ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                                            central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+                                    INNER JOIN public.tbl_movimientos
+                                    ON public.tbl_movimientos.id_tbl_movimientos = 
+                                        central.tbl_plazas_empleados_hraes.id_tbl_movimientos
+                                        WHERE central.tbl_plazas_empleados_hraes.fecha_movimiento = (
+                                        SELECT MAX(central.tbl_plazas_empleados_hraes.fecha_movimiento) 
+                                        FROM central.tbl_plazas_empleados_hraes
+                                        WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                                central.tbl_empleados_hraes.id_tbl_empleados_hraes)
+                                        AND central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                                central.tbl_empleados_hraes.id_tbl_empleados_hraes
+                                        AND public.tbl_movimientos.id_tipo_movimiento <> 3
+                                )) = TRUE THEN CONCAT (central.tbl_centro_trabajo_hraes.clave_centro_trabajo, ' - ',
+                                                        central.tbl_centro_trabajo_hraes.nombre)
+                                ELSE '-'
+                                END AS clue,
+                                central.ctrl_cuenta_clabe_hraes.clabe AS clabe,
+                                central.tbl_empleados_hraes.num_empleado
+                    FROM central.tbl_empleados_hraes
+                    LEFT JOIN central.tbl_plazas_empleados_hraes
+                        ON central.tbl_empleados_hraes.id_tbl_empleados_hraes =
+                            central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes
+                    LEFT JOIN central.tbl_control_plazas_hraes
+                            ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                                central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes	
+                    LEFT JOIN central.tbl_centro_trabajo_hraes
+                        ON central.tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes =
+                            central.tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes
+                    LEFT JOIN public.cat_entidad
+                        ON central.tbl_centro_trabajo_hraes.id_cat_entidad =
+                            public.cat_entidad.id_cat_entidad
+                    LEFT JOIN public.tbl_movimientos
+                        ON central.tbl_plazas_empleados_hraes.id_tbl_movimientos =
+                            public.tbl_movimientos.id_tbl_movimientos
+                    LEFT JOIN central.ctrl_cuenta_clabe_hraes
+                        ON central.tbl_empleados_hraes.id_tbl_empleados_hraes =
+                            central.ctrl_cuenta_clabe_hraes.id_tbl_empleados_hraes
+                    WHERE (central.tbl_plazas_empleados_hraes.fecha_movimiento = 
+                        (SELECT MAX(central.tbl_plazas_empleados_hraes.fecha_movimiento) 
+                        FROM central.tbl_plazas_empleados_hraes
+                        WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes 
+                                        = central.tbl_empleados_hraes.id_tbl_empleados_hraes)
+                            OR central.tbl_plazas_empleados_hraes.fecha_movimiento IS NULL)	
+                    AND (central.ctrl_cuenta_clabe_hraes.id_cat_estatus = 1 OR 
+                        central.ctrl_cuenta_clabe_hraes.id_cat_estatus IS NULL)
+                       LIMIT 6 OFFSET $paginador;";
+        /*
         $listado = "SELECT id_tbl_empleados_hraes, rfc, curp, nombre, primer_apellido,
                            segundo_apellido, num_empleado
                     FROM central.tbl_empleados_hraes
                     ORDER BY id_tbl_empleados_hraes DESC
                     LIMIT 6 OFFSET $paginador;";
 
-        return $listado;
+        return $listado;*/
     }
 
     public function listarByLike($busqueda, $paginador)
     {
+        $query = "SELECT 
+                    central.tbl_empleados_hraes.id_tbl_empleados_hraes, 
+                        CASE 
+                            WHEN (SELECT EXISTS (
+                                SELECT TRUE
+                                FROM central.tbl_plazas_empleados_hraes
+                                INNER JOIN central.tbl_control_plazas_hraes
+                                    ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                                        central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+                                INNER JOIN public.tbl_movimientos
+                                ON public.tbl_movimientos.id_tbl_movimientos = 
+                                    central.tbl_plazas_empleados_hraes.id_tbl_movimientos
+                                    WHERE central.tbl_plazas_empleados_hraes.fecha_movimiento = (
+                                    SELECT MAX(central.tbl_plazas_empleados_hraes.fecha_movimiento) 
+                                    FROM central.tbl_plazas_empleados_hraes
+                                    WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                            central.tbl_empleados_hraes.id_tbl_empleados_hraes)
+                                    AND central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                            central.tbl_empleados_hraes.id_tbl_empleados_hraes
+                                    AND public.tbl_movimientos.id_tipo_movimiento <> 3
+                            )) = TRUE THEN central.tbl_control_plazas_hraes.num_plaza 
+                            ELSE '-'
+                            END AS num_plaza,
+                            CASE 
+                            WHEN (SELECT EXISTS (
+                                SELECT TRUE
+                                FROM central.tbl_plazas_empleados_hraes
+                                INNER JOIN central.tbl_control_plazas_hraes
+                                    ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                                        central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+                                INNER JOIN public.tbl_movimientos
+                                ON public.tbl_movimientos.id_tbl_movimientos = 
+                                    central.tbl_plazas_empleados_hraes.id_tbl_movimientos
+                                    WHERE central.tbl_plazas_empleados_hraes.fecha_movimiento = (
+                                    SELECT MAX(central.tbl_plazas_empleados_hraes.fecha_movimiento) 
+                                    FROM central.tbl_plazas_empleados_hraes
+                                    WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                            central.tbl_empleados_hraes.id_tbl_empleados_hraes)
+                                    AND central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                            central.tbl_empleados_hraes.id_tbl_empleados_hraes
+                                    AND public.tbl_movimientos.id_tipo_movimiento <> 3
+                            )) = TRUE THEN public.cat_entidad.entidad 
+                            ELSE '-'
+                            END AS zona_pagadora,
+                        central.tbl_empleados_hraes.rfc, 
+                        central.tbl_empleados_hraes.curp, 
+                        central.tbl_empleados_hraes.nombre, 
+                        central.tbl_empleados_hraes.primer_apellido,
+                        central.tbl_empleados_hraes.segundo_apellido, 
+                        CASE 
+                            WHEN (SELECT EXISTS (
+                                SELECT TRUE
+                                FROM central.tbl_plazas_empleados_hraes
+                                INNER JOIN central.tbl_control_plazas_hraes
+                                    ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                                        central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+                                INNER JOIN public.tbl_movimientos
+                                ON public.tbl_movimientos.id_tbl_movimientos = 
+                                    central.tbl_plazas_empleados_hraes.id_tbl_movimientos
+                                    WHERE central.tbl_plazas_empleados_hraes.fecha_movimiento = (
+                                    SELECT MAX(central.tbl_plazas_empleados_hraes.fecha_movimiento) 
+                                    FROM central.tbl_plazas_empleados_hraes
+                                    WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                            central.tbl_empleados_hraes.id_tbl_empleados_hraes)
+                                    AND central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                            central.tbl_empleados_hraes.id_tbl_empleados_hraes
+                                    AND public.tbl_movimientos.id_tipo_movimiento <> 3
+                            )) = TRUE THEN CONCAT(public.tbl_movimientos.codigo, ' - ',
+                                                public.tbl_movimientos.nombre_movimiento) 
+                            ELSE '-'
+                            END AS movimiento,
+                        CASE 
+                            WHEN (SELECT EXISTS (
+                                SELECT TRUE
+                                FROM central.tbl_plazas_empleados_hraes
+                                INNER JOIN central.tbl_control_plazas_hraes
+                                    ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                                        central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+                                INNER JOIN public.tbl_movimientos
+                                ON public.tbl_movimientos.id_tbl_movimientos = 
+                                    central.tbl_plazas_empleados_hraes.id_tbl_movimientos
+                                    WHERE central.tbl_plazas_empleados_hraes.fecha_movimiento = (
+                                    SELECT MAX(central.tbl_plazas_empleados_hraes.fecha_movimiento) 
+                                    FROM central.tbl_plazas_empleados_hraes
+                                    WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                            central.tbl_empleados_hraes.id_tbl_empleados_hraes)
+                                    AND central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+                                            central.tbl_empleados_hraes.id_tbl_empleados_hraes
+                                    AND public.tbl_movimientos.id_tipo_movimiento <> 3
+                            )) = TRUE THEN CONCAT (central.tbl_centro_trabajo_hraes.clave_centro_trabajo, ' - ',
+                                                    central.tbl_centro_trabajo_hraes.nombre)
+                            ELSE '-'
+                            END AS clue,
+                            central.ctrl_cuenta_clabe_hraes.clabe AS clabe,
+                            central.tbl_empleados_hraes.num_empleado
+                FROM central.tbl_empleados_hraes
+                LEFT JOIN central.tbl_plazas_empleados_hraes
+                    ON central.tbl_empleados_hraes.id_tbl_empleados_hraes =
+                        central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes
+                LEFT JOIN central.tbl_control_plazas_hraes
+                        ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                            central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes	
+                LEFT JOIN central.tbl_centro_trabajo_hraes
+                    ON central.tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes =
+                        central.tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes
+                LEFT JOIN public.cat_entidad
+                    ON central.tbl_centro_trabajo_hraes.id_cat_entidad =
+                        public.cat_entidad.id_cat_entidad
+                LEFT JOIN public.tbl_movimientos
+                    ON central.tbl_plazas_empleados_hraes.id_tbl_movimientos =
+                        public.tbl_movimientos.id_tbl_movimientos
+                LEFT JOIN central.ctrl_cuenta_clabe_hraes
+                    ON central.tbl_empleados_hraes.id_tbl_empleados_hraes =
+                        central.ctrl_cuenta_clabe_hraes.id_tbl_empleados_hraes
+                WHERE (central.tbl_plazas_empleados_hraes.fecha_movimiento = 
+                    (SELECT MAX(central.tbl_plazas_empleados_hraes.fecha_movimiento) 
+                    FROM central.tbl_plazas_empleados_hraes
+                    WHERE central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes 
+                                    = central.tbl_empleados_hraes.id_tbl_empleados_hraes)
+                        OR central.tbl_plazas_empleados_hraes.fecha_movimiento IS NULL)	
+                AND (central.ctrl_cuenta_clabe_hraes.id_cat_estatus = 1 OR 
+                    central.ctrl_cuenta_clabe_hraes.id_cat_estatus IS NULL)
+                AND (
+                       TRIM(UPPER(UNACCENT(central.tbl_control_plazas_hraes.num_plaza))) LIKE '%$busqueda%' OR
+                       TRIM(UPPER(UNACCENT(public.cat_entidad.entidad))) LIKE '%$busqueda%' OR
+                       TRIM(UPPER(UNACCENT(central.tbl_empleados_hraes.rfc))) LIKE '%$busqueda%' OR
+                       TRIM(UPPER(UNACCENT(central.tbl_empleados_hraes.curp))) LIKE '%$busqueda%' OR
+                       TRIM(UPPER(UNACCENT(central.tbl_empleados_hraes.nombre))) LIKE '%$busqueda%' OR
+                       TRIM(UPPER(UNACCENT(central.tbl_empleados_hraes.primer_apellido))) LIKE '%$busqueda%' OR
+                       TRIM(UPPER(UNACCENT(central.tbl_empleados_hraes.segundo_apellido))) LIKE '%$busqueda%' OR
+                       TRIM(UPPER(UNACCENT(CONCAT(public.tbl_movimientos.codigo, ' - ',
+                                                public.tbl_movimientos.nombre_movimiento)))) LIKE '%$busqueda%' OR
+                       TRIM(UPPER(UNACCENT(CONCAT (central.tbl_centro_trabajo_hraes.clave_centro_trabajo, ' - ',
+                                                    central.tbl_centro_trabajo_hraes.nombre)))) LIKE '%$busqueda%' OR
+                       TRIM(UPPER(UNACCENT(central.ctrl_cuenta_clabe_hraes.clabe))) LIKE '%$busqueda%' OR
+                       TRIM(UPPER(UNACCENT(central.tbl_empleados_hraes.num_empleado))) LIKE '%$busqueda%')
+                       LIMIT 6 OFFSET $paginador;";
+        return $query;
+        /*
         $listado = "SELECT id_tbl_empleados_hraes, rfc, curp, nombre, primer_apellido,
                            segundo_apellido,num_empleado
                     FROM central.tbl_empleados_hraes
@@ -66,6 +329,7 @@ class modelEmpleadosHraes
                     ORDER BY id_tbl_empleados_hraes DESC
                     LIMIT 6 OFFSET $paginador;";
         return $listado;
+        */
     }
 
     public function listarByIdEdit($id_object)
