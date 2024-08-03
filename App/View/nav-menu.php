@@ -15,24 +15,33 @@ $id_rol = $_SESSION['id_rol'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIRH</title>
+    <!--
+    <script src="../../../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="../../../../assets/bootstrap/css/bootstrap.min.css">
+    <script src="../../../../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+-->
+    
     <link rel="stylesheet" href="../../../../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../../assets/styles/menu.css">
     <link rel="stylesheet" href="../../../../assets/styles/NewMenu.css">
     <link rel="stylesheet" href="../../../../assets/font/fontawesome/css/all.min.css">
+    
     <script src="../../../../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="../../../../assets/jquery/jquery-351.js"></script>
-    <script src="../../../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="../../../../dist/js/sweetalert2.all.min.js"></script>
-    <script src="../../../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="../../../../js/Mensajes/mensajes.js"></script>
     <script src="../../../../js/Mensajes/mensajes.js"></script>
     <script src="../../../../js/Global/Curp/ValidarCurp.js"></script>
     <script src="../../../../js/Global/Mensajes/Mensajes.js"></script>
     <script src="../../../../js/Global/Seguridad/Confirmacion.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
     <link rel="stylesheet" href="../../../../assets/bootstrap-select/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="../../../../assets/notyf/notyf.min.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    
     <!--
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">

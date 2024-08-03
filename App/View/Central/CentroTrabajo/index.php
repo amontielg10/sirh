@@ -78,6 +78,9 @@
     </div>
 </div>
 
+<div id="myChart"></div>
+
+
 <script src="../../../../js/Ib/CentroTrabajo/CentroTrabajo.js"></script>
 <script src="../../../../js/Ib/CentroTrabajo/validar.js"></script>
 <script src="../../../../js/Ib/CentroTrabajo/Busqueda.js"></script>

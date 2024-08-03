@@ -1,9 +1,9 @@
 <div class="row font-size-modulo">
     <div class="col-9">
         <div class="form-inline">
-            <button onclick="agregarEditarJefe(null)" class="btn btn-light"><i
-                    class="fa fa-plus icon-size-add"></i>
-                <span class="hide-menu text-button-add font-size-modulo">&nbsp;Agregar jefe inmediato</span>
+            <button onclick="agregarEditarJefe(null)" type="button" class="btn btn-light" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus icono-pequeno-tabla"></i>
+                <span class="hide-menu text-button-add">&nbsp;Agregar</span>
             </button>
         </div>
     </div>
