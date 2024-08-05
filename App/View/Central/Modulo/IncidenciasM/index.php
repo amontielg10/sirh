@@ -6,17 +6,17 @@
                 <h6 class="card-header text-center background-modal color-text-tittle">Tipo de incidencia</h6>
                 <div class="nav flex-column nav-pills text-tittle-card-nav-x" id="v-tabs-tab" role="tablist"
                     aria-orientation="vertical">
-                    <a onclick="buscarRetardo();" class="nav-link-mod active" id="v-tabs-home-tab" data-toggle="pill" href="#v-tabs-home"
-                        role="tab" aria-controls="v-tabs-home" aria-selected="true">
+                    <a onclick="buscarRetardo();" class="nav-link-mod active" id="v-tabs-home-tab" data-toggle="pill"
+                        href="#v-tabs-home" role="tab" aria-controls="v-tabs-home" aria-selected="true">
                         <i class="fa fa-folder-open mr-2"></i> Retardos</a>
-                   <!--
-                        <a onclick="buscarFalta();" class="nav-link-mod" id="v-tabs-profile-tab" data-toggle="pill" href="#v-tabs-profile" role="tab"
-                        aria-controls="v-tabs-profile" aria-selected="false">
+
+                    <a onclick="buscarFalta();" class="nav-link-mod" id="v-tabs-profile-tab" data-toggle="pill"
+                        href="#v-tabs-profile" role="tab" aria-controls="v-tabs-profile" aria-selected="false">
                         <i class="fa fa-folder-open mr-2"></i> Faltas</a>
-                    <a class="nav-link-mod" id="v-tabs-messages-tab" data-toggle="pill" href="#v-tabs-messages"
+                    <a onclick="buscarLicencia();" class="nav-link-mod" id="v-tabs-messages-tab" data-toggle="pill" href="#v-tabs-messages"
                         role="tab" aria-controls="v-tabs-messages" aria-selected="false">
                         <i class="fa fa-folder-open mr-2"></i> Licencia médica</a>
--->
+
                 </div>
             </div>
         </div>
@@ -54,7 +54,16 @@
                 </div>
                 <div class="tab-pane fade" id="v-tabs-messages" role="tabpanel" aria-labelledby="v-tabs-messages-tab">
                     <div class="card-body">
-                        Contenido de la pestaña Messages
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card font-size-modulo shadow-lg">
+                                    <h5 class="card-header text-center background-modal color-text-tittle">Licencias m&eacutedicas</h5>
+                                    <div class="card-body">
+                                        <?php include 'Licencias/index.php' ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

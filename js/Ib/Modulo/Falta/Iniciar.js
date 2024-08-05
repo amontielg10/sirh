@@ -11,7 +11,7 @@ function buscarFalta(){ //BUSQUEDA
 }
 
 function iniciarTabla_fa(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Hraes/Modulo/Falta/tabla.php', {
+    $.post('../../../../App/View/Central/Modulo/Falta/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -32,56 +32,56 @@ function agregarEditarFalta(id_object){
         $("#agregar_editar_falta").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Hrae/RetardoC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/FaltaC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
-            var jsonData = JSON.parse(data);
-            var entity = jsonData.response;  
+            let jsonData = JSON.parse(data);
+            let entity = jsonData.response;  
 
-            $("#fecha_retardo").val(entity.fecha);
-            $("#hora_entrada").val(concatHora(entity.hora_entrada,entity.minuto_entrada));
-            $("#hora_salida").val(concatHora(entity.hora_salida,entity.minuto_salida));
+            $("#fecha_desde").val(entity.fecha_desde);
+            $("#fecha_hasta").val(entity.fecha_hasta);
+            $("#fecha_registro").val(entity.fecha_registro);
+            $("#codigo_certificacion").val(entity.codigo_certificacion);
+            $("#Observaciones_falta").val(entity.observaciones);
         }
     );
 
     $("#agregar_editar_falta").modal("show");
 }
 
-function salirAgregarEditarRetardo(){
+function salirAgregarEditarFalta_(){
     $("#agregar_editar_falta").modal("hide");
 }
 
 
-function guardarRetardo() {
-    let fecha_retardo = $("#fecha_retardo").val();
-    let hora_entrada = $("#hora_entrada").val();
-    let hora_salida = $("#hora_salida").val();
-    let id_object = $("#id_object").val();
-    hora_salida = hora_salida  ? hora_salida  : '0:0';
+function guardarFalta() {
 
-    $.post("../../../../App/Controllers/Hrae/RetardoC/AgregarEditarC.php", {
-        id_object: id_object,
-        fecha_retardo: fecha_retardo,
-        hora_entrada:hora_entrada,
-        hora_salida:hora_salida,
+    $.post("../../../../App/Controllers/Central/FaltaC/AgregarEditarC.php", {
+        id_object: $("#id_object").val(),
+        fecha_desde: $("#fecha_desde").val(),
+        fecha_hasta:$("#fecha_hasta").val(),
+        fecha_registro:$("#fecha_registro").val(),
+        codigo_certificacion:$("#codigo_certificacion").val(),
+        observaciones:$("#Observaciones_falta").val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
     },
         function (data) {
+            console.log(data);
             if (data == 'edit'){
-                mensajeExito('Retardo modificado con éxito');
+                mensajeExito('Falta agregada con éxito');
             } else if (data == 'add') {
-                mensajeExito('Retardo agregado con éxito');  
+                mensajeExito('Falta modificada con éxito');  
             } else {
                 mensajeError(data);
             }
-            $("#agregar_editar_retardo").modal("hide");
-            buscarRetardo();
+            $("#agregar_editar_falta").modal("hide");
+            buscarFalta();
         }
     );
 }
 
-function eliminarRetardo(id_object) {//ELIMINAR USUARIO
+function eliminarFalta(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -93,75 +93,18 @@ function eliminarRetardo(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Hrae/RetardoC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/FaltaC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {
                 if (data == 'delete'){
-                    mensajeExito('Retardo eliminado con éxito')
+                    mensajeExito('Falta eliminada con éxito')
                 } else {
                     mensajeError(data);
                 }
-                buscarRetardo();
+                buscarFalta();
             }
         );
     }
     });
 }
-
-function concatHora(hora,minuto){
-    let horaFinal = "";
-    if (hora != null){
-        horaFinal = addCero(hora) + ':' + addCero(minuto);
-    }
-    return horaFinal;
-}
-
-function addCero(time){
-    if (time < 10){
-        time = '0' + time;
-    }
-    return time;
-}
-/*
-function iniciarRetardo(){
-    iniciarTablaRetardo(id_tbl_empleados_hraes);
-}
-
-function iniciarTablaRetardo(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/Retardo/tabla.php',
-        data: { id_tbl_empleados_hraes: id_tbl_empleados_hraes },
-        success: function (data) {
-            $('#tabla_retardo').html(data);
-        }
-    });
-}
-
-
-
-
-campoFecha.addEventListener("change", function() {
-    let fecha = campoFecha.value;
-    iniciarTabla(fecha, id_tbl_empleados_hraes)
-});
-
-function iniciarTabla(buscar, id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/Retardo/tabla.php',
-        data: { 
-            buscar: buscar,
-            id_tbl_empleados_hraes: id_tbl_empleados_hraes,
-         },
-        success: function (data) {
-            console.log(data);
-            $('#tabla_retardo').html(data);
-        }
-    });
-}
-
-
-
-*/

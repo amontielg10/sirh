@@ -11,7 +11,7 @@ class FaltaModelM
                                     fecha_registro,
                                     codigo_certificacion,
                                     observaciones
-                                FROM ctrl_faltas_hraes
+                                FROM central.ctrl_faltas_hraes
                                 WHERE id_tbl_empleados_hraes = $id_object
                                 ORDER BY id_ctrl_faltas_hraes DESC
                                 LIMIT 3 OFFSET $paginator;");
@@ -22,7 +22,7 @@ class FaltaModelM
     {
         $listado = pg_query("SELECT id_ctrl_retardo_hraes, fecha, hora_entrada, minuto_entrada,
                                     hora_salida, minuto_salida, id_tbl_empleados_hraes
-                            FROM ctrl_retardo_hraes
+                            FROM central.ctrl_retardo_hraes
                             WHERE id_ctrl_retardo_hraes = $id_object
                             ORDER BY id_ctrl_retardo_hraes DESC
                             LIMIT 5;");
@@ -51,7 +51,7 @@ class FaltaModelM
                                     fecha_registro,
                                     codigo_certificacion,
                                     observaciones
-                                FROM ctrl_faltas_hraes
+                                FROM central.ctrl_faltas_hraes
                                 WHERE id_tbl_empleados_hraes = $id_object
                                 AND (
                                     fecha_desde::TEXT LIKE '%$busqueda%' OR
@@ -67,19 +67,19 @@ class FaltaModelM
 
     function editarByArray($conexion, $datos, $condicion)
     {
-        $pg_update = pg_update($conexion, 'ctrl_retardo_hraes', $datos, $condicion);
+        $pg_update = pg_update($conexion, 'central.ctrl_faltas_hraes', $datos, $condicion);
         return $pg_update;
     }
 
     function agregarByArray($conexion, $datos)
     {
-        $pg_add = pg_insert($conexion, 'ctrl_retardo_hraes', $datos);
+        $pg_add = pg_insert($conexion, 'central.ctrl_faltas_hraes', $datos);
         return $pg_add;
     }
 
     function eliminarByArray($conexion, $condicion)
     {
-        $pgs_delete = pg_delete($conexion, 'ctrl_retardo_hraes', $condicion);
+        $pgs_delete = pg_delete($conexion, 'central.ctrl_faltas_hraes', $condicion);
         return $pgs_delete;
     }
 }

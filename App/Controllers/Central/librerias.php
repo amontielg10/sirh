@@ -80,6 +80,7 @@ include '../../../Controllers/Catalogos/CatNacionalidadC/CatNacionalidadC.php';
 include '../../../Controllers/Hrae/Catalogos/CatCapacidadC/CatCapacidadC.php';
 
 
+include '../../../Model/Central/FaltaM/FaltaM.php';
 include '../../../Model/Central/LenguaM/LenguaM.php';
 include '../../../Model/Catalogos/CatLenguaM/CatLenguaM.php';
 
