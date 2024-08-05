@@ -12,11 +12,11 @@ if (isset($_POST['busqueda'])) {
     $listado = $lenguaM->listarByBusqueda($id_tbl_empleados_hraes, $_POST['busqueda'], $paginador);
 }
 $data =
-    '<table class="table table-bordered" id="tabla_especialidad" style="width:100%">
+    '<table class="table table-bordered table-fixed" id="tabla_especialidad" style="width:100%">
     <thead class="text-center">
         <tr>
-            <th>Acciones</th>
-            <th>Descripci&oacuten</th>
+            <th class="col-wide-action">Acciones</th>
+            <th class="col-wide">Descripci&oacuten</th>
             </tr>
     </thead>';
 

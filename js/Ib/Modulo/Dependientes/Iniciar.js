@@ -50,6 +50,9 @@ function agregarEditarDependiente(id_object){
             $("#apellido_paterno_d").val(entity.apellido_paterno);
             $("#id_cat_dependientes_economicos_d").val(entity.id_cat_dependientes_economicos);
             $("#apellido_materno_d").val(entity.apellido_materno);
+
+            $('#id_cat_dependientes_economicos_d').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
         }
     );
 

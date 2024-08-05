@@ -56,6 +56,9 @@ function agregarEditarTelefono(id_object){
             $('#id_cat_estatus').html(estatus); 
             $("#movil").val(entity.movil);
             $("#telefono").val(entity.telefono);
+
+            $('#id_cat_estatus').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
         }
     );
 
