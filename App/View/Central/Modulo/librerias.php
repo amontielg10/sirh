@@ -82,3 +82,7 @@
 <script src="../../../../js/Ib/Modulo/Lengua/Iniciar.js"></script>
 <script src="../../../../js/Ib/Modulo/Lengua/Validar.js"></script>
 <script src="../../../../js/Ib/Modulo/Lengua/buscar.js"></script>
+
+<script src="../../../../js/Ib/Modulo/Licencia/Iniciar.js"></script>
+<script src="../../../../js/Ib/Modulo/Licencia/Validar.js"></script>
+<script src="../../../../js/Ib/Modulo/Licencia/buscar.js"></script>
