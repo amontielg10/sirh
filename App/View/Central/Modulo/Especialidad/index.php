@@ -14,15 +14,14 @@
     </div>
 </div>
 
-<br>
-<div class="row">
-    <div class="col">
-        <div class="text-center">
-            <table class="table table-bordered" id="tabla_especialidad" style="width:100%">
-            </table>
-        </div>
+
+<div class="col-12 table-responsive">
+    <div class="text-center">
+        <table class="table table-bordered table-fixed" id="tabla_especialidad">
+        </table>
     </div>
 </div>
+
 
 <div class="row">
     <div class="col">

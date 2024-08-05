@@ -12,13 +12,13 @@ if(isset($_POST['busqueda'])){
     $listado = $modelEstudioM->listarByBusqueda($id_tbl_empleados_hraes,$_POST['busqueda'],$paginador);
 } 
 $data =
-    '<table class="table table-bordered" id="tabla_estudio" style="width:100%">
+    '<table class="table table-bordered table-fixed" id="tabla_estudio" style="width:100%">
     <thead class="text-center">
         <tr>
-            <th>Acciones</th>
-            <th>Nivel de estudio</th>
-            <th>Carrera</th>
-            <th>Cédula</th>
+            <th class="col-wide-action">Acciones</th>
+            <th class="col-wide">Nivel de estudio</th>
+            <th class="col-wide">Carrera</th>
+            <th class="col-wide">Cédula</th>
             </tr>
     </thead>';
 

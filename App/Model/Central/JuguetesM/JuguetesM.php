@@ -17,9 +17,9 @@ class ModelJuguetesM
                             INNER JOIN cat_estatus_juguetes
                             ON central.ctrl_juguetes_hraes.id_cat_estatus_juguetes = 
                                 cat_estatus_juguetes.id_cat_estatus_juguetes
-                            INNER JOIN ctrl_dependientes_economicos_hraes
+                            INNER JOIN central.ctrl_dependientes_economicos_hraes
                             ON central.ctrl_juguetes_hraes.id_ctrl_dependientes_economicos_hraes = 
-                                ctrl_dependientes_economicos_hraes.id_ctrl_dependientes_economicos_hraes
+                                central.ctrl_dependientes_economicos_hraes.id_ctrl_dependientes_economicos_hraes
                             WHERE central.ctrl_juguetes_hraes.id_tbl_empleados_hraes = $id_object
                             ORDER BY central.ctrl_juguetes_hraes.id_ctrl_juguetes_hraes DESC
                             LIMIT 3 OFFSET $paginator;");
@@ -80,9 +80,9 @@ class ModelJuguetesM
                             INNER JOIN cat_estatus_juguetes
                             ON central.ctrl_juguetes_hraes.id_cat_estatus_juguetes = 
                                 cat_estatus_juguetes.id_cat_estatus_juguetes
-                            INNER JOIN ctrl_dependientes_economicos_hraes
+                            INNER JOIN central.ctrl_dependientes_economicos_hraes
                             ON central.ctrl_juguetes_hraes.id_ctrl_dependientes_economicos_hraes = 
-                                ctrl_dependientes_economicos_hraes.id_ctrl_dependientes_economicos_hraes
+                                central.ctrl_dependientes_economicos_hraes.id_ctrl_dependientes_economicos_hraes
                             WHERE central.ctrl_juguetes_hraes.id_tbl_empleados_hraes = $id_object
                             AND (TRIM(UPPER(UNACCENT(ctrl_dependientes_economicos_hraes.nombre))) 
                                     LIKE '%$busqueda%' OR
