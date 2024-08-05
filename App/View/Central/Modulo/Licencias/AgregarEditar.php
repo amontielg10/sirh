@@ -131,7 +131,7 @@
                         <div class="col-9">
                             <label for="campo"
                                 class="text-input-rem form-label input-text-form">Observaciones</label><label
-                                class="text-required">*</label>
+                                class="text-required"></label>
                             <input type="text" placeholder="Observaciones"
                                 onkeyup="convertirAMayusculas(event,'observaciones_licencia')"
                                 class="form-control custom-input" id="observaciones_licencia" maxlength="75">
