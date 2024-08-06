@@ -1,3 +1,14 @@
+var notyf = new Notyf({
+    position: {
+        x: 'right',
+        y: 'top',
+    },
+    dismissible: true, // Permite que las notificaciones sean cerrables
+    duration: 3000, // Duración predeterminada de las notificaciones en milisegundos (opcional)
+});
+
+var mensajeSalida = 'Se produjo un error al ejecutar la acción';
+
 function buscarInfoEmpleado(id_tbl_empleados_hraes){
     let nombreResult = document.getElementById("nombreResult");
     let numEmpleadoResult = document.getElementById("numEmpleadoResult");

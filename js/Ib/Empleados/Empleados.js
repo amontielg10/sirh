@@ -141,7 +141,7 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "warning",
+        icon: "question",
         showCancelButton: true,
         confirmButtonColor: "#235B4E",
         cancelButtonColor: "#6c757d",

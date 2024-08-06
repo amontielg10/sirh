@@ -81,11 +81,11 @@ function agregarEditarByDbByFormatoPago() {
     },
         function (data, status) {
             if (data == 'edit'){
-                mensajeExito('Forma de pago modificada con éxito');
+                notyf.success('Forma de pago modificada con éxito');
             } else if (data == 'add') {
-                mensajeExito('Forma de pago agregada con éxito');  
+                notyf.success('Forma de pago agregada con éxito');  
             } else {
-                mensajeError(data);
+                notyf.error(mensajeSalida);
             }
             $("#agregar_editar_forma_pago").modal("hide");
             buscarFormaPago();
@@ -98,10 +98,10 @@ function eliminarFormaPago(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "warning",
+        icon: "question",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#235B4E",
+        cancelButtonColor: "#6c757d",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -111,9 +111,9 @@ function eliminarFormaPago(id_object) {//ELIMINAR USUARIO
             },
             function (data, status) {
                 if (data == 'delete'){
-                    mensajeExito('Forma de pago eliminada con éxito')
+                    notyf.success('Forma de pago eliminada con éxito')
                 } else {
-                    mensajeError(data);
+                    notyf.error(mensajeSalida);
                 }
                 buscarFormaPago();
             }

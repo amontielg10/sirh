@@ -185,8 +185,10 @@ if ($id_tbl_empleados_hraes == null) {
 </div>
 <br>
 
+<script src="../../../../assets/notyf/notyf.min.js"></script>
 <?php include 'librerias.php' ?>
 <script src="../../../../assets/js/bootstrap.js"></script>
+
 <script>
     $(document).ready(function () {
         buscarInfoEmpleado(id_tbl_empleados_hraes);

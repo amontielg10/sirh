@@ -60,11 +60,11 @@ function guardarCorreo() {
     },
         function (data) {
             if (data == 'edit'){
-                mensajeExito('Correo electrónico modificado con éxito');
+                notyf.success('Correo electrónico modificado con éxito');
             } else if (data == 'add') {
-                mensajeExito('Correo electrónico agregado con éxito');  
+                notyf.success('Correo electrónico agregado con éxito');  
             } else {
-                mensajeError(data);
+                notyf.error(mensajeSalida);
             }
             $("#agregar_editar_correo").modal("hide");
             buscarCorreo();
@@ -76,10 +76,10 @@ function eliminarCorreo(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "warning",
+        icon: "question",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#235B4E",
+        cancelButtonColor: "#6c757d",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -89,9 +89,9 @@ function eliminarCorreo(id_object) {//ELIMINAR USUARIO
             },
             function (data) {
                 if (data == 'delete'){
-                    mensajeExito('Correo electrónico eliminado con éxito')
+                    notyf.success('Correo electrónico eliminado con éxito')
                 } else {
-                    mensajeError(data);
+                    notyf.error(mensajeSalida);
                 }
                 buscarCorreo();
             }

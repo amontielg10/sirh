@@ -63,11 +63,11 @@ function guardarLengua() {
     },
         function (data) {
             if (data == 'edit'){
-                mensajeExito('Lengua modificada con éxito');
+                notyf.success('Lengua modificada con éxito');
             } else if (data == 'add') {
-                mensajeExito('Lengua agregada con éxito');  
+                notyf.success('Lengua agregada con éxito');  
             } else {
-                mensajeError(data);
+                notyf.error(mensajeSalida);
             }
             $("#agregar_editar_lengua").modal("hide");
             buscarLengua();
@@ -79,7 +79,7 @@ function eliminarLengua(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "warning",
+        icon: "question",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
@@ -94,9 +94,9 @@ function eliminarLengua(id_object) {//ELIMINAR USUARIO
             },
             function (data) {
                 if (data == 'delete'){
-                    mensajeExito('Lengua eliminada con éxito')
+                    notyf.success('Lengua eliminada con éxito')
                 } else {
-                    mensajeError(data);
+                    notyf.error(mensajeSalida);
                 }
                 buscarLengua();
             }

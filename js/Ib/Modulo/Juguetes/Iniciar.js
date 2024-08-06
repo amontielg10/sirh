@@ -85,11 +85,11 @@ function agregarEditarByDbByJuguete() {
     },
         function (data) {
             if (data == 'edit'){
-                mensajeExito('Dependiente modificado en módulo de juguetes');
+                notyf.success('Dependiente modificado en módulo de juguetes');
             } else if (data == 'add') {
-                mensajeExito('Dependiente agregado al módulo de juguetes');  
+                notyf.success('Dependiente agregado al módulo de juguetes');  
             } else {
-                mensajeError(data);
+                notyf.error(mensajeSalida);
             }
             $("#agregar_editar_juguete").modal("hide");
             buscarJuguete();
@@ -102,10 +102,10 @@ function eliminarJuguete(id_object) {
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "warning",
+        icon: "question",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#235B4E",
+        cancelButtonColor: "#6c757d",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -115,9 +115,9 @@ function eliminarJuguete(id_object) {
             },
             function (data) {
                 if (data == 'delete'){
-                    mensajeExito('Dependiente eliminado del módulo de juguetes')
+                    notyf.success('Dependiente eliminado del módulo de juguetes')
                 } else {
-                    mensajeError(data);
+                    notyf.error(mensajeSalida);
                 }
                 buscarJuguete();
             }

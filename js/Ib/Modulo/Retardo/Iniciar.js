@@ -77,11 +77,11 @@ function guardarRetardoX() {
     },
         function (data) {
             if (data == 'edit'){
-                mensajeExito('Retardo modificado con éxito');
+                notyf.success('Retardo modificado con éxito');
             } else if (data == 'add') {
-                mensajeExito('Retardo agregado con éxito');  
+                notyf.success('Retardo agregado con éxito');  
             } else {
-                mensajeError(data);
+                notyf.error(mensajeSalida);
             }
             $("#agregar_editar_retardo").modal("hide");
             buscarRetardo();
@@ -93,10 +93,10 @@ function eliminarRetardo_(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "warning",
+        icon: "question",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#235B4E",
+        cancelButtonColor: "#6c757d",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -106,9 +106,9 @@ function eliminarRetardo_(id_object) {//ELIMINAR USUARIO
             },
             function (data) {
                 if (data == 'delete'){
-                    mensajeExito('Retardo eliminado con éxito')
+                    notyf.success('Retardo eliminado con éxito')
                 } else {
-                    mensajeError(data);
+                    notyf.error(mensajeSalida);
                 }
                 buscarRetardo();
             }

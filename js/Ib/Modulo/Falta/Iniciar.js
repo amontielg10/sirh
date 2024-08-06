@@ -68,11 +68,11 @@ function guardarFalta() {
     },
         function (data) {
             if (data == 'edit'){
-                mensajeExito('Falta agregada con éxito');
+                notyf.success('Falta agregada con éxito');
             } else if (data == 'add') {
-                mensajeExito('Falta modificada con éxito');  
+                notyf.success('Falta modificada con éxito');  
             } else {
-                mensajeError(data);
+                notyf.error(mensajeSalida);
             }
             $("#agregar_editar_falta").modal("hide");
             buscarFalta();
@@ -84,10 +84,10 @@ function eliminarFalta(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "warning",
+        icon: "question",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#235B4E",
+        cancelButtonColor: "#6c757d",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -97,9 +97,9 @@ function eliminarFalta(id_object) {//ELIMINAR USUARIO
             },
             function (data) {
                 if (data == 'delete'){
-                    mensajeExito('Falta eliminada con éxito')
+                    notyf.success('Falta eliminada con éxito')
                 } else {
-                    mensajeError(data);
+                    notyf.error(mensajeSalida);
                 }
                 buscarFalta();
             }
