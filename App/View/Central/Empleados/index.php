@@ -83,9 +83,9 @@
     </div>
 </div>
 
-<script src="../../../../js/Ib/Empleados/Empleados.js"></script>
-<script src="../../../../js/Ib/Empleados/validar.js"></script>
-<script src="../../../../js/Ib/Empleados/Busqueda.js"></script>
 <?php include '../../librerias.php' ?>
 <?php include 'AgregarEditar.php' ?>
 
+<script src="../../../../js/Ib/Empleados/Empleados.js"></script>
+<script src="../../../../js/Ib/Empleados/validar.js"></script>
+<script src="../../../../js/Ib/Empleados/Busqueda.js"></script>

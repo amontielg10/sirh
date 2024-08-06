@@ -24,78 +24,85 @@ if ($id_tbl_empleados_hraes == null) {
                     <div class="col padding-left-0">
                         <h3>Datos complementarios</h3>
                     </div>
+                    <div class="col-auto">
+                        <a href="../Empleados/index.php" class="btn btn-light" role="button" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i style="color:#235B4E" class="fa fa-arrow-left icono-pequeno-tabla"></i>
+                            <span class="hide-menu text-button-add">&nbsp;Regresar</span>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="div-spacing"></div>
 
             <div class="row is-rem-text">
                 <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
-                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">NOMBRE: <label class="text-result-normal"
-                            id="nombreResult"></label>
+                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">NOMBRE: <label
+                            class="text-result-normal" id="nombreResult"></label>
                     </h6>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
-                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">PRIMER APELLIDO: <label class="text-result-normal"
-                            id="primerA"></label>
+                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">PRIMER
+                        APELLIDO: <label class="text-result-normal" id="primerA"></label>
                     </h6>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
-                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">SEGUNDO APELLIDO: <label id="segundoA"
-                            class="text-result-normal"></label>
-                    </h6>
-                </div>
-            </div>
-
-            <div class="row is-rem-text">
-                <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
-                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">RFC: <label class="text-result-normal"
-                            id="rfcResult"></label>
-                    </h6>
-                </div>
-                <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
-                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">CURP: <label class="text-result-normal"
-                            id="curpResult"></label>
-                    </h6>
-                </div>
-                <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
-                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">No DE EMPLEADO: <label id="numEmpleadoResult"
-                            class="text-result-normal"></label>
+                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">SEGUNDO
+                        APELLIDO: <label id="segundoA" class="text-result-normal"></label>
                     </h6>
                 </div>
             </div>
 
             <div class="row is-rem-text">
                 <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
-                    <h6 style="font-weight: bold" class="text-result-normal input-text-form div-spacing">C&OacuteDIGO DE PUESTO: <label
-                            class="text-result-normal" id="codPuesto"></label>
+                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">RFC: <label
+                            class="text-result-normal" id="rfcResult"></label>
                     </h6>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
-                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">NIVEL: <label class="text-result-normal"
-                            id="isNivel"></label>
+                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">CURP: <label
+                            class="text-result-normal" id="curpResult"></label>
                     </h6>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
-                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">PUESTO: <label id="nomPuesto"
-                            class="text-result-normal"></label>
+                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">No DE
+                        EMPLEADO: <label id="numEmpleadoResult" class="text-result-normal"></label>
                     </h6>
                 </div>
             </div>
 
             <div class="row is-rem-text">
                 <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
-                    <h6  style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">No PLAZA: <label
-                            class="text-result-normal" id="numPlaza"></label>
+                    <h6 style="font-weight: bold" class="text-result-normal input-text-form div-spacing">C&OacuteDIGO DE
+                        PUESTO: <label class="text-result-normal" id="codPuesto"></label>
                     </h6>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
-                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">CLUE: <label class="text-result-normal"
-                            id="isClue"></label>
+                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">NIVEL: <label
+                            class="text-result-normal" id="isNivel"></label>
                     </h6>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
-                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">ZONA PAGADORA: <label id="zonaPag"
-                            class="text-result-normal"></label>
+                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">PUESTO: <label
+                            id="nomPuesto" class="text-result-normal"></label>
+                    </h6>
+                </div>
+            </div>
+
+            <div class="row is-rem-text">
+                <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">No PLAZA:
+                        <label class="text-result-normal" id="numPlaza"></label>
+                    </h6>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">CLUE: <label
+                            class="text-result-normal" id="isClue"></label>
+                    </h6>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">ZONA PAGADORA:
+                        <label id="zonaPag" class="text-result-normal"></label>
                     </h6>
                 </div>
             </div>

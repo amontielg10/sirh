@@ -20,11 +20,19 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
                     <div class="col padding-left-0">
                         <h4>IMSS-BIENESTAR CENTRAL</h4>
                     </div>
+                    <?php if ($id_tbl_centro_trabajo_hraes != null) { ?>
+                        <div class="col-auto">
+                            <a href="../CentroTrabajo/index.php" class="btn btn-light" role="button" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i style="color:#235B4E" class="fa fa-arrow-left icono-pequeno-tabla"></i>
+                                <span class="hide-menu text-button-add">&nbsp;Regresar</span>
+                            </a>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
             <?php if ($id_tbl_centro_trabajo_hraes != null) { ?>
                 <div class="div-spacing"></div>
-
                 <?php include 'InfoClue.php' ?>
             <?php } ?>
         </div>
@@ -141,9 +149,11 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
 
 
 
-<script src="../../../../js/Ib/Plazas/Busqueda.js"></script>
-<script src="../../../../js/Ib/Plazas/Plazas.js"></script>
-<script src="../../../../js/Ib/Plazas/validar.js"></script>
+
 <?php include 'AgregarEditar.php' ?>
 <?php include 'Detalles.php' ?>
 <?php include '../../librerias.php' ?>
+
+<script src="../../../../js/Ib/Plazas/Busqueda.js"></script>
+<script src="../../../../js/Ib/Plazas/Plazas.js"></script>
+<script src="../../../../js/Ib/Plazas/validar.js"></script>

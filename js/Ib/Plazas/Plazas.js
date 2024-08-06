@@ -1,3 +1,13 @@
+var notyf = new Notyf({
+    position: {
+        x: 'right',
+        y: 'top',
+    },
+    dismissible: true, // Permite que las notificaciones sean cerrables
+    duration: 3000, // Duración predeterminada de las notificaciones en milisegundos (opcional)
+});
+
+
 var id_tbl_centro_trabajo_hraes = document.getElementById("id_tbl_centro_trabajo_hraes").value;
 var mensajeSalida = 'Se produjo un error al ejecutar la acción';
 
@@ -168,11 +178,11 @@ function agregarEditarByDb() {
     },
         function (data) {
             if (data == 'edit'){
-                mensajeExito('Plaza modificada con éxito');
+                notyf.success('Plaza modificada con éxito');
             } else if (data == 'add') {
-                mensajeExito('Plaza agregada con éxito');  
+                notyf.success('Plaza agregada con éxito');  
             } else {
-                mensajeError(mensajeSalida);
+                notyf.error(mensajeSalida);
             }
             $("#agregar_editar_modal").modal("hide");
             buscarPlaza();
@@ -194,8 +204,8 @@ function eliminarEntity(id_object) {
         text: "¡No podrás revertir esto!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#235B4E",
+        cancelButtonColor: "#6c757d",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -205,7 +215,7 @@ function eliminarEntity(id_object) {
             },
             function (data) {
                 if (data == 'delete'){
-                    mensajeExito('Plaza eliminada con éxito');
+                    notyf.success('Plaza eliminada con éxito');
                 } else {
                     messageErrorLarge('La eliminación de una plaza no debe estar sujeta a dependencias de empleados, o datos complementarios');
                 }

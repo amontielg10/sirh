@@ -1,4 +1,13 @@
 
+var notyf = new Notyf({
+    position: {
+        x: 'right',
+        y: 'top',
+    },
+    dismissible: true, // Permite que las notificaciones sean cerrables
+    duration: 3000, // Duración predeterminada de las notificaciones en milisegundos (opcional)
+});
+
 var mensajeSalida = 'Se produjo un error al ejecutar la acción';
 
 $(document).ready(function () {
@@ -80,6 +89,8 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
     $("#agregar_editar_modal").modal("show");
 }
 
+
+
 function agregarEditarByDb() {
     var id_cat_entidad = $("#id_cat_entidad").val();
     var id_cat_region = $("#id_cat_region").val();
@@ -115,9 +126,9 @@ function agregarEditarByDb() {
         function (data) {
             
             if (data == 'edit'){
-                mensajeExito('Centro de trabajo modificado con éxito');
+                notyf.success('Centro de trabajo modificado con éxito');
             } else if (data == 'add') {
-                mensajeExito('Centro de trabajo agregado con éxito');  
+                notyf.success('Centro de trabajo agregado con éxito');  
             } else {
                 mensajeError(mensajeSalida);
             }
@@ -135,10 +146,10 @@ function eliminarEntity(id_object) {
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "warning",
+        icon: "question",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#235B4E",
+        cancelButtonColor: "#6c757d",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -148,7 +159,7 @@ function eliminarEntity(id_object) {
             },
             function (data, status) {
                 if (data == 'delete'){
-                    mensajeExito('Centro de trabajo eliminado con éxito')
+                    notyf.success('Centro de trabajo eliminado con éxito')
                 } else {
                     messageErrorLarge('La eliminación de un centro de trabajo no debe estar sujeta a dependencias como plazas, empleados, o datos complementarios');
                 }

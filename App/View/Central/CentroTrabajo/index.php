@@ -79,10 +79,11 @@
 <div id="myChart"></div>
 
 
+<?php include '../../librerias.php' ?>
+<?php include 'AgregarEditar.php' ?>
+<?php include 'Carga.php' ?>
+
 <script src="../../../../js/Ib/CentroTrabajo/CentroTrabajo.js"></script>
 <script src="../../../../js/Ib/CentroTrabajo/validar.js"></script>
 <script src="../../../../js/Ib/CentroTrabajo/Busqueda.js"></script>
 <script src="../../../../js/Ib/CentroTrabajo/Carga.js"></script>
-<?php include '../../librerias.php' ?>
-<?php include 'AgregarEditar.php' ?>
-<?php include 'Carga.php' ?>

@@ -45,7 +45,7 @@ function validarEstatusPlaza(id_cat_plazas,id_object){
             let bool = jsonData.bool;
         
             if (bool){
-                mensajeError(message);
+                notyf.error(message);
             } else {
                 agregarEditarByDb();
             }

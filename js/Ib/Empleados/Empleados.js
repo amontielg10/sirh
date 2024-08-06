@@ -1,3 +1,12 @@
+var notyf = new Notyf({
+    position: {
+        x: 'right',
+        y: 'top',
+    },
+    dismissible: true, // Permite que las notificaciones sean cerrables
+    duration: 3000, // Duración predeterminada de las notificaciones en milisegundos (opcional)
+});
+
 var mensajeSalida = 'Se produjo un error al ejecutar la acción';
 
 $(document).ready(function () {
@@ -116,11 +125,11 @@ function agregarEditarByDb() {
     },
         function (data) {
             if (data == 'edit'){
-                mensajeExito('Empleado modificado con éxito');
+                notyf.success('Empleado modificado con éxito');
             } else if (data == 'add') {
-                mensajeExito('Empleado agregado con éxito');  
+                notyf.success('Empleado agregado con éxito');  
             } else {
-                mensajeError(mensajeSalida);
+                notyf.error(mensajeSalida);
             }
             $("#agregar_editar_modal").modal("hide");
             buscarEmpleado();
@@ -134,8 +143,8 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
         text: "¡No podrás revertir esto!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#235B4E",
+        cancelButtonColor: "#6c757d",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -145,9 +154,9 @@ function eliminarEntity(id_object) {//ELIMINAR USUARIO
             },
             function (data) {
                 if (data == 'delete'){
-                    mensajeExito('Empleado eliminado con éxito')
+                    notyf.success('Empleado eliminado con éxito')
                 } else {
-                    mensajeError(mensajeSalida);
+                    notyf.error(mensajeSalida);
                 }
                 buscarEmpleado();
             }
@@ -194,9 +203,9 @@ function convertirAMayusculas(event, inputId) {
             function (data) {
                 fadeOut();
                 if (data){
-                    mensajeExito('Proceso realizado con éxito')
+                    notyf.success('Proceso realizado con éxito')
                 } else {
-                    mensajeError(mensajeSalida);
+                    notyf.error(mensajeSalida);
                 }
             }
         );
