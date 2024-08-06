@@ -45,7 +45,7 @@ function validarConcepto(id_cat_concepto,id_tbl_empleados_hraes,id_object){
             if (!bool){
                 agregarEditarByDbByPercepcion();
             } else {
-                mensajeError(message);
+                notyf.error(message);
             }
         }
     );
