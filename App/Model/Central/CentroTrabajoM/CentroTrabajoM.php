@@ -2,6 +2,33 @@
 
 class modelCentroTrabajoHraes
 {
+    public function infoCentroByPlaza($id){
+        $query = pg_query("SELECT 
+                                central.tbl_centro_trabajo_hraes.nombre,
+                                central.tbl_centro_trabajo_hraes.clave_centro_trabajo,
+                                central.tbl_centro_trabajo_hraes.codigo_postal,
+                                central.tbl_centro_trabajo_hraes.colonia,
+                                CONCAT(public.cat_region.clave_region,' ', public.cat_region.region),
+                                CONCAT(public.cat_entidad.clave_entidad, ' ', public.cat_entidad.entidad),
+                                central.tbl_centro_trabajo_hraes.pais
+                            FROM central.tbl_centro_trabajo_hraes
+                            INNER JOIN public.cat_region
+                                ON central.tbl_centro_trabajo_hraes.id_cat_region =
+                                    public.cat_region.id_cat_region
+                            INNER JOIN public.cat_entidad
+                                ON central.tbl_centro_trabajo_hraes.id_cat_entidad =
+                                    public.cat_entidad.id_cat_entidad
+                            WHERE central.tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes = $id;");
+        return $query;
+    }
+    public function allCountPlazas($idClue)
+    {
+        $isQuery = pg_query("SELECT 
+                                    COUNT (id_tbl_control_plazas_hraes)
+                                FROM central.tbl_control_plazas_hraes
+                                WHERE id_tbl_centro_trabajo_hraes = $idClue;");
+        return $isQuery;
+    }
     public function listarByAll($paginator)
     {
         $listado = "SELECT tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes,

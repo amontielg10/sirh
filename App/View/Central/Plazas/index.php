@@ -25,29 +25,7 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
             <?php if ($id_tbl_centro_trabajo_hraes != null) { ?>
                 <div class="div-spacing"></div>
 
-                <div class="row">
-                    <div class="col-12">
-                        <h6 class="text-input-form-bold-label   div-spacing">Nombre centro de trabajo: <label
-                                id="nombreResult" class="text-result-normal"></label>
-                        </h6>
-                    </div>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-3">
-                        <h6 class="text-input-form-bold-label div-spacing">Clave de centro de trabajo: <label id="clvResult"
-                                class="text-result-normal"></label>
-                        </h6>
-                    </div>
-
-                    <div class="col-2">
-                        <h6 class="text-input-form-bold-label   div-spacing">C&oacutedigo postal: <label id="cpResult"
-                                class="text-result-normal"></label>
-                        </h6>
-                    </div>
-
-                </div>
+                <?php include 'InfoClue.php' ?>
             <?php } ?>
         </div>
     </div>
@@ -131,7 +109,7 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
                         </div>
                         <div class="col-11">
                             <h1 class="text-tittle-card"><label id="" claa="text-modal-tittle"></label>
-                               Agregar plaza.
+                                Agregar plaza.
                             </h1>
                             <p class="color-text-white">Este espacio está destinado a agregar o modificar información
                                 relacionada con plazas. Aquí puedes ingresar nuevos datos o actualizar los

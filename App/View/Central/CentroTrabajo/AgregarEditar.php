@@ -43,14 +43,14 @@
 
                     <div class="div-spacing"></div>
                     <div class="row mx-1">
-                        <div class="col-4">
+                        <div class="col-6">
                             <label for="campo" class="form-label input-text-form">Colonia</label><label
                                 class="text-required">*</label>
                             <input maxlength="30" type="text" class="form-control div-spacing custom-input" id="colonia"
                                 onkeyup="convertirAMayusculas(event,'colonia')" name="colonia" placeholder="Colonia">
                             <div class="line"></div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <label for="campo" class="form-label input-text-form">N&uacutemero exterior</label><label
                                 class="text-required">*</label>
                             <input type="text" class="form-control div-spacing custom-input" id="num_exterior"
@@ -58,7 +58,7 @@
                                 onkeyup="convertirAMayusculas(event,'num_exterior')">
                             <div class="line"></div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <label for="campo" class="form-label input-text-form">N&uacutemero interior</label><label
                                 class="text-required"></label>
                             <input type="text" class="form-control div-spacing custom-input" id="num_interior"
@@ -127,7 +127,7 @@
                         <div class="col-3">
                             <label for="campo" class="form-label input-text-form">Nivel atenci&oacuten</label><label
                                 class="text-required"></label>
-                            <input type="text" class="form-control div-spacing custom-input" id="nivel_atencion"
+                            <input type="text" class="form-control custom-input" id="nivel_atencion"
                                 name="num_interior" placeholder="Nivel de atención" maxlength="25"
                                 onkeyup="convertirAMayusculas(event,'nivel_atencion')">
                             <div class="line"></div>

@@ -60,8 +60,7 @@
                         </div>
 
                         <div class="col-8">
-                            <label for="campo" class="form-label input-text-form text-input-rem">Fecha
-                                hasta</label><label class="text-required">*</label>
+                            <label for="campo" class="form-label input-text-form text-input-rem">Observaciones</label><label class="text-required">*</label>
                             <input onkeyup="convertirAMayusculas(event,'Observaciones_falta')" type="text"
                                 class="form-control custom-input" id="Observaciones_falta" placeholder="Observaciones"
                                 maxlength="40">

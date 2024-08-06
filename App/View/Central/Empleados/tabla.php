@@ -46,7 +46,7 @@ if (pg_num_rows($result) > 0) {
                                 <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
                                 <form action="../Modulo/index.php" method="POST">
                                         <input type="hidden" name="id_tbl_empleados_hraes" value="' . $row[0]  . '" />
-                                        <button onclick="datosEmpleadosGetDetails(' . $row[0]  . ')" class="dropdown-item btn btn-light"><i class="fa fa-folder-open icon-edit-table"></i> Datos complementarios</button>  
+                                        <button onclick="datosEmpleadosGetDetails(' . $row[0]  . ')" class="dropdown-item btn btn-light"><i class="fa fa-folder-open icon-edit-table"></i> Datos complem.</button>  
                                 </form>
                                 <button onclick="eliminarEntity(' . $row[0]  . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
                             </div>

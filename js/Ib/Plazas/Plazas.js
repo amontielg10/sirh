@@ -222,6 +222,11 @@ function buscarInfoCentroTrabajo(){
         let clvResult = document.getElementById("clvResult");
         let nombreResult = document.getElementById("nombreResult");
         let cpResult = document.getElementById("cpResult");
+        let colonia_ = document.getElementById("colonia_");
+        let region_ = document.getElementById("region_");
+        let entidad_ = document.getElementById("entidad_");
+        let pais_ = document.getElementById("pais_");
+        let plazas_ = document.getElementById("plazas_");
 
         $.post("../../../../App/Controllers/Central/PlazasC/InfoCentroC.php", {
             id_tbl_centro_trabajo_hraes: id_tbl_centro_trabajo_hraes,
@@ -232,6 +237,11 @@ function buscarInfoCentroTrabajo(){
                 clvResult.textContent = jsonData.clave;
                 nombreResult.textContent = jsonData.nombre;
                 cpResult.textContent = jsonData.codigo_postal;
+                colonia_.textContent = jsonData.colonia;
+                region_.textContent = jsonData.region;
+                entidad_.textContent = jsonData.entidad;
+                pais_.textContent = jsonData.pais;
+                plazas_.textContent = jsonData.plazas;
             }
         );
     }
