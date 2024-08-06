@@ -36,6 +36,9 @@ function agregarEditarQuinquenio(id_object){
             $('#id_cat_quinquenio').html(quinquenio);  
             $("#fecha_registro").val(entity.fecha_registro);
 
+            $('#id_cat_quinquenio').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
+
         }
     );
 
