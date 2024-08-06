@@ -20,11 +20,9 @@ class FaltaModelM
 
     function listarEditById($id_object)
     {
-        $listado = pg_query("SELECT id_ctrl_retardo_hraes, fecha, hora_entrada, minuto_entrada,
-                                    hora_salida, minuto_salida, id_tbl_empleados_hraes
-                            FROM central.ctrl_retardo_hraes
-                            WHERE id_ctrl_retardo_hraes = $id_object
-                            ORDER BY id_ctrl_retardo_hraes DESC
+        $listado = pg_query("SELECT *
+                            FROM central.ctrl_faltas_hraes
+                            WHERE id_ctrl_faltas_hraes = $id_object
                             LIMIT 5;");
         return $listado;
     }

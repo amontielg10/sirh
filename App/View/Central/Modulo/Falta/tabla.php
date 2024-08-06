@@ -14,29 +14,29 @@ if(isset($_POST['busqueda'])){
 
 
 $data =
-    '<table class="table table-bordered" id="tabla_retardo" style="width:100%">
-    <thead>
+    '<table class="table table-bordered table-fixed" id="tabla_retardo" style="width:100%">
+    <thead class="text-center">
         <tr>
-            <th>Acciones</th>
-            <th>Fecha (Desde)</th>
-            <th>Fecha (Hasta)</th>
-            <th>Fecha (Registro)</th>
-            <th>Código de certificación</th>
-            <th>Observaciones</th>
+            <th class="col-wide-action">Acciones</th>
+            <th class="col-wide">Fecha (Desde)</th>
+            <th class="col-wide">Fecha (Hasta)</th>
+            <th class="col-wide">Fecha (Registro)</th>
+            <th class="col-wide">Código de certificación</th>
+            <th class="col-wide">Observaciones</th>
         </tr>
     </thead>';
 
 if (pg_num_rows($listado) > 0) {
     while ($row = pg_fetch_row($listado)) {
         $data .=
-            '<tbody>
+            '<tbody class="text-center">
                         <tr>
                         <td>
                         <div class="btn-group">
                                 <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit icono-pequeno-tabla"></i></button>
                             <div class="dropdown-menu">
                                 <button onclick="agregarEditarFalta(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
-                                <button onclick="eliminarRetardo(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
+                                <button onclick="eliminarFalta(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
                             </div>
                           </div>
                                 </td>
