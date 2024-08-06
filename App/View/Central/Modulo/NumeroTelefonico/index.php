@@ -14,6 +14,7 @@
     </div>
 </div>
 
+<br>
 <div class="col-12 table-responsive">
     <div class="text-center">
         <table class="table table-bordered table-fixed" id="modulo_telefono">

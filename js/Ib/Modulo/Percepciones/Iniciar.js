@@ -47,6 +47,9 @@ function agregarEditarPercepcion(id_object){
             $('#id_cat_valores').empty();
             $('#id_cat_valores').html(valor); 
 
+            $('#id_cat_concepto').selectpicker('refresh');
+            $('#id_cat_valores').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
         }
     );
 
