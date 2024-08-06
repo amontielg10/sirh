@@ -67,12 +67,10 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
             <?php } ?>
 
             <div class="div-spacing"></div>
-            <div class="row">
-                <div class="col">
-                    <div class="text-center">
-                        <table class="table table-bordered" id="tabla_plazas" style="width:100%">
-                        </table>
-                    </div>
+            <div class="col-12 table-responsive">
+                <div class="text-center">
+                    <table class="table table-bordered table-fixed" id="tabla_plazas">
+                    </table>
                 </div>
             </div>
 

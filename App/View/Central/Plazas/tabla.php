@@ -23,14 +23,18 @@ if ($id_tbl_centro_trabajo_hraes != null){///LISTAR CON ID DE CENTRO DE TRABAJO
 }
 
 $data =
-    '<table class="table table-bordered" id="tabla_plazas" style="width:100%">
+    '<table class="table table-bordered table-fixed" id="tabla_plazas" style="width:100%">
     <thead>
         <tr>
-            <th>Acciones</th>
-            <th>N&uacutem. de plaza</th>
-            <th>Tipo de plaza</th>
-            <th>Tipo de contrataci&oacuten</th>
-            <th>Unidad responsable</th>
+            <th class="col-wide-action">Acciones</th>
+            <th class="col-wide">No Plaza</th>
+            <th class="col-wide">Tipo de plaza</th>
+            <th class="col-wide-x-300">Puesto</th>
+            <th class="col-wide">Código de puesto</th>
+            <th class="col-wide">Nivel de puesto</th>
+            <th class="col-wide">CLUE</th>
+            <th class="col-wide">Tipo de contrataci&oacuten</th>
+            <th class="col-wide-x-300">Unidad responsable</th>
         </tr>
     </thead>';
 
@@ -57,6 +61,18 @@ if (pg_num_rows($result) > 0) {
                             </td>
                             <td>
                                 ' . $row[2] . '
+                            </td>
+                            <td>
+                                ' . $row[5] . '
+                            </td>
+                            <td>
+                                ' . $row[6] . '
+                            </td>
+                            <td>
+                                ' . $row[7] . '
+                            </td>
+                            <td>
+                                ' . $row[8] . '
                             </td>
                             <td>
                                 ' . $row[3] . '

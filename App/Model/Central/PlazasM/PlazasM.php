@@ -20,7 +20,11 @@ class modelPlazasHraes
                             cat_tipo_plazas.tipo_plaza,
                             CONCAT(cat_tipo_contratacion_hraes.tipo_contratacion, ' ',
                                 cat_subtipo_contratacion_hraes.subtipo),
-                            cat_unidad_responsable.nombre
+                            cat_unidad_responsable.nombre,
+                            central.cat_puesto_hraes.nombre_posicion,
+							central.cat_puesto_hraes.codigo_puesto,
+							central.cat_puesto_hraes.nivel,
+							central.tbl_centro_trabajo_hraes.clave_centro_trabajo
                     FROM central.tbl_control_plazas_hraes
                     INNER JOIN cat_tipo_plazas
                         ON tbl_control_plazas_hraes.id_cat_tipo_plazas = cat_tipo_plazas.id_cat_tipo_plazas
@@ -35,7 +39,13 @@ class modelPlazasHraes
                             cat_tipo_contratacion_hraes.id_cat_tipo_contratacion_hraes
                     INNER JOIN cat_subtipo_contratacion_hraes
                         ON 	cat_tipo_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes =
-                            cat_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes " . $result;
+                            cat_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes 
+                    INNER JOIN central.cat_puesto_hraes
+						ON central.tbl_control_plazas_hraes.id_cat_puesto_hraes =
+							central.cat_puesto_hraes.id_cat_puesto_hraes
+					INNER JOIN central.tbl_centro_trabajo_hraes
+						ON central.tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes =
+							central.tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes " . $result;
         return $listado;
     }
 
@@ -44,6 +54,14 @@ class modelPlazasHraes
         $result = "AND (TRIM(UPPER(UNACCENT(tbl_control_plazas_hraes.num_plaza))) 
                             LIKE '%$busqueda%'
                     OR TRIM(UPPER(UNACCENT(cat_tipo_plazas.tipo_plaza)))
+                            LIKE '%$busqueda%'
+                    OR TRIM(UPPER(UNACCENT(central.cat_puesto_hraes.nombre_posicion)))
+                            LIKE '%$busqueda%'
+                    OR TRIM(UPPER(UNACCENT(central.cat_puesto_hraes.codigo_puesto)))
+                            LIKE '%$busqueda%'
+                    OR TRIM(UPPER(UNACCENT(central.cat_puesto_hraes.nivel)))
+                            LIKE '%$busqueda%'
+                    OR TRIM(UPPER(UNACCENT(central.tbl_centro_trabajo_hraes.clave_centro_trabajo)))
                             LIKE '%$busqueda%'
                     OR TRIM(UPPER(UNACCENT(CONCAT(cat_tipo_contratacion_hraes.tipo_contratacion, ' ',
                                 cat_subtipo_contratacion_hraes.subtipo))))
@@ -64,7 +82,11 @@ class modelPlazasHraes
                             cat_tipo_plazas.tipo_plaza,
                             CONCAT(cat_tipo_contratacion_hraes.tipo_contratacion, ' ',
                                 cat_subtipo_contratacion_hraes.subtipo),
-                            cat_unidad_responsable.nombre
+                            cat_unidad_responsable.nombre,
+                            central.cat_puesto_hraes.nombre_posicion,
+							central.cat_puesto_hraes.codigo_puesto,
+							central.cat_puesto_hraes.nivel,
+							central.tbl_centro_trabajo_hraes.clave_centro_trabajo
                     FROM central.tbl_control_plazas_hraes
                     INNER JOIN cat_tipo_plazas
                         ON tbl_control_plazas_hraes.id_cat_tipo_plazas = cat_tipo_plazas.id_cat_tipo_plazas
@@ -79,7 +101,13 @@ class modelPlazasHraes
                             cat_tipo_contratacion_hraes.id_cat_tipo_contratacion_hraes
                     INNER JOIN cat_subtipo_contratacion_hraes
                         ON 	cat_tipo_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes =
-                            cat_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes " . $condition;
+                            cat_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes 
+                    INNER JOIN central.cat_puesto_hraes
+						ON central.tbl_control_plazas_hraes.id_cat_puesto_hraes =
+							central.cat_puesto_hraes.id_cat_puesto_hraes
+					INNER JOIN central.tbl_centro_trabajo_hraes
+						ON central.tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes =
+							central.tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes " . $condition;
         return $listado;
     }
 
