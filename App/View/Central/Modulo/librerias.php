@@ -86,3 +86,6 @@
 <script src="../../../../js/Ib/Modulo/Licencia/Iniciar.js"></script>
 <script src="../../../../js/Ib/Modulo/Licencia/Validar.js"></script>
 <script src="../../../../js/Ib/Modulo/Licencia/buscar.js"></script>
+
+<script src="../../../../js/Ib/Modulo/ConfAsistencia/Iniciar.js"></script>
+<script src="../../../../js/Ib/Modulo/ConfAsistencia/Validar.js"></script>

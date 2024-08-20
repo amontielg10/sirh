@@ -60,6 +60,10 @@ function buscarInfoEmpleado(id_tbl_empleados_hraes){
     );
 }
 
+function iniciarAsistencia(){
+    iniciarConfAsistencia();
+}
+
 function iniciarEscolaridad(){
     buscarEstudio();//ok
     //buscarCedula();//ok
