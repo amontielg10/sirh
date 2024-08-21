@@ -87,7 +87,7 @@ include '../../../Model/Central/LicenciasM/LicenciasM.php';
 include '../../../Model/Catalogos/CatLicenciaM/CatLicenciaM.php';
 include '../../../Model/Catalogos/CatDiasM/CatDiasM.php';
 include '../../../Model/Catalogos/CatEstatusIncideciasM/CatEstatusIncideciasM.php';
-
+include '../../../Model/Central/AsistenciaM/AsistenciaM.php';
 
 include '../../../Model/Catalogos/CatPlazasM/CatPlazasM.php';
 include '../../../Controllers/Catalogos/CatPlazasC/CatPlazasC.php';

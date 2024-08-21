@@ -1,5 +1,4 @@
-/*
-function validarAdicional(){
-    gurdarAdicionals();
+
+function validadConfAsistencia(){
+    console.log('success');
 }
-    */
