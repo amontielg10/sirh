@@ -1,9 +1,11 @@
 <?php
 
-class AsistenciaM{
+class AsistenciaM
+{
 
-    public function listOfAsistencia($id){
-        $query = pg_query ("SELECT
+    public function listOfAsistencia($id)
+    {
+        $query = pg_query("SELECT
                                 central.ctrl_asistencia_info.id_ctrl_asistencia_info,
                                 central.ctrl_asistencia_info.no_dispositivo,
                                 UPPER(central.cat_asistencia_ubicacion.descripcion),
@@ -22,7 +24,8 @@ class AsistenciaM{
         return $query;
     }
 
-    public function listOfJornada($id){
+    public function listOfJornada($id)
+    {
         $query = pg_query("SELECT 
                                 central.ctrl_jornada.id_ctrl_jornada,
                                 UPPER(central.cat_jornada_turno.descripcion),
@@ -45,59 +48,58 @@ class AsistenciaM{
         return $query;
     }
 
-    /*
-    public function selectCountById($id_object){
-        $listado = pg_query("SELECT COUNT (id_tbl_domicilios_hraes)
-                             FROM central.tbl_domicilios_hraes
-                             WHERE id_tbl_empleados_hraes =  $id_object");
-        return $listado;
+    public function editAsistenciaInfo($id)
+    {
+        $query = pg_query("SELECT * 
+                            FROM central.ctrl_asistencia_info
+                            WHERE id_tbl_empleados_hraes = $id
+                            ORDER BY id_ctrl_asistencia_info ASC
+                            LIMIT 1;");
+        return $query;
     }
 
-    public function listarByIdEdit($id_object){
-        $listado = pg_query("SELECT *
-                            FROM central.tbl_domicilios_hraes
-                            WHERE id_tbl_empleados_hraes = $id_object");
-        return $listado;
+    public function editJornadaInfo($id)
+    {
+        $query = pg_query("SELECT * 
+                            FROM central.ctrl_jornada
+                            WHERE id_tbl_empleados_hraes = $id
+                            ORDER BY id_ctrl_jornada DESC
+                            LIMIT 1;");
+        return $query;
     }
 
-    public function listarByNull(){
-        return $array = [
-            'id_tbl_domicilios_hraes' => null,
-            'id_tbl_datos_empleado_hraes' => null,
-            'entidad1' => null,
-            'municipio1' => null,
-            'colonia1' => null,
-            'codigo_postal1' => null,
-            'calle1' => null,
-            'num_exterior1' => null,
-            'num_interior1' => null,
-            'id_estatus1' => null,
-            'entidad2' => null,
-            'municipio2' => null,
-            'colonia2' => null,
-            'codigo_postal2' => null,
-            'calle2' => null,
-            'num_exterior2' => null,
-            'num_interior2' => null,
-            'id_estatus2' => null,
-            'esdireccion_fiscal1' => null,
-            'esdireccion_fiscal2' => null,
-        ];
-    }
-
-    function editarByArray($conexion, $datos, $condicion){
-        $pg_update = pg_update($conexion, 'central.tbl_domicilios_hraes', $datos, $condicion);
+    function editAsistenciaInfoDB($conexion, $datos, $condicion)
+    {
+        $pg_update = pg_update($conexion, 'central.ctrl_asistencia_info', $datos, $condicion);
         return $pg_update;
     }
 
-    function agregarByArray($conexion, $datos){
-        $pg_add = pg_insert($conexion, 'central.tbl_domicilios_hraes', $datos);
+    function addAsistenciaInfoDB($conexion, $datos)
+    {
+        $pg_add = pg_insert($conexion, 'central.ctrl_asistencia_info', $datos);
         return $pg_add;
     }
 
-    function eliminarByArray($conexion, $condicion){
-        $pgs_delete = pg_delete($conexion,'central.tbl_domicilios_hraes',$condicion);
-        return $pgs_delete;
+
+    function editJornadaInfoDB($conexion, $datos, $condicion)
+    {
+        $pg_update = pg_update($conexion, 'central.ctrl_jornada', $datos, $condicion);
+        return $pg_update;
     }
-        */
+
+    function addJornadaInfoDB($conexion, $datos)
+    {
+        $pg_add = pg_insert($conexion, 'central.ctrl_jornada', $datos);
+        return $pg_add;
+    }
+
+    public function validateNoBiometrico($no_dispositivo,$id_tbl_empleados_hraes)
+    {
+        $query = pg_query ("SELECT id_ctrl_asistencia_info
+                            FROM central.ctrl_asistencia_info
+                            WHERE no_dispositivo = $no_dispositivo
+                            AND id_tbl_empleados_hraes <> $id_tbl_empleados_hraes;");
+        return $query;
+    }
+
 }

@@ -6,7 +6,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-2">
-                            <img src="../../../../assets/sirh/logo_actualizar.png"
+                            <img src="../../../../assets/sirh/logo_config.png"
                                 style="max-width: 150%;margin-top: 0px;">
                         </div>
                         <div class="col-10">
@@ -27,10 +27,10 @@
 
                     <div class="row">
                         <div class="col-6">
-                            <label for="campo" class="form-label input-text-form text-input-rem">No en
+                            <label for="campo" class="form-label input-text-form text-input-rem">No
                                 biométrico</label><label class="text-required">*</label>
-                            <input type="number" class="form-control custom-input" id="correo_electronic12o"
-                                placeholder="Id asignado por biométrico">
+                            <input type="number" class="form-control custom-input" id="no_dispositivo_ass"
+                                placeholder="Id asignado por biométrico" oninput="validarNumero(this)">
                             <div class="line"></div>
                         </div>
                         <div class="col-6">
@@ -44,7 +44,7 @@
                                 <div class="col-md-12">
                                     <select class="form-control custom-select selectpicker"
                                         data-style="input-select-selectpicker" aria-label="Default select example"
-                                        data-live-search="true" id="" data-none-results-text="Sin resultados">
+                                        data-live-search="true" id="id_cat_asistencia_estatus" data-none-results-text="Sin resultados">
                                     </select>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                                 <div class="col-md-12">
                                     <select class="form-control custom-select selectpicker"
                                         data-style="input-select-selectpicker" aria-label="Default select example"
-                                        data-live-search="true" id="" data-none-results-text="Sin resultados">
+                                        data-live-search="true" id="id_cat_jornada_turno" data-none-results-text="Sin resultados">
                                     </select>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                                 <div class="col-md-12">
                                     <select class="form-control custom-select selectpicker"
                                         data-style="input-select-selectpicker" aria-label="Default select example"
-                                        data-live-search="true" id="" data-none-results-text="Sin resultados">
+                                        data-live-search="true" id="id_cat_jornada_dias" data-none-results-text="Sin resultados">
                                     </select>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                                 <div class="col-md-12">
                                     <select class="form-control custom-select selectpicker"
                                         data-style="input-select-selectpicker" aria-label="Default select example"
-                                        data-live-search="true" id="" data-none-results-text="Sin resultados">
+                                        data-live-search="true" id="id_cat_jornada_horario" data-none-results-text="Sin resultados">
                                     </select>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                                 <div class="col-md-12">
                                     <select class="form-control custom-select selectpicker"
                                         data-style="input-select-selectpicker" aria-label="Default select example"
-                                        data-live-search="true" id="" data-none-results-text="Sin resultados">
+                                        data-live-search="true" id="id_cat_asistencia_ubicacion" data-none-results-text="Sin resultados">
                                     </select>
                                 </div>
                             </div>
@@ -128,7 +128,7 @@
                         <div class="col-12">
                             <label for="campo"
                                 class="form-label input-text-form text-input-rem">Observaciones</label><label
-                                class="text-required"></label>
+                                class="text-required">*</label>
                             <input type="text" class="form-control custom-input"
                                 onkeyup="convertirAMayusculas(event,'observaciones_ass')" id="observaciones_ass"
                                 placeholder="Observaciones" maxlength="25">
@@ -142,9 +142,10 @@
             <div class="modal-footer">
                 <button onclick="ocultarModalConfigAsistencia();" type="button" class="btn btn-secondary"
                     data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-success save-botton-modal" onclick="return validarCorreo();"><i
+                <button type="button" class="btn btn-success save-botton-modal" onclick="return validadConfAsistencia();"><i
                         class="fas fa-save"></i> Guardar</button>
-                <input type="hidden" id="id_object">
+                <input type="hidden" id="id_ctrl_jornada">
+                <input type="hidden" id="id_ctrl_asistencia_info">
             </div>
         </div>
     </div>
