@@ -13,7 +13,7 @@ function validarAsistencia(){
         validarData(estado_ss,'Estado') &&
         validarData(evento_ss,'Evento') 
     ){
-        console.log('success');
+        guardarAsistencia();
     }
 }
                             

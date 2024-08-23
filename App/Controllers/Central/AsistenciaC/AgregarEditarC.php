@@ -1,16 +1,22 @@
 <?php
 include '../librerias.php';
 
-$modelCorreoM = new ModelCorreoM();
+$asistenciaM = new AsistenciaM();
 $bitacoraM = new BitacoraM();
 
 $condicion = [
-    'id_ctrl_medios_contacto_hraes' => $_POST['id_object']
+    'id_ctrl_asistencia' => $_POST['id_object']
 ];
 
 $datos = [
-    'correo_electronico' => $_POST['correo_electronico'],
-    'id_tbl_empleados_hraes' => $_POST['id_tbl_empleados_hraes']
+    'fecha' => $_POST['fecha'],
+    'hora' => $_POST['hora'],
+    'dispositivo' => $_POST['dispositivo'],
+    'verificacion' => $_POST['verificacion'],
+    'estado' => $_POST['estado'],
+    'evento' => $_POST['evento'],
+    'id_tbl_empleados_hraes' => $_POST['id_tbl_empleados_hraes'],
+    'id_user' => $_SESSION['id_user'],
 ];
 
 $var = [
@@ -19,9 +25,9 @@ $var = [
 ];
 
 if ($_POST['id_object'] != null) { //Modificar
-    if ($modelCorreoM->editarByArray($connectionDBsPro, $datos, $condicion)) {
+    if ($asistenciaM->editarByArray($connectionDBsPro, $datos, $condicion)) {
         $dataBitacora = [
-            'nombre_tabla' => 'central.ctrl_medios_contacto_hraes',
+            'nombre_tabla' => 'central.ctrl_asistencia',
             'accion' => 'MODIFICAR',
             'valores' => json_encode($var),
             'fecha' => $timestamp,
@@ -32,9 +38,9 @@ if ($_POST['id_object'] != null) { //Modificar
     }
 
 } else { //Agregar
-    if ($modelCorreoM->agregarByArray($connectionDBsPro, $datos)) {
+    if ($asistenciaM->agregarByArray($connectionDBsPro, $datos)) {
         $dataBitacora = [
-            'nombre_tabla' => 'central.ctrl_medios_contacto_hraes',
+            'nombre_tabla' => 'central.ctrl_asistencia',
             'accion' => 'AGREGAR',
             'valores' => json_encode($var),
             'fecha' => $timestamp,

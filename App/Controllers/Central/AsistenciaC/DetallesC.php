@@ -2,18 +2,18 @@
 include '../librerias.php';
 
 $id_object = $_POST['id_object'];
-$modelCorreoM = new ModelCorreoM();
+$asistenciaM = new AsistenciaM();
 $row = new row();
 
 if ($id_object != null) {
-    $response = $row->returnArray($modelCorreoM->listarByIdEdit($id_object));
+    $response = $row->returnArray($asistenciaM->editAsistencia($id_object));
     $var = [
         'response' => $response,
     ];
     echo json_encode($var);
 
 } else {
-    $response = $modelCorreoM->listarByNull();
+    $response = $asistenciaM->asistenciaIsNUll();
     $var = [
         'response' => $response,
     ];

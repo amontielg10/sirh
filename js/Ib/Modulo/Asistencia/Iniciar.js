@@ -33,14 +33,19 @@ function agregarEditarAsistencia_(id_object){
         $("#agregar_editar_asistencia").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Central/CorreoC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/AsistenciaC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
             var jsonData = JSON.parse(data);//se obtiene el json
             var entity = jsonData.response; //Se agrega a emtidad 
 
-            $("#correo_electronico").val(entity.correo_electronico);
+            $("#fecha_ss_").val(entity.fecha);
+            $("#hora_ss_").val(entity.hora);
+            $("#dispositivo_ss").val(entity.dispositivo);
+            $("#verificacion_ss").val(entity.verificacion);
+            $("#estado_ss").val(entity.estado);
+            $("#evento_ss").val(entity.evento);
         }
     );
     $("#agregar_editar_asistencia").modal("show");
@@ -51,27 +56,32 @@ function salirAgregarEditarAsistencia(){
 }
 
 
-function guardarCorreo() {
-    $.post("../../../../App/Controllers/Central/CorreoC/AgregarEditarC.php", {
-        correo_electronico: $("#correo_electronico").val(),
+function guardarAsistencia() {
+    $.post("../../../../App/Controllers/Central/AsistenciaC/AgregarEditarC.php", {
+        fecha: $("#fecha_ss_").val(),
+        hora: $("#hora_ss_").val(),
+        dispositivo: $("#dispositivo_ss").val(),
+        verificacion: $("#verificacion_ss").val(),
+        estado: $("#estado_ss").val(),
+        evento: $("#evento_ss").val(),
         id_object: $("#id_object").val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
     },
         function (data) {
             if (data == 'edit'){
-                notyf.success('Correo electrónico modificado con éxito');
+                notyf.success('Asistencia modificada con éxito');
             } else if (data == 'add') {
-                notyf.success('Correo electrónico agregado con éxito');  
+                notyf.success('Asistencia agregada con éxito');  
             } else {
                 notyf.error(mensajeSalida);
             }
             $("#agregar_editar_asistencia").modal("hide");
-            buscarCorreo();
+            buscarAsistencia();
         }
     );
 }
 
-function eliminarCorreo(id_object) {//ELIMINAR USUARIO
+function eliminarAsistencia(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -83,16 +93,16 @@ function eliminarCorreo(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Central/CorreoC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/AsistenciaC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {
                 if (data == 'delete'){
-                    notyf.success('Correo electrónico eliminado con éxito')
+                    notyf.success('Asistencia eliminada con éxito')
                 } else {
                     notyf.error(mensajeSalida);
                 }
-                buscarCorreo();
+                buscarAsistencia();
             }
         );
     }

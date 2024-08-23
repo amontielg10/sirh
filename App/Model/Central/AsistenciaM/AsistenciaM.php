@@ -152,4 +152,45 @@ class AsistenciaM
         return $query;
     }
 
+    public function editAsistencia($id)
+    {
+        $query = pg_query("SELECT * 
+                            FROM central.ctrl_asistencia
+                            WHERE id_ctrl_asistencia =  $id;");
+        return $query;
+    }
+
+    public function asistenciaIsNUll()
+    {
+        return $array = [
+            'id_ctrl_asistencia' => null,
+            'fecha' => null,
+            'hora' => null,
+            'dispositivo' => null,
+            'verificacion' => null,
+            'estado' => null,
+            'evento' => null,
+            'id_tbl_empleados_hraes' => null,
+            'id_user' => null
+        ];
+    }
+
+    function editarByArray($conexion, $datos, $condicion)
+    {
+        $pg_update = pg_update($conexion, 'central.ctrl_asistencia', $datos, $condicion);
+        return $pg_update;
+    }
+
+    function agregarByArray($conexion, $datos)
+    {
+        $pg_add = pg_insert($conexion, 'central.ctrl_asistencia', $datos);
+        return $pg_add;
+    }
+
+    function eliminarByArray($conexion, $condicion)
+    {
+        $pgs_delete = pg_delete($conexion, 'central.ctrl_asistencia', $condicion);
+        return $pgs_delete;
+    }
+
 }

@@ -38,7 +38,7 @@ if (pg_num_rows($listado) > 0) {
                             <div class="dropdown-menu">
                                 <button onclick="obtenerUsuario(' . $row[7] . ')" class="dropdown-item btn btn-light"><i class="fa fa-user icon-edit-table"></i> Usuario</button>
                                 <button onclick="agregarEditarAsistencia_(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
-                                <button onclick="eliminarCorreo(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
+                                <button onclick="eliminarAsistencia(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
                             </div>
                           </div>
                                 </td>
