@@ -62,6 +62,7 @@ function buscarInfoEmpleado(id_tbl_empleados_hraes){
 
 function iniciarAsistencia(){
     iniciarConfAsistencia();
+    buscarAsistencia();
 }
 
 function iniciarEscolaridad(){

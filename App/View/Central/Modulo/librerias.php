@@ -89,3 +89,7 @@
 
 <script src="../../../../js/Ib/Modulo/ConfAsistencia/Iniciar.js"></script>
 <script src="../../../../js/Ib/Modulo/ConfAsistencia/Validar.js"></script>
+
+<script src="../../../../js/Ib/Modulo/Asistencia/Iniciar.js"></script>
+<script src="../../../../js/Ib/Modulo/Asistencia/Validar.js"></script>
+<script src="../../../../js/Ib/Modulo/Asistencia/buscar.js"></script>

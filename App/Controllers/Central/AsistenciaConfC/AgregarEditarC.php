@@ -15,6 +15,10 @@ if ($idExludio == $_POST['id_cat_asistencia_ubicacion']) {
     $fecha_inicio = $_POST['fecha_inicio'];
 }
 
+
+$fecha_fin = $_POST['fecha_fin'];
+$fecha_inicio = $_POST['fecha_inicio'];
+
 $condicion = [
     'id_tbl_empleados_hraes' => $_POST['id_tbl_empleados_hraes']
 ];
@@ -25,8 +29,8 @@ $datos = [
     'id_cat_asistencia_ubicacion' => $_POST['id_cat_asistencia_ubicacion'],
     'id_cat_asistencia_estatus' => $_POST['id_cat_asistencia_estatus'],
     'id_tbl_empleados_hraes' => $_POST['id_tbl_empleados_hraes'],
-    'fecha_inicio' => $fecha_fin,
-    'fecha_fin' => $fecha_inicio,
+    'fecha_inicio' => $fecha_inicio,
+    'fecha_fin' => $fecha_fin,
 ];
 
 $datos_jornada = [
@@ -98,7 +102,7 @@ if ($_POST['id_ctrl_jornada'] != null) { //Modificar
     }
 }
 
-if($boolAss && $boolJor){
+if ($boolAss && $boolJor) {
     echo true;
 } else {
     echo false;

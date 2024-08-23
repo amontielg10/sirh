@@ -4,7 +4,7 @@
         <div class="card font-size-modulo shadow-lg">
             <h5 class="card-header text-center background-modal color-text-tittle">Asistencias</h5>
             <div class="card-body">
-                <?php //include 'Movimientos/index.php' ?>
+                <?php include 'Asistencia/index.php' ?>
             </div>
         </div>
     </div>

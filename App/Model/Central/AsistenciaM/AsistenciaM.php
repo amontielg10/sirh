@@ -93,12 +93,62 @@ class AsistenciaM
         return $pg_add;
     }
 
-    public function validateNoBiometrico($no_dispositivo,$id_tbl_empleados_hraes)
+    public function validateNoBiometrico($no_dispositivo, $id_tbl_empleados_hraes)
     {
-        $query = pg_query ("SELECT id_ctrl_asistencia_info
+        $query = pg_query("SELECT id_ctrl_asistencia_info
                             FROM central.ctrl_asistencia_info
                             WHERE no_dispositivo = $no_dispositivo
                             AND id_tbl_empleados_hraes <> $id_tbl_empleados_hraes;");
+        return $query;
+    }
+
+    public function listadoAsistenciaAll($idEmpleado, $paginator)
+    {
+        $query = pg_query("SELECT
+                                central.ctrl_asistencia.id_ctrl_asistencia,
+                                TO_CHAR(fecha, 'DD/MM/YYYY'),
+                                TO_CHAR(hora, 'HH24:MI'),
+                                UPPER(dispositivo),
+                                UPPER(verificacion),
+                                UPPER(estado),
+                                UPPER(evento),
+                                id_user,
+                                CASE 
+                                    WHEN hora < '15:00:00' THEN 'ENTRADA'
+                                    ELSE 'SALIDA'
+                                END		
+                            FROM central.ctrl_asistencia
+                            WHERE id_tbl_empleados_hraes = $idEmpleado
+                            ORDER BY fecha DESC
+                            LIMIT 3 OFFSET $paginator;");
+        return $query;
+    }
+
+    public function listadoAsistenciaBusq($idEmpleado, $busqueda, $paginator)
+    {
+        $query = pg_query("SELECT
+                                central.ctrl_asistencia.id_ctrl_asistencia,
+                                TO_CHAR(fecha, 'DD/MM/YYYY'),
+                                TO_CHAR(hora, 'HH24:MI'),
+                                UPPER(dispositivo),
+                                UPPER(verificacion),
+                                UPPER(estado),
+                                UPPER(evento),
+                                id_user,
+                                CASE 
+                                    WHEN hora < '15:00:00' THEN 'ENTRADA'
+                                    ELSE 'SALIDA'
+                                END		
+                            FROM central.ctrl_asistencia
+                            WHERE id_tbl_empleados_hraes = $idEmpleado
+                            AND ( TO_CHAR(fecha, 'DD/MM/YYYY')::TEXT LIKE '%$busqueda%' OR
+                                  TO_CHAR(hora, 'HH24:MI')::TEXT LIKE '%$busqueda%' OR
+                                  TRIM(UPPER(UNACCENT(dispositivo))) LIKE '%$busqueda%' OR
+                                  TRIM(UPPER(UNACCENT(verificacion))) LIKE '%$busqueda%' OR
+                                  TRIM(UPPER(UNACCENT(estado))) LIKE '%$busqueda%' OR
+                                  TRIM(UPPER(UNACCENT(evento))) LIKE '%$busqueda%')
+                            ORDER BY fecha DESC
+                            LIMIT 3 OFFSET $paginator;");
         return $query;
     }
 

@@ -9,6 +9,7 @@ $catSelectC = new CatSelectC();
 $catAsistenciaM = new CatAsistenciaM();
 
 ///variables auxiliares
+$id_cat_asistencia_estatus_info = null;
 $observaciones_ass = null;
 $no_dispositivo_ass = null;
 $fecha_inicio_ass = null;
@@ -52,6 +53,7 @@ if (pg_num_rows($asistenciaM->editAsistenciaInfo($id_tbl_empleados_hraes)) > 0) 
 
     if($entity['id_cat_asistencia_estatus'] != ''){
         $id_cat_asistencia_estatus = $catSelectC->selectByEditCatalogo($catAsistenciaM->listOfEstatus(),$row->returnArrayById($catAsistenciaM->editOfEstatus($entity['id_cat_asistencia_estatus'])));
+        $id_cat_asistencia_estatus_info = $entity['id_cat_asistencia_estatus'];
     }
 }
 
@@ -68,5 +70,6 @@ $var = [
     'id_cat_jornada_horario' => $id_cat_jornada_horario,
     'id_ctrl_jornada' => $id_ctrl_jornada,
     'id_ctrl_asistencia_info' => $id_ctrl_asistencia_info,
+    'id_cat_asistencia_estatus_info' => $id_cat_asistencia_estatus_info
 ];
 echo json_encode($var);

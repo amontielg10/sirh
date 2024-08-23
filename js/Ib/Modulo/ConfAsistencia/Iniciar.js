@@ -39,6 +39,14 @@ function mostrarModalConfigAsistencia(){
         function (data) {
             let jsonData = JSON.parse(data);
 
+            if(jsonData.id_cat_asistencia_estatus_info == 4){ // Oculta o muestra las fechas dependiendo del estatus
+                mostrarContenido('id_estatus_is_div');
+                $("#fecha_inicio_ss").val(jsonData.fecha_inicio_ass);
+                $("#fecha_fin_ss").val(jsonData.fecha_fin_ass);  
+            } else {
+                ocultarContenido('id_estatus_is_div');
+            }
+
             $("#no_dispositivo_ass").val(jsonData.no_dispositivo_ass);
             $("#observaciones_ass").val(jsonData.observaciones_ass);
             $("#id_ctrl_jornada").val(jsonData.id_ctrl_jornada);
@@ -80,6 +88,8 @@ function agregarActualizarAsistencia(){
         observaciones: $("#observaciones_ass").val(),
         id_ctrl_jornada: $("#id_ctrl_jornada").val(),
         id_ctrl_asistencia_info: $("#id_ctrl_asistencia_info").val(),
+        fecha_inicio: $("#fecha_inicio_ss").val(),
+        fecha_fin: $("#fecha_fin_ss").val(),
     },
         function (data) {
             if (data){
@@ -94,53 +104,3 @@ function agregarActualizarAsistencia(){
 
 }
 
-
-/*
-function iniciarAdicional(){
-    detallesAdicional(id_tbl_empleados_hraes);
-}
-
-function detallesAdicional(id_object){
-    $.post("../../../../App/Controllers/Central/AdicionalC/DetallesC.php", {
-        id_object: id_object
-    },
-        function (data) {
-            let jsonData = JSON.parse(data);
-            let entity = jsonData.response; 
-            
-            $("#fecha_expedicion").val(entity.fecha_expedicion);
-            $("#fecha_ingreso_gob_fed").val(entity.fecha_ingreso_gob_fed);
-            $("#vigencia_del").val(entity.vigencia_del);
-            $("#vigencia_al").val(entity.vigencia_al);
-            $("#funciones").val(entity.funciones);
-            $("#antiguedad").val(entity.antiguedad);
-            $("#id_ctrl_adic_emp_hraes").val(entity.id_ctrl_adic_emp_hraes);
-        }
-    );
-}
-
-
-function gurdarAdicionals() {
-    $.post("../../../../App/Controllers/Central/AdicionalC/AgregarEditarC.php", {
-        fecha_expedicion: $("#fecha_expedicion").val(),
-        fecha_ingreso_gob_fed: $("#fecha_ingreso_gob_fed").val(),
-        vigencia_del: $("#vigencia_del").val(),
-        vigencia_al: $("#vigencia_al").val(),
-        funciones: $("#funciones").val(),
-        antiguedad: $("#antiguedad").val(),
-        id_ctrl_adic_emp_hraes: $("#id_ctrl_adic_emp_hraes").val(),
-        id_tbl_empleados_hraes: id_tbl_empleados_hraes,
-    },
-        function (data) {
-            if (data == 'edit'){
-                notyf.success('Información adicional modificada con éxito');
-            } else if (data == 'add') {
-                notyf.success('Información adicional agregada con éxito');  
-            } else {
-                notyf.error(mensajeSalida);
-            }
-            iniciarAdicional();
-        }
-    );
-}
-*/
