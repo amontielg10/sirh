@@ -455,6 +455,13 @@ hr {
         /* Color del texto */
     }
 
+    .btn-outline-custom-red {
+        border-color: #9F2241;
+        /* Color del borde */
+        color: #007bff;
+        /* Color del texto */
+    }
+
     .btn-outline-custom:hover {
         color: #a4aab0;
         /* Color del texto al pasar el cursor */

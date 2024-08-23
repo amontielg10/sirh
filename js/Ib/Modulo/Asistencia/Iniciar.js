@@ -111,5 +111,25 @@ function eliminarAsistencia(id_object) {//ELIMINAR USUARIO
 
 
 function obtenerUsuario(id){
-    console.log('usuario: ' + id);
+    buscarAsistencia();
+    let nombre_usuario_accion = document.getElementById("nombre_usuario_accion");
+    nombre_usuario_accion.textContent = '-';
+    if (typeof id !== 'undefined') {
+    $.post("../../../../App/Controllers/Central/AsistenciaC/UsuariosC.php", {
+        id: id,
+    },
+        function (data) {
+            nombre_usuario_accion.textContent = data;
+        }
+    );
+    }
+    mostrarModalUsuario();
+}
+
+function mostrarModalUsuario(){
+    $("#mostrar_usuario").modal("show");
+}
+
+function ocultarModalUsuario(){
+    $("#mostrar_usuario").modal("hide");
 }

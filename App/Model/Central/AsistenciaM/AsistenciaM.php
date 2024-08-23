@@ -193,4 +193,11 @@ class AsistenciaM
         return $pgs_delete;
     }
 
+    public function getNameOfUser($id){
+        $query = pg_query ("SELECT UPPER(nombre)
+                            FROM public.users
+                            WHERE id_user = $id;");
+        return $query;
+    }
+
 }
