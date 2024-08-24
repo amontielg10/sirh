@@ -9,7 +9,7 @@
     </div>
     <div class="col-3">
         <div class="col text-right">
-            <button style="color: #9F2241;" onclick="powerBiRefresh();" class="btn btn-circle-custom btn-outline-custom-red" data-toggle="tooltip"
+            <button style="color: #9F2241;" onclick="mostrarModalCargaAsistencia();" class="btn btn-circle-custom btn-outline-custom-red" data-toggle="tooltip"
                 data-placement="top" title="Power Bi Refresh">
                 <i class="fa fa-upload" style="color: #9F2241;"></i> <!-- Icono de Font Awesome -->
             </button>

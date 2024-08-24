@@ -1,6 +1,6 @@
 <!-- MODALE_UPLOAD_FALTA -->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true" id="modal_carga_masiva_falta">
+    aria-hidden="true" id="modal_carga_masiva_asistencias">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header background-modal">
@@ -10,7 +10,7 @@
                             <img src="../../../../assets/sirh/logo_carga_masiva.png" style="max-width: 100%;">
                         </div>
                         <div class="col-10">
-                            <h1 style="color:white; font-family: 'Montserrat';font-size: 40px;">Carga masiva faltas</h1>
+                            <h1 style="color:white; font-family: 'Montserrat';font-size: 40px;">Carga masiva asistencias</h1>
                             <p style="color:white;">Espacio para realizar cargas masivas de faltas: Un área
                                 dedicada para facilitar la inserción eficiente en el
                                 sistema.</p>
@@ -42,9 +42,9 @@
 
             <div class="div-spacing"></div>
             <div class="modal-footer">
-                <button onclick="ocultarModalFalta();" type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                <button onclick="ocultarModalAsistencia();" type="button" class="btn btn-secondary" data-dismiss="modal"><i
                         class="fas fa-times"></i> Cancelar</button>
-                <button type="submit" onclick="return validarCargaFalta();" type="button"
+                <button type="submit" onclick="return validarCargaAsistencia();" type="button"
                     class="btn btn-success save-botton-modal"><i class="fa fa-upload"></i>
                     Procesar</button>
             </div>

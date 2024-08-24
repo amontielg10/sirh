@@ -29,7 +29,7 @@ $id_rol = $_SESSION['id_rol'];
     <link rel="stylesheet" href="../../../../assets/font/fontawesome/css/all.min.css">
 
     <script src="../../../../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
+
     <script src="../../../../assets/jquery/jquery-351.js"></script>
 
     <script src="../../../../js/Mensajes/mensajes.js"></script>
@@ -259,6 +259,14 @@ $id_rol = $_SESSION['id_rol'];
         </div>
     </div>
 
+    <div class="overlay" id="overlay">
+        <div class="spinner">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Cargando...</span>
+            </div>
+            <p class="mt-3" id="loaderMessage">Cargando...</p>
+        </div>
+    </div>
 
     <script src="../../../../js/Admin/Perfil/Perfil.js"></script>
 </body>

@@ -13,18 +13,17 @@ function updateFileName(input) {
     fileNameContainer.innerText = fileName;
   }
 
-  function ocultarModalFalta(){
-    //updateFileName(null);
-    $("#modal_carga_masiva_falta").modal("hide");
+  function ocultarModalAsistencia(){
+    $("#modal_carga_masiva_asistencias").modal("hide");
 }
 
-function mostrarModalCargaFalta(){
+function mostrarModalCargaAsistencia(){
     $('.custom-file-name').text('');
     $('#customFile').val(null);
-    $("#modal_carga_masiva_falta").modal("show");
+    $("#modal_carga_masiva_asistencias").modal("show");
 }
 
-function validarCargaFalta(){
+function validarCargaAsistencia(){
 
     let bool = false;
     let maxMB = 5;
@@ -39,11 +38,11 @@ function validarCargaFalta(){
       if (fileMb >= maxMB){
         notyf.error('El archivo debe tener un peso máximo de ' + maxMB + ' MB');
         //mensajeError('El archivo debe tener un peso máximo de ' + maxMB + ' MB');
-      } else if (fileExtension != 'xlsx') {
-        notyf.error('La extensión del archivo debe terminar .xlsx');
+      } else if (fileExtension != 'xls') {
+        notyf.error('La extensión del archivo debe terminar .xls');
         //mensajeError('La extensión del archivo debe terminar .xlsx');
       } else {
-        processDataFalta(file);
+        processDataAsistencia(file);
       }
     } else {
         notyf.error('Campo seleccione un archivo no puede estar vacio');
@@ -60,26 +59,27 @@ function validarCargaFalta(){
     $('#overlay').fadeOut();
   }
 
-  function processDataFalta(file){
-    ocultarModalFalta(); 
+  function processDataAsistencia(file){
+    ocultarModalAsistencia(); 
     fadeIn(); 
     let data = new FormData();
     data.append('file',file);
 
     $.ajax({
-    url:"../../../../App/Controllers/Hrae/FaltaC/CargaC.php",
+    url:"../../../../App/Controllers/Central/AsistenciaC/CargaC.php",
     type:'POST',
     contentType:false,
     data:data,
     processData:false,
     cache:false, 
     success: function (data) {
+      console.log(data);
         let jsonData = JSON.parse(data);
         let bool = jsonData.bool; 
         let message = jsonData.message; 
         
         if (bool){
-            getFileFalta();
+          getFileAsistencia();
         } else {
             fadeOut();
             notyf.error(message);
@@ -87,9 +87,10 @@ function validarCargaFalta(){
 }
 });
 }
-function getFileFalta() {
+
+function getFileAsistencia() {
     $.ajax({
-        url: "../../../../App/Controllers/Hrae/FaltaC/DescargaC.php",
+        url: "../../../../App/Controllers/Central/AsistenciaC/DescargaC.php",
         type: 'POST',
         xhrFields: {
             responseType: 'blob' // Configura la respuesta esperada como un blob (archivo binario)
@@ -100,7 +101,7 @@ function getFileFalta() {
                 var url = window.URL.createObjectURL(blob);
                 var a = document.createElement('a');
                 a.href = url;
-                a.download = 'Faltas_respuesta_.xlsx'; // Nombre del archivo que se descargará
+                a.download = 'AsistenciasCargadas.xlsx'; // Nombre del archivo que se descargará
                 document.body.appendChild(a);
                 a.click();
                 window.URL.revokeObjectURL(url);
@@ -116,5 +117,7 @@ function getFileFalta() {
             fadeOut();
         }
     });
+
+    buscarAsistencia();
 }
 
