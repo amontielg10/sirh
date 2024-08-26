@@ -73,7 +73,6 @@ function validarCargaAsistencia(){
     processData:false,
     cache:false, 
     success: function (data) {
-      console.log(data);
         let jsonData = JSON.parse(data);
         let bool = jsonData.bool; 
         let message = jsonData.message; 
