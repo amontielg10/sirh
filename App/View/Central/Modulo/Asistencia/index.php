@@ -1,5 +1,5 @@
 <div class="row font-size-modulo">
-    <div class="col-6">
+    <div class="col-9">
         <div class="form-inline">
             <button onclick="agregarEditarAsistencia_(null)" type="button" class="btn btn-light" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus icono-pequeno-tabla"></i>
@@ -7,14 +7,16 @@
             </button>
         </div>
     </div>
+    <!--
     <div class="col-3">
         <div class="col text-right">
             <button style="color: #9F2241;" onclick="mostrarModalCargaAsistencia();" class="btn btn-circle-custom btn-outline-custom-red" data-toggle="tooltip"
                 data-placement="top" title="Power Bi Refresh">
-                <i class="fa fa-upload" style="color: #9F2241;"></i> <!-- Icono de Font Awesome -->
+                <i class="fa fa-upload" style="color: #9F2241;"></i>
             </button>
         </div>
     </div>
+-->
     <div class="col-3 search-container">
         <input onkeyup="buscarAsistencia();" id="buscar_ass" type="text" placeholder="Buscar..."
             class="form-control mr-sm-2 search-input-small">

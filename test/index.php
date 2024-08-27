@@ -1,106 +1,140 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tooltip con Colores</title>
+    <title>Popper.js Tooltip Example</title>
+    <!-- Incluir estilos personalizados para el tooltip -->
     <style>
-        /* Estilos para el contenedor del tooltip */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-            font-family: Arial, sans-serif; /* Tipografía moderna */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
         }
 
-        /* Estilos para el contenido del tooltip */
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 120px; /* Ajusta el ancho del tooltip */
+        .tooltip {
+            position: absolute;
             background-color: #333;
             color: #fff;
-            text-align: left;
             padding: 8px;
-            border-radius: 6px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%; /* Posiciona el tooltip encima del contenedor */
-            left: 50%;
-            margin-left: -60px; /* Centra el tooltip */
+            border-radius: 4px;
+            font-size: 14px;
+            visibility: hidden; /* Ocultar el tooltip por defecto */
+            transition: visibility 0.2s, opacity 0.2s linear;
             opacity: 0;
-            transition: opacity 0.3s, transform 0.3s;
-            transform: translateY(10px); /* Añade un pequeño efecto de desplazamiento */
-            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Sombra para un efecto de profundidad */
-            font-size: 10px; /* Ajusta el tamaño del texto */
         }
 
-        /* Mostrar el tooltip al pasar el cursor */
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0); /* Elimina el desplazamiento cuando es visible */
+        .tooltip[data-popper-placement^='top'] {
+            margin-bottom: 8px;
         }
 
-        /* Estilos para los cuadros de colores */
-        .tooltip .tooltiptext .color-box {
-            width: 16px; /* Tamaño de los cuadros */
-            height: 16px;
-            display: inline-block;
-            margin-right: 6px;
-            vertical-align: middle;
-            border-radius: 4px; /* Bordes redondeados para los cuadros */
+        .tooltip[data-popper-placement^='bottom'] {
+            margin-top: 8px;
         }
 
-        .tooltip .tooltiptext .color-green {
-            background-color: #4CAF50; /* Verde más suave */
+        .tooltip[data-popper-placement^='left'] {
+            margin-right: 8px;
         }
 
-        .tooltip .tooltiptext .color-yellow {
-            background-color: #FFC107; /* Amarillo más suave */
+        .tooltip[data-popper-placement^='right'] {
+            margin-left: 8px;
         }
 
-        .tooltip .tooltiptext .color-red {
-            background-color: #F44336; /* Rojo más suave */
+        .tooltip-arrow {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-width: 5px;
+            border-style: solid;
         }
 
-        /* Estilos para la descripción */
-        .tooltip .tooltiptext div {
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
+        .tooltip-arrow[data-popper-placement^='top'] {
+            border-top-color: #333;
+            border-bottom: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            bottom: -5px;
         }
 
-        .tooltip .tooltiptext div:last-child {
-            margin-bottom: 0;
+        .tooltip-arrow[data-popper-placement^='bottom'] {
+            border-bottom-color: #333;
+            border-top: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            top: -5px;
+        }
+
+        .tooltip-arrow[data-popper-placement^='left'] {
+            border-left-color: #333;
+            border-right: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            right: -5px;
+        }
+
+        .tooltip-arrow[data-popper-placement^='right'] {
+            border-right-color: #333;
+            border-left: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            left: -5px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="tooltip">
-        Pasa el cursor aquí
-        <div class="tooltiptext">
-            <div>
-                <div class="color-box color-green"></div> Verde: Éxito.
-            </div>
-            <div>
-                <div class="color-box color-yellow"></div> Amarillo: Advertencia.
-            </div>
-            <div>
-                <div class="color-box color-red"></div> Rojo: Peligro.
-            </div>
-        </div>
+    <button id="tooltipButton" class="btn">
+        Hover over me
+    </button>
+    <div id="tooltip" class="tooltip" role="tooltip">
+        <div class="tooltip-arrow" data-popper-arrow></div>
+        Tooltip content
     </div>
+
+    <!-- Incluir Popper.js -->
+    <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const button = document.querySelector('#tooltipButton');
+            const tooltip = document.querySelector('#tooltip');
+
+            // Crear una instancia de Popper.js
+            const popperInstance = Popper.createPopper(button, tooltip, {
+                placement: 'top',
+                modifiers: [
+                    {
+                        name: 'offset',
+                        options: {
+                            offset: [0, 10],
+                        },
+                    },
+                ],
+            });
+
+            // Mostrar el tooltip al pasar el cursor
+            button.addEventListener('mouseenter', () => {
+                tooltip.style.visibility = 'visible';
+                tooltip.style.opacity = '1';
+            });
+
+            // Ocultar el tooltip al retirar el cursor
+            button.addEventListener('mouseleave', () => {
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.opacity = '0';
+            });
+        });
+    </script>
 </body>
 </html>
