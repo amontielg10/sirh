@@ -4,16 +4,35 @@ class FaltaModelM
 {
     function listarById($id_object, $paginator)
     {
-        $listado = pg_query("SELECT 
-                                    id_ctrl_faltas_hraes,
-                                    fecha_desde,
-                                    fecha_hasta,
-                                    fecha_registro,
-                                    codigo_certificacion,
-                                    observaciones
-                                FROM central.ctrl_faltas_hraes
-                                WHERE id_tbl_empleados_hraes = $id_object
-                                ORDER BY id_ctrl_faltas_hraes DESC
+        $listado = pg_query("SELECT
+                                    central.ctrl_faltas.id_ctrl_faltas,
+                                    CASE 
+                                        WHEN es_por_retardo THEN 'FALTA POR RETARDO'
+                                        ELSE 'FALTA'
+                                    END,
+                                    TO_CHAR(central.ctrl_faltas.fecha_desde, 'DD/MM/YYYY'),
+                                    TO_CHAR(central.ctrl_faltas.fecha_hasta, 'DD/MM/YYYY'),
+                                    TO_CHAR(central.ctrl_faltas.fecha_registro, 'DD/MM/YYYY'),
+                                    TO_CHAR(central.ctrl_faltas.fecha, 'DD/MM/YYYY'),
+                                    TO_CHAR(central.ctrl_faltas.hora, 'HH:MM'),
+                                    UPPER(central.ctrl_faltas.codigo_certificacion),
+                                    UPPER(central.cat_retardo_estatus.descripcion),
+                                    UPPER(central.cat_retardo_tipo.descripcion),
+                                    UPPER(central.ctrl_faltas.observaciones),
+                                    CONCAT(central.cat_quincenas.no_quincena, ' - ', central.cat_quincenas.nombre),
+                                    central.ctrl_faltas.id_user
+                                FROM central.ctrl_faltas
+                                LEFT JOIN central.cat_retardo_estatus
+                                    ON central.ctrl_faltas.id_cat_retardo_estatus =
+                                        central.cat_retardo_estatus.id_cat_retardo_estatus
+                                LEFT JOIN central.cat_retardo_tipo
+                                    ON central.ctrl_faltas.id_cat_retardo_tipo =
+                                        central.cat_retardo_tipo.id_cat_retardo_tipo
+                                LEFT JOIN central.cat_quincenas
+                                    ON	central.ctrl_faltas.id_cat_quincenas =
+                                        central.cat_quincenas.id_cat_quincenas
+                                WHERE central.ctrl_faltas.id_tbl_empleados_hraes = $id_object
+                                ORDER BY central.ctrl_faltas.id_ctrl_faltas DESC
                                 LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
@@ -42,23 +61,48 @@ class FaltaModelM
 
     function listarByBusqueda($id_object, $busqueda, $paginator)
     {
-        $listado = pg_query("SELECT 
-                                    id_ctrl_faltas_hraes,
-                                    fecha_desde,
-                                    fecha_hasta,
-                                    fecha_registro,
-                                    codigo_certificacion,
-                                    observaciones
-                                FROM central.ctrl_faltas_hraes
-                                WHERE id_tbl_empleados_hraes = $id_object
+        $listado = pg_query("SELECT
+                                    central.ctrl_faltas.id_ctrl_faltas,
+                                    CASE 
+                                        WHEN es_por_retardo THEN 'FALTA POR RETARDO'
+                                        ELSE 'FALTA'
+                                    END,
+                                    TO_CHAR(central.ctrl_faltas.fecha_desde, 'DD/MM/YYYY'),
+                                    TO_CHAR(central.ctrl_faltas.fecha_hasta, 'DD/MM/YYYY'),
+                                    TO_CHAR(central.ctrl_faltas.fecha_registro, 'DD/MM/YYYY'),
+                                    TO_CHAR(central.ctrl_faltas.fecha, 'DD/MM/YYYY'),
+                                    TO_CHAR(central.ctrl_faltas.hora, 'HH:MM'),
+                                    UPPER(central.ctrl_faltas.codigo_certificacion),
+                                    UPPER(central.cat_retardo_estatus.descripcion),
+                                    UPPER(central.cat_retardo_tipo.descripcion),
+                                    UPPER(central.ctrl_faltas.observaciones),
+                                    CONCAT(central.cat_quincenas.no_quincena, ' - ', central.cat_quincenas.nombre),
+                                    central.ctrl_faltas.id_user
+                                FROM central.ctrl_faltas
+                                LEFT JOIN central.cat_retardo_estatus
+                                    ON central.ctrl_faltas.id_cat_retardo_estatus =
+                                        central.cat_retardo_estatus.id_cat_retardo_estatus
+                                LEFT JOIN central.cat_retardo_tipo
+                                    ON central.ctrl_faltas.id_cat_retardo_tipo =
+                                        central.cat_retardo_tipo.id_cat_retardo_tipo
+                                LEFT JOIN central.cat_quincenas
+                                    ON	central.ctrl_faltas.id_cat_quincenas =
+                                        central.cat_quincenas.id_cat_quincenas
+                                WHERE central.ctrl_faltas.id_tbl_empleados_hraes = $id_object
                                 AND (
-                                    fecha_desde::TEXT LIKE '%$busqueda%' OR
-                                    fecha_hasta::TEXT LIKE '%$busqueda%' OR
-                                    fecha_registro::TEXT LIKE '%$busqueda%' OR
-                                    TRIM(UPPER(UNACCENT(codigo_certificacion))) LIKE '%$busqueda%' OR
-                                    TRIM(UPPER(UNACCENT(observaciones))) LIKE '%$busqueda%'
+                                    TO_CHAR(central.ctrl_faltas.fecha_desde, 'DD/MM/YYYY')::TEXT LIKE '%$busqueda%' OR 
+                                    TO_CHAR(central.ctrl_faltas.fecha_hasta, 'DD/MM/YYYY')::TEXT LIKE '%$busqueda%' OR
+                                    TO_CHAR(central.ctrl_faltas.fecha_registro, 'DD/MM/YYYY')::TEXT LIKE '%$busqueda%' OR
+                                    TO_CHAR(central.ctrl_faltas.fecha, 'DD/MM/YYYY')::TEXT LIKE '%$busqueda%' OR
+                                    TO_CHAR(central.ctrl_faltas.hora, 'HH:MM')::TEXT LIKE '%$busqueda%' OR
+                                    TRIM(UNACCENT(UPPER(central.ctrl_faltas.codigo_certificacion))) LIKE '%$busqueda%' OR
+                                    TRIM(UNACCENT(UPPER(central.cat_retardo_estatus.descripcion))) LIKE '%$busqueda%' OR
+                                    TRIM(UNACCENT(UPPER(central.cat_retardo_tipo.descripcion))) LIKE '%$busqueda%' OR
+                                    TRIM(UNACCENT(UPPER(central.ctrl_faltas.observaciones))) LIKE '%$busqueda%' OR
+                                    TRIM(UNACCENT(UPPER(CONCAT(central.cat_quincenas.no_quincena, ' - ', 
+                                                central.cat_quincenas.nombre)))) LIKE '%$busqueda%'
                                 )
-                                ORDER BY id_ctrl_faltas_hraes DESC
+                                ORDER BY central.ctrl_faltas.id_ctrl_faltas DESC
                                 LIMIT 3 OFFSET $paginator;");
         return $listado;
     }

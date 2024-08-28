@@ -4,7 +4,7 @@
 
         <div class="card font-size-modulo shadow-lg">
             <div style="background:#235B4E" class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="text-center background-modal color-text-tittle mb-0">Domicilio</h5>
+                <h5 class="text-center background-modal color-text-tittle mb-0">Asistencias</h5>
 
                 <!--
                 <button style="color: #9F2241;" onclick="mostrarModalCargaAsistencia();"

@@ -26,8 +26,11 @@ $data =
         <tr>
             <th class="col-wide-action">Acciones</th>
             <th class="col-wide">Fecha</th>
-            <th class="col-wide">Hora entrada</th>
-            <th class="col-wide">Hora salida</th>
+            <th class="col-wide">Hora</th>
+            <th class="col-wide">Tipo</th>
+            <th class="col-wide">Estatus</th>
+            <th class="col-wide">Observaciones</th>
+            <th class="col-wide">Quincena</th>
         </tr>
     </thead>';
 
@@ -40,6 +43,7 @@ if (pg_num_rows($listado) > 0) {
                         <div class="btn-group">
                                 <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit icono-pequeno-tabla"></i></button>
                             <div class="dropdown-menu">
+                                <button onclick="obtenerUsuario(' . $row[8] . ')" class="dropdown-item btn btn-light"><i class="fa fa-user icon-edit-table"></i> Usuario</button>
                                 <button onclick="agregarEditarRetardo(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
                                 <button onclick="eliminarRetardo_(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
                             </div>
@@ -49,10 +53,19 @@ if (pg_num_rows($listado) > 0) {
                                 ' . $row[1] . '
                             </td>
                             <td>
-                                ' . concatFecha($row[2],$row[3]) . '
+                                ' . $row[2] . '
                             </td>
                             <td>
-                                ' . concatFecha($row[4],$row[5]) . '
+                                ' . $row[3] . '
+                            </td>
+                            <td>
+                                ' . $row[4] . '
+                            </td>
+                            <td>
+                                ' . $row[5] . '
+                            </td>
+                            <td>
+                                ' . $row[6] . '
                             </td>
                         </tr>
                     </tbody>
