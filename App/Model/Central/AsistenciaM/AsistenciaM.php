@@ -104,50 +104,76 @@ class AsistenciaM
 
     public function listadoAsistenciaAll($idEmpleado, $paginator)
     {
-        $query = pg_query("SELECT
-                                central.ctrl_asistencia.id_ctrl_asistencia,
-                                TO_CHAR(fecha, 'DD/MM/YYYY'),
-                                TO_CHAR(hora, 'HH24:MI'),
-                                UPPER(dispositivo),
-                                UPPER(verificacion),
-                                UPPER(estado),
-                                UPPER(evento),
-                                id_user,
+        $query = pg_query("WITH MinMaxHoras AS (
+                                SELECT
+                                    fecha,
+                                    MIN(hora) AS hora_minima,
+                                    MAX(hora) AS hora_maxima
+                                FROM central.ctrl_asistencia
+                                WHERE id_tbl_empleados_hraes = $idEmpleado
+                                GROUP BY fecha
+                            )
+                            SELECT
+                                ca.id_ctrl_asistencia,
+                                TO_CHAR(ca.fecha, 'DD/MM/YYYY') AS fecha_formateada,
+                                TO_CHAR(ca.hora, 'HH24:MI') AS hora_formateada,
                                 CASE 
-                                    WHEN hora < '15:00:00' THEN 'ENTRADA'
-                                    ELSE 'SALIDA'
-                                END		
-                            FROM central.ctrl_asistencia
-                            WHERE id_tbl_empleados_hraes = $idEmpleado
-                            ORDER BY fecha DESC
+                                    WHEN ca.hora = mmh.hora_minima THEN 'PRIMER REGISTRO'
+                                    WHEN ca.hora = mmh.hora_maxima THEN 'ÚLTIMO REGISTRO'
+                                    ELSE 'REGISTRO INTERMEDIO'
+                                END AS tipo_registro,
+                                UPPER(ca.dispositivo) AS dispositivo,
+                                UPPER(ca.verificacion) AS verificacion,
+                                UPPER(ca.estado) AS estado,
+                                UPPER(ca.evento) AS evento,
+                                ca.id_user
+                            FROM central.ctrl_asistencia ca
+                            INNER JOIN MinMaxHoras mmh
+                                ON ca.fecha = mmh.fecha
+                                AND (ca.hora = mmh.hora_minima OR ca.hora = mmh.hora_maxima)
+                            WHERE ca.id_tbl_empleados_hraes = $idEmpleado
+                            ORDER BY ca.fecha DESC, ca.hora
                             LIMIT 3 OFFSET $paginator;");
         return $query;
     }
 
     public function listadoAsistenciaBusq($idEmpleado, $busqueda, $paginator)
     {
-        $query = pg_query("SELECT
-                                central.ctrl_asistencia.id_ctrl_asistencia,
-                                TO_CHAR(fecha, 'DD/MM/YYYY'),
-                                TO_CHAR(hora, 'HH24:MI'),
-                                UPPER(dispositivo),
-                                UPPER(verificacion),
-                                UPPER(estado),
-                                UPPER(evento),
-                                id_user,
+        $query = pg_query("WITH MinMaxHoras AS (
+                                SELECT
+                                    fecha,
+                                    MIN(hora) AS hora_minima,
+                                    MAX(hora) AS hora_maxima
+                                FROM central.ctrl_asistencia
+                                WHERE id_tbl_empleados_hraes = $idEmpleado
+                                GROUP BY fecha
+                            )
+                            SELECT
+                                ca.id_ctrl_asistencia,
+                                TO_CHAR(ca.fecha, 'DD/MM/YYYY') AS fecha_formateada,
+                                TO_CHAR(ca.hora, 'HH24:MI') AS hora_formateada,
                                 CASE 
-                                    WHEN hora < '15:00:00' THEN 'ENTRADA'
-                                    ELSE 'SALIDA'
-                                END		
-                            FROM central.ctrl_asistencia
-                            WHERE id_tbl_empleados_hraes = $idEmpleado
-                            AND ( TO_CHAR(fecha, 'DD/MM/YYYY')::TEXT LIKE '%$busqueda%' OR
-                                  TO_CHAR(hora, 'HH24:MI')::TEXT LIKE '%$busqueda%' OR
-                                  TRIM(UPPER(UNACCENT(dispositivo))) LIKE '%$busqueda%' OR
-                                  TRIM(UPPER(UNACCENT(verificacion))) LIKE '%$busqueda%' OR
-                                  TRIM(UPPER(UNACCENT(estado))) LIKE '%$busqueda%' OR
-                                  TRIM(UPPER(UNACCENT(evento))) LIKE '%$busqueda%')
-                            ORDER BY fecha DESC
+                                    WHEN ca.hora = mmh.hora_minima THEN 'PRIMER REGISTRO'
+                                    WHEN ca.hora = mmh.hora_maxima THEN 'ÚLTIMO REGISTRO'
+                                    ELSE 'REGISTRO INTERMEDIO'
+                                END AS tipo_registro,
+                                UPPER(ca.dispositivo) AS dispositivo,
+                                UPPER(ca.verificacion) AS verificacion,
+                                UPPER(ca.estado) AS estado,
+                                UPPER(ca.evento) AS evento,
+                                ca.id_user
+                            FROM central.ctrl_asistencia ca
+                            INNER JOIN MinMaxHoras mmh
+                                ON ca.fecha = mmh.fecha
+                                AND (ca.hora = mmh.hora_minima OR ca.hora = mmh.hora_maxima)
+                            WHERE ca.id_tbl_empleados_hraes = $idEmpleado
+                            AND ( TO_CHAR(ca.fecha, 'DD/MM/YYYY')::TEXT LIKE '%$busqueda%' OR
+                                  TO_CHAR(ca.hora, 'HH24:MI')::TEXT LIKE '%$busqueda%' OR
+                                  TRIM(UPPER(UNACCENT(ca.dispositivo))) LIKE '%$busqueda%' OR
+                                  TRIM(UPPER(UNACCENT(ca.verificacion))) LIKE '%$busqueda%' OR
+                                  TRIM(UPPER(UNACCENT(ca.estado))) LIKE '%$busqueda%' OR
+                                  TRIM(UPPER(UNACCENT(ca.evento))) LIKE '%$busqueda%')
+                            ORDER BY ca.fecha DESC, ca.hora
                             LIMIT 3 OFFSET $paginator;");
         return $query;
     }
@@ -230,51 +256,52 @@ class AsistenciaM
     public function getReporte()
     {
         $query = pg_query("WITH Filtradas AS (
-                                            SELECT
-                                                cti.id_tbl_empleados_hraes,
-                                                (TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'))::TIME AS hora
-                                            FROM central.ctrl_temp_asistencia cta
-                                            INNER JOIN central.ctrl_asistencia_info cti
-                                                ON cta.no_empleado::TEXT = cti.no_dispositivo::TEXT
-                                            WHERE
-                                                cti.id_cat_asistencia_estatus = 1
-                                            AND (TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'))::TIME > '05:00:00'
-                                        ),
-                                        Horas AS (
-                                            SELECT
-                                                id_tbl_empleados_hraes,
-                                                MIN(hora) AS hora_minima,
-                                                MAX(hora) AS hora_maxima
-                                            FROM Filtradas
-                                            GROUP BY id_tbl_empleados_hraes
-                                        )
-                                        SELECT
-                                            UPPER(emp.rfc),
-                                            UPPER(emp.curp),
-                                            UPPER(emp.nombre),
-                                            UPPER(emp.primer_apellido),
-                                            UPPER(emp.segundo_apellido),
-                                            (TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'))::DATE AS fecha,
-                                            (TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'))::TIME AS hora,
-                                            CASE 
-                                            WHEN (TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'))::TIME < '15:00:00' THEN 'ENTRADA'
-                                            ELSE 'SALIDA'
-                                            END,
-                                            UPPER(cta.dispositivo) AS dispositivo,
-                                            UPPER(cta.verificacion) AS verificacion,
-                                            UPPER(cta.estado) AS estado,
-                                            UPPER(cta.evento) AS evento,
-                                            cti.no_dispositivo
-                                        FROM central.ctrl_temp_asistencia cta
-                                        INNER JOIN central.ctrl_asistencia_info cti
-                                            ON cta.no_empleado::TEXT = cti.no_dispositivo::TEXT
-                                        INNER JOIN central.tbl_empleados_hraes emp
-                                            ON cti.id_tbl_empleados_hraes =
-                                                emp.id_tbl_empleados_hraes
-                                        INNER JOIN Horas hm
-                                            ON cti.id_tbl_empleados_hraes = hm.id_tbl_empleados_hraes
-                                            AND (TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'))::TIME IN (hm.hora_minima, hm.hora_maxima)
-                                        WHERE cti.id_cat_asistencia_estatus = 1;");
+                                    SELECT
+                                        cti.id_tbl_empleados_hraes,
+                                        TO_CHAR(TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'), 'HH24:MI:SS') AS hora
+                                    FROM central.ctrl_temp_asistencia cta
+                                    INNER JOIN central.ctrl_asistencia_info cti
+                                        ON cta.no_empleado::TEXT = cti.no_dispositivo::TEXT
+                                    WHERE
+                                        cti.id_cat_asistencia_estatus = 1
+                                        AND TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI')::TIME > '05:00:00'
+                                ),
+                                Horas AS (
+                                    SELECT
+                                        id_tbl_empleados_hraes,
+                                        MIN(hora) AS hora_minima,
+                                        MAX(hora) AS hora_maxima
+                                    FROM Filtradas
+                                    GROUP BY id_tbl_empleados_hraes
+                                )
+                                SELECT DISTINCT ON (cti.id_tbl_empleados_hraes, hora)
+                                    UPPER(emp.rfc),
+                                    UPPER(emp.curp),
+                                    UPPER(emp.nombre),
+                                    UPPER(emp.primer_apellido),
+                                    UPPER(emp.segundo_apellido),
+                                    TO_CHAR(TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'), 'YYYY-MM-DD')::DATE AS fecha,
+                                    TO_CHAR(TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'), 'HH24:MI:SS')::TIME AS hora,
+                                    CASE
+                                        WHEN TO_CHAR(TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'), 'HH24:MI:SS') = hm.hora_minima THEN 'PRIMER REGISTRO'
+                                        WHEN TO_CHAR(TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'), 'HH24:MI:SS') = hm.hora_maxima THEN 'ÚLTIMO REGISTRO'
+                                    END AS tipo_registro,
+                                    UPPER(cta.dispositivo) AS dispositivo,
+                                    UPPER(cta.verificacion) AS verificacion,
+                                    UPPER(cta.estado) AS estado,
+                                    UPPER(cta.evento) AS evento,
+                                    cti.no_dispositivo
+                                FROM central.ctrl_temp_asistencia cta
+                                INNER JOIN central.ctrl_asistencia_info cti
+                                    ON cta.no_empleado::TEXT = cti.no_dispositivo::TEXT
+                                INNER JOIN central.tbl_empleados_hraes emp 
+                                    ON cti.id_tbl_empleados_hraes =
+                                        emp.id_tbl_empleados_hraes
+                                INNER JOIN Horas hm
+                                    ON cti.id_tbl_empleados_hraes = hm.id_tbl_empleados_hraes
+                                    AND TO_CHAR(TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'), 'HH24:MI:SS') IN (hm.hora_minima, hm.hora_maxima)
+                                WHERE cti.id_cat_asistencia_estatus = 1
+                                ORDER BY cti.id_tbl_empleados_hraes, hora;");
         return $query;
     }
 
@@ -284,13 +311,13 @@ class AsistenciaM
                             WITH Filtradas AS (
                                 SELECT
                                     cti.id_tbl_empleados_hraes,
-                                    (TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'))::TIME AS hora
+                                    TO_CHAR(TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'), 'HH24:MI:SS') AS hora
                                 FROM central.ctrl_temp_asistencia cta
                                 INNER JOIN central.ctrl_asistencia_info cti
                                     ON cta.no_empleado::TEXT = cti.no_dispositivo::TEXT
                                 WHERE
                                     cti.id_cat_asistencia_estatus = 1
-                                AND (TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'))::TIME > '05:00:00'
+                                    AND TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI')::TIME > '05:00:00'
                             ),
                             Horas AS (
                                 SELECT
@@ -300,9 +327,9 @@ class AsistenciaM
                                 FROM Filtradas
                                 GROUP BY id_tbl_empleados_hraes
                             )
-                            SELECT
-                                (TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'))::DATE AS fecha,
-                                (TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'))::TIME AS hora,
+                            SELECT DISTINCT ON (cti.id_tbl_empleados_hraes, hora)
+                                TO_CHAR(TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'), 'YYYY-MM-DD')::DATE AS fecha,
+                                TO_CHAR(TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'), 'HH24:MI:SS')::TIME AS hora,
                                 UPPER(cta.dispositivo) AS dispositivo,
                                 UPPER(cta.verificacion) AS verificacion,
                                 UPPER(cta.estado) AS estado,
@@ -313,8 +340,9 @@ class AsistenciaM
                                 ON cta.no_empleado::TEXT = cti.no_dispositivo::TEXT
                             INNER JOIN Horas hm
                                 ON cti.id_tbl_empleados_hraes = hm.id_tbl_empleados_hraes
-                                AND (TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'))::TIME IN (hm.hora_minima, hm.hora_maxima)
-                            WHERE cti.id_cat_asistencia_estatus = 1;");
+                                AND TO_CHAR(TO_TIMESTAMP(cta.tiempo, 'MM/DD/YYYY HH24:MI'), 'HH24:MI:SS') IN (hm.hora_minima, hm.hora_maxima)
+                            WHERE cti.id_cat_asistencia_estatus = 1
+                            ORDER BY cti.id_tbl_empleados_hraes, hora;");
         return $query;
     }
 }

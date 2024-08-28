@@ -78,7 +78,7 @@ function validarCargaAsistencia(){
         let message = jsonData.message; 
         
         if (bool){
-          getFileAsistencia();
+           getFileAsistencia();
         } else {
             fadeOut();
             notyf.error(message);

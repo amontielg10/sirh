@@ -36,7 +36,7 @@ if (pg_num_rows($listado) > 0) {
                         <div class="btn-group">
                                 <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit icono-pequeno-tabla"></i></button>
                             <div class="dropdown-menu">
-                                <button onclick="obtenerUsuario(' . $row[7] . ')" class="dropdown-item btn btn-light"><i class="fa fa-user icon-edit-table"></i> Usuario</button>
+                                <button onclick="obtenerUsuario(' . $row[8] . ')" class="dropdown-item btn btn-light"><i class="fa fa-user icon-edit-table"></i> Usuario</button>
                                 <button onclick="agregarEditarAsistencia_(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
                                 <button onclick="eliminarAsistencia(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
                             </div>
@@ -49,9 +49,6 @@ if (pg_num_rows($listado) > 0) {
                                 ' . $row[2] . '
                             </td>
                             <td>
-                                ' . $row[8] . '
-                            </td>
-                            <td>
                                 ' . $row[3] . '
                             </td>
                             <td>
@@ -62,6 +59,9 @@ if (pg_num_rows($listado) > 0) {
                             </td>
                             <td>
                                 ' . $row[6] . '
+                            </td>
+                            <td>
+                                ' . $row[7] . '
                             </td>
                         </tr>
                     </tbody>
