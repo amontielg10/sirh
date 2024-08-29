@@ -44,12 +44,23 @@ function agregarEditarRetardo(id_object){
         id_object: id_object
     },
         function (data) {
-            var jsonData = JSON.parse(data);
-            var entity = jsonData.response;  
+            console.log(data);
+            let jsonData = JSON.parse(data);
+            let entity = jsonData.response;  
 
-            $("#fecha_retardo").val(entity.fecha);
-            $("#hora_entrada").val(concatHora(entity.hora_entrada,entity.minuto_entrada));
-            $("#hora_salida").val(concatHora(entity.hora_salida,entity.minuto_salida));
+            $("#id_cat_quincenas").val(entity.id_cat_quincenas);
+            $("#fecha_rr").val(entity.fecha);
+            $("#hora_ss").val(entity.hora);
+            $("#observaciones_rr").val(entity.observaciones);
+
+            $("#quincena_rr").val(jsonData.quincena);
+            $("#periodo_quincena_rr").val(jsonData.periodoQuincena);
+
+            $('#id_cat_retardo_tipo').html(jsonData.catRetardoTipo); 
+            $('#id_cat_retardo_tipo').selectpicker('refresh');
+            $('#id_cat_retardo_estatus').html(jsonData.catRetardoEstatus); 
+            $('#id_cat_retardo_estatus').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
         }
     );
 

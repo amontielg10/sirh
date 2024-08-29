@@ -104,3 +104,7 @@ include '../../../Model/Hraes/Catalogos/CatNivelesM/CatNivelesM.php';
 include '../../../Controllers/Hrae/Catalogos/CatZonasPagoC/CatZonasPagoC.php';
 include '../../../Model/Hraes/Catalogos/CatZonasPagoM/CatZonasPagoM.php';
 include '../../../Model/Catalogos/CatUnidadAdM/CatUnidadAdM.php';
+
+
+include '../../../Model/Central/Catalogos/CatRetardosM/CatRetardosM.php';
+include '../../../Model/Central/Catalogos/CatQuincenasM/CatQuincenasM.php';

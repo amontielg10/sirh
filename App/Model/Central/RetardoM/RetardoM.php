@@ -33,25 +33,26 @@ class ModelRetardoM
 
     function listarEditById($id_object)
     {
-        $listado = pg_query("SELECT id_ctrl_retardo_hraes, fecha, hora_entrada, minuto_entrada,
-                                    hora_salida, minuto_salida, id_tbl_empleados_hraes
-                            FROM central.ctrl_retardo_hraes
-                            WHERE id_ctrl_retardo_hraes = $id_object
-                            ORDER BY id_ctrl_retardo_hraes DESC
-                            LIMIT 5;");
+        $listado = pg_query("SELECT *
+                            FROM central.ctrl_retardo
+                            WHERE id_ctrl_retardo = $id_object
+                            ORDER BY id_ctrl_retardo DESC
+                            LIMIT 1;");
         return $listado;
     }
 
     function listarByNull()
     {
         return $raw = [
-            'id_ctrl_retardo_hraes' => null,
+            'id_ctrl_retardo' => null,
             'fecha' => null,
-            'hora_entrada' => null,
-            'minuto_entrada' => null,
-            'hora_salida' => null,
-            'minuto_salida' => null,
+            'hora' => null,
+            'observaciones' => null,
+            'id_cat_retardo_tipo' => null,
+            'id_cat_retardo_estatus' => null,
             'id_tbl_empleados_hraes' => null,
+            'id_user' => null,
+            'id_cat_quincenas' => null
         ];
     }
 
