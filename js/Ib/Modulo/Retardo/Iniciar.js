@@ -44,11 +44,9 @@ function agregarEditarRetardo(id_object){
         id_object: id_object
     },
         function (data) {
-            console.log(data);
             let jsonData = JSON.parse(data);
             let entity = jsonData.response;  
 
-            $("#id_cat_quincenas").val(entity.id_cat_quincenas);
             $("#fecha_rr").val(entity.fecha);
             $("#hora_ss").val(entity.hora);
             $("#observaciones_rr").val(entity.observaciones);
@@ -73,18 +71,15 @@ function salirAgregarEditarRetardo_(){
 
 
 function guardarRetardoX() {
-    let fecha_retardo = $("#fecha_retardo").val();
-    let hora_entrada = $("#hora_entrada").val();
-    let hora_salida = $("#hora_salida").val();
-    let id_object = $("#id_object").val();
-    hora_salida = hora_salida  ? hora_salida  : '0:0';
 
     $.post("../../../../App/Controllers/Central/RetardoC/AgregarEditarC.php", {
-        id_object: id_object,
-        fecha_retardo: fecha_retardo,
-        hora_entrada:hora_entrada,
-        hora_salida:hora_salida,
-        id_tbl_empleados_hraes:id_tbl_empleados_hraes
+        id_object: $("#id_object").val(),
+        id_tbl_empleados_hraes:id_tbl_empleados_hraes,
+        fecha: $("#fecha_rr").val(),
+        hora: $("#hora_ss").val(),
+        id_cat_retardo_tipo: $("#id_cat_retardo_tipo").val(),
+        id_cat_retardo_estatus: $("#id_cat_retardo_estatus").val(),
+        observaciones: $("#observaciones_rr").val(),
     },
         function (data) {
             if (data == 'edit'){
@@ -142,45 +137,35 @@ function addCero(time){
     }
     return time;
 }
-/*
-function iniciarRetardo(){
-    iniciarTablaRetardo(id_tbl_empleados_hraes);
-}
 
-function iniciarTablaRetardo(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/Retardo/tabla.php',
-        data: { id_tbl_empleados_hraes: id_tbl_empleados_hraes },
-        success: function (data) {
-            $('#tabla_retardo').html(data);
-        }
+
+function actualizarRetardo() {//ELIMINAR USUARIO
+    Swal.fire({
+        title: "Actualizar el Listado de Incidencias de Retardo",
+        text: "El proceso de actualización de la lista de retardos incluirá todas las asistencias registradas entre las 09:16 y las 09:31 hrs. Este procedimiento puede tardar algunos minutos en completarse.",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#235B4E",
+        cancelButtonColor: "#6c757d",
+        confirmButtonText: "Si, confirmar",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+        fadeIn(); 
+
+        $.post("../../../../App/Controllers/Central/RetardoC/ActualizarC.php", {
+            },
+            function (data) {
+                console.log(data);
+                if (data){
+                    notyf.success('Proceso realizado con éxito')
+                } else {
+                    notyf.error(mensajeSalida);
+                }
+                fadeOut();
+                buscarRetardo();
+            }
+        );
+    }
     });
 }
-
-
-
-
-campoFecha.addEventListener("change", function() {
-    let fecha = campoFecha.value;
-    iniciarTabla(fecha, id_tbl_empleados_hraes)
-});
-
-function iniciarTabla(buscar, id_tbl_empleados_hraes) { ///INGRESA LA TABLA
-    $.ajax({
-        type: 'POST',
-        url: '../../../../App/View/Hraes/Modulo/Retardo/tabla.php',
-        data: { 
-            buscar: buscar,
-            id_tbl_empleados_hraes: id_tbl_empleados_hraes,
-         },
-        success: function (data) {
-            console.log(data);
-            $('#tabla_retardo').html(data);
-        }
-    });
-}
-
-
-
-*/

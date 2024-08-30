@@ -31,8 +31,7 @@
                         </div>
 
                         <div class="col-4">
-                            <label for="campo" class="form-label input-text-form text-input-rem">Hora
-                                entrada</label><label class="text-required">*</label>
+                            <label for="campo" class="form-label input-text-form text-input-rem">Hora</label><label class="text-required">*</label>
                             <input type="time" class="form-control custom-input" id="hora_ss">
                             <div class="line"></div>
                         </div>
@@ -102,7 +101,7 @@
                             <label for="campo"
                                 class="form-label input-text-form text-input-rem">Observaciones</label><label
                                 class="text-required">*</label>
-                            <input type="text" placeholder="Observaciones" onkeyup="convertirAMayusculas(event,'observaciones_rr')" maxlength="20"
+                            <input type="text" placeholder="Observaciones" onkeyup="convertirAMayusculas(event,'observaciones_rr')" maxlength="40"
                                 class="form-control custom-input" id="observaciones_rr">
                             <div class="line"></div>
                         </div>
@@ -118,7 +117,6 @@
                 <button type="button" class="btn btn-success save-botton-modal"
                     onclick="return validarDependiente_();"><i class="fas fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
-                <input type="hidden" id="id_cat_quincenas">
             </div>
         </div>
     </div>

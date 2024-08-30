@@ -1,9 +1,15 @@
 function validarDependiente_(){
-    let fecha_retardo = document.getElementById('fecha_retardo').value;
-    let hora_entrada = document.getElementById('hora_entrada').value;
+    let fecha_rr = document.getElementById('fecha_rr').value;
+    let hora_ss = document.getElementById('hora_ss').value;
+    let id_cat_retardo_tipo = document.getElementById('id_cat_retardo_tipo').value;
+    let id_cat_retardo_estatus = document.getElementById('id_cat_retardo_estatus').value;
+    let observaciones_rr = document.getElementById('observaciones_rr').value;
     
-    if (validarData(fecha_retardo,'Fecha') &&
-        validarData(hora_entrada,'Hora entrada')
+    if (validarData(fecha_rr,'Fecha') &&
+        validarData(hora_ss,'Hora') &&
+        validarData(id_cat_retardo_tipo,'Tipo de retardo') &&
+        validarData(id_cat_retardo_estatus,'Retardo estatus') &&
+        validarData(observaciones_rr,'Observaciones')
     ){
         guardarRetardoX();
     }    

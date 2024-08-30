@@ -30,7 +30,6 @@ $data =
             <th class="col-wide">Tipo</th>
             <th class="col-wide">Estatus</th>
             <th class="col-wide">Observaciones</th>
-            <th class="col-wide">Quincena</th>
         </tr>
     </thead>';
 
@@ -63,9 +62,6 @@ if (pg_num_rows($listado) > 0) {
                             </td>
                             <td>
                                 ' . $row[5] . '
-                            </td>
-                            <td>
-                                ' . $row[6] . '
                             </td>
                         </tr>
                     </tbody>
