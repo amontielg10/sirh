@@ -1,39 +1,42 @@
-function validarIncidencia(){
-    let fecha_ss_ = document.getElementById('fecha_ss_').value;
-    let hora_ss_ = document.getElementById('hora_ss_').value;
-    let dispositivo_ss = document.getElementById('dispositivo_ss').value;
-    let verificacion_ss = document.getElementById('verificacion_ss').value;
-    let estado_ss = document.getElementById('estado_ss').value;
-    let evento_ss = document.getElementById('evento_ss').value;
+ 
+ //Codigo para obtener el checkbox y congelar el valor de fecha inicial y final
+ let checkbox = document.getElementById('es_mas_de_un_dia');
+ checkbox.addEventListener('change', function() {
+     if (checkbox.checked) {
+         checkbox_disabled.disabled  = false;
+     } else {
+         checkbox_disabled.disabled  = true;
+         $("#fecha_fin_ins").val('');
+     }
+     obtenerValoresIns();
+ });
 
-    if (validarData(fecha_ss_,'Fecha') &&
-        validarData(hora_ss_,'Hora') &&
-        validarData(dispositivo_ss,'Nombre de dispositivo') &&
-        validarData(verificacion_ss,'Tipo de verificación') &&
-        validarData(estado_ss,'Estado') &&
-        validarData(evento_ss,'Evento') 
-    ){
-        guardarAsistencia();
-    }
+ //obtener el valor de fecha
+ document.getElementById('fecha_inicio_ins').addEventListener('change', function() {
+    obtenerValoresIns();
+});
+
+//obtener el valor de fecha fin
+document.getElementById('fecha_fin_ins').addEventListener('change', function() {
+    obtenerValoresIns();
+});
+
+//la funcion obtiene los parametros, como dias restantes, dias seleccionados y periodo
+function obtenerValoresIns(){
+    let fecha_fin_ins = document.getElementById('fecha_fin_ins').value;
+    let fecha_inicio_ins = document.getElementById('fecha_inicio_ins').value;
+    
+    $.post("../../../../App/Controllers/Central/IncidenciasC/ValoresC.php", {
+        fecha_fin_ins: fecha_fin_ins,
+        fecha_inicio_ins: fecha_inicio_ins,
+        id_tbl_empleados_hraes:id_tbl_empleados_hraes
+    },
+        function (data) {
+            console.log(data);
+
+            let jsonData = JSON.parse(data);
+            $("#is_peridodo_ins").val(jsonData.periodo);
+            $("#is_dias_seleccionados").val(jsonData.diasSeleccionados);
+        }
+    );
 }
-                            
-
-
-    let checkbox = document.getElementById('es_mas_de_un_dia');
-        checkbox.addEventListener('change', function() {
-            if (checkbox.checked) {
-                checkbox_disabled.disabled  = false;
-            } else {
-                checkbox_disabled.disabled  = true;
-                $("#fecha_fin_ins").val('');
-            }
-        });
-
-
-        const dateInput = document.getElementById('fecha_inicio_ins');
-        dateInput.addEventListener('change', function() {
-            let isValue = dateInput.value;
-            
-            
-
-        });

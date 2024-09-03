@@ -108,3 +108,5 @@ include '../../../Model/Catalogos/CatUnidadAdM/CatUnidadAdM.php';
 
 include '../../../Model/Central/Catalogos/CatRetardosM/CatRetardosM.php';
 include '../../../Model/Central/Catalogos/CatQuincenasM/CatQuincenasM.php';
+include '../../../Model/Central/IncidenciasM/IncidenciasM.php';
+include '../../../Model/Central/CatPeriodoM/CatPeriodoM.php';
