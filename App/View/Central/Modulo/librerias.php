@@ -94,3 +94,7 @@
 <script src="../../../../js/Ib/Modulo/Asistencia/Validar.js"></script>
 <script src="../../../../js/Ib/Modulo/Asistencia/buscar.js"></script>
 <script src="../../../../js/Ib/Modulo/Asistencia/Masivo.js"></script>
+
+<script src="../../../../js/Ib/Modulo/Incidencia/Iniciar.js"></script>
+<script src="../../../../js/Ib/Modulo/Incidencia/Validar.js"></script>
+<script src="../../../../js/Ib/Modulo/Incidencia/buscar.js"></script>
