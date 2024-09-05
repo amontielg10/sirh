@@ -40,6 +40,13 @@ function agregarEditarIncidencia(id_object){
     },
         function (data) {
             console.log(data);
+
+            let jsonData = JSON.parse(data);
+
+            $("#id_cat_incidencias_ins").html(jsonData.catIncidencias);
+
+            $('#id_cat_incidencias_ins').selectpicker('refresh');
+            $('.selectpicker').selectpicker();
             /*
             let jsonData = JSON.parse(data);//se obtiene el json
             let entity = jsonData.response; //Se agrega a emtidad 

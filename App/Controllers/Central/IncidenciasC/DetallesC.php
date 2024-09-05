@@ -2,20 +2,23 @@
 include '../librerias.php';
 
 $id_object = $_POST['id_object'];
-$asistenciaM = new AsistenciaM();
+$incidenciasM = new IncidenciasM();
 $row = new row();
+$catSelectC = new CatSelectC();
 
 if ($id_object != null) {
-    $response = $row->returnArray($asistenciaM->editAsistencia($id_object));
+    $response = $row->returnArray($incidenciasM->modificarIncidencia($id_object));
     $var = [
         'response' => $response,
     ];
     echo json_encode($var);
 
 } else {
-    $response = $asistenciaM->asistenciaIsNUll();
+    $response = $incidenciasM->listarByNull();
+    $catIncidencias = $catSelectC->selectByAllCatalogo($incidenciasM->listarCatIncidencias());
     $var = [
         'response' => $response,
+        'catIncidencias' => $catIncidencias,
     ];
     echo json_encode($var);
 }

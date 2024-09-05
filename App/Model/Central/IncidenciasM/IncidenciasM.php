@@ -61,4 +61,40 @@ class IncidenciasM
                             LIMIT 3 OFFSET $paginator;");
         return $query;
     }
+
+    public function modificarIncidencia($idIncidencia)
+    {
+        $query = pg_query("SELECT * 
+                            FROM central.ctrl_incidencias
+                            WHERE central.ctrl_incidencias.id_ctrl_incidencias = $idIncidencia 
+                            LIMIT 1;");
+        return $query;
+    }
+
+    public function listarByNull()
+    {
+        return $array = [
+            'id_ctrl_incidencias' => null,
+            'fecha_inicio' => null,
+            'fecha_fin' => null,
+            'fecha_captura' => null,
+            'hora' => null,
+            'observaciones' => null,
+            'otro_cat_incidencias' => null,
+            'id_tbl_empleados_hraes' => null,
+            'id_cat_incidencias' => null,
+            'es_mas_de_un_dia' => null
+        ];
+    }
+
+
+    //catalago de incidencias
+    public function listarCatIncidencias(){
+        $query = pg_query ("SELECT 
+                                central.cat_incidencias.id_cat_incidencias,
+                                UPPER(central.cat_incidencias.descripcion)
+                            FROM central.cat_incidencias
+                            ORDER BY central.cat_incidencias.id_cat_incidencias ASC;");
+        return $query;
+    }
 }
