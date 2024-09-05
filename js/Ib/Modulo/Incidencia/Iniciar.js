@@ -1,6 +1,18 @@
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
 var checkbox_disabled = document.getElementById("checkbox_disabled");
 
+//Id de cat incidencias asociadas al periodo de vacaciones 
+/* ESTOS VALORES MOSTRARAN LOS VALORES LOS CALENDARIOS
+id_cat_incidencias      valor
+    7                   DÍAS A CUENTA DE VACACIONES
+    14                  VACACIONES EXTRAORDINARIAS
+    15                  VACACIONES ORDINARIAS
+*/
+var dias_cuenta_vacaciones = 7;
+var vacaciones_extraordinarias = 14;
+var vacaciones_ordinarias = 15;
+
+
 function buscarIncidencia(){ //BUSQUEDA
     console.log('sucess');
     let buscarNew = clearElement(buscar_ins);
@@ -42,6 +54,19 @@ function agregarEditarIncidencia(id_object){
             console.log(data);
 
             let jsonData = JSON.parse(data);
+            let response = jsonData.response; 
+
+            //accion para activar o desactivar el check
+            response.es_mas_de_un_dia ? checkbox_disabled.disabled  = true : checkbox_disabled.disabled  = false;
+
+            //proceso de mostrar u ocultar contenido de calendarios para el periodo de vacaciones
+            ocultarContenido('ocultar_contenido_vacaciones');
+           if(response.id_cat_incidencias == dias_cuenta_vacaciones || 
+              response.id_cat_incidencias == vacaciones_extraordinarias || 
+              response.id_cat_incidencias == vacaciones_ordinarias){
+                mostrarContenido('ocultar_contenido_vacaciones');
+           }
+
 
             $("#id_cat_incidencias_ins").html(jsonData.catIncidencias);
 

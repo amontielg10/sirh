@@ -23,46 +23,49 @@
             <div class="div-spacing"></div>
             <div class="card-body">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-3">
-                            <fieldset disabled>
-                                <label for="campo" class="form-label input-text-form text-input-rem">D&iacuteas
-                                    seleccionados</label>
-                                <input type="text" placeholder="Días seleccionados" class="form-control custom-input"
-                                    id="is_dias_seleccionados">
-                                <div class="line"></div>
-                            </fieldset>
-                        </div>
-                        <div class="col-3">
-                            <fieldset disabled>
-                                <label for="campo" class="form-label input-text-form text-input-rem">D&iacuteas
-                                    restantes</label>
-                                <input type="text" placeholder="Días restantes" class="form-control custom-input"
-                                    id="is_dias_restantes">
-                                <div class="line"></div>
-                            </fieldset>
-                        </div>
-                        <div class="col-3">
-                            <fieldset disabled>
-                                <label for="campo" class="form-label input-text-form text-input-rem">Periodo</label>
-                                <input type="text" placeholder="Periodo" class="form-control custom-input"
-                                    id="is_peridodo_ins">
-                                <div class="line"></div>
-                            </fieldset>
-                        </div>
-                        <div class="col-3">
-                            <label for="campo" class="form-label input-text-form text-input-rem">¿Es m&aacutes de un
-                                d&iacutea?</label><label class="text-required">*</label>
-                            <div class="form-check div-spacing">
-                                <input class="form-check-input " type="checkbox" value="0" id="es_mas_de_un_dia">
-                                <label class="form-check-label custom-input" for="defaultCheck1">
-                                    Si
-                                </label>
+                    <div id="ocultar_contenido_vacaciones">
+                        <div class="row">
+                            <div class="col-3">
+                                <fieldset disabled>
+                                    <label for="campo" class="form-label input-text-form text-input-rem">D&iacuteas
+                                        seleccionados</label>
+                                    <input type="text" placeholder="Días seleccionados"
+                                        class="form-control custom-input" id="is_dias_seleccionados">
+                                    <div class="line"></div>
+                                </fieldset>
+                            </div>
+                            <div class="col-3">
+                                <fieldset disabled>
+                                    <label for="campo" class="form-label input-text-form text-input-rem">D&iacuteas
+                                        restantes</label>
+                                    <input type="text" placeholder="Días restantes" class="form-control custom-input"
+                                        id="is_dias_restantes">
+                                    <div class="line"></div>
+                                </fieldset>
+                            </div>
+                            <div class="col-3">
+                                <fieldset disabled>
+                                    <label for="campo" class="form-label input-text-form text-input-rem">Periodo</label>
+                                    <input type="text" placeholder="Periodo" class="form-control custom-input"
+                                        id="is_peridodo_ins">
+                                    <div class="line"></div>
+                                </fieldset>
+                            </div>
+                            <div class="col-3">
+                                <label for="campo" class="form-label input-text-form text-input-rem">¿Es m&aacutes de un
+                                    d&iacutea?</label><label class="text-required">*</label>
+                                <div class="form-check div-spacing">
+                                    <input class="form-check-input " type="checkbox" value="0" id="es_mas_de_un_dia">
+                                    <label class="form-check-label custom-input" for="defaultCheck1">
+                                        Si
+                                    </label>
+                                </div>
                             </div>
                         </div>
+                        <br>
                     </div>
 
-                    <br>
+
                     <div class="div-spacing"></div>
                     <div class="row">
                         <div class="col-6">
@@ -117,7 +120,8 @@
                             <div class="line"></div>
                         </div>
                         <div class="col-3">
-                            <label for="campo" class="form-label input-text-form text-input-rem">Hora de justificaci&oacuten
+                            <label for="campo" class="form-label input-text-form text-input-rem">Hora de
+                                justificaci&oacuten
                             </label><label class="text-required"></label>
                             <input type="time" class="form-control custom-input" id="hora_ins">
                             <div class="line"></div>

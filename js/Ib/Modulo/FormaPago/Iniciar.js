@@ -36,11 +36,11 @@ function agregarEditarFormaPago(id_object){
         id_object: id_object
     },
         function (data) {
-            var jsonData = JSON.parse(data);//se obtiene el json
-            var entity = jsonData.response; //Se agrega a emtidad 
-            var estatus = jsonData.estatus; //Se agrega a emtidad 
-            var formatoPago = jsonData.formatoPago;
-            var banco = jsonData.banco;
+            let jsonData = JSON.parse(data);//se obtiene el json
+            let entity = jsonData.response; //Se agrega a emtidad 
+            let estatus = jsonData.estatus; //Se agrega a emtidad 
+            let formatoPago = jsonData.formatoPago;
+            let banco = jsonData.banco;
 
             $('#id_cat_estatus_formato_pago').empty();
             $('#id_cat_estatus_formato_pago').html(estatus); 

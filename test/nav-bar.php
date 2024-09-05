@@ -1,28 +1,208 @@
-<?php
-// Establecer la conexión con la base de datos
-$conexion = pg_connect("host=localhost dbname=sirh user=postgres password=pg2024");
+DELETE FROM central.ctrl_asistencia
+WHERE id_tbl_empleados_hraes IN (
+			SELECT
+			central.tbl_empleados_hraes.id_tbl_empleados_hraes
+		FROM central.tbl_empleados_hraes
+		WHERE curp IN (
+		'DIMN960830MMSZRH04',
+		'RUTF931122MMSZPB07',
+		'SESL900317MMSRTG07',
+		'AADE940822MGRLZL00',
+		'HEMA870417MMSRRN09',
+		'SAME980328MVZLRS01'
+		)
+);
 
-if (!$conexion) {
-  die("Error al conectar a la base de datos.");
-}
+DELETE FROM central.ctrl_estudios_hraes
+WHERE id_tbl_empleados_hraes IN (
+			SELECT
+			central.tbl_empleados_hraes.id_tbl_empleados_hraes
+		FROM central.tbl_empleados_hraes
+		WHERE curp IN (
+		'DIMN960830MMSZRH04',
+		'RUTF931122MMSZPB07',
+		'SESL900317MMSRTG07',
+		'CACS831108MTCHHN01',
+		'HEMA870417MMSRRN09',
+		'SAME980328MVZLRS01'
+		)
+);
 
-// Consultar las opciones desde la base de datos
-$query = "SELECT id_cat_entidad, entidad FROM cat_entidad";
-$resultado = pg_query($conexion, $query);
+DELETE FROM central.ctrl_lengua
+WHERE id_tbl_empleados_hraes IN (
+			SELECT
+			central.tbl_empleados_hraes.id_tbl_empleados_hraes
+		FROM central.tbl_empleados_hraes
+		WHERE curp IN (
+		'DIMN960830MMSZRH04',
+		'RUTF931122MMSZPB07',
+		'SESL900317MMSRTG07',
+		'CACS831108MTCHHN01',
+		'HEMA870417MMSRRN09',
+		'SAME980328MVZLRS01'
+		)
+);
 
-if (!$resultado) {
-  die("Error al consultar la base de datos.");
-}
+DELETE FROM central.tbl_plazas_empleados_hraes
+WHERE id_tbl_empleados_hraes IN (
+			SELECT
+			central.tbl_empleados_hraes.id_tbl_empleados_hraes
+		FROM central.tbl_empleados_hraes
+		WHERE curp IN (
+		'DIMN960830MMSZRH04',
+		'RUTF931122MMSZPB07',
+		'SESL900317MMSRTG07',
+		'CACS831108MTCHHN01',
+		'HEMA870417MMSRRN09',
+		'SAME980328MVZLRS01'
+		)
+);
 
-// Crear un array asociativo con las opciones
-$opciones = array();
-while ($fila = pg_fetch_assoc($resultado)) {
-  $opciones[] = $fila;
-}
+DELETE FROM central.tbl_domicilios_hraes
+WHERE id_tbl_empleados_hraes IN (
+			SELECT
+			central.tbl_empleados_hraes.id_tbl_empleados_hraes
+		FROM central.tbl_empleados_hraes
+		WHERE curp IN (
+		'DIMN960830MMSZRH04',
+		'RUTF931122MMSZPB07',
+		'SESL900317MMSRTG07',
+		'CACS831108MTCHHN01',
+		'HEMA870417MMSRRN09',
+		'SAME980328MVZLRS01'
+		)
+);
 
-// Convertir el array a formato JSON y enviarlo como respuesta
-echo json_encode($opciones);
+DELETE FROM central.ctrl_telefono_hraes
+WHERE id_tbl_empleados_hraes IN (
+			SELECT
+			central.tbl_empleados_hraes.id_tbl_empleados_hraes
+		FROM central.tbl_empleados_hraes
+		WHERE curp IN (
+		'DIMN960830MMSZRH04',
+		'RUTF931122MMSZPB07',
+		'SESL900317MMSRTG07',
+		'CACS831108MTCHHN01',
+		'HEMA870417MMSRRN09',
+		'SAME980328MVZLRS01'
+		)
+);
 
-// Cerrar la conexión con la base de datos
-pg_close($conexion);
-?>
+DELETE FROM central.ctrl_medios_contacto_hraes
+WHERE id_tbl_empleados_hraes IN (
+			SELECT
+			central.tbl_empleados_hraes.id_tbl_empleados_hraes
+		FROM central.tbl_empleados_hraes
+		WHERE curp IN (
+		'DIMN960830MMSZRH04',
+		'RUTF931122MMSZPB07',
+		'SESL900317MMSRTG07',
+		'CACS831108MTCHHN01',
+		'HEMA870417MMSRRN09',
+		'SAME980328MVZLRS01'
+		)
+);
+
+DELETE FROM central.ctrl_especialidad_hraes
+WHERE id_tbl_empleados_hraes IN (
+			SELECT
+			central.tbl_empleados_hraes.id_tbl_empleados_hraes
+		FROM central.tbl_empleados_hraes
+		WHERE curp IN (
+		'DIMN960830MMSZRH04',
+		'RUTF931122MMSZPB07',
+		'SESL900317MMSRTG07',
+		'CACS831108MTCHHN01',
+		'HEMA870417MMSRRN09',
+		'SAME980328MVZLRS01'
+		)
+);
+
+DELETE FROM central.ctrl_cuenta_clabe_hraes
+WHERE id_tbl_empleados_hraes IN (
+			SELECT
+			central.tbl_empleados_hraes.id_tbl_empleados_hraes
+		FROM central.tbl_empleados_hraes
+		WHERE curp IN (
+		'DIMN960830MMSZRH04',
+		'RUTF931122MMSZPB07',
+		'SESL900317MMSRTG07',
+		'CACS831108MTCHHN01',
+		'HEMA870417MMSRRN09',
+		'SAME980328MVZLRS01'
+		)
+);
+
+DELETE FROM central.ctrl_adic_emp_hraes
+WHERE id_tbl_empleados_hraes IN (
+			SELECT
+			central.tbl_empleados_hraes.id_tbl_empleados_hraes
+		FROM central.tbl_empleados_hraes
+		WHERE curp IN (
+		'DIMN960830MMSZRH04',
+		'RUTF931122MMSZPB07',
+		'SESL900317MMSRTG07',
+		'CACS831108MTCHHN01',
+		'HEMA870417MMSRRN09',
+		'SAME980328MVZLRS01'
+		)
+);
+
+DELETE FROM central.ctrl_capacidad_dif_hraes
+WHERE id_tbl_empleados_hraes IN (
+			SELECT
+			central.tbl_empleados_hraes.id_tbl_empleados_hraes
+		FROM central.tbl_empleados_hraes
+		WHERE curp IN (
+		'DIMN960830MMSZRH04',
+		'RUTF931122MMSZPB07',
+		'SESL900317MMSRTG07',
+		'CACS831108MTCHHN01',
+		'HEMA870417MMSRRN09',
+		'SAME980328MVZLRS01'
+		)
+);
+
+
+DELETE FROM central.ctrl_asistencia
+WHERE id_tbl_empleados_hraes IN (
+			SELECT
+			central.tbl_empleados_hraes.id_tbl_empleados_hraes
+		FROM central.tbl_empleados_hraes
+		WHERE curp IN (
+		'DIMN960830MMSZRH04',
+		'RUTF931122MMSZPB07',
+		'SESL900317MMSRTG07',
+		'CACS831108MTCHHN01',
+		'HEMA870417MMSRRN09',
+		'SAME980328MVZLRS01'
+		)
+);
+
+DELETE FROM central.tbl_empleados_hraes
+WHERE id_tbl_empleados_hraes IN (
+			SELECT
+			central.tbl_empleados_hraes.id_tbl_empleados_hraes
+		FROM central.tbl_empleados_hraes
+		WHERE curp IN (
+		'DIMN960830MMSZRH04',
+		'RUTF931122MMSZPB07',
+		'SESL900317MMSRTG07',
+		'CACS831108MTCHHN01',
+		'HEMA870417MMSRRN09',
+		'SAME980328MVZLRS01'
+		)
+);
+
+
+
+DELETE FROM central.tbl_control_plazas_hraes
+WHERE id_tbl_control_plazas_hraes IN  (
+SELECT 
+	central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+FROM central.tbl_control_plazas_hraes
+LEFT JOIN central.tbl_plazas_empleados_hraes
+	ON central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes =
+		central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes
+WHERE central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes IS NULL
+)

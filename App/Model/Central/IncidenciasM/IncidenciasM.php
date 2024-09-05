@@ -83,7 +83,7 @@ class IncidenciasM
             'otro_cat_incidencias' => null,
             'id_tbl_empleados_hraes' => null,
             'id_cat_incidencias' => null,
-            'es_mas_de_un_dia' => null
+            'es_mas_de_un_dia' => false
         ];
     }
 
