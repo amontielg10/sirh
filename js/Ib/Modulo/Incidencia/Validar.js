@@ -37,7 +37,7 @@ function obtenerValoresIns(){
             let jsonData = JSON.parse(data);
             $("#is_peridodo_ins").val(jsonData.periodo);
             $("#is_dias_seleccionados").val(jsonData.diasSeleccionados);
-            $("#is_dias_restantes").val(jsonData.diasSeleccionados);
+            $("#is_dias_restantes").val(jsonData.diasRestantes);
         }
     );
 }

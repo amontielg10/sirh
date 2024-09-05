@@ -112,12 +112,12 @@
                         </div>
                         <div class="col-3">
                             <label for="campo" class="form-label input-text-form text-input-rem">Fecha de
-                                captura</label><label class="text-required">*</label>
+                                de justificaci&oacuten</label><label class="text-required">*</label>
                             <input type="date" class="form-control custom-input" id="fecha_captura_ins">
                             <div class="line"></div>
                         </div>
                         <div class="col-3">
-                            <label for="campo" class="form-label input-text-form text-input-rem">Hora
+                            <label for="campo" class="form-label input-text-form text-input-rem">Hora de justificaci&oacuten
                             </label><label class="text-required"></label>
                             <input type="time" class="form-control custom-input" id="hora_ins">
                             <div class="line"></div>

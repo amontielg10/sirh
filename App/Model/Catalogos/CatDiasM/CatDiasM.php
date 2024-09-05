@@ -38,7 +38,7 @@ class CatDiasM
                                 SUM(
                                     CASE
                                         WHEN fecha_fin IS NOT NULL THEN
-                                            (fecha_fin - fecha_inicio)::int
+                                            (fecha_fin - fecha_inicio)::int + 1 -- ES EL DIA DE AGREGAR UNO
                                         ELSE
                                             1
                                     END

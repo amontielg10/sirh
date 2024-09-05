@@ -5,7 +5,6 @@ include '../librerias.php';
 $catDiasM = new CatDiasM();
 $row = new row();
 
-
 $fechaInicio = $_POST['fecha_inicio_ins'];
 $fechaFin = $_POST['fecha_fin_ins'];
 $idEmpleado = $_POST['id_tbl_empleados_hraes'];
@@ -27,11 +26,15 @@ if ($fechaInicio != '') {
 
         if ($fechaInicio != '' && $fechaFin == '') {//funion de un solo dia
             $diasSeleccionados = '1 Día'; //uno perteneciendo a solo un dia que se selecciono
-            $diasRestantes = $allDays - 1;
+            $diasRestantes = ($allDays - 1) . ' de 15 días';
         } else if ($fechaInicio != '' && $fechaFin != '') { //funcion donde se selecciona un rango de fechas
             if ($fechaInicio < $fechaFin) { // validacion que las fechas esten correctas, la de inicio ser menor que la  fecha fin
                 $intervalo = $fechaInicio_date->diff($fechaFin_date); //obtener el intervalo para dias
-                $diasSeleccionados = $intervalo->days . ' Días'; // obtener el total de dias
+                $diasSeleccionados = $intervalo->days + 1 . ' Días'; // obtener el total de dias
+                $diasRestantes = ($allDays - ($intervalo->days + 1)) . ' de 15 días';
+                if (($allDays - ($intervalo->days + 1)) < 0 || ($allDays - ($intervalo->days + 1)) > 15) {
+                    $diasRestantes = 'SIN DÍAS LIBRES';
+                }
             }
         }
     }
@@ -52,11 +55,11 @@ function getAllDays($fechaInio, $fechaFin, $idEmployee) // la funcion obtiene el
     $catDiasM = new CatDiasM();
     $row = new row();
 
-    $result = $row->returnArrayById($catDiasM->getMoreDaysForP());
-    $days = $result[0];
+    $result_ = $row->returnArrayById($catDiasM->getMoreDaysForP());
+    $days = $result_[0];
     if (pg_num_rows($catDiasM->getAllDays($fechaInio, $fechaFin, $idEmployee)) > 0) {
         $result = $row->returnArrayById($catDiasM->getAllDays($fechaInio, $fechaFin, $idEmployee));
-        $days = $result[0];
+        $days = $result_[0] - $result[0];
     }
 
     return $days;
