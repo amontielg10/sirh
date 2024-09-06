@@ -1,17 +1,17 @@
 <?php
 include '../librerias.php';
 
-$asistenciaM = new AsistenciaM();
+$incidenciasM = new IncidenciasM();
 $bitacoraM = new BitacoraM();
 
 $condicion = [
-    'id_ctrl_asistencia' => $_POST['id_object']
+    'id_ctrl_incidencias' => $_POST['id_object']
 ];
 
 if (isset($_POST['id_object'])){
-    if ($asistenciaM-> eliminarByArray($connectionDBsPro, $condicion)){
+    if ($incidenciasM-> eliminarByArray($connectionDBsPro, $condicion)){
         $dataBitacora = [
-            'nombre_tabla' => 'central.ctrl_asistencia',
+            'nombre_tabla' => 'central.ctrl_incidencias',
             'accion' => 'ELIMINAR',
             'valores' => json_encode($condicion),
             'fecha' => $timestamp,

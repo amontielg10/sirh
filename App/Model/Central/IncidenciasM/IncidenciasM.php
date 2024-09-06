@@ -97,4 +97,22 @@ class IncidenciasM
                             ORDER BY central.cat_incidencias.id_cat_incidencias ASC;");
         return $query;
     }
+
+    function editarByArray($conexion, $datos, $condicion)
+    {
+        $pg_update = pg_update($conexion, 'central.ctrl_incidencias', $datos, $condicion);
+        return $pg_update;
+    }
+
+    function agregarByArray($conexion, $datos)
+    {
+        $pg_add = pg_insert($conexion, 'central.ctrl_incidencias', $datos);
+        return $pg_add;
+    }
+
+    function eliminarByArray($conexion, $condicion)
+    {
+        $pgs_delete = pg_delete($conexion, 'central.ctrl_incidencias', $condicion);
+        return $pgs_delete;
+    }
 }

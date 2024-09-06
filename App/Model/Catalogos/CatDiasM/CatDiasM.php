@@ -47,6 +47,7 @@ class CatDiasM
                                 central.ctrl_incidencias
                             WHERE 
                                 id_tbl_empleados_hraes = $idEmployee
+                            AND id_cat_incidencias IN (7,14,15) -- REPRESENTA QUE SOLO CUENTE LOS DIAS DE VACACIONES
                             AND fecha_inicio BETWEEN '$fechaInicio' AND '$fechaFin';");
         return $query;
     }

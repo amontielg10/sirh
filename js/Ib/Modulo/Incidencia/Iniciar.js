@@ -92,33 +92,38 @@ function salirAgregarEditarIncidencia(){
     $("#agregar_editar_incidencia").modal("hide");
 }
 
+//accion para guardar la informacion de incidencias
+function guardarIncidencia() {
 
-function guardarAsistencia() {
-    $.post("../../../../App/Controllers/Central/AsistenciaC/AgregarEditarC.php", {
-        fecha: $("#fecha_ss_").val(),
-        hora: $("#hora_ss_").val(),
-        dispositivo: $("#dispositivo_ss").val(),
-        verificacion: $("#verificacion_ss").val(),
-        estado: $("#estado_ss").val(),
-        evento: $("#evento_ss").val(),
-        id_object: $("#id_object").val(),
+    let checkbox_value = document.getElementById('es_mas_de_un_dia');
+    checkbox_value = checkbox_value.checked ? true : false;
+
+    $.post("../../../../App/Controllers/Central/IncidenciasC/AgregarEditarC.php", {
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
+        es_mas_de_un_dia:checkbox_value,
+        fecha_inicio: $("#fecha_inicio_ins").val(),
+        fecha_fin: $("#fecha_fin_ins").val(),
+        fecha_captura: $("#fecha_captura_ins").val(),
+        hora: $("#hora_ins").val(),
+        observaciones: $("#observaciones_ins").val(),
+        id_cat_incidencias: $("#id_cat_incidencias_ins").val(),
+        id_object: $("#id_object").val(),   
     },
         function (data) {
             if (data == 'edit'){
-                notyf.success('Asistencia modificada con éxito');
+                notyf.success('Incidencia modificada con éxito');
             } else if (data == 'add') {
-                notyf.success('Asistencia agregada con éxito');  
+                notyf.success('Incidencia agregada con éxito');  
             } else {
                 notyf.error(mensajeSalida);
             }
             $("#agregar_editar_incidencia").modal("hide");
-            buscarAsistencia();
+            buscarIncidencia();
         }
     );
 }
 
-function eliminarAsistencia(id_object) {//ELIMINAR USUARIO
+function eliminarIncidecia(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
@@ -130,16 +135,16 @@ function eliminarAsistencia(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Central/AsistenciaC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Central/IncidenciasC/EliminarC.php", {
                 id_object: id_object
             },
             function (data) {
                 if (data == 'delete'){
-                    notyf.success('Asistencia eliminada con éxito')
+                    notyf.success('Incidencia eliminada con éxito')
                 } else {
                     notyf.error(mensajeSalida);
                 }
-                buscarAsistencia();
+                buscarIncidencia();
             }
         );
     }

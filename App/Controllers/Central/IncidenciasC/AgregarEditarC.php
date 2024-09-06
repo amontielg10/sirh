@@ -1,22 +1,23 @@
 <?php
 include '../librerias.php';
 
-$asistenciaM = new AsistenciaM();
+$incidenciasM = new IncidenciasM();
 $bitacoraM = new BitacoraM();
 
 $condicion = [
-    'id_ctrl_asistencia' => $_POST['id_object']
+    'id_ctrl_incidencias' => $_POST['id_object']
 ];
 
 $datos = [
-    'fecha' => $_POST['fecha'],
+    'fecha_inicio' => $_POST['fecha_inicio'],
+    'fecha_fin' => $_POST['fecha_fin'],
+    'fecha_captura' => $_POST['fecha_captura'],
     'hora' => $_POST['hora'],
-    'dispositivo' => $_POST['dispositivo'],
-    'verificacion' => $_POST['verificacion'],
-    'estado' => $_POST['estado'],
-    'evento' => $_POST['evento'],
+    'observaciones' => $_POST['observaciones'],
+    'id_cat_incidencias' => $_POST['id_cat_incidencias'],
     'id_tbl_empleados_hraes' => $_POST['id_tbl_empleados_hraes'],
     'id_user' => $_SESSION['id_user'],
+    'es_mas_de_un_dia' => $_POST['es_mas_de_un_dia'],
 ];
 
 $var = [
@@ -25,9 +26,9 @@ $var = [
 ];
 
 if ($_POST['id_object'] != null) { //Modificar
-    if ($asistenciaM->editarByArray($connectionDBsPro, $datos, $condicion)) {
+    if ($incidenciasM->editarByArray($connectionDBsPro, $datos, $condicion)) {
         $dataBitacora = [
-            'nombre_tabla' => 'central.ctrl_asistencia',
+            'nombre_tabla' => 'central.ctrl_incidencias',
             'accion' => 'MODIFICAR',
             'valores' => json_encode($var),
             'fecha' => $timestamp,
@@ -38,9 +39,9 @@ if ($_POST['id_object'] != null) { //Modificar
     }
 
 } else { //Agregar
-    if ($asistenciaM->agregarByArray($connectionDBsPro, $datos)) {
+    if ($incidenciasM->agregarByArray($connectionDBsPro, $datos)) {
         $dataBitacora = [
-            'nombre_tabla' => 'central.ctrl_asistencia',
+            'nombre_tabla' => 'central.ctrl_incidencias',
             'accion' => 'AGREGAR',
             'valores' => json_encode($var),
             'fecha' => $timestamp,
