@@ -1,15 +1,16 @@
  
 //validacion al momento de agregar la informacion
-function validarIncidencia(){
+function (){
     let is_dias_seleccionados = document.getElementById('is_dias_seleccionados').value;
     let is_dias_restantes = document.getElementById('is_dias_restantes').value;
     let is_peridodo_ins = document.getElementById('is_peridodo_ins').value;
     let es_mas_de_un_dia = document.getElementById('es_mas_de_un_dia').value;
     let id_cat_incidencias_ins = document.getElementById('id_cat_incidencias_ins').value;
     let fecha_inicio_ins = document.getElementById('fecha_inicio_ins').value;
+    let fecha_fin_ins = document.getElementById('fecha_fin_ins').value;
     let observaciones_ins = document.getElementById('observaciones_ins').value;
-    let fecha_fin_ins = document.getElementById('fecha_fin_ins').value;
-    let fecha_fin_ins = document.getElementById('fecha_fin_ins').value;
+    let fecha_captura_ins = document.getElementById('fecha_captura_ins').value;
+    let hora_ins = document.getElementById('hora_ins').value;
 
 
 }
