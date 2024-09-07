@@ -14,7 +14,6 @@ var vacaciones_ordinarias = 15;
 
 
 function buscarIncidencia(){ //BUSQUEDA
-    console.log('sucess');
     let buscarNew = clearElement(buscar_ins);
     let buscarlenth = lengthValue(buscarNew);
     

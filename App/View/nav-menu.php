@@ -108,6 +108,7 @@ $id_rol = $_SESSION['id_rol'];
                                 Nom. Central
                             </a>
                             <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../../Central/Asistencias/index.php">Asistencias</a></li>
                                 <li><a class="dropdown-item" href="../../Central/CentroTrabajo/index.php">Centro de
                                         trabajo</a></li>
                                 <li><a class="dropdown-item" href="../../Central/Empleados/index.php">Empleados</a></li>

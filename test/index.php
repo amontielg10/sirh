@@ -3,59 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkbox Personalizado</title>
+    <title>Nav Tabs con Iconos en Card - Bootstrap 5</title>
+    <!-- CSS de Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome para iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* Estilo personalizado para el checkbox */
-        .custom-checkbox {
-            width: 30px; /* Tamaño del checkbox */
-            height: 30px; /* Tamaño del checkbox */
-            cursor: pointer; /* Cambia el cursor al pasar sobre el checkbox */
-            -webkit-appearance: none; /* Oculta el estilo predeterminado del checkbox en Webkit (Chrome, Safari) */
-            -moz-appearance: none; /* Oculta el estilo predeterminado del checkbox en Mozilla (Firefox) */
-            appearance: none; /* Oculta el estilo predeterminado del checkbox */
-            border: 2px solid gray; /* Bordes del checkbox */
-            border-radius: 4px; /* Bordes redondeados */
-            background-color: #f0f0f0; /* Color de fondo por defecto */
-            position: relative; /* Necesario para posicionar el símbolo de verificación */
+        .nav-tabs {
+            justify-content: center; /* Centra las pestañas horizontalmente */
         }
-
-        /* Estilo para el checkbox cuando está marcado */
-        .custom-checkbox:checked {
-            background-color: gray; /* Cambia el color de fondo cuando está marcado */
+        .nav-link {
+            background-color: #e9ecef; /* Color gris para las pestañas inactivas */
+            color: #495057; /* Color del texto de las pestañas inactivas */
+            border: 1px solid #dee2e6; /* Borde gris para las pestañas inactivas */
         }
-
-        /* Estilo para el checkbox cuando está marcado, reemplaza el color de fondo por defecto */
-        .custom-checkbox:checked::before {
-            content: "✔"; /* Símbolo de marca de verificación */
-            display: block;
-            color: white; /* Color del símbolo de verificación */
-            font-size: 20px; /* Tamaño del símbolo de verificación */
-            text-align: center;
-            line-height: 30px; /* Alineación vertical del símbolo */
-            position: absolute; /* Posiciona el símbolo dentro del checkbox */
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+        .nav-link.active {
+            background-color: #28a745; /* Color verde para la pestaña activa */
+            color: #ffffff; /* Color del texto de la pestaña activa */
+            border-color: #28a745; /* Borde verde para la pestaña activa */
         }
-
-        /* Estilo personalizado para la etiqueta del checkbox */
-        .custom-checkbox-label {
-            font-size: 1.2em; /* Tamaño de la fuente de la etiqueta */
-            margin-left: 10px; /* Espacio entre el checkbox y la etiqueta */
-            cursor: pointer; /* Cambia el cursor al pasar sobre la etiqueta */
+        .nav-link i {
+            margin-right: 8px; /* Espacio entre el icono y el texto */
+        }
+        .card {
+            margin-top: 20px; /* Espacio superior para la card */
         }
     </style>
 </head>
 <body>
-    <div class="col-3">
-        <label for="campo" class="form-label input-text-form text-input-rem">¿Es más de un día?</label><label class="text-required">*</label>
-        <div class="form-check div-spacing">
-            <input class="form-check-input custom-checkbox" type="checkbox" value="0" id="es_mas_de_un_dia">
-            <label class="form-check-label custom-checkbox-label" for="es_mas_de_un_dia">
-                Si
-            </label>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+                            <i class="fas fa-user"></i> Profile
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
+                            <i class="fas fa-envelope"></i> Contact
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content mt-3" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h4>Contenido de Inicio</h4>
+                        <p>Este es el contenido para la pestaña de inicio.</p>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <h4>Contenido de Perfil</h4>
+                        <p>Este es el contenido para la pestaña de perfil.</p>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <h4>Contenido de Contacto</h4>
+                        <p>Este es el contenido para la pestaña de contacto.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- JavaScript de Bootstrap y dependencias -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 </body>
 </html>

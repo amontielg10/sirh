@@ -48,7 +48,7 @@ function validarVacaciones(){
     } else if (is_dias_restantes == 'SIN DÍAS LIBRES'){
         notyf.error('El empleado no tiene días disponibles.');
     } else if (es_mas_de_un_dia.checked){ // validacion que el checkbox esta habilitado para solicitar la fecha fin
-        if (validarData(fecha_fin_ins,'Fecha fin') && validarFechasIguales()){
+        if (validarData(fecha_fin_ins,'Fecha fin')  && validarFechasIguales()){
               bool = true;  
         }
     } else if (!es_mas_de_un_dia.checked){
