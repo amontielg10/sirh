@@ -98,6 +98,15 @@ class IncidenciasM
         return $query;
     }
 
+    public function editarCatIncidencias($id){
+        $query = pg_query ("SELECT 
+                                central.cat_incidencias.id_cat_incidencias,
+                                UPPER(central.cat_incidencias.descripcion)
+                            FROM central.cat_incidencias
+                            WHERE central.cat_incidencias.id_cat_incidencias = $id;");
+        return $query;
+    }
+
     function editarByArray($conexion, $datos, $condicion)
     {
         $pg_update = pg_update($conexion, 'central.ctrl_incidencias', $datos, $condicion);

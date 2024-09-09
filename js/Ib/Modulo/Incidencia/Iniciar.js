@@ -1,5 +1,6 @@
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
 var checkbox_disabled = document.getElementById("checkbox_disabled");
+var es_mas_de_un_dia = document.getElementById('es_mas_de_un_dia');
 
 //Id de cat incidencias asociadas al periodo de vacaciones 
 /* ESTOS VALORES MOSTRARAN LOS VALORES LOS CALENDARIOS
@@ -44,6 +45,7 @@ function agregarEditarIncidencia(id_object){
     if (id_object == null){
         titulo.textContent = 'Agregar';
         $("#agregar_editar_incidencia").find("input,textarea,select").val("");
+        $("#agregar_editar_incidencia").find("input[type=checkbox], input[type=radio]").prop("checked", false);
     }
 
     $.post("../../../../App/Controllers/Central/IncidenciasC/DetallesC.php", {
@@ -55,33 +57,33 @@ function agregarEditarIncidencia(id_object){
             let jsonData = JSON.parse(data);
             let response = jsonData.response; 
 
-            //accion para activar o desactivar el check
-            response.es_mas_de_un_dia ? checkbox_disabled.disabled  = true : checkbox_disabled.disabled  = false;
-
             //proceso de mostrar u ocultar contenido de calendarios para el periodo de vacaciones
+            checkbox_disabled.disabled  = false;
             ocultarContenido('ocultar_contenido_vacaciones');
            if(response.id_cat_incidencias == dias_cuenta_vacaciones || 
               response.id_cat_incidencias == vacaciones_extraordinarias || 
               response.id_cat_incidencias == vacaciones_ordinarias){
+                if(response.es_mas_de_un_dia !== 't'){
+                    checkbox_disabled.disabled = true;
+                    es_mas_de_un_dia.checked = false;
+                } else {
+                    es_mas_de_un_dia.checked = true;
+                }
+               // es_mas_de_un_dia.checked = true;
                 mostrarContenido('ocultar_contenido_vacaciones');
            }
 
+           $("#fecha_inicio_ins").val(response.fecha_inicio);
+           $("#fecha_fin_ins").val(response.fecha_fin);
+           $("#observaciones_ins").val(response.observaciones);
+           $("#fecha_captura_ins").val(response.fecha_captura);
+           $("#hora_ins").val(response.hora);
 
             $("#id_cat_incidencias_ins").html(jsonData.catIncidencias);
 
             $('#id_cat_incidencias_ins').selectpicker('refresh');
             $('.selectpicker').selectpicker();
-            /*
-            let jsonData = JSON.parse(data);//se obtiene el json
-            let entity = jsonData.response; //Se agrega a emtidad 
 
-            $("#fecha_ss_").val(entity.fecha);
-            $("#hora_ss_").val(entity.hora);
-            $("#dispositivo_ss").val(entity.dispositivo);
-            $("#verificacion_ss").val(entity.verificacion);
-            $("#estado_ss").val(entity.estado);
-            $("#evento_ss").val(entity.evento);
-            */
         }
     );
     $("#agregar_editar_incidencia").modal("show");

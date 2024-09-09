@@ -108,7 +108,7 @@
                         <div class="col-6">
                             <label for="campo" class="form-label input-text-form text-input-rem">Observaciones
                             </label><label class="text-required"></label>
-                            <input type="email" class="form-control custom-input" id="observaciones_ins"
+                            <input type="text" class="form-control custom-input" id="observaciones_ins"
                                 placeholder="Observaciones" onkeyup="convertirAMayusculas(event,'observaciones_ins')"
                                 maxlength="50">
                             <div class="line"></div>

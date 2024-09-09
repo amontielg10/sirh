@@ -11,9 +11,6 @@ class ModelRetardoM
                                 UPPER(central.cat_retardo_tipo.descripcion),
                                 UPPER(central.cat_retardo_estatus.descripcion),
                                 UPPER(central.ctrl_retardo.observaciones),
-                                CONCAT(central.cat_quincenas.no_quincena, ' - ', central.cat_quincenas.nombre),
-                                CONCAT(TO_CHAR(central.cat_quincenas.fecha_inicio, 'DD/MM/YYYY'), ' - ',
-                                TO_CHAR(central.cat_quincenas.fecha_fin, 'DD/MM/YYYY')),
                                 central.ctrl_retardo.id_user
                             FROM central.ctrl_retardo
                             INNER JOIN central.cat_retardo_tipo
@@ -22,9 +19,6 @@ class ModelRetardoM
                             INNER JOIN central.cat_retardo_estatus
                                 ON central.ctrl_retardo.id_cat_retardo_estatus =
                                     central.cat_retardo_estatus.id_cat_retardo_estatus
-                            LEFT JOIN central.cat_quincenas
-                                ON central.ctrl_retardo.id_cat_quincenas =
-                                    central.cat_quincenas.id_cat_quincenas
                             WHERE central.ctrl_retardo.id_tbl_empleados_hraes = $id_object
                             ORDER BY central.ctrl_retardo.fecha DESC
                              LIMIT 3 OFFSET $paginator;");
@@ -59,38 +53,29 @@ class ModelRetardoM
     function listarByBusqueda($id_object, $busqueda,$paginator)
     {
         $listado = pg_query("SELECT 
-                                central.ctrl_retardo.id_ctrl_retardo,
-                                TO_CHAR(central.ctrl_retardo.fecha, 'DD/MM/YYYY'),
-                                TO_CHAR(central.ctrl_retardo.hora, 'HH24:MI'),
-                                UPPER(central.cat_retardo_tipo.descripcion),
-                                UPPER(central.cat_retardo_estatus.descripcion),
-                                UPPER(central.ctrl_retardo.observaciones),
-                                CONCAT(central.cat_quincenas.no_quincena, ' - ', central.cat_quincenas.nombre),
-                                CONCAT(TO_CHAR(central.cat_quincenas.fecha_inicio, 'DD/MM/YYYY'), ' - ',
-                                TO_CHAR(central.cat_quincenas.fecha_fin, 'DD/MM/YYYY')),
-                                central.ctrl_retardo.id_user
-                            FROM central.ctrl_retardo
-                            INNER JOIN central.cat_retardo_tipo
-                                ON central.ctrl_retardo.id_cat_retardo_tipo =
-                                    central.cat_retardo_tipo.id_cat_retardo_tipo
-                            INNER JOIN central.cat_retardo_estatus
-                                ON central.ctrl_retardo.id_cat_retardo_estatus =
-                                    central.cat_retardo_estatus.id_cat_retardo_estatus
-                            LEFT JOIN central.cat_quincenas
-                                ON central.ctrl_retardo.id_cat_quincenas =
-                                    central.cat_quincenas.id_cat_quincenas
-                            WHERE central.ctrl_retardo.id_tbl_empleados_hraes = $id_object
-                            AND (TO_CHAR(central.ctrl_retardo.fecha, 'DD/MM/YYYY')::TEXT  LIKE '%$busqueda%' OR
-                                TO_CHAR(central.ctrl_retardo.hora, 'HH24:MI')::TEXT LIKE '%$busqueda%' OR
-                                TRIM(UPPER(UNACCENT(central.cat_retardo_tipo.descripcion))) LIKE '%$busqueda%' OR
-                                TRIM(UPPER(UNACCENT(central.cat_retardo_estatus.descripcion))) LIKE '%$busqueda%' OR
-                                TRIM(UPPER(UNACCENT(central.ctrl_retardo.observaciones))) LIKE '%$busqueda%' OR
-                                TRIM(UPPER(UNACCENT(CONCAT(central.cat_quincenas.no_quincena, ' - ', 
-                                    central.cat_quincenas.nombre)))) LIKE '%$busqueda%' OR
-                                CONCAT(TO_CHAR(central.cat_quincenas.fecha_inicio, 'DD/MM/YYYY'), ' - ',
-                                TO_CHAR(central.cat_quincenas.fecha_fin, 'DD/MM/YYYY')) LIKE '%$busqueda%' 
-                            )
-                            ORDER BY central.ctrl_retardo.fecha DESC
+    central.ctrl_retardo.id_ctrl_retardo,
+    TO_CHAR(central.ctrl_retardo.fecha, 'DD/MM/YYYY') AS fecha,
+    TO_CHAR(central.ctrl_retardo.hora, 'HH24:MI') AS hora,
+    UPPER(central.cat_retardo_tipo.descripcion) AS tipo_descripcion,
+    UPPER(central.cat_retardo_estatus.descripcion) AS estatus_descripcion,
+    UPPER(central.ctrl_retardo.observaciones) AS observaciones,
+    central.ctrl_retardo.id_user
+FROM central.ctrl_retardo
+INNER JOIN central.cat_retardo_tipo
+    ON central.ctrl_retardo.id_cat_retardo_tipo = central.cat_retardo_tipo.id_cat_retardo_tipo
+INNER JOIN central.cat_retardo_estatus
+    ON central.ctrl_retardo.id_cat_retardo_estatus = central.cat_retardo_estatus.id_cat_retardo_estatus
+WHERE central.ctrl_retardo.id_tbl_empleados_hraes = $id_object
+AND (
+    CONCAT(
+        TO_CHAR(central.ctrl_retardo.fecha, 'DD/MM/YYYY'), ' ',
+        TO_CHAR(central.ctrl_retardo.hora, 'HH24:MI'), ' ',
+        UPPER(central.cat_retardo_tipo.descripcion), ' ',
+        UPPER(central.cat_retardo_estatus.descripcion), ' ',
+        UPPER(central.ctrl_retardo.observaciones)
+    ) LIKE '%' || '$busqueda' || '%'
+)
+ORDER BY central.ctrl_retardo.fecha DESC
                              LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
