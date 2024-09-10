@@ -79,6 +79,10 @@ function agregarEditarIncidencia(id_object){
            $("#fecha_captura_ins").val(response.fecha_captura);
            $("#hora_ins").val(response.hora);
 
+           $("#is_peridodo_ins").val(jsonData.periodo);
+           $("#is_dias_seleccionados").val(jsonData.diasSeleccionados);
+           $("#is_dias_restantes").val(jsonData.diasRestantes);
+
             $("#id_cat_incidencias_ins").html(jsonData.catIncidencias);
 
             $('#id_cat_incidencias_ins').selectpicker('refresh');

@@ -17,6 +17,9 @@ if ($id_object != null) {
     $var = [
         'response' => $response,
         'catIncidencias' => $catIncidencias,
+        'periodo' => 'Periodo',
+        'diasSeleccionados' => 'Días restantes',
+        'diasRestantes' => 'Días seleccionados',
     ];
     echo json_encode($var);
 
