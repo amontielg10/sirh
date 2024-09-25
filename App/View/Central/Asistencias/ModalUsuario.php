@@ -4,13 +4,14 @@
         <div class="modal-content">
             <div class="modal-header background-modal">
                 <h5 class="modal-title  text-modal-tittle"><label id="" class="text-modal-tittle"></label>
-                    Último usuario en realizar acci&oacuten.</h5>
+                Usuario más reciente en realizar la acción</h5>
             </div>
 
             <div class="card-body">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
+                            <br>
                             <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">
                                 <i class="fa fa-user"></i> USUARIO: <label class="text-result-normal"
                                     id="nombre_usuario_accion"></label>
@@ -25,6 +26,7 @@
                 <button onclick="ocultarModalUsuario();" type="button" class="btn btn-secondary" data-dismiss="modal"><i
                         class="fas fa-times"></i> Cerrar</button>
             </div>
+
         </div>
     </div>
 </div>

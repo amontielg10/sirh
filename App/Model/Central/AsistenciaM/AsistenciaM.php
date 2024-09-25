@@ -305,7 +305,8 @@ class AsistenciaM
         return $query;
     }
 
-    public function addDataInTables(){
+    public function addDataInTables()
+    {
         $query = pg_query("INSERT INTO central.ctrl_asistencia(
                                 fecha, hora, dispositivo, verificacion, estado, evento, id_tbl_empleados_hraes)
                             WITH Filtradas AS (
@@ -345,4 +346,51 @@ class AsistenciaM
                             ORDER BY cti.id_tbl_empleados_hraes, hora;");
         return $query;
     }
+
+
+
+    //listado para pbtener el total de asistencias
+    public function listarAsistenciaDep($paginator)
+    {
+        $query = ("SELECT
+                    CONCAT(UPPER(central.tbl_empleados_hraes.nombre), ' ',
+                        UPPER(central.tbl_empleados_hraes.primer_apellido), ' ',
+                        UPPER(central.tbl_empleados_hraes.segundo_apellido)),
+                    UPPER(central.tbl_empleados_hraes.rfc),
+                    TO_CHAR(central.ctrl_asistencia.fecha, 'DD-MM-YYYY'),
+                    TO_CHAR(central.ctrl_asistencia.hora, 'HH:MM'),
+                    UPPER(central.ctrl_asistencia.dispositivo),
+                    central.ctrl_asistencia.id_user,
+                    central.tbl_empleados_hraes.id_tbl_empleados_hraes,
+                    central.ctrl_asistencia.id_ctrl_asistencia  
+                FROM central.tbl_empleados_hraes
+                INNER JOIN central.ctrl_asistencia 
+                    ON central.ctrl_asistencia.id_tbl_empleados_hraes =
+                        central.tbl_empleados_hraes.id_tbl_empleados_hraes
+                ORDER BY central.ctrl_asistencia.fecha  ASC
+                LIMIT 5 OFFSET $paginator;");
+        return $query;
+    }
+
+    public function getInfoAsistencia($id){
+        $query = pg_query ("SELECT
+                                CONCAT(UPPER(central.tbl_empleados_hraes.nombre), ' ',
+                                    UPPER(central.tbl_empleados_hraes.primer_apellido), ' ',
+                                    UPPER(central.tbl_empleados_hraes.segundo_apellido)),
+                                UPPER(central.tbl_empleados_hraes.rfc),
+                                TO_CHAR(central.ctrl_asistencia.fecha, 'DD-MM-YYYY'),
+                                TO_CHAR(central.ctrl_asistencia.hora, 'HH:MM'),
+                                UPPER(central.ctrl_asistencia.dispositivo),
+                                UPPER(central.ctrl_asistencia.verificacion),
+                                UPPER(central.ctrl_asistencia.estado),
+                                UPPER(central.ctrl_asistencia.evento),
+                                central.tbl_empleados_hraes.id_tbl_empleados_hraes
+                            FROM central.tbl_empleados_hraes
+                            INNER JOIN central.ctrl_asistencia 
+                                ON central.ctrl_asistencia.id_tbl_empleados_hraes =
+                                    central.tbl_empleados_hraes.id_tbl_empleados_hraes
+                            WHERE central.ctrl_asistencia.id_ctrl_asistencia  = $id;");
+        return $query;
+    }
+
 }

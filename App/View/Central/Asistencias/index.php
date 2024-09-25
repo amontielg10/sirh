@@ -71,8 +71,12 @@
 
 <?php include '../../librerias.php' ?>
 <?php include 'Carga.php' ?>
+<?php include 'ModalUsuario.php' ?>
 
-<script src="../../../../js/Ib/Asistencias/CentroTrabajo.js"></script>
-<script src="../../../../js/Ib/Asistencias/validar.js"></script>
-<script src="../../../../js/Ib/Asistencias/Busqueda.js"></script>
-<script src="../../../../js/Ib/Asistencias/Carga.js"></script>
+<!-- -->
+<script src="../../../../js/Ib/Asistencias/Asistencias/Listado.js"></script>
+<script src="../../../../js/Ib/Asistencias/Asistencias/Busqueda.js"></script>
+
+<!-- -->
+<script src="../../../../js/Ib/Asistencias/Inicio.js"></script>
+

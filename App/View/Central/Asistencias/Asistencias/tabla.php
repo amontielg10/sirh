@@ -1,27 +1,28 @@
 <?php
-include '../../../../conexion.php';
-include '../../../Model/Central/CentroTrabajoM/CentroTrabajoM.php';
+include '../../../../../conexion.php';
+include '../../../../Model/Central/AsistenciaM/AsistenciaM.php';
 
-$listado = new modelCentroTrabajoHraes();
+$listado = new AsistenciaM();
 $paginador = $_POST['paginador'];
 
-$query = $listado->listarByAll($paginador);
+$query = $listado->listarAsistenciaDep($paginador);
 
+/*
 if (isset($_POST['busqueda'])) {
     $busqueda = $_POST['busqueda'];
     $query = $listado->listarByLike($busqueda, $paginador);
-}
+}*/
 
 $data =
-    '<table class="table table-bordered table-fixed" id="t-table" style="width:100%">
+    '<table class="table table-bordered table-fixed" id="tabla_asistencias_" style="width:100%">
     <thead>
         <tr>
             <th class="col-wide-action">Acciones</th>
-            <th class="col-wide">Centro de trabajo</th>
-            <th class="col-wide-x-300">Nombre</th>
-            <th class="col-wide">Entidad</th>
-            <th class="col-wide">C&oacutedigo postal</th>
-            <th class="col-wide">Total de plazas</th>
+            <th class="col-wide">Nombre</th>
+            <th class="col-wide">RFC</th>
+            <th class="col-wide">Fecha</th>
+            <th class="col-wide">Hora</th>
+            <th class="col-wide">Dispositivo</th>
         </tr>
     </thead>';
 
@@ -30,8 +31,6 @@ if (!$result = pg_query($connectionDBsPro, $query)) {
 }
 if (pg_num_rows($result) > 0) {
     while ($row = pg_fetch_row($result)) {
-        $id_tbl_centro_trabajo_hraes = base64_encode($row[0]);
-        $isAllPlaza = returnArrayById($listado->allCountPlazas($row[0]));
         $data .=
             '<tbody>
                         <tr>
@@ -39,15 +38,14 @@ if (pg_num_rows($result) > 0) {
                             <div class="btn-group">
                                 <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit icono-grande-tabla"></i></button>
                             <div class="dropdown-menu">
-                                <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
-                                <form action="../Plazas/index.php" method="POST">
-                                        <input type="hidden" name="id_tbl_centro_trabajo_hraes" value="' . $row[0] . '" />
-                                        <button class="dropdown-item btn btn-light"><i class="fa fa-bookmark icon-edit-table"></i> Plazas</button>  
-                                </form>
-                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
+                                <button onclick="getUser(' . $row[5] . ')" class="dropdown-item btn btn-light"><i class="	fa fa-user icon-edit-table"></i> Usuario</button>
+                                <button onclick="getDetallesAsistencia(' . $row[7] . ')" class="dropdown-item btn btn-light"><i class="	fa fa-eye icon-edit-table"></i> Ver más</button>
                             </div>
                           </div>
                                 </td>
+                            <td>
+                                ' . $row[0] . '
+                            </td>
                             <td>
                                 ' . $row[1] . '
                             </td>
@@ -59,9 +57,6 @@ if (pg_num_rows($result) > 0) {
                             </td>
                             <td>
                                 ' . $row[4] . '
-                            </td>
-                            <td>
-                                ' . $isAllPlaza[0] . '
                             </td>
                         </tr>
                     </tbody>

@@ -11,40 +11,73 @@ var notyf = new Notyf({
 var mensajeSalida = 'Se produjo un error al ejecutar la acción';
 
 $(document).ready(function () {
-    buscarCentro();
+    buscarAsistencia();
 });
 
 
-function iniciarTabla(busqueda, paginador) { ///INGRESA LA TABLA
+function iniciarTablaAsis(busqueda, paginador) { ///INGRESA LA TABLA
     $.ajax({
         type: 'POST',
-        url: '../../../../App/View/Central/CentroTrabajo/tabla.php',
-        data: { 
+        url: '../../../../App/View/Central/Asistencias/Asistencias/tabla.php',
+        data: {
             busqueda: busqueda,
-            paginador:paginador
-         },
+            paginador: paginador
+        },
         success: function (data) {
-            $('#tabla_centro_trabajo').html(data);
+            $('#tabla_asistencias_').html(data);
         }
     });
 }
 
-function buscarCentro(){ //BUSQUEDA
-    let buscarNew = clearElement(buscar);
+function buscarAsistencia() { //BUSQUEDA
+    let buscarNew = clearElement(buscar_asistencia);
     let buscarlenth = lengthValue(buscarNew);
-    
-    if (buscarlenth == 0){
-        iniciarTabla(null, iniciarBusqueda());
+
+    if (buscarlenth == 0) {
+        iniciarTablaAsis(null, iniciarBusqueda());
     } else {
-        iniciarTabla(buscarNew, iniciarBusqueda());
+        iniciarTablaAsis(buscarNew, iniciarBusqueda());
     }
 }
+
+
+function getDetallesAsistencia(id) {
+    $.post("../../../../App/Controllers/Central/AsistenciaC/InfoAllC.php", {
+        id: id
+    },
+        function (data) {
+            let jsonData = JSON.parse(data);//se obtiene el json
+            let response = jsonData.response;
+
+            $("#nombre_ass").val(response[0]);
+            $("#rfc_ss").val(response[1]);
+            $("#fecha_ss").val(response[2]);
+            $("#hora_ss").val(response[3]);
+            $("#dispositivo_ss").val(response[4]);
+            $("#verificacion_ss").val(response[5]);
+            $("#estado_ss").val(response[6]);
+            $("#evento_ss").val(response[7]);
+        }
+    );
+    $("#modal_detalles").modal("show");
+}
+
+function cerrarDetallesAsis() {
+    $("#modal_detalles").modal("hide");
+}
+
+
+
+
+
+
+
 
 function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONADO
     $("#id_object").val(id_object);
     let titulo = document.getElementById("titulo_centro_trabajo");
     titulo.textContent = 'Modificar';
-    if (id_object == null){
+    if (id_object == null) {
         $("#agregar_editar_modal").find("input,textarea,select").val("");
         titulo.textContent = 'Agregar';
     }
@@ -63,9 +96,9 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             $('#id_cat_entidad').empty();
             $('#id_cat_region').empty();
             $('#id_estatus_centro').empty();
-            $('#id_cat_entidad').html(entidad); 
-            $('#id_cat_region').html(region); 
-            $('#id_estatus_centro').html(estatus); 
+            $('#id_cat_entidad').html(entidad);
+            $('#id_cat_region').html(region);
+            $('#id_estatus_centro').html(estatus);
 
 
             $('#id_cat_entidad').selectpicker('refresh');
@@ -109,26 +142,26 @@ function agregarEditarByDb() {
     $.post("../../../../App/Controllers/Central/CentroTrabajoC/AgregarEditarC.php", {
         id_object: id_object,
         id_cat_entidad: id_cat_entidad,
-        id_cat_region:id_cat_region,
-        id_estatus_centro:id_estatus_centro,
-        nombre:nombre,
-        clave_centro_trabajo:clave_centro_trabajo,
-        colonia:colonia,
-        codigo_postal:codigo_postal,
-        num_exterior:num_exterior,
-        num_interior:num_interior,
-        latitud:latitud,
-        longitud:longitud,
-        pais:pais,
-        nivel_atencion:$("#nivel_atencion").val()
+        id_cat_region: id_cat_region,
+        id_estatus_centro: id_estatus_centro,
+        nombre: nombre,
+        clave_centro_trabajo: clave_centro_trabajo,
+        colonia: colonia,
+        codigo_postal: codigo_postal,
+        num_exterior: num_exterior,
+        num_interior: num_interior,
+        latitud: latitud,
+        longitud: longitud,
+        pais: pais,
+        nivel_atencion: $("#nivel_atencion").val()
 
     },
         function (data) {
-            
-            if (data == 'edit'){
+
+            if (data == 'edit') {
                 notyf.success('Centro de trabajo modificado con éxito');
             } else if (data == 'add') {
-                notyf.success('Centro de trabajo agregado con éxito');  
+                notyf.success('Centro de trabajo agregado con éxito');
             } else {
                 mensajeError(mensajeSalida);
             }
@@ -138,7 +171,7 @@ function agregarEditarByDb() {
     );
 }
 
-function ocultarModal(){
+function ocultarModal() {
     $("#agregar_editar_modal").modal("hide");
 }
 
@@ -152,21 +185,21 @@ function eliminarEntity(id_object) {
         cancelButtonColor: "#6c757d",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Central/CentroTrabajoC/EliminarC.php", {
+            $.post("../../../../App/Controllers/Central/CentroTrabajoC/EliminarC.php", {
                 id_object: id_object
             },
-            function (data, status) {
-                if (data == 'delete'){
-                    notyf.success('Centro de trabajo eliminado con éxito')
-                } else {
-                    messageErrorLarge('La eliminación de un centro de trabajo no debe estar sujeta a dependencias como plazas, empleados, o datos complementarios');
+                function (data, status) {
+                    if (data == 'delete') {
+                        notyf.success('Centro de trabajo eliminado con éxito')
+                    } else {
+                        messageErrorLarge('La eliminación de un centro de trabajo no debe estar sujeta a dependencias como plazas, empleados, o datos complementarios');
+                    }
+                    buscarCentro();
                 }
-                buscarCentro();
-            }
-        );
-    }
+            );
+        }
     });
 }
 
@@ -175,12 +208,12 @@ function convertirAMayusculas(event, inputId) {
     let texto = event.target.value;
     let textoEnMayusculas = texto.toUpperCase();
     inputElement.value = textoEnMayusculas;
-  }
+}
 
 
-  function validarNumero(input) {
+function validarNumero(input) {
     input.value = input.value.replace(/[^\d]/g, '');
-  }
+}
 
 
 
