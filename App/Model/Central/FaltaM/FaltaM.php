@@ -36,9 +36,9 @@ class FaltaModelM
     function listarEditById($id_object)
     {
         $listado = pg_query("SELECT *
-                            FROM central.ctrl_faltas_hraes
-                            WHERE id_ctrl_faltas_hraes = $id_object
-                            LIMIT 5;");
+                            FROM central.ctrl_faltas
+                            WHERE id_ctrl_faltas = $id_object
+                            LIMIT 1;");
         return $listado;
     }
 

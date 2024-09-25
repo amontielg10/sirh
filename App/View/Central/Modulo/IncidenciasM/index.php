@@ -29,10 +29,21 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
+
+
+                                <div class="card font-size-modulo shadow-lg">
+                                    <h5 class="card-header text-center background-modal color-text-tittle">Retardo</h5>
+                                    <div class="card-body">
+                                        <?php include 'Retardo/index.php' ?>
+                                    </div>
+                                </div>
+                                <!--
                                 <div class="card font-size-modulo shadow-lg">
                                     <div style="background:#235B4E"
                                         class="card-header d-flex justify-content-between align-items-center">
                                         <h5 class="text-center background-modal color-text-tittle mb-0">Retardo</h5>
+
+                                        <!--
                                         <button style="background:#235B4E;border: none" onclick="actualizarRetardo()"
                                             type="button" class="btn btn-light" aria-haspopup="true"
                                             aria-expanded="false" data-toggle="tooltip" data-placement="top"
@@ -42,9 +53,10 @@
                                         </button>
                                     </div>
                                     <div class="card-body">
-                                        <?php include 'Retardo/index.php' ?>
+                                        <?php //include 'Retardo/index.php' ?>
                                     </div>
                                 </div>
+-->
                             </div>
                         </div>
                     </div>
@@ -78,7 +90,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="v-tabs-incidencias" role="tabpanel" aria-labelledby="v-tabs-messages-tab">
+                <div class="tab-pane fade" id="v-tabs-incidencias" role="tabpanel"
+                    aria-labelledby="v-tabs-messages-tab">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">

@@ -36,8 +36,12 @@ function agregarEditarFalta(id_object){
         id_object: id_object
     },
         function (data) {
+            console.log(data);
+
             let jsonData = JSON.parse(data);
-            let entity = jsonData.response;  
+            let entity = jsonData.response;
+            
+            entity.es_por_retardo == 't' ? console.log('verdadero') : console.log('falso') ;
 
             $("#fecha_desde").val(entity.fecha_desde);
             $("#fecha_hasta").val(entity.fecha_hasta);
