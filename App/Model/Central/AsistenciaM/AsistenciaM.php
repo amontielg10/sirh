@@ -358,7 +358,7 @@ class AsistenciaM
                         UPPER(central.tbl_empleados_hraes.segundo_apellido)),
                     UPPER(central.tbl_empleados_hraes.rfc),
                     TO_CHAR(central.ctrl_asistencia.fecha, 'DD-MM-YYYY'),
-                    TO_CHAR(central.ctrl_asistencia.hora, 'HH:MM'),
+                    TO_CHAR(central.ctrl_asistencia.hora, 'HH24:MI'),
                     UPPER(central.ctrl_asistencia.dispositivo),
                     central.ctrl_asistencia.id_user,
                     central.tbl_empleados_hraes.id_tbl_empleados_hraes,
@@ -372,21 +372,53 @@ class AsistenciaM
         return $query;
     }
 
-    public function getInfoAsistencia($id){
-        $query = pg_query ("SELECT
+    public function listarAsistenciaDepBusqueda($busqueda, $paginator)
+    {
+        $query = ("SELECT
+                        CONCAT(UPPER(central.tbl_empleados_hraes.nombre), ' ',
+                            UPPER(central.tbl_empleados_hraes.primer_apellido), ' ',
+                            UPPER(central.tbl_empleados_hraes.segundo_apellido)) AS nombre_completo,
+                        UPPER(central.tbl_empleados_hraes.rfc) AS rfc,
+                        TO_CHAR(central.ctrl_asistencia.fecha, 'DD-MM-YYYY') AS fecha,
+                        TO_CHAR(central.ctrl_asistencia.hora, 'HH24:MI') AS hora,
+                        UPPER(central.ctrl_asistencia.dispositivo) AS dispositivo,
+                        central.ctrl_asistencia.id_user,
+                        central.tbl_empleados_hraes.id_tbl_empleados_hraes,
+                        central.ctrl_asistencia.id_ctrl_asistencia
+                    FROM central.tbl_empleados_hraes
+                    INNER JOIN central.ctrl_asistencia 
+                        ON central.ctrl_asistencia.id_tbl_empleados_hraes = central.tbl_empleados_hraes.id_tbl_empleados_hraes
+                    WHERE (
+                        CONCAT(UPPER(central.tbl_empleados_hraes.nombre), ' ',
+                            UPPER(central.tbl_empleados_hraes.primer_apellido), ' ',
+                            UPPER(central.tbl_empleados_hraes.segundo_apellido)) LIKE '%$busqueda%' 
+                        OR UPPER(central.tbl_empleados_hraes.rfc) LIKE '%$busqueda%' 
+                        OR TO_CHAR(central.ctrl_asistencia.fecha, 'DD-MM-YYYY') LIKE '%$busqueda%' 
+                        OR TO_CHAR(central.ctrl_asistencia.hora, 'HH24:MI') LIKE '%$busqueda%' 
+                        OR UPPER(central.ctrl_asistencia.dispositivo) LIKE '%$busqueda%'
+                    )
+                    ORDER BY central.ctrl_asistencia.fecha DESC
+                    LIMIT 5 OFFSET $paginator;");
+        return $query;
+    }
+
+
+    public function getInfoAsistencia($id)
+    {
+        $query = pg_query("SELECT
                                 CONCAT(UPPER(central.tbl_empleados_hraes.nombre), ' ',
                                     UPPER(central.tbl_empleados_hraes.primer_apellido), ' ',
                                     UPPER(central.tbl_empleados_hraes.segundo_apellido)),
                                 UPPER(central.tbl_empleados_hraes.rfc),
                                 TO_CHAR(central.ctrl_asistencia.fecha, 'DD-MM-YYYY'),
-                                TO_CHAR(central.ctrl_asistencia.hora, 'HH:MM'),
+                                TO_CHAR(central.ctrl_asistencia.hora, 'HH24:MI'),
                                 UPPER(central.ctrl_asistencia.dispositivo),
                                 UPPER(central.ctrl_asistencia.verificacion),
                                 UPPER(central.ctrl_asistencia.estado),
                                 UPPER(central.ctrl_asistencia.evento),
                                 central.tbl_empleados_hraes.id_tbl_empleados_hraes
-                            FROM central.tbl_empleados_hraes
-                            INNER JOIN central.ctrl_asistencia 
+                            FROM central.ctrl_asistencia  
+                            INNER JOIN central.tbl_empleados_hraes
                                 ON central.ctrl_asistencia.id_tbl_empleados_hraes =
                                     central.tbl_empleados_hraes.id_tbl_empleados_hraes
                             WHERE central.ctrl_asistencia.id_ctrl_asistencia  = $id;");
