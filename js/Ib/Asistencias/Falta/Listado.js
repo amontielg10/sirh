@@ -11,63 +11,37 @@ var notyf = new Notyf({
 var mensajeSalida = 'Se produjo un error al ejecutar la acción';
 
 
-function iniciarTablaAsis(busqueda, paginador) { ///INGRESA LA TABLA
+function iniciarTablaFa(busqueda, paginador) { ///INGRESA LA TABLA
     $.ajax({
         type: 'POST',
-        url: '../../../../App/View/Central/Asistencias/Asistencias/tabla.php',
+        url: '../../../../App/View/Central/Asistencias/Falta/tabla.php',
         data: {
             busqueda: busqueda,
             paginador: paginador
         },
         success: function (data) {
-            $('#tabla_asistencias_').html(data);
+            $('#tabla_faltas_').html(data);
         }
     });
 }
 
 function buscarFalta() { //BUSQUEDA
-    let buscarNew = clearElement(buscar_asistencia);
+    let buscarNew = clearElement(buscar_falta);
     let buscarlenth = lengthValue(buscarNew);
 
     if (buscarlenth == 0) {
-        iniciarTablaAsis(null, iniciarBusqueda());
+        iniciarTablaFa(null, iniciarBusqueda_());
     } else {
-        iniciarTablaAsis(buscarNew, iniciarBusqueda());
+        iniciarTablaFa(buscarNew, iniciarBusqueda_());
     }
 }
 
-
-function getDetallesAsistencia(id) {
-    $.post("../../../../App/Controllers/Central/AsistenciaC/InfoAllC.php", {
-        id: id
-    },
-        function (data) {
-            let jsonData = JSON.parse(data);//se obtiene el json
-            let response = jsonData.response;
-
-            $("#nombre_ass").val(response[0]);
-            $("#rfc_ss").val(response[1]);
-            $("#fecha_ss").val(response[2]);
-            $("#hora_ss").val(response[3]);
-            $("#dispositivo_ss").val(response[4]);
-            $("#verificacion_ss").val(response[5]);
-            $("#estado_ss").val(response[6]);
-            $("#evento_ss").val(response[7]);
-        }
-    );
-    $("#modal_detalles").modal("show");
+function mostrarFalta() {
+    $("#modalAgregarFalta").modal("show");
 }
 
-function cerrarDetallesAsis() {
-    $("#modal_detalles").modal("hide");
-}
-
-function mostrarAgregar() {
-    $("#modalAgregarAsistencia").modal("show");
-}
-
-function ocultarAgregar() {
-    $("#modalAgregarAsistencia").modal("hide");
+function ocultarFalta() {
+    $("#modalAgregarFalta").modal("hide");
 }
 
 

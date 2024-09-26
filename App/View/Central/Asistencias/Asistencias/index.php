@@ -3,7 +3,7 @@
         <div class="form-inline">
             <button onclick="mostrarAgregar()" type="button" class="btn btn-light" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus icono-pequeno-tabla"></i>
-                <span class="hide-menu text-button-add">&nbsp;Agregar</span>
+                <span class="hide-menu text-button-add">&nbsp;Agregar asistencia</span>
             </button>
         </div>
     </div>

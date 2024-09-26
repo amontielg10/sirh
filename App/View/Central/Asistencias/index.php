@@ -56,7 +56,7 @@
                                 aria-labelledby="nav-contact-tab">
                                 <div class="div-spacing"></div>
                                 <h5 class="card-title tittle-card-index">Escolaridad</h5>
-                                <?php include 'EscolaridadM/index.php' ?>
+                                <?php include 'Retardos/index.php' ?>
                             </div>
                         </div>
                     </div>
