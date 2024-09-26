@@ -66,6 +66,30 @@ function cerrarDetallesAsis() {
     $("#modal_detalles").modal("hide");
 }
 
+function mostrarAgregar() {
+    $("#modalAgregarAsistencia").modal("show");
+}
+
+function ocultarAgregar() {
+    $("#modalAgregarAsistencia").modal("hide");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

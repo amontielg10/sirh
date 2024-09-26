@@ -13,7 +13,8 @@
                                 asistencia</h1>
                             <p style="color:white;">En este espacio podrás visualizar la información detallada de las
                                 asistencias asociadas al empleado. Si deseas modificar esta información, puedes hacerlo
-                                desde el módulo de empleados en asistencias o haciendo click en el botón de acciones.</p>
+                                desde el módulo de asistencias en empleados, haciendo click en el botón de acciones.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -95,6 +96,10 @@
             <div class="modal-footer">
                 <button onclick="cerrarDetallesAsis();" type="button" class="btn btn-secondary" data-dismiss="modal"><i
                         class="fas fa-times"></i> Cerrar</button>
+                <a href="../Empleados/index.php" class="btn btn-success save-botton-modal" role="button">
+                    <i style="color:white" class="	fa fa-arrow-right"></i>
+                    <span class="hide-menu">&nbsp;Acciones</span>
+                </a>
             </div>
         </div>
     </div>

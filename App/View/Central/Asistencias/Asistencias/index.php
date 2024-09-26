@@ -1,7 +1,7 @@
 <div class="row font-size-modulo">
     <div class="col-9">
         <div class="form-inline">
-            <button onclick="agregarEditarCorreo(null)" type="button" class="btn btn-light" data-toggle="dropdown"
+            <button onclick="mostrarAgregar()" type="button" class="btn btn-light" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus icono-pequeno-tabla"></i>
                 <span class="hide-menu text-button-add">&nbsp;Agregar</span>
             </button>
@@ -41,3 +41,4 @@
 </div>
 
 <?php include 'Detalles.php' ?>
+<?php include 'Agregar.php' ?>
