@@ -1,15 +1,15 @@
 <?php
 include '../../../../../conexion.php';
-include '../../../../Model/Central/FaltaM/FaltaM.php';
+include '../../../../Model/Central/RetardoM/RetardoM.php';
 
-$listado = new FaltaModelM();
+$listado = new ModelRetardoM();
 $paginador = $_POST['paginador'];
 
-$query = $listado->getAllFaltas($paginador);
+$query = $listado->listadoAllFaltas($paginador);
 
 if (isset($_POST['busqueda'])) {
     $busqueda = $_POST['busqueda'];
-    $query = $listado->getAllFaltasBusqueda($busqueda, $paginador);
+    $query = $listado->listadoAllFaltasBusqueda($busqueda, $paginador);
 }
 
 $data =
@@ -19,12 +19,11 @@ $data =
             <th class="col-wide-action">Acciones</th>
             <th class="col-wide">Nombre</th>
             <th class="col-wide">RFC</th>
-            <th class="col-wide">¿Es por?</th>
             <th class="col-wide">Fecha</th>
             <th class="col-wide">Hora</th>
-            <th class="col-wide">Cantidad</th>
             <th class="col-wide">Tipo</th>
             <th class="col-wide">Estatus</th>
+            <th class="col-wide">Observaciones</th>
         </tr>
     </thead>';
 
@@ -40,8 +39,8 @@ if (pg_num_rows($result) > 0) {
                             <div class="btn-group">
                                 <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit icono-grande-tabla"></i></button>
                             <div class="dropdown-menu">
-                                <button onclick="getUser(' . $row[8] . ')" class="dropdown-item btn btn-light"><i class="	fa fa-user icon-edit-table"></i> Usuario</button>
-                                <button onclick="mostrarFalta(' . $row[9] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
+                                <button onclick="getUser(' . $row[7] . ')" class="dropdown-item btn btn-light"><i class="	fa fa-user icon-edit-table"></i> Usuario</button>
+                                <button onclick="mostrarRetardo()" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
                             </div>
                           </div>
                                 </td>
@@ -58,16 +57,13 @@ if (pg_num_rows($result) > 0) {
                                 ' . $row[3] . '
                             </td>
                             <td>
-                                ' . $row[4] . '
-                            </td>
-                            <td>
                                 ' . $row[5] . '
                             </td>
                             <td>
                                 ' . $row[6] . '
                             </td>
                             <td>
-                                ' . $row[7] . '
+                                ' . $row[4] . '
                             </td>
                         </tr>
                     </tbody>

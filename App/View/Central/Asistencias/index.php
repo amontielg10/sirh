@@ -36,7 +36,7 @@
                                     onclick="buscarFalta();" role="tab" aria-controls="nav-profile"
                                     aria-selected="false"><i class="fa fa-close"></i> Faltas</a>
                                 <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab"
-                                    href="#nav-escolaridad" onclick="iniciarEscolaridad();" role="tab"
+                                    href="#nav-escolaridad" onclick="buscarRetardo();" role="tab"
                                     aria-controls="nav-contact" aria-selected="false"><i class="fa fa-history"></i>
                                     Retardos</a>
                             </div>
@@ -55,7 +55,6 @@
                             <div class="tab-pane fade" id="nav-escolaridad" role="tabpanel"
                                 aria-labelledby="nav-contact-tab">
                                 <div class="div-spacing"></div>
-                                <h5 class="card-title tittle-card-index">Escolaridad</h5>
                                 <?php include 'Retardos/index.php' ?>
                             </div>
                         </div>
@@ -79,6 +78,9 @@
 <script src="../../../../js/Ib/Asistencias/Falta/Listado.js"></script>
 <script src="../../../../js/Ib/Asistencias/Falta/Busqueda.js"></script>
 
+
+<script src="../../../../js/Ib/Asistencias/Retardos/Listado.js"></script>
+<script src="../../../../js/Ib/Asistencias/Retardos/Busqueda.js"></script>
+
 <!-- -->
 <script src="../../../../js/Ib/Asistencias/Inicio.js"></script>
-
