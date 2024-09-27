@@ -52,7 +52,8 @@
                             </li>
                             <li class="step"> Se habilitará la opción de subir un
                                 archivo de Excel. <strong>Es importante</strong> que el archivo a subir esté de acuerdo
-                                al <strong>layout solicitado</strong>. <a href="#">Descargar aquí</a>.</li>
+                                al <strong>layout solicitado</strong>. <a download
+                                    href="../../../../assets/Formato/LAYOUT_ASISTENCIAS.xls">descargalo aqui</a>.</li>
                             <li class="step"> Procesa la información, lo cual asignará las
                                 asistencias cargadas del Excel a los empleados.</li>
                         </ul>
@@ -64,7 +65,7 @@
                 <button onclick="ocultarAgregar();" type="button" class="btn btn-secondary" data-dismiss="modal"><i
                         class="fas fa-times"></i>
                     Cancelar</button>
-                <button onclick="ocultarAgregar();" type="button" class="btn btn-success save-botton-modal"
+                <button onclick="activeCargaMasiva();" type="button" class="btn btn-success save-botton-modal"
                     data-dismiss="modal"><i class="fa fa-cloud-upload"></i>
                     Carga masiva</button>
                 <a href="../Empleados/index.php" type="button" class="btn btn-success save-botton-modal"><i

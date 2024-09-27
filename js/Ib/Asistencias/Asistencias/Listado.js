@@ -74,6 +74,10 @@ function ocultarAgregar() {
     $("#modalAgregarAsistencia").modal("hide");
 }
 
+function activeCargaMasiva(){
+    $("#modalAgregarAsistencia").modal("hide");
+    mostrarModalCargaAsistencia();
+}
 
 
 

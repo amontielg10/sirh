@@ -84,3 +84,4 @@
 
 <!-- -->
 <script src="../../../../js/Ib/Asistencias/Inicio.js"></script>
+<script src="../../../../js/Ib/Asistencias/Carga.js"></script>

@@ -62,7 +62,7 @@ while ($row_data = pg_fetch_array($result)) {
 }
 
 // Configurar el nombre del archivo para descarga
-$filename = 'AsistenciasCargadas' . date('Ymd') . '.xlsx';
+$filename = 'LAYOUT_ASISTENCIAS_RESULTADOS' . '.xlsx';
 
 // Crear el writer para el archivo Excel y guardarlo en la salida
 $writer = new Xlsx($spreadsheet);

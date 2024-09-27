@@ -14,13 +14,13 @@ function updateFileName(input) {
   }
 
   function ocultarModalAsistencia(){
-    $("#modal_carga_masiva_asistencias").modal("hide");
+    $("#modal_carga_masiva_faltas").modal("hide");
 }
 
 function mostrarModalCargaAsistencia(){
     $('.custom-file-name').text('');
     $('#customFile').val(null);
-    $("#modal_carga_masiva_asistencias").modal("show");
+    $("#modal_carga_masiva_faltas").modal("show");
 }
 
 function validarCargaAsistencia(){
@@ -117,6 +117,6 @@ function getFileAsistencia() {
         }
     });
 
-    buscarAsistencia();
+    //buscarAsistencia();
 }
 

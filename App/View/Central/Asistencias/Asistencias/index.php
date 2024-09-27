@@ -2,15 +2,20 @@
     <div class="col-9">
         <div class="form-inline">
             <button onclick="mostrarAgregar()" type="button" class="btn btn-light" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus icono-pequeno-tabla"></i>
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-plus icono-pequeno-tabla"></i>
                 <span class="hide-menu text-button-add">&nbsp;Agregar asistencia</span>
             </button>
         </div>
     </div>
-    <div class="col-3 search-container">
+    <div class="col-3 search-container d-flex align-items-center">
+        <button class="btn btn-light btn-circle" type="button" onclick="mostrarModalCargaAsistencia()" data-toggle="tooltip"
+            title="Cargar masiva">
+            <i class="fa fa-upload"></i>
+        </button>
         <input onkeyup="buscarAsistencia();" id="buscar_asistencia" type="text" placeholder="Buscar..."
-            class="form-control mr-sm-2 search-input">
-        <span class="search-icon"><i class="fas fa-search"></i></span>
+            class="form-control search-input" style="margin-left: 15px;"> <!-- Añadir margen aquí -->
+        <span class="search-icon ml-2"><i class="fas fa-search"></i></span>
     </div>
 </div>
 <br>
