@@ -7,10 +7,18 @@
             </button>
         </div>
     </div>
-    <div class="col-3 search-container">
+    <div class="col-3 search-container d-flex align-items-center">
+        <button class="btn btn-light btn-circle" type="button" onclick="getFaltas()" data-toggle="tooltip"
+            title="Obtener faltas">
+            <i class="fa fa-refresh"></i>
+        </button>
+        <button class="btn btn-light btn-circle" type="button" onclick="getInfoFaltas()" data-toggle="tooltip"
+            title="Información">
+            <i class="fa fa-question-circle"></i>
+        </button>
         <input onkeyup="buscarFalta();" id="buscar_falta" type="text" placeholder="Buscar..."
-            class="form-control mr-sm-2 search-input">
-        <span class="search-icon"><i class="fas fa-search"></i></span>
+            class="form-control search-input" style="margin-left: 15px;"> <!-- Añadir margen aquí -->
+        <span class="search-icon ml-2"><i class="fas fa-search"></i></span>
     </div>
 </div>
 <br>
@@ -39,5 +47,5 @@
         </div>
     </div>
 </div>
- 
+
 <?php include 'Agregar.php' ?>

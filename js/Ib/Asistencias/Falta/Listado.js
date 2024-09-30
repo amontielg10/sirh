@@ -45,7 +45,54 @@ function ocultarFalta() {
 }
 
 
+function getFaltas() {
+    Swal.fire({
+        title: "Cálculo de faltas",
+        text: "El cálculo de faltas y retardos se basa en las métricas configuradas. Es importante que se hayan cargado los 15 archivos de asistencia correspondientes a la quincena que deseas analizar. Una vez completado este proceso, el sistema calculará automáticamente todas las faltas y retardos de los empleados.",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, continuar",
+        cancelButtonText: "Cancelar",
+        confirmButtonColor: '#235B4E',
+        cancelButtonColor: '#6c757d',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fadeIn();
 
+            $.post("../../../../App/Controllers/Central/EmpleadoC/PowerBiC.php", {
+            },
+                function (data) {
+                    fadeOut();
+                    if (data) {
+                        notyf.success('Proceso realizado con éxito')
+                    } else {
+                        notyf.error(mensajeSalida);
+                    }
+                }
+            );
+        }
+    });
+}
+
+
+function getInfoFaltas() {
+
+    let a = 'text';
+
+    Swal.fire({
+        title: "¿Cómo se calculan las faltas?",
+        text: a,
+        icon: "question",
+        showCancelButton: true,
+        showConfirmButton: false,
+        cancelButtonColor: "#d33",
+        cancelButtonText: "Aceptar",
+        confirmButtonColor: '#235B4E',
+        cancelButtonColor: '#6c757d',
+    })
+}
 
 
 
