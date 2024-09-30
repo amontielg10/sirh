@@ -10,8 +10,9 @@
                             <img src="../../../../assets/sirh/logo_carga_masiva.png" style="max-width: 100%;">
                         </div>
                         <div class="col-10">
-                            <h1 style="color:white; font-family: 'Montserrat';font-size: 40px;">Carga masiva asistencias</h1>
-                            <p style="color:white;">Espacio para realizar cargas masivas de faltas: Un área
+                            <h1 style="color:white; font-family: 'Montserrat';font-size: 40px;">Carga masiva asistencias
+                            </h1>
+                            <p style="color:white;">Espacio para realizar cargas masivas de asistencoas: Un área
                                 dedicada para facilitar la inserción eficiente en el
                                 sistema.</p>
                         </div>
@@ -21,6 +22,23 @@
 
             <div class="div-spacing"></div>
             <div class="card-body">
+
+                <div class="container">
+                    <div class="container mt-4">
+                        <div class="instructions">
+                            <p>Instrucciones</p>
+                            <ol>
+                                <li>Descarga y utiliza el <em>LAYOUT_ASISTENCIAS</em>. Puedes obtenerlo <a download
+                                        href="../../../../assets/Formato/LAYOUT_ASISTENCIAS.xls">descargalo aqui</a>.
+                                </li>. <span class="important">Recuerda: no debes eliminar los
+                                    encabezados.</span></li>
+                                <li>Los campos marcados con <em>*</em> son obligatorios.</li>
+                                <li>El tamaño del archivo debe ser igual o menor a 5 MB.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
 
                 <form action="../../../../App/Controllers/Hrae/CentroTrabajoC/CargaC.php" method="POST"
                     enctype="multipart/form-data">
