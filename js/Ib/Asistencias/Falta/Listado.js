@@ -61,9 +61,10 @@ function getFaltas() {
         if (result.isConfirmed) {
             fadeIn();
 
-            $.post("../../../../App/Controllers/Central/EmpleadoC/PowerBiC.php", {
+            $.post("../../../../App/Controllers/Central/FaltaC/ObtenerFaltasC.php", {
             },
                 function (data) {
+                    console.log(data);
                     fadeOut();
                     if (data) {
                         notyf.success('Proceso realizado con éxito')
