@@ -35,6 +35,8 @@ $datos = [
 
     'id_cat_unidad' => $_POST['id_cat_unidad'],
     'id_cat_coordinacion' => $_POST['id_cat_coordinacion'],
+    'id_user' => $_SESSION['id_user'],
+    'fecha_usuario' => $isNow,
 ];
 
 $var = [

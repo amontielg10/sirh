@@ -270,6 +270,7 @@ $id_rol = $_SESSION['id_rol'];
     </div>
 
     <script src="../../../../js/Admin/Perfil/Perfil.js"></script>
+    <script src="../../../../js/Admin/Usuarios/GetUser.js"></script>
 </body>
 
 <script>

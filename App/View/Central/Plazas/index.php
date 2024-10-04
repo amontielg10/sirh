@@ -42,13 +42,15 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
     <div class="card border-light">
         <div class="card-body">
             <div class="row div-spacing">
-                <div class="col-9">
-                    <h2 class="card-title tittle-card-index">Plazas</h2>
-                </div>
-                <div class="col-3 search-container">
-                    <input onkeyup="buscarPlaza();" id="buscar" type="text" placeholder="Buscar..."
-                        class="form-control mr-sm-2 search-input">
-                    <span class="search-icon"><i class="fas fa-search"></i></span>
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-9 col-xl-9">
+                        <h2 class="card-title tittle-card-index">Plazas</h2>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 col-xl-3 search-container">
+                        <input onkeyup="buscarPlaza();" id="buscar" type="text" placeholder="Buscar..."
+                            class="form-control mr-sm-2 search-input">
+                        <span class="search-icon"><i class="fas fa-search"></i></span>
+                    </div>
                 </div>
             </div>
 

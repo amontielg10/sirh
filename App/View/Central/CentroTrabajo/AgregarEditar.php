@@ -27,14 +27,14 @@
                             <label for="campo" class="form-label input-text-form">Nombre</label><label
                                 class="text-required">*</label>
                             <input onkeyup="convertirAMayusculas(event,'nombre')" maxlength="60" type="text"
-                                class="form-control div-spacing custom-input" id="nombre" name="nombre"
+                                class="form-control custom-input" id="nombre" name="nombre"
                                 placeholder="Nombre" required>
                             <div class="line"></div>
                         </div>
                         <div class="col-4">
                             <label for="campo" class="form-label input-text-form">Clave</label><label
                                 class="text-required">*</label>
-                            <input maxlength="10" type="text" class="form-control div-spacing custom-input"
+                            <input maxlength="10" type="text" class="form-control  custom-input"
                                 id="clave_centro_trabajo" onkeyup="convertirAMayusculas(event, 'clave_centro_trabajo')"
                                 name="clave_centro_trabajo" placeholder="Clave centro de trabajo">
                             <div class="line"></div>
@@ -46,14 +46,14 @@
                         <div class="col-6">
                             <label for="campo" class="form-label input-text-form">Colonia</label><label
                                 class="text-required">*</label>
-                            <input maxlength="30" type="text" class="form-control div-spacing custom-input" id="colonia"
+                            <input maxlength="30" type="text" class="form-control  custom-input" id="colonia"
                                 onkeyup="convertirAMayusculas(event,'colonia')" name="colonia" placeholder="Colonia">
                             <div class="line"></div>
                         </div>
                         <div class="col-3">
                             <label for="campo" class="form-label input-text-form">N&uacutemero exterior</label><label
                                 class="text-required">*</label>
-                            <input type="text" class="form-control div-spacing custom-input" id="num_exterior"
+                            <input type="text" class="form-control  custom-input" id="num_exterior"
                                 name="num_exterior" placeholder="Núm. exterior" maxlength="10"
                                 onkeyup="convertirAMayusculas(event,'num_exterior')">
                             <div class="line"></div>
@@ -61,7 +61,7 @@
                         <div class="col-3">
                             <label for="campo" class="form-label input-text-form">N&uacutemero interior</label><label
                                 class="text-required"></label>
-                            <input type="text" class="form-control div-spacing custom-input" id="num_interior"
+                            <input type="text" class="form-control  custom-input" id="num_interior"
                                 name="num_interior" placeholder="Núm. interior" maxlength="10"
                                 onkeyup="convertirAMayusculas(event,'num_interior')">
                             <div class="line"></div>
@@ -140,14 +140,14 @@
                         <div class="col-3">
                             <label for="campo" class="form-label input-text-form">Latitud</label><label
                                 class="text-required">*</label>
-                            <input maxlength="10" type="text" class="form-control div-spacing custom-input" id="latitud"
+                            <input maxlength="10" type="text" class="form-control  custom-input" id="latitud"
                                 name="latitud" placeholder="Latitud" onkeyup="convertirAMayusculas(event,'latitud')">
                             <div class="line"></div>
                         </div>
                         <div class="col-3">
                             <label for="campo" class="form-label input-text-form">Longitud</label><label
                                 class="text-required">*</label>
-                            <input maxlength="10" type="text" class="form-control div-spacing custom-input"
+                            <input maxlength="10" type="text" class="form-control  custom-input"
                                 id="longitud" name="longitud" placeholder="Longitud"
                                 onkeyup="convertirAMayusculas(event,'longitud')">
                             <div class="line"></div>
@@ -155,14 +155,14 @@
                         <div class="col-3">
                             <label for="campo" class="form-label input-text-form">C&oacutedigo
                                 p&oacutestal</label><label class="text-required"></label>
-                            <input type="number" class="form-control div-spacing custom-input" id="codigo_postal"
+                            <input type="number" class="form-control  custom-input" id="codigo_postal"
                                 name="codigo_postal" placeholder="Código postal" oninput="validarNumero(this)">
                             <div class="line"></div>
                         </div>
                         <div class="col-3">
                             <label for="campo" class="form-label input-text-form">Pa&iacutes</label><label
                                 class="text-required"></label>
-                            <input maxlength="10" type="text" class="form-control div-spacing custom-input" id="pais"
+                            <input maxlength="10" type="text" class="form-control  custom-input" id="pais"
                                 name="País" placeholder="País" onkeyup="convertirAMayusculas(event,'pais')">
                             <div class="line"></div>
                         </div>

@@ -1,5 +1,6 @@
 <?php
 
+$isNow = 'NOW()';
 ///INCLUDE CONEXION
 include '../../../../conexion.php';
 include '../../../View/validar_sesion.php';

@@ -18,40 +18,39 @@ class modelPlazasHraes
         $listado = "SELECT tbl_control_plazas_hraes.id_tbl_control_plazas_hraes,
                             tbl_control_plazas_hraes.num_plaza, 
                             cat_tipo_plazas.tipo_plaza,
-                            CONCAT(cat_tipo_contratacion_hraes.tipo_contratacion, ' ',
-                                cat_subtipo_contratacion_hraes.subtipo),
-                            cat_unidad_responsable.nombre,
                             central.cat_puesto_hraes.nombre_posicion,
 							central.cat_puesto_hraes.codigo_puesto,
 							central.cat_puesto_hraes.nivel,
-							central.tbl_centro_trabajo_hraes.clave_centro_trabajo
+							central.tbl_centro_trabajo_hraes.clave_centro_trabajo,
+							central.cat_tipo_contratacion.descripcion,
+							central.cat_tipo_trabajador.descripcion,
+							cat_unidad_responsable.nombre,
+                            central.tbl_control_plazas_hraes.id_user,
+	                        central.tbl_control_plazas_hraes.fecha_usuario
                     FROM central.tbl_control_plazas_hraes
                     INNER JOIN cat_tipo_plazas
                         ON tbl_control_plazas_hraes.id_cat_tipo_plazas = cat_tipo_plazas.id_cat_tipo_plazas
                     INNER JOIN cat_unidad_responsable
                         ON tbl_control_plazas_hraes.id_cat_unidad_responsable = 
                             cat_unidad_responsable.id_cat_unidad_responsable
-                    INNER JOIN cat_tipo_subtipo_contratacion_hraes
-                        ON tbl_control_plazas_hraes.id_cat_tipo_subtipo_contratacion_hraes = 
-                        cat_tipo_subtipo_contratacion_hraes.id_cat_tipo_subtipo_contratacion_hraes
-                    INNER JOIN cat_tipo_contratacion_hraes
-                        ON cat_tipo_subtipo_contratacion_hraes.id_cat_tipo_contratacion_hraes =
-                            cat_tipo_contratacion_hraes.id_cat_tipo_contratacion_hraes
-                    INNER JOIN cat_subtipo_contratacion_hraes
-                        ON 	cat_tipo_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes =
-                            cat_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes 
                     INNER JOIN central.cat_puesto_hraes
 						ON central.tbl_control_plazas_hraes.id_cat_puesto_hraes =
 							central.cat_puesto_hraes.id_cat_puesto_hraes
 					INNER JOIN central.tbl_centro_trabajo_hraes
 						ON central.tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes =
-							central.tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes " . $result;
+							central.tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes
+					LEFT JOIN central.cat_tipo_contratacion
+						ON central.tbl_control_plazas_hraes.id_cat_tipo_contratacion =
+							central.cat_tipo_contratacion.id_cat_tipo_contratacion
+					LEFT JOIN central.cat_tipo_trabajador
+						ON central.tbl_control_plazas_hraes.id_cat_tipo_trabajador =
+							central.cat_tipo_trabajador.id_cat_tipo_trabajador " . $result;
         return $listado;
     }
 
     public function listarByLike($id_tbl_centro_trabajo_hraes, $busqueda, $paginator)
     {
-        $result = "AND (TRIM(UPPER(UNACCENT(tbl_control_plazas_hraes.num_plaza))) 
+        $result = " (TRIM(UPPER(UNACCENT(tbl_control_plazas_hraes.num_plaza))) 
                             LIKE '%$busqueda%'
                     OR TRIM(UPPER(UNACCENT(cat_tipo_plazas.tipo_plaza)))
                             LIKE '%$busqueda%'
@@ -63,51 +62,53 @@ class modelPlazasHraes
                             LIKE '%$busqueda%'
                     OR TRIM(UPPER(UNACCENT(central.tbl_centro_trabajo_hraes.clave_centro_trabajo)))
                             LIKE '%$busqueda%'
-                    OR TRIM(UPPER(UNACCENT(CONCAT(cat_tipo_contratacion_hraes.tipo_contratacion, ' ',
-                                cat_subtipo_contratacion_hraes.subtipo))))
+                    OR TRIM(UPPER(UNACCENT(central.cat_tipo_contratacion.descripcion)))
                             LIKE '%$busqueda%'
+                    OR TRIM(UPPER(UNACCENT(central.cat_tipo_trabajador.descripcion)))
+                            LIKE '%$busqueda%' 
                     OR TRIM(UPPER(UNACCENT(cat_unidad_responsable.nombre)))
                             LIKE '%$busqueda%')
                     ORDER BY id_tbl_control_plazas_hraes DESC
                     LIMIT 6 OFFSET $paginator;";
         $condition = "";
+        $value = ' WHERE ';
         if ($id_tbl_centro_trabajo_hraes != null) {
             $condition = "WHERE tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes = 
                           $id_tbl_centro_trabajo_hraes ";
+                          $value = ' AND ';
         }
-        $condition = $condition . $result;
+        $condition = $condition . $value . $result;
 
         $listado = "SELECT tbl_control_plazas_hraes.id_tbl_control_plazas_hraes,
                             tbl_control_plazas_hraes.num_plaza, 
                             cat_tipo_plazas.tipo_plaza,
-                            CONCAT(cat_tipo_contratacion_hraes.tipo_contratacion, ' ',
-                                cat_subtipo_contratacion_hraes.subtipo),
-                            cat_unidad_responsable.nombre,
                             central.cat_puesto_hraes.nombre_posicion,
 							central.cat_puesto_hraes.codigo_puesto,
 							central.cat_puesto_hraes.nivel,
-							central.tbl_centro_trabajo_hraes.clave_centro_trabajo
+							central.tbl_centro_trabajo_hraes.clave_centro_trabajo,
+							central.cat_tipo_contratacion.descripcion,
+							central.cat_tipo_trabajador.descripcion,
+							cat_unidad_responsable.nombre,
+                            central.tbl_control_plazas_hraes.id_user,
+	                        central.tbl_control_plazas_hraes.fecha_usuario
                     FROM central.tbl_control_plazas_hraes
                     INNER JOIN cat_tipo_plazas
                         ON tbl_control_plazas_hraes.id_cat_tipo_plazas = cat_tipo_plazas.id_cat_tipo_plazas
                     INNER JOIN cat_unidad_responsable
                         ON tbl_control_plazas_hraes.id_cat_unidad_responsable = 
                             cat_unidad_responsable.id_cat_unidad_responsable
-                    INNER JOIN cat_tipo_subtipo_contratacion_hraes
-                        ON tbl_control_plazas_hraes.id_cat_tipo_subtipo_contratacion_hraes = 
-                        cat_tipo_subtipo_contratacion_hraes.id_cat_tipo_subtipo_contratacion_hraes
-                    INNER JOIN cat_tipo_contratacion_hraes
-                        ON cat_tipo_subtipo_contratacion_hraes.id_cat_tipo_contratacion_hraes =
-                            cat_tipo_contratacion_hraes.id_cat_tipo_contratacion_hraes
-                    INNER JOIN cat_subtipo_contratacion_hraes
-                        ON 	cat_tipo_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes =
-                            cat_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes 
                     INNER JOIN central.cat_puesto_hraes
 						ON central.tbl_control_plazas_hraes.id_cat_puesto_hraes =
 							central.cat_puesto_hraes.id_cat_puesto_hraes
 					INNER JOIN central.tbl_centro_trabajo_hraes
 						ON central.tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes =
-							central.tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes " . $condition;
+							central.tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes
+					LEFT JOIN central.cat_tipo_contratacion
+						ON central.tbl_control_plazas_hraes.id_cat_tipo_contratacion =
+							central.cat_tipo_contratacion.id_cat_tipo_contratacion
+					LEFT JOIN central.cat_tipo_trabajador
+						ON central.tbl_control_plazas_hraes.id_cat_tipo_trabajador =
+							central.cat_tipo_trabajador.id_cat_tipo_trabajador " . $condition;
         return $listado;
     }
 
@@ -330,7 +331,8 @@ class modelPlazasHraes
         return $listado;
     }
 
-    public function countNumPlaza($numPlaza){
+    public function countNumPlaza($numPlaza)
+    {
         $listado = pg_query("SELECT COUNT(id_tbl_control_plazas_hraes)
                              FROM central.tbl_control_plazas_hraes
                              WHERE TRIM(UPPER(num_plaza)) = TRIM(UPPER('$numPlaza'));");
@@ -338,7 +340,8 @@ class modelPlazasHraes
     }
 
 
-    public function catUnidadAmninAll(){
+    public function catUnidadAmninAll()
+    {
         $query = pg_query("SELECT cat_plaza_unidad_adm.id_cat_plaza_unidad_adm,
                                     CONCAT(UPPER(cat_unidad.nombre), ' ', UPPER(cat_coordinacion.nombre))
                             FROM cat_plaza_unidad_adm
@@ -352,7 +355,8 @@ class modelPlazasHraes
         return $query;
     }
 
-    public function CatUnidadAmninEdit($id){
+    public function CatUnidadAmninEdit($id)
+    {
         $query = pg_query("SELECT cat_plaza_unidad_adm.id_cat_plaza_unidad_adm,
                                     CONCAT(UPPER(cat_unidad.nombre), ' ', UPPER(cat_coordinacion.nombre))
                             FROM cat_plaza_unidad_adm
@@ -366,7 +370,8 @@ class modelPlazasHraes
         return $query;
     }
 
-    public function getInfoPlaza($schema, $idPlaza){
+    public function getInfoPlaza($schema, $idPlaza)
+    {
         $isQuery = pg_query("SELECT 
                                 $schema.tbl_control_plazas_hraes.num_plaza,
                                 CONCAT(public.cat_unidad_responsable.codigo, ' ', public.cat_unidad_responsable.nombre),
