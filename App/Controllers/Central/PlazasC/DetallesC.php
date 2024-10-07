@@ -3,6 +3,16 @@
 include '../librerias.php';
 include '../../../Model/Central/Catalogos/CatPuestoM/CatPuestoM.php';
 
+/*
+|--------------------------------------------------------------------------
+| Funcion para obtener el id de usuario y fecha
+|--------------------------------------------------------------------------
+| La funcion obtiene el id de usuario y fecha, si alguno de los dos trae datos en 0, es decir datos vacios
+| se agregara un _ caso contrario se asignara el valor y se llamara la funcion la cual traera el nombre de usuario
+| y la fecha de captura.
+|
+*/
+
 $catalogoPlazasM = new catalogoPlazasM();
 $catalogoPlazasC = new catalogoPlazasC();
 $modelPlazasHraes = new modelPlazasHraes();
@@ -25,20 +35,20 @@ $row = new Row();
 
 $id_object = $_POST['id_object'];
 
-if ($id_object != null){
+if ($id_object != null) {
 
-    $entity = $row->returnArray($modelPlazasHraes -> listarByIdEdit($id_object));
+    $entity = $row->returnArray($modelPlazasHraes->listarByIdEdit($id_object));
     $niveles = $row->returnArrayById($catalogoPuestoM->nameOfPuesto($entity['id_cat_puesto_hraes']));
-    $plazas = $catalogoPlazasC ->returnCatPLazasByIdObject($catalogoPlazasM ->listarByAll(), $row->returnArrayById($catalogoPlazasM ->obtenerElemetoById($entity['id_cat_tipo_plazas'])));
-    $contratacion = $catalogoTipoContratcionHraesC ->returnCatContratacionByIdObject($catalogoTipoContratacionM ->listarByAll(),$row->returnArrayById($catalogoTipoContratacionM ->obtenerElemetoById($entity['id_cat_tipo_subtipo_contratacion_hraes'])));
-    $unidadResp = $catalogoUnidadResponsableC ->returnCatUnidadByIdObject($cataloUnidadResposableM->listarByAll(), $row->returnArrayById($cataloUnidadResposableM->obtenerElemetoById($entity['id_cat_unidad_responsable'])));
-    $tabulares = $catalogoTabularesC->returnSelectByIdObject($catalogoTabularesM->listarByAll(),$row->returnArrayById($catalogoTabularesM->obtenerElemetoById($entity['id_cat_zonas_tabuladores_hraes'])));
+    $plazas = $catalogoPlazasC->returnCatPLazasByIdObject($catalogoPlazasM->listarByAll(), $row->returnArrayById($catalogoPlazasM->obtenerElemetoById($entity['id_cat_tipo_plazas'])));
+    $contratacion = $catalogoTipoContratcionHraesC->returnCatContratacionByIdObject($catalogoTipoContratacionM->listarByAll(), $row->returnArrayById($catalogoTipoContratacionM->obtenerElemetoById($entity['id_cat_tipo_subtipo_contratacion_hraes'])));
+    $unidadResp = $catalogoUnidadResponsableC->returnCatUnidadByIdObject($cataloUnidadResposableM->listarByAll(), $row->returnArrayById($cataloUnidadResposableM->obtenerElemetoById($entity['id_cat_unidad_responsable'])));
+    $tabulares = $catalogoTabularesC->returnSelectByIdObject($catalogoTabularesM->listarByAll(), $row->returnArrayById($catalogoTabularesM->obtenerElemetoById($entity['id_cat_zonas_tabuladores_hraes'])));
     $unidadAdmin = $catSelectC->selectByEditCatalogo($catUnidadAdM->lisOfCatUnidad(), $row->returnArrayById($catUnidadAdM->editOfCatUnidad($entity['id_cat_unidad'])));
     $unidadCoor = $catSelectC->selectByEditCatalogo($catUnidadAdM->listOfCatCoordinacion(), $row->returnArrayById($catUnidadAdM->editOfCatCoordinacion($entity['id_cat_coordinacion'])));
     $isValueAux = $row->returnArrayById($catalogoPuestoM->getEditCatAux($entity['id_cat_aux_puesto']));
     $nomEspecifico = $catSelectC->selectByEditCatalogo($catalogoPuestoM->listOfSpecificName($isValueAux[1]), $row->returnArrayById($catalogoPuestoM->editSpecificName($isValueAux[2])));
-    $puestoCategoria = $catSelectC->selectByEditCatalogo($catalogoPuestoM->listOfCategoName($isValueAux[1],$isValueAux[2]), $row->returnArrayById($catalogoPuestoM->editCatName($isValueAux[3])));
-    $puesto = $catSelectC->selectByEditCatalogo($catalogoPuestoM->listarByAllPuesto(),$row->returnArrayById($catalogoPuestoM->editByAllPuesto($isValueAux[1])));
+    $puestoCategoria = $catSelectC->selectByEditCatalogo($catalogoPuestoM->listOfCategoName($isValueAux[1], $isValueAux[2]), $row->returnArrayById($catalogoPuestoM->editCatName($isValueAux[3])));
+    $puesto = $catSelectC->selectByEditCatalogo($catalogoPuestoM->listarByAllPuesto(), $row->returnArrayById($catalogoPuestoM->editByAllPuesto($isValueAux[1])));
     $zona = $row->returnArrayById($catalogoPuestoM->getEntity($id_object));
 
     $raw = [
@@ -58,14 +68,14 @@ if ($id_object != null){
     echo json_encode($raw);
 
 } else { ///Agregar
-    $id_tbl_centro_trabajo_hraes = $_POST['id_tbl_centro_trabajo_hraes'];
-    $plazas = $catalogoPlazasC -> returnCatPlazas($catalogoPlazasM->listarByAll());
-    $contratacion = $catalogoTipoContratcionHraesC -> returnCatContratacion($catalogoTipoContratacionM->listarByAll());
-    $entity = $modelPlazasHraes -> listarByNull();
-    $unidadResp = $catalogoUnidadResponsableC ->returnCatUnidad($cataloUnidadResposableM ->listarByAll());
+    $id_tbl_centro_trabajo_hraes = $_POST['id_tbl_centro_trabajo_hraes']; //ok
+    $plazas = $catalogoPlazasC->returnCatPlazas($catalogoPlazasM->listarByAll()); //ok
+    //$contratacion = $catalogoTipoContratcionHraesC->returnCatContratacion($catalogoTipoContratacionM->listarByAll());
+    $entity = $modelPlazasHraes->listarByNull();
+    $unidadResp = $catalogoUnidadResponsableC->returnCatUnidad($cataloUnidadResposableM->listarByAll());
     $puesto = $catSelectC->selectByAllCatalogo($catalogoPuestoM->listarByAllPuesto());
     $tabulares = $catalogoTabularesC->returnSelect($catalogoTabularesM->listarByAll());
-    $niveles = $catalogoNivelesC->returnSelect($catalogoNivelesM->listarByAll());
+    //$niveles = $catalogoNivelesC->returnSelect($catalogoNivelesM->listarByAll());
     $unidadAdmin = $catSelectC->selectByAllCatalogo($catUnidadAdM->lisOfCatUnidad());
     $unidadCoor = $catSelectC->selectByAllCatalogo($catUnidadAdM->listOfCatCoordinacion());
     $nomEspecifico = $catSelectC->selecStaticByNull();
@@ -75,7 +85,7 @@ if ($id_object != null){
         'puesto' => $puesto,
         'plazas' => $plazas,
         'entity' => $entity,
-        'contratacion' => $contratacion,
+        //'contratacion' => $contratacion,
         'unidadResp' => $unidadResp,
         'tabulares' => $tabulares,
         'unidadAdmin' => $unidadAdmin,
