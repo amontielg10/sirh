@@ -194,7 +194,7 @@ class FaltaModelM
     ///SCRIP PARA CALCULO DE FLATAS DE FORMA MASIVA
     public function process_1()
     {
-        $query = pg_query("--########################
+        $query = pg_query("							--########################
                             --### PROCESO VALIDADO ### 1
                             --########################
                             --============================================================================================
@@ -231,7 +231,8 @@ class FaltaModelM
                                 ) AS Minimo
                                 WHERE Minimo.hora >= (select cat_asistencia_config.hora_min_retardo from central.cat_asistencia_config)
                                 AND Minimo.hora <= (select cat_asistencia_config.hora_max_retardo from central.cat_asistencia_config)
-                            ) AS Entradas;");
+                            ) AS Entradas
+							WHERE Entradas.fecha > (SELECT fecha_ult_proceso FROM central.cat_asistencia_config)");
         return $query;
     }
 
@@ -277,7 +278,8 @@ class FaltaModelM
                                     ORDER BY central.ctrl_asistencia.id_tbl_empleados_hraes
                                 ) AS Minimo
                                 WHERE Minimo.hora > (SELECT cat_asistencia_config.hora_max_retardo FROM central.cat_asistencia_config) -- Después de hora Max
-                            ) AS Entradas;");
+                            ) AS Entradas
+							WHERE Entradas.fecha > (SELECT fecha_ult_proceso FROM central.cat_asistencia_config)");
         return $query;
     }
 
@@ -323,7 +325,8 @@ class FaltaModelM
                                 ORDER BY central.ctrl_asistencia.id_tbl_empleados_hraes
                             ) 	AS Maximo 
                             WHERE Maximo.hora <= (SELECT cat_asistencia_config.hora_min_salida FROM central.cat_asistencia_config) 			-- Salidas Antes de la hora establecida
-                        ) AS Salidas;");
+                        ) AS Salidas
+						WHERE Salidas.fecha > (SELECT fecha_ult_proceso FROM central.cat_asistencia_config)");
         return $query;
     }
 
@@ -350,10 +353,23 @@ class FaltaModelM
                                 (
                                 SELECT COUNT(*) NoRet, id_tbl_empleados_hraes
                                     FROM central.ctrl_retardo
-                                WHERE fecha <= '15/08/2024' 							-- ### Aquí ponemos una condición para una fecha mayor o igual, o se quita para procesar todo
+                                WHERE fecha > (SELECT fecha_ult_proceso FROM central.cat_asistencia_config) --<= '15/08/2024' 							-- ### Aquí ponemos una condición para una fecha mayor o igual, o se quita para procesar todo
                                 GROUP BY id_tbl_empleados_hraes
                                 HAVING COUNT(*) >= 3
-                                ) AS Retardos;");
+                                ) AS Retardos");
+        return $query;
+    }
+
+    public function process_5()
+    {
+        $query = pg_query("--########################
+                            --### PROCESO VALIDADO ### 5
+                            --########################
+                            --==========================================================================
+                            --### Script para Actualizar la Fecha de Último Proceso en Configuración ###
+                            --==========================================================================
+                            UPDATE central.cat_asistencia_config
+                            SET fecha_ult_proceso = CURRENT_DATE;");
         return $query;
     }
 }

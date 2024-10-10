@@ -1,6 +1,7 @@
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true" id="agregar_editar_modal">
-    <div class="modal-dialog modal-lg modal-dialog-centered" style="max-width: 1200px;">
+    <div class="modal-dialog modal-lg modal-dialog-centered"
+        style="width: 90%; height: 100%; max-width: none; max-height: none;">
         <div class="modal-content">
             <div class="modal-header background-modal">
                 <div class="container">
@@ -62,7 +63,8 @@
                         </div>
 
                         <div class="col-2">
-                            <fieldset disabled id="checkbox_disabled_num_plaza" data-toggle="tooltip" data-placement="top">
+                            <fieldset disabled id="checkbox_disabled_num_plaza" data-toggle="tooltip"
+                                data-placement="top">
                                 <label for="campo" class="form-label input-text-form">N&uacutemero de
                                     plaza</label><label class="text-required">*</label>
                                 <input minlength="7" type="number" class="form-control custom-input" id="num_plaza"
