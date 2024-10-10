@@ -1,33 +1,34 @@
 var id_tbl_empleados_hraes = document.getElementById('id_tbl_empleados_hraes').value;
 
-function buscarFalta(){ //BUSQUEDA
+function buscarFalta() { //BUSQUEDA
     let buscarNew = clearElement(buscar_fa);
     let buscarlenth = lengthValue(buscarNew);
-    if (buscarlenth == 0){
-        iniciarTabla_fa(null, iniciarBusqueda_fa(),id_tbl_empleados_hraes);
+    if (buscarlenth == 0) {
+        iniciarTabla_fa(null, iniciarBusqueda_fa(), id_tbl_empleados_hraes);
     } else {
-        iniciarTabla_fa(buscarNew, iniciarBusqueda_fa(),id_tbl_empleados_hraes);
+        iniciarTabla_fa(buscarNew, iniciarBusqueda_fa(), id_tbl_empleados_hraes);
     }
 }
 
-function iniciarTabla_fa(busqueda, paginador, id_tbl_empleados_hraes) { 
+function iniciarTabla_fa(busqueda, paginador, id_tbl_empleados_hraes) {
     $.post('../../../../App/View/Central/Modulo/Falta/tabla.php', {
-        busqueda: busqueda, 
-        paginador: paginador, 
-        id_tbl_empleados_hraes:id_tbl_empleados_hraes
+        busqueda: busqueda,
+        paginador: paginador,
+        id_tbl_empleados_hraes: id_tbl_empleados_hraes
     },
         function (data) {
-            $("#tabla_falta").html(data); 
+            $("#tabla_falta").html(data);
         }
     );
 }
 
-function agregarEditarFalta(id_object){
+function agregarEditarFalta(id_object) {
     $("#id_object").val(id_object);
     let titulo = document.getElementById("titulo_falta");
+    let checkbox = document.getElementById("es_por_retardo");
     titulo.textContent = 'Modificar';
     $("#id_object").val(id_object);
-    if (id_object == null){
+    if (id_object == null) {
         titulo.textContent = 'Agregar';
         $("#agregar_editar_falta").find("input,textarea,select").val("");
     }
@@ -40,21 +41,33 @@ function agregarEditarFalta(id_object){
 
             let jsonData = JSON.parse(data);
             let entity = jsonData.response;
-            
-            entity.es_por_retardo == 't' ? console.log('verdadero') : console.log('falso') ;
 
-            $("#fecha_desde").val(entity.fecha_desde);
-            $("#fecha_hasta").val(entity.fecha_hasta);
-            $("#fecha_registro").val(entity.fecha_registro);
-            $("#codigo_certificacion").val(entity.codigo_certificacion);
-            $("#Observaciones_falta").val(entity.observaciones);
+            entity.es_por_retardo == 't' ? console.log('verdadero') : console.log('falso');
+
+            if (entity.es_por_retardo == 't') {
+                mostrarContenido('falta_retardo');
+                ocultarContenido('falta_');
+                checkbox.checked = true;
+
+            } else {
+                mostrarContenido('falta_');
+                ocultarContenido('falta_retardo');
+                checkbox.checked = false;
+
+                $("#fecha_desde_").val(entity.fecha_desde);
+                $("#fecha_hasta_").val(entity.fecha_hasta);
+                $("#fecha_registro_").val(entity.fecha_registro);
+                $("#codigo_certificacion_").val(entity.codigo_certificacion);
+            }
+
+            $("#observaciones_").val(entity.observaciones);
         }
     );
 
     $("#agregar_editar_falta").modal("show");
 }
 
-function salirAgregarEditarFalta_(){
+function salirAgregarEditarFalta_() {
     $("#agregar_editar_falta").modal("hide");
 }
 
@@ -64,17 +77,17 @@ function guardarFalta() {
     $.post("../../../../App/Controllers/Central/FaltaC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
         fecha_desde: $("#fecha_desde").val(),
-        fecha_hasta:$("#fecha_hasta").val(),
-        fecha_registro:$("#fecha_registro").val(),
-        codigo_certificacion:$("#codigo_certificacion").val(),
-        observaciones:$("#Observaciones_falta").val(),
-        id_tbl_empleados_hraes:id_tbl_empleados_hraes
+        fecha_hasta: $("#fecha_hasta").val(),
+        fecha_registro: $("#fecha_registro").val(),
+        codigo_certificacion: $("#codigo_certificacion").val(),
+        observaciones: $("#Observaciones_falta").val(),
+        id_tbl_empleados_hraes: id_tbl_empleados_hraes
     },
         function (data) {
-            if (data == 'edit'){
+            if (data == 'edit') {
                 notyf.success('Falta agregada con éxito');
             } else if (data == 'add') {
-                notyf.success('Falta modificada con éxito');  
+                notyf.success('Falta modificada con éxito');
             } else {
                 notyf.error(mensajeSalida);
             }
@@ -94,20 +107,20 @@ function eliminarFalta(id_object) {//ELIMINAR USUARIO
         cancelButtonColor: "#6c757d",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Central/FaltaC/EliminarC.php", {
+            $.post("../../../../App/Controllers/Central/FaltaC/EliminarC.php", {
                 id_object: id_object
             },
-            function (data) {
-                if (data == 'delete'){
-                    notyf.success('Falta eliminada con éxito')
-                } else {
-                    notyf.error(mensajeSalida);
+                function (data) {
+                    if (data == 'delete') {
+                        notyf.success('Falta eliminada con éxito')
+                    } else {
+                        notyf.error(mensajeSalida);
+                    }
+                    buscarFalta();
                 }
-                buscarFalta();
-            }
-        );
-    }
+            );
+        }
     });
 }

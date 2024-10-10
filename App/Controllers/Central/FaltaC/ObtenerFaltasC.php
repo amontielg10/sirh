@@ -7,11 +7,15 @@ $faltaModelM = new FaltaModelM();
 $bool = false;
 $message = 'ok';
 
-if ($faltaModelM ->process_1()){
-    if($faltaModelM ->process_2()){
-        if($faltaModelM->process_3()){
-            if($faltaModelM->process_4()){
-                $bool = true;
+if ($faltaModelM->process_1()) {
+    if ($faltaModelM->process_2()) {
+        if ($faltaModelM->process_3()) {
+            if ($faltaModelM->process_4()) {
+                if ($faltaModelM->process_5()) {
+                    $bool = true;
+                } else {
+                    $message = 'Error en p5';
+                }
             } else {
                 $message = 'Error en p4';
             }

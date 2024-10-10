@@ -1,12 +1,15 @@
 <?php
 include '../librerias.php';
 
-$id_objectDependiente = $_POST['id_object'];
+$id_falta = $_POST['id_object'];
 $faltaModelM = new FaltaModelM();
 $row = new row();
 
-if ($id_objectDependiente != null) {
-    $response = $row->returnArray($faltaModelM->listarEditById($id_objectDependiente));
+if ($id_falta != null) {
+    $response = $row->returnArray($faltaModelM->listarEditById($id_falta));
+
+
+    
     $var = [
         'response' => $response,
     ];
