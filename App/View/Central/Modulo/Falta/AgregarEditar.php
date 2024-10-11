@@ -69,9 +69,8 @@
                             </div>
 
                             <div class="col-6">
-                                <label for="campo"
-                                    class="form-label input-text-form text-input-rem">C&oacutedigo certificaci&oacuten</label><label
-                                    class="text-required">*</label>
+                                <label for="campo" class="form-label input-text-form text-input-rem">C&oacutedigo
+                                    certificaci&oacuten</label><label class="text-required">*</label>
                                 <input onkeyup="convertirAMayusculas(event,'codigo_certificacion_')" type="text"
                                     class="form-control custom-input" id="codigo_certificacion_"
                                     placeholder="Código certificación" maxlength="20">
@@ -125,16 +124,16 @@
                             <div class="col-4">
                                 <label for="campo" class="form-label input-text-form text-input-rem">Fecha
                                 </label><label class="text-required">*</label>
-                                <input type="date" class="form-control custom-input" id="fecha_"
-                                    placeholder="Nombre" maxlength="20">
+                                <input type="date" class="form-control custom-input" id="fecha_" placeholder="Nombre"
+                                    maxlength="20">
                                 <div class="line"></div>
                             </div>
 
                             <div class="col-4">
                                 <label for="campo" class="form-label input-text-form text-input-rem">Hora
-                                </label><label class="text-required">*</label>
-                                <input type="time" class="form-control custom-input" id="hora_"
-                                    placeholder="Nombre" maxlength="20">
+                                </label><label class="text-required"></label>
+                                <input type="time" class="form-control custom-input" id="hora_" placeholder="Nombre"
+                                    maxlength="20">
                                 <div class="line"></div>
                             </div>
 
@@ -155,8 +154,8 @@
                                 class="form-label input-text-form text-input-rem">Observaciones</label><label
                                 class="text-required">*</label>
                             <input onkeyup="convertirAMayusculas(event,'observaciones_')" type="text"
-                                class="form-control custom-input" id="observaciones_"
-                                placeholder="Código certificación" maxlength="20">
+                                class="form-control custom-input" id="observaciones_" placeholder="Observaciones"
+                                maxlength="20">
                             <div class="line"></div>
                         </div>
                     </div>

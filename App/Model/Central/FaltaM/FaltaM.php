@@ -99,20 +99,60 @@ class FaltaModelM
 
     function editarByArray($conexion, $datos, $condicion)
     {
-        $pg_update = pg_update($conexion, 'central.ctrl_faltas_hraes', $datos, $condicion);
+        $pg_update = pg_update($conexion, 'central.ctrl_faltas', $datos, $condicion);
         return $pg_update;
     }
 
     function agregarByArray($conexion, $datos)
     {
-        $pg_add = pg_insert($conexion, 'central.ctrl_faltas_hraes', $datos);
+        $pg_add = pg_insert($conexion, 'central.ctrl_faltas', $datos);
         return $pg_add;
     }
 
     function eliminarByArray($conexion, $condicion)
     {
-        $pgs_delete = pg_delete($conexion, 'central.ctrl_faltas_hraes', $condicion);
+        $pgs_delete = pg_delete($conexion, 'central.ctrl_faltas', $condicion);
         return $pgs_delete;
+    }
+
+
+    public function catFaltaEstatus()
+    {
+        $query = pg_query("SELECT 
+                                central.cat_retardo_estatus.id_cat_retardo_estatus,
+                                UPPER(central.cat_retardo_estatus.descripcion)
+                            FROM central.cat_retardo_estatus
+                            ORDER BY central.cat_retardo_estatus.descripcion ASC;");
+        return $query;
+    }
+
+    public function catFaltaEstatusEdit($id)
+    {
+        $query = pg_query("SELECT 
+                                central.cat_retardo_estatus.id_cat_retardo_estatus,
+                                UPPER(central.cat_retardo_estatus.descripcion)
+                            FROM central.cat_retardo_estatus
+                            WHERE central.cat_retardo_estatus.id_cat_retardo_estatus = $id;");
+        return $query;
+    }
+    public function catFaltaTipo()
+    {
+        $query = pg_query("SELECT 
+                                central.cat_retardo_tipo.id_cat_retardo_tipo,
+                                UPPER(central.cat_retardo_tipo.descripcion)
+                            FROM central.cat_retardo_tipo
+                            ORDER BY central.cat_retardo_tipo.descripcion ASC;");
+        return $query;
+    }
+
+    public function catFaltaTipoEdit($id)
+    {
+        $query = pg_query("SELECT 
+                                central.cat_retardo_tipo.id_cat_retardo_tipo,
+                                UPPER(central.cat_retardo_tipo.descripcion)
+                            FROM central.cat_retardo_tipo
+                            WHERE central.cat_retardo_tipo.id_cat_retardo_tipo = $id;");
+        return $query;
     }
 
     /// reporte de faltas para todos los empleados

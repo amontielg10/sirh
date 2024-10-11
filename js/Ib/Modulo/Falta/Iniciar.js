@@ -37,18 +37,24 @@ function agregarEditarFalta(id_object) {
         id_object: id_object
     },
         function (data) {
-            console.log(data);
-
             let jsonData = JSON.parse(data);
             let entity = jsonData.response;
-
-            entity.es_por_retardo == 't' ? console.log('verdadero') : console.log('falso');
+            let faltaEstatus = jsonData.faltaEstatus;
+            let faltaTipo = jsonData.faltaTipo;
 
             if (entity.es_por_retardo == 't') {
                 mostrarContenido('falta_retardo');
                 ocultarContenido('falta_');
                 checkbox.checked = true;
 
+                $("#fecha_").val(entity.fecha);
+                $("#hora_").val(entity.hora);
+                $("#cantidad_").val(entity.cantidad);
+
+                $('#fecha_desde_').val("");
+                $('#fecha_hasta_').val("");
+                $('#fecha_registro_').val("");
+                $('#codigo_certificacion_').val("");
             } else {
                 mostrarContenido('falta_');
                 ocultarContenido('falta_retardo');
@@ -58,8 +64,23 @@ function agregarEditarFalta(id_object) {
                 $("#fecha_hasta_").val(entity.fecha_hasta);
                 $("#fecha_registro_").val(entity.fecha_registro);
                 $("#codigo_certificacion_").val(entity.codigo_certificacion);
+
+                $('#fecha_').val("");
+                $('#hora_').val("");
+                $('#cantidad_').val("");
             }
 
+
+            $('#id_cat_retardo_estatus_').empty();
+            $('#id_cat_retardo_tipo_').empty();
+
+            $('#id_cat_retardo_estatus_').html(faltaEstatus);
+            $('#id_cat_retardo_tipo_').html(faltaTipo);
+
+            $('#id_cat_retardo_estatus_').selectpicker('refresh');
+            $('#id_cat_retardo_tipo_').selectpicker('refresh');
+
+            $('.selectpicker').selectpicker();
             $("#observaciones_").val(entity.observaciones);
         }
     );
@@ -72,15 +93,21 @@ function salirAgregarEditarFalta_() {
 }
 
 
-function guardarFalta() {
+function guardarFalta(es_por_retardo) {
 
     $.post("../../../../App/Controllers/Central/FaltaC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
-        fecha_desde: $("#fecha_desde").val(),
-        fecha_hasta: $("#fecha_hasta").val(),
-        fecha_registro: $("#fecha_registro").val(),
-        codigo_certificacion: $("#codigo_certificacion").val(),
-        observaciones: $("#Observaciones_falta").val(),
+        es_por_retardo: es_por_retardo,
+        fecha_desde: $("#fecha_desde_").val(),
+        fecha_hasta: $("#fecha_hasta_").val(),
+        fecha_registro: $("#fecha_registro_").val(),
+        codigo_certificacion: $("#codigo_certificacion_").val(),
+        id_cat_retardo_tipo: $("#id_cat_retardo_tipo_").val(),
+        id_cat_retardo_estatus: $("#id_cat_retardo_estatus_").val(),
+        fecha: $("#fecha_").val(),
+        hora: $("#hora_").val(),
+        cantidad: $("#cantidad_").val(),
+        observaciones: $("#observaciones_").val(),
         id_tbl_empleados_hraes: id_tbl_empleados_hraes
     },
         function (data) {
