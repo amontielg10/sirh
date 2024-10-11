@@ -126,7 +126,9 @@ $id_rol = $_SESSION['id_rol'];
                                 Nom. Hraes
                             </a>
                             <ul class="dropdown-menu">
+                                <!--
                                 <li><a class="dropdown-item" href="../../Hraes/Carga/index.php">Carga masiva</a></li>
+                    -->
                                 <li><a class="dropdown-item" href="../../Hraes/CentroTrabajo/index.php">Centro de
                                         trabajo</a></li>
                                 <li><a class="dropdown-item" href="../../Hraes/Empleados/index.php">Empleados</a></li>
