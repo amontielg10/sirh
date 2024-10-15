@@ -1,7 +1,6 @@
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true" id="agregar_editar_modal">
-    <div class="modal-dialog modal-lg modal-dialog-centered"
-        style="width: 90%; height: 100%; max-width: none; max-height: none;">
+    <div class="modal-dialog modal-lg modal-dialog-centered" style="max-width: 1200px;">
         <div class="modal-content">
             <div class="modal-header background-modal">
                 <div class="container">
@@ -43,25 +42,6 @@
                             </fieldset>
                         </div>
 
-                        <div class="col-3">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label for="campo" class="form-label input-text-form">Tipo de
-                                        contrataci&oacuten</label>
-                                    <label class="text-required">*</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <select class="form-control custom-select selectpicker"
-                                        data-style="input-select-selectpicker" aria-label="Default select example"
-                                        data-live-search="true" id="id_cat_tipo_contratacion_hraes"
-                                        data-none-results-text="Sin resultados">
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="col-2">
                             <fieldset disabled id="checkbox_disabled_num_plaza" data-toggle="tooltip"
                                 data-placement="top">
@@ -71,6 +51,24 @@
                                     placeholder="Número de plaza" oninput="validarNumero(this)">
                                 <div class="line"></div>
                             </fieldset>
+                        </div>
+
+                        <div class="col-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="campo" class="form-label input-text-form">Tipo de plaza</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_plazas"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-2">
@@ -146,12 +144,13 @@
                         </div>
                     </div>
 
+
                     <div class="div-spacing"></div>
                     <div class="row mx-1">
                         <div class="col-4">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <label for="campo" class="form-label input-text-form">Tipo de plaza</label>
+                                <div class="col-md-12">
+                                    <label for="campo" class="form-label input-text-form">Trabajador</label>
                                     <label class="text-required">*</label>
                                 </div>
                             </div>
@@ -159,17 +158,17 @@
                                 <div class="col-md-12">
                                     <select class="form-control custom-select selectpicker"
                                         data-style="input-select-selectpicker" aria-label="Default select example"
-                                        data-live-search="true" id="id_cat_plazas"
+                                        data-live-search="true" id="id_cat_tipo_trabajador"
                                         data-none-results-text="Sin resultados">
                                     </select>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-5">
+                        <div class="col-4">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="campo" class="form-label input-text-form">Unidad responsable</label>
+                                    <label for="campo" class="form-label input-text-form">Contrataci&oacuten</label>
                                     <label class="text-required">*</label>
                                 </div>
                             </div>
@@ -177,17 +176,17 @@
                                 <div class="col-md-12">
                                     <select class="form-control custom-select selectpicker"
                                         data-style="input-select-selectpicker" aria-label="Default select example"
-                                        data-live-search="true" id="id_cat_unidad_responsable"
+                                        data-live-search="true" id="id_cat_tipo_contratacion"
                                         data-none-results-text="Sin resultados">
                                     </select>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-4">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="campo" class="form-label input-text-form">Tabuladores</label>
+                                    <label for="campo" class="form-label input-text-form">Programa</label>
                                     <label class="text-required">*</label>
                                 </div>
                             </div>
@@ -195,13 +194,14 @@
                                 <div class="col-md-12">
                                     <select class="form-control custom-select selectpicker"
                                         data-style="input-select-selectpicker" aria-label="Default select example"
-                                        data-live-search="true" id="id_cat_zonas_tabuladores_hraes"
+                                        data-live-search="true" id="id_cat_tipo_programa"
                                         data-none-results-text="Sin resultados">
                                     </select>
                                 </div>
                             </div>
                         </div>
                     </div>
+
 
                     <div class="div-spacing"></div>
                     <div class="row mx-1">
@@ -240,35 +240,6 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="div-spacing"></div>
-                    <div class="row mx-1">
-
-                        <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Fecha de ingreso OPD</label><label
-                                class="text-required">*</label>
-                            <input type="date" class="form-control custom-input" id="fecha_ingreso_inst">
-                            <div class="line"></div>
-                        </div>
-                        <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Fecha de t&eacutermino</label><label
-                                class="text-required"></label>
-                            <input type="date" class="form-control custom-input" id="fecha_termino_movimiento">
-                            <div class="line"></div>
-                        </div>
-                        <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Fecha de
-                                modificaci&oacuten</label><label class="text-required"></label>
-                            <input type="date" class="form-control custom-input" id="fecha_modificacion">
-                            <div class="line"></div>
-                        </div>
-                        <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Fecha de movimiento</label><label
-                                class="text-required"></label>
-                            <input type="date" class="form-control custom-input" id="fecha_inicio_movimiento">
-                            <div class="line"></div>
                         </div>
                     </div>
 

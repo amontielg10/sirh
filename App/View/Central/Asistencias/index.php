@@ -5,12 +5,18 @@
     <div class="card border-light shadow-lg">
         <div class="card-body">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-auto">
                         <div class="vertical-line"></div>
                     </div>
                     <div class="col padding-left-0">
                         <h4>IMSS-BIENESTAR CENTRAL</h4>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-light btn-circle" type="button" onclick="getReporteAsistencia()"
+                            data-toggle="tooltip" title="Generar reporte">
+                            <i class="fa fa-download"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -72,6 +78,8 @@
 <?php include 'ModalUsuario.php' ?>
 
 <!-- -->
+<script src="../../../../js/Ib/Asistencias/Reporte/Reporte.js"></script>
+
 <script src="../../../../js/Ib/Asistencias/Asistencias/Listado.js"></script>
 <script src="../../../../js/Ib/Asistencias/Asistencias/Busqueda.js"></script>
 

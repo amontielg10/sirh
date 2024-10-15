@@ -77,7 +77,7 @@ $id_rol = $_SESSION['id_rol'];
 
     <nav class="navbar navbar-expand-lg nav-color-green-son mt-0">
         <div class="container-fluid nav-color-green-son mt-0 nav-padding">
-            <a class="navbar-brand nav-text-tittle custom-link" href="../../System/home/index.php">INICIO</a>
+            <a class="navbar-brand nav-text-tittle custom-link" href="../../System/home/index.php">Inicio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
