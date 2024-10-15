@@ -2,7 +2,19 @@
 
 class modelCentroTrabajoHraes
 {
-    public function infoCentroByPlaza($id){
+    public function validateClues($clues)
+    {
+        $query = pg_query("SELECT 
+                                catalogos.cat_clues.nuevas_clues
+                            FROM catalogos.cat_clues
+                            WHERE catalogos.cat_clues.nuevas_clues = '$clues';");
+        return $query;
+    }
+
+
+
+    public function infoCentroByPlaza($id)
+    {
         $query = pg_query("SELECT 
                                 central.tbl_centro_trabajo_hraes.nombre,
                                 central.tbl_centro_trabajo_hraes.clave_centro_trabajo,
@@ -71,13 +83,9 @@ class modelCentroTrabajoHraes
 
     public function listarByIdEdit($id_object)
     {
-        $listado = pg_query("SELECT id_tbl_centro_trabajo_hraes, clave_centro_trabajo, nombre,
-                                    colonia, codigo_postal, num_exterior, num_interior, latitud, longitud,
-                                    id_cat_region, id_estatus_centro, id_cat_entidad, pais,nivel_atencion
+        $listado = pg_query("SELECT *
                             FROM central.tbl_centro_trabajo_hraes
-                            WHERE id_tbl_centro_trabajo_hraes = $id_object
-                            ORDER BY id_tbl_centro_trabajo_hraes DESC
-                            LIMIT 6");
+                            WHERE id_tbl_centro_trabajo_hraes = $id_object");
         return $listado;
     }
 
@@ -103,8 +111,9 @@ class modelCentroTrabajoHraes
     {
         return $array = [
             'id_tbl_centro_trabajo_hraes' => null,
-            'nombre' => null,
             'clave_centro_trabajo' => null,
+            'nombre' => null,
+            'pais' => null,
             'colonia' => null,
             'codigo_postal' => null,
             'num_exterior' => null,
@@ -114,8 +123,11 @@ class modelCentroTrabajoHraes
             'id_cat_region' => null,
             'id_estatus_centro' => null,
             'id_cat_entidad' => null,
-            'pais' => null,
-            'nivel_atencion' => null
+            'nivel_atencion' => null,
+            'abreviatura' => null,
+            'id_cat_zona_economica' => null,
+            'fecha_usuario' => null,
+            'id_user' => null,
         ];
     }
 
@@ -137,7 +149,8 @@ class modelCentroTrabajoHraes
         return $listado;
     }
 
-    function getEntityZona($idClue){
+    function getEntityZona($idClue)
+    {
         $query = pg_query("SELECT CONCAT(public.cat_entidad.clave_entidad, ' - ', 
                                     public.cat_entidad.entidad)
                             FROM central.tbl_centro_trabajo_hraes

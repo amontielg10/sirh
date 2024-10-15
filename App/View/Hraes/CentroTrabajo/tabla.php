@@ -42,7 +42,7 @@ if (pg_num_rows($result) > 0) {
                                         <input type="hidden" name="id_tbl_centro_trabajo_hraes" value="' . $row[0] . '" />
                                         <button class="dropdown-item btn btn-light"><i class="fa fa-bookmark icon-edit-table"></i> Plazas</button>  
                                 </form>
-                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
+                                <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light" disable><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
                             </div>
                           </div>
                                 </td>

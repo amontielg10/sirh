@@ -108,6 +108,10 @@ include '../../../Model/Catalogos/CatUnidadAdM/CatUnidadAdM.php';
 
 
 include '../../../Model/Central/Catalogos/CatRetardosM/CatRetardosM.php';
+include '../../../Model/Central/Catalogos/CatZonasEcoM/CatZonasEcoM.php';
 include '../../../Model/Central/Catalogos/CatQuincenasM/CatQuincenasM.php';
 include '../../../Model/Central/IncidenciasM/IncidenciasM.php';
 include '../../../Model/Central/CatPeriodoM/CatPeriodoM.php';
+
+include '../../../Controllers/Catalogos/CatEntidadC/CatEntidadC.php';
+include '../../../Controllers/Catalogos/CatRegionC/CatRegionC.php';

@@ -2,6 +2,14 @@
 class CatSepomexM
 {
 
+    public function getCodigoPostal($codigoPostal)
+    {
+        $query = pg_query(" SELECT 
+                                public.cat_sepomex.id_cat_sepomex
+                            FROM public.cat_sepomex
+                            WHERE public.cat_sepomex.codigo_postal = '$codigoPostal';");
+        return $query;
+    }
     public function listarCountCp($codigo)
     {
         $listado = pg_query("SELECT COUNT(id_cat_sepomex)

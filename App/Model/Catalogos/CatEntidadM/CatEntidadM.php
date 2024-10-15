@@ -17,11 +17,32 @@ class catalogoEntidad
         return $listado;
     }
 
-    public function idEntidadText($text){
+    public function idEntidadText($text)
+    {
         $listado = pg_query("SELECT id_cat_entidad
                              FROM cat_entidad
                              WHERE TRIM(UPPER(UNACCENT(entidad)))
                                 LIKE TRIM(UPPER(UNACCENT('%$text%')));");
         return $listado;
+    }
+
+    public function selectByAllv2()
+    {
+        $query = pg_query("SELECT 
+                                public.cat_entidad.id_cat_entidad,
+                                UPPER(public.cat_entidad.entidad)
+                            FROM public.cat_entidad
+                            ORDER BY public.cat_entidad.entidad ASC;");
+        return $query;
+    }
+
+    public function selectByEditv2($id)
+    {
+        $query = pg_query("SELECT 
+                                public.cat_entidad.id_cat_entidad,
+                                UPPER(public.cat_entidad.entidad)
+                            FROM public.cat_entidad
+                            WHERE public.cat_entidad.id_cat_entidad = $id;");
+        return $query;
     }
 }

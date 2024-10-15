@@ -27,16 +27,16 @@
                             <label for="campo" class="form-label input-text-form">Nombre</label><label
                                 class="text-required">*</label>
                             <input onkeyup="convertirAMayusculas(event,'nombre')" maxlength="60" type="text"
-                                class="form-control custom-input" id="nombre" name="nombre"
-                                placeholder="Nombre" required>
+                                class="form-control custom-input" id="nombre" name="nombre" placeholder="Nombre"
+                                required>
                             <div class="line"></div>
                         </div>
                         <div class="col-4">
                             <label for="campo" class="form-label input-text-form">Clave</label><label
                                 class="text-required">*</label>
-                            <input maxlength="10" type="text" class="form-control  custom-input"
+                            <input maxlength="15" type="text" class="form-control  custom-input"
                                 id="clave_centro_trabajo" onkeyup="convertirAMayusculas(event, 'clave_centro_trabajo')"
-                                name="clave_centro_trabajo" placeholder="Clave centro de trabajo">
+                                name="clave_centro_trabajo" placeholder="Clave de centro de trabajo">
                             <div class="line"></div>
                         </div>
                     </div>
@@ -53,16 +53,16 @@
                         <div class="col-3">
                             <label for="campo" class="form-label input-text-form">N&uacutemero exterior</label><label
                                 class="text-required">*</label>
-                            <input type="text" class="form-control  custom-input" id="num_exterior"
-                                name="num_exterior" placeholder="Núm. exterior" maxlength="10"
+                            <input type="text" class="form-control  custom-input" id="num_exterior" name="num_exterior"
+                                placeholder="Núm. exterior" maxlength="10"
                                 onkeyup="convertirAMayusculas(event,'num_exterior')">
                             <div class="line"></div>
                         </div>
                         <div class="col-3">
                             <label for="campo" class="form-label input-text-form">N&uacutemero interior</label><label
                                 class="text-required"></label>
-                            <input type="text" class="form-control  custom-input" id="num_interior"
-                                name="num_interior" placeholder="Núm. interior" maxlength="10"
+                            <input type="text" class="form-control  custom-input" id="num_interior" name="num_interior"
+                                placeholder="Núm. interior" maxlength="10"
                                 onkeyup="convertirAMayusculas(event,'num_interior')">
                             <div class="line"></div>
                         </div>
@@ -71,8 +71,40 @@
                     <div class="div-spacing"></div>
                     <div class="row mx-1">
                         <div class="col-3">
+                            <label for="campo" class="form-label input-text-form">Latitud</label><label
+                                class="text-required">*</label>
+                            <input maxlength="10" type="text" class="form-control  custom-input" id="latitud"
+                                name="latitud" placeholder="Latitud" onkeyup="convertirAMayusculas(event,'latitud')">
+                            <div class="line"></div>
+                        </div>
+                        <div class="col-3">
+                            <label for="campo" class="form-label input-text-form">Longitud</label><label
+                                class="text-required">*</label>
+                            <input maxlength="10" type="text" class="form-control  custom-input" id="longitud"
+                                name="longitud" placeholder="Longitud" onkeyup="convertirAMayusculas(event,'longitud')">
+                            <div class="line"></div>
+                        </div>
+                        <div class="col-3">
+                            <label for="campo" class="form-label input-text-form">C&oacutedigo
+                                p&oacutestal</label><label class="text-required"></label>
+                            <input type="number" class="form-control  custom-input" id="codigo_postal"
+                                name="codigo_postal" placeholder="Código postal" oninput="validarNumero(this)">
+                            <div class="line"></div>
+                        </div>
+                        <div class="col-3">
+                            <label for="campo" class="form-label input-text-form">Pa&iacutes</label><label
+                                class="text-required"></label>
+                            <input maxlength="10" type="text" class="form-control  custom-input" id="pais" name="País"
+                                placeholder="País" onkeyup="convertirAMayusculas(event,'pais')">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+
+                    <div class="div-spacing"></div>
+                    <div class="row mx-1">
+                        <div class="col-3">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <label for="campo" class="form-label input-text-form">Entidad</label>
                                     <label class="text-required">*</label>
                                 </div>
@@ -90,7 +122,25 @@
 
                         <div class="col-3">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
+                                    <label for="campo" class="form-label input-text-form">Zona econ&oacutemica</label>
+                                    <label class="text-required">*</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_zona_economica"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+                            <div class="row">
+                                <div class="col-md-12">
                                     <label for="campo" class="form-label input-text-form">Regi&oacuten</label>
                                     <label class="text-required">*</label>
                                 </div>
@@ -108,7 +158,7 @@
 
                         <div class="col-3">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <label for="campo" class="form-label input-text-form">Estatus</label>
                                     <label class="text-required">*</label>
                                 </div>
@@ -123,49 +173,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Nivel atenci&oacuten</label><label
-                                class="text-required"></label>
-                            <input type="text" class="form-control custom-input" id="nivel_atencion"
-                                name="num_interior" placeholder="Nivel de atención" maxlength="25"
-                                onkeyup="convertirAMayusculas(event,'nivel_atencion')">
-                            <div class="line"></div>
-                        </div>
-
-                    </div>
-
-                    <div class="div-spacing"></div>
-                    <div class="row mx-1">
-                        <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Latitud</label><label
-                                class="text-required">*</label>
-                            <input maxlength="10" type="text" class="form-control  custom-input" id="latitud"
-                                name="latitud" placeholder="Latitud" onkeyup="convertirAMayusculas(event,'latitud')">
-                            <div class="line"></div>
-                        </div>
-                        <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Longitud</label><label
-                                class="text-required">*</label>
-                            <input maxlength="10" type="text" class="form-control  custom-input"
-                                id="longitud" name="longitud" placeholder="Longitud"
-                                onkeyup="convertirAMayusculas(event,'longitud')">
-                            <div class="line"></div>
-                        </div>
-                        <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">C&oacutedigo
-                                p&oacutestal</label><label class="text-required"></label>
-                            <input type="number" class="form-control  custom-input" id="codigo_postal"
-                                name="codigo_postal" placeholder="Código postal" oninput="validarNumero(this)">
-                            <div class="line"></div>
-                        </div>
-                        <div class="col-3">
-                            <label for="campo" class="form-label input-text-form">Pa&iacutes</label><label
-                                class="text-required"></label>
-                            <input maxlength="10" type="text" class="form-control  custom-input" id="pais"
-                                name="País" placeholder="País" onkeyup="convertirAMayusculas(event,'pais')">
-                            <div class="line"></div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -174,7 +181,7 @@
             <div class="modal-footer">
                 <button onclick="ocultarModal();" type="button" class="btn btn-secondary" data-dismiss="modal"><i
                         class="fas fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-success save-botton-modal" onclick="return validar();"><i
+                <button type="button" class="btn btn-success save-botton-modal" onclick="return validarCentro();"><i
                         class="fas fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
             </div>
