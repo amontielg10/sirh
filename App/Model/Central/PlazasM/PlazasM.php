@@ -24,15 +24,15 @@ class modelPlazasHraes
 							central.tbl_centro_trabajo_hraes.clave_centro_trabajo,
 							central.cat_tipo_contratacion.descripcion,
 							central.cat_tipo_trabajador.descripcion,
-							cat_unidad_responsable.nombre,
+							cat_unidad.nombre,
                             central.tbl_control_plazas_hraes.id_user,
 	                        central.tbl_control_plazas_hraes.fecha_usuario
                     FROM central.tbl_control_plazas_hraes
                     INNER JOIN cat_tipo_plazas
                         ON tbl_control_plazas_hraes.id_cat_tipo_plazas = cat_tipo_plazas.id_cat_tipo_plazas
-                    INNER JOIN cat_unidad_responsable
-                        ON tbl_control_plazas_hraes.id_cat_unidad_responsable = 
-                            cat_unidad_responsable.id_cat_unidad_responsable
+                    INNER JOIN cat_unidad
+                        ON tbl_control_plazas_hraes.id_cat_unidad = 
+                            cat_unidad.id_cat_unidad
                     INNER JOIN central.cat_puesto_hraes
 						ON central.tbl_control_plazas_hraes.id_cat_puesto_hraes =
 							central.cat_puesto_hraes.id_cat_puesto_hraes
@@ -66,7 +66,7 @@ class modelPlazasHraes
                             LIKE '%$busqueda%'
                     OR TRIM(UPPER(UNACCENT(central.cat_tipo_trabajador.descripcion)))
                             LIKE '%$busqueda%' 
-                    OR TRIM(UPPER(UNACCENT(cat_unidad_responsable.nombre)))
+                    OR TRIM(UPPER(UNACCENT(cat_unidad.nombre)))
                             LIKE '%$busqueda%')
                     ORDER BY id_tbl_control_plazas_hraes DESC
                     LIMIT 6 OFFSET $paginator;";
@@ -75,7 +75,7 @@ class modelPlazasHraes
         if ($id_tbl_centro_trabajo_hraes != null) {
             $condition = "WHERE tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes = 
                           $id_tbl_centro_trabajo_hraes ";
-                          $value = ' AND ';
+            $value = ' AND ';
         }
         $condition = $condition . $value . $result;
 
@@ -88,15 +88,15 @@ class modelPlazasHraes
 							central.tbl_centro_trabajo_hraes.clave_centro_trabajo,
 							central.cat_tipo_contratacion.descripcion,
 							central.cat_tipo_trabajador.descripcion,
-							cat_unidad_responsable.nombre,
+							cat_unidad.nombre,
                             central.tbl_control_plazas_hraes.id_user,
 	                        central.tbl_control_plazas_hraes.fecha_usuario
                     FROM central.tbl_control_plazas_hraes
                     INNER JOIN cat_tipo_plazas
                         ON tbl_control_plazas_hraes.id_cat_tipo_plazas = cat_tipo_plazas.id_cat_tipo_plazas
-                    INNER JOIN cat_unidad_responsable
-                        ON tbl_control_plazas_hraes.id_cat_unidad_responsable = 
-                            cat_unidad_responsable.id_cat_unidad_responsable
+                    INNER JOIN cat_unidad
+                        ON tbl_control_plazas_hraes.id_cat_unidad = 
+                            cat_unidad.id_cat_unidad
                     INNER JOIN central.cat_puesto_hraes
 						ON central.tbl_control_plazas_hraes.id_cat_puesto_hraes =
 							central.cat_puesto_hraes.id_cat_puesto_hraes

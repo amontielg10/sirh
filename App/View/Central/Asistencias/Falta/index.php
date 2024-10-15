@@ -12,10 +12,12 @@
             title="Obtener faltas">
             <i class="fa fa-refresh"></i>
         </button>
+        <!--
         <button class="btn btn-light btn-circle" type="button" onclick="getInfoFaltas()" data-toggle="tooltip"
             title="Información">
             <i class="fa fa-question-circle"></i>
         </button>
+-->
         <input onkeyup="buscarFalta();" id="buscar_falta" type="text" placeholder="Buscar..."
             class="form-control search-input" style="margin-left: 15px;"> <!-- Añadir margen aquí -->
         <span class="search-icon ml-2"><i class="fas fa-search"></i></span>

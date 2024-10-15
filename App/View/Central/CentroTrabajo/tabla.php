@@ -40,6 +40,7 @@ if (pg_num_rows($result) > 0) {
                                 <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit icono-grande-tabla"></i></button>
                             <div class="dropdown-menu">
                                 <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
+                                <button onclick="isGetUser()" class="dropdown-item btn btn-light" disabled><i class="fa fa-user icon-edit-table"></i> Usuario</button>
                                 <form action="../Plazas/index.php" method="POST">
                                         <input type="hidden" name="id_tbl_centro_trabajo_hraes" value="' . $row[0] . '" />
                                         <button class="dropdown-item btn btn-light"><i class="fa fa-bookmark icon-edit-table"></i> Plazas</button>  
