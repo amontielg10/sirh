@@ -68,7 +68,7 @@ if ($id_object != null) {
         $nomEspecifico = $catSelectC->selectByEditCatalogo($catalogoPuestoM->listOfSpecificName($isValueAux[1]), $row->returnArrayById($catalogoPuestoM->editSpecificName($isValueAux[2])));
     }
 
-    $nomEspecifico = $catSelectC->selecStaticByNull();
+    $puestoCategoria = $catSelectC->selecStaticByNull();
     if ($entity['id_cat_aux_puesto'] != '') {
         $puestoCategoria = $catSelectC->selectByEditCatalogo($catalogoPuestoM->listOfCategoName($isValueAux[1], $isValueAux[2]), $row->returnArrayById($catalogoPuestoM->editCatName($isValueAux[3])));
     }
