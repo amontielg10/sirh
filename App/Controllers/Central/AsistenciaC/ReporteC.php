@@ -38,6 +38,7 @@ formatHeaderCell($sheet, 'G1', 'NO_DISPOSITIVO');
 formatHeaderCell($sheet, 'H1', 'FECHA');
 formatHeaderCell($sheet, 'I1', 'HORA');
 formatHeaderCell($sheet, 'J1', 'CANTIDAD');
+formatHeaderCell($sheet, 'K1', 'ESTATUS');
 
 
 $row = 2;
@@ -54,6 +55,8 @@ while ($row_data = pg_fetch_array($result)) {
     $sheet->setCellValue('H' . $row, $row_data[7]);
     $sheet->setCellValue('I' . $row, $row_data[8]);
     $sheet->setCellValue('J' . $row, $row_data[9]);
+    $sheet->setCellValue('J' . $row, $row_data[9]);
+    $sheet->setCellValue('K' . $row, $row_data[10]);
     $row++;
 }
 

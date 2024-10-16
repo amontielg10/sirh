@@ -434,7 +434,7 @@ class AsistenciaM
     public function insertFalta()
     {
         $query = pg_query("INSERT INTO central.reporte_faltas
-                            SELECT central.tbl_empleados_hraes.rfc,  
+                            SELECT central.tbl_empleados_hraes.rfc,
                                     public.cat_unidad.nombre,
                                     public.cat_coordinacion.nombre,
                                     central.cat_puesto_hraes.nombre_posicion,
@@ -443,7 +443,8 @@ class AsistenciaM
                                     central.ctrl_asistencia_info.no_dispositivo,
                                     central.ctrl_faltas.fecha,
                                     central.ctrl_faltas.hora,
-                                    central.ctrl_faltas.cantidad
+                                    central.ctrl_faltas.cantidad,
+                                    central.cat_retardo_estatus.descripcion
                             FROM central.tbl_empleados_hraes
                                 INNER JOIN central.ctrl_asistencia_info -- 
                                 ON central.tbl_empleados_hraes.id_tbl_empleados_hraes = central.ctrl_asistencia_info.id_tbl_empleados_hraes
@@ -461,13 +462,15 @@ class AsistenciaM
                                 INNER JOIN central.cat_puesto_hraes
                                 ON central.tbl_control_plazas_hraes.id_cat_puesto_hraes =	central.cat_puesto_hraes.id_cat_puesto_hraes
                                 INNER JOIN central.ctrl_faltas
-                                ON central.tbl_empleados_hraes.id_tbl_empleados_hraes = central.ctrl_faltas.id_tbl_empleados_hraes;");
+                                ON central.tbl_empleados_hraes.id_tbl_empleados_hraes = central.ctrl_faltas.id_tbl_empleados_hraes
+                                INNER JOIN central.cat_retardo_estatus
+                                ON central.ctrl_faltas.id_cat_retardo_estatus = central.cat_retardo_estatus.id_cat_retardo_estatus;");
         return $query;
     }
 
     public function selectFaltas()
     {
-        $query = pg_query("SELECT rfc, unidad, coordinacion, puesto, nombre, movil, no_dispositivo, fecha, hora, cantidad
+        $query = pg_query("SELECT rfc, unidad, coordinacion, puesto, nombre, movil, no_dispositivo, fecha, hora, cantidad,estatus
                             FROM central.reporte_faltas;");
         return $query;
     }

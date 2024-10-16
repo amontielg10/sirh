@@ -1,6 +1,6 @@
 <?php
-$password = "pg2024";
-$username = "postgres";
+$password = "sirh2024";
+$username = "sirh_delete";
 $dbname = "sirh";
 $host = "localhost";
 $port = "5432";
