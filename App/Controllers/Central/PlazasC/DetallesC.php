@@ -75,17 +75,17 @@ if ($id_object != null) {
 
     $programa = $catSelectC->selectByAllCatalogo($contratacionM->listarByAllPrograma());
     if ($entity['id_cat_tipo_programa'] != '') {
-        $programa = $catSelectC->selectByEditCatalogo($contratacionM->listarByAllPrograma(), $row->returnArrayById($contratacionM->listarByEditPrograma($response['id_cat_tipo_programa'])));
+        $programa = $catSelectC->selectByEditCatalogo($contratacionM->listarByAllPrograma(), $row->returnArrayById($contratacionM->listarByEditPrograma($entity['id_cat_tipo_programa'])));
     }
 
     $trabajador = $catSelectC->selectByAllCatalogo($contratacionM->listarByAllTrabajador());
     if ($entity['id_cat_tipo_trabajador'] != '') {
-        $trabajador = $catSelectC->selectByEditCatalogo($contratacionM->listarByAllTrabajador(), $row->returnArrayById($contratacionM->listarByAEditTrabajador($response['id_cat_tipo_trabajador'])));
+        $trabajador = $catSelectC->selectByEditCatalogo($contratacionM->listarByAllTrabajador(), $row->returnArrayById($contratacionM->listarByAEditTrabajador($entity['id_cat_tipo_trabajador'])));
     }
 
     $contratacion = $catSelectC->selecStaticByNull();
     if ($entity['id_cat_tipo_contratacion'] != '' && $entity['id_cat_tipo_trabajador'] != '') {
-        $contratacion = $catSelectC->selectByEditCatalogo($contratacionM->listarByAllContratacion($entity['id_cat_tipo_trabajador']), $row->returnArrayById($contratacionM->listarByEditContratacion($response['id_cat_tipo_contratacion'])));
+        $contratacion = $catSelectC->selectByEditCatalogo($contratacionM->listarByAllContratacion($entity['id_cat_tipo_trabajador']), $row->returnArrayById($contratacionM->listarByEditContratacion($entity['id_cat_tipo_contratacion'])));
     }
 
     $raw = [

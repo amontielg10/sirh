@@ -12,11 +12,11 @@ if ($id_falta != null) {
     $faltaTipo = $catSelectC->selectByAllCatalogo($faltaModelM->catFaltaTipo());
 
     if ($response['id_cat_retardo_tipo'] != '') {
-        $faltaTipo = $catSelectC->selectByEditCatalogo($faltaModelM->catFaltaEstatus(), $row->returnArrayById($faltaModelM->catFaltaEstatusEdit($response['id_cat_retardo_tipo'])));
+        $faltaTipo = $catSelectC->selectByEditCatalogo($faltaModelM->catFaltaTipo(), $row->returnArrayById($faltaModelM->catFaltaTipoEdit($response['id_cat_retardo_tipo'])));
     }
 
     if ($response['id_cat_retardo_estatus'] != '') {
-        $faltaEstatus = $catSelectC->selectByEditCatalogo($faltaModelM->catFaltaTipo(), $row->returnArrayById($faltaModelM->catFaltaTipoEdit($response['id_cat_retardo_estatus'])));
+        $faltaEstatus = $catSelectC->selectByEditCatalogo($faltaModelM->catFaltaEstatus(), $row->returnArrayById($faltaModelM->catFaltaEstatusEdit($response['id_cat_retardo_estatus'])));
     }
 
     $var = [
