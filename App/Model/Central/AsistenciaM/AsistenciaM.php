@@ -425,4 +425,51 @@ class AsistenciaM
         return $query;
     }
 
+    public function isTruncate()
+    {
+        $query = pg_query("TRUNCATE TABLE central.reporte_faltas;");
+        return $query;
+    }
+
+    public function insertFalta()
+    {
+        $query = pg_query("INSERT INTO central.reporte_faltas
+                            SELECT central.tbl_empleados_hraes.rfc,  
+                                    public.cat_unidad.nombre,
+                                    public.cat_coordinacion.nombre,
+                                    central.cat_puesto_hraes.nombre_posicion,
+                                    (central.tbl_empleados_hraes.nombre ||' '|| central.tbl_empleados_hraes.primer_apellido ||' '|| central.tbl_empleados_hraes.segundo_apellido) as nombre_completo,
+                                    central.ctrl_telefono_hraes.movil,
+                                    central.ctrl_asistencia_info.no_dispositivo,
+                                    central.ctrl_faltas.fecha,
+                                    central.ctrl_faltas.hora,
+                                    central.ctrl_faltas.cantidad
+                            FROM central.tbl_empleados_hraes
+                                INNER JOIN central.ctrl_asistencia_info -- 
+                                ON central.tbl_empleados_hraes.id_tbl_empleados_hraes = central.ctrl_asistencia_info.id_tbl_empleados_hraes
+                                INNER JOIN central.ctrl_telefono_hraes
+                                ON central.tbl_empleados_hraes.id_tbl_empleados_hraes = central.ctrl_telefono_hraes.id_tbl_empleados_hraes 
+                                AND central.ctrl_telefono_hraes.id_cat_estatus = 1
+                                INNER JOIN central.tbl_plazas_empleados_hraes
+                                ON central.tbl_empleados_hraes.id_tbl_empleados_hraes = central.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes 
+                                INNER JOIN central.tbl_control_plazas_hraes
+                                ON central.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =  central.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+                                INNER JOIN public.cat_unidad
+                                ON central.tbl_control_plazas_hraes.id_cat_unidad = public.cat_unidad.id_cat_unidad
+                                INNER JOIN public.cat_coordinacion
+                                ON central.tbl_control_plazas_hraes.id_cat_coordinacion = public.cat_coordinacion.id_cat_coordinacion
+                                INNER JOIN central.cat_puesto_hraes
+                                ON central.tbl_control_plazas_hraes.id_cat_puesto_hraes =	central.cat_puesto_hraes.id_cat_puesto_hraes
+                                INNER JOIN central.ctrl_faltas
+                                ON central.tbl_empleados_hraes.id_tbl_empleados_hraes = central.ctrl_faltas.id_tbl_empleados_hraes;");
+        return $query;
+    }
+
+    public function selectFaltas()
+    {
+        $query = pg_query("SELECT rfc, unidad, coordinacion, puesto, nombre, movil, no_dispositivo, fecha, hora, cantidad
+                            FROM central.reporte_faltas;");
+        return $query;
+    }
+
 }

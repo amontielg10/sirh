@@ -12,8 +12,9 @@ header('Content-Type: text/html; charset=UTF-8');
 $asistenciaM = new AsistenciaM();
 $spreadsheet = new Spreadsheet();
 
-$insertData = $asistenciaM->addDataInTables();
-$result = $asistenciaM->getReporte();
+$isTruncate = $asistenciaM->isTruncate();
+$insertFalta = $asistenciaM->insertFalta();
+$result = $asistenciaM->selectFaltas();
 
 $sheet = $spreadsheet->getActiveSheet();
 
@@ -28,18 +29,15 @@ function formatHeaderCell($sheet, $cell, $value)
 
 // Encabezados de columna con formato
 formatHeaderCell($sheet, 'A1', 'RFC');
-formatHeaderCell($sheet, 'B1', 'CURP');
-formatHeaderCell($sheet, 'C1', 'NOMBRE');
-formatHeaderCell($sheet, 'D1', 'PRIMER APELLIDO');
-formatHeaderCell($sheet, 'E1', 'SEGUNDO APELLIDO');
-formatHeaderCell($sheet, 'F1', 'FECHA');
-formatHeaderCell($sheet, 'G1', 'HORA');
-formatHeaderCell($sheet, 'H1', 'TIPO DE ASISTENCIA');
-formatHeaderCell($sheet, 'I1', 'DISPOSITIVO');
-formatHeaderCell($sheet, 'J1', 'VERIFICACIÓN');
-formatHeaderCell($sheet, 'K1', 'ESTADO');
-formatHeaderCell($sheet, 'L1', 'EVENTO');
-formatHeaderCell($sheet, 'M1', 'ID BIOMÉTRICO');
+formatHeaderCell($sheet, 'B1', 'UNIDAD');
+formatHeaderCell($sheet, 'C1', 'COORDINACION');
+formatHeaderCell($sheet, 'D1', 'PUESTO');
+formatHeaderCell($sheet, 'E1', 'NOMBRE');
+formatHeaderCell($sheet, 'F1', 'MOVIL');
+formatHeaderCell($sheet, 'G1', 'NO_DISPOSITIVO');
+formatHeaderCell($sheet, 'H1', 'FECHA');
+formatHeaderCell($sheet, 'I1', 'HORA');
+formatHeaderCell($sheet, 'J1', 'CANTIDAD');
 
 
 $row = 2;
@@ -56,9 +54,6 @@ while ($row_data = pg_fetch_array($result)) {
     $sheet->setCellValue('H' . $row, $row_data[7]);
     $sheet->setCellValue('I' . $row, $row_data[8]);
     $sheet->setCellValue('J' . $row, $row_data[9]);
-    $sheet->setCellValue('K' . $row, $row_data[10]);
-    $sheet->setCellValue('L' . $row, $row_data[11]);
-    $sheet->setCellValue('m' . $row, $row_data[12]);
     $row++;
 }
 
