@@ -374,16 +374,16 @@ class modelPlazasHraes
     {
         $isQuery = pg_query("SELECT 
                                 $schema.tbl_control_plazas_hraes.num_plaza,
-                                CONCAT(public.cat_unidad_responsable.codigo, ' ', public.cat_unidad_responsable.nombre),
+                                cat_unidad.nombre,
                                 $schema.cat_puesto_hraes.codigo_puesto,
                                 $schema.cat_puesto_hraes.nivel,
                                 $schema.cat_puesto_hraes.nombre_posicion,
                                 $schema.tbl_centro_trabajo_hraes.clave_centro_trabajo,
                                 CONCAT(public.cat_entidad.clave_entidad, ' ', public.cat_entidad.entidad)
                             FROM $schema.tbl_control_plazas_hraes
-                            INNER JOIN public.cat_unidad_responsable
-                                ON $schema.tbl_control_plazas_hraes.id_cat_unidad_responsable =	
-                                    public.cat_unidad_responsable.id_cat_unidad_responsable
+                            INNER JOIN public.cat_unidad
+                                ON $schema.tbl_control_plazas_hraes.id_cat_unidad =	
+                                    public.cat_unidad.id_cat_unidad
                             INNER JOIN $schema.cat_puesto_hraes
                                 ON $schema.tbl_control_plazas_hraes.id_cat_puesto_hraes =
                                     $schema.cat_puesto_hraes.id_cat_puesto_hraes
