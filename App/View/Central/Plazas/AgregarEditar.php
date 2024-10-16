@@ -5,10 +5,10 @@
             <div class="modal-header background-modal">
                 <div class="container">
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-12 col-sm-1">
                             <img src="../../../../assets/sirh/logo_plaza.png" style="max-width: 1000%;">
                         </div>
-                        <div class="col-11">
+                        <div class="col-12 col-sm-11">
                             <h1 class="text-tittle-card"><label id="titulo_plazas" claa="text-modal-tittle"></label>
                                 Plaza.
                             </h1>
@@ -24,7 +24,7 @@
             <div class="card-body">
                 <div class="container">
                     <div class="row mx-1">
-                        <div class="col-3">
+                        <div class="col-12 col-md-4 col-lg-3 mb-4">
                             <fieldset disabled>
                                 <label for="campo" class="form-label input-text-form">Zona pagadora</label>
                                 <input type="text" placeholder="Zona pagadora" class="form-control custom-input"
@@ -33,7 +33,7 @@
                             </fieldset>
                         </div>
 
-                        <div class="col-2">
+                        <div class="col-12 col-md-4 col-lg-2 mb-4">
                             <fieldset disabled>
                                 <label for="campo" class="form-label input-text-form">Nivel de puesto</label>
                                 <input type="text" placeholder="Nivel" class="form-control custom-input"
@@ -42,7 +42,7 @@
                             </fieldset>
                         </div>
 
-                        <div class="col-2">
+                        <div class="col-12 col-md-4 col-lg-2 mb-4">
                             <fieldset disabled id="checkbox_disabled_num_plaza" data-toggle="tooltip"
                                 data-placement="top">
                                 <label for="campo" class="form-label input-text-form">N&uacutemero de
@@ -53,7 +53,7 @@
                             </fieldset>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-12 col-md-8 col-lg-3 mb-4">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="campo" class="form-label input-text-form">Tipo de plaza</label>
@@ -71,11 +71,11 @@
                             </div>
                         </div>
 
-                        <div class="col-2">
+                        <div class="col-12 col-md-4 col-lg-2 mb-4">
                             <fieldset disabled id="checkbox_disabled" data-toggle="tooltip" data-placement="top"
                                 title="Una plaza plantilla es aquella cuyo número aún no está definido.">
-                                <label for="campo" class="form-label input-text-form">¿Es plantilla?</label><label
-                                    class="text-required">*</label>
+                                <label for="campo" class="form-label input-text-form">¿Es
+                                    plantilla?</label><label class="text-required">*</label>
                                 <div class="form-check div-spacing">
                                     <input class="form-check-input" type="checkbox" value="0"
                                         id="id_cat_situacion_plaza_hraes">
@@ -87,9 +87,8 @@
                         </div>
                     </div>
 
-                    <div class="div-spacing"></div>
                     <div class="row mx-1">
-                        <div class="col-5">
+                        <div class="col-12 col-md-6 col-lg-5 mb-4">
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="campo" class="form-label input-text-form">Puesto</label>
@@ -107,10 +106,11 @@
                             </div>
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-12 col-md-6 col-lg-4 mb-4">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="campo" class="form-label input-text-form">Puesto especifico</label>
+                                    <label for="campo" class="form-label input-text-form">Puesto
+                                        especifico</label>
                                     <label class="text-required">*</label>
                                 </div>
                             </div>
@@ -125,10 +125,11 @@
                             </div>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-12 col-md-6 col-lg-3 mb-4">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="campo" class="form-label input-text-form">Categoria de puesto</label>
+                                    <label for="campo" class="form-label input-text-form">Categoria de
+                                        puesto</label>
                                     <label class="text-required">*</label>
                                 </div>
                             </div>
@@ -144,10 +145,8 @@
                         </div>
                     </div>
 
-
-                    <div class="div-spacing"></div>
                     <div class="row mx-1">
-                        <div class="col-4">
+                        <div class="col-12 col-md-6 col-lg-4 mb-4">
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="campo" class="form-label input-text-form">Trabajador</label>
@@ -165,7 +164,7 @@
                             </div>
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-12 col-md-6 col-lg-4 mb-4">
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="campo" class="form-label input-text-form">Contrataci&oacuten</label>
@@ -183,7 +182,7 @@
                             </div>
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-12 col-md-6 col-lg-4 mb-4">
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="campo" class="form-label input-text-form">Programa</label>
@@ -202,14 +201,12 @@
                         </div>
                     </div>
 
-
-                    <div class="div-spacing"></div>
                     <div class="row mx-1">
-
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 col-lg-6 mb-4">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="campo" class="form-label input-text-form">Unidad administrativa</label>
+                                    <label for="campo" class="form-label input-text-form">Unidad
+                                        administrativa</label>
                                     <label class="text-required">*</label>
                                 </div>
                             </div>
@@ -224,7 +221,7 @@
                             </div>
                         </div>
 
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 col-lg-6 mb-4">
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="campo" class="form-label input-text-form">Coordinaci&oacuten</label>
@@ -246,7 +243,6 @@
                 </div>
             </div>
 
-            <div class="div-spacing"></div>
             <div class="modal-footer">
                 <button onclick="ocultarModal();" type="button" class="btn btn-secondary" data-dismiss="modal"><i
                         class="fas fa-times"></i> Cancelar</button>

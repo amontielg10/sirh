@@ -112,10 +112,10 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
             <div class="modal-header background-modal">
                 <div class="container">
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-12 col-sm-1">
                             <img src="../../../../assets/sirh/logo_plaza.png" style="max-width: 1000%;">
                         </div>
-                        <div class="col-11">
+                        <div class="col-12 col-sm-11">
                             <h1 class="text-tittle-card"><label id="" claa="text-modal-tittle"></label>
                                 Agregar plaza.
                             </h1>

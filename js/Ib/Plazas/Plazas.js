@@ -154,7 +154,6 @@ function agregarEditarByDb() {
         id_cat_coordinacion: $("#id_cat_coordinacion").val(),
     },
         function (data) {
-            console.log(data);
             if (data == 'edit') {
                 notyf.success('Plaza modificada con éxito');
             } else if (data == 'add') {

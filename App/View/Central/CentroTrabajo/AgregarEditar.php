@@ -19,7 +19,6 @@
                 </div>
             </div>
 
-            <div class="div-spacing"></div>
             <div class="card-body">
                 <div class="container">
                     <div class="row mx-1">
@@ -41,7 +40,6 @@
                         </div>
                     </div>
 
-                    <div class="div-spacing"></div>
                     <div class="row mx-1">
                         <div class="col-12 col-md-6 mb-4">
                             <label for="campo" class="form-label input-text-form">Colonia</label><label
@@ -68,7 +66,6 @@
                         </div>
                     </div>
 
-                    <div class="div-spacing"></div>
                     <div class="row mx-1">
                         <div class="col-12 col-md-3 mb-4">
                             <label for="campo" class="form-label input-text-form">Latitud</label><label
@@ -100,7 +97,6 @@
                         </div>
                     </div>
 
-                    <div class="div-spacing"></div>
                     <div class="row mx-1">
                         <div class="col-12 col-md-3 mb-4">
                             <div class="row">
@@ -177,7 +173,6 @@
                 </div>
             </div>
 
-            <div class="div-spacing"></div>
             <div class="modal-footer">
                 <button onclick="ocultarModal();" type="button" class="btn btn-secondary" data-dismiss="modal"><i
                         class="fas fa-times"></i> Cancelar</button>
