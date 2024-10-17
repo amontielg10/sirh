@@ -96,7 +96,7 @@ if ($id_tbl_empleados_hraes == null) {
                     </h6>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4">
-                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">CLUE: <label
+                    <h6 style="font-weight: bold" class="text-result-normal  input-text-form div-spacing">CLUES: <label
                             class="text-result-normal" id="isClue"></label>
                     </h6>
                 </div>

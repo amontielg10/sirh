@@ -1,4 +1,3 @@
-
 <!-- LIBRERIAS JS -->
 <script src="../../../../js/Ib/Modulo/Inicio/iniciar.js"></script>
 <script src="../../../../js/Ib/Modulo/Inicio/Popup.js"></script>
@@ -98,3 +97,7 @@
 <script src="../../../../js/Ib/Modulo/Incidencia/Iniciar.js"></script>
 <script src="../../../../js/Ib/Modulo/Incidencia/Validar.js"></script>
 <script src="../../../../js/Ib/Modulo/Incidencia/buscar.js"></script>
+
+<script src="../../../../js/Ib/Modulo/Preventivas/Iniciar.js"></script>
+<script src="../../../../js/Ib/Modulo/Preventivas/Validar.js"></script>
+<script src="../../../../js/Ib/Modulo/Preventivas/buscar.js"></script>

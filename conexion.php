@@ -1,7 +1,7 @@
 <?php
 $password = "sirh2024";
 $username = "postgres";
-$dbname = "sirh_delete";
+$dbname = "sirh";
 $host = "localhost";
 $port = "5432";
 $options = "--client_encoding=UTF8";

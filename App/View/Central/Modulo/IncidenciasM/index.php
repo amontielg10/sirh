@@ -18,6 +18,12 @@
                     <a onclick="buscarIncidencia();" class="nav-link-mod" id="v-tabs-messages-tab" data-toggle="pill"
                         href="#v-tabs-incidencias" role="tab" aria-controls="v-tabs-messages" aria-selected="false">
                         <i class="fa fa-folder-open mr-2"></i> Incidencias</a>
+
+                    <!--
+                    <a onclick="buscarPreventivas();" class="nav-link-mod" id="v-tabs-messages-tab" data-toggle="pill"
+                        href="#v-tabs-preventivas" role="tab" aria-controls="v-tabs-messages" aria-selected="false">
+                        <i class="fa fa-folder-open mr-2"></i> Preventivas</a>
+-->
                 </div>
             </div>
         </div>
@@ -29,34 +35,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
-
-
                                 <div class="card font-size-modulo shadow-lg">
                                     <h5 class="card-header text-center background-modal color-text-tittle">Retardo</h5>
                                     <div class="card-body">
                                         <?php include 'Retardo/index.php' ?>
                                     </div>
                                 </div>
-                                <!--
-                                <div class="card font-size-modulo shadow-lg">
-                                    <div style="background:#235B4E"
-                                        class="card-header d-flex justify-content-between align-items-center">
-                                        <h5 class="text-center background-modal color-text-tittle mb-0">Retardo</h5>
-
-                                        <!--
-                                        <button style="background:#235B4E;border: none" onclick="actualizarRetardo()"
-                                            type="button" class="btn btn-light" aria-haspopup="true"
-                                            aria-expanded="false" data-toggle="tooltip" data-placement="top"
-                                            title="Agregar nuevo domicilio">
-                                            <i style="color:white" class="fa fa-spinner icono-pequeno-tabla"></i>
-                                            <span class="hide-menu text-button-add"></span>
-                                        </button>
-                                    </div>
-                                    <div class="card-body">
-                                        <?php //include 'Retardo/index.php' ?>
-                                    </div>
-                                </div>
--->
                             </div>
                         </div>
                     </div>
@@ -101,6 +85,23 @@
                                     </h5>
                                     <div class="card-body">
                                         <?php include 'Incidencias/index.php' ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-tabs-preventivas" role="tabpanel"
+                    aria-labelledby="v-tabs-messages-tab">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card font-size-modulo shadow-lg">
+                                    <h5 class="card-header text-center background-modal color-text-tittle">Preventivas
+                                        de pago
+                                    </h5>
+                                    <div class="card-body">
+                                        <?php include 'Preventivas/index.php' ?>
                                     </div>
                                 </div>
                             </div>
