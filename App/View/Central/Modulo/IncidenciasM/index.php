@@ -18,12 +18,9 @@
                     <a onclick="buscarIncidencia();" class="nav-link-mod" id="v-tabs-messages-tab" data-toggle="pill"
                         href="#v-tabs-incidencias" role="tab" aria-controls="v-tabs-messages" aria-selected="false">
                         <i class="fa fa-folder-open mr-2"></i> Incidencias</a>
-
-                    <!--
                     <a onclick="buscarPreventivas();" class="nav-link-mod" id="v-tabs-messages-tab" data-toggle="pill"
                         href="#v-tabs-preventivas" role="tab" aria-controls="v-tabs-messages" aria-selected="false">
                         <i class="fa fa-folder-open mr-2"></i> Preventivas</a>
--->
                 </div>
             </div>
         </div>

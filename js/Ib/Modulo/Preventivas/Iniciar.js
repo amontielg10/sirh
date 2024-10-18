@@ -28,50 +28,30 @@ function agregarEditarPreventiva(id_object) {
     $("#id_object").val(id_object);
     if (id_object == null) {
         titulo.textContent = 'Agregar';
-        $("#agregar_editar_incidencia").find("input,textarea,select").val("");
-        $("#agregar_editar_incidencia").find("input[type=checkbox], input[type=radio]").prop("checked", false);
+        $("#agregar_editar_preventiva").find("input,textarea,select").val("");
     }
 
-    $.post("../../../../App/Controllers/Central/IncidenciasC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Central/PreventivasC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
-            console.log(data);
 
             let jsonData = JSON.parse(data);
             let response = jsonData.response;
+            let preventivas = jsonData.preventivas;
+            let quincena = jsonData.quincena;
+            let periodo = jsonData.periodo;
 
-            //proceso de mostrar u ocultar contenido de calendarios para el periodo de vacaciones
-            checkbox_disabled.disabled = false;
-            ocultarContenido('ocultar_contenido_vacaciones');
-            if (response.id_cat_incidencias == dias_cuenta_vacaciones ||
-                response.id_cat_incidencias == vacaciones_extraordinarias ||
-                response.id_cat_incidencias == vacaciones_ordinarias) {
-                if (response.es_mas_de_un_dia !== 't') {
-                    checkbox_disabled.disabled = true;
-                    es_mas_de_un_dia.checked = false;
-                } else {
-                    es_mas_de_un_dia.checked = true;
-                }
-                // es_mas_de_un_dia.checked = true;
-                mostrarContenido('ocultar_contenido_vacaciones');
-            }
+            $("#fecha_inicio_pv").val(response.fecha_inicio);
+            $("#fecha_fin_pv").val(response.fecha_fin);
+            $("#quincena_pv").val(quincena);
+            $("#periodo_quincena_pv").val(periodo);
+            $("#no_oficio_pv").val(response.no_oficio);
+            $("#observaciones_pv").val(response.observaciones);
 
-            $("#fecha_inicio_ins").val(response.fecha_inicio);
-            $("#fecha_fin_ins").val(response.fecha_fin);
-            $("#observaciones_ins").val(response.observaciones);
-            $("#fecha_captura_ins").val(response.fecha_captura);
-            $("#hora_ins").val(response.hora);
-
-            $("#is_peridodo_ins").val(jsonData.periodo);
-            $("#is_dias_seleccionados").val(jsonData.diasSeleccionados);
-            $("#is_dias_restantes").val(jsonData.diasRestantes);
-
-            $("#id_cat_incidencias_ins").html(jsonData.catIncidencias);
-
-            $('#id_cat_incidencias_ins').selectpicker('refresh');
+            $("#id_cat_preventivas").html(preventivas);
+            $('#id_cat_preventivas').selectpicker('refresh');
             $('.selectpicker').selectpicker();
-
         }
     );
     $("#agregar_editar_preventiva").modal("show");
@@ -82,31 +62,26 @@ function salirAgregarEditarPreventiva() {
 }
 
 //accion para guardar la informacion de incidencias
-function guardarIncidencia() {
+function guardarPreventiva() {
 
-    let checkbox_value = document.getElementById('es_mas_de_un_dia');
-    checkbox_value = checkbox_value.checked ? true : false;
-
-    $.post("../../../../App/Controllers/Central/IncidenciasC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Central/PreventivasC/AgregarEditarC.php", {
         id_tbl_empleados_hraes: id_tbl_empleados_hraes,
-        es_mas_de_un_dia: checkbox_value,
-        fecha_inicio: $("#fecha_inicio_ins").val(),
-        fecha_fin: $("#fecha_fin_ins").val(),
-        fecha_captura: $("#fecha_captura_ins").val(),
-        hora: $("#hora_ins").val(),
-        observaciones: $("#observaciones_ins").val(),
-        id_cat_incidencias: $("#id_cat_incidencias_ins").val(),
+        fecha_inicio: $("#fecha_inicio_pv").val(),
+        fecha_fin: $("#fecha_fin_pv").val(),
+        id_cat_preventivas: $("#id_cat_preventivas").val(),
+        no_oficio: $("#no_oficio_pv").val(),
+        observaciones: $("#observaciones_pv").val(),
         id_object: $("#id_object").val(),
     },
         function (data) {
             if (data == 'edit') {
-                notyf.success('Incidencia modificada con éxito');
+                notyf.success('Preventiva modificada con éxito');
             } else if (data == 'add') {
-                notyf.success('Incidencia agregada con éxito');
+                notyf.success('Preventiva agregada con éxito');
             } else {
                 notyf.error(mensajeSalida);
             }
-            $("#agregar_editar_incidencia").modal("hide");
+            $("#agregar_editar_preventiva").modal("hide");
             buscarPreventivas();
         }
     );
@@ -124,12 +99,12 @@ function eliminarIncidecia(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
     }).then((result) => {
         if (result.isConfirmed) {
-            $.post("../../../../App/Controllers/Central/IncidenciasC/EliminarC.php", {
+            $.post("../../../../App/Controllers/Central/PreventivasC/EliminarC.php", {
                 id_object: id_object
             },
                 function (data) {
                     if (data == 'delete') {
-                        notyf.success('Incidencia eliminada con éxito')
+                        notyf.success('Preventiva eliminada con éxito')
                     } else {
                         notyf.error(mensajeSalida);
                     }
@@ -141,26 +116,3 @@ function eliminarIncidecia(id_object) {//ELIMINAR USUARIO
 }
 
 
-function obtenerUsuario(id) {
-    buscarAsistencia();
-    let nombre_usuario_accion = document.getElementById("nombre_usuario_accion");
-    nombre_usuario_accion.textContent = '-';
-    if (typeof id !== 'undefined') {
-        $.post("../../../../App/Controllers/Central/AsistenciaC/UsuariosC.php", {
-            id: id,
-        },
-            function (data) {
-                nombre_usuario_accion.textContent = data;
-            }
-        );
-    }
-    mostrarModalUsuario();
-}
-
-function mostrarModalUsuario() {
-    $("#mostrar_usuario").modal("show");
-}
-
-function ocultarModalUsuario() {
-    $("#mostrar_usuario").modal("hide");
-}

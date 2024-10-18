@@ -23,7 +23,7 @@ class PreventivasM
                                 ON	central.ctrl_preventivas.id_cat_preventivas =
                                     central.cat_preventivas.id_cat_preventivas
                             WHERE central.ctrl_preventivas.id_tbl_empleados_hraes = $id_tbl_empleados_hraes -- IS ID_EMPLOYEE
-                            ORDER BY central.cat_quincenas.fecha_inicio ASC
+                            ORDER BY central.cat_quincenas.fecha_inicio DESC
                             LIMIT 3 OFFSET $paginador;");
         return $query;
     }
@@ -56,9 +56,67 @@ class PreventivasM
                                 UPPER(TRIM(UNACCENT(central.cat_quincenas.nombre))) LIKE '%$busqueda%' OR
                                 UPPER(TRIM(UNACCENT(central.ctrl_preventivas.observaciones))) LIKE '%$busqueda%' 
                             )
-                            ORDER BY central.cat_quincenas.fecha_inicio ASC
+                            ORDER BY central.cat_quincenas.fecha_inicio DESC
                             LIMIT 3 OFFSET $paginador;");
         return $query;
     }
 
+    public function listarByNull()
+    {
+        return $array = [
+            'id_ctrl_preventivas' => NULL,
+            'no_oficio' => NULL,
+            'cuenta_clabe' => NULL,
+            'observaciones' => NULL,
+            'fecha_inicio' => NULL,
+            'fecha_fin' => NULL,
+            'id_cat_preventivas' => NULL
+        ];
+    }
+
+    public function listarCatPreventivas()
+    {
+        $query = pg_query("SELECT 
+                                central.cat_preventivas.id_cat_preventivas,
+                                UPPER(central.cat_preventivas.descripcion)
+                            FROM central.cat_preventivas
+                            ORDER BY central.cat_preventivas.descripcion ASC;");
+        return $query;
+    }
+
+    public function editCatPreventivas($id)
+    {
+        $query = pg_query("SELECT 
+                                central.cat_preventivas.id_cat_preventivas,
+                                UPPER(central.cat_preventivas.descripcion)
+                            FROM central.cat_preventivas
+                            WHERE central.cat_preventivas.id_cat_preventivas = $id;");
+        return $query;
+    }
+
+    public function getDetails($id)
+    {
+        $query = pg_query("SELECT * 
+                            FROM central.ctrl_preventivas
+                            WHERE id_ctrl_preventivas = $id;");
+        return $query;
+    }
+
+    function editarByArray($conexion, $datos, $condicion)
+    {
+        $pg_update = pg_update($conexion, 'central.ctrl_preventivas', $datos, $condicion);
+        return $pg_update;
+    }
+
+    function agregarByArray($conexion, $datos)
+    {
+        $pg_add = pg_insert($conexion, 'central.ctrl_preventivas', $datos);
+        return $pg_add;
+    }
+
+    function eliminarByArray($conexion, $condicion)
+    {
+        $pgs_delete = pg_delete($conexion, 'central.ctrl_preventivas', $condicion);
+        return $pgs_delete;
+    }
 }

@@ -113,6 +113,7 @@ include '../../../Model/Central/Catalogos/CatQuincenasM/CatQuincenasM.php';
 include '../../../Model/Central/IncidenciasM/IncidenciasM.php';
 include '../../../Model/Central/ContratacionM/ContratacionM.php';
 include '../../../Model/Central/CatPeriodoM/CatPeriodoM.php';
+include '../../../Model/Central/PreventivasM/PreventivasM.php';
 
 include '../../../Controllers/Catalogos/CatEntidadC/CatEntidadC.php';
 include '../../../Controllers/Catalogos/CatRegionC/CatRegionC.php';

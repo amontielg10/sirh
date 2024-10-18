@@ -1,4 +1,56 @@
 
+function validarPreventiva() {
+    let fecha_inicio_pv = document.getElementById('fecha_inicio_pv').value;
+    let fecha_fin_pv = document.getElementById('fecha_fin_pv').value;
+    let quincena_pv = document.getElementById('quincena_pv').value;
+    let id_cat_preventivas = document.getElementById('id_cat_preventivas').value;
+    let no_oficio_pv = document.getElementById('no_oficio_pv').value;
+    let observaciones_pv = document.getElementById('observaciones_pv').value;
+
+    if (validarData(fecha_inicio_pv, 'Fecha de inicio') &&
+        validarData(fecha_fin_pv, 'Fecha fin') &&
+        validarData(id_cat_preventivas, 'Tipo de preventiva') &&
+        validarData(no_oficio_pv, 'No oficio') &&
+        validarData(observaciones_pv, 'Observaciones')) {
+        if (quincena_pv != 'NO RECONOCIDO') {
+            if(fecha_fin_pv > fecha_inicio_pv){
+                guardarPreventiva();
+            } else {
+                notyf.error('La fecha fin no puede ser igual o menor a la fecha de inicio');
+            }
+        } else {
+            notyf.error('Error al asociar la quincena a la fecha de inicio: falta actualización de información');
+        }
+    }
+}
+
+
+const dateInputpv = document.getElementById('fecha_inicio_pv');
+dateInputpv.addEventListener('change', function () {
+    let fecha_inicio_pv = dateInputpv.value;
+
+    $.post("../../../../App/Controllers/Central/CatQuincenaC/CatQuincenaC.php", {
+        isValue: fecha_inicio_pv
+    },
+        function (data) {
+            let jsonData = JSON.parse(data);
+            $("#quincena_pv").val(jsonData.quincena);
+            $("#periodo_quincena_pv").val(jsonData.quincenaPeriodo);
+        }
+    );
+});
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 function validarIncidencia(){
     let id_cat_incidencias_ins = document.getElementById('id_cat_incidencias_ins').value;

@@ -288,7 +288,7 @@ class FaltaModelM
                                                             observaciones,
                                                             es_por_retardo,
                                                             id_cat_retardo_tipo,						-- 1-Entrada
-                                                            id_cat_retardo_estatus,					-- 5-Por Aplicar
+                                                            id_cat_retardo_estatus,					-- 7-Retardo Mayor
                                                             id_user,
                                                             fecha,
                                                             hora,
@@ -298,7 +298,7 @@ class FaltaModelM
                                     NULL observaciones,
                                     TRUE es_por_retardo,							-- Entrada despues de Hora Máxima de Retardo
                                     1 id_cat_retardo_tipo, 							-- Entrada 
-                                    5 id_cat_retardo_estatus, 						-- Por Aplicar
+                                    7 id_cat_retardo_estatus, 						-- Por Aplicar
                                     NULL id_user,
                                     Entradas.fecha,
                                     Entradas.hora,
@@ -318,8 +318,7 @@ class FaltaModelM
                                     ORDER BY central.ctrl_asistencia.id_tbl_empleados_hraes
                                 ) AS Minimo
                                 WHERE Minimo.hora > (SELECT cat_asistencia_config.hora_max_retardo FROM central.cat_asistencia_config) -- Después de hora Max
-                            ) AS Entradas
-							WHERE Entradas.fecha > (SELECT fecha_ult_proceso FROM central.cat_asistencia_config)");
+                            ) AS Entradas");
         return $query;
     }
 

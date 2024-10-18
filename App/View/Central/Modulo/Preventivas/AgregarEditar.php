@@ -32,8 +32,8 @@
                             <div class="line"></div>
                         </div>
                         <div class="col-12 col-sm-6 col-md-3 mb-4">
-                            <label for="campo" class="form-label input-text-form text-input-rem">Fecha de
-                                inicio</label><label class="text-required">*</label>
+                            <label for="campo" class="form-label input-text-form text-input-rem">Fecha fin</label><label
+                                class="text-required">*</label>
                             <input type="date" class="form-control custom-input" id="fecha_fin_pv">
                             <div class="line"></div>
                         </div>
@@ -77,7 +77,7 @@
                         </div>
                         <div class="col-12 col-sm-6 col-md-6 mb-4">
                             <label for="campo" class="form-label input-text-form text-input-rem">No oficio
-                            </label><label class="text-required"></label>
+                            </label><label class="text-required">*</label>
                             <input type="text" class="form-control custom-input" id="no_oficio_pv"
                                 placeholder="No oficio" onkeyup="convertirAMayusculas(event,'no_oficio_pv')"
                                 maxlength="50">
@@ -88,7 +88,7 @@
                     <div class="row">
                         <div class="col-12 mb-4">
                             <label for="campo" class="form-label input-text-form text-input-rem">Observaciones
-                            </label><label class="text-required"></label>
+                            </label><label class="text-required">*</label>
                             <input type="text" class="form-control custom-input" id="observaciones_pv"
                                 placeholder="Observaciones" onkeyup="convertirAMayusculas(event,'observaciones_pv')"
                                 maxlength="50">
@@ -102,7 +102,7 @@
             <div class="modal-footer">
                 <button onclick="salirAgregarEditarPreventiva();" type="button" class="btn btn-secondary"
                     data-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-success save-botton-modal" onclick="return validarIncidencia();"><i
+                <button type="button" class="btn btn-success save-botton-modal" onclick="return validarPreventiva();"><i
                         class="fas fa-save"></i> Guardar</button>
                 <input type="hidden" id="id_object">
             </div>
