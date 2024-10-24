@@ -25,10 +25,15 @@ function mostrarModalCargaAsistencia() {
 
 function validarCarga_() {
 
+
   let bool = false;
   let maxMB = 20;
   let fileInput = document.getElementById('customFile');
   let file = fileInput.files[0];
+
+  console.log(maxMB);
+
+
   if (file) {
     let fileSize = file.size;
     let fileSizeKB = fileSize / 1024;
