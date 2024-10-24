@@ -26,7 +26,7 @@ function mostrarModalCargaAsistencia() {
 function validarCarga_() {
 
   let bool = false;
-  let maxMB = 5;
+  let maxMB = 20;
   let fileInput = document.getElementById('customFile');
   let file = fileInput.files[0];
   if (file) {

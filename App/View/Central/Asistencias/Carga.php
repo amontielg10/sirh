@@ -46,7 +46,7 @@
                         <div class="container mt-4">
                             <div class="custom-file-container">
                                 <div class="custom-file-caption">Haz clic en el icono para cargar archivos</div>
-                                <div class="custom-file-hint">Tamaño máximo: 5 MB</div>
+                                <div class="custom-file-hint">Tamaño máximo: 20 MB</div>
                                 <label for="customFile" class="btn btn-ligth">
                                     <i style="background:white" class="fas fa-upload custom-file-icon"></i>
                                 </label>
