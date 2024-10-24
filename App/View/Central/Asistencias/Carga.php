@@ -33,7 +33,7 @@
                                 </li>. <span class="important">Recuerda: no debes eliminar los
                                     encabezados.</span></li>
                                 <li>Los campos marcados con <em>*</em> son obligatorios.</li>
-                                <li>El tamaño del archivo debe ser igual o menor a 5 MB.</li>
+                                <li>El tamaño del archivo debe ser igual o menor a 20 MB.</li>
                             </ol>
                         </div>
                     </div>
