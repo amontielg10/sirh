@@ -35,6 +35,8 @@ function validarCarga_() {
     let fileMb = fileSizeKB / 1024;
     let fileExtension = file.name.split('.').pop();
 
+    console.log(maxMB);
+
     if (fileMb >= maxMB) {
       notyf.error('El archivo debe tener un peso máximo de ' + maxMB + ' MB');
       //mensajeError('El archivo debe tener un peso máximo de ' + maxMB + ' MB');
