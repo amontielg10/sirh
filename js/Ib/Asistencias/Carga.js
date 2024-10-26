@@ -27,7 +27,7 @@ function validarCarga_() {
 
 
   let bool = false;
-  let maxMB = 20;
+  let maxMB = 5;
   let fileInput = document.getElementById('customFile');
   let file = fileInput.files[0];
 

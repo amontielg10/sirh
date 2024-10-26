@@ -33,7 +33,7 @@
                                 </li>. <span class="important">Recuerda: no debes eliminar los
                                     encabezados.</span></li>
                                 <li>Los campos marcados con <em>*</em> son obligatorios.</li>
-                                <li>El tamaño del archivo debe ser igual o menor a 20 MB.</li>
+                                <li>El tamaño del archivo debe ser igual o menor a 5 MB.</li>
                             </ol>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                         <div class="container mt-4">
                             <div class="custom-file-container">
                                 <div class="custom-file-caption">Haz clic en el icono para cargar archivos</div>
-                                <div class="custom-file-hint">Tamaño máximo: 20 MB</div>
+                                <div class="custom-file-hint">Tamaño máximo: 5 MB</div>
                                 <label for="customFile" class="btn btn-ligth">
                                     <i style="background:white" class="fas fa-upload custom-file-icon"></i>
                                 </label>
