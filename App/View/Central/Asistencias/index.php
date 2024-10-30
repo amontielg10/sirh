@@ -14,6 +14,10 @@
                     </div>
                     <div class="col-auto">
                         <button class="btn btn-light btn-circle" type="button" data-toggle="tooltip"
+                            title="Justificar faltas" onclick="mostrarModalFaltas();">
+                            <i class="fa fa-upload"></i>
+                        </button>
+                        <button class="btn btn-light btn-circle" type="button" data-toggle="tooltip"
                             title="Mis estadísticas" onclick="window.location.href='porwebi.php';">
                             <i class="fa fa-line-chart"></i>
                         </button>
@@ -79,6 +83,7 @@
 
 <?php include '../../librerias.php' ?>
 <?php include 'Carga.php' ?>
+<?php include 'CargaFaltas.php' ?>
 <?php include 'ModalUsuario.php' ?>
 
 <!-- -->
@@ -89,6 +94,7 @@
 
 <script src="../../../../js/Ib/Asistencias/Falta/Listado.js"></script>
 <script src="../../../../js/Ib/Asistencias/Falta/Busqueda.js"></script>
+<script src="../../../../js/Ib/Asistencias/Falta/Masivo.js"></script>
 
 
 <script src="../../../../js/Ib/Asistencias/Retardos/Listado.js"></script>
