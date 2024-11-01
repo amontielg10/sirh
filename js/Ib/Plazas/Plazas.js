@@ -112,10 +112,12 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             $("#num_plaza").val(entity.num_plaza);
             $("#id_tbl_centro_trabajo_hraes_aux").val(entity.id_tbl_centro_trabajo_hraes);
 
+            /*
             let bool = entity.id_cat_situacion_plaza_hraes != 1 ? true : false;
             checkbox.checked = bool;
             checkbox_disabled.disabled = !bool;
             checkbox_disabled_num_plaza.disabled = !bool;
+            */
         }
     );
 
@@ -123,8 +125,10 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
 }
 
 function agregarEditarByDb() {
+    /*
     let id_cat_situacion_plaza_hraes = document.getElementById("id_cat_situacion_plaza_hraes");
     let id_cat_situacion_plaza_hraes_x = id_cat_situacion_plaza_hraes.checked ? 0 : 1;
+    */
 
     let id_tbl_centro_trabajo_hraes_aux = $("#id_tbl_centro_trabajo_hraes_aux").val();
     let id_object = $("#id_object").val();
@@ -143,7 +147,7 @@ function agregarEditarByDb() {
 
         num_plaza: $("#num_plaza").val(),
         id_cat_plazas: $("#id_cat_plazas").val(),
-        id_cat_situacion_plaza_hraes: $("#id_cat_situacion_plaza_hraes").val(),
+        id_cat_situacion_plaza_hraes: 1, //$("#id_cat_situacion_plaza_hraes").val(),
         id_cat_puesto_hraes: $("#id_cat_puesto_hraes").val(),
         id_cat_aux_puesto: $("#id_cat_aux_puesto").val(),
         id_cat_categoria_puesto: $("#id_cat_categoria_puesto").val(),
@@ -163,6 +167,7 @@ function agregarEditarByDb() {
             }
             $("#agregar_editar_modal").modal("hide");
             buscarPlaza();
+            buscarInfoCentroTrabajo();
         }
     );
 }
@@ -197,6 +202,7 @@ function eliminarEntity(id_object) {
                         messageErrorLarge('La eliminación de una plaza no debe estar sujeta a dependencias de empleados, o datos complementarios');
                     }
                     buscarPlaza();
+                    buscarInfoCentroTrabajo();
                 }
             );
         }

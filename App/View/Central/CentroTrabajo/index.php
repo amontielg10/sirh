@@ -29,7 +29,7 @@
                         data-toggle="tooltip" title="Agregar centro de trabajo">
                         <i class="fa fa-plus"></i>
                     </button>
-                    <input onkeyup="buscarFalta();" id="buscar" type="text" placeholder="Buscar..."
+                    <input onkeyup="buscarCentro();" id="buscar" type="text" placeholder="Buscar..."
                         class="form-control search-input" style="margin-left: 15px;">
                     <span class="search-icon ml-2"><i class="fas fa-search"></i></span>
                 </div>

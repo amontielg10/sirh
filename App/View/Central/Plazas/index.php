@@ -43,38 +43,34 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
         <div class="card-body">
             <div class="row div-spacing">
                 <div class="row">
+
                     <div class="col-12 col-md-6 col-lg-9 col-xl-9">
                         <h2 class="card-title tittle-card-index">Plazas</h2>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3 col-xl-3 search-container">
+
+
+                    <div class="col-3 search-container d-flex align-items-center">
+                        <?php if ($id_tbl_centro_trabajo_hraes != null) { ?>
+                            <button class="btn btn-light btn-circle" type="button" onclick="agregarEditarDetalles(null)"
+                                data-toggle="tooltip" title="Agregar plaza">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        <?php } else { ?>
+
+                            <button class="btn btn-light btn-circle" data-toggle="modal" data-target="#exampleModal"
+                                type="button" data-toggle="tooltip" title="Agregar plaza">
+                                <i class="fa fa-plus"></i>
+                            </button>
+
+                        <?php } ?>
+
                         <input onkeyup="buscarPlaza();" id="buscar" type="text" placeholder="Buscar..."
-                            class="form-control mr-sm-2 search-input">
-                        <span class="search-icon"><i class="fas fa-search"></i></span>
+                            class="form-control search-input" style="margin-left: 15px;">
+                        <span class="search-icon ml-2"><i class="fas fa-search"></i></span>
                     </div>
+
                 </div>
             </div>
-
-            <?php if ($id_tbl_centro_trabajo_hraes != null) { ?>
-                <div class="col-9">
-                    <div class="form-inline">
-                        <button onclick="agregarEditarDetalles(null)" type="button" class="btn btn-light"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                class="fa fa-plus icono-pequeno-tabla"></i>
-                            <span class="hide-menu text-button-add">&nbsp;Agregar</span>
-                        </button>
-                    </div>
-                </div>
-            <?php } else { ?>
-                <div class="col-9">
-                    <div class="form-inline">
-                        <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-light"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                class="fa fa-plus icono-pequeno-tabla"></i>
-                            <span class="hide-menu text-button-add">&nbsp;Agregar</span>
-                        </button>
-                    </div>
-                </div>
-            <?php } ?>
 
             <div class="div-spacing"></div>
             <div class="col-12 table-responsive">

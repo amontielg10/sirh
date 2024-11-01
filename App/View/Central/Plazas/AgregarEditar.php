@@ -42,18 +42,15 @@
                             </fieldset>
                         </div>
 
-                        <div class="col-12 col-md-4 col-lg-2 mb-4">
-                            <fieldset disabled id="checkbox_disabled_num_plaza" data-toggle="tooltip"
-                                data-placement="top">
-                                <label for="campo" class="form-label input-text-form">N&uacutemero de
-                                    plaza</label><label class="text-required">*</label>
-                                <input minlength="7" type="number" class="form-control custom-input" id="num_plaza"
-                                    placeholder="Número de plaza" oninput="validarNumero(this)">
-                                <div class="line"></div>
-                            </fieldset>
+                        <div class="col-12 col-md-4 col-lg-3 mb-4">
+                            <label for="campo" class="form-label input-text-form">N&uacutemero de
+                                plaza</label><label class="text-required">*</label>
+                            <input minlength="7" type="number" class="form-control custom-input" id="num_plaza"
+                                placeholder="Número de plaza" oninput="validarNumero(this)">
+                            <div class="line"></div>
                         </div>
 
-                        <div class="col-12 col-md-8 col-lg-3 mb-4">
+                        <div class="col-12 col-md-8 col-lg-4 mb-4">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="campo" class="form-label input-text-form">Tipo de plaza</label>
@@ -71,6 +68,7 @@
                             </div>
                         </div>
 
+                        <!--
                         <div class="col-12 col-md-4 col-lg-2 mb-4">
                             <fieldset disabled id="checkbox_disabled" data-toggle="tooltip" data-placement="top"
                                 title="Una plaza plantilla es aquella cuyo número aún no está definido.">
@@ -85,6 +83,7 @@
                                 </div>
                             </fieldset>
                         </div>
+-->
                     </div>
 
                     <div class="row mx-1">

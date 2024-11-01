@@ -36,10 +36,13 @@
                                 3. En la columna TIPO*, debe indicarse si se desea justificar un retardo; para ello,
                                 escribe <strong>RETARDO</strong>. Si quieres justificar una falta, escribe
                                 <strong>FALTA</strong>.<br>
-                                4. Las fechas deben ingresarse en el formato <strong>(YYYY-MM-DD).</strong><br>
-                                5. Los campos marcados con <strong>*</strong> son obligatorios; es crucial <strong>no
+                                4. En la columna TIPO FALTA/RETARDO*, el tipo de incidencia; para ello,
+                                escribe <strong>ENTRADA</strong>. Si quieres justificar por entrada, escribe
+                                <strong>SALIDA</strong>. Si se quiere justificar por salida<br>
+                                5. Las fechas deben ingresarse en el formato <strong>(YYYY/MM/DD).</strong><br>
+                                6. Los campos marcados con <strong>*</strong> son obligatorios; es crucial <strong>no
                                     eliminar los encabezados.</strong><br>
-                                6. Al finalizar, se generará un archivo con los registros que se hayan ingresado
+                                7. Al finalizar, se generará un archivo con los registros que se hayan ingresado
                                 correctamente.
                             </div>
                         </div>
@@ -58,7 +61,7 @@
                                     <i style="background:white" class="fas fa-upload custom-file-icon"></i>
                                 </label>
                                 <input type="file" class="custom-file-input d-none" id="customFileFaltas"
-                                    onchange="updateFileName(this)" name="exel_centro_trabajo">
+                                    onchange="updateFileNameFalta(this)" name="exel_centro_trabajo">
                                 <div class="custom-file-name-faltas"></div>
                             </div>
                         </div>
@@ -69,7 +72,7 @@
             <div class="modal-footer">
                 <button onclick="ocultarModalFaltas();" type="button" class="btn btn-secondary" data-dismiss="modal"><i
                         class="fas fa-times"></i> Cancelar</button>
-                <button type="submit" onclick="return validarCarga_();" type="button"
+                <button type="submit" onclick="return validarCargaFalta();" type="button"
                     class="btn btn-success save-botton-modal"><i class="fa fa-upload"></i>
                     Procesar</button>
             </div>

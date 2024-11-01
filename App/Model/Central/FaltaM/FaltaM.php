@@ -411,4 +411,29 @@ class FaltaModelM
                             SET fecha_ult_proceso = CURRENT_DATE;");
         return $query;
     }
+
+    public function truncateTableTmpFaltas()
+    {
+        $query = pg_query("TRUNCATE TABLE central.masivo_ctrl_temp_faltas_just RESTART IDENTITY;");
+    }
+
+    public function addInfoFaltaTemp(
+        $rfc,
+        $fecha,
+        $observaciones,
+        $tipo,
+        $tipo_falta
+    ) {
+        $query = pg_query("INSERT INTO central.masivo_ctrl_temp_faltas_just(
+                            rfc, fecha, observaciones, tipo, tipo_falta)
+                            VALUES ('$rfc', '$fecha', '$observaciones', '$tipo', '$tipo_falta ');");
+        return $query;
+    }
+
+    public function udpdateFaltas()
+    {
+        $query = pg_query("");
+        return $query;
+    }
+
 }

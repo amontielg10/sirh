@@ -2,7 +2,7 @@ function validar() {
 
     let num_plaza = document.getElementById('num_plaza').value.trim();
     let id_cat_plazas = document.getElementById('id_cat_plazas').value.trim();
-    let id_cat_situacion_plaza_hraes = document.getElementById('id_cat_situacion_plaza_hraes').value.trim();
+  //  let id_cat_situacion_plaza_hraes = document.getElementById('id_cat_situacion_plaza_hraes').value.trim();
     let id_cat_puesto_hraes = document.getElementById('id_cat_puesto_hraes').value.trim();
     let id_cat_aux_puesto = document.getElementById('id_cat_aux_puesto').value.trim();
     let id_cat_categoria_puesto = document.getElementById('id_cat_categoria_puesto').value.trim();
