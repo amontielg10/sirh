@@ -239,6 +239,43 @@
                         </div>
                     </div>
 
+
+                    <!--   //////////////////  -->
+                    <div class="row mx-1">
+                        <div class="col-12 col-md-6 col-lg-3 mb-4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="campo" class="form-label input-text-form">Caracter de
+                                        nombramiento</label>
+                                    <label class="text-required"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select class="form-control custom-select selectpicker"
+                                        data-style="input-select-selectpicker" aria-label="Default select example"
+                                        data-live-search="true" id="id_cat_caracter_nombramiento"
+                                        data-none-results-text="Sin resultados">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-3 mb-4">
+                            <label for="campo" class="form-label input-text-form">Fecha inicio</label><label
+                                class="text-required"></label>
+                            <input type="date" class="form-control custom-input" id="num_plaza">
+                            <div class="line"></div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-3 mb-4">
+                            <label for="campo" class="form-label input-text-form">Fecha fin</label><label
+                                class="text-required"></label>
+                            <input type="date" class="form-control custom-input" id="num_plaza">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

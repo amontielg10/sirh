@@ -116,6 +116,7 @@ if ($id_object != null) {
     $programa = $catSelectC->selectByAllCatalogo($contratacionM->listarByAllPrograma());
     $trabajador = $catSelectC->selectByAllCatalogo($contratacionM->listarByAllTrabajador());
     $contratacion = $catSelectC->selecStaticByNull();
+    $caracterNom = $catSelectC->selectByAllCatalogo($contratacionM->listarCatCaracter());
 
     $raw = [
         'entity' => $entity,
@@ -130,6 +131,7 @@ if ($id_object != null) {
         'programa' => $programa,
         'trabajador' => $trabajador,
         'contratacion' => $contratacion,
+        'caracterNom' => $caracterNom
     ];
     echo json_encode($raw);
 }

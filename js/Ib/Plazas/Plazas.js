@@ -73,6 +73,7 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             let is_programa = jsonData.programa;
             let is_trabajador = jsonData.trabajador;
             let is_contratacion = jsonData.contratacion;
+            let is_caracterNom = jsonData.caracterNom;
 
             $('#id_cat_unidad').empty();
             $('#id_cat_unidad').html(is_unidadAdmin_);
@@ -290,4 +291,12 @@ function concatNombre(nombre, primerApellido, segundoApellido) {
 
 function validarNumero(input) {
     input.value = input.value.replace(/[^\d]/g, '');
+}
+
+function abrirModalAdd() {
+    $("#exampleModal").modal("show");
+}
+
+function cerrarModalAdd() {
+    $("#exampleModal").modal("hide");
 }

@@ -64,4 +64,14 @@ class ContratacionM
                             WHERE central.cat_tipo_contratacion.id_cat_tipo_contratacion = $id;");
         return $query;
     }
+
+    public function listarCatCaracter()
+    {
+        $query = pg_query("SELECT 
+                                central.cat_caracter_nombramiento.id_cat_caracter_nombramiento,
+                                central.cat_caracter_nombramiento.nombre
+                            FROM central.cat_caracter_nombramiento
+                            ORDER BY central.cat_caracter_nombramiento.nombre ASC;");
+        return $query;
+    }
 }

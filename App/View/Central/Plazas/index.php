@@ -57,8 +57,8 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
                             </button>
                         <?php } else { ?>
 
-                            <button class="btn btn-light btn-circle" data-toggle="modal" data-target="#exampleModal"
-                                type="button" data-toggle="tooltip" title="Agregar plaza">
+                            <button class="btn btn-light btn-circle" type="button" onclick="abrirModalAdd()" type="button"
+                                data-toggle="tooltip" title="Agregar plaza">
                                 <i class="fa fa-plus"></i>
                             </button>
 
@@ -134,7 +134,7 @@ if (isset($_POST['id_tbl_centro_trabajo_hraes'])) {
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarModalAdd()"><i class="fas fa-times"></i>
                     Cancelar</button>
                 <a href="../CentroTrabajo/index.php" type="button" class="btn btn-success save-botton-modal"><i
                         class="fa fa-arrow-right"></i> Ir</a>

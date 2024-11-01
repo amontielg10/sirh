@@ -432,7 +432,30 @@ class FaltaModelM
 
     public function udpdateFaltas()
     {
-        $query = pg_query("");
+        $query = pg_query("-- #Script Para Actualización de Retardos #
+                            -- ### Proceso Validado ###################
+                            UPDATE central.ctrl_retardo R
+                            SET id_cat_retardo_estatus = 3, -- JUSTIFICADA
+                                observaciones = J.observaciones	-- Observaciones del Justificación
+                            FROM central.masivo_ctrl_temp_faltas_just J	-- Justificaciones
+                                JOIN central.tbl_empleados_hraes  E ON  J.rfc = E.rfc
+                            WHERE R.id_tbl_empleados_hraes = E.id_tbl_empleados_hraes
+                            AND R.fecha = J.fecha::DATE
+                            AND UPPER(J.tipo) = 'RETARDO';
+                            
+                            -- #Script Para Actualización de Faltas #
+                            -- ###Proceso Validado ##################
+                            UPDATE central.ctrl_faltas F
+                            SET id_cat_retardo_estatus = 3, -- JUSTIFICADA
+                                observaciones = J.observaciones	-- Observaciones del Justificación
+                            FROM central.masivo_ctrl_temp_faltas_just J	-- Justificaciones
+                                JOIN central.tbl_empleados_hraes  E ON  J.rfc = E.rfc
+                            WHERE F.id_tbl_empleados_hraes = E.id_tbl_empleados_hraes
+                            AND F.fecha = J.fecha::DATE
+                            AND UPPER(J.tipo) = 'FALTA'
+                            AND F.id_cat_retardo_tipo = (SELECT id_cat_retardo_tipo
+                                                        FROM central.cat_retardo_tipo
+                                                        WHERE descripcion = UPPER(J.tipo_falta));");
         return $query;
     }
 
