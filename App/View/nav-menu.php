@@ -20,7 +20,7 @@ $id_rol = $_SESSION['id_rol'];
     <script src="../../../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <link rel="stylesheet" href="../../../../assets/bootstrap/css/bootstrap.min.css">
     <script src="../../../../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
--->
+    -->
     <script src="../../../../dist/js/sweetalert2.all.min.js"></script>
     <script src="../../../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <link rel="stylesheet" href="../../../../assets/bootstrap/css/bootstrap.min.css">
@@ -280,15 +280,22 @@ $id_rol = $_SESSION['id_rol'];
                             <div class="col-12">
                                 <br>
                                 <h6 style="font-weight: " class="text-result-normal  input-text-form div-spacing">
-                                    <i class="fa fa-user"></i> USUARIO: <label class="text-result-normal"
+                                    <i class="fa fa-user"></i> &nbsp USUARIO: <label class="text-result-normal"
                                         id="nombre_usuario_"></label>
                                 </h6>
                             </div>
                             <div class="col-12">
                                 <br>
                                 <h6 style="font-weight: " class="text-result-normal  input-text-form div-spacing">
-                                    <i class="fa fa-calendar"></i> FECHA: <label class="text-result-normal"
-                                        id="fecha_usuario_"> _</label>
+                                    <i class="fa fa-calendar"></i> &nbsp FECHA: <label class="text-result-normal"
+                                        id="fecha_usuario_"></label>
+                                </h6>
+                            </div>
+                            <div class="col-12">
+                                <br>
+                                <h6 style="font-weight: " class="text-result-normal  input-text-form div-spacing">
+                                    <i class="fa fa-history"></i> &nbsp HORA: <label class="text-result-normal"
+                                        id="hora_usuario_"></label>
                                 </h6>
                             </div>
                         </div>

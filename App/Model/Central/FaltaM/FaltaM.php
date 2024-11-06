@@ -234,7 +234,7 @@ class FaltaModelM
     ///SCRIP PARA CALCULO DE FLATAS DE FORMA MASIVA
     public function process_1()
     {
-        $query = pg_query("							--########################
+        $query = pg_query("--########################
                             --### PROCESO VALIDADO ### 1
                             --########################
                             --============================================================================================
@@ -269,10 +269,15 @@ class FaltaModelM
                                     GROUP BY  central.ctrl_asistencia.fecha, central.ctrl_asistencia.id_tbl_empleados_hraes
                                     ORDER BY central.ctrl_asistencia.id_tbl_empleados_hraes
                                 ) AS Minimo
-                                WHERE Minimo.hora >= (select cat_asistencia_config.hora_min_retardo from central.cat_asistencia_config)
-                                AND Minimo.hora <= (select cat_asistencia_config.hora_max_retardo from central.cat_asistencia_config)
-                            ) AS Entradas
-							WHERE Entradas.fecha > (SELECT fecha_ult_proceso FROM central.cat_asistencia_config)");
+                                WHERE Minimo.hora >= (select cat_asistencia_config.hora_min_retardo from central.cat_asistencia_config
+                                                        WHERE id_cat_asistencia_config = 
+                                                        (SELECT id_cat_asistencia_config FROM central.ctrl_asistencia_info AI 
+                                                        WHERE AI.id_tbl_empleados_hraes = Minimo.id_tbl_empleados_hraes))
+                                AND Minimo.hora <= (select cat_asistencia_config.hora_max_retardo from central.cat_asistencia_config
+                                                        WHERE id_cat_asistencia_config = 
+                                                        (SELECT id_cat_asistencia_config FROM central.ctrl_asistencia_info AI 
+                                                        WHERE AI.id_tbl_empleados_hraes = Minimo.id_tbl_empleados_hraes))
+                            ) AS Entradas");
         return $query;
     }
 
@@ -298,7 +303,7 @@ class FaltaModelM
                                     NULL observaciones,
                                     TRUE es_por_retardo,							-- Entrada despues de Hora Máxima de Retardo
                                     1 id_cat_retardo_tipo, 							-- Entrada 
-                                    7 id_cat_retardo_estatus, 						-- Por Aplicar
+                                    7 id_cat_retardo_estatus, 						-- Retardo Mayor
                                     NULL id_user,
                                     Entradas.fecha,
                                     Entradas.hora,
@@ -317,7 +322,10 @@ class FaltaModelM
                                     GROUP BY  central.ctrl_asistencia.fecha, central.ctrl_asistencia.id_tbl_empleados_hraes
                                     ORDER BY central.ctrl_asistencia.id_tbl_empleados_hraes
                                 ) AS Minimo
-                                WHERE Minimo.hora > (SELECT cat_asistencia_config.hora_max_retardo FROM central.cat_asistencia_config) -- Después de hora Max
+                                WHERE Minimo.hora > (SELECT cat_asistencia_config.hora_max_retardo FROM central.cat_asistencia_config
+                                                        WHERE id_cat_asistencia_config = 
+                                                        (SELECT id_cat_asistencia_config FROM central.ctrl_asistencia_info AI 
+                                                        WHERE AI.id_tbl_empleados_hraes = Minimo.id_tbl_empleados_hraes)) -- Después de hora Max
                             ) AS Entradas");
         return $query;
     }
@@ -325,47 +333,49 @@ class FaltaModelM
     public function process_3()
     {
         $query = pg_query("--########################
-                        --### PROCESO VALIDADO ### 3
-                        --########################
-                        --============================================================================================												  
-                        --### Tomar el ültimo registro por Fecha y empleado para dejarlo en la tabla de faltas     ### Para el caso donde las salidas sean antes de la
-                        --============================================================================================ Hora establecida								  
-                        INSERT INTO central.ctrl_faltas (id_tbl_empleados_hraes,
-                                                        observaciones,
-                                                        es_por_retardo,
-                                                        id_cat_retardo_tipo,						-- 2-Salida
-                                                        id_cat_retardo_estatus,					-- 4-Falta (Salida Anticipada)
-                                                        id_user,
-                                                        fecha,
-                                                        hora,
-                                                        cantidad)
-                                                        
-                        SELECT 	Salidas.id_tbl_empleados_hraes,
-                                NULL observaciones,
-                                TRUE es_por_retardo,							-- Falta por Salida Anticipada, no se debe a ningún Retardo
-                                2 id_cat_retardo_tipo, 							-- Salida 
-                                4 id_cat_retardo_estatus, 						-- Falta (Salida Anticipada)
-                                NULL id_user,
-                                Salidas.fecha,
-                                Salidas.hora,
-                                1 cantidad
-                        FROM 
-                        (
-                            SELECT 	 
-                                Maximo.hora, Maximo.fecha, Maximo.id_tbl_empleados_hraes
-                            FROM
+                            --### PROCESO VALIDADO ### 3
+                            --########################
+                            --============================================================================================												  
+                            --### Tomar el ültimo registro por Fecha y empleado para dejarlo en la tabla de faltas     ### Para el caso donde las salidas sean antes de la
+                            --============================================================================================ Hora establecida								  
+                            INSERT INTO central.ctrl_faltas (id_tbl_empleados_hraes,
+                                                            observaciones,
+                                                            es_por_retardo,
+                                                            id_cat_retardo_tipo,						-- 2-Salida
+                                                            id_cat_retardo_estatus,					-- 4-Falta (Salida Anticipada)
+                                                            id_user,
+                                                            fecha,
+                                                            hora,
+                                                            cantidad)
+                                                            
+                            SELECT 	Salidas.id_tbl_empleados_hraes,
+                                    NULL observaciones,
+                                    TRUE es_por_retardo,							-- Falta por Salida Anticipada, no se debe a ningún Retardo
+                                    2 id_cat_retardo_tipo, 							-- Salida 
+                                    4 id_cat_retardo_estatus, 						-- Falta (Salida Anticipada)
+                                    NULL id_user,
+                                    Salidas.fecha,
+                                    Salidas.hora,
+                                    1 cantidad
+                            FROM 
                             (
                                 SELECT 	 
-                                    MAX(central.ctrl_asistencia.hora) hora, central.ctrl_asistencia.fecha,
-                                    central.ctrl_asistencia.id_tbl_empleados_hraes		
-                                FROM central.ctrl_asistencia 
-                                    WHERE central.ctrl_asistencia.fecha NOT IN (SELECT fecha FROM central.cat_dias_festivos) -- Se excluyen no laborables
-                                GROUP BY  central.ctrl_asistencia.fecha, central.ctrl_asistencia.id_tbl_empleados_hraes
-                                ORDER BY central.ctrl_asistencia.id_tbl_empleados_hraes
-                            ) 	AS Maximo 
-                            WHERE Maximo.hora <= (SELECT cat_asistencia_config.hora_min_salida FROM central.cat_asistencia_config) 			-- Salidas Antes de la hora establecida
-                        ) AS Salidas
-						WHERE Salidas.fecha > (SELECT fecha_ult_proceso FROM central.cat_asistencia_config)");
+                                    Maximo.hora, Maximo.fecha, Maximo.id_tbl_empleados_hraes
+                                FROM
+                                (
+                                    SELECT 	 
+                                        MAX(central.ctrl_asistencia.hora) hora, central.ctrl_asistencia.fecha,
+                                        central.ctrl_asistencia.id_tbl_empleados_hraes		
+                                    FROM central.ctrl_asistencia 
+                                        WHERE central.ctrl_asistencia.fecha NOT IN (SELECT fecha FROM central.cat_dias_festivos) -- Se excluyen no laborables
+                                    GROUP BY  central.ctrl_asistencia.fecha, central.ctrl_asistencia.id_tbl_empleados_hraes
+                                    ORDER BY central.ctrl_asistencia.id_tbl_empleados_hraes
+                                ) 	AS Maximo 
+                                WHERE Maximo.hora <= (SELECT cat_asistencia_config.hora_min_salida FROM central.cat_asistencia_config
+                                                        WHERE id_cat_asistencia_config = 
+                                                        (SELECT id_cat_asistencia_config FROM central.ctrl_asistencia_info AI 
+                                                        WHERE AI.id_tbl_empleados_hraes = Maximo.id_tbl_empleados_hraes)) 			-- Salidas Antes de la hora establecida
+                            ) AS Salidas");
         return $query;
     }
 

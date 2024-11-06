@@ -30,6 +30,9 @@ $datos = [
     'id_cat_tipo_trabajador' => $_POST['id_cat_tipo_trabajador'],
     'id_cat_tipo_contratacion' => $_POST['id_cat_tipo_contratacion'],
     'id_cat_tipo_programa' => $_POST['id_cat_tipo_programa'],
+    'id_cat_caracter_nombramiento' => $_POST['id_cat_caracter_nombramiento'],
+    'fecha_inicio' => $_POST['fecha_inicio'],
+    'fecha_fin' => $_POST['fecha_fin'],
     'id_user' => $_SESSION['id_user'],
     'fecha_usuario' => $timestamp,
 ];

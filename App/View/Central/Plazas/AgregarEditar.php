@@ -264,14 +264,14 @@
                         <div class="col-12 col-md-6 col-lg-3 mb-4">
                             <label for="campo" class="form-label input-text-form">Fecha inicio</label><label
                                 class="text-required"></label>
-                            <input type="date" class="form-control custom-input" id="num_plaza">
+                            <input type="date" class="form-control custom-input" id="is_fecha_inicio">
                             <div class="line"></div>
                         </div>
 
                         <div class="col-12 col-md-6 col-lg-3 mb-4">
                             <label for="campo" class="form-label input-text-form">Fecha fin</label><label
                                 class="text-required"></label>
-                            <input type="date" class="form-control custom-input" id="num_plaza">
+                            <input type="date" class="form-control custom-input" id="is_fecha_fin">
                             <div class="line"></div>
                         </div>
                     </div>

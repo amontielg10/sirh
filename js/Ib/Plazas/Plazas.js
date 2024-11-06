@@ -95,6 +95,8 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             $('#id_cat_tipo_trabajador').html(is_trabajador);
             $('#id_cat_tipo_contratacion').empty();
             $('#id_cat_tipo_contratacion').html(is_contratacion);
+            $('#id_cat_caracter_nombramiento').empty();
+            $('#id_cat_caracter_nombramiento').html(is_caracterNom);
 
             $('#id_cat_tipo_trabajador').selectpicker('refresh');
             $('#id_cat_tipo_contratacion').selectpicker('refresh');
@@ -106,11 +108,14 @@ function agregarEditarDetalles(id_object) { //SE OBTIENEN INFO DE ID SELECCIONAD
             $('#id_cat_plazas').selectpicker('refresh');
             $('#id_tbl_zonas_pago').selectpicker('refresh');
             $('#id_cat_puesto_hraes').selectpicker('refresh');
+            $('#id_cat_caracter_nombramiento').selectpicker('refresh');
             $('.selectpicker').selectpicker();
 
             $("#id_zona_pagadora_clue").val(is_zona);
             $("#id_cat_niveles_hraes").val(niveles);
             $("#num_plaza").val(entity.num_plaza);
+            $("#is_fecha_inicio").val(entity.fecha_inicio);
+            $("#is_fecha_fin").val(entity.fecha_fin);
             $("#id_tbl_centro_trabajo_hraes_aux").val(entity.id_tbl_centro_trabajo_hraes);
 
             /*
@@ -157,6 +162,9 @@ function agregarEditarByDb() {
         id_cat_tipo_programa: $("#id_cat_tipo_programa").val(),
         id_cat_unidad: $("#id_cat_unidad").val(),
         id_cat_coordinacion: $("#id_cat_coordinacion").val(),
+        id_cat_caracter_nombramiento: $("#id_cat_caracter_nombramiento").val(),
+        fecha_inicio: $("#is_fecha_inicio").val(),
+        fecha_fin: $("#is_fecha_fin").val(),
     },
         function (data) {
             if (data == 'edit') {

@@ -46,8 +46,10 @@ if (pg_num_rows($result) > 0) {
     while ($row = pg_fetch_row($result)) {
 
         //funcion para validar el id de usuario y fecha de captura no este vaia
-        $id_user = $row[10] == '' ? 0 : $row[10];
-        $date = $row[11] == '' ? 0 : date("Y-m-d", strtotime($row[11]));
+        $id_user = empty($row[10]) ? 'false' : $row[10];
+        $date = empty($row[11]) ? 'false' : date("Y-m-d", strtotime($row[11]))."T00:00:00";
+        //$hour = empty($row[11]) ? 'false' : date("H:i", strtotime($row[11]));
+        $hour = 'false';
 
         $data .=
             '<tbody style="background-color: white;">
@@ -60,7 +62,7 @@ if (pg_num_rows($result) > 0) {
                             <!--
                             <button onclick="detallesPlazaModal(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fa fa-align-left icon-edit-table"></i> Especificaciones</button>
                             -->
-                            <button onclick="isGetUser(' . $id_user . ' , ' . $date . ')" class="dropdown-item btn btn-light"><i class="fa fa-user icon-edit-table"></i> Usuario</button>
+                            <button onclick="isGetUser(' . $id_user . ' , ' . $date . ' , ' . $hour . ')" class="dropdown-item btn btn-light"><i class="fa fa-user icon-edit-table"></i> Usuario</button>
                             <button onclick="eliminarEntity(' . $row[0] . ')" class="dropdown-item btn btn-light" disabled><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
                         </div>
                     </div>

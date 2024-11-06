@@ -12,16 +12,22 @@
 | y la fecha de captura.
 |
 */
-function isGetUser(id_user, date) {
+function isGetUser(id_user, date, hour) {
 
-    let _id_user = id_user != 0 ? id_user : ' _';
-    let _date = date != 0 ? date : ' _';
+    console.log(id_user);
+    console.log(date);
+    console.log(hour);
+
+    /*
+    let _id_user = id_user != false ? id_user : ' _';
+    let _date = date != false ? date : ' _';
+    let _hour = hour != false ? hour : ' _';
 
     if (_id_user != ' _') {
-        getDataUser(_id_user, _date)
+        getDataUser(_id_user, _date, _hour)
     } else {
-        showModalUser(_id_user, _date)
-    }
+        showModalUser(_id_user, _date, _hour)
+    }*/
 }
 
 
@@ -33,12 +39,12 @@ function isGetUser(id_user, date) {
 | el cual registro el ultimo movimiento en el sistema
 |
 */
-function getDataUser(id_user, date) {
+function getDataUser(id_user, date, hour) {
     $.post("../../../../App/Controllers/Admin/UsuariosC/GetUserC.php", {
         id_user: id_user
     },
         function (data) {
-            showModalUser(data, date)
+            showModalUser(data, date, hour)
         }
     );
 }
@@ -50,11 +56,14 @@ function getDataUser(id_user, date) {
 | Muestra el modal con el usuario y la fecha en que se capturo
 |
 */
-function showModalUser(id_user, date) {
+function showModalUser(id_user, date, hour) {
     let nombre_usuario_ = document.getElementById("nombre_usuario_");
     let fecha_usuario_ = document.getElementById("fecha_usuario_");
+    let hora_usuario_ = document.getElementById("hora_usuario_");
+
     nombre_usuario_.textContent = id_user;
-    fecha_usuario_.textContent = ' _';
+    fecha_usuario_.textContent = date;
+    hora_usuario_.textContent = hour;
     $("#modal_mostrar_usuario").modal("show");
 }
 

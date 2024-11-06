@@ -88,6 +88,11 @@ if ($id_object != null) {
         $contratacion = $catSelectC->selectByEditCatalogo($contratacionM->listarByAllContratacion($entity['id_cat_tipo_trabajador']), $row->returnArrayById($contratacionM->listarByEditContratacion($entity['id_cat_tipo_contratacion'])));
     }
 
+    $caracterNom = $catSelectC->selectByAllCatalogo($contratacionM->listarCatCaracter());
+    if($entity['id_cat_caracter_nombramiento'] != ''){
+        $caracterNom = $catSelectC->selectByEditCatalogo($contratacionM->listarCatCaracter(), $row->returnArrayById($contratacionM->editCatCaracter($entity['id_cat_caracter_nombramiento'])));
+    }
+
     $raw = [
         'entity' => $entity,
         'niveles' => 'NIVEL',
@@ -101,6 +106,7 @@ if ($id_object != null) {
         'programa' => $programa,
         'trabajador' => $trabajador,
         'contratacion' => $contratacion,
+        'caracterNom' => $caracterNom
     ];
     echo json_encode($raw);
 

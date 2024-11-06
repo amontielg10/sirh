@@ -74,4 +74,14 @@ class ContratacionM
                             ORDER BY central.cat_caracter_nombramiento.nombre ASC;");
         return $query;
     }
+
+    public function editCatCaracter($id)
+    {
+        $query = pg_query("SELECT 
+                                central.cat_caracter_nombramiento.id_cat_caracter_nombramiento,
+                                central.cat_caracter_nombramiento.nombre
+                            FROM central.cat_caracter_nombramiento
+                            WHERE central.cat_caracter_nombramiento.id_cat_caracter_nombramiento = $id;");
+        return $query;
+    }
 }
