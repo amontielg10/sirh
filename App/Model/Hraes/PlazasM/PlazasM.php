@@ -19,14 +19,10 @@ class modelPlazasHraes
                             tbl_control_plazas_hraes.num_plaza, 
                             cat_tipo_plazas.tipo_plaza,
                             CONCAT(cat_tipo_contratacion_hraes.tipo_contratacion, ' ',
-                                cat_subtipo_contratacion_hraes.subtipo),
-                            cat_unidad_responsable.nombre
+                                cat_subtipo_contratacion_hraes.subtipo)
                     FROM tbl_control_plazas_hraes
                     INNER JOIN cat_tipo_plazas
                         ON tbl_control_plazas_hraes.id_cat_tipo_plazas = cat_tipo_plazas.id_cat_tipo_plazas
-                    INNER JOIN cat_unidad_responsable
-                        ON tbl_control_plazas_hraes.id_cat_unidad_responsable = 
-                            cat_unidad_responsable.id_cat_unidad_responsable
                     INNER JOIN cat_tipo_subtipo_contratacion_hraes
                         ON tbl_control_plazas_hraes.id_cat_tipo_subtipo_contratacion_hraes = 
                         cat_tipo_subtipo_contratacion_hraes.id_cat_tipo_subtipo_contratacion_hraes
@@ -34,7 +30,7 @@ class modelPlazasHraes
                         ON cat_tipo_subtipo_contratacion_hraes.id_cat_tipo_contratacion_hraes =
                             cat_tipo_contratacion_hraes.id_cat_tipo_contratacion_hraes
                     INNER JOIN cat_subtipo_contratacion_hraes
-                        ON 	cat_tipo_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes =
+                        ON  cat_tipo_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes =
                             cat_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes " . $result;
         return $listado;
     }
@@ -47,8 +43,6 @@ class modelPlazasHraes
                             LIKE '%$busqueda%'
                     OR TRIM(UPPER(UNACCENT(CONCAT(cat_tipo_contratacion_hraes.tipo_contratacion, ' ',
                                 cat_subtipo_contratacion_hraes.subtipo))))
-                            LIKE '%$busqueda%'
-                    OR TRIM(UPPER(UNACCENT(cat_unidad_responsable.nombre)))
                             LIKE '%$busqueda%')
                     ORDER BY id_tbl_control_plazas_hraes DESC
                     LIMIT 6 OFFSET $paginator;";
@@ -63,14 +57,10 @@ class modelPlazasHraes
                             tbl_control_plazas_hraes.num_plaza, 
                             cat_tipo_plazas.tipo_plaza,
                             CONCAT(cat_tipo_contratacion_hraes.tipo_contratacion, ' ',
-                                cat_subtipo_contratacion_hraes.subtipo),
-                            cat_unidad_responsable.nombre
+                                cat_subtipo_contratacion_hraes.subtipo)
                     FROM tbl_control_plazas_hraes
                     INNER JOIN cat_tipo_plazas
                         ON tbl_control_plazas_hraes.id_cat_tipo_plazas = cat_tipo_plazas.id_cat_tipo_plazas
-                    INNER JOIN cat_unidad_responsable
-                        ON tbl_control_plazas_hraes.id_cat_unidad_responsable = 
-                            cat_unidad_responsable.id_cat_unidad_responsable
                     INNER JOIN cat_tipo_subtipo_contratacion_hraes
                         ON tbl_control_plazas_hraes.id_cat_tipo_subtipo_contratacion_hraes = 
                         cat_tipo_subtipo_contratacion_hraes.id_cat_tipo_subtipo_contratacion_hraes
@@ -78,11 +68,10 @@ class modelPlazasHraes
                         ON cat_tipo_subtipo_contratacion_hraes.id_cat_tipo_contratacion_hraes =
                             cat_tipo_contratacion_hraes.id_cat_tipo_contratacion_hraes
                     INNER JOIN cat_subtipo_contratacion_hraes
-                        ON 	cat_tipo_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes =
+                        ON  cat_tipo_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes =
                             cat_subtipo_contratacion_hraes.id_cat_subtipo_contratacion_hraes " . $condition;
         return $listado;
     }
-
     function detallesPlazas($id_object)
     {
         $listado = pg_query("SELECT tbl_control_plazas_hraes.id_tbl_control_plazas_hraes,
