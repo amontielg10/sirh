@@ -6,7 +6,7 @@ include '../../../Model/Hraes/BitacoraM/BitacoraM.php';
 
 $model = new modelCentroTrabajoHraes();
 $bitacoraM = new BitacoraM();
-$tablaCentroTrabajo = 'tbl_centro_trabajo_hraes';
+$tablaCentroTrabajo = 'public.tbl_centro_trabajo_hraes';
 
 $condicion = [
     'id_tbl_centro_trabajo_hraes' => $_POST['id_object']
