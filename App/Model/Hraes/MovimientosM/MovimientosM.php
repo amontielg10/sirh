@@ -2,7 +2,7 @@
 
 class ModelMovimientosM
 {
-    public function listarByIdEmpleado($idEmpleado,$paginator)
+    public function listarByIdEmpleado($idEmpleado, $paginator)
     {
         $listado = pg_query("SELECT tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes, 
                                     tbl_plazas_empleados_hraes.fecha_inicio, 
@@ -13,21 +13,22 @@ class ModelMovimientosM
                                     CONCAT(tbl_movimientos.codigo,' - ',tbl_movimientos.nombre_movimiento),
                                     tbl_movimientos.tipo_movimiento,
                                     tbl_control_plazas_hraes.num_plaza
-                            FROM tbl_plazas_empleados_hraes
+                            FROM public.tbl_plazas_empleados_hraes
                             INNER JOIN tbl_movimientos
-                            ON tbl_plazas_empleados_hraes.id_tbl_movimientos = 
+                            ON public.tbl_plazas_empleados_hraes.id_tbl_movimientos = 
                                 tbl_movimientos.id_tbl_movimientos
-                            INNER JOIN tbl_control_plazas_hraes
-                            ON tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
-                                tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
-                            WHERE tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
+                            INNER JOIN public.tbl_control_plazas_hraes
+                            ON public.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                                public.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+                            WHERE public.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
                             ORDER BY tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes DESC
                             LIMIT 3 OFFSET $paginator;");
 
         return $listado;
     }
-    
-    public function listarByBusqueda($idEmpleado,$paginator,$busqueda){
+
+    public function listarByBusqueda($idEmpleado, $paginator, $busqueda)
+    {
         $listado = pg_query("SELECT tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes, 
                                     tbl_plazas_empleados_hraes.fecha_inicio, 
                                     tbl_plazas_empleados_hraes.fecha_movimiento,
@@ -37,31 +38,32 @@ class ModelMovimientosM
                                     CONCAT(tbl_movimientos.codigo,' - ',tbl_movimientos.nombre_movimiento),
                                     tbl_movimientos.tipo_movimiento,
                                     tbl_control_plazas_hraes.num_plaza
-                            FROM tbl_plazas_empleados_hraes
+                            FROM public.tbl_plazas_empleados_hraes
                             INNER JOIN tbl_movimientos
                             ON tbl_plazas_empleados_hraes.id_tbl_movimientos = 
                                 tbl_movimientos.id_tbl_movimientos
-                            INNER JOIN tbl_control_plazas_hraes
-                            ON tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
-                                tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
-                            WHERE tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
+                            INNER JOIN public.tbl_control_plazas_hraes
+                            ON public.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+                                public.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+                            WHERE public.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
                             AND (TRIM(UPPER(UNACCENT(tbl_plazas_empleados_hraes.fecha_movimiento::TEXT))) 
                                     LIKE '%$busqueda%' OR
                                     TRIM(UPPER(UNACCENT(tbl_movimientos.nombre_movimiento::TEXT)))
                                     LIKE '%$busqueda%' OR
-                                tbl_control_plazas_hraes.num_plaza LIKE '%$busqueda%'
+                                public.tbl_control_plazas_hraes.num_plaza LIKE '%$busqueda%'
                             )
                             ORDER BY tbl_plazas_empleados_hraes.id_tbl_plazas_empleados_hraes DESC
                             LIMIT 3 OFFSET $paginator;");
         return $listado;
     }
 
-    public function listarByEdit($idMovimiento){
+    public function listarByEdit($idMovimiento)
+    {
         $listado = pg_query("SELECT id_tbl_plazas_empleados_hraes,fecha_inicio,
                                     fecha_termino,id_tbl_movimientos,fecha_movimiento,
                                     id_tbl_control_plazas_hraes,id_tbl_empleados_hraes,
                                     observaciones, motivo_estatus,id_cat_caracter_nom_hraes
-                             FROM tbl_plazas_empleados_hraes
+                             FROM public.tbl_plazas_empleados_hraes
                              WHERE id_tbl_plazas_empleados_hraes = $idMovimiento;");
         return $listado;
     }
@@ -85,9 +87,10 @@ class ModelMovimientosM
 
 
 
-    public function listarCountPlaza($id){
+    public function listarCountPlaza($id)
+    {
         $listado = pg_query("SELECT COUNT(tbl_plazas_empleados_hraes)
-                             FROM tbl_plazas_empleados_hraes
+                             FROM public.tbl_plazas_empleados_hraes
                              WHERE id_tbl_control_plazas_hraes = $id");
         return $listado;
     }
@@ -98,7 +101,7 @@ class ModelMovimientosM
     public function listadoByIdPlaza($idEmpleado)
     {
         $listado = pg_query("SELECT id_tbl_control_plazas_hraes
-                             FROM tbl_plazas_empleados_hraes
+                             FROM public.tbl_plazas_empleados_hraes
                              WHERE id_tbl_empleados_hraes = $idEmpleado
                              ORDER BY fecha_movimiento DESC
                              LIMIT 1");
@@ -123,16 +126,17 @@ class ModelMovimientosM
         return $pgs_delete;
     }
 
-    public function ultimoMovimientoByVal($idPlaza){
+    public function ultimoMovimientoByVal($idPlaza)
+    {
         $listado = pg_query("SELECT tbl_movimientos.id_tipo_movimiento,
                                     tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes
-                            FROM tbl_plazas_empleados_hraes
+                            FROM public.tbl_plazas_empleados_hraes
                             INNER JOIN tbl_movimientos
-                                ON tbl_plazas_empleados_hraes.id_tbl_movimientos =
+                                ON public.tbl_plazas_empleados_hraes.id_tbl_movimientos =
                                     tbl_movimientos.id_tbl_movimientos
                             WHERE id_tbl_empleados_hraes = (
                                 SELECT id_tbl_empleados_hraes
-                                FROM tbl_plazas_empleados_hraes
+                                FROM public.tbl_plazas_empleados_hraes
                                 WHERE id_tbl_control_plazas_hraes = $idPlaza 
                                 ORDER BY id_tbl_plazas_empleados_hraes DESC
                                 LIMIT 1)
@@ -141,46 +145,161 @@ class ModelMovimientosM
         return $listado;
     }
 
-    public function countPlazasById($idPlaza){
+    public function countPlazasById($idPlaza)
+    {
         $listado = pg_query("SELECT COUNT (id_tbl_plazas_empleados_hraes)
-                             FROM tbl_plazas_empleados_hraes
+                             FROM public.tbl_plazas_empleados_hraes
                              WHERE id_tbl_control_plazas_hraes = $idPlaza;");
         return $listado;
     }
 
 
-        ///LA FUNCION PERMITE SABER SI EXISTE INFORMACION EN LA BASE DEL EMPLEADO
-        public function countUltimoMovimiento($idEmpleado)
-        {
-            $listado = pg_query("SELECT COUNT(id_tbl_plazas_empleados_hraes)
-                                 FROM tbl_plazas_empleados_hraes 
+    ///LA FUNCION PERMITE SABER SI EXISTE INFORMACION EN LA BASE DEL EMPLEADO
+    public function countUltimoMovimiento($idEmpleado)
+    {
+        $listado = pg_query("SELECT COUNT(id_tbl_plazas_empleados_hraes)
+                                 FROM public.tbl_plazas_empleados_hraes 
                                  WHERE id_tbl_empleados_hraes = $idEmpleado");
-            return $listado;
-        }
+        return $listado;
+    }
 
-        ///LA FUNCION TRAE EL ULTIMO MOVIMIENTO (ALTA, BAJA, MOVIMIENTO DEL EMPLEADO)
-        public function listadoUltimoMovimiento($idEmpleado)
-        {
-            $listado = pg_query("SELECT tbl_movimientos.id_tipo_movimiento,
+    ///LA FUNCION TRAE EL ULTIMO MOVIMIENTO (ALTA, BAJA, MOVIMIENTO DEL EMPLEADO)
+    public function listadoUltimoMovimiento($idEmpleado)
+    {
+        $listado = pg_query("SELECT tbl_movimientos.id_tipo_movimiento,
                                         tbl_plazas_empleados_hraes.fecha_movimiento
-                                 FROM tbl_plazas_empleados_hraes 
+                                 FROM public.tbl_plazas_empleados_hraes 
                                  INNER JOIN tbl_movimientos
-                                 ON tbl_plazas_empleados_hraes.id_tbl_movimientos =
+                                 ON public.tbl_plazas_empleados_hraes.id_tbl_movimientos =
                                     tbl_movimientos.id_tbl_movimientos
-                                 WHERE tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
-                                 GROUP BY tbl_plazas_empleados_hraes.fecha_movimiento,
+                                 WHERE public.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
+                                 GROUP BY public.tbl_plazas_empleados_hraes.fecha_movimiento,
                                         tbl_movimientos.id_tipo_movimiento
-                                 ORDER BY tbl_plazas_empleados_hraes.fecha_movimiento DESC
+                                 ORDER BY public.tbl_plazas_empleados_hraes.fecha_movimiento DESC
                                  LIMIT 1;");
-            return $listado;
-        }
+        return $listado;
+    }
 
-        public function idPlazaMovimiento($idEmpleado){
-            $listado = pg_query("SELECT id_tbl_control_plazas_hraes
-                                 FROM tbl_plazas_empleados_hraes
+    public function idPlazaMovimiento($idEmpleado)
+    {
+        $listado = pg_query("SELECT id_tbl_control_plazas_hraes
+                                 FROM public.tbl_plazas_empleados_hraes
                                  WHERE id_tbl_empleados_hraes = $idEmpleado
                                  ORDER BY id_tbl_plazas_empleados_hraes DESC
                                  LIMIT 1;");
-            return $listado;
-        }
+        return $listado;
+    }
+
+    //La funcion retorna el id de la plaza a la que esta actualmente asociado
+    public function getMaxIdPlaza($schema, $idEmpleado){
+        $isQuery = pg_query("SELECT 
+                                $schema.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes
+                            FROM $schema.tbl_plazas_empleados_hraes
+                            INNER JOIN public.tbl_movimientos
+                                ON public.tbl_movimientos.id_tbl_movimientos = 
+                                    $schema.tbl_plazas_empleados_hraes.id_tbl_movimientos
+                            WHERE $schema.tbl_plazas_empleados_hraes.fecha_movimiento = (
+                                                        SELECT MAX($schema.tbl_plazas_empleados_hraes.fecha_movimiento) 
+                                                        FROM $schema.tbl_plazas_empleados_hraes
+                                                        WHERE $schema.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado)
+                            AND $schema.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = $idEmpleado
+                            AND public.tbl_movimientos.id_tipo_movimiento <> 3; --> ES DISNTO DE BAJA");
+        return $isQuery;
+    }
+
+    /*
+    SELECT 
+	public.tbl_empleados_hraes.id_tbl_empleados_hraes, 
+		CASE 
+			WHEN (SELECT EXISTS (
+				   SELECT TRUE
+				   FROM public.tbl_plazas_empleados_hraes
+				   INNER JOIN public.tbl_control_plazas_hraes
+					ON public.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+						public.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+				   INNER JOIN public.tbl_movimientos
+				   ON public.tbl_movimientos.id_tbl_movimientos = 
+					  public.tbl_plazas_empleados_hraes.id_tbl_movimientos
+					  WHERE public.tbl_plazas_empleados_hraes.fecha_movimiento = (
+					   SELECT MAX(public.tbl_plazas_empleados_hraes.fecha_movimiento) 
+					   FROM public.tbl_plazas_empleados_hraes
+					   WHERE public.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+							 public.tbl_empleados_hraes.id_tbl_empleados_hraes)
+					  AND public.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+							public.tbl_empleados_hraes.id_tbl_empleados_hraes
+					AND public.tbl_movimientos.id_tipo_movimiento <> 3
+			)) = TRUE THEN public.tbl_control_plazas_hraes.num_plaza 
+			ELSE '-'
+			END AS num_plaza,
+			CASE 
+			WHEN (SELECT EXISTS (
+				   SELECT TRUE
+				   FROM public.tbl_plazas_empleados_hraes
+				   INNER JOIN public.tbl_control_plazas_hraes
+					ON public.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+						public.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+				   INNER JOIN public.tbl_movimientos
+				   ON public.tbl_movimientos.id_tbl_movimientos = 
+					  public.tbl_plazas_empleados_hraes.id_tbl_movimientos
+					  WHERE public.tbl_plazas_empleados_hraes.fecha_movimiento = (
+					   SELECT MAX(public.tbl_plazas_empleados_hraes.fecha_movimiento) 
+					   FROM public.tbl_plazas_empleados_hraes
+					   WHERE public.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+							 public.tbl_empleados_hraes.id_tbl_empleados_hraes)
+					  AND public.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+							public.tbl_empleados_hraes.id_tbl_empleados_hraes
+					AND public.tbl_movimientos.id_tipo_movimiento <> 3
+			)) = TRUE THEN public.cat_entidad.entidad 
+			ELSE '-'
+			END AS zona_pagadora,
+		public.tbl_empleados_hraes.rfc, 
+		public.tbl_empleados_hraes.curp, 
+		public.tbl_empleados_hraes.nombre, 
+		public.tbl_empleados_hraes.primer_apellido,
+	    public.tbl_empleados_hraes.segundo_apellido, 
+		public.tbl_empleados_hraes.num_empleado,
+		'MOVIMIENTO',
+		CASE 
+			WHEN (SELECT EXISTS (
+				   SELECT TRUE
+				   FROM public.tbl_plazas_empleados_hraes
+				   INNER JOIN public.tbl_control_plazas_hraes
+					ON public.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+						public.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes
+				   INNER JOIN public.tbl_movimientos
+				   ON public.tbl_movimientos.id_tbl_movimientos = 
+					  public.tbl_plazas_empleados_hraes.id_tbl_movimientos
+					  WHERE public.tbl_plazas_empleados_hraes.fecha_movimiento = (
+					   SELECT MAX(public.tbl_plazas_empleados_hraes.fecha_movimiento) 
+					   FROM public.tbl_plazas_empleados_hraes
+					   WHERE public.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+							 public.tbl_empleados_hraes.id_tbl_empleados_hraes)
+					  AND public.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes = 
+							public.tbl_empleados_hraes.id_tbl_empleados_hraes
+					AND public.tbl_movimientos.id_tipo_movimiento <> 3
+			)) = TRUE THEN CONCAT (public.tbl_centro_trabajo_hraes.clave_centro_trabajo, ' - ',
+									public.tbl_centro_trabajo_hraes.nombre)
+			ELSE '-'
+			END AS zona_pagadora
+FROM public.tbl_empleados_hraes
+LEFT JOIN public.tbl_plazas_empleados_hraes
+	ON public.tbl_empleados_hraes.id_tbl_empleados_hraes =
+		public.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes
+LEFT JOIN public.tbl_control_plazas_hraes
+		ON public.tbl_plazas_empleados_hraes.id_tbl_control_plazas_hraes =
+			public.tbl_control_plazas_hraes.id_tbl_control_plazas_hraes	
+LEFT JOIN public.tbl_centro_trabajo_hraes
+	ON public.tbl_control_plazas_hraes.id_tbl_centro_trabajo_hraes =
+		public.tbl_centro_trabajo_hraes.id_tbl_centro_trabajo_hraes
+LEFT JOIN public.cat_entidad
+	ON public.tbl_centro_trabajo_hraes.id_cat_entidad =
+		public.cat_entidad.id_cat_entidad
+WHERE (public.tbl_plazas_empleados_hraes.fecha_movimiento = 
+	(SELECT MAX(public.tbl_plazas_empleados_hraes.fecha_movimiento) 
+	  FROM public.tbl_plazas_empleados_hraes
+	   WHERE public.tbl_plazas_empleados_hraes.id_tbl_empleados_hraes 
+					= public.tbl_empleados_hraes.id_tbl_empleados_hraes)
+		OR public.tbl_plazas_empleados_hraes.fecha_movimiento IS NULL)		
+		
+        */
 }

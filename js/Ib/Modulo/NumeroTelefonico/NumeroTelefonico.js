@@ -12,7 +12,7 @@ function buscarNumTelefonico(){ //BUSQUEDA
 }
 
 function iniciarTabla_nt(busqueda, paginador, id_tbl_empleados_hraes) { 
-    $.post('../../../../App/View/Central/Modulo/NumeroTelefonico/tabla.php', {
+    $.post('../../../../App/View/Hraes/Modulo/NumeroTelefonico/tabla.php', {
         busqueda: busqueda, 
         paginador: paginador, 
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
@@ -44,7 +44,7 @@ function agregarEditarTelefono(id_object){
         titulo.textContent = 'Agregar';
     }
 
-    $.post("../../../../App/Controllers/Central/TelefonoC/DetallesC.php", {
+    $.post("../../../../App/Controllers/Hrae/TelefonoC/DetallesC.php", {
         id_object: id_object
     },
         function (data) {
@@ -75,7 +75,7 @@ function agregarEditarByDbByTelefono() {
     var id_cat_estatus = $("#id_cat_estatus").val();
     var id_object = $("#id_object").val();
 
-    $.post("../../../../App/Controllers/Central/TelefonoC/AgregarEditarC.php", {
+    $.post("../../../../App/Controllers/Hrae/TelefonoC/AgregarEditarC.php", {
         movil: movil,
         id_cat_estatus: id_cat_estatus,
         id_object:id_object,
@@ -108,7 +108,7 @@ function eliminarTelefono(id_object) {//ELIMINAR USUARIO
         cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-        $.post("../../../../App/Controllers/Central/TelefonoC/EliminarC.php", {
+        $.post("../../../../App/Controllers/Hrae/TelefonoC/EliminarC.php", {
                 id_object: id_object
             },
             function (data, status) {
