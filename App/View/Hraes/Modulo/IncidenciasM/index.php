@@ -24,16 +24,7 @@
             <div class="tab-content" id="v-tabs-tabContent">
                 <div class="tab-pane fade show active" id="v-tabs-home" role="tabpanel"
                     aria-labelledby="v-tabs-home-tab">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card font-size-modulo shadow-lg">
-                                    <h5 class="card-header text-center background-modal color-text-tittle">Retardo</h5>
-                                    <div class="card-body">
-                                        <?php include 'Retardo/index.php' ?>
-                                    </div>
-                                </div>
-                            </div>
+                    
                         </div>
                     </div>
                 </div>
