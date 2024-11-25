@@ -1,9 +1,9 @@
 <?php
-$password = "630545";
+$password = "admin12345";
 $username = "postgres";
-$dbname = "rhsist2";
+$dbname = "sirh";
 $host = "localhost";
-$port = "5432";
+$port = "5433";
 $options = "--client_encoding=UTF8";
 
 try {
