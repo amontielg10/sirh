@@ -12,7 +12,7 @@ function getReporteJustificaciones() {
         if (result.isConfirmed) {
             fadeIn();
             $.ajax({
-                url: "../../../../App/Controllers/Central/FaltaC/FaltaJustificarC.php",
+                url: "../../../../App/Controllers/Central/C/ReporteC.php",
                 type: 'POST',
                 xhrFields: {
                     responseType: 'blob' // Configura la respuesta esperada como un blob (archivo binario)
