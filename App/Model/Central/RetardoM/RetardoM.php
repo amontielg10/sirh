@@ -149,67 +149,85 @@ ORDER BY central.ctrl_retardo.fecha DESC
     public function listadoAllFaltas($paginator)
     {
         $query = ("SELECT
-                    CONCAT(UPPER(central.tbl_empleados_hraes.nombre), ' ',
-                        UPPER(central.tbl_empleados_hraes.primer_apellido), ' ',
-                        UPPER(central.tbl_empleados_hraes.segundo_apellido)),
-                    UPPER(central.tbl_empleados_hraes.rfc),
-                    TO_CHAR(central.ctrl_retardo.fecha, 'DD-MM-YYYY'),
-                    TO_CHAR(central.ctrl_retardo.hora, 'HH24:MI'),
-                    UPPER(central.ctrl_retardo.observaciones),
-                    UPPER(central.cat_retardo_tipo.descripcion),
-                    UPPER(central.cat_retardo_estatus.descripcion),
-                    central.ctrl_retardo.id_user
-                FROM central.ctrl_retardo
-                INNER JOIN central.cat_retardo_tipo
-                    ON central.ctrl_retardo.id_cat_retardo_tipo = 
-                        central.cat_retardo_tipo.id_cat_retardo_tipo
-                INNER JOIN central.cat_retardo_estatus
-                    ON central.ctrl_retardo.id_cat_retardo_estatus =
-                        central.cat_retardo_estatus.id_cat_retardo_estatus
-                INNER JOIN central.tbl_empleados_hraes
-                    ON central.ctrl_retardo.id_tbl_empleados_hraes =
-                        central.tbl_empleados_hraes.id_tbl_empleados_hraes 
-                ORDER BY central.ctrl_retardo.fecha DESC
-                LIMIT 5 OFFSET $paginator;");
+                        CONCAT(UPPER(central.tbl_empleados_hraes.nombre), ' ',
+                            UPPER(central.tbl_empleados_hraes.primer_apellido), ' ',
+                            UPPER(central.tbl_empleados_hraes.segundo_apellido)) AS nombre_completo,
+                        UPPER(central.tbl_empleados_hraes.rfc) AS rfc,
+                        TO_CHAR(central.ctrl_retardo.fecha, 'DD-MM-YYYY') AS fecha,
+                        TO_CHAR(central.ctrl_retardo.hora, 'HH24:MI') AS hora,
+                        UPPER(central.ctrl_retardo.observaciones) AS observaciones,
+                        UPPER(central.cat_retardo_tipo.descripcion) AS tipo,
+                        UPPER(central.cat_retardo_estatus.descripcion) AS estatus,
+                        central.ctrl_retardo.id_user
+                    FROM central.ctrl_retardo
+                    INNER JOIN central.cat_retardo_tipo
+                        ON central.ctrl_retardo.id_cat_retardo_tipo = 
+                            central.cat_retardo_tipo.id_cat_retardo_tipo
+                    INNER JOIN central.cat_retardo_estatus
+                        ON central.ctrl_retardo.id_cat_retardo_estatus =
+                            central.cat_retardo_estatus.id_cat_retardo_estatus
+                    INNER JOIN central.tbl_empleados_hraes
+                        ON central.ctrl_retardo.id_tbl_empleados_hraes =
+                            central.tbl_empleados_hraes.id_tbl_empleados_hraes
+                    WHERE NOT EXISTS (
+                        SELECT 1
+                        FROM central.masivo_ctrl_temp_faltas_just J
+                        WHERE TRIM(UPPER(central.tbl_empleados_hraes.rfc)) = TRIM(UPPER(J.rfc))
+                        AND J.fecha IS NOT NULL AND J.fecha != ''
+                        AND central.ctrl_retardo.fecha = J.fecha::DATE
+                        AND TRIM(UPPER(J.tipo_falta)) = TRIM(UPPER(central.cat_retardo_tipo.descripcion))
+                    )
+                    ORDER BY central.ctrl_retardo.fecha DESC
+                    LIMIT 5 OFFSET $paginator;");
         return $query;
     }
+    
 
     public function listadoAllFaltasBusqueda($busqueda, $paginador)
     {
         $query = ("SELECT
-                    CONCAT(UPPER(central.tbl_empleados_hraes.nombre), ' ',
-                        UPPER(central.tbl_empleados_hraes.primer_apellido), ' ',
-                        UPPER(central.tbl_empleados_hraes.segundo_apellido)),
-                    UPPER(central.tbl_empleados_hraes.rfc),
-                    TO_CHAR(central.ctrl_retardo.fecha, 'DD-MM-YYYY'),
-                    TO_CHAR(central.ctrl_retardo.hora, 'HH24:MI'),
-                    UPPER(central.ctrl_retardo.observaciones),
-                    UPPER(central.cat_retardo_tipo.descripcion),
-                    UPPER(central.cat_retardo_estatus.descripcion),
-                    central.ctrl_retardo.id_user
-                FROM central.ctrl_retardo
-                INNER JOIN central.cat_retardo_tipo
-                    ON central.ctrl_retardo.id_cat_retardo_tipo = 
-                        central.cat_retardo_tipo.id_cat_retardo_tipo
-                INNER JOIN central.cat_retardo_estatus
-                    ON central.ctrl_retardo.id_cat_retardo_estatus =
-                        central.cat_retardo_estatus.id_cat_retardo_estatus
-                INNER JOIN central.tbl_empleados_hraes
-                    ON central.ctrl_retardo.id_tbl_empleados_hraes =
-                        central.tbl_empleados_hraes.id_tbl_empleados_hraes 
-                WHERE (
                         CONCAT(UPPER(central.tbl_empleados_hraes.nombre), ' ',
                             UPPER(central.tbl_empleados_hraes.primer_apellido), ' ',
-                            UPPER(central.tbl_empleados_hraes.segundo_apellido)) LIKE '%$busqueda%'
-                        OR UPPER(central.tbl_empleados_hraes.rfc)::TEXT  LIKE '%$busqueda%'
-                        OR TO_CHAR(central.ctrl_retardo.fecha, 'DD-MM-YYYY')::TEXT  LIKE '%$busqueda%'
-                        OR TO_CHAR(central.ctrl_retardo.hora, 'HH24:MI')::TEXT  LIKE '%$busqueda%'
-                        OR UPPER(central.ctrl_retardo.observaciones)::TEXT  LIKE '%$busqueda%'
-                        OR UPPER(central.cat_retardo_tipo.descripcion)::TEXT  LIKE '%$busqueda%'
-                        OR UPPER(central.cat_retardo_estatus.descripcion)::TEXT  LIKE '%$busqueda%'
+                            UPPER(central.tbl_empleados_hraes.segundo_apellido)) AS nombre_completo,
+                        UPPER(central.tbl_empleados_hraes.rfc) AS rfc,
+                        TO_CHAR(central.ctrl_retardo.fecha, 'DD-MM-YYYY') AS fecha,
+                        TO_CHAR(central.ctrl_retardo.hora, 'HH24:MI') AS hora,
+                        UPPER(central.ctrl_retardo.observaciones) AS observaciones,
+                        UPPER(central.cat_retardo_tipo.descripcion) AS tipo,
+                        UPPER(central.cat_retardo_estatus.descripcion) AS estatus,
+                        central.ctrl_retardo.id_user
+                    FROM central.ctrl_retardo
+                    INNER JOIN central.cat_retardo_tipo
+                        ON central.ctrl_retardo.id_cat_retardo_tipo = 
+                            central.cat_retardo_tipo.id_cat_retardo_tipo
+                    INNER JOIN central.cat_retardo_estatus
+                        ON central.ctrl_retardo.id_cat_retardo_estatus =
+                            central.cat_retardo_estatus.id_cat_retardo_estatus
+                    INNER JOIN central.tbl_empleados_hraes
+                        ON central.ctrl_retardo.id_tbl_empleados_hraes =
+                            central.tbl_empleados_hraes.id_tbl_empleados_hraes
+                    WHERE (
+                            CONCAT(UPPER(central.tbl_empleados_hraes.nombre), ' ',
+                                UPPER(central.tbl_empleados_hraes.primer_apellido), ' ',
+                                UPPER(central.tbl_empleados_hraes.segundo_apellido)) LIKE '%$busqueda%'
+                            OR UPPER(central.tbl_empleados_hraes.rfc)::TEXT LIKE '%$busqueda%'
+                            OR TO_CHAR(central.ctrl_retardo.fecha, 'DD-MM-YYYY')::TEXT LIKE '%$busqueda%'
+                            OR TO_CHAR(central.ctrl_retardo.hora, 'HH24:MI')::TEXT LIKE '%$busqueda%'
+                            OR UPPER(central.ctrl_retardo.observaciones)::TEXT LIKE '%$busqueda%'
+                            OR UPPER(central.cat_retardo_tipo.descripcion)::TEXT LIKE '%$busqueda%'
+                            OR UPPER(central.cat_retardo_estatus.descripcion)::TEXT LIKE '%$busqueda%'
+                        )
+                    AND NOT EXISTS (
+                        SELECT 1
+                        FROM central.masivo_ctrl_temp_faltas_just J
+                        WHERE TRIM(UPPER(central.tbl_empleados_hraes.rfc)) = TRIM(UPPER(J.rfc))
+                        AND J.fecha IS NOT NULL AND J.fecha != ''
+                        AND central.ctrl_retardo.fecha = J.fecha::DATE
+                        AND TRIM(UPPER(J.tipo_falta)) = TRIM(UPPER(central.cat_retardo_tipo.descripcion))
                     )
-                ORDER BY central.ctrl_retardo.fecha DESC
-                LIMIT 5 OFFSET $paginador;");
+                    ORDER BY central.ctrl_retardo.fecha DESC
+                    LIMIT 5 OFFSET $paginador;");
         return $query;
     }
+    
 }
